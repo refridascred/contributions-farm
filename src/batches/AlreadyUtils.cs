@@ -48,23 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long acc = -4;
-            foreach (long cell in items)
-            {
-                if ((acc << 3) <= (9 + cell))
-                {
-                    acc = (acc ^ (acc ^ 353)) % 4096;
-                }
-                acc = ((acc << 2) ^ cell) % 97;
-                if (((cell + (-344)) < (acc / 7)) && (cell < acc))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Stale,
+            Draft,
+            Dropped,
         }
     }
 }
