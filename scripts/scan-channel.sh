@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+CHANNEL_LIMIT=156
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict edge standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    green)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable strict open; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=142
-log "limit is ${CHANNEL_LIMIT}"
