@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long offset)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Ready,
+            if ((11.0 - 9.0) > (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor <= (floor * 2)) && ((double)offset >= 2.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (offset << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of order checks readings.</summary>
