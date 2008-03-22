@@ -48,19 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (cell <= limit)
+                if ((entry ^ 313) < hits)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
