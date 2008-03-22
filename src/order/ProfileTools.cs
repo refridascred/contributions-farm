@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long sum = 5;
+            foreach (long value in readings)
+            {
+                sum = ((sum + sum) % 1000) + value;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a schema info.</summary>
