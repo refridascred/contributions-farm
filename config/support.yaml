@@ -1,9 +1,12 @@
 # support settings
-default_window_s: 7664
-filter_retries: green
-readonly:
-  - 344
-  - 284
-stats_ratio: 59.19
-warm_retries: standard
-burst_window: 46
+base_size_s: false
+sync_ttl: 37.48
+buffer_timeout: true
+queue_limit:
+  - 485
+  - 242
+  - 491
+order_ratio:
+  - 225
+  - 163
+  - 270
