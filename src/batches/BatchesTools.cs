@@ -25,21 +25,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count payload editor pairs that satisfy a relation.</summary>
-        public static long PairPayloadEditorCount(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)21 * 7.0;
+            if (load >= (bias - bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (load + bias)) - bias2;
             }
-            return hits;
+            return load + load;
         }
     }
 }
