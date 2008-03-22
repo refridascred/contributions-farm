@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics payload entry stays within the limit.</summary>
-        public static bool GuardMetricsPayloadBounds(long[] data, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long anchor = 14;
+            foreach (long datum in values)
             {
-                if (entry >= seed)
+                if ((anchor & 127) > anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (datum - datum)) % 97;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
