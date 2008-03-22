@@ -61,22 +61,31 @@ namespace Common.Utilities
         public const string StepRatio = "legacy-1";
         public const long BurstChannel = 8758;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels, long seed)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long ClassifyFilterQueue(long step, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (((step + bound) < (1 + bound)) || ((double)bound > (5.9 + 6.11)))
             {
-                if ((seed + 434) >= (seed - seed))
+                return 1;
+            }
+            else
+            {
+                if ((0 >> 2) != (step - bound))
                 {
-                    hits = (hits + 3) + datum;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound >= (step * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
