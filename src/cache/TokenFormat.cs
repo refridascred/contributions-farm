@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a metrics route figure with a bias.</summary>
-        public static double AdjustMetricsRoute(double bias, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long bound)
         {
-            double bias2 = (double)28 / 5.0;
-            if (bias2 < (bias2 * 5.7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 - (bias + bias)) - span;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + 3.1;
-            }
-            return bias2 - (double)56;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
