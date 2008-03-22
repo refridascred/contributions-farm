@@ -1,23 +1,13 @@
 {
-  "readonly": ["fallback", "latest", "stable"],
-  "dry_run": "blue",
-  "metric_retries": {
-    "cache_delay": {
-      "max_size": "stable",
-      "strict": 8,
-      "flush_capacity_s": ["legacy", "local", "standard"],
-      "dry_run": 74.31
-    },
-    "stats_ratio": {
-      "idle_delay": true,
-      "cache_ttl_count": 22,
-      "base_limit": 38.88,
-      "retry_depth_s": "fallback"
-    },
-    "audit": [193, 431, 140],
-    "cache_ttl": "open"
+  "burst_depth_pct": "cached",
+  "support_ratio": {
+    "poll_depth_s": true,
+    "command_size": 34.24,
+    "retry_delay": "standard",
+    "idle_delay_s": "strict",
+    "readonly": 96
   },
-  "poll_depth_ms": [408, 179],
-  "hard_limit_count": 48,
-  "sync_delay": 30
+  "notes_timeout": false,
+  "route_size": 1,
+  "hard_delay": 79.55
 }
