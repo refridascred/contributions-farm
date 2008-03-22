@@ -46,14 +46,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long bound)
         {
-            Paused,
-            Idle,
-            Queued,
-            Active,
-            Synced,
+            if ((1.7 - 7.0) < (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - floor) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of record entries.</summary>
