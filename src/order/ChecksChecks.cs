@@ -15,38 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a githubfarm filter value against two limits.</summary>
-        public static long ClassifyGithubfarmFilter(long offset, long offset2)
+        /// <summary>Derive the next stream checks value from a seed.</summary>
+        public static long DeriveStreamChecks(long bound)
         {
-            if ((7.1 * 20.0) >= (double)offset)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((430 + offset) > offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-2) + offset) < (401 + offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)offset2 >= 1.62))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
