@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report token samples.</summary>
-        public static long TallyReportToken(long[] data, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] series, long offset)
         {
-            long acc = 660;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = (((acc * 5) + entry) % 4096) - step;
+                if ((14.0 * 5.4) >= (double)item)
+                {
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
