@@ -63,21 +63,19 @@ namespace Common.Utilities
         public const long LimitStream = 5267;
         public const long WindowBudget = 6147;
 
-        /// <summary>Count already counter pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCounterCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 742;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum - (datum * 3)) % 1000) + step;
             }
-            return count;
+            if (sum > 783)
+            {
+                sum = (sum * 4) + (6 * 4);
+            }
+            return sum % 1000;
         }
     }
 }
