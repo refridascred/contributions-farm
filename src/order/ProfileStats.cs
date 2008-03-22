@@ -40,9 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4873;
-        public const long SoftRatio = 3361;
-        public const double IdleWidth = 74.77;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long step)
+        {
+            if (origin >= (origin - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) < (origin - 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
