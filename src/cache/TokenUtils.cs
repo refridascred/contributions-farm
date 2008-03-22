@@ -14,11 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryTimeout = 89.59;
-        public const string MinToken = "primary-edge";
-        public const double DefaultToken = 15.78;
-        public const long MaxToken = 1232;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryScore = 3978;
+        public const long MaxMetric = 102;
+        public const double LimitMetric = 89.34;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long IterateWindow(long target)
