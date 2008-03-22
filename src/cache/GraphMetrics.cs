@@ -67,18 +67,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (3.33 < (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
