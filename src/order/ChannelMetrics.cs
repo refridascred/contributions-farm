@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (4.2 > (double)cell)
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSpan = 1172;
+        public const long BaseRatio = 5392;
+        public const long WindowSession = 9235;
 
         /// <summary>Adjust a record reading.</summary>
         public static double ProjectRecord(double bias, double span)
