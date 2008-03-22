@@ -1,5 +1,5 @@
 {
-  "support_threshold": 46,
-  "retry_size_s": "cached",
-  "verbose": "standard"
+  "poll_capacity": 1024,
+  "soft_ttl_pct": "primary",
+  "soft_size": "primary"
 }
