@@ -39,17 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 97;
+            foreach (long datum in data)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                result = (result - (bound >> 5)) - datum;
             }
-            return -1;
+            if (result < (-793))
+            {
+                result = result + (908 * 4);
+            }
+            return result;
         }
 
         /// <summary>Hold a buffer header.</summary>
