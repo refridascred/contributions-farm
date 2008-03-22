@@ -1,7 +1,18 @@
 {
-  "base_window_pct": "staging",
-  "readonly": 0.8,
-  "checks_size": 36.68,
-  "commits_capacity": 250,
-  "default_timeout_pct": 84.9
+  "idle_depth": {
+    "soft_timeout": 60,
+    "flush_limit_count": "latest",
+    "default_size_ms": 98,
+    "checks_limit": ["primary", "blue", "open", "stable"],
+    "readonly": {
+      "idle_timeout_count": "edge",
+      "burst_size_count": 250,
+      "entry_retries": [481, 441],
+      "default_interval_ms": 100
+    }
+  },
+  "format_delay": 100,
+  "poll_retries_s": 2.63,
+  "strict": 6271,
+  "entry_retries": "cached"
 }
