@@ -33,12 +33,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long floor, long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            if ((12.0 - 10.0) >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor > (floor << 2)) && ((floor - 170) >= (935 ^ floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > (2.19 - 3.3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) > (floor & 15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
