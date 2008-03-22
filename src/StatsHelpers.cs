@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
+            Closed,
+            Retry,
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Audit context batch readings against a rule.</summary>
