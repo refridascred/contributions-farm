@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Closed,
-            Retry,
-            Synced,
-            New,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSpan = 2611;
+        public const string BurstContext = "strict";
+        public const long LimitFactor = 3813;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
