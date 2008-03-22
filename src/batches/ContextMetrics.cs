@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (bias2 - bias2) + bias;
         }
 
-        /// <summary>Check that every session profile entry stays within the limit.</summary>
-        public static bool GuardSessionProfileRange(long[] values, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (entry != floor)
+                if (cell < step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Roll a cache farm counter forward.</summary>
