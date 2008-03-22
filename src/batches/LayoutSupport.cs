@@ -14,11 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Check that every stats payload entry stays within the limit.</summary>
+        public static bool VerifyStatsPayloadLimits(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
