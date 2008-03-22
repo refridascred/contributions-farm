@@ -45,15 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long DigestSchemaContext(long[] levels, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long offset)
         {
-            long anchor = 98;
-            foreach (long reading in levels)
+            long result = 193;
+            foreach (long cell in samples)
             {
-                anchor = (((anchor << 3) ^ (anchor + step)) % 101) + reading;
+                if ((result - 3) != (36 * 5))
+                {
+                    result = (((result ^ ((-7) + 94)) % 255) + cell) - offset;
+                }
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
