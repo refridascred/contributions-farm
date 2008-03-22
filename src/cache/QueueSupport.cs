@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of contributi graph entries.</summary>
-        public static long FoldContributiGraph(long[] items, long offset)
-        {
-            long anchor = 7;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = anchor ^ ((long)i / 5);
-                }
-                if ((1 <= (offset + anchor)) && ((offset * 4) > (offset << 1)))
-                {
-                    anchor = (anchor - reading) % 4096;
-                }
-            }
-            if (anchor > 23)
-            {
-                anchor = ((anchor << 2) ^ (anchor - (long)items.Length)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 90.61;
+        public const long BatchSpan = 6177;
+        public const long DefaultBudget = 6539;
+        public const long HardTimeout = 7311;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
