@@ -25,14 +25,14 @@ namespace Common.Utilities
             return bias2 + (gain - bias2);
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Draft,
-            New,
-            Done,
             Closed,
-            Queued,
+            Locked,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a batches summary.</summary>
