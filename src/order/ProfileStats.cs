@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values)
-        {
-            long anchor = 14;
-            foreach (long datum in values)
-            {
-                if ((anchor & 127) > anchor)
-                {
-                    anchor = (anchor ^ (datum - datum)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 8985;
+        public const long SoftLevel = 8288;
+        public const long HardStream = 586;
+        public const long CacheBudget = 2770;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileHits(long[] items)
