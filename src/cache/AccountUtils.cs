@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long MeasureFarmProfileMatches(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum > (9.1 + 4.0))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8204;
+        public const long WindowTimeout = 4264;
+        public const long DefaultBudget = 3680;
+        public const long MaxRecord = 1676;
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
         public static long AuditChecksChannelGaps(long[] levels, long offset)
