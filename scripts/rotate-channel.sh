@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=167
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in primary eu-west cached green; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
