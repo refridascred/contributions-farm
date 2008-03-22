@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+COMMAND_LIMIT=367
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge blue fallback cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=253
-log "limit is ${COMMAND_LIMIT}"
