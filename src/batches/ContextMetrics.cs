@@ -44,12 +44,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 8500;
-        public const long BurstNotes = 804;
-        public const long MaxNotes = 6273;
-        public const long CacheNotes = 2118;
-        public const long WindowNotes = 4675;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
+        {
+            long mark = -810;
+            foreach (long value in values)
+            {
+                mark = mark ^ value;
+            }
+            return mark;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long step, long step2)
