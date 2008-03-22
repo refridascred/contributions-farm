@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double gain, double bias)
         {
-            double scale = (double)382 + (gain * 2.0);
-            if (scale <= floor)
+            double load = 6.0 * 12.0;
+            if (load >= (double)94)
             {
-                scale = scale - (gain + scale);
+                load = ((load + (4.24 + load)) - gain) - bias;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + (floor * 5.0)) - (double)(long)i;
+                load = load + (load + load);
             }
-            return scale + floor;
+            return load - (5.0 * 13.0);
         }
     }
 }
