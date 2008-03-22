@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=385
+COMMAND_LIMIT=256
 log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy eu-west standard; do
+    log "checking ${item}"
+done
