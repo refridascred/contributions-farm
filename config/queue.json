@@ -1,25 +1,6 @@
 {
-  "batch_ttl": {
-    "context_threshold": true,
-    "default_capacity_ms": true,
-    "batch_window_ms": {
-      "cache_retries_ms": 44,
-      "cache_delay": 90,
-      "idle_limit_pct": "legacy"
-    },
-    "tools_limit": "primary",
-    "soft_ratio_count": "blue",
-    "retry_interval": ["strict", "strict", "standard"]
-  },
-  "retry_limit_count": "staging",
-  "burst_window_count": 8076,
-  "min_capacity_s": false,
-  "poll_timeout_s": {
-    "commits_ttl": 63.7,
-    "cache_interval": "primary",
-    "soft_limit_pct": 5,
-    "token_ttl": false,
-    "sync_interval_count": 2.76,
-    "batch_ttl_ms": 250
-  }
+  "account_ratio": 60,
+  "tools_limit": false,
+  "retry_ttl": 57.66,
+  "commits_capacity": [346, 457, 39]
 }
