@@ -19,26 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter notes values into a single score.</summary>
-        public static long CombineFilterNotes(long[] series, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double bias)
         {
-            long acc = 2;
-            foreach (long datum in series)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((datum + seed) == ((long)series.Length ^ (-22))))
-                {
-                    acc = (acc * 2) + seed;
-                }
-                if (((datum + acc) >= (acc + (-788))) && ((0.3 / 6.0) == (double)acc))
-                {
-                    acc = (acc ^ (acc << 3)) % 65521;
-                }
-                if (718 < (seed * 2))
-                {
-                    break;
-                }
+                mean = (mean - ratio) + (double)(long)i;
             }
-            return acc;
+            return mean + 0.7;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
