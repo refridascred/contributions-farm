@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] data, long bound)
         {
-            double gain = (bias - 6.1) * 3.03;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                gain = (gain - (scale - scale)) + (double)(long)i;
+                if ((12.0 - 15.0) > (double)bound)
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + (gain / 4.0);
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
