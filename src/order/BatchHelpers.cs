@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double ratio = floor;
-            if (ratio >= (double)226)
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio - 0.21;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
