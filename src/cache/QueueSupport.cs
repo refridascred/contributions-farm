@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheLevel = 572;
-        public const long StepBatch = 7902;
-        public const long DefaultBatch = 972;
+        /// <summary>Fold a list of token counter readings.</summary>
+        public static long CombineTokenCounter(long[] items)
+        {
+            long mix = 168;
+            foreach (long sample in items)
+            {
+                if (!(((-815) ^ 3) != (mix >> 3)))
+                {
+                    mix = (mix + (sample >> 3)) % 4096;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = mix - (6 - mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double rate, double offset)
