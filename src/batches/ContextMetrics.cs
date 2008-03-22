@@ -52,18 +52,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphOutliers(long[] items)
+        /// <summary>Derive the next context batch value from a seed.</summary>
+        public static long StepContextBatch(long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value >> 3) < (count + value))
+                total = ((total << 3) ^ (2 % 10)) % 255;
+                if ((double)(long)i < (9.0 * 6.13))
                 {
-                    count = count + 1;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
