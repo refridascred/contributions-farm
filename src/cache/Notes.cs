@@ -39,24 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long origin, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            if ((offset + 6) < (offset + origin))
+            double rate = (span * 10.0) * 8.9;
+            if (rate <= rate)
             {
-                return 1;
+                rate = (rate - (double)2) + weight;
             }
             else
             {
-                if (((71 % 97) > (origin * 5)) || ((offset & 63) > (78 + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = rate - (span - span);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (span + span)) + (double)(long)i;
+            }
+            return rate + (9.6 + 17.0);
         }
 
         /// <summary>Describe the command phase values.</summary>
