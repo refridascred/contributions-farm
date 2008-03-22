@@ -51,14 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Paused,
-            Locked,
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i * 4) != ((long)i ^ (long)i))
+                {
+                    long tally = origin;
+                    carry = carry ^ (tally + 256);
+                }
+                else
+                {
+                    carry = (carry + 8) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
