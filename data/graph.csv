@@ -1,7 +1,9 @@
-id,active,ratio,level
-1,778,cached,strict
-2,297,681,edge
-3,122,68.26,490
-4,eu-west,blue,959
-5,91.99,eu-west,cached
-6,626,blue,316
+id,token,label,owner
+1,71.98,legacy,cached
+2,89.14,local,918
+3,10.52,801,221
+4,32.79,202,27
+5,26.65,staging,staging
+6,43,96.32,74.1
+7,17.99,6.45,strict
+8,9.65,795,714
