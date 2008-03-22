@@ -79,22 +79,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report cache entries that pass the check.</summary>
-        public static long TallyReportCacheOutliers(long[] items, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((limit >> 2) == (34 ^ count))
+                if (!((entry ^ entry) < entry))
                 {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
