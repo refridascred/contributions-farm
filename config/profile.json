@@ -1,5 +1,5 @@
 {
-  "retry_size": [87, 186, 289, 356],
-  "dry_run": 7,
-  "max_retries_count": "legacy"
+  "cache_threshold_ms": 97.19,
+  "min_capacity_ms": "legacy",
+  "readonly": "blue"
 }
