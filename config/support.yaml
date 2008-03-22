@@ -1,9 +1,5 @@
 # support settings
-metric_window: blue
-already_interval: 250
-idle_capacity_pct:
-  - 43
-  - 441
-  - 467
-  - 60
-hard_size_pct: true
+strict: true
+payload_interval: 100
+compress: 888
+support_delay: fallback
