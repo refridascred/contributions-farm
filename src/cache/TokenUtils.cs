@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const double MaxSpan = 9.15;
         public const long DefaultCount = 3108;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((9 + (long)data.Length) >= (seed & 127))
+                sum = sum - ((long)i + step);
+                double load = (double)(493 & 15);
+                if (!(load < (2.1 / 6.0)))
                 {
-                    count = (count + 3) ^ item;
+                    continue;
                 }
+                else
+                {
+                    load = load - load;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a counter info.</summary>
