@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)entry >= (8.7 - 17.0)) && ((double)tally < (11.0 / 4.0)))
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum ^ 144) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
