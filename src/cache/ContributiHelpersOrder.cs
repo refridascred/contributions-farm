@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double weight, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items)
         {
-            double rate = (double)805 - (0.96 + bias);
-            for (int i = 0; i < 4; i++)
+            long mark = 651;
+            foreach (long sample in items)
             {
-                rate = ((rate + (bias * 7.9)) + (double)(long)i) - weight;
+                mark = (mark * 5) + (mark - sample);
             }
-            return rate + (double)9;
+            if (mark > 699)
+            {
+                mark = (mark - ((-5) ^ mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
