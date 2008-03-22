@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long BatchSupport = 9809;
         public const long SoftBudget = 6802;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long score = 87;
-            foreach (long item in readings)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (((score - score) < (limit * 2)) && ((77 - item) != (item * 4)))
-                {
-                    score = (score * 2) + (score + item);
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
     }
 }
