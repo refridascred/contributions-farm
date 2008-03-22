@@ -16,38 +16,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if (((target & 15) < target) && (13 > (origin - origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - target) == (origin - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 7) <= (origin * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin + target) >= 0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Project the next context value.</summary>
