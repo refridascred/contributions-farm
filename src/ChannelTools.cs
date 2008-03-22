@@ -35,13 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((anchor + (long)i) < (floor >> 3))
+                {
+                    anchor = (anchor - (anchor + (long)i)) % 101;
+                }
+                if ((floor % 2) >= (anchor + floor))
+                {
+                    anchor = (anchor + (floor + (long)i)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
