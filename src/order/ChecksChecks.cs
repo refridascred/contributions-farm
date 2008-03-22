@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            New,
-            Idle,
-            Draft,
-            Active,
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (result - (result << 1)) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate record samples.</summary>
