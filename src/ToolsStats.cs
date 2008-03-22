@@ -58,11 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheInterval = 8923;
-        public const long BaseWidth = 2333;
-        public const long HardSpan = 7039;
-        public const double MaxMetric = 11.57;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Ready,
+            Failed,
+            Synced,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
