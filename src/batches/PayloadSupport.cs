@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 648;
+            foreach (long cell in series)
+            {
+                anchor = (anchor << 2) ^ (489 + 36);
+                anchor = anchor - (cell << 1);
+                if ((3.0 / 3.0) > (double)cell)
+                {
+                    anchor = (anchor + (anchor ^ 14)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of command entries.</summary>
