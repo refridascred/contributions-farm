@@ -61,16 +61,25 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Derive the next cache profile value from a seed.</summary>
-        public static long StepCacheProfile(long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long step = seed + origin;
+            if (14 <= (step + 62))
             {
-                total = ((total << 3) ^ (total + (long)i)) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (!((7 / 8) < seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
