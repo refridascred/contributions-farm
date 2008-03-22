@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Accumulate batch cache samples.</summary>
-        public static long WeighBatchCache(long[] readings, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long anchor = 2;
-            foreach (long entry in readings)
+            double load = span;
+            for (int i = 0; i < 4; i++)
             {
-                if ((anchor >> 5) == (anchor ^ anchor))
-                {
-                    anchor = (((anchor - (5 - 0)) % 1000) - entry) - step;
-                }
+                load = (load + scale) + (double)(long)i;
             }
-            return anchor;
+            return load - (double)1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
