@@ -65,19 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout command entry stays within the limit.</summary>
-        public static bool VerifyLayoutCommandRange(long[] items, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
