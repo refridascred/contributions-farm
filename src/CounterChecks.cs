@@ -59,10 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5512;
-        public const string BurstQueue = "stable-edge";
-        public const string MaxQueue = "primary-edge";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading >> 1) != (0 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up batch contributi samples.</summary>
         public static long OverlapBatchContributiCount(long[] samples)
