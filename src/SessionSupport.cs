@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitRatio = 4391;
-        public const string BatchCounter = "standard";
-        public const long WindowTimeout = 8512;
-        public const string RetryBudget = "fallback-1";
-        public const string SoftBudget = "alpha-edge";
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double floor)
+        {
+            double weight = scale;
+            if (weight < (2.0 - floor))
+            {
+                weight = weight + (weight - 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (2.85 * 9.08);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 5787;
