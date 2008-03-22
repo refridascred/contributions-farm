@@ -23,20 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long acc = 543;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                acc = (acc * 4) + sample;
+                if ((double)acc == (5.59 * 7.4))
                 {
-                    sum = ((sum - (seed & 255)) % 65521) ^ (long)i2;
+                    acc = (acc ^ (sample ^ acc)) % 4096;
                 }
-                sum = sum + (sum ^ (long)i);
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return acc % 97;
         }
     }
 }
