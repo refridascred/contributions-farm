@@ -1,12 +1,7 @@
 # entry settings
-verbose: latest
-commits_delay: 1684
-poll_timeout_count: staging
-counter_ratio: 2.62
-default_delay:
-  verbose: cached
-  default_size: 53.42
-  context_threshold: true
-  default_ttl:
-    - 286
-    - 385
+compress: staging
+default_ratio_pct: 55
+burst_depth: 250
+token_interval: local
+warm_ratio: stable
+soft_retries_pct: 75.24
