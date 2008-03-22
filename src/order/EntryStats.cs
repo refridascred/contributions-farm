@@ -39,17 +39,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score + (long)i;
-                score = score - bound;
-                score = ((score * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
