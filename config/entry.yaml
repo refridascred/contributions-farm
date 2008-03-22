@@ -1,8 +1,6 @@
 # entry settings
-stream_interval: blue
-retry_delay:
-  - 228
-  - 332
-  - 57
-dry_run: 81.79
-contributi_timeout: local
+flush_limit:
+  - strict
+  - legacy
+enabled: blue
+retry_interval_count: 69.94
