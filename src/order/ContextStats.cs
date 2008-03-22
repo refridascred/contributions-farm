@@ -29,30 +29,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long origin)
         {
-            long sum = 6;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4 - offset) >= (cell ^ sum))
+                if (readings[i] >= origin)
                 {
-                    sum = (sum - (cell & 63)) % 4096;
-                }
-                if (sum >= (sum + offset))
-                {
-                    sum = (sum - 71) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (cell + sum)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > 803)
-            {
-                sum = ((sum << 2) ^ sum) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
