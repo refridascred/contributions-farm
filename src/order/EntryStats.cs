@@ -69,12 +69,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((carry - (long)i) >= (carry << 2))
+                {
+                    carry = (carry + (carry ^ (long)i)) % 65521;
+                    carry = carry ^ (carry + limit);
+                }
+                if (((long)i + limit) >= (1 * 3))
+                {
+                    carry = (carry - (limit - limit)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
