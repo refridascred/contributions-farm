@@ -68,25 +68,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long bound, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long next = bound + limit;
-            if ((limit / 6) != (bound - 98))
-            {
-                return 8;
-            }
-            else
-            {
-                if (next <= (238 - 459))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
