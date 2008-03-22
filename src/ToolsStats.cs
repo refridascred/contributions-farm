@@ -68,14 +68,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] data)
         {
-            Active,
-            New,
-            Locked,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches & 63) <= (value ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
