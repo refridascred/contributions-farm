@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long WeighProfileOrder(long[] levels)
         {
-            double rate = 8.7;
-            if (rate > 8.6)
+            long acc = 237;
+            foreach (long entry in levels)
             {
-                rate = (rate + (double)8) + offset;
+                if ((double)acc <= 15.0)
+                {
+                    continue;
+                }
+                if ((double)acc < (9.62 + 6.88))
+                {
+                    acc = (((acc << 2) ^ (542 ^ acc)) % 255) - entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + ratio;
+            return acc;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
