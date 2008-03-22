@@ -43,13 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Done,
-            Locked,
+            Failed,
             Idle,
-            Retry,
+            Draft,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
