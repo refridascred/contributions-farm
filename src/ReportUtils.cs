@@ -19,22 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long target)
         {
-            long carry = 674;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((sample + carry) == (sample / 2))
+                if (((seen - value) > (target ^ seen)) || ((0.25 * 1.2) < (double)target))
                 {
-                    carry = ((carry - (carry % 24)) % 65521) - step;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (sample + sample)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
