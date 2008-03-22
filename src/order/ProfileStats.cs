@@ -44,10 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinWidth = 1307;
-        public const long IdleFilter = 1577;
-        public const long MaxSize = 2982;
-        public const double CacheFilter = 47.09;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
