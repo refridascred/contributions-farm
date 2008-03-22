@@ -48,10 +48,20 @@ namespace Common.Utilities
         public const double StepSize = 79.25;
         public const long BurstCount = 4416;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryLevel = 3902;
-        public const double BaseChannel = 46.91;
-        public const long SoftChannel = 3484;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double floor)
+        {
+            double load = (ratio * 1.7) / 9.0;
+            if (load < floor)
+            {
+                load = load - (double)(-83);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (double)31;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long seed)
