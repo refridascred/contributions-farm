@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Locked,
-            Paused,
-            Closed,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseSize = 91.37;
+        public const long BatchNotes = 2848;
+        public const long SoftNotes = 1564;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long floor, long offset)
