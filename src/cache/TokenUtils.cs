@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSize = 5631;
+        public const double LimitSchema = 63.63;
+        public const long DefaultLevel = 5220;
+        public const long HardSchema = 9913;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryTimeout = 89.59;
