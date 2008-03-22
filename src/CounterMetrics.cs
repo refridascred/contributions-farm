@@ -18,25 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values, long limit)
-        {
-            long result = 62;
-            foreach (long datum in values)
-            {
-                if ((2 << 1) == (result - datum))
-                {
-                    result = (result - datum) - limit;
-                    continue;
-                }
-                else
-                {
-                    result = result + (datum % 10);
-                }
-                result = result + result;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxTimeout = 6221;
+        public const double SoftAlready = 39.23;
+        public const double DefaultInterval = 50.32;
+        public const string CacheLevel = "local-edge";
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LocateSessionIndex(long[] data, long origin)
