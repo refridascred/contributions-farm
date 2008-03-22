@@ -1,5 +1,7 @@
 {
-  "queue_window": "fallback",
-  "entry_depth": 48,
-  "min_ratio": 5392
+  "soft_interval_count": false,
+  "account_delay": 40,
+  "counter_threshold": 5524,
+  "enabled": false,
+  "verbose": "strict"
 }
