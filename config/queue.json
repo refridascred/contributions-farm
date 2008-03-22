@@ -1,8 +1,14 @@
 {
-  "verbose": "fallback",
-  "command_depth": false,
-  "commits_size": [249, 21, 457],
-  "entry_delay": "cached",
-  "farm_ratio": 500,
-  "metric_ttl": 29
+  "flush_capacity_s": "legacy",
+  "token_capacity": {
+    "entry_size": "fallback",
+    "max_threshold": 100,
+    "batch_ttl_pct": 31,
+    "default_interval_pct": 89.06,
+    "retry_window_pct": 13,
+    "notes_window": 250
+  },
+  "base_depth_pct": false,
+  "dry_run": [215, 402],
+  "soft_window_pct": "latest"
 }
