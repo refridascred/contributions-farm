@@ -1,7 +1,19 @@
 # entry settings
-idle_ttl: true
-warm_timeout_pct:
-  - edge
-  - latest
-max_threshold_ms: 93
-persist: strict
+compress:
+  editor_window: edge
+  base_size: false
+  batch_ttl: 100
+batch_ttl_s: 17
+default_capacity_pct:
+  dry_run: 30
+  enabled: 7717
+  readonly: latest
+  command_size:
+    dry_run: 13.97
+    burst_ttl_count: edge
+    account_timeout: 92
+  batches_delay: local
+  filter_ratio: edge
+already_threshold: false
+counter_ttl: 1782
+flush_size_ms: staging
