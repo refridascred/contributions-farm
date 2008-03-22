@@ -68,18 +68,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches & 63) <= (value ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 4065;
+        public const double BaseCluster = 90.04;
+        public const long IdleDepth = 3858;
     }
 }
