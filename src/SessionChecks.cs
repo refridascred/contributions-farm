@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                if (values[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
