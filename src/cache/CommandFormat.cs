@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long total = 6;
+            foreach (long value in items)
             {
-                if ((double)matches != (double)datum)
+                if (!((value - value) >= value))
                 {
-                    matches = (matches + 3) - limit;
+                    break;
+                }
+                if ((value & 31) < (value & 255))
+                {
+                    total = (total + value) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
