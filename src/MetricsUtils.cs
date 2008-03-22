@@ -50,21 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 33;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry ^ cell) != (645 * 5))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ cell) % 255;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
