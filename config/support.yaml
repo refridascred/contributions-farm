@@ -1,10 +1,4 @@
 # support settings
-stream_limit:
-  - green
-  - cached
-  - cached
-readonly: 49.78
-layout_timeout: strict
-poll_retries_s:
-  - local
-  - eu-west
+strict: true
+readonly: cached
+editor_depth: true
