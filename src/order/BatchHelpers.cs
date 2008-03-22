@@ -29,11 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            Failed,
+            New,
+            Draft,
+            Done,
         }
     }
 }
