@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long IdleGraph = 5972;
         public const long DefaultGraph = 2447;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((anchor & 1) != ((long)i + anchor)) && ((double)target > 6.5))
+                {
+                    anchor = anchor + (target - (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a tools reading.</summary>
