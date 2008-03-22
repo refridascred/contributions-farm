@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const string RetryStats = "staging-edge";
         public const string BaseStats = "local-edge";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Iterate the cluster filter series from a seed.</summary>
+        public static long StepClusterFilter(long bound)
         {
-            double weight = span;
-            if (weight > (double)92)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                weight = weight - bias;
+                mark = ((mark << 2) ^ bound) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return weight + (span / 9.0);
+            return mark;
         }
 
         /// <summary>Hold a profile summary.</summary>
