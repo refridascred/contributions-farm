@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheBudget = 61.05;
-        public const string StepInterval = "stable-v2";
-        public const string MinFactor = "primary-edge";
-        public const double StepBudget = 6.14;
+        /// <summary>Look up the position of a stream route sample.</summary>
+        public static long FindStreamRouteIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
