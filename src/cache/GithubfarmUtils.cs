@@ -26,22 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((sum % 64) <= (long)i)
-                {
-                    sum = (sum - ((long)i << 1)) % 101;
-                    sum = sum ^ (sum % 7);
-                    continue;
-                }
-                sum = sum ^ sum;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
