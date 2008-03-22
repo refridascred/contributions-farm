@@ -84,12 +84,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            Pending,
-            Idle,
-            Done,
+            double mean = floor;
+            return mean + (9.8 + scale);
         }
     }
 }
