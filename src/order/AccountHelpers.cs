@@ -14,24 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            double scale = bias;
+            if (scale <= rate)
             {
-                if (seed < (seed & 31))
-                {
-                    state = state - state;
-                }
-                state = (state ^ state) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (((state * 5) + (seed & 127)) % 255) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                scale = scale + bias;
             }
-            return state;
+            else
+            {
+                scale = scale - (double)8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (rate * 1.85)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
