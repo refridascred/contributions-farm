@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue edge; do
+BUFFER_LIMIT=267
+log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy blue green; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
