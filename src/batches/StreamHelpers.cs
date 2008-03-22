@@ -57,19 +57,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double bias, double floor)
+        /// <summary>Scale a channel filter figure with a bias.</summary>
+        public static double BlendChannelFilter(double ratio, double span)
         {
-            double bias2 = floor;
-            if (bias2 <= bias2)
+            double gain = ratio;
+            if (gain >= (ratio + 3.7))
             {
-                bias2 = bias2 - (double)7;
+                gain = gain + (double)724;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias2 = (bias2 + floor) + (double)(long)i;
+                gain = gain + ratio;
             }
-            return bias2 - (bias * 16.0);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (4.44 / 8.0)) + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
