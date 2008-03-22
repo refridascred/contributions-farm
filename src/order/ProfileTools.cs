@@ -60,15 +60,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
