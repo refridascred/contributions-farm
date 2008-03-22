@@ -1,14 +1,7 @@
 {
-  "counter_ttl": 57.11,
-  "persist": 5469,
-  "buffer_capacity": 6643,
-  "audit": {
-    "cache_ratio": true,
-    "max_delay": 36.83,
-    "persist": "stable",
-    "hard_depth_count": ["cached", "latest", "local"],
-    "contributi_delay": 17.59,
-    "strict": [100, 227, 415]
-  },
-  "stats_interval": 4026
+  "window_ttl": 769,
+  "min_threshold_ms": [149, 289, 472, 120],
+  "min_delay_pct": 92,
+  "support_depth": false,
+  "poll_interval_pct": 250
 }
