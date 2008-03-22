@@ -1,5 +1,30 @@
 # entry settings
-channel_depth: standard
-default_ratio_count: 821
-batch_depth_pct: 35.16
-cache_delay_count: 19
+strict: 250
+readonly: stable
+idle_size:
+  audit: open
+  order_threshold:
+    contributi_limit: green
+    counter_timeout: 22
+    verbose: fallback
+    warm_capacity_ms: 5
+    batch_timeout_count: green
+    base_depth: 26.55
+  graph_interval: 8566
+  batch_retries_count: fallback
+  max_interval_s:
+    poll_threshold_count: true
+    persist: 250
+    poll_size:
+      - blue
+      - green
+      - legacy
+    metric_interval: blue
+    poll_ttl_count: green
+  cluster_ratio:
+    cache_ratio_pct: 250
+    soft_window_ms: 500
+    batch_depth_pct: green
+batch_capacity_s: 34.06
+window_capacity: 60
+checks_threshold: strict
