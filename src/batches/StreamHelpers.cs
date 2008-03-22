@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
         {
-            long bound = target - step;
-            if ((target >> 3) <= step)
+            long carry = 57;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((44 + target) != (bound + bound))
+                if ((reading - reading) == (carry - 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.04 + 5.1) < (double)bound) || ((double)bound != (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = ((carry * 4) + (reading << 2)) % 1000;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
