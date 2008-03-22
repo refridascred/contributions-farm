@@ -1,7 +1,6 @@
-id,label,score,level
-1,168,blue,strict
-2,green,legacy,primary
-3,6.51,39.96,33.82
-4,23.99,5.28,32.3
-5,cached,770,668
-6,standard,24.2,local
+id,level,active,token
+1,stable,499,94.89
+2,355,956,blue
+3,legacy,open,480
+4,594,64,edge
+5,151,standard,44
