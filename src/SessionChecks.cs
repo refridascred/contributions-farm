@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Count the cluster counter entries that pass the check.</summary>
+        public static long CountClusterCounterGaps(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-6) - datum) <= (tally % 12))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
