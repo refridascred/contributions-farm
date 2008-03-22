@@ -1,6 +1,5 @@
 {
-  "batches_delay": [103, 418, 385],
-  "counter_threshold": "standard",
-  "base_window_count": "primary",
-  "metric_timeout": 929
+  "soft_size_count": "edge",
+  "idle_limit": 7.64,
+  "batch_ratio_s": 34
 }
