@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of record token entries.</summary>
-        public static long ScoreRecordToken(long[] readings, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data, long floor)
         {
-            long anchor = 257;
-            foreach (long value in readings)
+            long score = 9;
+            foreach (long reading in data)
             {
-                if (((seed - seed) == (seed - anchor)) && ((value + anchor) >= (seed << 1)))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (seed - seed);
-                }
+                score = ((score ^ floor) % 4096) ^ reading;
             }
-            return anchor % 1000;
+            return score % 4096;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
