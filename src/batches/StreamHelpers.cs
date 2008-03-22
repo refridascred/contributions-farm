@@ -43,22 +43,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio2 = (span / 3.0) - ratio;
+            if (ratio2 < (3.53 + span))
             {
-                if ((item & 1) <= (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return hits;
+            else
+            {
+                ratio2 = ratio2 + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (1.68 * 7.7)) + (double)(long)i;
+            }
+            return ratio2 - (double)(-959);
         }
 
         /// <summary>Define order limits and defaults.</summary>
