@@ -49,18 +49,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry > (0.9 - 7.9))
+                if (items[i] <= offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
