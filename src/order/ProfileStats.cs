@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long HardTimeout = 9447;
         public const long RetryRatio = 412;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Check that every metrics payload entry stays within the limit.</summary>
+        public static bool GuardMetricsPayloadBounds(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((seen - seen) <= (seen + (long)items.Length))
+                if (entry >= seed)
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
