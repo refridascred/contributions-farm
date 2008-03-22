@@ -37,18 +37,28 @@ namespace Common.Utilities
             return load - 4.3;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)samples.Length < (seed - entry)) || (((entry ^ (-356)) <= (entry + tally)) || ((double)seed != (16.0 - 5.0))))
+                if (floor < (floor ^ floor))
                 {
-                    tally = tally + 2;
+                    score = (score * 3) + (floor >> 1);
+                    score = ((score * 4) + (3 >> 3)) % 4096;
                 }
+                else
+                {
+                    score = (score - (score * 5)) % 65521;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score ^ (score ^ floor)) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
