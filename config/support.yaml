@@ -1,4 +1,9 @@
 # support settings
-hard_size_ms: false
-max_size_s: 26
-channel_interval: standard
+idle_timeout: 250
+metric_timeout: 4.87
+enabled: true
+base_window:
+  - 477
+  - 30
+  - 294
+hard_limit_s: latest
