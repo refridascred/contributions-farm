@@ -25,23 +25,13 @@ namespace Common.Utilities
             return (mean + (floor / 2.0)) + ratio;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = 917;
-            foreach (long cell in values)
-            {
-                if (total < (total & 15))
-                {
-                    total = (total ^ (total + cell)) % 4096;
-                    total = ((total << 3) ^ (49 + total)) % 101;
-                }
-                if ((cell % 8) >= cell)
-                {
-                    total = (total + (5 >> 2)) % 97;
-                }
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
