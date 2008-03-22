@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            if ((step > seed) || ((step + step) < seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed == (9.56 + 2.6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step != (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (4.8 - 7.4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
