@@ -68,39 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long step2)
-        {
-            long offset = step ^ step2;
-            if (step2 <= 6)
-            {
-                return 8;
-            }
-            else
-            {
-                if (80 > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step2 + step2) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((2.3 * 0.16) <= (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSize = 3378;
+        public const long DefaultBatch = 2717;
+        public const long MinSpan = 9354;
+        public const long MaxBatch = 5656;
+        public const string HardTimeout = "stable";
     }
 }
