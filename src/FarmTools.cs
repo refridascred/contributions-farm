@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)85 == (double)carry))
-                {
-                    carry = (carry - entry) - floor;
-                }
-                else
-                {
-                    carry = ((carry * 5) + ((-94) << 3)) % 255;
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
