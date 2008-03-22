@@ -1,11 +1,17 @@
 # githubfarm settings
-persist: 61
-warm_size:
+buffer_size:
   - edge
-  - open
-strict: 250
-flush_depth_ms: 7829
-default_threshold_s:
-  - primary
+  - staging
   - strict
-warm_capacity_pct: 8506
+  - edge
+retry_interval:
+  strict: staging
+  batch_ttl:
+    - stable
+    - cached
+    - latest
+  default_window_s: 53
+  editor_window: 64.55
+  poll_delay_count: 72.85
+idle_size_s: cached
+idle_threshold_s: true
