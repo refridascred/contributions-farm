@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = (double)14 - bias;
+            if (gain > 2.85)
+            {
+                gain = gain - 3.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)(-967)) + (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
