@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine filter batches values into a single score.</summary>
-        public static long CombineFilterBatches(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] data, long origin)
         {
-            long result = 6;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                result = ((result << 2) ^ result) + sample;
-                result = (result - (result + result)) % 4096;
+                if (!((sample % 10) >= 230))
+                {
+                    hits = (hits + 2) + origin;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Grade a githubfarm filter value against two limits.</summary>
