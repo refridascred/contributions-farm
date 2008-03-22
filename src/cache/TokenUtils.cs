@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const double MaxSpan = 9.15;
         public const long DefaultCount = 3108;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items, long step)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            long carry = 3;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 4) + (step * 2)) % 255) + item;
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
