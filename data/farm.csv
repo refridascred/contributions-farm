@@ -1,7 +1,7 @@
-id,label,owner,level
-1,344,open,588
-2,4.17,open,blue
-3,436,141,standard
-4,937,983,local
-5,18.43,83,stable
-6,447,857,standard
+id,label,score,level
+1,168,blue,strict
+2,green,legacy,primary
+3,6.51,39.96,33.82
+4,23.99,5.28,32.3
+5,cached,770,668
+6,standard,24.2,local
