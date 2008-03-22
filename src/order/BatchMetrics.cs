@@ -14,21 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a cluster entry.</summary>
