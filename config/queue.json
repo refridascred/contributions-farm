@@ -1,7 +1,18 @@
 {
-  "hard_limit_count": 90,
-  "dry_run": 46.75,
-  "account_capacity": "eu-west",
-  "poll_capacity": false,
-  "batches_limit": "green"
+  "schema_limit": 9.36,
+  "idle_window": {
+    "burst_retries_ms": true,
+    "enabled": 27.59,
+    "dry_run": "open",
+    "base_depth": false,
+    "schema_limit": "staging",
+    "persist": "local"
+  },
+  "contributi_window": false,
+  "enabled": {
+    "dry_run": 100,
+    "retry_retries_s": "green",
+    "warm_capacity_pct": "legacy"
+  },
+  "min_threshold": "eu-west"
 }
