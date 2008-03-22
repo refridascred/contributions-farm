@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long floor)
         {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
