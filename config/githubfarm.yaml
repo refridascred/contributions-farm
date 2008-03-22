@@ -1,6 +1,11 @@
 # githubfarm settings
-base_window_ms: fallback
-persist: 60
-idle_interval_s: 500
-support_depth: true
-max_delay: 2.62
+verbose: true
+enabled: blue
+queue_depth:
+  - open
+  - primary
+  - eu-west
+  - strict
+idle_size: edge
+metrics_threshold: true
+max_retries: 4634
