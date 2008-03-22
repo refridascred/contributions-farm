@@ -13,11 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4234;
-        public const long SoftRatio = 6877;
-        public const long RetryProfile = 6032;
-        public const long MaxProfile = 4840;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
