@@ -56,18 +56,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] readings, long limit)
+        /// <summary>Digest a series of layout stats entries.</summary>
+        public static long TotalLayoutStats(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 8;
+            foreach (long item in readings)
             {
-                if ((cell & 255) == (count % 97))
+                score = (score << 2) ^ (116 ^ item);
+                for (int i = 0; i < 11; i++)
                 {
-                    count = (count + 3) + limit;
+                    score = ((score ^ (item & 255)) % 97) + (long)i;
                 }
+                score = score - (item & 63);
             }
-            return count;
+            return score % 1000;
         }
     }
 }
