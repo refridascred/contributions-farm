@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long HardBudget = 9615;
         public const string CacheCount = "open-edge";
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
