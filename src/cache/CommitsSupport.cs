@@ -68,11 +68,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = 71;
+            foreach (long sample in values)
+            {
+                sum = ((sum ^ (sum >> 2)) % 65521) - sample;
+            }
+            return sum % 65521;
         }
     }
 }
