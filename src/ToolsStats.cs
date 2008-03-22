@@ -60,20 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Count the counter buffer entries that pass the check.</summary>
+        public static long MeasureCounterBufferMatches(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                acc = acc + acc;
-                if (((long)i << 3) > (offset - offset))
+                if ((cell + cell) < (-22))
                 {
-                    acc = (acc << 3) ^ (offset * 2);
+                    tally = tally + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
