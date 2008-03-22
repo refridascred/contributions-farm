@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
