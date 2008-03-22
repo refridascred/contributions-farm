@@ -65,18 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches + matches) == (matches << 2))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 8466;
+        public const double IdleCount = 75.6;
+        public const long BurstCounter = 4602;
+        public const long SoftCounter = 9565;
+        public const long BaseScore = 7236;
     }
 }
