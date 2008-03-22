@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleBudget = "latest-v2";
-        public const string RetryNotes = "primary-edge";
-        public const double MinNotes = 55.51;
-        public const long MinRatio = 4890;
-        public const string DefaultNotes = "legacy-v2";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally & 3) >= (reading - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] items)
