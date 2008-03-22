@@ -11,27 +11,15 @@ namespace Common.Utilities
         public const double BurstFactor = 26.26;
         public const long CacheBuffer = 7068;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            long mark = 854;
-            foreach (long sample in values)
+            double load = (gain - gain) * 8.9;
+            if (load <= load)
             {
-                mark = ((mark << 2) ^ (offset & 7)) % 255;
-                if ((offset - mark) < (3 + sample))
-                {
-                    mark = mark + (1 >> 4);
-                }
-                if ((5 <= (sample - 125)) && ((double)mark > (double)offset))
-                {
-                    mark = ((mark << 3) ^ (221 >> 4)) % 4096;
-                }
+                load = (load - (double)6) + span;
             }
-            if (mark > 78)
-            {
-                mark = (mark ^ (offset << 2)) % 97;
-            }
-            return mark % 4096;
+            return load - (gain * 15.0);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
