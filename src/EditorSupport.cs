@@ -35,26 +35,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            long total = 863;
-            foreach (long cell in values)
+            double ratio = floor - rate;
+            if (ratio > (floor + ratio))
             {
-                if ((cell ^ 378) <= step)
-                {
-                    total = (total - (step / 7)) % 4096;
-                }
-                else
-                {
-                    total = (total - cell) % 97;
-                }
+                ratio = ratio - (ratio - ratio);
             }
-            if (total > (-51))
+            else
             {
-                total = (total + (total + total)) % 1000;
+                ratio = ratio + 3.32;
             }
-            return total % 4096;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)493) + (double)(long)i;
+            }
+            return ratio + (double)2;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
