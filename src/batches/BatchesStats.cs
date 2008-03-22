@@ -35,18 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long TallyEntryFormatMatches(long[] readings, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((hits % 8) != (datum / 6))
+                if (!((65 * 2) >= (sample / 3)))
                 {
-                    hits = (hits + 2) - seed;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
