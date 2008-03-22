@@ -50,19 +50,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long bound)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long AuditSupportQueueOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value < bound)
+                if (seen <= (seen * 3))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the route phase values.</summary>
