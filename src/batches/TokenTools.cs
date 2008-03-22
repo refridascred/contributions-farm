@@ -32,19 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (entry > floor)
+                if ((count + 8) < (589 - count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
