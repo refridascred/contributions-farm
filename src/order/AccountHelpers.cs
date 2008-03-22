@@ -34,19 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (sample > limit)
+                if (entry < step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
