@@ -22,23 +22,36 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long floor2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long target)
         {
-            long diff = floor - floor2;
-            if ((1.44 * 0.2) <= (double)diff)
+            if ((target + offset) != (offset + 9))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((diff / 8) > (floor2 * 4))
+                if ((offset >= (offset / 6)) || (target > (offset ^ target)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((offset << 2) >= (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.4 * 10.0) != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
