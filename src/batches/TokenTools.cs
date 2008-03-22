@@ -28,15 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Derive the next context editor value from a seed.</summary>
+        public static long StepContextEditor(long bound)
         {
-            double weight = ratio;
-            if (weight > weight)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight - (offset / 4.0);
+                if (!(acc > (long)i))
+                {
+                    acc = acc ^ ((long)i ^ bound);
+                    acc = acc + bound;
+                }
+                else
+                {
+                    long bound2 = bound + acc;
+                    acc = acc + (bound2 & 127);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return weight - (ratio * 2.6);
+            return acc;
         }
     }
 }
