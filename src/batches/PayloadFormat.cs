@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = 848;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor - bound) % 1000) + sample;
+                if ((double)bound <= (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a counter reading.</summary>
