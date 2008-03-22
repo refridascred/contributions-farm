@@ -12,26 +12,38 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long bound, long target)
         {
-            long total = 492;
-            foreach (long item in data)
+            if (target <= bound)
             {
-                for (int i = 0; i < 2; i++)
+                return 7;
+            }
+            else
+            {
+                if (((target ^ bound) >= (0 + target)) || (target < (bound << 1)))
                 {
-                    total = (total - (0 % 12)) + (long)i;
-                }
-                if ((double)item > 20.0)
-                {
-                    total = total - (item + 7);
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ total) % 65521;
+                    if ((5.0 - 1.94) >= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 9) <= bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
