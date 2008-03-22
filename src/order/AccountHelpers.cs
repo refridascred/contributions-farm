@@ -31,17 +31,12 @@ namespace Common.Utilities
         public const long WindowCounter = 647;
         public const double MaxInterval = 1.11;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
