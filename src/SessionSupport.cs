@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double weight = scale;
-            if (weight < (2.0 - floor))
-            {
-                weight = weight + (weight - 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (2.85 * 9.08);
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
