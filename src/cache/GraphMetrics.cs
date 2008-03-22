@@ -28,21 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 827;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < mark)
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 3) + (item + mark)) % 1000;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Hold a command info.</summary>
