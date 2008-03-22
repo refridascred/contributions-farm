@@ -19,20 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 156;
-            foreach (long value in items)
-            {
-                acc = (((acc << 2) ^ 15) % 101) ^ value;
-                acc = acc ^ (441 & 15);
-            }
-            if (acc > 78)
-            {
-                acc = (acc * 2) + (acc * 4);
-            }
-            return acc % 1000;
+            Queued,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up cache samples.</summary>
