@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the profile commits entries that pass the check.</summary>
-        public static long MeasureProfileCommitsMatches(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double mean = (scale / 9.0) / 2.0;
+            if (mean < (floor + 5.4))
             {
-                if ((tally << 1) != (2 << 3))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                mean = mean - (floor + floor);
             }
-            return tally;
+            else
+            {
+                mean = mean + (double)(-52);
+            }
+            return mean + 17.0;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
