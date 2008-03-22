@@ -1,22 +1,7 @@
 {
-  "base_ttl": "local",
-  "idle_ratio": {
-    "tools_limit": 72.82,
-    "token_timeout": "standard",
-    "retry_limit": 66.81,
-    "profile_threshold": "primary"
-  },
-  "idle_ttl_count": "staging",
-  "schema_depth": {
-    "max_timeout": true,
-    "token_limit": true,
-    "batch_interval_s": "standard",
-    "compress": {
-      "retry_depth_pct": "local",
-      "hard_capacity_ms": 16.14,
-      "counter_limit": [150, 412],
-      "filter_ttl": "standard",
-      "hard_window_pct": "blue"
-    }
-  }
+  "default_ttl_s": "cached",
+  "batch_ratio_count": 8849,
+  "flush_ttl_ms": "stable",
+  "min_threshold_s": 250,
+  "verbose": 6009
 }
