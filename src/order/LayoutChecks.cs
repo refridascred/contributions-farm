@@ -95,11 +95,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((44 >= step) || ((step + 855) != ((long)i - total)))
+                {
+                    total = ((total << 3) ^ (total + total)) % 65521;
+                }
+                if ((step & 1) != (total / 8))
+                {
+                    total = total - (total - total);
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
