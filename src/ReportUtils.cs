@@ -55,22 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchLevel = 1953;
+        public const double RetryFormat = 14.2;
+        public const string BurstFormat = "primary-edge";
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
