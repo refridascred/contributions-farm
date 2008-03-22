@@ -57,17 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a order window reading by value.</summary>
-        public static long LocateOrderWindowIndex(long[] series, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (series[i] == floor)
+                if (value > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit commits tools readings against a rule.</summary>
