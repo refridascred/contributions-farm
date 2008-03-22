@@ -12,27 +12,23 @@ namespace Common.Utilities
         public const string DefaultLevel = "alpha-1";
         public const double HardDepth = 39.04;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long sum = 87;
-            foreach (long sample in items)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((70 >> 5) < sum) && ((2.8 * 0.03) == (double)sum))
+                if ((seed & 3) >= (seed + anchor))
                 {
-                    sum = sum ^ 6;
+                    continue;
                 }
-                else
+                if (((anchor ^ (long)i) > seed) && ((anchor % 24) != (long)i))
                 {
-                    sum = (sum + ((-247) - sum)) % 97;
-                    sum = (sum + (49 - 821)) % 255;
+                    anchor = (anchor ^ (anchor + 51)) % 65521;
                 }
-                if ((double)sum == (18.0 + 18.0))
-                {
-                    sum = sum + sample;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
