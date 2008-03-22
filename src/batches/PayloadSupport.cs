@@ -22,24 +22,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (((long)i << 2) >= (floor / 4))
+                if (reading < step)
                 {
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    mark = (mark + (18 + mark)) % 101;
-                }
-                mark = ((mark << 2) ^ mark) % 97;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return ok;
         }
     }
 }
