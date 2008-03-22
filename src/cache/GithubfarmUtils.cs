@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long TotalBufferBatches(long[] samples)
+        /// <summary>Locate a metrics graph reading by value.</summary>
+        public static long LocateMetricsGraphIndex(long[] items, long target)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(total > entry))
+                if (items[i] < target)
                 {
-                    total = (total - (entry ^ total)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
