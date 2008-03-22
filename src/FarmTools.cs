@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long MeasureLayoutSchemaMatches(long[] readings, long origin)
         {
-            long mark = 351;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)mark <= (8.1 + 2.0))
+                if (!((9.9 + 6.59) < (double)tally))
                 {
-                    mark = mark - cell;
+                    tally = ((tally + 2) + value) + origin;
                 }
             }
-            if (mark > 85)
-            {
-                mark = ((mark << 2) ^ 524) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Find the first filter window entry that matches the target.</summary>
