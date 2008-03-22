@@ -27,18 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] readings, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((7.7 * 9.8) > (double)count) || ((offset + datum) <= (count / 6)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
