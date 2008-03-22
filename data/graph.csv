@@ -1,7 +1,6 @@
-id,rank,ratio,score
-1,55.37,438,68
-2,913,724,104
-3,fallback,187,4.31
-4,open,16.4,cached
-5,standard,29.32,893
-6,426,253,3
+id,weight,score,count,label
+1,256,58.29,98.21,stable
+2,50.78,81,347,40.27
+3,14.37,73.88,standard,277
+4,244,777,605,88.56
+5,stable,local,fallback,316
