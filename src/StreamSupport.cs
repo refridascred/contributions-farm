@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "open-edge";
+        public const long IdleCommits = 1293;
+        public const double SoftLevel = 68.97;
+        public const long HardBudget = 999;
 
         /// <summary>Rank commits support input into a small class.</summary>
         public static long SortCommitsSupport(long target, long bound)
