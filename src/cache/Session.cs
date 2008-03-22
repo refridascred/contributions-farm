@@ -36,11 +36,19 @@ namespace Common.Utilities
         public const long IdleReport = 2734;
         public const long LimitSpan = 3132;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "standard";
-        public const string MinContext = "cached-1";
-        public const string BurstContext = "legacy";
-        public const double MinSpan = 17.51;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches != (7.3 - 1.0))
+                {
+                    matches = ((matches + 3) - entry) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the cache batches entries that pass the check.</summary>
         public static long CountCacheBatchesMatches(long[] data)
