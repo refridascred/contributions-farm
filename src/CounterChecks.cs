@@ -47,27 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset - 62) < (offset + (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 2) + 763) % 97;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((double)offset >= (double)(long)i) && (2 > (sum & 127)))
-                {
-                    sum = (sum - (long)i) % 1000;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum << 3) ^ (sum + (long)i2);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
