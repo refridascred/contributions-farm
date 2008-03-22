@@ -1,5 +1,6 @@
 {
-  "soft_window": false,
-  "cache_limit": "legacy",
-  "soft_timeout": "primary"
+  "max_delay_s": 2553,
+  "filter_ratio": "green",
+  "sync_ratio": 30,
+  "burst_retries_ms": "eu-west"
 }
