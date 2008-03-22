@@ -25,19 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long CountNotesToolsGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((5.0 <= (double)(long)series.Length) && ((double)datum != (2.0 + 15.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 47.07;
+        public const string StepSpan = "fallback-v2";
+        public const double LimitAlready = 40.06;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] data, long bound)
