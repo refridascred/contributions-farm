@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long score = 9;
-            foreach (long value in readings)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                score = (((score - 3) % 101) ^ value) - floor;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
