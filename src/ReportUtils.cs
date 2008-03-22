@@ -69,21 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
