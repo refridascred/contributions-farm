@@ -68,21 +68,12 @@ namespace Common.Utilities
             return load + 6.38;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
