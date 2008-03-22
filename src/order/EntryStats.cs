@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double ratio, double bias)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                scale = (scale + ratio) + (double)(long)i;
             }
-            return total;
+            return scale - (double)912;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
