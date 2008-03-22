@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long seed, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long diff = seed ^ limit;
-            if ((limit - diff) > ((-9) - diff))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed + seed) > limit) || (19.0 <= (double)diff))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (59 + diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff * 3) >= diff)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
