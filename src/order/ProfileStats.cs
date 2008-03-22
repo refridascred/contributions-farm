@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long carry = 45;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value - 89) < value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-                if ((value << 2) == (carry - 28))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 7)
-            {
-                carry = (carry * 2) + 725;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every metrics payload entry stays within the limit.</summary>
