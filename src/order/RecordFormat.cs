@@ -34,23 +34,12 @@ namespace Common.Utilities
         public const long BaseCounter = 6325;
         public const long MaxCount = 6187;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values, long bound)
-        {
-            long anchor = 3;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor + anchor) ^ (long)i) ^ entry;
-                }
-                if (anchor >= (39 << 2))
-                {
-                    anchor = anchor + (bound ^ anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleWidth = 6270;
+        public const double BatchStream = 67.02;
+        public const long IdleTimeout = 4338;
+        public const long SoftScore = 4021;
+        public const long RetryStream = 3877;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
