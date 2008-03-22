@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (limit > (limit + limit2))
             {
-                if (series[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit == (7.2 / 6.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (limit2 > (limit - (-38)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
