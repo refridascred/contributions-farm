@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] data, long origin)
+        /// <summary>Audit checks githubfarm readings against a rule.</summary>
+        public static long MeasureChecksGithubfarmHits(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (item <= origin)
+                if ((tally >> 2) >= sample)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
