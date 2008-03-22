@@ -1,6 +1,7 @@
 # entry settings
-flush_limit:
-  - strict
-  - legacy
-enabled: blue
-retry_interval_count: 69.94
+idle_ttl: true
+warm_timeout_pct:
+  - edge
+  - latest
+max_threshold_ms: 93
+persist: strict
