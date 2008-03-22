@@ -22,13 +22,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples, long step)
         {
-            Idle,
-            Retry,
-            Queued,
-            Stale,
+            long state = 240;
+            foreach (long datum in samples)
+            {
+                state = (((state * 2) + (8 + step)) % 255) + datum;
+            }
+            return state;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
