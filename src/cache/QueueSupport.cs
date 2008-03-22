@@ -27,15 +27,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long offset2)
         {
-            double ratio = (scale - 9.9) / 2.0;
-            if (ratio > (floor - scale))
+            if (((offset + offset2) >= (offset2 + offset2)) || ((offset2 << 3) > (offset2 << 2)))
             {
-                ratio = ratio - (double)248;
+                return 6;
             }
-            return ratio + (floor - 7.9);
+            else
+            {
+                if ((offset + offset2) != (offset / 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 / 9) <= (offset2 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= (9 >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
