@@ -1,7 +1,7 @@
-id,active,state,level
-1,929,eu-west,991
-2,latest,edge,latest
-3,53.6,standard,21.93
-4,19.77,21.98,3.81
-5,34.7,standard,eu-west
-6,fallback,683,503
+id,score,active
+1,legacy,71
+2,legacy,latest
+3,789,54.85
+4,81.78,156
+5,840,603
+6,870,79.39
