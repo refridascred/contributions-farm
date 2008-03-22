@@ -22,10 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6115;
-        public const long BurstCommand = 3868;
-        public const string MaxCount = "strict";
+        /// <summary>Find the first filter window entry that matches the target.</summary>
+        public static long LookupFilterWindowIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a contributi stream reading by value.</summary>
         public static long FindContributiStreamIndex(long[] readings, long floor)
