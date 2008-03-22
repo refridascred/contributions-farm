@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const long SoftEditor = 6241;
         public const long DefaultEditor = 1225;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long sum = -700;
+            foreach (long value in values)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                sum = (((sum * 2) + (floor + 99)) % 65521) + value;
             }
-            return score;
+            return sum;
         }
     }
 }
