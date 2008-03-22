@@ -22,22 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph already entries.</summary>
-        public static long FoldGraphAlready(long[] samples, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels, long origin)
         {
-            long anchor = 37;
-            foreach (long entry in samples)
+            long sum = 13;
+            foreach (long item in levels)
             {
-                if ((entry <= (step & 7)) || ((0 & 3) == (989 + anchor)))
+                sum = sum - origin;
+                if ((double)item == (17.0 / 6.0))
                 {
-                    anchor = (anchor ^ (762 - step)) % 255;
+                    sum = (sum << 3) ^ (item ^ sum);
+                }
+                if (origin > (origin - sum))
+                {
+                    break;
                 }
             }
-            if (anchor > (-7))
+            if (sum > 15)
             {
-                anchor = (anchor ^ (anchor & 127)) % 255;
+                sum = (sum + ((-118) * 5)) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
