@@ -47,16 +47,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter stats value from a seed.</summary>
-        public static long IterateFilterStats(long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long delta = target + bound;
+            if ((double)target <= (6.19 * 9.94))
             {
-                state = (state ^ (floor << 2)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (269 > (delta >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - 5) != (71 % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
