@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples, long floor)
         {
-            long edge = bound - seed;
-            if ((edge <= (bound << 3)) && ((bound + bound) != (seed << 2)))
+            long result = -2;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= edge)
+                result = ((result << 2) ^ (cell + cell)) % 4096;
+                if ((floor + result) > result)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((48 >> 5) < (6 - edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.7 + 5.7) < (double)edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = result - (result + 46);
                 }
             }
+            if (result < 9)
+            {
+                result = (result + (long)samples.Length) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
