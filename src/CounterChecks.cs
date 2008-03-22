@@ -25,22 +25,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4412;
+        public const double WindowStats = 18.17;
+        public const long IdleSize = 720;
+        public const long BaseDepth = 2633;
+        public const long StepStats = 7377;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] values)
