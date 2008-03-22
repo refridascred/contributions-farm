@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] items, long floor)
         {
-            long result = -2;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                result = ((result << 2) ^ (cell + cell)) % 4096;
-                if ((floor + result) > result)
+                if (item < floor)
                 {
-                    result = result - (result + 46);
+                    stale = false;
+                    break;
                 }
             }
-            if (result < 9)
-            {
-                result = (result + (long)samples.Length) % 4096;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
