@@ -1,7 +1,12 @@
 {
-  "default_ttl_s": "cached",
-  "batch_ratio_count": 8849,
-  "flush_ttl_ms": "stable",
-  "min_threshold_s": 250,
-  "verbose": 6009
+  "cache_interval_pct": 9.94,
+  "strict": "stable",
+  "flush_interval": 84,
+  "soft_threshold": {
+    "warm_depth": "fallback",
+    "sync_delay_ms": false,
+    "persist": "staging"
+  },
+  "cache_ratio": 250,
+  "githubfarm_limit": 8873
 }
