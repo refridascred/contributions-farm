@@ -58,15 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Ready,
-            Failed,
-            Synced,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitCount = "fallback-edge";
+        public const double BurstBudget = 19.37;
+        public const long WindowScore = 7255;
+        public const string WindowInterval = "cached-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultSize = 4065;
