@@ -41,31 +41,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long limit2)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if (!((limit + limit2) < limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ limit) < (80 & 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit2 < (9 * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Closed,
         }
     }
 }
