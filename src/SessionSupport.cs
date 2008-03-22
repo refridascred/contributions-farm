@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9156;
-        public const string CacheWindow = "open-1";
-        public const long MinSpan = 9436;
-        public const long IdleBudget = 1193;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many report order samples are out of range.</summary>
         public static long TallyReportOrderGaps(long[] readings, long seed)
