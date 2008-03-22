@@ -58,11 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry % 60) < (5 - entry))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
