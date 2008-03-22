@@ -59,15 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            double load = bias;
-            if (load <= (2.8 / 2.0))
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                load = load - span;
+                mark = (mark ^ (2 / 9)) % 97;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return load + 6.38;
+            return mark;
         }
 
         /// <summary>Check that every graph buffer entry stays within the limit.</summary>
