@@ -33,13 +33,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 6500;
+        public const long WindowCommand = 9673;
+        public const long IdleCommand = 1458;
     }
 }
