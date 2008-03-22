@@ -42,17 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 6554;
+        public const long BurstNotes = 4722;
+        public const string WindowScore = "alpha-edge";
+        public const long BatchDepth = 3600;
+        public const long RetryNotes = 7401;
     }
 }
