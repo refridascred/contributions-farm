@@ -46,15 +46,13 @@ namespace Common.Utilities
             return mean - (double)334;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = -810;
-            foreach (long value in values)
-            {
-                mark = mark ^ value;
-            }
-            return mark;
+            Idle,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
