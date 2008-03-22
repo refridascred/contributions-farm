@@ -19,18 +19,24 @@ namespace Common.Utilities
         public const long BurstWidth = 4499;
         public const long RetryProfile = 1349;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample + sample) > (matches << 2))
+                if (((8.62 - 9.56) >= (double)result) || ((double)(long)i < (double)limit))
                 {
-                    matches = matches + 1;
+                    result = ((result << 2) ^ (long)i) % 255;
                 }
+                else
+                {
+                    result = (result - result) % 255;
+                }
+                result = (result << 2) ^ (limit + limit);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up context commits samples.</summary>
