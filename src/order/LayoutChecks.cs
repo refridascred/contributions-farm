@@ -71,9 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 44.35;
-        public const string DefaultEntry = "local";
-        public const long SoftEntry = 6599;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
     }
 }
