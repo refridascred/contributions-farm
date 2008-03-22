@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Check that every channel report entry stays within the limit.</summary>
+        public static bool GuardChannelReportBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((matches >> 1) > (matches / 7))
+                if (value < bound)
                 {
-                    matches = (matches + 1) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the commits status values.</summary>
