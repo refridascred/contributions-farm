@@ -54,11 +54,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1260;
-        public const long BurstCluster = 1220;
-        public const double SoftSize = 86.25;
-        public const string StepCluster = "standard-edge";
+        /// <summary>Grade a stream layout value against two limits.</summary>
+        public static long ClassifyStreamLayout(long offset, long limit)
+        {
+            if ((limit + offset) == (limit + 62))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((6.83 - 10.0) < (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
