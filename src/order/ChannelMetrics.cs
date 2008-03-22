@@ -38,12 +38,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long floor)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
