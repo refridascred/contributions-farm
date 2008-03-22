@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            double ratio = floor;
-            if (ratio <= bias)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio + 0.6;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return ratio - (bias - 4.0);
+            return mix;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
