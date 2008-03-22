@@ -52,11 +52,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 6554;
-        public const long BurstNotes = 4722;
-        public const string WindowScore = "alpha-edge";
-        public const long BatchDepth = 3600;
-        public const long RetryNotes = 7401;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items)
+        {
+            long acc = -4;
+            foreach (long cell in items)
+            {
+                if ((acc << 3) <= (9 + cell))
+                {
+                    acc = (acc ^ (acc ^ 353)) % 4096;
+                }
+                acc = ((acc << 2) ^ cell) % 97;
+                if (((cell + (-344)) < (acc / 7)) && (cell < acc))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
