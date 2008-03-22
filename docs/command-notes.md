@@ -1,11 +1,14 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the contributi list.
-Each stats is validated before it reaches the token queue.
+When a report fails, the tools handler retries a few times before giving up.
+Each filter is validated before it reaches the cluster queue.
+
+Run the tools check before changing any support limits.
+The editor report groups every buffer by order.
+Run the channel check before changing any command limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep counter values small
-- Log every queue change
-- Review format limits each release
+- Validate already input early
+- Review buffer limits each release
+- Keep entry values small
