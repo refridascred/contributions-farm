@@ -68,12 +68,13 @@ namespace Common.Utilities
             return load + 6.38;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
