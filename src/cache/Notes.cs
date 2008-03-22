@@ -51,15 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long StepNotesBatch(long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
