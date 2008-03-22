@@ -60,11 +60,12 @@ namespace Common.Utilities
         public const string StepBuffer = "cached-1";
         public const string IdleInterval = "primary-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 8466;
-        public const double IdleCount = 75.6;
-        public const long BurstCounter = 4602;
-        public const long SoftCounter = 9565;
-        public const long BaseScore = 7236;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Synced,
+            Locked,
+            New,
+        }
     }
 }
