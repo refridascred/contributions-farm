@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            long score = 860;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((((-924) & 1) > offset) && (offset >= (offset * 5)))
+                if ((matches >> 1) > (matches / 7))
                 {
-                    score = (score * 3) + (datum + 721);
+                    matches = (matches + 1) - datum;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
