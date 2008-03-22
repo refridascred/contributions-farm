@@ -39,13 +39,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            Retry,
-            Queued,
-            Ready,
-            Done,
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = score + (long)i;
+                score = score - bound;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
