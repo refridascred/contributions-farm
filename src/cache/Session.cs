@@ -40,25 +40,17 @@ namespace Common.Utilities
             return load - 6.2;
         }
 
-        /// <summary>Derive the next schema editor value from a seed.</summary>
-        public static long StepSchemaEditor(long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long tally = 71;
-                if ((offset - 844) >= (offset % 3))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (tally / 5)) % 4096;
-                    tally = (tally - ((long)i + tally)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
