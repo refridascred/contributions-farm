@@ -14,15 +14,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc - step) + reading;
+                if (seed < (seed & 31))
+                {
+                    state = state - state;
+                }
+                state = (state ^ state) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (((state * 5) + (seed & 127)) % 255) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
