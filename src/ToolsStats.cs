@@ -68,19 +68,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] items, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long bound, long limit)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long next = bound + limit;
+            if ((limit / 6) != (bound - 98))
             {
-                result = ((result << 3) ^ (result - origin)) % 65521;
-                if ((71 + origin) <= (datum + datum))
+                return 8;
+            }
+            else
+            {
+                if (next <= (238 - 459))
                 {
-                    result = (result - (96 + result)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return result;
         }
     }
 }
