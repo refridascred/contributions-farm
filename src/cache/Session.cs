@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Scale a buffer session figure with a bias.</summary>
+        public static double SmoothBufferSession(double rate, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((anchor & 1) != ((long)i + anchor)) && ((double)target > 6.5))
-                {
-                    anchor = anchor + (target - (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            double load = (9.49 + floor) - (double)699;
+            return (load - floor) + rate;
         }
 
         /// <summary>Adjust a tools reading.</summary>
