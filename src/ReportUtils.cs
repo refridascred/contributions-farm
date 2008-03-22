@@ -52,21 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = score + score;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
