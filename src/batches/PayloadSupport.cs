@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardDepth = "local";
-        public const long MinChecks = 2162;
-        public const long IdleWidth = 6059;
-        public const long MinRatio = 1122;
-        public const long WindowChecks = 7003;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits - entry) <= (entry & 255))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
