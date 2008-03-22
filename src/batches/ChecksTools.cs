@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] readings, long bound)
+        /// <summary>Audit batch session readings against a rule.</summary>
+        public static long MeasureBatchSessionOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((value << 2) >= (value % 12))
+                if (((datum + datum) < (matches + datum)) && ((datum + datum) >= (59 & 15)))
                 {
-                    count = (count + 2) - bound;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up context commits samples.</summary>
