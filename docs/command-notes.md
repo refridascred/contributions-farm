@@ -1,11 +1,10 @@
 # Command notes
 
-Use metrics settings to tune how often metrics data is refreshed.
-Use batch settings to tune how often commits data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Run the counter check before changing any counter limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep cluster values small
-- Review route limits each release
-- Validate support input early
+- Keep batch values small
+- Validate cache input early
+- Log every cache change
