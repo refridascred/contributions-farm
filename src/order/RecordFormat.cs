@@ -34,12 +34,20 @@ namespace Common.Utilities
         public const long BaseCounter = 6325;
         public const long MaxCount = 6187;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleWidth = 6270;
-        public const double BatchStream = 67.02;
-        public const long IdleTimeout = 4338;
-        public const long SoftScore = 4021;
-        public const long RetryStream = 3877;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
