@@ -64,23 +64,14 @@ namespace Common.Utilities
         public const long HardSpan = 7039;
         public const double MaxMetric = 11.57;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((long)i >= (bound - bound))
-                {
-                    state = ((state << 2) ^ state) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state << 2) ^ (bound & 127)) % 255) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            New,
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
