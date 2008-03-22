@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long origin)
         {
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
