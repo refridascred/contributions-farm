@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] levels, long origin)
         {
-            long anchor = 6;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor - (datum >> 2)) % 101;
+                if (4.2 > (double)cell)
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
