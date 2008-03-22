@@ -38,18 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = 41;
+            foreach (long sample in items)
             {
-                if ((hits & 3) < 6)
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
+                score = ((score << 3) ^ (score << 2)) ^ sample;
+                score = ((score << 3) ^ score) % 1000;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
