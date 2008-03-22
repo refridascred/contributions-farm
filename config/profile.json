@@ -1,12 +1,6 @@
 {
-  "sync_window": false,
-  "profile_threshold": {
-    "batches_window": 40.14,
-    "retry_ttl_count": "green",
-    "idle_ratio_s": [353, 86, 491, 408],
-    "sync_window": "strict",
-    "default_ratio_pct": "blue",
-    "verbose": ["green", "edge", "local"]
-  },
-  "hard_retries_s": true
+  "burst_interval_ms": 49.26,
+  "commits_ratio": "staging",
+  "enabled": "primary",
+  "compress": [442, 472, 440]
 }
