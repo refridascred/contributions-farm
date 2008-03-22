@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data)
         {
-            Idle,
-            Synced,
-            Pending,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= (6.8 * 8.18))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
