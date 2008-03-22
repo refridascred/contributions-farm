@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstRatio = 3057;
-        public const string MinWidth = "strict-v2";
-        public const long BatchWindow = 5215;
-        public const long MaxWindow = 39;
-        public const long IdleWindow = 4031;
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long TotalBufferBatches(long[] samples)
+        {
+            long total = 9;
+            foreach (long entry in samples)
+            {
+                if (!(total > entry))
+                {
+                    total = (total - (entry ^ total)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] series)
