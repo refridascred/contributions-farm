@@ -54,22 +54,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits >= (hits << 2))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
