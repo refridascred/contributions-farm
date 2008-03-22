@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long state = 43;
-            foreach (long cell in samples)
-            {
-                state = (state ^ (cell % 60)) % 97;
-                if (93 >= (cell - state))
-                {
-                    state = (state ^ ((long)samples.Length >> 1)) % 1000;
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
