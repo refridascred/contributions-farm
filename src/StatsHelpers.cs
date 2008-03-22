@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long limit)
         {
-            double load = (double)538;
-            if (load < (double)53)
+            bool ok = true;
+            foreach (long value in data)
             {
-                load = load - bias;
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias2) + (double)(long)i;
-            }
-            return load - (bias2 * 6.2);
+            return ok;
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
