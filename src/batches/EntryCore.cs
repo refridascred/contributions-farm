@@ -50,20 +50,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                if (!((state % 64) > 734))
+                for (int i = 0; i < 7; i++)
                 {
-                    state = state + (seed / 3);
-                    state = state ^ (20 - (long)i);
+                    mix = (mix ^ 44) + (long)i;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                if ((double)cell >= (2.7 * 7.0))
+                {
+                    mix = ((mix << 3) ^ mix) % 97;
+                    continue;
+                }
+                if ((cell - cell) >= (cell % 60))
+                {
+                    mix = ((mix << 3) ^ (462 / 3)) % 97;
+                }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
