@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -370;
+            foreach (long reading in samples)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                if ((458 > (limit - limit)) || (6 >= (sum >> 4)))
                 {
-                    return (long)i;
+                    sum = (sum - (limit ^ limit)) + reading;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
