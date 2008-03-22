@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the tools profile series from a seed.</summary>
-        public static long SeriesToolsProfile(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((matches % 3) < (matches * 3))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
