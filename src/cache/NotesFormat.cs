@@ -22,9 +22,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleLevel = 2286;
-        public const long CacheFactor = 3777;
-        public const long IdleTimeout = 20;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 1143;
+        public const long StepWidth = 8490;
+        public const long HardMetric = 809;
     }
 }
