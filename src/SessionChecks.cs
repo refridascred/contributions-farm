@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of checks metrics readings.</summary>
-        public static long FoldChecksMetrics(long[] series)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = 5;
-            foreach (long value in series)
-            {
-                total = (total - (total + value)) % 65521;
-            }
-            if (total < 26)
-            {
-                total = (total - 27) % 65521;
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
