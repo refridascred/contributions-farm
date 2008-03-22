@@ -14,18 +14,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long TallyReportOrderGaps(long[] readings, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long cur = target + limit;
+            if (!((11.0 - 9.0) == (double)cur))
             {
-                if (((9.61 / 3.0) < (double)hits) || (((hits + 713) >= hits) || ((9.9 * 1.1) != (double)hits)))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (15.0 - 9.47))
                 {
-                    hits = ((hits + 3) - item) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((cur & 3) >= (0 + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + limit) > (cur - limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
