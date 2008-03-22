@@ -21,19 +21,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mark = 325;
-            foreach (long entry in series)
-            {
-                mark = ((mark << 3) ^ (entry + mark)) % 1000;
-                if (((double)offset <= (11.0 - 7.24)) || ((0.8 / 7.0) == (double)offset))
-                {
-                    mark = (mark ^ (offset * 3)) % 97;
-                }
-            }
-            return mark;
+            Retry,
+            Dropped,
+            Queued,
+            Synced,
+            Stale,
         }
     }
 }
