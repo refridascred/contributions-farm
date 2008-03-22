@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long CompareChecksCounterCount(long[] items)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
