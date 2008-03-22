@@ -1,7 +1,7 @@
-id,state,token,ratio
-1,227,strict,680
-2,780,strict,744
-3,39,strict,313
-4,89.54,67.97,725
-5,primary,legacy,254
-6,10.97,30.61,951
+id,rank,token,state
+1,98,73.29,local
+2,strict,green,strict
+3,848,strict,298
+4,550,245,94.14
+5,860,93.07,81.31
+6,400,open,standard
