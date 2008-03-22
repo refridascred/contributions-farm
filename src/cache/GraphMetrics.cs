@@ -18,24 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            if ((origin + origin) > bound)
+            long acc = 156;
+            foreach (long value in items)
             {
-                return 7;
+                acc = (((acc << 2) ^ 15) % 101) ^ value;
+                acc = acc ^ (441 & 15);
             }
-            else
+            if (acc > 78)
             {
-                if (bound <= (origin - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                acc = (acc * 2) + (acc * 4);
             }
+            return acc % 1000;
         }
 
         /// <summary>Match up cache samples.</summary>
