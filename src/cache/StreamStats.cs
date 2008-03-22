@@ -44,11 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long TallySupportStreamOutliers(long[] samples, long limit)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((147 << 2) < entry) || !((76 % 10) >= (hits - 1)))
+                {
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
