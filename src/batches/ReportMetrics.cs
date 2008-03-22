@@ -37,17 +37,36 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route already reading by value.</summary>
-        public static long SeekRouteAlreadyIndex(long[] items, long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= target)
+                if (!((bound ^ (long)i) == (total ^ bound)))
                 {
-                    return (long)i;
+                    total = (total - (bound % 12)) % 97;
                 }
+                else
+                {
+                    total = (total ^ (bound - bound)) % 1000;
+                }
+                if ((total & 7) <= (bound ^ total))
+                {
+                    total = (total * 3) + (total >> 5);
+                }
+                else
+                {
+                    total = (total + (total >> 1)) % 255;
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (((total * 5) + (bound << 2)) % 101) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
