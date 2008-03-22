@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const double MaxSpan = 9.15;
         public const long DefaultCount = 3108;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] readings, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data, long seed)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long item in data)
             {
-                if ((((855 << 2) > count) || ((count % 7) >= reading)) && ((count << 2) >= 46))
+                if ((9 + (long)data.Length) >= (seed & 127))
                 {
-                    count = (count + 1) + limit;
+                    count = (count + 3) ^ item;
                 }
             }
             return count;
