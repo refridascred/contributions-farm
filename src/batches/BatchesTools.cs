@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = 288;
+            foreach (long datum in levels)
             {
-                if ((seed - acc) >= (acc << 3))
+                if (!((carry / 9) < (659 << 1)))
                 {
-                    acc = acc + (3 << 1);
+                    carry = (((carry << 3) ^ (955 - limit)) % 97) ^ datum;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
     }
 }
