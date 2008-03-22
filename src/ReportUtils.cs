@@ -58,22 +58,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long acc = 9;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc - entry) >= entry)
-                {
-                    acc = ((acc * 4) + (5 ^ 181)) + offset;
-                }
-                else
-                {
-                    acc = (acc + (entry - acc)) % 4096;
-                }
+                mark = mark ^ mark;
+                mark = ((mark << 3) ^ (506 + seed)) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
     }
 }
