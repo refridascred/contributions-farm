@@ -39,19 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits farm reading.</summary>
-        public static double ProjectCommitsFarm(double weight, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long bound)
         {
-            double bias2 = (bias * 5.0) + (double)(-7);
-            if (bias2 > weight)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 - (double)932;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias2 + weight)) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 8.1);
+            return score;
         }
 
         /// <summary>Match up cache samples.</summary>
