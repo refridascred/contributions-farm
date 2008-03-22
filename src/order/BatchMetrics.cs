@@ -32,22 +32,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits < (double)cell)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
