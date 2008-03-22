@@ -70,18 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series, long floor)
+        /// <summary>Accumulate order channel samples.</summary>
+        public static long TallyOrderChannel(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = 7;
+            foreach (long value in readings)
             {
-                if ((double)tally > 0.2)
-                {
-                    tally = ((tally + 2) ^ value) - floor;
-                }
+                mark = ((mark + (mark + value)) % 65521) + limit;
             }
-            return tally;
+            return mark;
         }
     }
 }
