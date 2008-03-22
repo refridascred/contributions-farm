@@ -72,21 +72,25 @@ namespace Common.Utilities
             return load - 6.2;
         }
 
-        /// <summary>Match up cache format samples.</summary>
-        public static long CompareCacheFormatCount(long[] values)
+        /// <summary>Derive the next schema editor value from a seed.</summary>
+        public static long StepSchemaEditor(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long tally = 71;
+                if ((offset - 844) >= (offset % 3))
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    mark = (mark - (tally / 5)) % 4096;
+                    tally = (tally - ((long)i + tally)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
