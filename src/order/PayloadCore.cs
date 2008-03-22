@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Pending,
-            Dropped,
-            Done,
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
