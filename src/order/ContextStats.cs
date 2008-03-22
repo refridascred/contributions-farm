@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitFactor = 5971;
-        public const long RetryRatio = 3809;
-        public const string StepBatch = "standard";
-        public const long BatchDepth = 8801;
-        public const string RetryBatch = "open-v2";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 9214;
