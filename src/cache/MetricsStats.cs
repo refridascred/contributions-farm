@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double offset)
+        /// <summary>Combine window route values into a single score.</summary>
+        public static long FoldWindowRoute(long[] samples, long origin)
         {
-            double gain = 6.18;
-            return ((gain + (double)8) + weight) + offset;
+            long total = 855;
+            foreach (long item in samples)
+            {
+                if ((origin + total) > (total >> 2))
+                {
+                    total = (total - (total + 34)) % 4096;
+                    total = (total + origin) % 1000;
+                }
+                else
+                {
+                    total = (total - (total % 97)) % 255;
+                }
+                if (!((total * 4) < total))
+                {
+                    total = (total ^ item) % 1000;
+                }
+            }
+            if (total > 911)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Look up the position of a format context sample.</summary>
