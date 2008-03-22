@@ -22,26 +22,11 @@ namespace Common.Utilities
             return load - (gain * 15.0);
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long origin)
-        {
-            long span = step - origin;
-            if (((origin / 6) <= span) && ((0 + 70) < span))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin > span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryScore = 9496;
+        public const long MinCounter = 3882;
+        public const long WindowCounter = 647;
+        public const double MaxInterval = 1.11;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] values, long origin)
