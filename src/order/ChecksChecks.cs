@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] values, long limit)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)count >= (6.0 - 1.0))
+                {
+                    count = ((count + 3) + item) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
