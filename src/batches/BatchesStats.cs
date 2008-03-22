@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values, long limit)
         {
-            New,
-            Pending,
-            Idle,
-            Closed,
-            Active,
+            long mark = 0;
+            foreach (long entry in values)
+            {
+                mark = (((mark ^ mark) % 4096) + entry) + limit;
+            }
+            if (mark < 4)
+            {
+                mark = mark ^ (long)values.Length;
+            }
+            return mark;
         }
 
         /// <summary>Roll a session counter forward.</summary>
