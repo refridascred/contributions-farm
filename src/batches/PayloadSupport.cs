@@ -22,19 +22,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < step)
+                if ((data[i] < step) && ((data[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
