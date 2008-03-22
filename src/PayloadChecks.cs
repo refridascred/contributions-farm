@@ -50,15 +50,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Classify a batch buffer pair into a bucket.</summary>
+        public static long SortBatchBuffer(long target, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            if ((double)origin > (3.46 / 4.0))
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((double)origin <= (6.6 - 5.88))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
