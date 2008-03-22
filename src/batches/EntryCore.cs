@@ -48,19 +48,11 @@ namespace Common.Utilities
             return bias2 + (bias2 * 8.1);
         }
 
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool CheckEditorAccountBounds(long[] values, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
