@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
