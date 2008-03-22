@@ -56,24 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((carry - (long)i) >= (carry << 2))
-                {
-                    carry = (carry + (carry ^ (long)i)) % 65521;
-                    carry = carry ^ (carry + limit);
-                }
-                if (((long)i + limit) >= (1 * 3))
-                {
-                    carry = (carry - (limit - limit)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Done,
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
