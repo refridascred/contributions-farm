@@ -1,6 +1,5 @@
 {
-  "batch_threshold": "open",
-  "flush_limit_pct": [392, 437, 168],
-  "default_threshold_s": 72.22,
-  "retry_window_ms": [169, 258, 118]
+  "stream_delay": ["green", "primary", "green"],
+  "commits_timeout": "staging",
+  "persist": 75.33
 }
