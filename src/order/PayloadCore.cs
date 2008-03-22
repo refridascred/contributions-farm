@@ -35,11 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long total = 82;
+            foreach (long entry in data)
+            {
+                if (!((total / 9) < (entry - entry)))
+                {
+                    total = ((total * 4) + (total >> 2)) % 65521;
+                }
+                else
+                {
+                    total = (total + entry) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
