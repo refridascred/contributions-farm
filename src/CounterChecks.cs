@@ -14,20 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long result = -119;
+            foreach (long datum in levels)
             {
-                if ((5.0 * 3.3) == (double)offset)
-                {
-                    state = (state - (offset & 127)) % 65521;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                result = ((result * 4) + (346 & 3)) + datum;
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
