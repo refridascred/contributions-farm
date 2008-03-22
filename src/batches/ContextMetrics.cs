@@ -34,22 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count - (long)values.Length) == (count ^ 703))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next context batch value from a seed.</summary>
