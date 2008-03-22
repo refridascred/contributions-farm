@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Rank support metric input into a small class.</summary>
+        public static long RankSupportMetric(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long next = seed ^ limit;
+            if (((990 + next) <= 80) && ((double)limit >= (double)seed))
             {
-                if (((-4) & 1) >= (hits + datum))
+                return 4;
+            }
+            else
+            {
+                if (!((next & 31) == (31 % 16)))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 31) <= (seed - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < (seed >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
