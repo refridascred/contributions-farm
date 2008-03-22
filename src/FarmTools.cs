@@ -32,17 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi stream reading by value.</summary>
-        public static long FindContributiStreamIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 32.44;
+        public const long CacheSize = 6924;
+        public const long HardBudget = 1225;
+        public const long RetryBuffer = 5588;
+        public const long MinTimeout = 3011;
     }
 }
