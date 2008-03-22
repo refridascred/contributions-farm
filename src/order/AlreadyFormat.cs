@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((offset - offset) > offset)
+                if (cell < origin)
                 {
-                    hits = (hits + 2) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
