@@ -27,13 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long TallyReportChecks(long[] values)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            long sum = 26;
+            foreach (long reading in values)
+            {
+                if ((double)sum <= 2.2)
+                {
+                    sum = sum ^ 32;
+                }
+                if (((sum + (long)values.Length) == (reading - reading)) && ((reading % 100) == (7 + sum)))
+                {
+                    break;
+                }
+            }
+            if (sum > 886)
+            {
+                sum = (sum * 2) + (sum % 100);
+            }
+            return sum;
         }
     }
 }
