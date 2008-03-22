@@ -69,11 +69,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (54 >= (matches % 97))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
