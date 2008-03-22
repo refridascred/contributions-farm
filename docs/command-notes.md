@@ -1,10 +1,11 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any counter limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+The report module keeps format values in sync with the queue cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate cache input early
-- Log every cache change
+- Prefer entry defaults
+- Validate notes input early
+- Keep format values small
+- Log every report change
