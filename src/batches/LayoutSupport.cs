@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double bias2)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            double rate = (bias2 * 8.88) * 18.0;
-            if (rate <= (3.9 * 4.73))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                rate = rate + (bias2 * 3.34);
+                if ((entry - seen) >= (8 ^ entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            return rate - bias;
+            return seen;
         }
 
         /// <summary>Validate payload farm readings against a bound.</summary>
