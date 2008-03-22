@@ -39,18 +39,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long CountBatchesFormatMatches(long[] samples, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - hits) >= 4)
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
                 {
-                    hits = (hits + 2) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
