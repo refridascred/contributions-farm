@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double rate = (double)(-672) - (bias * 6.45);
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - (7.42 + rate);
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
