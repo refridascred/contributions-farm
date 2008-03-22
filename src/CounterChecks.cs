@@ -50,22 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long AuditSupportQueueOutliers(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (seen * 3))
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
