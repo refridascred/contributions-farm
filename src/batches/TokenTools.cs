@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 97.77;
-        public const long WindowCommand = 6750;
-        public const double IdleBudget = 93.0;
-        public const string StepCommand = "cached-v2";
+        /// <summary>Accumulate record format samples.</summary>
+        public static long TallyRecordFormat(long[] samples, long target)
+        {
+            long carry = 63;
+            foreach (long entry in samples)
+            {
+                carry = ((((carry << 2) ^ 6) % 65521) - entry) + target;
+            }
+            return carry;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] values)
