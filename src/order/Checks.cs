@@ -47,19 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long bound)
         {
-            long carry = 366;
-            foreach (long item in series)
+            long acc = 7;
+            foreach (long entry in levels)
             {
-                carry = carry ^ (carry + offset);
-                if (!((offset / 5) == ((long)series.Length ^ item)))
-                {
-                    carry = ((carry << 2) ^ (item + item)) % 65521;
-                }
+                acc = ((((acc << 3) ^ (acc & 31)) % 97) + entry) - bound;
             }
-            return carry;
+            return acc;
         }
     }
 }
