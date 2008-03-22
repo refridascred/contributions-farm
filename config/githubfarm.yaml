@@ -1,24 +1,7 @@
 # githubfarm settings
-poll_delay_ms:
-  enabled: true
-  filter_ratio: fallback
-  burst_retries:
-    - fallback
-    - standard
-    - latest
-  compress:
-    strict:
-      - 5
-      - 210
-      - 199
-    poll_threshold_count: open
-    retry_delay: blue
-    retry_ttl_count:
-      - strict
-      - stable
-    filter_delay: staging
-dry_run:
-  - strict
-  - blue
-verbose: true
-stream_delay: 500
+profile_threshold: legacy
+hard_limit: 30
+min_depth: 24.62
+verbose: 2203
+soft_ratio_pct: 1024
+metrics_window: 100
