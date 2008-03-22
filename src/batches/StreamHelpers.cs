@@ -59,25 +59,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a commits profile pair into a bucket.</summary>
-        public static long ClassifyCommitsProfile(long offset, long bound)
+        /// <summary>Iterate the account support series from a seed.</summary>
+        public static long StepAccountSupport(long offset)
         {
-            long edge = offset + bound;
-            if ((double)offset == (1.27 + 5.54))
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((edge - offset) == (edge & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a token stats.</summary>
