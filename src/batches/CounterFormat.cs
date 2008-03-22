@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)total >= (2.52 / 4.0)))
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultCount = "cached-1";
+        public const double IdleFactor = 30.95;
+        public const double MinInterval = 14.57;
+        public const string WindowCount = "staging-v2";
+        public const long WindowChecks = 2883;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] samples, long offset)
