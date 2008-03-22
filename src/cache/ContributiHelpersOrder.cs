@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardInterval = 4136;
-        public const double DefaultFormat = 21.08;
-        public const long WindowFormat = 6617;
-        public const string StepFormat = "primary-v2";
-        public const double CacheTimeout = 95.33;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 2386;
+        public const string DefaultGithubfarm = "legacy";
+        public const string HardScore = "stable-v2";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items, long offset)
