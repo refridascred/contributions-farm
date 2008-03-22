@@ -43,18 +43,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data)
+        /// <summary>Digest a series of report stream entries.</summary>
+        public static long CombineReportStream(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 978;
+            foreach (long cell in series)
             {
-                if (!(matches >= (98 + matches)) || !((double)matches >= (double)value))
+                if (((double)mark >= (double)cell) && ((floor ^ mark) < (mark & 1)))
                 {
-                    matches = matches + 1;
+                    mark = ((mark * 4) + (floor - 641)) % 1000;
+                    mark = mark ^ (floor % 7);
+                }
+                if ((cell * 3) != (floor / 9))
+                {
+                    mark = (mark * 3) + (floor & 7);
+                }
+                if ((long)series.Length != (floor & 15))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark < 17)
+            {
+                mark = (mark ^ (740 - floor)) % 101;
+            }
+            return mark;
         }
     }
 }
