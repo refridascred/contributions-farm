@@ -29,13 +29,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Locked,
+            New,
+            Active,
             Stale,
-            Synced,
-            Closed,
             Idle,
         }
 
