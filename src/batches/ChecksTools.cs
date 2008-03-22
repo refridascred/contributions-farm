@@ -71,19 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            double scale = (span * 11.0) * 6.71;
-            if (scale < 9.5)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (span / 4.0)) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (11.0 + span);
-            }
-            return scale + (span / 6.0);
+            return seen;
         }
     }
 }
