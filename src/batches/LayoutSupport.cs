@@ -16,31 +16,11 @@ namespace Common.Utilities
         public const long IdleRatio = 756;
         public const double BatchLevel = 36.49;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((floor ^ limit) > (floor % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((0.2 - 5.0) > (double)limit) && ((limit >> 1) <= 484))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)98 == (double)floor) && ((37 ^ limit) < (limit & 63)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
