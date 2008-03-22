@@ -38,12 +38,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long CountBatchesFormatMatches(long[] samples, long origin)
         {
-            Idle,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - hits) >= 4)
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
