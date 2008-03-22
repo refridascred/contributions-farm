@@ -51,11 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "open";
-        public const double RetrySupport = 31.24;
-        public const double RetryDepth = 81.4;
-        public const long CacheSize = 7833;
+        /// <summary>Adjust a checks filter reading.</summary>
+        public static double AdjustChecksFilter(double scale, double bias)
+        {
+            double ratio = (double)((-2) << 1);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio + (ratio / 8.0)) - (double)(long)i) - scale) + bias;
+            }
+            return ratio - (ratio + ratio);
+        }
 
         /// <summary>Audit token session readings against a rule.</summary>
         public static long MeasureTokenSessionOutliers(long[] samples, long limit)
