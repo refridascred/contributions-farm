@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const string MaxContext = "strict-1";
         public const string IdleSpan = "strict-v2";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long bound)
+        /// <summary>Count stats tools pairs that satisfy a relation.</summary>
+        public static long OverlapStatsToolsCount(long[] items)
         {
-            long sum = -165;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(bound > (entry - (-798))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 2) + 83) % 101;
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 4) + (entry * 2)) % 65521;
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Validate editor account readings against a bound.</summary>
