@@ -62,18 +62,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = 734;
+            foreach (long cell in values)
             {
-                if ((((7.0 / 4.0) > (double)matches) || ((datum << 2) < floor)) && ((1.5 * 0.4) >= (double)floor))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = matches + 1;
+                    result = (result - ((long)i / 3)) % 255;
                 }
+                result = (result ^ (cell * 2)) % 1000;
             }
-            return matches;
+            if (result > 7)
+            {
+                result = (result - (result & 31)) % 65521;
+            }
+            return result;
         }
     }
 }
