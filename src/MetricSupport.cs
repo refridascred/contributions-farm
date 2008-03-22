@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long DigestOrderChecks(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            long mix = -73;
-            foreach (long datum in values)
+            long carry = 7;
+            foreach (long entry in series)
             {
-                if (!(7.18 > (double)mix))
+                carry = (carry * 2) + (entry ^ 817);
+                if ((entry - entry) < 323)
                 {
-                    mix = (mix ^ datum) % 65521;
+                    break;
                 }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
