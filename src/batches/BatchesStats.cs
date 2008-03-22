@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long origin)
         {
-            long carry = 7;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                carry = (((carry - (carry * 5)) % 101) - cell) - floor;
-                if ((carry / 6) >= (91 / 7))
+                if ((13.0 - 3.32) >= (double)hits)
                 {
-                    break;
+                    hits = ((hits + 1) ^ reading) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
