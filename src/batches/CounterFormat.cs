@@ -33,34 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels, long step)
-        {
-            long state = -4;
-            foreach (long item in levels)
-            {
-                if (((state << 1) > (item - step)) && ((step << 3) < item))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (step * 4)) % 101;
-                }
-                if (1.6 > (4.2 + 4.9))
-                {
-                    break;
-                }
-                if (item <= (6 & 255))
-                {
-                    state = (state ^ (step & 7)) % 255;
-                }
-                else
-                {
-                    state = (state + (step + state)) % 1000;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 505;
+        public const string HardCounter = "fallback-1";
+        public const long SoftCounter = 4711;
+        public const long DefaultCounter = 9834;
     }
 }
