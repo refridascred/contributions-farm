@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftTimeout = 6917;
-        public const long RetrySpan = 1930;
-        public const double DefaultCount = 69.62;
+        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
+        public static long PairContributiOrderCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] data, long origin)
