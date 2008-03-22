@@ -13,13 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            public long Score { get; set; }
             public long Label { get; set; }
-            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
