@@ -1,15 +1,6 @@
 {
-  "audit": 76.69,
-  "verbose": "open",
-  "burst_interval_ms": 69.09,
-  "checks_interval": {
-    "cache_retries_ms": {
-      "base_delay": "standard",
-      "strict": 81.97,
-      "readonly": "open"
-    },
-    "enabled": 43.58,
-    "counter_size": 250,
-    "stats_limit": ["open", "fallback"]
-  }
+  "retry_threshold_count": ["cached", "edge"],
+  "strict": "blue",
+  "soft_retries_count": [18, 246, 311],
+  "soft_retries_s": "green"
 }
