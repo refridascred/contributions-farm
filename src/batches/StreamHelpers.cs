@@ -81,12 +81,13 @@ namespace Common.Utilities
             return ratio2 - (double)(-959);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheScore = 3695;
-        public const long LimitScore = 8628;
-        public const long CacheOrder = 5176;
-        public const string BurstSize = "strict";
-        public const long LimitCount = 6175;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] items)
