@@ -15,22 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = 355;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading << 3))
-                {
-                    acc = acc - (acc - 681);
-                }
-                if ((acc / 9) >= reading)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
