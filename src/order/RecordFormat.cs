@@ -52,22 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            long result = 65;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((-60) / 3) > (reading + seed))
+                if (count <= (datum >> 1))
                 {
-                    result = ((result * 2) + (32 & 15)) % 1000;
+                    count = count + 3;
                 }
             }
-            if (result > 153)
-            {
-                result = ((result << 3) ^ seed) % 65521;
-            }
-            return result;
+            return count;
         }
     }
 }
