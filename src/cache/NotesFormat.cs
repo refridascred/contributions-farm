@@ -22,9 +22,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 1143;
-        public const long StepWidth = 8490;
-        public const long HardMetric = 809;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 9.78;
+        public const string WindowCounter = "standard-edge";
+        public const double DefaultDepth = 29.54;
+        public const string RetryCounter = "local-1";
     }
 }
