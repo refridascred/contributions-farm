@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
