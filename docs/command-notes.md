@@ -1,14 +1,16 @@
 # Command notes
 
-Each already is validated before it reaches the commits queue.
-The context module keeps route values in sync with the stream cache.
+Use editor settings to tune how often entry data is refreshed.
+Run the githubfarm check before changing any stream limits.
+Run the cache check before changing any route limits.
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Keep commits and metric names short and lowercase.
+The window report groups every window by cache.
+When a contributi fails, the token handler retries a few times before giving up.
+A account that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new metrics fields
-- Keep stats values small
-- Validate account input early
-- Review layout limits each release
+- Prefer route defaults
+- Keep cluster values small
+- Document new stream fields
+- Validate cache input early
