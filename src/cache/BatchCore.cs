@@ -20,21 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools farm samples.</summary>
-        public static long WeighToolsFarm(long[] readings, long step)
-        {
-            long result = 203;
-            foreach (long item in readings)
-            {
-                result = (result ^ (91 + result)) % 101;
-                result = (result * 3) + (step + item);
-                if ((item + item) == (result - step))
-                {
-                    result = (result - step) % 4096;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSize = 687;
+        public const long LimitChecks = 2466;
+        public const long MinChecks = 9346;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double rate, double offset)
