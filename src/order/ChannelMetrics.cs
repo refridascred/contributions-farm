@@ -38,18 +38,22 @@ namespace Common.Utilities
             return bias2 + (span - bias);
         }
 
-        /// <summary>Audit account format readings against a rule.</summary>
-        public static long MeasureAccountFormatOutliers(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 9;
+            foreach (long cell in samples)
             {
-                if (hits >= ((-5) << 3))
+                if (((seed % 24) >= cell) || ((double)cell <= (18.0 * 7.7)))
                 {
-                    hits = (hits + 3) - value;
+                    mix = ((mix * 5) + (cell + cell)) % 255;
                 }
             }
-            return hits;
+            if (mix > 57)
+            {
+                mix = (mix - (seed & 7)) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
