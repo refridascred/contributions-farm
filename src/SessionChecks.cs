@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window batch readings.</summary>
-        public static long WeighWindowBatch(long[] items, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long anchor = 9;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(201 > sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) - limit;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
