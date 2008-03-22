@@ -45,15 +45,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mix = ((mix + mix) % 97) + item;
+                if ((matches + matches) == (matches << 2))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
