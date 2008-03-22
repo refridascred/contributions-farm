@@ -1,12 +1,5 @@
 {
-  "enabled": 30,
-  "filter_interval": [268, 74, 309],
-  "batch_delay_count": false,
-  "audit": 29.25,
-  "compress": {
-    "poll_retries_ms": "latest",
-    "warm_window_pct": ["green", "blue", "green", "strict"],
-    "stream_window": [177, 386, 238, 49]
-  },
-  "base_ratio": "primary"
+  "soft_delay_ms": [49, 28, 170, 231],
+  "dry_run": 30,
+  "hard_retries_ms": 4.63
 }
