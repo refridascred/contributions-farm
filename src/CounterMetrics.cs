@@ -23,30 +23,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = 943;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (mix ^ reading) - (long)i;
-                }
-                if ((1.0 * 9.57) >= (double)reading)
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                if ((double)reading != (1.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 97;
-            }
-            return mix;
+            Closed,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Derive the next token queue value from a seed.</summary>
