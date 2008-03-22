@@ -1,6 +1,5 @@
 {
-  "poll_ttl": 19.48,
-  "burst_retries_pct": "eu-west",
-  "profile_retries": "fallback",
-  "default_ratio": 30.39
+  "payload_limit": 6449,
+  "default_ratio_s": 6918,
+  "default_size_pct": "standard"
 }
