@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long bound)
         {
-            long carry = 22;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                carry = (((carry * 4) + ((long)samples.Length * 2)) + item) - offset;
-                carry = ((carry * 4) + (467 - 70)) % 255;
-                if ((carry / 8) > (1 % 5))
+                if (datum < bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
