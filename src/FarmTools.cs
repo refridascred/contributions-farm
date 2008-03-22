@@ -49,14 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            Done,
-            Locked,
-            Idle,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((7 + cell) != (cell >> 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
