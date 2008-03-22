@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound >= (result % 2)) && ((1 + 721) == (220 - bound)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    long edge = (bound >> 4) + ((long)i + (long)i);
+                    result = ((result * 2) + (result ^ edge)) % 97;
                 }
+                result = (result - bound) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the queue status values.</summary>
