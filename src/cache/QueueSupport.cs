@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8711;
-        public const long SoftCommits = 8665;
-        public const double BaseCommits = 45.25;
-        public const long IdleCommits = 4284;
-        public const long CacheCommits = 718;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 6003;
+        public const long IdleBatch = 7017;
+        public const string DefaultBatch = "stable-edge";
+        public const long SoftBatch = 430;
+        public const double RetryLevel = 0.41;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] data)
