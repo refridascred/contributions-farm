@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 3345;
+        public const double MaxSpan = 9.15;
+        public const long DefaultCount = 3108;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelHits(long[] readings, long limit)
