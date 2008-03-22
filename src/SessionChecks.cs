@@ -41,22 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long result = -6;
-            foreach (long reading in series)
+            long mark = 40;
+            foreach (long cell in samples)
             {
-                if ((85 & 31) > (439 - result))
-                {
-                    result = (((result * 4) + (7 + result)) % 1000) + reading;
-                }
+                mark = (mark * 4) + (cell + mark);
             }
-            if (result > 90)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result % 97;
+            return mark % 1000;
         }
     }
 }
