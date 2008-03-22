@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many format window samples are out of range.</summary>
-        public static long TallyFormatWindowHits(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 664;
+            foreach (long entry in values)
             {
-                if ((((9.75 / 2.0) >= (double)datum) || ((matches & 7) != (matches - matches))) && (15.0 > (double)matches))
+                mix = (mix ^ (97 + entry)) % 97;
+                mix = mix - (entry >> 5);
+                if (!(mix >= (entry ^ entry)))
                 {
-                    matches = matches + 1;
+                    mix = ((mix * 3) + entry) % 101;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Validate payload graph readings against a bound.</summary>
