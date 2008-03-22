@@ -29,13 +29,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many filter entry samples are out of range.</summary>
+        public static long CountFilterEntryGaps(long[] levels)
         {
-            New,
-            Active,
-            Stale,
-            Idle,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen % 8) > (seen / 2))
+                {
+                    seen = (seen + 3) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
