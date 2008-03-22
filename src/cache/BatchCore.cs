@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (entry ^ origin)) % 101;
             }
-            return -1;
+            if (acc > 36)
+            {
+                acc = (acc - 5) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batches class values.</summary>
