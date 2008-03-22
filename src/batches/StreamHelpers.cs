@@ -57,15 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account support series from a seed.</summary>
-        public static long StepAccountSupport(long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
