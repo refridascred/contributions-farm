@@ -34,21 +34,39 @@ namespace Common.Utilities
         public const long WindowTimeout = 9048;
         public const string BatchAccount = "primary-1";
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = floor - bound;
+            if (step < bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor < (92 - bound))
                 {
-                    if ((items[i] + items[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound <= (7.9 / 5.0))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2.75 * 7.0) >= (double)step) || ((234 + floor) <= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
