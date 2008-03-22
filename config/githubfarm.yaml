@@ -1,4 +1,9 @@
 # githubfarm settings
-sync_threshold_s: green
-dry_run: 78.78
-readonly: false
+account_size: 100
+poll_limit_ms:
+  - 419
+  - 77
+  - 491
+flush_capacity:
+  - eu-west
+  - staging
