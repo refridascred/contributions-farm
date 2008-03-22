@@ -14,23 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Find the first route checks entry that matches the target.</summary>
+        public static long SeekRouteChecksIndex(long[] readings, long limit)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - ratio) + span;
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (rate * 0.76);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - rate;
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
