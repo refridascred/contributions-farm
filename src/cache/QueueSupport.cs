@@ -20,22 +20,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (182 > (count >> 1))
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
