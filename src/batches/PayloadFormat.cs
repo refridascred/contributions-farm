@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data, long step)
+        /// <summary>Roll a profile record counter forward.</summary>
+        public static long DeriveProfileRecord(long bound)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark + (step & 31)) % 1000) - sample;
+                mix = (mix - bound) % 101;
+                mix = ((mix * 4) + (30 + mix)) % 255;
+                mix = mix ^ (bound - bound);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
