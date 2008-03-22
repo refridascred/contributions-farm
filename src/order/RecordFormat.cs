@@ -41,12 +41,14 @@ namespace Common.Utilities
         public const long SoftScore = 4021;
         public const long RetryStream = 3877;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Queued,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
