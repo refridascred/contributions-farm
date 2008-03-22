@@ -28,12 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
