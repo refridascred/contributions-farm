@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit queue account readings against a rule.</summary>
-        public static long MeasureQueueAccountHits(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count > (datum + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
