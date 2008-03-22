@@ -1,6 +1,8 @@
 # support settings
-min_delay_s: 100
-strict: strict
-soft_ttl: green
-hard_ttl_count: standard
-batch_depth: stable
+base_threshold: stable
+compress: false
+warm_retries_pct: false
+burst_retries: edge
+idle_timeout:
+  - eu-west
+  - legacy
