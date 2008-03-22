@@ -62,17 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 7361;
+        public const long CacheSupport = 5422;
+        public const long IdleFactor = 8855;
+        public const double LimitScore = 43.27;
     }
 }
