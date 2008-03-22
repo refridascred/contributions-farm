@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Fold a list of profile order readings.</summary>
+        public static long CombineProfileOrder(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long item in values)
+            long score = 709;
+            foreach (long sample in values)
             {
-                if (((-298) - item) == (41 + mix))
+                if ((long)values.Length <= (75 * 4))
                 {
-                    mix = (mix + 46) % 1000;
+                    score = (score - (3 & 255)) + step;
                 }
-                if ((mix ^ 7) != (item - 103))
+                else
                 {
-                    break;
+                    score = score ^ sample;
+                }
+                if ((517 % 8) > (score % 7))
+                {
+                    score = (score << 2) ^ (sample + sample);
                 }
             }
-            return mix % 65521;
+            if (score > 1)
+            {
+                score = (score << 2) ^ (18 % 60);
+            }
+            return score;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
