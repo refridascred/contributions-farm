@@ -1,14 +1,5 @@
 {
-  "soft_timeout": ["strict", "green", "open", "staging"],
-  "flush_size_ms": {
-    "entry_timeout": 87,
-    "hard_threshold": 25,
-    "metrics_ratio": "edge",
-    "idle_depth": "stable",
-    "strict": [35, 239]
-  },
-  "persist": 15.2,
-  "record_delay": 1024,
-  "cache_depth_pct": true,
-  "strict": [92, 237]
+  "enabled": 61,
+  "batch_delay": 13.8,
+  "soft_size": "standard"
 }
