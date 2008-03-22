@@ -39,19 +39,39 @@ namespace Common.Utilities
         public const long BaseNotes = 8143;
         public const long CacheBudget = 38;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long step)
         {
-            long mix = 43;
-            foreach (long entry in values)
+            long gap = origin + step;
+            if (step >= 8)
             {
-                mix = ((mix << 2) ^ (limit ^ limit)) + entry;
+                return 2;
             }
-            if (mix > 34)
+            else
             {
-                mix = (mix - (mix & 255)) % 101;
+                if ((gap - step) >= (gap + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.22 - 3.7) <= (double)gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin * 2) >= (3 + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mix % 65521;
         }
     }
 }
