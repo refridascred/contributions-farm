@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = 940;
-            foreach (long datum in items)
-            {
-                acc = (acc * 5) + (datum / 4);
-            }
-            return acc % 1000;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Project the next queue value.</summary>
