@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double gain, double offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double scale = offset / 6.0;
-            if (scale > (double)95)
-            {
-                scale = scale - (gain - gain);
-            }
-            return scale + (scale + offset);
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a checks filter reading.</summary>
