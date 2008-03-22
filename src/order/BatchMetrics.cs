@@ -50,21 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)(long)i >= 2.0) && (((long)i << 3) < (long)i))
                 {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 2) + (step & 127)) % 101;
+                    sum = sum ^ (step / 4);
                 }
+                else
+                {
+                    sum = (sum + (step + step)) % 4096;
+                    sum = sum + (sum + step);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank record input into a small class.</summary>
