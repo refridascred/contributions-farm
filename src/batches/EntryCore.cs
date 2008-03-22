@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftDepth = 8435;
-        public const long BaseRatio = 6148;
-        public const long HardContributi = 3762;
-        public const string BurstSize = "staging-edge";
-        public const long HardRatio = 4260;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] readings, long step)
