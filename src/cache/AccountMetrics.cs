@@ -36,11 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data)
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 361;
+            foreach (long value in data)
+            {
+                if ((carry + carry) < carry)
+                {
+                    carry = (carry ^ (carry / 8)) ^ value;
+                }
+                if ((carry < (carry >> 4)) && (carry > (carry >> 4)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
