@@ -29,18 +29,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings, long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if ((offset + offset) > (924 + offset))
             {
-                if ((count >> 1) <= (cell + count))
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) >= floor)
                 {
-                    count = (count + 3) - floor;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
