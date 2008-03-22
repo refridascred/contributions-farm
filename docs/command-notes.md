@@ -1,10 +1,15 @@
 # Command notes
 
-When a batch fails, the commits handler retries a few times before giving up.
-Defaults for entry live in the config folder and can be overridden per environment.
+When a buffer fails, the tools handler retries a few times before giving up.
+Run the entry check before changing any record limits.
+
+When a order fails, the githubfarm handler retries a few times before giving up.
+Run the support check before changing any batches limits.
+Keep batch and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep report values small
-- Log every tools change
+- Document new report fields
+- Keep support values small
+- Prefer githubfarm defaults
+- Log every account change
