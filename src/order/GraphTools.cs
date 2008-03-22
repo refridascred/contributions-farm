@@ -32,19 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches filter entry stays within the limit.</summary>
-        public static bool VerifyBatchesFilterBounds(long[] items, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
