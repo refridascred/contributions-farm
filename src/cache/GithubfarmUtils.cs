@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheDepth = 22.46;
-        public const string CacheEditor = "open-1";
-        public const string DefaultEditor = "primary-v2";
-        public const long SoftTimeout = 7631;
-        public const long RetryCount = 6052;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double HardBudget = 80.28;
