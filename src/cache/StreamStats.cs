@@ -15,17 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 44;
+            foreach (long value in items)
             {
-                if (series[i] > target)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    sum = (sum + sum) ^ (long)i;
                 }
+                sum = ((sum * 3) + (value + 996)) % 1000;
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
