@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long limit)
         {
-            double bias2 = bias;
-            if (bias2 < span)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                bias2 = bias2 + span;
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias * 2.14)) + (double)(long)i;
-            }
-            return bias2 - (double)15;
+            return ready;
         }
 
         /// <summary>Check that every batch stats entry stays within the limit.</summary>
