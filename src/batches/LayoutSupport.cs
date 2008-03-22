@@ -61,24 +61,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((step % 5) >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((14.0 - 7.9) <= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Pending,
         }
     }
 }
