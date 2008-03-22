@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const long BaseCounter = 6325;
         public const long MaxCount = 6187;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long step)
         {
-            long carry = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                carry = (((carry << 2) ^ (cell - cell)) % 4096) - step;
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Describe the payload class values.</summary>
