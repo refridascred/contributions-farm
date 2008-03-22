@@ -43,24 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a report profile value against two limits.</summary>
-        public static long GradeReportProfile(long bound, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long limit)
         {
-            if (2.0 <= (double)offset)
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (10.0 / 8.0))
+                if (value != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
