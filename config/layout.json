@@ -1,12 +1,22 @@
 {
-  "retry_capacity": {
-    "readonly": ["strict", "green"],
-    "burst_depth_s": "staging",
-    "retry_threshold_count": 48.92,
-    "verbose": 2905,
-    "audit": ["stable", "edge", "primary", "blue"]
-  },
-  "readonly": false,
-  "poll_interval_count": true,
-  "flush_window_s": 100
+  "default_threshold_pct": ["standard", "stable", "local", "eu-west"],
+  "command_retries": 75.04,
+  "dry_run": [374, 368, 254, 279],
+  "batch_window": 66.81,
+  "strict": {
+    "payload_capacity": true,
+    "compress": {
+      "burst_size_ms": 495,
+      "strict": 500,
+      "max_retries_pct": true,
+      "batch_ratio": true
+    },
+    "route_ttl": ["strict", "standard", "blue", "local"],
+    "max_timeout_count": {
+      "max_limit": 4945,
+      "base_delay_ms": "open",
+      "compress": true,
+      "audit": "edge"
+    }
+  }
 }
