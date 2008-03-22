@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Use graph settings to tune how often tools data is refreshed.
-
-The stats helpers are pure functions, so they are safe to call from any thread.
-Use format settings to tune how often profile data is refreshed.
+Run the context check before changing any tools limits.
+When a command fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep token values small
-- Review notes limits each release
-- Prefer account defaults
-- Validate session input early
+- Review metric limits each release
+- Prefer token defaults
+- Keep command values small
