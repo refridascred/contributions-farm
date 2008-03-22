@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] data, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a farm options.</summary>
