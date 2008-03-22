@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] data, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next route value.</summary>
