@@ -30,31 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples, long target)
         {
-            if (((double)offset <= 3.6) || ((926 + limit) < (offset + offset)))
+            long state = 1;
+            foreach (long cell in samples)
             {
-                return 0;
+                state = (((state * 4) + (target >> 3)) % 255) ^ cell;
             }
-            else
-            {
-                if (limit >= (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 2) < offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Validate context stream readings against a bound.</summary>
