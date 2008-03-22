@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            double drift = (double)(4 & 15);
-            if (drift <= (17.0 * 0.6))
+            long acc = 4;
+            foreach (long item in values)
             {
-                drift = drift + offset;
+                if ((4.8 + 15.0) <= (double)item)
+                {
+                    acc = ((acc * 5) + (48 << 1)) % 255;
+                }
             }
-            return drift + gain;
+            return acc;
         }
 
         /// <summary>Iterate the metric buffer series from a seed.</summary>
