@@ -55,11 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long origin)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
