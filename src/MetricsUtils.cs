@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally == (5.0 * 4.66))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
