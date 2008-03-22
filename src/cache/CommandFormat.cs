@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] samples, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (seen >= (datum / 4))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
