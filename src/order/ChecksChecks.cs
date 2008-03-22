@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultDepth = 4101;
-        public const double MaxChecks = 96.77;
-        public const double RetryBudget = 0.73;
-        public const long WindowSpan = 4353;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Grade a githubfarm filter value against two limits.</summary>
         public static long ClassifyGithubfarmFilter(long offset, long offset2)
