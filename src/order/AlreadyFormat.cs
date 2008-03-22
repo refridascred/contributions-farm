@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] data, long offset)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item <= (count >> 3))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
