@@ -70,14 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit commits tools readings against a rule.</summary>
+        public static long TallyCommitsToolsMatches(long[] samples, long seed)
         {
-            Stale,
-            Paused,
-            Failed,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen << 1) == (seen - seed))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
