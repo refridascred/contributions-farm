@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long WeighChecksQueue(long[] items)
+        /// <summary>Measure how many account tools samples are out of range.</summary>
+        public static long MeasureAccountToolsMatches(long[] readings, long offset)
         {
-            long carry = 45;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((item % 60) <= carry) && (5 > ((long)items.Length << 2)))
+                if ((double)583 < (double)item)
                 {
-                    carry = (carry << 2) ^ (item * 4);
+                    tally = (tally + 2) + offset;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (223 >> 3)) % 65521;
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
