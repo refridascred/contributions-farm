@@ -1,7 +1,5 @@
 {
-  "flush_interval": 48.94,
-  "max_size_count": 7556,
-  "idle_retries_ms": 3798,
-  "idle_delay": 1024,
-  "editor_ttl": 60
+  "queue_window": "fallback",
+  "entry_depth": 48,
+  "min_ratio": 5392
 }
