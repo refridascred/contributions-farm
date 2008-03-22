@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up queue route samples.</summary>
-        public static long OverlapQueueRouteCount(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a metric entry.</summary>
