@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long seed, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            if (origin <= (seed * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 4) <= (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Closed,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
