@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] series, long step)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
