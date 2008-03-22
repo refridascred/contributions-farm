@@ -1,4 +1,8 @@
 # entry settings
-readonly: edge
-burst_capacity_s: true
-strict: false
+soft_ratio_ms:
+  - 491
+  - 152
+  - 58
+idle_ttl: 35
+retry_capacity_count: edge
+default_size: 3214
