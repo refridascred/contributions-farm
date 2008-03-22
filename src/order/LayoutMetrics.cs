@@ -32,10 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitFactor = 44.32;
-        public const long BurstPayload = 3187;
-        public const string BaseWidth = "open-1";
-        public const double RetryBudget = 15.91;
+        /// <summary>Fold a list of stream already readings.</summary>
+        public static long DigestStreamAlready(long[] readings, long bound)
+        {
+            long total = 46;
+            foreach (long entry in readings)
+            {
+                total = ((total << 2) ^ (entry - 627)) - bound;
+            }
+            return total;
+        }
     }
 }
