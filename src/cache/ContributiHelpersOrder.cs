@@ -38,18 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((((entry - entry) >= (entry >> 5)) || (entry >= (entry << 3))) || ((count & 127) != (entry * 4)))
+                if (reading <= step)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
