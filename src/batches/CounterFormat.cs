@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double bias)
-        {
-            double rate = (bias * 8.7) + (ratio / 8.0);
-            return rate + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 8912;
+        public const long IdleNotes = 6760;
+        public const double MaxNotes = 44.07;
+        public const long BaseNotes = 8143;
+        public const long CacheBudget = 38;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] values, long limit)
