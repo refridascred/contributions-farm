@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSize = 5631;
-        public const double LimitSchema = 63.63;
-        public const long DefaultLevel = 5220;
-        public const long HardSchema = 9913;
+        /// <summary>Audit stream token readings against a rule.</summary>
+        public static long TallyStreamTokenHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= 5.0)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryTimeout = 89.59;
