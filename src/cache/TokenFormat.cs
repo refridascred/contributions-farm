@@ -27,20 +27,13 @@ namespace Common.Utilities
         public const long BaseSize = 7073;
         public const long SoftEntry = 4179;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] items, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mix = 6;
-            foreach (long cell in items)
-            {
-                mix = (mix << 2) ^ (1 * 4);
-                mix = (mix << 2) ^ (target + target);
-                if ((double)cell < 16.0)
-                {
-                    mix = ((mix * 3) + (target - cell)) % 65521;
-                }
-            }
-            return mix;
+            Failed,
+            Idle,
+            Draft,
+            Done,
         }
     }
 }
