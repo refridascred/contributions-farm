@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 6750;
+        public const long IdleInterval = 9760;
+        public const long BurstSupport = 4118;
+        public const long BatchSupport = 9809;
+        public const long SoftBudget = 6802;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] readings, long limit)
