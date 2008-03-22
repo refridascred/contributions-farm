@@ -34,16 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total << 3) ^ (offset % 64)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7648;
+        public const long MaxWindow = 8119;
+        public const long StepWindow = 3673;
     }
 }
