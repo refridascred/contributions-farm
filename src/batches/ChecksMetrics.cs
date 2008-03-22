@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            long next = origin - target;
-            if ((target % 3) > (origin + origin))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target % 2) <= 831)
+                if (!((double)cell > 1.96))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (next < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
