@@ -22,38 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if ((target + offset) != (offset + 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >= (offset / 6)) || (target > (offset ^ target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 2) >= (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.4 * 10.0) != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the tools phase values.</summary>
