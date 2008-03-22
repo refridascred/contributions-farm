@@ -1,23 +1,5 @@
 {
-  "burst_delay_pct": 500,
-  "editor_window": {
-    "command_size": {
-      "audit": false,
-      "soft_delay_s": [52, 185, 44],
-      "cache_depth_pct": "green",
-      "filter_depth": 14,
-      "sync_depth": 5899,
-      "strict": true
-    },
-    "warm_capacity_count": 64,
-    "poll_ratio_count": ["stable", "local", "primary"],
-    "cache_size_ms": 15.5
-  },
-  "sync_retries_s": {
-    "hard_delay_s": "local",
-    "counter_window": "primary",
-    "record_limit": false
-  },
-  "idle_capacity_ms": 7038,
-  "filter_limit": ["primary", "edge", "open"]
+  "batch_interval": "cached",
+  "dry_run": ["green", "open", "eu-west", "latest"],
+  "support_capacity": "legacy"
 }
