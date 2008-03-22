@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor channel entry stays within the limit.</summary>
-        public static bool VerifyEditorChannelRange(long[] series, long step)
+        /// <summary>Measure how many queue profile samples are out of range.</summary>
+        public static long MeasureQueueProfileOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (datum <= step)
+                if ((double)entry < (5.41 / 9.0))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
