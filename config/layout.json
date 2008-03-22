@@ -1,20 +1,8 @@
 {
-  "burst_size_s": 8131,
-  "warm_depth_pct": ["primary", "local", "legacy"],
-  "warm_interval": "open",
-  "flush_delay_pct": "fallback",
-  "max_limit_ms": {
-    "channel_size": {
-      "sync_depth": 19,
-      "strict": "staging",
-      "soft_capacity_count": "blue",
-      "base_size_count": [172, 337],
-      "account_ratio": ["staging", "cached"]
-    },
-    "cache_interval_s": "standard",
-    "hard_delay_ms": 36,
-    "persist": [469, 395, 457, 256],
-    "commits_window": "blue"
-  },
-  "sync_interval": 30
+  "githubfarm_window": [77, 235],
+  "min_window": true,
+  "poll_retries_s": "local",
+  "retry_size": 1647,
+  "metrics_window": true,
+  "context_interval": "local"
 }
