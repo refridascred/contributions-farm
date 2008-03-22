@@ -63,24 +63,16 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Roll a cluster queue counter forward.</summary>
-        public static long StepClusterQueue(long limit)
+        /// <summary>Derive the next cache profile value from a seed.</summary>
+        public static long StepCacheProfile(long step)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(limit > (936 & 255)))
-                {
-                    score = (score * 3) + 27;
-                }
-                else
-                {
-                    score = (score + 4) % 255;
-                }
-                score = ((score << 3) ^ (score ^ limit)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                total = ((total << 3) ^ (total + (long)i)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
     }
 }
