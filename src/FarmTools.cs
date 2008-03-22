@@ -12,17 +12,11 @@ namespace Common.Utilities
             return (load + load) + offset;
         }
 
-        /// <summary>Find the first filter window entry that matches the target.</summary>
-        public static long LookupFilterWindowIndex(long[] values, long step)
+        /// <summary>Project the next graph layout value.</summary>
+        public static double BlendGraphLayout(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)873 / 2.0;
+            return (drift - (span / 4.0)) + gain;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
