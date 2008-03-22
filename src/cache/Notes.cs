@@ -20,21 +20,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] levels, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = 8;
+            foreach (long cell in levels)
             {
-                anchor = anchor ^ anchor;
-                if ((5.0 * 5.75) <= (double)anchor)
+                if (!((2.0 - 1.56) < (double)cell))
                 {
-                    anchor = (anchor + ((long)i * 4)) % 97;
-                    break;
+                    acc = ((acc - (cell << 1)) % 1000) - seed;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Validate batch graph readings against a bound.</summary>
