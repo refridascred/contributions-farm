@@ -14,29 +14,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long limit)
+        /// <summary>Rank report batches input into a small class.</summary>
+        public static long RankReportBatches(long limit, long offset)
         {
-            if ((double)bound <= (7.3 + 7.0))
+            if ((double)offset == (double)337)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((double)bound > (11.0 - 5.22)) && ((limit - 8) < (limit % 100)))
+                if ((limit + offset) > limit)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit ^ bound) != (limit % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 4;
                 }
             }
         }
