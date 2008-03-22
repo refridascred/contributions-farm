@@ -34,19 +34,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (state < 447)
+                if (((tally > (tally / 3)) || ((double)offset >= (double)tally)) && (tally > (reading << 2)))
                 {
-                    state = (state * 5) + bound;
+                    tally = tally + 3;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
