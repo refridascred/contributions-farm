@@ -16,15 +16,18 @@ namespace Common.Utilities
             return scale - (double)912;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long TallyRouteNotesMatches(long[] items, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((sample & 3) == (seed - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
