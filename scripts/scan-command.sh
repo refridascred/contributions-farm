@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=417
-log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 9 ]; do
