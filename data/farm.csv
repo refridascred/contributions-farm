@@ -1,6 +1,6 @@
-id,state,rank,weight
-1,951,324,81.2
-2,267,20.81,51.27
-3,fallback,60,eu-west
-4,standard,820,52.37
-5,485,439,275
+id,rank,ratio,count
+1,102,77.84,629
+2,890,48.49,standard
+3,green,80.74,870
+4,primary,77.33,43.76
+5,13.08,645,8.97
