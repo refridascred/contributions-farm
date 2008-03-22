@@ -70,13 +70,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long TallyOrderChannel(long[] readings, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long mark = 7;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark + (mark + value)) % 65521) + limit;
+                mark = (mark ^ (-752)) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
             return mark;
         }
