@@ -45,11 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((bound / 5) >= (hits ^ bound)) || ((reading - 77) <= (bound & 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
