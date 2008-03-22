@@ -48,17 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (series[i] == step)
+                if (((reading >> 5) < (bound >> 1)) && ((double)bound == (double)reading))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
