@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank channel order input into a small class.</summary>
-        public static long ClassifyChannelOrder(long limit, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            long slot = limit + seed;
-            if (7.0 < (double)seed)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + limit) >= (seed - slot))
+                if (((-75) + (long)samples.Length) <= count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 - 1.08) <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.6 - 2.6) < (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) - cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
