@@ -26,14 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 7853;
+        public const double LimitProfile = 47.69;
+        public const long MaxProfile = 895;
 
         /// <summary>Project the next route value.</summary>
         public static double AdjustRoute(double weight, double span)
