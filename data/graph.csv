@@ -1,6 +1,8 @@
-id,region,ratio,rank,state
-1,211,green,94.77,472
-2,stable,local,658,green
-3,919,631,916,local
-4,497,251,727,15.68
-5,55.01,local,latest,291
+id,level,count
+1,280,stable
+2,staging,7.9
+3,fallback,783
+4,334,544
+5,86.06,841
+6,edge,793
+7,19.67,79.96
