@@ -61,22 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long TotalEntryContext(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long floor)
         {
-            long state = 581;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((state - 4) <= (state / 6)) && ((datum * 3) >= (4 & 15)))
+                if ((((7.0 / 4.0) > (double)matches) || ((datum << 2) < floor)) && ((1.5 * 0.4) >= (double)floor))
                 {
-                    state = (state ^ state) % 97;
+                    matches = matches + 1;
                 }
             }
-            if (state < 234)
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-            }
-            return state % 1000;
+            return matches;
         }
     }
 }
