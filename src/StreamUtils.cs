@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            long anchor = 25;
-            foreach (long sample in items)
-            {
-                anchor = (anchor - (seed + 1)) ^ sample;
-            }
-            return anchor % 97;
+            double scale = gain * 1.9;
+            return (scale + (gain / 3.0)) + span;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
