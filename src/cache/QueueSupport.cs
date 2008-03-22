@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double WindowAlready = 37.5;
         public const string BurstAlready = "stable-1";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Synced,
+            Dropped,
             Ready,
-            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a already record.</summary>
