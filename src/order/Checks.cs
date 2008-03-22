@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first batch window entry that matches the target.</summary>
-        public static long LookupBatchWindowIndex(long[] items, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
