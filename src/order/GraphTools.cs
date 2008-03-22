@@ -44,14 +44,31 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long BucketQueueLayout(long floor, long target)
         {
-            Idle,
-            Draft,
-            Active,
-            Queued,
-            Pending,
+            if ((target + target) == (floor * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (6.3 >= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 255) >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
