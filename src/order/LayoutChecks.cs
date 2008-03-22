@@ -55,27 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long seed)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                score = (score ^ ((-423) * 4)) % 4096;
-                if (!((0.02 - 0.3) > (double)bound))
+                if ((seed ^ seed) <= (item + 907))
                 {
-                    score = ((score * 5) + cell) % 97;
-                }
-                if ((score * 4) != (bound & 63))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (score > 435)
-            {
-                score = score - (bound + score);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
