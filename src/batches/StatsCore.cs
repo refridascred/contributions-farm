@@ -66,12 +66,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((cell % 97) <= (cell * 4)) || ((15.0 - 8.58) > (double)cell)) || ((tally - 496) != (919 << 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
