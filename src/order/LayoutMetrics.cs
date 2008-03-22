@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                if (((-18) & 1) <= (tally << 2))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - entry) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
