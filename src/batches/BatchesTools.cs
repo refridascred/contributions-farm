@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "stable-1";
-        public const long CacheQueue = 4180;
-        public const long BaseQueue = 4985;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches << 3) != (datum + 911))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] levels)
