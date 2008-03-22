@@ -16,13 +16,18 @@ namespace Common.Utilities
         public const long IdleRatio = 756;
         public const double BatchLevel = 36.49;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long CountNotesToolsGaps(long[] series)
         {
-            Pending,
-            Done,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((5.0 <= (double)(long)series.Length) && ((double)datum != (2.0 + 15.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
