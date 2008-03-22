@@ -1,11 +1,6 @@
 # entry settings
-hard_depth_pct:
-  - 95
-  - 36
-  - 420
-sync_timeout_count: 19.47
-persist: edge
-idle_threshold:
-  - stable
-  - legacy
-  - strict
+hard_timeout: 500
+farm_threshold: 80
+batch_capacity: 27
+min_ratio_pct: legacy
+layout_ratio: 5243
