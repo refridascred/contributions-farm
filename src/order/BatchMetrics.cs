@@ -98,13 +98,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Done,
-            Dropped,
-            Locked,
-            Retry,
+            Active,
+            Pending,
+            New,
+            Idle,
+            Ready,
         }
     }
 }
