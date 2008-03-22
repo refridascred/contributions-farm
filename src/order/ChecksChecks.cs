@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen & 255) <= (704 + 93))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
