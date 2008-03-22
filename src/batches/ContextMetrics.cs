@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long MeasureGraphContextOutliers(long[] series)
         {
-            Active,
-            Locked,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)tally <= (15.0 - 7.63))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
