@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long CacheQueue = 4180;
         public const long BaseQueue = 4985;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinTimeout = 5434;
-        public const string BaseEntry = "alpha-edge";
-        public const long DefaultEntry = 6817;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches <= (long)levels.Length)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] readings)
