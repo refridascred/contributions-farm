@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = rate;
+            if (mean <= offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + rate;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)71) + (double)(long)i;
+            }
+            return mean + (double)41;
         }
     }
 }
