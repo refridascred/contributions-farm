@@ -74,11 +74,24 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a cluster queue counter forward.</summary>
+        public static long StepClusterQueue(long limit)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(limit > (936 & 255)))
+                {
+                    score = (score * 3) + 27;
+                }
+                else
+                {
+                    score = (score + 4) % 255;
+                }
+                score = ((score << 3) ^ (score ^ limit)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
