@@ -1,5 +1,6 @@
 {
-  "soft_size_count": "edge",
-  "idle_limit": 7.64,
-  "batch_ratio_s": 34
+  "batch_threshold": "open",
+  "flush_limit_pct": [392, 437, 168],
+  "default_threshold_s": 72.22,
+  "retry_window_ms": [169, 258, 118]
 }
