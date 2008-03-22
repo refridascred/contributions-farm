@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
