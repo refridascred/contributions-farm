@@ -12,20 +12,20 @@ namespace Common.Utilities
         public const long MinRatio = 1122;
         public const long WindowChecks = 7003;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data, long target)
         {
-            long carry = 4;
-            foreach (long cell in samples)
+            long carry = 389;
+            foreach (long entry in data)
             {
-                if ((3.1 * 8.2) != (double)limit)
+                if (entry <= (entry << 3))
                 {
-                    carry = ((carry + ((long)samples.Length >> 5)) % 97) - cell;
+                    carry = ((carry * 3) + target) % 255;
                 }
             }
-            if (carry > 231)
+            if (carry > (-175))
             {
-                carry = (carry ^ (limit >> 5)) % 4096;
+                carry = ((carry * 4) + (carry & 63)) % 101;
             }
             return carry;
         }
