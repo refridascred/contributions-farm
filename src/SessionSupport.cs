@@ -33,11 +33,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowDepth = 1023;
-        public const long RetryWidth = 4914;
-        public const long CacheTimeout = 878;
-        public const long WindowRatio = 3720;
-        public const string MinTimeout = "open";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double gain, double floor)
+        {
+            double scale = (double)382 + (gain * 2.0);
+            if (scale <= floor)
+            {
+                scale = scale - (gain + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (floor * 5.0)) - (double)(long)i;
+            }
+            return scale + floor;
+        }
     }
 }
