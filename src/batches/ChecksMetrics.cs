@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepScore = "legacy-edge";
-        public const double BatchDepth = 91.14;
-        public const long IdleScore = 4961;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long target)
+        {
+            long next = origin - target;
+            if ((target % 3) > (origin + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target % 2) <= 831)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (next < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account tools samples are out of range.</summary>
         public static long MeasureAccountToolsMatches(long[] readings, long offset)
