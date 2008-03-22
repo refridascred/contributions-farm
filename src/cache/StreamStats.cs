@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
-        public static long DeriveGithubfarmProfile(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum + ((long)i + 713)) % 1000;
-                sum = ((sum << 2) ^ (sum + offset)) % 101;
-                if ((offset + sum) == (offset + offset))
-                {
-                    sum = ((sum << 3) ^ (offset / 3)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSize = 4522;
+        public const double BurstSchema = 79.98;
+        public const long BatchSchema = 4328;
+        public const long IdleSchema = 7227;
 
         /// <summary>Validate already buffer readings against a bound.</summary>
         public static bool CheckAlreadyBufferBounds(long[] levels, long seed)
