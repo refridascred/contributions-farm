@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long origin)
-        {
-            long score = 98;
-            foreach (long entry in data)
-            {
-                if (9 >= (entry >> 5))
-                {
-                    score = (score - (673 % 100)) - origin;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 1734;
+        public const double MinSupport = 55.07;
+        public const long SoftFactor = 5155;
+        public const string StepSupport = "fallback-edge";
+        public const long CacheFactor = 4961;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
