@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (!((matches - item) > (418 / 2)))
+                if (datum < origin)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of window entries.</summary>
