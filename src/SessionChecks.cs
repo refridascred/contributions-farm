@@ -33,18 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster counter entries that pass the check.</summary>
-        public static long CountClusterCounterGaps(long[] samples, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((3.8 - 12.0) == (double)offset)
             {
-                if (((-6) - datum) <= (tally % 12))
+                return 5;
+            }
+            else
+            {
+                if ((offset < (limit & 31)) || ((double)limit > (double)132))
                 {
-                    tally = (tally + 2) + floor;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 1) > (offset - 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
