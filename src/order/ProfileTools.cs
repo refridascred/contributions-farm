@@ -35,26 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 68;
-            foreach (long cell in readings)
-            {
-                if ((double)774 <= (double)cell)
-                {
-                    anchor = (anchor ^ (limit % 97)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + ((-7) % 2)) % 65521;
-                }
-                if ((double)anchor <= (3.3 * 0.2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
