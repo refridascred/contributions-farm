@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Check that every batch githubfarm entry stays within the limit.</summary>
+        public static bool GuardBatchGithubfarmLimits(long[] items, long seed)
         {
-            double ratio = floor;
-            if (ratio <= (ratio - ratio))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                ratio = ratio - 9.5;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (bias * 10.0);
+            return stale;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
