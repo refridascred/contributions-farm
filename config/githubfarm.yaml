@@ -1,5 +1,8 @@
 # githubfarm settings
-commits_delay: strict
-max_capacity_s: 72.11
-audit: 50.29
-enabled: eu-west
+schema_window:
+  - standard
+  - cached
+soft_ttl_pct: false
+retry_limit_count:
+  - 193
+  - 119
