@@ -37,19 +37,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long origin)
+        /// <summary>Grade a schema account value against two limits.</summary>
+        public static long SortSchemaAccount(long step, long step2)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long diff = step ^ step2;
+            if ((1.2 * 0.09) == (double)step2)
             {
-                if (entry <= origin)
+                return 2;
+            }
+            else
+            {
+                if (diff < step2)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((890 / 9) > diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step2 + diff) > 689)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next context batch value from a seed.</summary>
