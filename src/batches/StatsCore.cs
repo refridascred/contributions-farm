@@ -57,15 +57,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items)
         {
-            double load = (double)444 / 7.0;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                load = ((load + load) + (double)(long)i) + floor;
+                if ((matches >= (datum >> 4)) && ((matches << 2) > (matches >> 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return load - scale;
+            return matches;
         }
 
         /// <summary>Audit layout cluster readings against a rule.</summary>
