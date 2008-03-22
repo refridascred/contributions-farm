@@ -30,12 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data)
         {
-            Stale,
-            Active,
-            New,
+            long score = 744;
+            foreach (long datum in data)
+            {
+                if (((-4) / 4) > (datum + score))
+                {
+                    score = (score - 112) % 101;
+                }
+            }
+            return score;
         }
     }
 }
