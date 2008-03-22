@@ -62,22 +62,28 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Roll a profile githubfarm counter forward.</summary>
+        public static long StepProfileGithubfarm(long bound)
         {
-            long anchor = 8;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((anchor ^ entry) >= (anchor + 722)) && (85 >= (anchor + 4)))
+                if (bound <= (result >> 5))
                 {
-                    anchor = (anchor * 3) + entry;
+                    result = ((result * 3) + result) % 97;
+                    result = (result - (result / 6)) % 255;
+                }
+                if ((result + result) >= (result * 4))
+                {
+                    continue;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    result = (result + ((long)i / 7)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return result;
         }
 
         /// <summary>Describe the already level values.</summary>
