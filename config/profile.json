@@ -1,11 +1,12 @@
 {
-  "hard_timeout": "standard",
-  "cache_size_count": {
-    "verbose": false,
-    "persist": 12,
-    "cache_timeout_ms": 5,
-    "idle_depth_ms": "legacy"
+  "default_delay_ms": 98,
+  "counter_timeout": "staging",
+  "farm_threshold": 63.14,
+  "soft_limit_count": {
+    "soft_depth": 250,
+    "default_size_s": 35,
+    "min_size_count": 100
   },
-  "base_ratio_count": true,
-  "base_threshold": 74.19
+  "warm_limit_ms": ["open", "cached"],
+  "editor_interval": 8580
 }
