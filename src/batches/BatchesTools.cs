@@ -32,15 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long offset)
         {
-            long result = 729;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                result = (result + reading) % 255;
+                if ((351 - offset) <= (7 - matches))
+                {
+                    matches = (matches + 3) - sample;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
