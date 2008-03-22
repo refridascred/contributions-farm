@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double bias2 = floor;
-            return (bias2 - bias2) + bias;
+            Active,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
