@@ -31,18 +31,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit schema filter readings against a rule.</summary>
-        public static long TallySchemaFilterHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen > (item + item)) && ((double)seen <= 6.91))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 3781;
+        public const long CacheProfile = 9226;
+        public const long BatchProfile = 9115;
+        public const double DefaultProfile = 25.58;
     }
 }
