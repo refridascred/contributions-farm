@@ -49,39 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account session input into a small class.</summary>
-        public static long ClassifyAccountSession(long target, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long next = target ^ bound;
-            if ((16.0 / 9.0) == (double)target)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((next & 255) < next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (next < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target <= (double)8)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
