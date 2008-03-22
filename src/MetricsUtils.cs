@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a graph payload sample.</summary>
-        public static long LookupGraphPayloadIndex(long[] readings, long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < offset)
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
