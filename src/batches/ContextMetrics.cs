@@ -50,20 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next context batch value from a seed.</summary>
-        public static long StepContextBatch(long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                total = ((total << 3) ^ (2 % 10)) % 255;
-                if ((double)(long)i < (9.0 * 6.13))
+                if (cell > bound)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
