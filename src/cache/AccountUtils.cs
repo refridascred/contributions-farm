@@ -24,13 +24,16 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + mark) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
