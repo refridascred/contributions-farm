@@ -22,20 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two stats entry measurements.</summary>
-        public static double BlendStatsEntry(double weight, double offset)
-        {
-            double load = weight * 14.0;
-            if (load > 6.0)
-            {
-                load = load + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - offset) - (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 20.92;
+        public const long BatchCount = 2191;
+        public const double BurstSchema = 4.32;
+        public const long CacheWidth = 1805;
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double scale, double bias)
