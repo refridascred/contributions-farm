@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((seed & 3) >= (seed + anchor))
-                {
-                    continue;
-                }
-                if (((anchor ^ (long)i) > seed) && ((anchor % 24) != (long)i))
-                {
-                    anchor = (anchor ^ (anchor + 51)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
