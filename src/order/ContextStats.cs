@@ -47,32 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            long delta = target + bound;
-            if ((double)target <= (6.19 * 9.94))
+            long total = 96;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (269 > (delta >> 2))
+                total = total ^ ((long)levels.Length * 5);
+                if ((datum & 7) > (total % 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - 5) != (71 % 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = total ^ (total / 6);
                 }
             }
+            return total % 65521;
         }
     }
 }
