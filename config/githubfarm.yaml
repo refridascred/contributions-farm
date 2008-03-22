@@ -1,25 +1,11 @@
 # githubfarm settings
-hard_timeout: 93
-default_ttl_pct:
-  context_ttl: 90
-  report_size: edge
-  batches_capacity: 28
-  retry_delay_pct:
-    token_size:
-      - 140
-      - 174
-      - 451
-      - 223
-    stream_delay:
-      - 119
-      - 390
-      - 340
-    sync_timeout: 17.31
-    metrics_capacity: 1654
-  sync_size_s: true
-  batches_ttl:
-    batch_window_count: 25.71
-    flush_timeout: 100
-    entry_window: staging
-    order_timeout: 28.51
-support_ttl: 60.34
+burst_delay:
+  min_size_pct:
+    - local
+    - legacy
+  retry_ratio_count: staging
+  readonly: 16.6
+  hard_delay: false
+  poll_retries_count: 58.66
+checks_depth: edge
+editor_retries: eu-west
