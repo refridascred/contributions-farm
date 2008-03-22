@@ -25,19 +25,17 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long limit)
         {
-            double bias2 = gain + gain;
-            if (bias2 < (double)8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 + (double)3;
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (bias + 7.4);
+            return -1;
         }
     }
 }
