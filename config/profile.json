@@ -1,7 +1,7 @@
 {
-  "stats_size": "strict",
-  "poll_interval_pct": 6637,
-  "burst_interval_ms": ["stable", "open", "staging"],
-  "soft_delay_pct": "primary",
-  "base_capacity": 70.85
+  "entry_ttl": "open",
+  "notes_retries": "green",
+  "flush_ratio_ms": false,
+  "dry_run": false,
+  "default_timeout": "cached"
 }
