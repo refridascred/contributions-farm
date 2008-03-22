@@ -57,23 +57,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a channel filter figure with a bias.</summary>
-        public static double BlendChannelFilter(double ratio, double span)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double gain = ratio;
-            if (gain >= (ratio + 3.7))
-            {
-                gain = gain + (double)724;
-            }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (4.44 / 8.0)) + (double)(long)i;
-            }
-            return gain + span;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
