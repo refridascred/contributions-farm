@@ -35,17 +35,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the schema route series from a seed.</summary>
-        public static long IterateSchemaRoute(long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score * 2) + ((long)i + (long)i);
-                score = (score << 3) ^ score;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
