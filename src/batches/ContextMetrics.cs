@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long seed)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a cache farm counter forward.</summary>
