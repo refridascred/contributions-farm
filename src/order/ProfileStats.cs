@@ -49,24 +49,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long step)
-        {
-            if (origin >= (origin - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) < (origin - 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheWidth = 1235;
+        public const long MinRecord = 265;
+        public const long BurstRecord = 8339;
+        public const string BatchBudget = "cached";
     }
 }
