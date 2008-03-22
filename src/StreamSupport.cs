@@ -45,21 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 6;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= (carry % 2))
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry << 2) ^ (carry ^ carry)) % 101;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
     }
 }
