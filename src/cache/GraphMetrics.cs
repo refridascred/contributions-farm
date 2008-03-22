@@ -63,10 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1514;
-        public const long IdleOrder = 4988;
-        public const double BaseOrder = 95.43;
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long DigestSchemaContext(long[] levels, long step)
+        {
+            long anchor = 98;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor << 3) ^ (anchor + step)) % 101) + reading;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 9056;
