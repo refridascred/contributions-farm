@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Audit stream context readings against a rule.</summary>
+        public static long AuditStreamContextGaps(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (hits < (-523))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
