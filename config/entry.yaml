@@ -1,5 +1,5 @@
 # entry settings
-githubfarm_window: 58.24
-soft_ratio: stable
-warm_window: 60
-window_depth: false
+min_timeout_s: primary
+dry_run: 100
+poll_ratio: true
+context_interval: stable
