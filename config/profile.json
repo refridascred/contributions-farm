@@ -1,7 +1,8 @@
 {
-  "sync_depth_pct": "standard",
-  "retry_retries_count": 100,
-  "checks_threshold": 86.86,
-  "readonly": 7428,
-  "idle_delay_pct": "stable"
+  "dry_run": 30,
+  "flush_depth": 83.24,
+  "already_size": "standard",
+  "base_ratio": ["local", "legacy", "staging", "primary"],
+  "compress": 80.18,
+  "verbose": 68.12
 }
