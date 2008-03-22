@@ -24,12 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
             Done,
             Locked,
-            Ready,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit schema filter readings against a rule.</summary>
