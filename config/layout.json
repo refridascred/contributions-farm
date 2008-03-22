@@ -1,8 +1,22 @@
 {
-  "flush_capacity_ms": true,
-  "flush_limit_count": "strict",
-  "batch_interval_count": 100,
-  "default_capacity": "strict",
-  "queue_interval": "blue",
-  "persist": ["staging", "standard"]
+  "flush_timeout_s": "stable",
+  "route_timeout": {
+    "retry_ttl": 3049,
+    "idle_timeout_count": {
+      "min_capacity": 89.86,
+      "metrics_size": ["open", "cached", "local", "local"],
+      "strict": false,
+      "enabled": true,
+      "persist": "blue",
+      "metrics_ratio": 93.4
+    },
+    "hard_threshold_pct": ["legacy", "eu-west"],
+    "stats_ratio": 50.25,
+    "sync_timeout_count": "staging",
+    "layout_window": "standard"
+  },
+  "burst_interval_count": 23,
+  "readonly": 76.54,
+  "schema_delay": 38.46,
+  "batches_retries": 13.09
 }
