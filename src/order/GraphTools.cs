@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] items, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state - step) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
