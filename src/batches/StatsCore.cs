@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double gain, double span)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            double weight = gain + (double)66;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)(long)i) - span;
+            }
+            return weight + (0.26 * 3.9);
         }
 
         /// <summary>Describe the route level values.</summary>
