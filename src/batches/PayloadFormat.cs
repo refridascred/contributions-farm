@@ -43,21 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 12;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((score + score) < score) || (((long)samples.Length * 2) > (9 + score)))
                 {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ 8) % 255;
+                }
+                if (3.0 <= (double)entry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
