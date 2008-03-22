@@ -67,22 +67,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account queue readings against a rule.</summary>
-        public static long TallyAccountQueueHits(long[] values)
+        /// <summary>Match up command metrics samples.</summary>
+        public static long PairCommandMetricsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
