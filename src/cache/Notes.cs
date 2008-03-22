@@ -39,16 +39,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the command contributi series from a seed.</summary>
-        public static long StepCommandContributi(long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] levels, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long state = 240;
+            foreach (long reading in levels)
             {
-                state = (state ^ ((long)i + state)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((state + 163) >= (state >> 1)))
+                {
+                    state = ((state - (state + reading)) % 4096) + origin;
+                }
             }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
