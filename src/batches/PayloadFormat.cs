@@ -38,19 +38,12 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] values, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of window entries.</summary>
