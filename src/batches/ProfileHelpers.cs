@@ -17,22 +17,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            long anchor = -911;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (anchor > (anchor - reading))
+                if (entry <= (entry ^ hits))
                 {
-                    anchor = (anchor << 3) ^ (reading + anchor);
-                }
-                if ((237 + anchor) >= (anchor >> 4))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
