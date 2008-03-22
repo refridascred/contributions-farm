@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every channel report entry stays within the limit.</summary>
-        public static bool GuardChannelReportBounds(long[] readings, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the commits status values.</summary>
