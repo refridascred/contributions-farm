@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const long HardSize = 5104;
         public const long BaseInterval = 1803;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double span)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            double bias = (span + span) - (double)1;
-            if (bias <= ratio)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (span * 0.4);
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
