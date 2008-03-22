@@ -43,22 +43,22 @@ namespace Common.Utilities
             return drift - (drift - 18.0);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Audit notes channel readings against a rule.</summary>
+        public static long MeasureNotesChannelMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (((double)value <= (0.92 / 2.0)) || (((seen >> 5) == (value - seen)) && ((seen >> 2) <= (36 ^ 74))))
+                if ((matches - offset) > (item - offset))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a session options.</summary>
