@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long edge = bound - seed;
+            if ((edge <= (bound << 3)) && ((bound + bound) != (seed << 2)))
             {
-                if (!((count > 44) || (value < ((long)samples.Length & 127))))
+                return 0;
+            }
+            else
+            {
+                if (seed >= edge)
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((48 >> 5) < (6 - edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.7 + 5.7) < (double)edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
