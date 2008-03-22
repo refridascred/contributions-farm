@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Synced,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryBudget = 84.1;
+        public const long MinCache = 7948;
+        public const double SoftFactor = 52.18;
+        public const string RetryCache = "stable";
+        public const long DefaultRatio = 8346;
     }
 }
