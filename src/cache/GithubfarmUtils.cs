@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally % 10) <= (45 & 3))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstRatio = 3057;
+        public const string MinWidth = "strict-v2";
+        public const long BatchWindow = 5215;
+        public const long MaxWindow = 39;
+        public const long IdleWindow = 4031;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] readings)
