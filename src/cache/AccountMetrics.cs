@@ -63,9 +63,21 @@ namespace Common.Utilities
         public const long LimitStream = 5267;
         public const long WindowBudget = 6147;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "open";
-        public const string CacheScore = "open-v2";
-        public const double BaseFarm = 41.19;
+        /// <summary>Count already counter pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCounterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
