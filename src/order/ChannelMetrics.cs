@@ -35,22 +35,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] readings)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((6.08 * 18.0) != (double)entry) || (matches < (entry - matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Locked,
+            Retry,
+            Pending,
         }
     }
 }
