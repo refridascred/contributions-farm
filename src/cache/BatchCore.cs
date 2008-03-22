@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Measure how many stream queue samples are out of range.</summary>
+        public static long MeasureStreamQueueGaps(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (value >= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
