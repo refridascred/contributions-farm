@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            double drift = (double)(4 & 15);
+            if (drift <= (17.0 * 0.6))
+            {
+                drift = drift + offset;
+            }
+            return drift + gain;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
