@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long WindowInterval = 4591;
         public const long MaxContributi = 2287;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Audit queue account readings against a rule.</summary>
+        public static long MeasureQueueAccountHits(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((182 + result) != (limit << 1)) && (((long)i & 15) > (long)i))
+                if (count > (datum + count))
                 {
-                    result = ((result * 4) + (6 & 31)) % 101;
-                    result = (result + ((long)i - (long)i)) % 1000;
+                    count = count + 1;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Match up record editor samples.</summary>
