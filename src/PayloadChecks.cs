@@ -50,24 +50,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a batch buffer pair into a bucket.</summary>
-        public static long SortBatchBuffer(long target, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((double)origin > (3.46 / 4.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (6.6 - 5.88))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Project the next tools value.</summary>
