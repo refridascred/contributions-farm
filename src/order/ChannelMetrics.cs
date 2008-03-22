@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen + seen) != (seen & 3))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit queue account readings against a rule.</summary>
