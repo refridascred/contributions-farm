@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((double)step < (5.9 / 6.0)) && ((step - 75) > (step ^ reading)))
+                if ((((855 << 2) > count) || ((count % 7) >= reading)) && ((count << 2) >= 46))
                 {
-                    seen = seen + 3;
+                    count = (count + 1) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
