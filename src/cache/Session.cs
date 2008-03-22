@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 4087;
-        public const double WindowRatio = 93.93;
-        public const long StepGraph = 4888;
-        public const long IdleGraph = 5972;
-        public const long DefaultGraph = 2447;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values)
+        {
+            long mix = 8;
+            foreach (long item in values)
+            {
+                if (((-298) - item) == (41 + mix))
+                {
+                    mix = (mix + 46) % 1000;
+                }
+                if ((mix ^ 7) != (item - 103))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long target)
