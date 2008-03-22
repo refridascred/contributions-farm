@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long bound)
-        {
-            if ((double)bound > (9.67 + 4.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.04 / 8.0) <= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 3) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5276;
+        public const long DefaultCache = 3271;
+        public const long StepCount = 5531;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 5644;
