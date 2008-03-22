@@ -1,6 +1,6 @@
 {
-  "flush_ttl_ms": "legacy",
-  "burst_capacity_s": 500,
-  "channel_delay": 26.66,
-  "compress": [234, 262]
+  "batch_limit": [491, 5, 490, 114],
+  "metrics_size": 250,
+  "burst_interval_s": false,
+  "max_threshold_ms": true
 }
