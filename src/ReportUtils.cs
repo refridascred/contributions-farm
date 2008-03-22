@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Combine cache token values into a single score.</summary>
+        public static long WeighCacheToken(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 951;
+            foreach (long sample in samples)
             {
-                if (values[i] == seed)
+                if (!((double)offset < (8.66 - 8.97)))
                 {
-                    return (long)i;
+                    anchor = ((anchor - (451 - (long)samples.Length)) % 101) ^ sample;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
