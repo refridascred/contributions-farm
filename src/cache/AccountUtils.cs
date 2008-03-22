@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double rate = bias;
-            if (rate <= (double)7)
-            {
-                rate = (rate - bias) - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)2) + (double)(long)i;
-            }
-            return rate - (double)61;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Measure how many account support samples are out of range.</summary>
