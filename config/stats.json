@@ -1,8 +1,18 @@
 {
-  "burst_threshold": "staging",
-  "counter_capacity": 32.94,
-  "graph_timeout": 86.38,
-  "retry_capacity_ms": false,
-  "sync_delay_s": false,
-  "compress": true
+  "entry_depth": "eu-west",
+  "warm_delay_pct": 2280,
+  "burst_retries_s": "staging",
+  "channel_window": {
+    "retry_depth_count": true,
+    "strict": {
+      "audit": 9448,
+      "min_delay_ms": false,
+      "githubfarm_depth": 88.48,
+      "base_timeout_ms": "blue"
+    },
+    "base_depth_ms": 61.24,
+    "enabled": 250,
+    "batch_capacity": 73
+  },
+  "base_capacity_s": false
 }
