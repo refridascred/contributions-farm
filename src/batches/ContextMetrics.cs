@@ -44,12 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 8978;
-        public const string BurstReport = "local-1";
-        public const double RetryRatio = 95.42;
-        public const long WindowReport = 4771;
-        public const long RetryReport = 2129;
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 3) < (count + value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long step, long step2)
