@@ -1,7 +1,7 @@
 {
-  "compress": 59.8,
-  "flush_ttl_ms": [226, 248, 400, 418],
-  "hard_retries_ms": 3051,
-  "dry_run": false,
-  "default_window_pct": false
+  "burst_interval_pct": 6.24,
+  "idle_threshold_pct": true,
+  "stream_threshold": 38.31,
+  "base_window_pct": "standard",
+  "burst_depth": ["latest", "open", "blue"]
 }
