@@ -57,11 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxRatio = 76.76;
-        public const long StepLayout = 4147;
-        public const double BurstLayout = 77.24;
-        public const long IdleDepth = 7811;
-        public const long DefaultLayout = 4265;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 255) == (count % 97))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
