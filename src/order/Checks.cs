@@ -47,15 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double span)
         {
-            long acc = 7;
-            foreach (long entry in levels)
+            double bias2 = 6.0;
+            if (bias2 >= bias)
             {
-                acc = ((((acc << 3) ^ (acc & 31)) % 97) + entry) - bound;
+                bias2 = (bias2 + (bias - bias2)) - span;
             }
-            return acc;
+            return bias2 - (double)31;
         }
     }
 }
