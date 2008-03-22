@@ -30,14 +30,22 @@ namespace Common.Utilities
         public const long BaseBatches = 4864;
         public const double HardBatches = 73.4;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] values)
         {
-            Idle,
-            Closed,
-            Active,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((159 << 3) > matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
