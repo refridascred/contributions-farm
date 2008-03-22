@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((reading - hits) >= (hits << 3))
+                if ((tally + floor) < (2 ^ sample))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every layout metrics entry stays within the limit.</summary>
