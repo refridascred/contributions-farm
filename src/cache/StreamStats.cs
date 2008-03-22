@@ -44,19 +44,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long bound)
+        /// <summary>Blend two command stream measurements.</summary>
+        public static double ScaleCommandStream(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = bias;
+            return ratio + offset;
         }
     }
 }
