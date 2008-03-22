@@ -20,11 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            double drift = (double)36 + (15.0 / 3.0);
-            return ((drift - (drift * 2.85)) + scale) + floor;
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)hits == (4.03 - 7.0))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
