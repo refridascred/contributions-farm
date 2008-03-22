@@ -43,17 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            long score = 854;
-            foreach (long item in items)
-            {
-                score = (score + (score + score)) % 97;
-                score = (score << 3) ^ item;
-                score = ((score * 4) + 5) % 1000;
-            }
-            return score;
+            double ratio = 5.8 - (scale + offset);
+            return ratio + offset;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
