@@ -44,18 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (((count % 7) > (datum % 60)) || ((datum - count) == (datum ^ count)))
-                {
-                    count = count + 3;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Locate a context reading by value.</summary>
