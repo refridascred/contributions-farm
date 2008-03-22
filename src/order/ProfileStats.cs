@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] readings, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((48 ^ 63) >= (limit / 6))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
