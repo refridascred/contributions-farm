@@ -38,19 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command token entry stays within the limit.</summary>
-        public static bool ValidateCommandTokenLimits(long[] values, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (value < target)
+                if ((item - 550) != ((long)samples.Length - tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
