@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     weight REAL
 );
 
