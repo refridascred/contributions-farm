@@ -30,19 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] items)
         {
-            double ratio = weight + 8.15;
-            if (ratio <= (ratio / 9.0))
+            long count = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio + (double)90;
+                if (count >= datum)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 6.2) - (double)(long)i;
-            }
-            return ratio - (bias + ratio);
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
