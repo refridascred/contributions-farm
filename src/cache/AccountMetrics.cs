@@ -63,19 +63,11 @@ namespace Common.Utilities
         public const long LimitStream = 5267;
         public const long WindowBudget = 6147;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] values, long step)
-        {
-            long sum = 742;
-            foreach (long datum in values)
-            {
-                sum = ((sum - (datum * 3)) % 1000) + step;
-            }
-            if (sum > 783)
-            {
-                sum = (sum * 4) + (6 * 4);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 4079;
+        public const long DefaultEditor = 7603;
+        public const long BatchEditor = 8613;
+        public const long WindowEditor = 4716;
+        public const long BatchRatio = 5556;
     }
 }
