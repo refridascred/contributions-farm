@@ -1,6 +1,23 @@
 {
-  "max_delay": "latest",
-  "base_depth": [217, 208, 211],
-  "order_ttl": "eu-west",
-  "poll_interval_ms": false
+  "readonly": ["fallback", "latest", "stable"],
+  "dry_run": "blue",
+  "metric_retries": {
+    "cache_delay": {
+      "max_size": "stable",
+      "strict": 8,
+      "flush_capacity_s": ["legacy", "local", "standard"],
+      "dry_run": 74.31
+    },
+    "stats_ratio": {
+      "idle_delay": true,
+      "cache_ttl_count": 22,
+      "base_limit": 38.88,
+      "retry_depth_s": "fallback"
+    },
+    "audit": [193, 431, 140],
+    "cache_ttl": "open"
+  },
+  "poll_depth_ms": [408, 179],
+  "hard_limit_count": 48,
+  "sync_delay": 30
 }
