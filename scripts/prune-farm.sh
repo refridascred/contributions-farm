@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-
-FARM_LIMIT=279
-log "limit is ${FARM_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
