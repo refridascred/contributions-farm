@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long floor)
+        /// <summary>Grade a stream editor value against two limits.</summary>
+        public static long BucketStreamEditor(long limit, long origin)
         {
-            long score = 59;
-            foreach (long cell in readings)
+            long gap = limit ^ origin;
+            if (((4 + limit) == (limit ^ origin)) && ((0 + gap) == (origin + 7)))
             {
-                if (((floor >> 1) != ((-268) ^ cell)) || ((floor >> 1) > (651 & 3)))
+                return 6;
+            }
+            else
+            {
+                if ((0 + 92) < (limit + gap))
                 {
-                    score = (score ^ (floor - 727)) % 97;
+                    return 5;
                 }
-                if ((score + cell) >= (cell % 8))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (score > 986)
-            {
-                score = ((score * 3) + score) % 97;
-            }
-            return score;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
