@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] levels, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double ratio = floor;
+            if (ratio >= (double)226)
             {
-                if (sample < (90 % 8))
-                {
-                    hits = (hits + 3) + bound;
-                }
+                ratio = ratio - floor;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio - 0.21;
         }
     }
 }
