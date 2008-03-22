@@ -22,11 +22,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepRatio = 9992;
-        public const long SoftLevel = 7556;
-        public const long MinFactor = 2645;
-        public const double MaxFormat = 73.86;
+        /// <summary>Validate already buffer readings against a bound.</summary>
+        public static bool CheckAlreadyBufferBounds(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
