@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] items, long bound)
         {
-            long result = 180;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin >= value) || ((19.0 * 18.0) == (double)origin))
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
                 {
-                    result = (result << 3) ^ (value + origin);
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
