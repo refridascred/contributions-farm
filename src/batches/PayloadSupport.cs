@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stream metric input into a small class.</summary>
-        public static long SortStreamMetric(long origin, long seed)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long slot = origin + seed;
-            if (seed <= (slot << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot > origin) || ((slot >> 2) <= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
