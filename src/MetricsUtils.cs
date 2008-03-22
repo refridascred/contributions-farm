@@ -38,13 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every command token entry stays within the limit.</summary>
+        public static bool ValidateCommandTokenLimits(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the account state values.</summary>
