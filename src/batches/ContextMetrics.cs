@@ -28,12 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            Queued,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Match up channel samples.</summary>
