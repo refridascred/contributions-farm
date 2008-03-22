@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Locate a schema layout reading by value.</summary>
+        public static long LocateSchemaLayoutIndex(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank commits support input into a small class.</summary>
