@@ -86,12 +86,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long offset)
         {
-            Queued,
-            Draft,
-            Stale,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
