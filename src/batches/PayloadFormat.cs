@@ -38,12 +38,13 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Paused,
-            Pending,
-            Dropped,
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
