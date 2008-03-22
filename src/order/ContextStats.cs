@@ -35,22 +35,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
         {
-            long mark = 767;
-            foreach (long sample in levels)
-            {
-                if ((sample >> 2) > (mark + mark))
-                {
-                    mark = mark + (mark % 5);
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark;
+            double weight = scale;
+            return (weight + (double)25) + offset;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
