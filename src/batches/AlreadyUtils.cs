@@ -14,19 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series)
         {
-            long result = 0;
-            foreach (long cell in items)
+            long sum = 228;
+            foreach (long value in series)
             {
-                result = result + (bound * 2);
-                if (bound <= cell)
+                sum = sum + (value * 2);
+                if (!((value << 2) > sum))
                 {
-                    break;
+                    sum = ((sum << 3) ^ ((-185) - value)) % 255;
                 }
             }
-            return result % 97;
+            if (sum > 79)
+            {
+                sum = ((sum * 2) + (sum / 3)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
