@@ -42,11 +42,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series, long step)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long carry = -2;
+            foreach (long cell in series)
+            {
+                if (cell > (step - carry))
+                {
+                    carry = (carry << 3) ^ (carry % 5);
+                }
+            }
+            return carry % 65521;
         }
     }
 }
