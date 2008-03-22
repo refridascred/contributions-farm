@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Dropped,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftTimeout = "cached-edge";
+        public const long BurstFilter = 1383;
+        public const long SoftLevel = 6306;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string DefaultCommits = "latest-v2";
