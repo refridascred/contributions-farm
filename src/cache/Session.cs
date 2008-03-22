@@ -39,11 +39,17 @@ namespace Common.Utilities
             return (scale - (scale * 5.0)) + floor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
