@@ -24,14 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Done,
-            Locked,
-            Paused,
-            Active,
-            Retry,
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit schema filter readings against a rule.</summary>
