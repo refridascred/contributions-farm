@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            Done,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry >= (4.95 * 2.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
