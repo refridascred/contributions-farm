@@ -22,15 +22,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a route channel figure with a bias.</summary>
-        public static double SmoothRouteChannel(double weight, double bias)
-        {
-            double scale = bias - (1.0 - weight);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale + weight)) - (double)(long)i;
-            }
-            return scale + (bias / 4.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleLevel = 2286;
+        public const long CacheFactor = 3777;
+        public const long IdleTimeout = 20;
     }
 }
