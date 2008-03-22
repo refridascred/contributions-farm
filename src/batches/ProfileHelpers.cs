@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long count = 0;
+            long acc = 452;
             foreach (long reading in items)
             {
-                if (!(((reading + count) >= (733 << 1)) && (8.48 >= (double)reading)))
+                if (((double)reading <= (1.0 / 2.0)) || (reading >= (acc >> 1)))
                 {
-                    count = count + 1;
+                    acc = (acc - reading) % 97;
                 }
             }
-            return count;
+            if (acc < 875)
+            {
+                acc = (acc + (acc / 6)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a graph entry.</summary>
