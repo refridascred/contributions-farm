@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 543;
-            foreach (long sample in series)
-            {
-                acc = (acc * 4) + sample;
-                if ((double)acc == (5.59 * 7.4))
-                {
-                    acc = (acc ^ (sample ^ acc)) % 4096;
-                }
-            }
-            return acc % 97;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
