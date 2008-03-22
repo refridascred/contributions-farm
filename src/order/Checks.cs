@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Retry,
-            New,
-            Idle,
-            Closed,
-            Draft,
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
