@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "cached-v2";
-        public const long DefaultTimeout = 9580;
-        public const long LimitFilter = 2737;
-        public const long BatchWidth = 5805;
-        public const long BurstFilter = 9777;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long RollProfile(long origin)
