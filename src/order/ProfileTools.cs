@@ -42,10 +42,11 @@ namespace Common.Utilities
         public const long IdleCount = 1275;
         public const long LimitInterval = 6243;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7169;
-        public const long CacheDepth = 3906;
-        public const long IdleFactor = 3725;
-        public const string BaseTimeout = "local-edge";
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
