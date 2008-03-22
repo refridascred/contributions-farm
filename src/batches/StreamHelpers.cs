@@ -88,11 +88,18 @@ namespace Common.Utilities
         public const string BurstSize = "strict";
         public const long LimitCount = 6175;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((2.1 / 8.0) != (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
