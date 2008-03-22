@@ -27,25 +27,11 @@ namespace Common.Utilities
             return ((drift - (drift * 2.85)) + scale) + floor;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long origin, long step)
-        {
-            if ((3.51 - 9.5) > (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= (19.0 - 0.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 29.83;
+        public const double WindowDepth = 73.56;
+        public const long BatchCount = 4639;
+        public const long BatchSchema = 1999;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long limit)
