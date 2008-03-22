@@ -53,15 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long CountTokenChannelOutliers(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (!(((12.0 / 2.0) <= (double)tally) && ((tally << 2) == (reading - (long)items.Length))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
