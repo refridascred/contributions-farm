@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 917;
+            foreach (long cell in values)
             {
-                if (entry < count)
+                if (total < (total & 15))
                 {
-                    count = count + 3;
+                    total = (total ^ (total + cell)) % 4096;
+                    total = ((total << 3) ^ (49 + total)) % 101;
+                }
+                if ((cell % 8) >= cell)
+                {
+                    total = (total + (5 >> 2)) % 97;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
