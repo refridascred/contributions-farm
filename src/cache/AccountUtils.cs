@@ -24,21 +24,25 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Roll a entry stats counter forward.</summary>
-        public static long RollEntryStats(long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long edge = origin ^ step;
+            if ((3.38 >= (double)step) && ((origin << 2) > (edge + 58)))
             {
-                if ((result + result) < (long)i)
-                {
-                    result = (result + (long)i) % 4096;
-                }
-                result = (result * 4) + seed;
-                result = result - ((long)i + result);
-                result = ((result * 4) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (!((step / 5) == (origin - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
