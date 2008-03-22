@@ -66,17 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
