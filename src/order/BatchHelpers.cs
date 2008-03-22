@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric buffer series from a seed.</summary>
-        public static long DeriveMetricBuffer(long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((bound + bound) > (state % 12))
-                {
-                    state = (state * 4) + (1 + bound);
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Look up the position of a token already sample.</summary>
