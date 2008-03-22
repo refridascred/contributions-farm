@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] data, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
