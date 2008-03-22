@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Accumulate tools farm samples.</summary>
+        public static long WeighToolsFarm(long[] readings, long step)
         {
-            Queued,
-            Retry,
-            New,
+            long result = 203;
+            foreach (long item in readings)
+            {
+                result = (result ^ (91 + result)) % 101;
+                result = (result * 3) + (step + item);
+                if ((item + item) == (result - step))
+                {
+                    result = (result - step) % 4096;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
