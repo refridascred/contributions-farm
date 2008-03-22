@@ -1,14 +1,54 @@
 # support settings
-graph_interval: strict
-default_ratio_s: true
-stats_capacity:
-  soft_ttl_pct: legacy
-  audit:
-    - 194
-    - 150
-    - 248
-  idle_depth_ms: 30
-sync_retries_ms:
-  - local
-  - cached
-verbose: 97.28
+soft_depth:
+  idle_timeout_pct:
+    hard_ratio: 44.34
+    max_timeout_count: 89
+    layout_window:
+      - 304
+      - 14
+      - 315
+      - 178
+  batches_timeout: open
+  retry_delay_s:
+    - strict
+    - eu-west
+  burst_ttl_count: edge
+  idle_size_ms:
+    idle_capacity_count: 10.77
+    strict: staging
+    poll_window_s: standard
+    idle_retries_count: legacy
+    audit: 76.16
+  base_delay_s: latest
+session_interval:
+  - strict
+  - stable
+  - strict
+  - fallback
+min_retries_count:
+  idle_window_pct: 0.83
+  support_capacity: 5272
+  readonly: false
+audit:
+  warm_retries_pct:
+    burst_retries_ms: cached
+    entry_threshold: 54.4
+    githubfarm_delay: 99
+    layout_timeout: 7607
+  order_depth:
+    layout_interval: 1024
+    dry_run:
+      - 83
+      - 334
+      - 153
+    min_ratio_pct: 17.07
+    max_window: true
+    flush_ratio_ms: 47
+    context_limit: 10
+  retry_threshold: staging
+batch_ratio: standard
+verbose:
+  - fallback
+  - primary
+  - stable
+  - green
