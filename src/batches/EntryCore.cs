@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
+        public static long MatchQueueCounterCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 2)
+                    if ((data[i] + data[j]) != 15)
                     {
                         seen = seen + 1;
                     }
