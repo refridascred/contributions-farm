@@ -19,31 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if ((((-36) / 3) >= (offset - offset)) || ((double)limit <= (6.3 / 2.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 2) != ((-45) + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 12) >= 98)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
