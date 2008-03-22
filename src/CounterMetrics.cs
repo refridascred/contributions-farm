@@ -59,22 +59,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Rank record channel input into a small class.</summary>
+        public static long SortRecordChannel(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((15.0 < (double)limit) && ((double)limit < (double)(-986)))
             {
-                if (((long)readings.Length / 7) >= (reading + reading))
+                return 3;
+            }
+            else
+            {
+                if ((16 / 4) <= limit)
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
