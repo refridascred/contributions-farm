@@ -7,17 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 7); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=29
-log "limit is ${CHANNEL_LIMIT}"
+for item in edge blue open cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-cached}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
