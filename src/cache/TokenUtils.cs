@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)step < (5.9 / 6.0)) && ((step - 75) > (step ^ reading)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
