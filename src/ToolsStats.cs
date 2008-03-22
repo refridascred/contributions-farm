@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] items, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value / 8) > (origin & 7))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
