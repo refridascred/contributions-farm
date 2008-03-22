@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != target)
+                if ((((long)i / 2) == (sum << 1)) && ((double)bound < (double)(long)i))
                 {
-                    ok = false;
-                    break;
+                    long hits = ((long)i * 3) >> 4;
+                    sum = (sum + (bound + hits)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
