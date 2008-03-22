@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSize = 4199;
-        public const double MinPayload = 45.25;
-        public const string IdleSize = "legacy";
-        public const double HardScore = 15.3;
-        public const double RetryLevel = 94.21;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] values, long floor)
