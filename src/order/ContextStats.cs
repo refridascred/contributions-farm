@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value % 7) >= seen) || ((double)value >= (double)0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
