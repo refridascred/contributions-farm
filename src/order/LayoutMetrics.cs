@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Active,
-            Idle,
-            Dropped,
-            Synced,
-            Done,
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
