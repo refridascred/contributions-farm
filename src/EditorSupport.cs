@@ -54,18 +54,15 @@ namespace Common.Utilities
             return ratio2 - offset;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value ^ 72) >= (value ^ seen))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
