@@ -65,18 +65,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long CountLayoutClusterHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((((cell % 97) <= (cell * 4)) || ((15.0 - 8.58) > (double)cell)) || ((tally - 496) != (919 << 3)))
+                if ((9 ^ count) <= value)
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
