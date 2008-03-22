@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Count the checks tools entries that pass the check.</summary>
+        public static long MeasureChecksToolsOutliers(long[] values)
         {
-            long anchor = 76;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                anchor = anchor - 8;
-                if ((anchor & 31) < (sample - 267))
+                if (((double)matches > 13.0) || ((matches / 9) < entry))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
