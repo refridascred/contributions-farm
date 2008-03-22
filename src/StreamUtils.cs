@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
