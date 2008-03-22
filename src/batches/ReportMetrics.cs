@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long MinInterval = 8502;
         public const string BatchTimeout = "open-1";
 
-        /// <summary>Accumulate githubfarm commits samples.</summary>
-        public static long ScoreGithubfarmCommits(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double floor)
         {
-            long mix = 2;
-            foreach (long sample in data)
+            double weight = (double)(-3);
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample > (mix + sample)) && ((sample & 63) == (sample & 127)))
-                {
-                    mix = (mix + (sample + mix)) % 101;
-                }
-                if ((sample % 97) == (mix ^ mix))
-                {
-                    mix = (mix + (30 & 63)) % 65521;
-                }
+                weight = (weight + 15.0) - (double)(long)i;
             }
-            return mix;
+            return weight + (bias - floor);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
