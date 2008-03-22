@@ -1,5 +1,11 @@
 {
-  "cache_threshold_ms": 97.19,
-  "min_capacity_ms": "legacy",
-  "readonly": "blue"
+  "max_window": {
+    "context_size": 250,
+    "report_size": true,
+    "default_limit_s": [275, 381, 267],
+    "warm_depth_s": "blue"
+  },
+  "retry_limit_count": "primary",
+  "audit": 60,
+  "commits_timeout": 79.61
 }
