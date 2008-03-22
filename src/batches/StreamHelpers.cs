@@ -69,18 +69,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (54 >= (matches % 97))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Paused,
+            Locked,
         }
     }
 }
