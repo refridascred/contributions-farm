@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a checks support reading.</summary>
-        public static double ProjectChecksSupport(double gain, double offset)
-        {
-            double scale = (offset * 2.0) + (offset + 4.2);
-            if (scale >= (3.0 * 1.0))
-            {
-                scale = scale - (double)797;
-            }
-            else
-            {
-                scale = scale + 1.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (gain - 2.89)) + (double)(long)i;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitFactor = 5971;
+        public const long RetryRatio = 3809;
+        public const string StepBatch = "standard";
+        public const long BatchDepth = 8801;
+        public const string RetryBatch = "open-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 9214;
