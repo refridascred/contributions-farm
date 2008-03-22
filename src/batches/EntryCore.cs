@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string BurstSize = "staging-edge";
         public const long HardRatio = 4260;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long step)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a commits farm reading.</summary>
