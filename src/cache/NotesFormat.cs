@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] series, long bound)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
