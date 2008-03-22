@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const string IdleBudget = "stable-1";
         public const double HardDepth = 83.17;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data)
-        {
-            long score = 847;
-            foreach (long value in data)
-            {
-                score = score + (value + value);
-            }
-            if (score > 5)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryLevel = 1638;
+        public const long RetryBudget = 8532;
+        public const double MinBatch = 88.47;
+        public const string BaseBatch = "fallback-v2";
+        public const double SoftBatch = 84.21;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheWidth = 1235;
