@@ -42,12 +42,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
