@@ -50,19 +50,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
-        public static bool CheckGraphBufferRange(long[] items, long target)
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long SortLayoutPayload(long offset, long seed)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((seed - offset) != (seed + seed))
             {
-                if (value >= target)
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ 350) > (4 + offset))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed > 2.0) && (offset < (offset & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
     }
 }
