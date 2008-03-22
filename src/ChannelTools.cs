@@ -12,21 +12,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed > (bound >> 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed + 9) < (98 << 3))
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
