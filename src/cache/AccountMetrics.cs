@@ -91,11 +91,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double floor)
-        {
-            double mean = floor;
-            return mean + (9.8 + scale);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 25.17;
+        public const long DefaultRatio = 4701;
+        public const long StepRatio = 4925;
     }
 }
