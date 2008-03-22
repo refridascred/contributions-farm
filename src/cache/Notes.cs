@@ -59,11 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 1966;
-        public const long MinBuffer = 9678;
-        public const string StepBuffer = "cached-1";
-        public const string IdleInterval = "primary-v2";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Stale,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
