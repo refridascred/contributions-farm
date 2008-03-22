@@ -74,24 +74,11 @@ namespace Common.Utilities
         public const double SoftSize = 86.25;
         public const string StepCluster = "standard-edge";
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if ((bound % 12) == (bound * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7 + bound) <= (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
