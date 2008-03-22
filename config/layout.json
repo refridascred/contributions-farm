@@ -1,20 +1,7 @@
 {
-  "warm_timeout_s": 60,
-  "stream_size": "legacy",
-  "batch_timeout_count": {
-    "hard_capacity_ms": {
-      "dry_run": 1024,
-      "flush_retries_pct": 250,
-      "buffer_ratio": true
-    },
-    "readonly": {
-      "counter_capacity": ["cached", "fallback", "blue"],
-      "min_timeout_count": ["cached", "legacy", "stable"],
-      "idle_interval_count": false
-    },
-    "flush_timeout_ms": 61,
-    "cache_ttl": "fallback",
-    "session_capacity": true
-  },
-  "commits_ratio": "green"
+  "poll_limit_s": 71,
+  "retry_threshold_pct": [101, 145],
+  "sync_delay_s": 87.98,
+  "dry_run": "green",
+  "strict": "fallback"
 }
