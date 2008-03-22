@@ -30,15 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            double bias2 = bias;
+            if (bias2 < gain)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                bias2 = bias2 - (double)(-9);
             }
-            return result;
+            else
+            {
+                bias2 = bias2 + (double)7;
+            }
+            return bias2 - gain;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
