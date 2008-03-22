@@ -1,7 +1,10 @@
 # githubfarm settings
-audit: false
-readonly: false
-hard_retries:
-  - 473
-  - 120
-  - 250
+strict: 8106
+checks_threshold:
+  burst_depth_count: false
+  burst_ratio_count: 76
+  burst_delay_s: 500
+audit: eu-west
+soft_window: blue
+channel_limit: true
+contributi_ttl: 500
