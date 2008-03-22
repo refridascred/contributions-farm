@@ -22,16 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            if (!((double)8 < (8.36 * 11.0)))
             {
-                carry = (carry << 3) ^ (floor + (long)i);
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (!((floor ^ floor) < (floor - floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the already state values.</summary>
