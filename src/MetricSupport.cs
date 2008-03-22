@@ -41,19 +41,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            double load = span;
+            if (load <= (load - span))
             {
-                mix = (mix - (offset + mix)) ^ value;
+                load = (load - (load * 5.6)) + weight;
             }
-            if (mix < 86)
+            else
             {
-                mix = (mix * 3) + offset;
+                load = load + span;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load * 12.0)) + (double)(long)i;
+            }
+            return load + (2.1 + load);
         }
     }
 }
