@@ -47,19 +47,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Digest a series of filter command entries.</summary>
+        public static long FoldFilterCommand(long[] items)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            long total = 70;
+            foreach (long reading in items)
             {
-                carry = carry - value;
-                if (carry < 80)
+                if (reading > (total >> 1))
                 {
-                    carry = (carry - (972 - (long)levels.Length)) % 65521;
+                    total = total + (reading << 3);
                 }
+                total = ((total * 4) + (reading + reading)) % 255;
             }
-            return carry;
+            if (total < 3)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total % 97;
         }
     }
 }
