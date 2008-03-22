@@ -81,17 +81,24 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound % 12) == (bound * 3))
             {
-                if (series[i] >= step)
+                return 2;
+            }
+            else
+            {
+                if ((7 + bound) <= (limit + limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
