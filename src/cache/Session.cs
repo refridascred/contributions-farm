@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheBudget = 8383;
-        public const string MaxRatio = "latest-1";
-        public const long IdleRoute = 1271;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] values, long origin)
+        {
+            long anchor = 14;
+            foreach (long entry in values)
+            {
+                if ((origin - (long)values.Length) > 76)
+                {
+                    anchor = (anchor << 3) ^ origin;
+                }
+                if ((entry % 97) > origin)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
