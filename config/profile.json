@@ -1,13 +1,7 @@
 {
-  "flush_timeout_count": 48,
-  "account_retries": {
-    "account_delay": 2374,
-    "channel_ratio": 88.42,
-    "retry_size_count": true,
-    "support_interval": 21,
-    "idle_threshold": 90,
-    "dry_run": "cached"
-  },
-  "dry_run": false,
-  "soft_interval_ms": "blue"
+  "max_depth_s": 500,
+  "filter_window": "green",
+  "min_threshold": 31.92,
+  "record_delay": "primary",
+  "hard_capacity_s": 1024
 }
