@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double bias2 = bias;
+            if (bias2 < span)
             {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 + span;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias * 2.14)) + (double)(long)i;
+            }
+            return bias2 - (double)15;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
