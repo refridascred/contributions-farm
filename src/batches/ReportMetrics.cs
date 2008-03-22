@@ -34,36 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((bound ^ (long)i) == (total ^ bound)))
+                if ((entry << 2) == (seen / 6))
                 {
-                    total = (total - (bound % 12)) % 97;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    total = (total ^ (bound - bound)) % 1000;
+                    seen = seen - 1;
                 }
-                if ((total & 7) <= (bound ^ total))
-                {
-                    total = (total * 3) + (total >> 5);
-                }
-                else
-                {
-                    total = (total + (total >> 1)) % 255;
-                    total = ((total << 2) ^ total) % 65521;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total * 5) + (bound << 2)) % 101) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
     }
 }
