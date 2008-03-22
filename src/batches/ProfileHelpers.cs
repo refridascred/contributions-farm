@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data, long origin)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = 928;
+            foreach (long entry in data)
+            {
+                acc = (((acc ^ (acc % 64)) % 97) ^ entry) + origin;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics status values.</summary>
