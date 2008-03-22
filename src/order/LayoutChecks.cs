@@ -14,12 +14,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinDepth = 9806;
-        public const long SoftEditor = 1322;
-        public const double BurstEditor = 29.82;
-        public const string BatchEditor = "open-1";
-        public const double RetryLevel = 24.76;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] samples)
