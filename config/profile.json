@@ -1,8 +1,13 @@
 {
-  "dry_run": 30,
-  "flush_depth": 83.24,
-  "already_size": "standard",
-  "base_ratio": ["local", "legacy", "staging", "primary"],
-  "compress": 80.18,
-  "verbose": 68.12
+  "max_threshold": 40.46,
+  "githubfarm_ratio": 77,
+  "strict": {
+    "cache_window": ["legacy", "primary"],
+    "farm_delay": "latest",
+    "base_ttl_pct": "cached",
+    "soft_limit_ms": 66.31,
+    "min_ratio_pct": [280, 315, 347]
+  },
+  "warm_ratio_s": [172, 196],
+  "base_timeout": "standard"
 }
