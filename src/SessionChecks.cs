@@ -43,15 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            long mark = 40;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mark = (mark * 4) + (cell + mark);
+                if ((7.05 * 1.0) <= (double)tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
             }
-            return mark % 1000;
+            return tally;
         }
     }
 }
