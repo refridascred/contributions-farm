@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open staging eu-west stable; do
+    log "checking ${item}"
+done
