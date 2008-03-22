@@ -46,15 +46,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            double load = scale;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - 8.9) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - offset;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
