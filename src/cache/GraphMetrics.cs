@@ -67,12 +67,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long RollEditorChannel(long limit)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
