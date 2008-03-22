@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a metrics graph reading by value.</summary>
-        public static long LocateMetricsGraphIndex(long[] items, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                state = state + (floor % 8);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
