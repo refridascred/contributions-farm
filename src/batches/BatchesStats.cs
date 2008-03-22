@@ -35,15 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series, long step)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long entry in series)
             {
-                if (!((65 * 2) >= (sample / 3)))
+                if (!((entry / 7) <= (step - step)))
                 {
                     matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
