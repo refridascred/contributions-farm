@@ -13,15 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Queued,
-            Closed,
-            Draft,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleRatio = 4937;
+        public const long MinRatio = 3709;
+        public const long HardChannel = 6185;
+        public const long MaxChannel = 2943;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] series, long offset)
