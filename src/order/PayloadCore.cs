@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the editor route series from a seed.</summary>
-        public static long DeriveEditorRoute(long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long anchor = -41;
+            foreach (long value in data)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                anchor = (anchor ^ anchor) ^ value;
             }
-            return carry;
+            if (anchor < 141)
+            {
+                anchor = anchor + (anchor / 8);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
