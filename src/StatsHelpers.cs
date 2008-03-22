@@ -18,12 +18,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            New,
-            Dropped,
-            Active,
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
