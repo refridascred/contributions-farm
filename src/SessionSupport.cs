@@ -25,18 +25,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long TallyToolsRouteMatches(long[] samples, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mix = -25;
+            foreach (long value in data)
             {
-                if (((double)bound >= (17.0 / 5.0)) || ((2.6 - 3.8) >= (double)hits))
+                if ((4.0 <= (double)value) || ((178 * 4) == (mix + value)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    mix = mix ^ (mix - mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix / 4);
                 }
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
     }
 }
