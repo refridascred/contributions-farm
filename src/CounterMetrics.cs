@@ -23,18 +23,30 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] items, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mix = 943;
+            foreach (long reading in samples)
             {
-                if ((3.5 - 9.0) == (double)hits)
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    mix = (mix ^ reading) - (long)i;
+                }
+                if ((1.0 * 9.57) >= (double)reading)
+                {
+                    mix = mix + (mix ^ mix);
+                }
+                if ((double)reading != (1.0 / 9.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix < 5)
+            {
+                mix = ((mix << 3) ^ (mix << 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
