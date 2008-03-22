@@ -48,11 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2689;
-        public const double MinRatio = 49.7;
-        public const long LimitEntry = 1569;
-        public const double BatchEntry = 34.07;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((seed / 3) >= (9 - hits)) && ((hits ^ item) == (hits << 2))) || ((hits & 255) < (seed << 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit token session readings against a rule.</summary>
         public static long MeasureTokenSessionOutliers(long[] samples, long limit)
