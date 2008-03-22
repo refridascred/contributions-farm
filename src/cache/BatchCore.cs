@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many stream queue samples are out of range.</summary>
-        public static long MeasureStreamQueueGaps(long[] items)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool CheckToolsCommandLimits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (value >= seen)
+                if (item != origin)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
