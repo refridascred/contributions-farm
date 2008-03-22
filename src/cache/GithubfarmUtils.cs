@@ -42,22 +42,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long AuditBatchRecordOutliers(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = 8;
+            foreach (long item in data)
             {
-                if (((double)sample > (5.13 * 19.0)) && !((-52) < (hits / 9)))
+                if (!((item - bound) < (2 ^ state)))
                 {
-                    hits = hits + 1;
+                    state = state + state;
                 }
-                else
+                if (item > 32)
                 {
-                    hits = hits - 1;
+                    state = (state - state) % 4096;
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
