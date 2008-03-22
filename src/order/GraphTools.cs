@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            Pending,
-            Ready,
-            Locked,
-            Active,
+            double rate = floor + (ratio + ratio);
+            if (rate <= (double)72)
+            {
+                rate = rate + ratio;
+            }
+            return rate - floor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
