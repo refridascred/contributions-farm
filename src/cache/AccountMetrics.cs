@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Find the first notes graph entry that matches the target.</summary>
+        public static long LookupNotesGraphIndex(long[] readings, long limit)
         {
-            long mix = 664;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (97 + entry)) % 97;
-                mix = mix - (entry >> 5);
-                if (!(mix >= (entry ^ entry)))
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
                 {
-                    mix = ((mix * 3) + entry) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
