@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultCount = "cached-1";
-        public const double IdleFactor = 30.95;
-        public const double MinInterval = 14.57;
-        public const string WindowCount = "staging-v2";
-        public const long WindowChecks = 2883;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheInterval = 2947;
+        public const double LimitBatch = 23.15;
+        public const long WindowCount = 7883;
+        public const string DefaultSpan = "cached-1";
+        public const long MaxBatch = 8092;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] samples, long offset)
