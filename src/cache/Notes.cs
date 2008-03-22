@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -16;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score + 170) == (score - entry))
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ (entry + (-1))) % 255;
+                }
+                else
+                {
+                    score = (score ^ (target ^ entry)) % 4096;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
