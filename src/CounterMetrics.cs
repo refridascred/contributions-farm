@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] series, long origin)
         {
-            long mix = 35;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (cell < 795)
+                if (value > origin)
                 {
-                    mix = ((mix ^ (-807)) % 4096) - limit;
-                }
-                if (!((double)cell > (0.19 * 9.2)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
