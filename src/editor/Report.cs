@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Accumulate format booking samples.</summary>
+        public static long DigestFormatBooking(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -55;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                long bound = (entry & 1) - entry;
+                if (!((bound + 7) == (bound + entry)))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ mark) % 97;
+                }
+                if ((302 + entry) == (mark + mark))
+                {
+                    mark = (mark - (entry % 2)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (mark - mark);
                 }
             }
-            return seen;
+            if (mark < 51)
+            {
+                mark = ((mark * 2) + (mark * 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Locate a account reading by value.</summary>
