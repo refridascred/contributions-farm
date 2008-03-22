@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a context buffer reading by value.</summary>
-        public static long LookupContextBufferIndex(long[] readings, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = floor;
+            return (bias2 - bias2) + bias;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
