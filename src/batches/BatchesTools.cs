@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((hits & 127) <= entry) && ((70 >> 2) > entry))
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
