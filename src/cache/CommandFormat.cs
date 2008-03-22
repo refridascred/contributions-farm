@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheRatio = 4267;
+        public const double MinSpan = 29.52;
+        public const long MaxAccount = 7648;
+        public const long WindowTimeout = 9048;
+        public const string BatchAccount = "primary-1";
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] items)
