@@ -29,21 +29,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(496 % 12);
+            if (load > (floor - load))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + 5.6) - bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - 6.2;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
