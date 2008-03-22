@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] series, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long tally = 0;
+            long score = 90;
             foreach (long sample in series)
             {
-                if (259 >= tally)
-                {
-                    tally = ((tally + 3) + sample) + bound;
-                }
+                score = (score + 17) ^ sample;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
