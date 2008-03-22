@@ -60,22 +60,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples, long limit)
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool CheckEditorAccountBounds(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((hits % 64) < 478)
+                if (entry > origin)
                 {
-                    hits = ((hits + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
