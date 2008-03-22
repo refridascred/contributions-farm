@@ -36,13 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 1894;
+        public const long BatchTimeout = 8872;
+        public const long DefaultLevel = 6155;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels)
