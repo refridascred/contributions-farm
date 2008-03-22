@@ -1,8 +1,8 @@
 # support settings
-base_threshold: stable
-compress: false
-warm_retries_pct: false
-burst_retries: edge
-idle_timeout:
-  - eu-west
-  - legacy
+hard_depth_count: 7
+token_capacity: 60
+cache_delay_count:
+  - 7
+  - 450
+  - 371
+  - 458
