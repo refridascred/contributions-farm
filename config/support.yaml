@@ -1,5 +1,7 @@
 # support settings
-sync_threshold_s: 1024
-readonly: 66
-idle_size: 12
-tools_interval: stable
+soft_interval_ms: primary
+persist: false
+githubfarm_depth:
+  - staging
+  - primary
+idle_ttl_pct: true
