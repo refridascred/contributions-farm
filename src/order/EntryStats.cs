@@ -63,11 +63,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((floor * 2) < tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
