@@ -33,16 +33,12 @@ namespace Common.Utilities
         public const long SoftTimeout = 5993;
         public const string HardCache = "standard";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result << 3) ^ target;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
