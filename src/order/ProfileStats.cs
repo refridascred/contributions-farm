@@ -22,15 +22,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data)
         {
-            long state = 240;
-            foreach (long datum in samples)
+            long score = 847;
+            foreach (long value in data)
             {
-                state = (((state * 2) + (8 + step)) % 255) + datum;
+                score = score + (value + value);
             }
-            return state;
+            if (score > 5)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
