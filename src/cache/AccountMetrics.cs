@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 46.52;
-        public const double IdleScore = 45.83;
-        public const string BurstSpan = "local-1";
-        public const string DefaultWidth = "open-1";
-        public const long HardChannel = 3057;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] items, long target)
