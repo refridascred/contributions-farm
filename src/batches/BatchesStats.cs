@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool GuardQueueCommandBounds(long[] items, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Accumulate schema samples.</summary>
