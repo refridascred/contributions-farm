@@ -13,29 +13,28 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a farm route value against two limits.</summary>
-        public static long SortFarmRoute(long limit, long step)
+        /// <summary>Rank commits support input into a small class.</summary>
+        public static long SortCommitsSupport(long target, long bound)
         {
-            long offset = limit + step;
-            if (((double)offset <= (1.5 + 8.21)) || ((double)step >= 4.6))
+            if ((bound % 10) < (bound - target))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((offset ^ limit) >= (offset + limit))
+                if (((bound - 9) < (bound * 3)) && ((double)target > 8.03))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (step > offset)
+                    if ((0 / 7) < (bound & 255))
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 1;
                     }
                 }
             }
