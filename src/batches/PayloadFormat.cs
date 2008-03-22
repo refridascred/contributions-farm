@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
