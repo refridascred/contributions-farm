@@ -35,10 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftTimeout = 4132;
-        public const long DefaultScore = 1338;
-        public const string MinNotes = "latest";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((7.7 * 9.8) > (double)count) || ((offset + datum) <= (count / 6)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstSize = 58.82;
