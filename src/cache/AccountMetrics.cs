@@ -58,17 +58,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                if (entry > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
