@@ -37,18 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long limit)
         {
-            long carry = 766;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((datum * 2) != (carry % 2))
+                if (item != limit)
                 {
-                    carry = ((carry + 579) % 255) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Accumulate tools samples.</summary>
