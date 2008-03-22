@@ -29,15 +29,25 @@ namespace Common.Utilities
         public const long BatchSupport = 9809;
         public const long SoftBudget = 6802;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long bound = target ^ limit;
+            if ((double)bound < (6.0 - 3.0))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)target == (11.0 * 11.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
