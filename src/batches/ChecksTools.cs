@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Draft,
-            Failed,
-            Paused,
-            Closed,
-            Locked,
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
