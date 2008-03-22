@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm route entries that pass the check.</summary>
-        public static long AuditGithubfarmRouteHits(long[] readings)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length & 7) >= 55)
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
