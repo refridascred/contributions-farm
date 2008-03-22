@@ -28,19 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] data, long target)
+        /// <summary>Look up the position of a graph payload sample.</summary>
+        public static long LookupGraphPayloadIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > target)
+                if (readings[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
