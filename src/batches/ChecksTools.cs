@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 5642;
         public const long StepCount = 5566;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
