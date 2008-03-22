@@ -64,18 +64,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits tools readings against a rule.</summary>
-        public static long TallyCommitsToolsMatches(long[] samples, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen << 1) == (seen - seed))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Done,
+            Retry,
+            Locked,
         }
     }
 }
