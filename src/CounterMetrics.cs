@@ -72,24 +72,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record channel input into a small class.</summary>
-        public static long SortRecordChannel(long origin, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            if ((15.0 < (double)limit) && ((double)limit < (double)(-986)))
+            long result = 2;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((16 / 4) <= limit)
+                if (!((entry * 5) != ((-9) - result)))
                 {
-                    return 0;
+                    result = result + 6;
                 }
                 else
                 {
-                    return 7;
+                    result = result + (0 * 3);
+                }
+                if ((entry % 5) != (result - 693))
+                {
+                    break;
                 }
             }
+            return result % 97;
         }
     }
 }
