@@ -53,31 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] items, long origin)
         {
-            if (((12 + seed) <= (441 * 2)) && (limit > seed))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (2 <= limit)
+                if (value < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 5) >= (65 - 52))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up cache samples.</summary>
