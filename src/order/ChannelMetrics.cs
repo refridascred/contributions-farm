@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout channel samples.</summary>
-        public static long ScoreLayoutChannel(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long acc = -837;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(cell > (cell - acc)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc + cell) % 101;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc << 2) ^ acc) % 101;
             }
-            if (acc > (-9))
-            {
-                acc = acc - (acc & 255);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
