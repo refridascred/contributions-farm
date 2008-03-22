@@ -1,12 +1,11 @@
 # githubfarm settings
-channel_depth: eu-west
-batch_timeout_pct:
-  - local
-  - cached
-  - edge
-batches_retries: 69
-schema_interval: 500
-default_retries_s:
-  metric_depth: 5615
-  compress: 88.64
-  sync_ttl_count: legacy
+retry_ttl_ms: true
+graph_window: 11.51
+support_timeout: false
+base_depth_count: 4363
+warm_interval_s:
+  - latest
+  - fallback
+  - stable
+  - staging
+soft_interval: blue
