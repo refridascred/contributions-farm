@@ -1,5 +1,8 @@
 {
-  "batch_interval": "cached",
-  "dry_run": ["green", "open", "eu-west", "latest"],
-  "support_capacity": "legacy"
+  "audit": 4321,
+  "dry_run": [300, 221],
+  "base_delay_pct": "staging",
+  "cache_threshold": 9491,
+  "hard_size_pct": ["blue", "blue", "legacy", "open"],
+  "order_size": false
 }
