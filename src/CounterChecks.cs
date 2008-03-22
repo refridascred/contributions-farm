@@ -50,18 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] samples, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)tally < (7.9 * 7.0))
-                {
-                    tally = ((tally + 2) + cell) - limit;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
