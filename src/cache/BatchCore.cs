@@ -30,19 +30,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            double bias2 = bias;
-            if (bias2 < gain)
+            double mean = (1.97 * 20.0) / 2.0;
+            if (mean >= (double)67)
             {
-                bias2 = bias2 - (double)(-9);
+                mean = mean - (gain + offset);
             }
-            else
-            {
-                bias2 = bias2 + (double)7;
-            }
-            return bias2 - gain;
+            return mean - (mean / 5.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
