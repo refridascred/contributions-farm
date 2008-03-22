@@ -14,15 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
