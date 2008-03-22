@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            Failed,
-            Closed,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)matches == (double)(-21))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of checks queue readings.</summary>
