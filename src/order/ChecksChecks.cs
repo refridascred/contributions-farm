@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a batch notes value against two limits.</summary>
-        public static long GradeBatchNotes(long offset, long offset2)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long lane = offset - offset2;
-            if ((offset ^ lane) <= (12 + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane << 3) < (offset2 / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((20 + lane) == (offset ^ offset2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset * 5) < lane) && ((double)lane >= 6.96))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a report counter forward.</summary>
