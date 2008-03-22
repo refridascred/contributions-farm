@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double IdleBudget = 93.0;
         public const string StepCommand = "cached-v2";
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
