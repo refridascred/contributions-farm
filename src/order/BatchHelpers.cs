@@ -23,24 +23,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long count = (mark + 3) - (929 ^ mark);
-                if ((7.0 * 4.94) < (double)(long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count << 3) ^ ((long)i - mark);
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((8.91 - 9.0) >= (double)(long)i) || (count > (78 / 6)))
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
