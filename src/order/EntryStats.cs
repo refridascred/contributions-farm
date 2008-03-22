@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (total & 7)) % 97;
+                if ((long)i >= (total % 12))
+                {
+                    total = ((total * 5) + (floor % 60)) % 255;
+                    total = (total - 48) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
