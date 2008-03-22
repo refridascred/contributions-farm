@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 7763;
-        public const long CacheBudget = 5807;
-        public const double BurstFactor = 26.26;
-        public const long CacheBuffer = 7068;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Failed,
+            Locked,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double BlendMetric(double gain, double span)
