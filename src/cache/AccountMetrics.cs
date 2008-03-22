@@ -61,16 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of notes already entries.</summary>
-        public static long DigestNotesAlready(long[] data)
-        {
-            long mark = -628;
-            foreach (long cell in data)
-            {
-                mark = (mark - (mark + cell)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 6336;
+        public const double DefaultLevel = 79.3;
+        public const double SoftTools = 68.16;
+        public const long BatchTools = 106;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double WindowBatch = 25.17;
