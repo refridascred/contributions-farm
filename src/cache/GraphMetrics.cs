@@ -81,9 +81,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 72.39;
-        public const double DefaultScore = 54.32;
-        public const long MaxRatio = 6094;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9056;
+        public const long MaxLevel = 8820;
+        public const long MinSpan = 8084;
     }
 }
