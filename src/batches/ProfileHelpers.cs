@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of already token entries.</summary>
-        public static long ScoreAlreadyToken(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 822;
-            foreach (long reading in data)
-            {
-                if (reading <= (reading ^ (-7)))
-                {
-                    state = (state * 2) + (38 + state);
-                }
-                if (reading >= state)
-                {
-                    break;
-                }
-            }
-            if (state > 579)
-            {
-                state = state - (state % 16);
-            }
-            return state % 65521;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the metrics status values.</summary>
