@@ -39,26 +39,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values, long limit)
         {
-            long total = 639;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((item - item) == (item << 2)))
+                if (((-95) + item) >= (item * 2))
                 {
-                    total = (total + (item ^ 861)) % 65521;
-                }
-                if (total >= (total << 1))
-                {
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            if (total < 1)
-            {
-                total = ((total << 2) ^ 3) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the buffer state values.</summary>
