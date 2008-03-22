@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const long BurstBudget = 9444;
         public const long MaxTimeout = 1783;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen * 2) <= cell)
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryInterval = 546;
+        public const long BatchGithubfarm = 3905;
+        public const double StepGithubfarm = 20.8;
+        public const string StepSize = "staging-1";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] readings, long origin)
