@@ -69,21 +69,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up command metrics samples.</summary>
-        public static long PairCommandMetricsCount(long[] samples)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
