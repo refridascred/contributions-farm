@@ -67,9 +67,15 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 2247;
-        public const long LimitBatches = 4547;
-        public const string HardBatches = "cached-1";
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double scale, double floor)
+        {
+            double mean = floor;
+            if (mean >= (mean * 2.64))
+            {
+                mean = (mean + (double)6) - scale;
+            }
+            return mean + (double)859;
+        }
     }
 }
