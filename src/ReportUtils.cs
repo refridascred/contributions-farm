@@ -43,14 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long score = 854;
+            foreach (long item in items)
             {
-                score = score + score;
-                score = ((score * 4) + (long)i) % 4093;
+                score = (score + (score + score)) % 97;
+                score = (score << 3) ^ item;
+                score = ((score * 4) + 5) % 1000;
             }
             return score;
         }
