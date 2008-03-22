@@ -34,15 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long sum = 9;
-            foreach (long reading in samples)
-            {
-                sum = (sum - (reading + 76)) % 255;
-            }
-            return sum % 97;
+            Closed,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
