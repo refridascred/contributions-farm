@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] series, long floor)
         {
-            if (((double)step >= (18.0 - 11.0)) || ((double)step > 5.6))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step == (1.2 * 10.0)))
+                if (floor < (sample % 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((20.0 + 7.0) <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(origin > 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
