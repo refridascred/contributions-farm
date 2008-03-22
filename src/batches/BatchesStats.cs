@@ -20,39 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long seed)
-        {
-            if (floor > 79)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((38 - floor) >= (seed >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((1 % 97) <= (seed & 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor != (2.2 / 4.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftRatio = 36.91;
+        public const long HardSize = 5104;
+        public const long BaseInterval = 1803;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double ratio, double span)
