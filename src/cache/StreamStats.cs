@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate2 = bias;
-            if (rate2 >= bias)
-            {
-                rate2 = (rate2 - rate2) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + bias;
-            }
-            return rate2 - rate2;
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
