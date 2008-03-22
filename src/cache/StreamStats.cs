@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long BatchSchema = 4328;
         public const long IdleSchema = 7227;
 
-        /// <summary>Validate already buffer readings against a bound.</summary>
-        public static bool CheckAlreadyBufferBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSize = 4199;
+        public const double MinPayload = 45.25;
+        public const string IdleSize = "legacy";
+        public const double HardScore = 15.3;
+        public const double RetryLevel = 94.21;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
