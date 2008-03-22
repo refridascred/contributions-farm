@@ -1,37 +1,12 @@
 # entry settings
-default_retries_count: 50
-compress:
-  - open
-  - blue
-  - edge
-support_ratio: 21
-min_capacity_ms:
-  - 330
-  - 423
-  - 390
-  - 106
-base_delay_s: primary
-warm_threshold:
-  compress:
-    warm_timeout: 7757
-    min_size_s: 58.4
-    record_ratio:
-      - green
-      - edge
-    batch_timeout: 8958
-  retry_limit_pct:
-    base_delay_pct: 1024
-    idle_interval_s: 7794
-    cache_capacity_count: true
-  max_ttl:
-    - green
-    - fallback
-  counter_ratio: false
-  verbose:
-    - 76
-    - 487
-    - 272
-  min_depth:
-    - eu-west
-    - local
-    - cached
+idle_ttl: local
+order_limit: 14.35
+strict:
+  - primary
+  - fallback
+profile_depth: latest
+readonly:
+  already_depth: 83.54
+  persist: true
+  idle_interval: 79
+retry_window_s: true
