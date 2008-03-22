@@ -78,18 +78,15 @@ namespace Common.Utilities
         public const long BaseMetric = 4236;
         public const long BurstSize = 7998;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((21 ^ (-78)) != (datum & 15)))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
