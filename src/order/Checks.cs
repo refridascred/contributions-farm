@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 2848;
         public const double StepCommits = 0.33;
 
-        /// <summary>Adjust a cache contributi reading.</summary>
-        public static double SmoothCacheContributi(double gain, double bias)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double bias2 = (gain + bias) / 3.0;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - (4.0 / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 + (gain - bias2);
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
