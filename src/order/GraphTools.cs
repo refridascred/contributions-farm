@@ -61,17 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
+        /// <summary>Fold a list of record cluster readings.</summary>
+        public static long TotalRecordCluster(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 43;
+            foreach (long item in items)
             {
-                if (samples[i] <= limit)
+                if ((double)state > (7.48 / 2.0))
                 {
-                    return (long)i;
+                    state = (state ^ item) % 255;
                 }
+                state = ((state << 3) ^ (state - item)) % 97;
             }
-            return -1;
+            if (state < 74)
+            {
+                state = (state * 2) + (739 * 3);
+            }
+            return state;
         }
     }
 }
