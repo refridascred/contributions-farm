@@ -30,23 +30,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
-        {
-            double drift = bias2 / 4.0;
-            if (drift >= (bias2 - bias2))
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift + bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)7) + (double)(long)i;
-            }
-            return drift + (double)91;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheScore = 6378;
+        public const long MinFactor = 6693;
+        public const string CacheBuffer = "open-v2";
+        public const long WindowBuffer = 400;
     }
 }
