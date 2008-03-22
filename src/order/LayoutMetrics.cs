@@ -36,19 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] samples, long origin)
+        /// <summary>Iterate the cache already series from a seed.</summary>
+        public static long DeriveCacheAlready(long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark ^ (origin * 2);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
     }
 }
