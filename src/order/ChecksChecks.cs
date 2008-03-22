@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample % 10) >= 230))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultDepth = 4101;
+        public const double MaxChecks = 96.77;
+        public const double RetryBudget = 0.73;
+        public const long WindowSpan = 4353;
 
         /// <summary>Grade a githubfarm filter value against two limits.</summary>
         public static long ClassifyGithubfarmFilter(long offset, long offset2)
