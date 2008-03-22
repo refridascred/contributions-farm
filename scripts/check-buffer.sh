@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=220
+BUFFER_LIMIT=87
 log "limit is ${BUFFER_LIMIT}"
+
+for item in legacy green; do
+    log "checking ${item}"
+done
