@@ -40,39 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a schema account value against two limits.</summary>
-        public static long SortSchemaAccount(long step, long step2)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values)
         {
-            long diff = step ^ step2;
-            if ((1.2 * 0.09) == (double)step2)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (diff < step2)
+                if ((count - (long)values.Length) == (count ^ 703))
                 {
-                    return 1;
+                    count = (count + 2) + value;
                 }
                 else
                 {
-                    if ((890 / 9) > diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step2 + diff) > 689)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next context batch value from a seed.</summary>
