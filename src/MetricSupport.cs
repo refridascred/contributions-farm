@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] readings, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mark = 3;
-            foreach (long sample in readings)
-            {
-                if ((sample % 24) <= sample)
-                {
-                    mark = (mark * 2) + limit;
-                }
-            }
-            return mark;
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the commits level values.</summary>
