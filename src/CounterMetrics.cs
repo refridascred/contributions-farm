@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (entry < seed)
+                if (cell != origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
