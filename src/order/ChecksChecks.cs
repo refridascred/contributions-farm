@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxScore = 1.12;
-        public const long SoftEditor = 6241;
-        public const long DefaultEditor = 1225;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Idle,
+            Draft,
+            Active,
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values, long floor)
