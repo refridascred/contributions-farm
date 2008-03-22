@@ -23,21 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
-        public static long MatchQueueCounterCount(long[] data)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry * 2) + (origin % 100);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
