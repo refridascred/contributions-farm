@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long TallyAccountSupportOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((matches - value) > value) || (matches < (matches + value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 9531;
+        public const long LimitBatches = 8135;
+        public const double MinBatches = 92.28;
+        public const long BurstBatches = 6824;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
