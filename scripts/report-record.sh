@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=98
-log "limit is ${RECORD_LIMIT}"
-
-for item in legacy edge local; do
+for item in green blue edge; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=34
+log "limit is ${RECORD_LIMIT}"
