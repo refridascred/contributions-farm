@@ -1,5 +1,18 @@
 {
-  "base_size_s": 54.54,
-  "cache_limit": [88, 90],
-  "metrics_capacity": 36
+  "enabled": "strict",
+  "support_window": 19.44,
+  "batch_limit_ms": {
+    "default_depth_ms": "eu-west",
+    "dry_run": [6, 165],
+    "already_retries": {
+      "report_interval": 1024,
+      "poll_limit": "fallback",
+      "soft_ratio_ms": ["open", "green", "standard", "green"],
+      "audit": true
+    },
+    "hard_threshold_s": 695
+  },
+  "dry_run": 1874,
+  "min_delay_ms": true,
+  "persist": "fallback"
 }
