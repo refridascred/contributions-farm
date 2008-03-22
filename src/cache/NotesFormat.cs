@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool CheckAccountFilterBounds(long[] levels, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
