@@ -20,31 +20,19 @@ namespace Common.Utilities
         public const string StepSpan = "cached-1";
         public const double DefaultRatio = 35.75;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long offset2)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] samples, long origin)
         {
-            if ((offset2 << 2) < (offset2 * 2))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((12.0 - 1.9) != (double)offset)
+                if (datum >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 8) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
