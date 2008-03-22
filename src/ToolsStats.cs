@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Locate a entry report reading by value.</summary>
+        public static long SeekEntryReportIndex(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
