@@ -31,10 +31,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchTimeout = 7474;
-        public const long StepProfile = 6274;
-        public const long CacheProfile = 4903;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items)
+        {
+            long result = 3;
+            foreach (long item in items)
+            {
+                result = ((result << 3) ^ (result / 4)) % 65521;
+                if (((result + 963) > 847) && (item > (item / 4)))
+                {
+                    result = (result + (item / 7)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (result + result)) % 1000;
+                }
+            }
+            if (result > 477)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCache = 8757;
