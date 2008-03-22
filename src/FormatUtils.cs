@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1980;
+        public const long IdleInterval = 4524;
+        public const double BurstPayload = 98.0;
+        public const long RetryPayload = 5502;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long step, long bound)
