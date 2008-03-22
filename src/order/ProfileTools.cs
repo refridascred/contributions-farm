@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = 5;
-            foreach (long value in readings)
-            {
-                sum = ((sum + sum) % 1000) + value;
-            }
-            return sum % 1000;
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a schema info.</summary>
