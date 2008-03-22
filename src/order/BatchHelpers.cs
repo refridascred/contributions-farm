@@ -22,13 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
