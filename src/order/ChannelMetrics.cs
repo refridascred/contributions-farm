@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Queued,
-            Stale,
+            Retry,
             Draft,
+            Failed,
             New,
         }
 
