@@ -45,22 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long DigestQueueFormat(long[] values, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = 7;
-            foreach (long sample in values)
-            {
-                if ((sample + (-282)) >= sample)
-                {
-                    mix = ((mix + (39 / 7)) % 1000) - floor;
-                }
-            }
-            if (mix < 292)
-            {
-                mix = (mix ^ (mix - mix)) % 4096;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
