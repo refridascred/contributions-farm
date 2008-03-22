@@ -36,13 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Paused,
-            Idle,
-            Closed,
-            Pending,
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
