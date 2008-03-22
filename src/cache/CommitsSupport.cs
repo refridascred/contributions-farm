@@ -44,22 +44,11 @@ namespace Common.Utilities
         public const double IdleSize = 53.21;
         public const long BatchWidth = 5484;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] readings, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches != (5.8 + 7.0))
-                {
-                    matches = ((matches + 3) + value) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
