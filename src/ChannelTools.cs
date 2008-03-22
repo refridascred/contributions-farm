@@ -20,20 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
-        {
-            long state = -422;
-            foreach (long cell in readings)
-            {
-                state = ((state * 2) + (cell + state)) % 97;
-            }
-            if (state > (-6))
-            {
-                state = state - (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 2267;
+        public const string WindowAlready = "strict-1";
+        public const string CacheDepth = "staging-edge";
+        public const string RetryAlready = "primary-1";
+        public const long StepAlready = 3231;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double scale, double offset)
