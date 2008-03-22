@@ -34,11 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 3377;
-        public const long MaxToken = 5846;
-        public const long BurstBudget = 9444;
-        public const long MaxTimeout = 1783;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Paused,
+            Closed,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long step)
