@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long BurstBuffer = 538;
         public const long CacheBudget = 1071;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
