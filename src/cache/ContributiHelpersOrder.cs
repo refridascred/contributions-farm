@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 2386;
-        public const string DefaultGithubfarm = "legacy";
-        public const string HardScore = "stable-v2";
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double weight, double bias)
+        {
+            double rate = (double)805 - (0.96 + bias);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + (bias * 7.9)) + (double)(long)i) - weight;
+            }
+            return rate + (double)9;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items, long offset)
