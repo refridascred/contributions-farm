@@ -22,11 +22,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheCount = "standard-1";
-        public const long SoftOrder = 2584;
-        public const double HardOrder = 92.86;
-        public const long LimitRatio = 8587;
-        public const double CacheSize = 97.75;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
