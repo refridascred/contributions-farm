@@ -38,11 +38,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a stats record pair into a bucket.</summary>
+        public static long RankStatsRecord(long step, long limit)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            if ((limit + step) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 64) > (limit << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - step) != (limit & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.9 * 9.2) >= (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank record channel input into a small class.</summary>
