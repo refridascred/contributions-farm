@@ -38,11 +38,39 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long span = origin - limit;
+            if (((origin % 16) <= limit) || (1 >= origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 5) >= (origin ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit + origin) > (2 % 7)) && (span > (limit + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit + limit) < (span >> 3)) && (6 >= (limit - origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
