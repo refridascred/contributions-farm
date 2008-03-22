@@ -22,11 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 9531;
-        public const long LimitBatches = 8135;
-        public const double MinBatches = 92.28;
-        public const long BurstBatches = 6824;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long bound)
+        {
+            if ((bound >= (seed + bound)) || (seed > bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.8 * 3.4) < (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed << 3) <= (bound + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + seed) > (792 & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
