@@ -66,18 +66,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] values)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio = (double)(815 + 84);
+            if (ratio <= bias)
             {
-                if (item < hits)
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio + (double)72) + span;
             }
-            return hits;
+            return ratio + (ratio - 2.5);
         }
     }
 }
