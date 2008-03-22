@@ -60,12 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Ready,
-            Locked,
-            Active,
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
