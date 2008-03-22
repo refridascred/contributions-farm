@@ -1,28 +1,17 @@
 # entry settings
-profile_window: local
-batch_size:
-  dry_run:
-    audit: 16.89
-    poll_limit_s: 87
-    soft_ttl:
-      - staging
-      - eu-west
-      - cached
-      - latest
-    flush_capacity_s: 49
-    batch_capacity_pct: 88
-    session_threshold: 2730
-  verbose: false
-  cluster_retries:
-    payload_size: false
-    burst_interval_s: staging
-    poll_capacity: local
-    default_retries_count: 16
-  sync_window_ms:
-    - edge
-    - strict
-    - standard
-audit: stable
-idle_limit_s: 3170
-sync_limit_ms: false
-warm_capacity_ms: edge
+hard_delay_s: 100
+retry_delay_ms: true
+max_timeout:
+  route_ratio: cached
+  batch_capacity_s: strict
+  cache_timeout_pct: strict
+  graph_capacity: 58.49
+  counter_size:
+    warm_timeout_s:
+      - 420
+      - 445
+      - 420
+    githubfarm_threshold: edge
+    batches_ratio: 3.77
+    base_window_s: 125
+    default_limit_pct: false
