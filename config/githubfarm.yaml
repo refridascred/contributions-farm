@@ -1,7 +1,6 @@
 # githubfarm settings
-retry_size: 60
-flush_window_count: 60
-sync_window_ms: 1024
-enabled: 1024
-dry_run: 100
-base_ttl_ms: 55.58
+audit: 60
+burst_ttl_count: 8051
+idle_limit: 7
+retry_timeout: 6854
+max_window: 6464
