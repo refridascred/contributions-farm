@@ -59,15 +59,22 @@ namespace Common.Utilities
         public const double BurstCount = 78.52;
         public const long MinRatio = 2991;
 
-        /// <summary>Derive the next window record value from a seed.</summary>
-        public static long StepWindowRecord(long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((((double)568 >= (double)datum) || ((double)origin < (17.0 + 9.72))) || ((tally & 31) < tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
