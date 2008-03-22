@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] readings, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((793 * 4) >= (16 + datum))
+                if ((double)value <= (double)seed)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
