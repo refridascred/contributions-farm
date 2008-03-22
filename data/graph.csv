@@ -1,6 +1,9 @@
-id,count,weight,ratio
-1,94.21,edge,green
-2,standard,23.45,149
-3,green,legacy,latest
-4,49.3,807,328
-5,24.14,100,standard
+id,score,level
+1,12.21,latest
+2,209,staging
+3,latest,116
+4,120,43.47
+5,cached,stable
+6,latest,eu-west
+7,2.48,18.28
+8,5.53,365
