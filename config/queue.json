@@ -1,6 +1,20 @@
 {
-  "dry_run": 1,
-  "base_delay_count": true,
-  "flush_retries": ["standard", "strict"],
-  "default_size_ms": 7272
+  "batch_timeout": "edge",
+  "default_ttl": {
+    "batches_capacity": "latest",
+    "commits_threshold": ["staging", "eu-west", "stable", "cached"],
+    "burst_ttl_ms": 39.57,
+    "sync_depth": 100,
+    "verbose": 46.5,
+    "persist": {
+      "cache_capacity_count": 70,
+      "schema_ratio": 95.52,
+      "strict": "edge",
+      "compress": true,
+      "report_ttl": 88.87
+    }
+  },
+  "sync_threshold_ms": 71.32,
+  "graph_capacity": "legacy",
+  "compress": 34
 }
