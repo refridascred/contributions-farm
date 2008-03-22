@@ -55,10 +55,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "open-1";
-        public const long MinCommand = 7004;
-        public const long DefaultCount = 5477;
-        public const long BatchInterval = 1125;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long step2)
+        {
+            long offset = step ^ step2;
+            if (step2 <= 6)
+            {
+                return 8;
+            }
+            else
+            {
+                if (80 > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step2 + step2) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((2.3 * 0.16) <= (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
