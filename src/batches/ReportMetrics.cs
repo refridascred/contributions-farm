@@ -36,10 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 68.34;
-        public const double CacheInterval = 14.24;
-        public const double BaseChecks = 38.23;
-        public const long BurstChecks = 9122;
+        /// <summary>Locate a route already reading by value.</summary>
+        public static long SeekRouteAlreadyIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
