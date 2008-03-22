@@ -41,13 +41,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate cache metrics readings against a bound.</summary>
+        public static bool GuardCacheMetricsRange(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Dropped,
-            Pending,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a payload info.</summary>
