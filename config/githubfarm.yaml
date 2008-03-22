@@ -1,27 +1,12 @@
 # githubfarm settings
-warm_delay_ms: false
-flush_interval: green
-base_retries: primary
-retry_ratio:
-  persist:
-    layout_retries: edge
-    hard_threshold_ms: true
-    default_ratio: strict
-    token_ttl: green
-    idle_delay_ms: legacy
-    poll_delay_s: true
-  default_window:
-    soft_ttl_count: 5
-    max_timeout_s: fallback
-    default_capacity_pct: eu-west
-  retry_threshold_ms: stable
-base_threshold_pct:
-  min_threshold_s: 42
-  poll_depth_pct: 60
-  cache_retries_ms: 2726
-  idle_capacity_s: 26
-  route_threshold: 7.06
-  min_threshold_pct:
-    - 185
-    - 227
-    - 1
+soft_timeout_count:
+  batch_limit_count: false
+  context_interval: open
+  readonly:
+    - 297
+    - 262
+    - 278
+    - 56
+  githubfarm_delay: 3471
+schema_interval: 65.36
+default_delay_count: 4.37
