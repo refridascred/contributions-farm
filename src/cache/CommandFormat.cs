@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] samples, long bound)
         {
-            long total = 6;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((value - value) >= value))
+                if (seen >= (datum / 4))
                 {
-                    break;
-                }
-                if ((value & 31) < (value & 255))
-                {
-                    total = (total + value) % 4096;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
