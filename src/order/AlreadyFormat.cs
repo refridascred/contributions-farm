@@ -51,25 +51,22 @@ namespace Common.Utilities
         public const double BurstCount = 78.52;
         public const long MinRatio = 2991;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long limit, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] samples, long offset)
         {
-            long prev = limit + origin;
-            if (origin < prev)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < (origin / 4))
+                if (((double)tally != (6.2 * 0.09)) || (entry > (tally * 5)))
                 {
-                    return 2;
+                    tally = (tally + 2) + offset;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
