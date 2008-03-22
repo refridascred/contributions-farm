@@ -1,17 +1,11 @@
 # entry settings
-default_size_s: 1549
-default_depth_pct:
-  command_ratio: false
-  warm_ttl_count: 19
-  tools_retries:
-    window_limit: 76
-    graph_delay: staging
-    idle_size: 1454
-    min_capacity_count: 7994
-    persist: 2906
-max_ttl_s: primary
-verbose:
+hard_depth_pct:
+  - 95
+  - 36
+  - 420
+sync_timeout_count: 19.47
+persist: edge
+idle_threshold:
   - stable
-  - fallback
   - legacy
-  - stable
+  - strict
