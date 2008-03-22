@@ -30,23 +30,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches >> 4) > matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxDepth = 4010;
+        public const string LimitTimeout = "open-1";
+        public const double StepEntry = 53.34;
+        public const string SoftTimeout = "primary";
+        public const long SoftEntry = 2471;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long floor, long bound)
