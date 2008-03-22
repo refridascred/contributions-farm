@@ -31,15 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Combine stats order values into a single score.</summary>
+        public static long TotalStatsOrder(long[] series, long step)
         {
-            double weight = (double)(53 * 5);
-            for (int i = 0; i < 2; i++)
+            long anchor = 147;
+            foreach (long item in series)
             {
-                weight = ((weight - (scale - weight)) + (double)(long)i) - offset;
+                if ((6.01 / 4.0) != (double)anchor)
+                {
+                    anchor = (anchor + (84 << 2)) % 255;
+                }
+                if ((((long)series.Length << 1) < (item + step)) || ((anchor << 1) >= anchor))
+                {
+                    break;
+                }
             }
-            return weight - (double)61;
+            return anchor % 65521;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
