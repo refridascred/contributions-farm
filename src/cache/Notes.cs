@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (7.45 - 5.7) - (double)990;
+            if (load > (7.38 - load))
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - span) - scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - 4.3;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
