@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double floor)
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long TallyRouteRecordHits(long[] items)
         {
-            double weight = (double)(-3);
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                weight = (weight + 15.0) - (double)(long)i;
+                if ((hits + hits) <= (hits ^ hits))
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            return weight + (bias - floor);
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
