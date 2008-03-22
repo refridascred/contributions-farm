@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long HardBudget = 9615;
         public const string CacheCount = "open-edge";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] == limit)
+                if (!((cell % 10) > cell))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
