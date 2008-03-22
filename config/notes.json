@@ -1,5 +1,5 @@
 {
-  "profile_ttl": 2841,
-  "min_limit_s": 7,
-  "soft_threshold_pct": 6470
+  "compress": "edge",
+  "cache_retries": false,
+  "cache_depth": 93.68
 }
