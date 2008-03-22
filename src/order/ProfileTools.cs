@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Pending,
-            Ready,
-            Stale,
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
