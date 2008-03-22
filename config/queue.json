@@ -1,8 +1,19 @@
 {
-  "readonly": 69.94,
-  "batch_size": [8, 315, 367],
-  "context_ratio": 37.61,
-  "cache_retries": "blue",
-  "record_ratio": 500,
-  "flush_ratio_s": 12
+  "farm_capacity": "edge",
+  "idle_capacity_s": "primary",
+  "burst_retries_ms": {
+    "commits_window": {
+      "min_size_pct": 71,
+      "persist": ["open", "local"],
+      "cache_size_ms": true,
+      "editor_size": 40.47,
+      "max_capacity_s": false
+    },
+    "contributi_size": "blue",
+    "default_depth": 500,
+    "hard_limit_s": 100,
+    "entry_depth": 71.15
+  },
+  "flush_delay_ms": 86,
+  "batch_threshold_count": 30.7
 }
