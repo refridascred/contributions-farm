@@ -20,20 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long score = -75;
-            foreach (long sample in items)
-            {
-                if (!((sample + sample) >= sample))
-                {
-                    score = score + (offset >> 1);
-                    score = (score << 2) ^ sample;
-                }
-                score = (score ^ (score - 5)) % 97;
-            }
-            return score % 1000;
+            Draft,
+            Failed,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a context stats.</summary>
