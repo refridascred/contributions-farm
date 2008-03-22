@@ -44,21 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (((mix * 3) + (bound * 3)) % 4096) ^ (long)i2;
-                    mix = (mix << 3) ^ bound;
-                }
-                mix = mix + (bound % 3);
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Closed,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
