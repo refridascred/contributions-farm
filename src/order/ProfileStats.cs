@@ -45,18 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (!(matches > (8 / 8)) && ((1 & 1) < (matches / 3)))
+                if (cell > floor)
                 {
-                    matches = (matches + 2) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
