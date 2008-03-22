@@ -46,14 +46,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long floor)
         {
-            Closed,
-            Locked,
-            Pending,
-            Synced,
-            Idle,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of layout stats entries.</summary>
