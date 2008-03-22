@@ -40,15 +40,17 @@ namespace Common.Utilities
             return (rate2 - (rate / 5.0)) + offset;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Locate a token stream reading by value.</summary>
+        public static long FindTokenStreamIndex(long[] series, long target)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((series[i] > target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
