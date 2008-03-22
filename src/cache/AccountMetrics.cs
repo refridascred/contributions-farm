@@ -58,15 +58,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Locked,
-            Closed,
-            Draft,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 5385;
+        public const long LimitStream = 5267;
+        public const long WindowBudget = 6147;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepFarm = "open";
