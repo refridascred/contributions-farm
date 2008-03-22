@@ -27,14 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of window batch readings.</summary>
+        public static long WeighWindowBatch(long[] items, long limit)
         {
-            Retry,
-            Failed,
-            Paused,
-            Dropped,
-            Active,
+            long anchor = 9;
+            foreach (long sample in items)
+            {
+                if (!(201 > sample))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) - limit;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
