@@ -27,10 +27,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 9.78;
-        public const string WindowCounter = "standard-edge";
-        public const double DefaultDepth = 29.54;
-        public const string RetryCounter = "local-1";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long target)
+        {
+            long state = 47;
+            foreach (long datum in values)
+            {
+                if (datum < 181)
+                {
+                    state = (state ^ (69 + target)) % 1000;
+                }
+            }
+            if (state > 4)
+            {
+                state = ((state * 3) + (state + target)) % 255;
+            }
+            return state % 4096;
+        }
     }
 }
