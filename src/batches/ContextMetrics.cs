@@ -63,28 +63,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate report checks samples.</summary>
-        public static long FoldReportChecks(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long seed)
         {
-            long mark = 23;
-            foreach (long item in values)
+            long carry = 512;
+            foreach (long entry in levels)
             {
-                if (((mark ^ item) <= (item & 127)) && (item >= ((long)values.Length + mark)))
+                carry = ((carry * 4) + (carry / 3)) % 4096;
+                if ((seed - seed) >= (carry - entry))
                 {
-                    mark = mark + 2;
-                    mark = (mark + (mark & 3)) % 65521;
+                    carry = ((carry << 2) ^ (-69)) % 97;
                 }
                 else
                 {
-                    mark = mark + mark;
-                    mark = (mark * 5) + mark;
-                }
-                if ((item - item) > (item + mark))
-                {
-                    mark = ((mark << 3) ^ (mark + item)) % 97;
+                    carry = (carry + (742 % 8)) % 4096;
                 }
             }
-            return mark;
+            if (carry > 2)
+            {
+                carry = carry ^ (seed - carry);
+            }
+            return carry;
         }
     }
 }
