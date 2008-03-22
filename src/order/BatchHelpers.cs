@@ -13,16 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the cluster filter series from a seed.</summary>
-        public static long StepClusterFilter(long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                mark = ((mark << 2) ^ bound) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Look up the position of a token already sample.</summary>
