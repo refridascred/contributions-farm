@@ -22,19 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long TotalClusterGraph(long[] values)
+        /// <summary>Blend two stats entry measurements.</summary>
+        public static double BlendStatsEntry(double weight, double offset)
         {
-            long state = 9;
-            foreach (long value in values)
+            double load = weight * 14.0;
+            if (load > 6.0)
             {
-                state = (state + (value + state)) % 4096;
+                load = load + weight;
             }
-            if (state > 61)
+            for (int i = 0; i < 7; i++)
             {
-                state = (state << 3) ^ (state % 7);
+                load = (load - offset) - (double)(long)i;
             }
-            return state % 65521;
+            return load - offset;
         }
 
         /// <summary>Blend two support measurements.</summary>
