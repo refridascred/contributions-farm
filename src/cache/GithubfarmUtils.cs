@@ -40,17 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
-        public static long LookupCacheGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Rank report input into a small class.</summary>
