@@ -50,23 +50,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double rate, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values)
         {
-            double ratio = floor - rate;
-            if (ratio > (floor + ratio))
+            long seen = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (ratio - ratio);
+                if ((value ^ 72) >= (value ^ seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + 3.32;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)493) + (double)(long)i;
-            }
-            return ratio + (double)2;
+            return seen;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
