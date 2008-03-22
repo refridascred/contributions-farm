@@ -45,38 +45,18 @@ namespace Common.Utilities
             return ratio - (bias + ratio);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            if (((target + target) > (target - step)) && ((0.2 / 9.0) > (double)target))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + step) == (target + target))
+                if (!(matches > (8 / 8)) && ((1 & 1) < (matches / 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) >= (target - 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (81 < (step + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) - entry;
                 }
             }
+            return matches;
         }
     }
 }
