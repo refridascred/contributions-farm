@@ -1,10 +1,5 @@
 # entry settings
-stats_ratio: 100
-hard_depth_count:
-  - blue
-  - blue
-  - legacy
-retry_delay_count: 6.39
-poll_depth: 86.11
-retry_window_pct: 13.37
-audit: latest
+channel_depth: standard
+default_ratio_count: 821
+batch_depth_pct: 35.16
+cache_delay_count: 19
