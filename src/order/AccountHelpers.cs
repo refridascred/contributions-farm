@@ -62,24 +62,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double bias, double offset)
-        {
-            double gain = (9.0 + bias) / 5.0;
-            if (gain < offset)
-            {
-                gain = gain - (double)449;
-            }
-            else
-            {
-                gain = gain + (double)86;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (offset / 4.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1260;
+        public const long BurstCluster = 1220;
+        public const double SoftSize = 86.25;
+        public const string StepCluster = "standard-edge";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long bound, long limit)
