@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches + matches) < (matches % 16))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue entry.</summary>
