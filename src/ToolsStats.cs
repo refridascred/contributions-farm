@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] items, long origin)
         {
-            Pending,
-            Retry,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value / 8) > (origin & 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
