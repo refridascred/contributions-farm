@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const double MinDepth = 28.32;
         public const long BaseReport = 8514;
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 43;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (limit ^ limit)) + entry;
             }
-            return hits;
+            if (mix > 34)
+            {
+                mix = (mix - (mix & 255)) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
