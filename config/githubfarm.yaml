@@ -1,6 +1,18 @@
 # githubfarm settings
-audit: 60
-burst_ttl_count: 8051
-idle_limit: 7
-retry_timeout: 6854
-max_window: 6464
+layout_depth: 9444
+sync_capacity:
+  - 285
+  - 463
+  - 134
+retry_retries_ms:
+  burst_limit: cached
+  flush_timeout_s: latest
+  poll_depth:
+    - 432
+    - 91
+    - 12
+    - 311
+  account_capacity: 29.25
+readonly: 8824
+sync_window_pct: 34.73
+dry_run: 24
