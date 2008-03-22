@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
