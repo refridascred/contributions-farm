@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double rate = scale;
-            return (rate + (double)890) + floor;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
