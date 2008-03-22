@@ -34,18 +34,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = 93;
+            foreach (long entry in levels)
             {
-                if ((double)cell < 3.4)
-                {
-                    matches = matches + 1;
-                }
+                score = (score - (26 + entry)) % 97;
+                score = (score - (entry & 1)) % 97;
             }
-            return matches;
+            if (score > 66)
+            {
+                score = score ^ (score << 2);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
