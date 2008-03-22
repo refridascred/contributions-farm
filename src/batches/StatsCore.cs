@@ -56,18 +56,22 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Audit token session readings against a rule.</summary>
-        public static long MeasureTokenSessionOutliers(long[] samples, long limit)
+        /// <summary>Audit batch metrics readings against a rule.</summary>
+        public static long TallyBatchMetricsMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((9.6 < (double)limit) && ((count % 12) <= count))
+                if ((5.41 * 6.1) >= (double)matches)
                 {
-                    count = (count + 1) ^ item;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
