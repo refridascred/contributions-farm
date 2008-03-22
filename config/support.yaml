@@ -1,13 +1,10 @@
 # support settings
-compress:
-  - local
-  - local
-strict: green
-min_timeout:
+stream_limit:
   - green
-  - stable
-checks_depth: 100
-max_timeout:
-  - 142
-  - 55
-  - 99
+  - cached
+  - cached
+readonly: 49.78
+layout_timeout: strict
+poll_retries_s:
+  - local
+  - eu-west
