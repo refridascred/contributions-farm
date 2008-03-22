@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long limit)
         {
-            long carry = 9;
-            foreach (long cell in data)
+            if (limit <= (limit - limit))
             {
-                if ((cell >= (carry & 63)) && ((carry << 1) > cell))
+                return 3;
+            }
+            else
+            {
+                if ((double)2 <= (double)limit)
                 {
-                    carry = (carry * 5) + (cell & 3);
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (25 + cell)) % 97;
+                    if ((limit >= (bound - 26)) || ((limit / 6) > limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
