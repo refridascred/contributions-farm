@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)series.Length * 4) > (7 % 3))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many account support samples are out of range.</summary>
