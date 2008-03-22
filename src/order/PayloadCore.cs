@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8538;
+        public const string CacheBuffer = "legacy-edge";
+        public const long IdleSpan = 1246;
+        public const string RetryBuffer = "alpha-1";
+        public const long MinBuffer = 9502;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] series, long target)
