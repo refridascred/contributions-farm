@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((8.76 / 6.0) != (double)sample)
+                if (item < hits)
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
