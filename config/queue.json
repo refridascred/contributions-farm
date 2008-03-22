@@ -1,7 +1,6 @@
 {
-  "hard_capacity": "stable",
-  "batch_interval_s": [446, 31],
-  "order_delay": false,
-  "base_capacity": 1025,
-  "base_timeout_count": 250
+  "dry_run": 1,
+  "base_delay_count": true,
+  "flush_retries": ["standard", "strict"],
+  "default_size_ms": 7272
 }
