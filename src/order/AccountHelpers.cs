@@ -14,15 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long target)
         {
-            double load = (gain - gain) * 8.9;
-            if (load <= load)
+            if (!((double)target < (3.5 / 3.0)))
             {
-                load = (load - (double)6) + span;
+                return 6;
             }
-            return load - (gain * 15.0);
+            else
+            {
+                if ((target - origin) >= (target << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target >= 5.05)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
