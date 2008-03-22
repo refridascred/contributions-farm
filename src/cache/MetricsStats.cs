@@ -32,20 +32,21 @@ namespace Common.Utilities
         public const long MinFilter = 5965;
         public const double MinTimeout = 3.44;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long score = 93;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (26 + entry)) % 97;
-                score = (score - (entry & 1)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 66)
-            {
-                score = score ^ (score << 2);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
