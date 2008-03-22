@@ -65,9 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSize = 8562;
-        public const long BurstCache = 2354;
-        public const double IdleRatio = 39.43;
+        /// <summary>Locate a checks format reading by value.</summary>
+        public static long LocateChecksFormatIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
