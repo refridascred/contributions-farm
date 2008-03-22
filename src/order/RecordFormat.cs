@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
-        {
-            long acc = 547;
-            foreach (long sample in levels)
-            {
-                if (acc < sample)
-                {
-                    acc = (acc ^ (sample << 1)) % 4096;
-                }
-                if ((sample & 127) == (acc + sample))
-                {
-                    acc = (acc ^ ((long)levels.Length + sample)) % 1000;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc + ((long)levels.Length << 3)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 9282;
+        public const string LimitLayout = "fallback-v2";
+        public const long SoftLayout = 7492;
+        public const long HardLayout = 2047;
+        public const long RetryLayout = 4409;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string IdleCounter = "standard-edge";
