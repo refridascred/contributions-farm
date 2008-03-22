@@ -37,12 +37,14 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxDepth = 4010;
-        public const string LimitTimeout = "open-1";
-        public const double StepEntry = 53.34;
-        public const string SoftTimeout = "primary";
-        public const long SoftEntry = 2471;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
