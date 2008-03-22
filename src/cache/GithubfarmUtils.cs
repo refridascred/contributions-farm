@@ -30,23 +30,18 @@ namespace Common.Utilities
         public const double BaseBudget = 55.91;
         public const long BatchSupport = 570;
 
-        /// <summary>Digest a series of filter command entries.</summary>
-        public static long FoldFilterCommand(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings, long step)
         {
-            long total = 70;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (reading > (total >> 1))
+                if ((double)count < 9.0)
                 {
-                    total = total + (reading << 3);
+                    count = ((count + 3) + sample) + step;
                 }
-                total = ((total * 4) + (reading + reading)) % 255;
             }
-            if (total < 3)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total % 97;
+            return count;
         }
     }
 }
