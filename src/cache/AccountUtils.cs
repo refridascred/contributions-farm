@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Blend two context notes measurements.</summary>
+        public static double ProjectContextNotes(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = weight / 8.0;
+            if (load >= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (double)461;
             }
-            return hits;
+            else
+            {
+                load = load + (weight + weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (0.19 - load)) - (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a tools record.</summary>
