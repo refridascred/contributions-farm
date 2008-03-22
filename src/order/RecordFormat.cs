@@ -29,12 +29,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
