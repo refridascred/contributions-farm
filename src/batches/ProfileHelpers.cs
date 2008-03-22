@@ -41,17 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] levels, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
