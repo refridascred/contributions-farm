@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate order stats samples.</summary>
+        public static long FoldOrderStats(long[] samples, long limit)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = 28;
+            foreach (long sample in samples)
+            {
+                if ((anchor << 2) > 883)
+                {
+                    anchor = (((anchor - anchor) % 1000) - sample) - limit;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
