@@ -19,10 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxFactor = 85.2;
-        public const string WindowGraph = "cached-edge";
-        public const long BaseGraph = 453;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long origin)
+        {
+            long score = -424;
+            foreach (long datum in levels)
+            {
+                if ((score + 249) >= (score + score))
+                {
+                    continue;
+                }
+                if ((score > datum) || ((double)score != (4.0 / 3.0)))
+                {
+                    score = ((score ^ (score * 2)) % 101) + origin;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 4096;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
