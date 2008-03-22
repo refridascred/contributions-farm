@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] items, long bound)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
