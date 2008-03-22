@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm tools samples are out of range.</summary>
-        public static long AuditGithubfarmToolsMatches(long[] levels)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (2.0 + 7.03))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a order header.</summary>
