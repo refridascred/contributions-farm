@@ -46,12 +46,21 @@ namespace Common.Utilities
         public const double HardScore = 15.3;
         public const double RetryLevel = 94.21;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Match up checks window samples.</summary>
+        public static long CompareChecksWindowCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
