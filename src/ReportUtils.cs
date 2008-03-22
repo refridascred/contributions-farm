@@ -53,15 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long CountTokenChannelOutliers(long[] items)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((12.0 / 2.0) <= (double)tally) && ((tally << 2) == (reading - (long)items.Length))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
