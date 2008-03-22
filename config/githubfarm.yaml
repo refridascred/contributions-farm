@@ -1,12 +1,11 @@
 # githubfarm settings
-soft_timeout_count:
-  batch_limit_count: false
-  context_interval: open
-  readonly:
-    - 297
-    - 262
-    - 278
-    - 56
-  githubfarm_delay: 3471
-schema_interval: 65.36
-default_delay_count: 4.37
+persist: 61
+warm_size:
+  - edge
+  - open
+strict: 250
+flush_depth_ms: 7829
+default_threshold_s:
+  - primary
+  - strict
+warm_capacity_pct: 8506
