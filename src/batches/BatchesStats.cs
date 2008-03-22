@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            long mark = 0;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (((mark ^ mark) % 4096) + entry) + limit;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (mark < 4)
-            {
-                mark = mark ^ (long)values.Length;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Measure how many entry format samples are out of range.</summary>
