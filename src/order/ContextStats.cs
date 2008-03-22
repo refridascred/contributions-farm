@@ -48,17 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] < bound)
+                if ((double)cell > (double)687)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
