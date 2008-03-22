@@ -52,18 +52,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] readings, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step + matches) < (value + matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
