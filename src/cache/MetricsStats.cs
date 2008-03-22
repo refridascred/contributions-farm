@@ -36,10 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1894;
-        public const long BatchTimeout = 8872;
-        public const long DefaultLevel = 6155;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels)
