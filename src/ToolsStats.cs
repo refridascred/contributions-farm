@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = (total - (total + 29)) % 97;
-                total = (total + (origin >> 3)) % 4096;
-                total = total ^ origin;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((entry - hits) <= (entry >> 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
