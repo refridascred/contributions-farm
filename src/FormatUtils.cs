@@ -46,12 +46,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "legacy";
+        public const long DefaultEditor = 7986;
+        public const long StepEditor = 8879;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] levels, long seed)
