@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long score = -82;
-            foreach (long sample in items)
-            {
-                if (!((sample + score) != (43 + (long)items.Length)))
-                {
-                    score = ((score * 4) + (score & 3)) % 255;
-                }
-                if ((sample >= (long)items.Length) && ((score % 5) <= (sample + 997)))
-                {
-                    score = ((score << 3) ^ (7 & 7)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (sample - sample)) % 4096;
-                }
-            }
-            if (score < 28)
-            {
-                score = (score << 2) ^ (66 ^ score);
-            }
-            return score;
+            Active,
+            Idle,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Match up entry samples.</summary>
