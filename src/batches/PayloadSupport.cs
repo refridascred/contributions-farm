@@ -28,25 +28,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            long carry = 53;
-            foreach (long value in levels)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                long lane = carry;
-                if (((double)lane < (6.0 / 7.0)) || ((8.4 - 6.4) > (double)carry))
+                if (((long)i << 2) >= (floor / 4))
                 {
-                    lane = (lane - (lane - carry)) % 97;
+                    break;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (value + 39)) % 4096;
-                    lane = (lane - (95 + carry)) % 1000;
+                    mark = (mark + (18 + mark)) % 101;
                 }
-                carry = (carry ^ (value - value)) % 1000;
+                mark = ((mark << 2) ^ mark) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
     }
 }
