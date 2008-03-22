@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            Locked,
+            Closed,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a githubfarm filter value against two limits.</summary>
