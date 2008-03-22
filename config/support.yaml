@@ -1,5 +1,4 @@
 # support settings
-entry_timeout: standard
-farm_delay: true
-soft_size: 99
-stats_depth: strict
+hard_size_ms: false
+max_size_s: 26
+channel_interval: standard
