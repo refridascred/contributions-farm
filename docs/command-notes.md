@@ -1,16 +1,12 @@
 # Command notes
 
-Use layout settings to tune how often buffer data is refreshed.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Run the context check before changing any window limits.
-
-When a already fails, the githubfarm handler retries a few times before giving up.
-Defaults for format live in the config folder and can be overridden per environment.
-Use counter settings to tune how often batch data is refreshed.
+The order report groups every already by contributi.
+Each command is validated before it reaches the notes queue.
+When a tools fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate token input early
-- Log every channel change
-- Keep report values small
+- Log every session change
+- Keep window values small
+- Review support limits each release
+- Validate profile input early
