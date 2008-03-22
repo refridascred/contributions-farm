@@ -27,18 +27,15 @@ namespace Common.Utilities
             return ratio - (bias - 4.0);
         }
 
-        /// <summary>Count the checks channel entries that pass the check.</summary>
-        public static long AuditChecksChannelGaps(long[] levels, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)count <= 6.3))
-                {
-                    count = ((count + 2) - value) + offset;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
