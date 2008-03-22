@@ -56,17 +56,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                if (count >= floor)
                 {
-                    return (long)i;
+                    count = (count + 1) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
