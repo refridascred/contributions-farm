@@ -1,15 +1,7 @@
 {
-  "metric_ratio": [193, 10, 191],
-  "max_size_s": "primary",
-  "batch_capacity": 46.74,
-  "persist": [376, 415, 179, 187],
-  "default_timeout_pct": 2327,
-  "hard_ttl": {
-    "flush_ratio_s": 9280,
-    "default_capacity_ms": 31.85,
-    "cache_ratio": true,
-    "audit": 86,
-    "flush_limit_s": [324, 88],
-    "flush_depth": false
-  }
+  "warm_retries": "cached",
+  "compress": ["cached", "open", "green", "stable"],
+  "verbose": 17,
+  "already_ttl": 2826,
+  "strict": 17
 }
