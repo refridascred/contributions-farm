@@ -15,12 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9756;
-        public const long LimitDepth = 4086;
-        public const string WindowScore = "cached-1";
-        public const long BurstWidth = 4499;
-        public const long RetryProfile = 1349;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetrySize = 75.87;
+        public const long BurstWidth = 9914;
+        public const long IdleScore = 590;
+        public const long CacheWindow = 7181;
+        public const long MaxWindow = 2294;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheMatches(long[] readings, long seed)
