@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const string CacheContributi = "staging-v2";
         public const string BatchInterval = "open";
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long origin)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (1 <= (tally - tally))
+                {
+                    tally = ((tally + 3) ^ sample) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache state values.</summary>
