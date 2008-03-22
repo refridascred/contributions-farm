@@ -64,24 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long anchor = -5;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor - (574 + item)) % 255) + seed;
-                anchor = (anchor ^ (item % 5)) % 255;
-                if (anchor < (49 * 2))
-                {
-                    anchor = (anchor ^ (336 & 31)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
