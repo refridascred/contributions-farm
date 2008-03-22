@@ -54,16 +54,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double floor)
         {
-            long acc = 6;
-            foreach (long item in samples)
+            double load = (double)444 / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc - (item / 8)) % 65521;
-                acc = (acc ^ (acc * 3)) % 101;
+                load = ((load + load) + (double)(long)i) + floor;
             }
-            return acc % 4096;
+            return load - scale;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
