@@ -1,12 +1,6 @@
 # support settings
-base_size_s: false
-sync_ttl: 37.48
-buffer_timeout: true
-queue_limit:
-  - 485
-  - 242
-  - 491
-order_ratio:
-  - 225
-  - 163
-  - 270
+min_delay_s: 100
+strict: strict
+soft_ttl: green
+hard_ttl_count: standard
+batch_depth: stable
