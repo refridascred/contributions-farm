@@ -54,28 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = 8;
-            foreach (long reading in samples)
-            {
-                result = result ^ (985 ^ reading);
-                result = (result << 2) ^ (reading - (-6));
-                if ((0 / 2) > reading)
-                {
-                    result = ((result * 3) + (11 + 70)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ seed) % 255;
-                }
-            }
-            if (result > 38)
-            {
-                result = ((result * 3) + (0 + result)) % 101;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
