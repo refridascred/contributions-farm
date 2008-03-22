@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double offset)
         {
-            if ((2 + step) == (7 & 1))
+            double ratio = weight + weight;
+            if (ratio > offset)
             {
-                return 2;
+                ratio = ratio + (offset * 2.2);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound & 255) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound - 240) <= (step - bound)) && ((4.0 * 7.82) >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = (ratio + weight) + (double)(long)i;
             }
+            return ratio + (weight + 16.0);
         }
 
         /// <summary>Hold a queue info.</summary>
