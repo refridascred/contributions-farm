@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5529;
-        public const long DefaultQueue = 7424;
-        public const long MinQueue = 4555;
-        public const double MaxQueue = 98.03;
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long TallyReportOrderGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((9.61 / 3.0) < (double)hits) || (((hits + 713) >= hits) || ((9.9 * 1.1) != (double)hits)))
+                {
+                    hits = ((hits + 3) - item) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long floor)
