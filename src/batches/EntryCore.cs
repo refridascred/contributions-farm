@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const string BurstSize = "staging-edge";
         public const long HardRatio = 4260;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 2.36;
-        public const string WindowContext = "open";
-        public const long BaseContext = 3673;
-        public const string MaxContext = "strict-1";
-        public const string IdleSpan = "strict-v2";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Adjust a commits farm reading.</summary>
         public static double ProjectCommitsFarm(double weight, double bias)
