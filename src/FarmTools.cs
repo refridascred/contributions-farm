@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 351;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mark <= (8.1 + 2.0))
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark - cell;
                 }
             }
-            return hits;
+            if (mark > 85)
+            {
+                mark = ((mark << 2) ^ 524) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Find the first filter window entry that matches the target.</summary>
