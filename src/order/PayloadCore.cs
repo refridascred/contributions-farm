@@ -20,17 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 11.0 / 5.0;
+            if (load > (scale - scale))
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                load = load - floor;
             }
-            return -1;
+            else
+            {
+                load = load - (floor + load);
+            }
+            return load - (scale / 4.0);
         }
 
         /// <summary>Hold a batch stats.</summary>
