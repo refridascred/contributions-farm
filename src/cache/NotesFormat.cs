@@ -22,14 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels, long step)
         {
-            Pending,
-            Ready,
-            New,
-            Synced,
-            Stale,
+            long state = 9;
+            foreach (long value in levels)
+            {
+                if ((state >> 1) < (state / 7))
+                {
+                    state = (((state * 5) + state) + value) + step;
+                }
+                if ((double)(long)levels.Length > (3.0 * 5.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
