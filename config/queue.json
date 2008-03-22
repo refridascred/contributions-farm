@@ -1,7 +1,7 @@
 {
-  "persist": 60,
-  "cache_interval": "eu-west",
-  "flush_depth": 1855,
-  "poll_ttl_s": "stable",
-  "batch_capacity_ms": 43.91
+  "hard_limit_count": 90,
+  "dry_run": 46.75,
+  "account_capacity": "eu-west",
+  "poll_capacity": false,
+  "batches_limit": "green"
 }
