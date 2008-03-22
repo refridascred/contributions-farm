@@ -19,21 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
-        {
-            long anchor = 648;
-            foreach (long cell in series)
-            {
-                anchor = (anchor << 2) ^ (489 + 36);
-                anchor = anchor - (cell << 1);
-                if ((3.0 / 3.0) > (double)cell)
-                {
-                    anchor = (anchor + (anchor ^ 14)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxFactor = 85.2;
+        public const string WindowGraph = "cached-edge";
+        public const long BaseGraph = 453;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] data)
