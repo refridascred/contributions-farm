@@ -13,19 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
