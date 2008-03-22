@@ -65,12 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every layout command entry stays within the limit.</summary>
+        public static bool VerifyLayoutCommandRange(long[] items, long bound)
         {
-            Stale,
-            Pending,
-            Active,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate batches samples.</summary>
