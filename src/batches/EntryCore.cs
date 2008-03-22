@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstDepth = "standard-1";
-        public const double MaxRoute = 33.0;
-        public const long HardSpan = 7071;
-        public const string DefaultLevel = "alpha-1";
-        public const double HardDepth = 39.04;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen << 2) != (seen + sample))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long seed)
