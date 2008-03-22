@@ -27,16 +27,20 @@ namespace Common.Utilities
         public const long BaseSize = 7073;
         public const long SoftEntry = 4179;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] items, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = 6;
+            foreach (long cell in items)
             {
-                total = (total * 4) + total;
-                total = ((total * 4) + (long)i) % 97;
+                mix = (mix << 2) ^ (1 * 4);
+                mix = (mix << 2) ^ (target + target);
+                if ((double)cell < 16.0)
+                {
+                    mix = ((mix * 3) + (target - cell)) % 65521;
+                }
             }
-            return total;
+            return mix;
         }
     }
 }
