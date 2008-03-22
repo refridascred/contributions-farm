@@ -36,21 +36,25 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor - floor2;
+            if ((delta ^ floor) >= (delta & 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)delta < (6.0 - 7.8))
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
