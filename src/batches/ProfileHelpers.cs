@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long acc = 928;
-            foreach (long entry in data)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (((acc ^ (acc % 64)) % 97) ^ entry) + origin;
+                carry = ((carry * 2) + (bound % 64)) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Describe the metrics status values.</summary>
