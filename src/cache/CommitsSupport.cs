@@ -71,10 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftRatio = 31.16;
-        public const double IdleSize = 53.21;
-        public const long BatchWidth = 5484;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
