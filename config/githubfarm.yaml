@@ -1,10 +1,9 @@
 # githubfarm settings
-burst_capacity: true
-max_ttl: staging
-queue_capacity: false
-warm_retries:
-  verbose: strict
-  route_capacity:
-    - eu-west
-    - green
-  enabled: eu-west
+contributi_size:
+  channel_timeout: fallback
+  record_delay: true
+  sync_timeout_pct: 17
+sync_delay: false
+warm_window_s: fallback
+compress: edge
+checks_threshold: 666
