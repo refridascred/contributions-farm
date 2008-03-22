@@ -45,26 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] data)
         {
-            long result = 39;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((41 - result) != (result % 97))
+                if (!((matches - item) > (418 / 2)))
                 {
-                    result = (result << 2) ^ 111;
-                }
-                else
-                {
-                    result = (result + (sample ^ 217)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (result > (-261))
-            {
-                result = result + result;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
