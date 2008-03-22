@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a report metrics reading.</summary>
