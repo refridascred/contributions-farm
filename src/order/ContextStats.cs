@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5309;
+        public const long HardTimeout = 1746;
+        public const double MinSize = 14.38;
+        public const long BurstCommand = 5996;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 9214;
