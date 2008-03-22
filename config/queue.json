@@ -1,7 +1,8 @@
 {
-  "window_ttl": 769,
-  "min_threshold_ms": [149, 289, 472, 120],
-  "min_delay_pct": 92,
-  "support_depth": false,
-  "poll_interval_pct": 250
+  "readonly": 69.94,
+  "batch_size": [8, 315, 367],
+  "context_ratio": 37.61,
+  "cache_retries": "blue",
+  "record_ratio": 500,
+  "flush_ratio_s": 12
 }
