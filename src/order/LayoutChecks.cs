@@ -43,19 +43,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Combine stream counter values into a single score.</summary>
+        public static long ScoreStreamCounter(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long score = 3;
+            foreach (long entry in levels)
             {
-                if (!((double)result <= (0.62 - 1.0)))
+                if ((14.0 - 9.3) >= (double)score)
                 {
-                    result = result + ((long)i + result);
+                    score = ((score * 2) + (score * 5)) % 1000;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                else
+                {
+                    score = ((score * 4) + entry) % 255;
+                }
+                if (((6.0 + 2.1) == (double)entry) || ((score * 3) == (score / 8)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (score < 834)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two layout batch measurements.</summary>
