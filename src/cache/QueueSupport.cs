@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double WindowAlready = 37.5;
         public const string BurstAlready = "stable-1";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Active,
-            Idle,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinRatio = 7036;
+        public const string StepFormat = "fallback-edge";
+        public const long DefaultFormat = 4324;
+        public const long BaseFormat = 9661;
+        public const string WindowFactor = "cached-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSupport = 7113;
