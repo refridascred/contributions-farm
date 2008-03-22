@@ -63,21 +63,14 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Synced,
+            Ready,
+            Idle,
         }
     }
 }
