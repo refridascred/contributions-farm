@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((double)count == (7.35 + 3.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 1) + value) - floor;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a graph reading.</summary>
