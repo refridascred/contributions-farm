@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up cache tools samples.</summary>
-        public static long OverlapCacheToolsCount(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 39;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((acc << 1) >= (777 << 2)))
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (((acc ^ (954 ^ acc)) % 4096) ^ sample) + floor;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ ((-24) >> 2);
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
