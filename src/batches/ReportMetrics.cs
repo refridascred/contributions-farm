@@ -22,23 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double bias)
+        /// <summary>Accumulate githubfarm commits samples.</summary>
+        public static long ScoreGithubfarmCommits(long[] data)
         {
-            double mean = (bias - scale) / 4.0;
-            if (mean <= (scale / 4.0))
+            long mix = 2;
+            foreach (long sample in data)
             {
-                mean = mean - (double)(-59);
+                if ((sample > (mix + sample)) && ((sample & 63) == (sample & 127)))
+                {
+                    mix = (mix + (sample + mix)) % 101;
+                }
+                if ((sample % 97) == (mix ^ mix))
+                {
+                    mix = (mix + (30 & 63)) % 65521;
+                }
             }
-            else
-            {
-                mean = mean - 8.11;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (scale - bias)) + (double)(long)i;
-            }
-            return mean + (8.0 / 9.0);
+            return mix;
         }
 
         /// <summary>Describe the stats level values.</summary>
