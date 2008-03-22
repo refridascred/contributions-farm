@@ -19,12 +19,22 @@ namespace Common.Utilities
         public const double IdleCommits = 19.31;
         public const long LimitScore = 9491;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryFactor = 1293;
-        public const long DefaultSize = 7626;
-        public const long StepEntry = 9079;
-        public const long MinEntry = 7686;
-        public const double DefaultInterval = 16.79;
+        /// <summary>Count support farm pairs that satisfy a relation.</summary>
+        public static long MatchSupportFarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long origin)
