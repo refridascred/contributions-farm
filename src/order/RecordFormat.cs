@@ -58,24 +58,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Fold a list of farm window readings.</summary>
+        public static long CombineFarmWindow(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long mark = 722;
+            foreach (long cell in values)
             {
-                if (((long)i * 4) != ((long)i ^ (long)i))
-                {
-                    long tally = origin;
-                    carry = carry ^ (tally + 256);
-                }
-                else
-                {
-                    carry = (carry + 8) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                mark = (mark + cell) % 255;
+                mark = (mark - cell) % 101;
             }
-            return carry;
+            return mark;
         }
     }
 }
