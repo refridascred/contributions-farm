@@ -41,19 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record counter entry stays within the limit.</summary>
-        public static bool VerifyRecordCounterRange(long[] samples, long step)
+        /// <summary>Audit schema filter readings against a rule.</summary>
+        public static long TallySchemaFilterHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (sample < step)
+                if ((seen > (item + item)) && ((double)seen <= 6.91))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
