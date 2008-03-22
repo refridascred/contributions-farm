@@ -39,19 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch graph readings against a bound.</summary>
-        public static bool ValidateBatchGraphRange(long[] items, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long origin, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            if ((offset + 6) < (offset + origin))
             {
-                if (cell <= limit)
+                return 1;
+            }
+            else
+            {
+                if (((71 % 97) > (origin * 5)) || ((offset & 63) > (78 + offset)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
