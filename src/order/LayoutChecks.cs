@@ -69,18 +69,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = -9;
+            foreach (long datum in values)
             {
-                if ((seed ^ seed) <= (item + 907))
+                if (((-92) / 5) <= (total >> 5))
                 {
-                    matches = matches + 2;
+                    total = (total << 2) ^ (datum % 64);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (datum << 1)) % 4096;
+                }
+                total = (total + ((-7) - 879)) % 1000;
+                if (3.0 > (double)total)
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a already header.</summary>
