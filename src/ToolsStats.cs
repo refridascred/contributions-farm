@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mix = 482;
-            foreach (long entry in data)
-            {
-                if (9 >= (mix ^ entry))
-                {
-                    mix = mix + (entry / 9);
-                }
-            }
-            return mix % 65521;
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
