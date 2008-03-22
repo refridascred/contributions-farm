@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchFactor = 1171;
+        public const long CacheFactor = 4507;
+        public const long HardBudget = 8656;
 
         /// <summary>Measure how many report order samples are out of range.</summary>
         public static long TallyReportOrderGaps(long[] readings, long seed)
