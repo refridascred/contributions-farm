@@ -23,11 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSpan = 8567;
-        public const double MinContext = 96.06;
-        public const long DefaultContext = 2325;
-        public const string BatchRatio = "staging-edge";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] readings)
