@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = bias;
+            if (rate <= (double)7)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - bias) - weight;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)2) + (double)(long)i;
+            }
+            return rate - (double)61;
         }
 
         /// <summary>Measure how many account support samples are out of range.</summary>
