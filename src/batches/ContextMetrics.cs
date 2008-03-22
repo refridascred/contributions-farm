@@ -45,21 +45,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
