@@ -24,15 +24,15 @@ namespace Common.Utilities
             return ratio - (bias * 10.0);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long AuditFormatBatchMatches(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long entry in levels)
             {
-                if ((double)matches >= (11.0 - 2.61))
+                if ((matches - entry) == (seed % 3))
                 {
-                    matches = (matches + 1) + cell;
+                    matches = matches + 2;
                 }
             }
             return matches;
