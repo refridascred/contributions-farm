@@ -23,11 +23,9 @@ namespace Common.Utilities
             return mean + (double)30;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 7113;
+        public const long HardSupport = 8937;
+        public const long RetryCount = 973;
     }
 }
