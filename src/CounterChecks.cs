@@ -14,20 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix << 3) ^ (bound - 80)) % 255;
-                    mix = mix + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
