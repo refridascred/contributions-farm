@@ -12,26 +12,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a channel session counter forward.</summary>
-        public static long StepChannelSession(long limit)
+        /// <summary>Accumulate layout channel samples.</summary>
+        public static long ScoreLayoutChannel(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long acc = -837;
+            foreach (long cell in items)
             {
-                if ((12.0 / 3.0) == (double)(long)i)
+                if (!(cell > (cell - acc)))
                 {
-                    mark = ((mark << 3) ^ ((long)i + limit)) % 1000;
-                    break;
+                    acc = (acc + cell) % 101;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (mark + ((long)i2 >> 2)) % 101;
-                    mark = (mark << 3) ^ (2 + limit);
-                }
-                mark = ((mark << 3) ^ limit) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
+                acc = ((acc << 2) ^ acc) % 101;
             }
-            return mark;
+            if (acc > (-9))
+            {
+                acc = acc - (acc & 255);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
