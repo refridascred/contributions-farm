@@ -68,17 +68,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "open";
+        public const string CacheScore = "open-v2";
+        public const double BaseFarm = 41.19;
     }
 }
