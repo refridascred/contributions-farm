@@ -28,11 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
