@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] values, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (cell < origin)
+                if (!(((41 - 5) >= (reading + (-8))) && (reading < (step & 31))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine filter notes values into a single score.</summary>
