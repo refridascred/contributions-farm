@@ -1,6 +1,6 @@
 {
-  "sync_ttl_count": 72,
-  "cache_window_pct": 100,
-  "soft_size_s": [16, 2, 84],
-  "commits_size": 5634
+  "base_limit_count": 16,
+  "default_window": [162, 98, 138, 143],
+  "soft_ratio_s": true,
+  "idle_retries_ms": ["open", "green", "blue"]
 }
