@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long limit)
         {
-            long sum = 31;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((value - offset) > (sum ^ sum)) && ((double)offset == (double)sum))
+                if (entry <= limit)
                 {
-                    sum = sum ^ (sum + 0);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 70)
-            {
-                sum = (sum ^ (sum ^ sum)) % 1000;
-            }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
