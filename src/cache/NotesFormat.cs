@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] data, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (94 <= tally)
-                {
-                    tally = ((tally + 2) + value) - offset;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
