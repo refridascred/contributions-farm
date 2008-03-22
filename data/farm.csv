@@ -1,10 +1,7 @@
-id,region,token
-1,staging,988
-2,348,cached
-3,86.38,416
-4,fallback,legacy
-5,34.32,eu-west
-6,26.73,61
-7,38.81,421
-8,348,40.25
-9,761,228
+id,count,rank,level
+1,edge,26.49,712
+2,113,cached,401
+3,open,8.19,49.0
+4,cached,edge,612
+5,41.62,latest,cached
+6,19,222,267
