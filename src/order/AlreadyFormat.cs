@@ -52,17 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a graph schema sample.</summary>
-        public static long LookupGraphSchemaIndex(long[] values, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
