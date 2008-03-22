@@ -35,28 +35,11 @@ namespace Common.Utilities
             return load - 4.3;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (floor < (floor ^ floor))
-                {
-                    score = (score * 3) + (floor >> 1);
-                    score = ((score * 4) + (3 >> 3)) % 4096;
-                }
-                else
-                {
-                    score = (score - (score * 5)) % 65521;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score ^ (score ^ floor)) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
