@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
