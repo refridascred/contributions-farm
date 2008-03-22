@@ -37,13 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Idle,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftDepth = 470;
+        public const long MaxCommand = 3544;
+        public const double WindowCommand = 0.08;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long seed)
