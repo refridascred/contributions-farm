@@ -36,18 +36,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long CountEntryStatsHits(long[] data, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)hits != (double)target)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Active,
+            Closed,
         }
     }
 }
