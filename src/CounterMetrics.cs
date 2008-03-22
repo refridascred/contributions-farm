@@ -46,23 +46,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((double)score < 2.9) && ((double)score == (7.7 * 1.08)))
+                if (((long)readings.Length / 7) >= (reading + reading))
                 {
-                    score = (score - score) % 255;
+                    matches = matches + 1;
                 }
-                if (((origin >> 4) != (origin >> 3)) || ((score / 7) <= score))
+                else
                 {
-                    score = (score ^ (score >> 5)) % 101;
+                    matches = matches - 1;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
     }
 }
