@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Measure how many entry format samples are out of range.</summary>
