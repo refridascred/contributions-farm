@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const long IdleRatio = 756;
         public const double BatchLevel = 36.49;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a token snapshot.</summary>
