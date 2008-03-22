@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 4619;
-        public const double IdleNotes = 98.67;
-        public const double MaxTimeout = 42.4;
-        public const string BaseFactor = "standard-1";
-        public const long DefaultNotes = 6424;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public double Level { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
