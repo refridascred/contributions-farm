@@ -48,22 +48,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the cache buffer entries that pass the check.</summary>
-        public static long AuditCacheBufferGaps(long[] series)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) >= tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
