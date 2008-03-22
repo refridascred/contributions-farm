@@ -20,24 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long target)
+        /// <summary>Adjust a checks support reading.</summary>
+        public static double ProjectChecksSupport(double gain, double offset)
         {
-            if (((96 % 97) > target) && ((1.3 + 12.0) == (double)bound))
+            double scale = (offset * 2.0) + (offset + 4.2);
+            if (scale >= (3.0 * 1.0))
             {
-                return 4;
+                scale = scale - (double)797;
             }
             else
             {
-                if ((double)target > (4.0 + 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = scale + 1.0;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (gain - 2.89)) + (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
