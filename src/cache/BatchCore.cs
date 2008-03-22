@@ -46,13 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Closed,
-            Paused,
-            Retry,
-            Queued,
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
