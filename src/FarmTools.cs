@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long MeasureLayoutSchemaMatches(long[] readings, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
             long tally = 0;
-            foreach (long value in readings)
+            foreach (long datum in items)
             {
-                if (!((9.9 + 6.59) < (double)tally))
+                if ((tally - tally) > (datum + datum))
                 {
-                    tally = ((tally + 2) + value) + origin;
+                    tally = tally + 1;
                 }
             }
             return tally;
