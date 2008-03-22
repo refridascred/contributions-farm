@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Classify a queue command pair into a bucket.</summary>
+        public static long ClassifyQueueCommand(long origin, long floor)
         {
-            double load = bias;
-            return (load + load) + offset;
+            if ((double)origin <= (double)566)
+            {
+                return 4;
+            }
+            else
+            {
+                if (79 > (510 ^ floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin << 2) == (origin - floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph layout value.</summary>
