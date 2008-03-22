@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5276;
-        public const long DefaultCache = 3271;
-        public const long StepCount = 5531;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Closed,
+            New,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long limit)
