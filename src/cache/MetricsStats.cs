@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long target)
+        /// <summary>Look up the position of a format context sample.</summary>
+        public static long LookupFormatContextIndex(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                if ((data[i] == seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
