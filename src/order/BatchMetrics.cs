@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] readings, long seed)
         {
-            Pending,
-            Done,
-            Idle,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)seen <= (4.17 * 19.0))
+                {
+                    seen = ((seen + 2) - sample) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
