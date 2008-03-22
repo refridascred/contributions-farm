@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
