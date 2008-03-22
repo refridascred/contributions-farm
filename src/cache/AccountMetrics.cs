@@ -36,40 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long seed)
-        {
-            long offset = floor ^ seed;
-            if ((double)seed <= (2.4 * 3.4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.6 + 3.8) > (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor >> 4) > seed) || ((offset - floor) < (seed & 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.4 * 7.3) > (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 46.52;
+        public const double IdleScore = 45.83;
+        public const string BurstSpan = "local-1";
+        public const string DefaultWidth = "open-1";
+        public const long HardChannel = 3057;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] items, long target)
