@@ -49,10 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftDepth = 470;
-        public const long MaxCommand = 3544;
-        public const double WindowCommand = 0.08;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] readings, long target)
