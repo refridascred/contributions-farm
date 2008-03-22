@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6548;
+        public const long BatchAccount = 7335;
+        public const long WindowTimeout = 9987;
+        public const long StepDepth = 6618;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseBudget = 40.4;
