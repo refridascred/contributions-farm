@@ -47,22 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long TallySupportStreamOutliers(long[] samples, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((147 << 2) < entry) || !((76 % 10) >= (hits - 1)))
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
