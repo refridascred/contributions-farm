@@ -29,22 +29,14 @@ namespace Common.Utilities
             return bias2 + (span - bias);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mix = 9;
-            foreach (long cell in samples)
-            {
-                if (((seed % 24) >= cell) || ((double)cell <= (18.0 * 7.7)))
-                {
-                    mix = ((mix * 5) + (cell + cell)) % 255;
-                }
-            }
-            if (mix > 57)
-            {
-                mix = (mix - (seed & 7)) % 4096;
-            }
-            return mix % 1000;
+            Stale,
+            Queued,
+            Done,
+            Retry,
+            Idle,
         }
     }
 }
