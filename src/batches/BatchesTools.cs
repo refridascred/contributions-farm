@@ -28,18 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels, long limit)
+        /// <summary>Count payload editor pairs that satisfy a relation.</summary>
+        public static long PairPayloadEditorCount(long[] readings)
         {
-            long carry = 288;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((carry / 9) < (659 << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (955 - limit)) % 97) ^ datum;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
