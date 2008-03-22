@@ -1,6 +1,7 @@
 {
-  "retry_threshold_count": ["cached", "edge"],
-  "strict": "blue",
-  "soft_retries_count": [18, 246, 311],
-  "soft_retries_s": "green"
+  "flush_interval": 48.94,
+  "max_size_count": 7556,
+  "idle_retries_ms": 3798,
+  "idle_delay": 1024,
+  "editor_ttl": 60
 }
