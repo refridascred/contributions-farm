@@ -38,21 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits & 3) < 6)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 2) + value) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the already kind values.</summary>
