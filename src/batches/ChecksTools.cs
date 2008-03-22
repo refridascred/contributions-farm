@@ -44,31 +44,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long offset2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] readings, long bound)
         {
-            if (((offset2 & 31) < offset2) || (offset < (offset % 8)))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset2 <= (offset & 31))
+                if ((value << 2) >= (value % 12))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= (-567))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 2) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
