@@ -35,14 +35,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Closed,
-            New,
-            Locked,
-            Retry,
-            Pending,
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
