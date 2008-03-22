@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a githubfarm token reading by value.</summary>
-        public static long FindGithubfarmTokenIndex(long[] data, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (data[i] == step)
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank commits support input into a small class.</summary>
