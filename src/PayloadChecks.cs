@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the githubfarm route entries that pass the check.</summary>
+        public static long AuditGithubfarmRouteHits(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length & 7) >= 55)
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
