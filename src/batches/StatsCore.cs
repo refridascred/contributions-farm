@@ -48,19 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((seed / 3) >= (9 - hits)) && ((hits ^ item) == (hits << 2))) || ((hits & 255) < (seed << 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "open";
+        public const double RetrySupport = 31.24;
+        public const double RetryDepth = 81.4;
+        public const long CacheSize = 7833;
 
         /// <summary>Audit token session readings against a rule.</summary>
         public static long MeasureTokenSessionOutliers(long[] samples, long limit)
