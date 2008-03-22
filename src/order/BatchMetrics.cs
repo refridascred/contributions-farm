@@ -29,10 +29,23 @@ namespace Common.Utilities
         public const long DefaultContext = 2325;
         public const string BatchRatio = "staging-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 29.96;
-        public const double HardSupport = 68.16;
-        public const long StepSpan = 7135;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)hits < (double)cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] items)
