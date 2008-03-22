@@ -21,23 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double bias = floor;
-            if (bias >= (gain + gain))
-            {
-                bias = bias + (bias + 5.0);
-            }
-            else
-            {
-                bias = bias + (double)6;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - floor;
+            Queued,
+            Closed,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
