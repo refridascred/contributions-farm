@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseSize = 91.37;
-        public const long BatchNotes = 2848;
-        public const long SoftNotes = 1564;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((975 % 10) >= (matches - 3)) && (((long)levels.Length >> 3) > matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long floor, long offset)
