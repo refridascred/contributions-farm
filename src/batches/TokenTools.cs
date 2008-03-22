@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double IdleBudget = 93.0;
         public const string StepCommand = "cached-v2";
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            Pending,
-            Queued,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((double)matches != (3.0 * 4.4)) && (value < (value + value)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
