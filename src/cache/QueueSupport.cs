@@ -31,17 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a format graph reading by value.</summary>
-        public static long SeekFormatGraphIndex(long[] items, long offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = gain + gain;
+            if (bias2 < (double)8)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (double)3;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - (bias + 7.4);
         }
     }
 }
