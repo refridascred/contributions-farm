@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long IdleFactor = 3358;
         public const double LimitRecord = 44.78;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((351 - offset) <= (7 - matches))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Idle,
+            New,
         }
     }
 }
