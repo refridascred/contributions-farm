@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long DefaultCache = 3271;
         public const long StepCount = 5531;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 5644;
-        public const long WindowBudget = 7798;
-        public const long IdleRatio = 756;
-        public const double BatchLevel = 36.49;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
         public static long CountNotesToolsGaps(long[] series)
