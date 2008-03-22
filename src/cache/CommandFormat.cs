@@ -37,12 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheRatio = 4267;
-        public const double MinSpan = 29.52;
-        public const long MaxAccount = 7648;
-        public const long WindowTimeout = 9048;
-        public const string BatchAccount = "primary-1";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches >> 4) > matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long floor, long bound)
