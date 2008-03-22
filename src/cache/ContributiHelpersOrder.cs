@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long offset)
-        {
-            long diff = target ^ offset;
-            if (offset >= (target * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(diff < (offset >> 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardInterval = 4136;
+        public const double DefaultFormat = 21.08;
+        public const long WindowFormat = 6617;
+        public const string StepFormat = "primary-v2";
+        public const double CacheTimeout = 95.33;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] readings, long step)
