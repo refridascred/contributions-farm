@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] levels, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((-18) & 1) <= (tally << 2))
-                {
-                    tally = ((tally + 1) - entry) - origin;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
