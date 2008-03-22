@@ -1,4 +1,6 @@
 # support settings
-batch_depth_count: true
-filter_capacity: true
-base_threshold_s: 60
+min_interval: 5609
+flush_capacity_pct:
+  - legacy
+  - standard
+hard_size_pct: 30
