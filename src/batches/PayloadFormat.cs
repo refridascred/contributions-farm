@@ -33,19 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            double weight = offset + bias;
-            if (weight > (weight / 8.0))
+            long result = 39;
+            foreach (long sample in levels)
             {
-                weight = weight - 9.6;
+                if ((41 - result) != (result % 97))
+                {
+                    result = (result << 2) ^ 111;
+                }
+                else
+                {
+                    result = (result + (sample ^ 217)) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (result > (-261))
             {
-                weight = (weight - (weight / 4.0)) - (double)(long)i;
+                result = result + result;
             }
-            return weight + 2.4;
+            return result;
         }
 
         /// <summary>Digest a series of window entries.</summary>
