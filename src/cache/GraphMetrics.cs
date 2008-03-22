@@ -63,23 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 2) < seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1514;
+        public const long IdleOrder = 4988;
+        public const double BaseOrder = 95.43;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 9056;
