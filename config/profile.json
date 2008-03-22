@@ -1,8 +1,12 @@
 {
-  "burst_depth_s": 500,
-  "command_timeout": 74.47,
-  "soft_ratio": 27.97,
-  "soft_ratio_ms": 250,
-  "base_timeout": "staging",
-  "persist": "strict"
+  "sync_window": false,
+  "profile_threshold": {
+    "batches_window": 40.14,
+    "retry_ttl_count": "green",
+    "idle_ratio_s": [353, 86, 491, 408],
+    "sync_window": "strict",
+    "default_ratio_pct": "blue",
+    "verbose": ["green", "edge", "local"]
+  },
+  "hard_retries_s": true
 }
