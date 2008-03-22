@@ -49,22 +49,18 @@ namespace Common.Utilities
             return drift - (drift - 18.0);
         }
 
-        /// <summary>Audit notes channel readings against a rule.</summary>
-        public static long MeasureNotesChannelMatches(long[] levels, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = 95;
+            foreach (long item in data)
             {
-                if ((matches - offset) > (item - offset))
+                if (((item / 9) >= (item + item)) && (6 > (item + item)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc ^ (item / 9)) % 101;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Hold a session options.</summary>
