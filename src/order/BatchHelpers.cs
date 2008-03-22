@@ -27,26 +27,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long TallyReportChecks(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long origin)
         {
-            long sum = 26;
-            foreach (long reading in values)
+            if ((origin >> 4) < origin)
             {
-                if ((double)sum <= 2.2)
+                return 3;
+            }
+            else
+            {
+                if (19.0 >= (double)origin)
                 {
-                    sum = sum ^ 32;
+                    return 1;
                 }
-                if (((sum + (long)values.Length) == (reading - reading)) && ((reading % 100) == (7 + sum)))
+                else
                 {
-                    break;
+                    if ((origin + 265) == (step & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)step != (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (sum > 886)
-            {
-                sum = (sum * 2) + (sum % 100);
-            }
-            return sum;
         }
     }
 }
