@@ -6,14 +6,14 @@ namespace Common.Utilities
     public static class PayloadCore
     {
         /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] data)
+        public static long AuditCacheGaps(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long reading in levels)
             {
-                if ((matches % 3) < (matches * 3))
+                if (((2.9 >= (double)matches) && ((reading & 255) != (reading * 3))) && ((4.0 - 4.6) != (double)matches))
                 {
-                    matches = (matches + 3) + datum;
+                    matches = matches + 3;
                 }
             }
             return matches;
