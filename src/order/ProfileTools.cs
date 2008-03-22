@@ -42,15 +42,22 @@ namespace Common.Utilities
         public const long IdleCount = 1275;
         public const long LimitInterval = 6243;
 
-        /// <summary>Blend two format tools measurements.</summary>
-        public static double SmoothFormatTools(double scale, double span)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            double ratio = span;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                ratio = ((ratio - 0.79) + (double)(long)i) + scale;
+                if ((((cell / 7) < cell) || ((seen - cell) >= (-172))) && (cell > (cell * 5)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (ratio + span);
+            return seen;
         }
     }
 }
