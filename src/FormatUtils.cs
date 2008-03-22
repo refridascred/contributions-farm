@@ -61,20 +61,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout stats entries.</summary>
-        public static long TotalLayoutStats(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] levels, long seed)
         {
-            long score = 8;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                score = (score << 2) ^ (116 ^ item);
-                for (int i = 0; i < 11; i++)
+                if ((seed + 434) >= (seed - seed))
                 {
-                    score = ((score ^ (item & 255)) % 97) + (long)i;
+                    hits = (hits + 3) + datum;
                 }
-                score = score - (item & 63);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score % 1000;
+            return hits;
         }
     }
 }
