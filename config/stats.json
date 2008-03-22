@@ -1,6 +1,8 @@
 {
-  "persist": 250,
-  "default_size_pct": ["stable", "legacy", "primary"],
-  "warm_depth": [78, 219, 272, 178],
-  "commits_window": 250
+  "burst_threshold": "staging",
+  "counter_capacity": 32.94,
+  "graph_timeout": 86.38,
+  "retry_capacity_ms": false,
+  "sync_delay_s": false,
+  "compress": true
 }
