@@ -26,15 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long step)
         {
-            double load = (double)32 / 3.0;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                load = ((load + (double)13) + (double)(long)i) + gain;
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - bias;
+            return ok;
         }
 
         /// <summary>Describe the contributi status values.</summary>
