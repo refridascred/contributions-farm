@@ -39,18 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache session entries that pass the check.</summary>
-        public static long CountCacheSessionOutliers(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double gain = 9.8;
+            if (gain <= (gain + rate))
             {
-                if ((double)matches > (7.16 / 3.0))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                gain = gain - (offset / 3.0);
             }
-            return matches;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 7.07) + (double)(long)i;
+            }
+            return gain + (rate / 6.0);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
