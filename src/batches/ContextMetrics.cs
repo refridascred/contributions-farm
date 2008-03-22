@@ -42,18 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a schema cache sample.</summary>
-        public static long LookupSchemaCacheIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 8978;
+        public const string BurstReport = "local-1";
+        public const double RetryRatio = 95.42;
+        public const long WindowReport = 4771;
+        public const long RetryReport = 2129;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long step, long step2)
