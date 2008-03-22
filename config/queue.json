@@ -1,6 +1,7 @@
 {
-  "flush_timeout": ["blue", "edge"],
-  "base_ratio_pct": 250,
-  "readonly": [225, 429, 334],
-  "min_delay": 46.33
+  "hard_capacity": "stable",
+  "batch_interval_s": [446, 31],
+  "order_delay": false,
+  "base_capacity": 1025,
+  "base_timeout_count": 250
 }
