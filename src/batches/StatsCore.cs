@@ -48,14 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Draft,
-            Ready,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2689;
+        public const double MinRatio = 49.7;
+        public const long LimitEntry = 1569;
+        public const double BatchEntry = 34.07;
 
         /// <summary>Audit token session readings against a rule.</summary>
         public static long MeasureTokenSessionOutliers(long[] samples, long limit)
