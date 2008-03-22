@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Synced,
-            Queued,
-            Closed,
+            Pending,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
