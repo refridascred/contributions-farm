@@ -31,27 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = 3;
-            foreach (long item in items)
-            {
-                result = ((result << 3) ^ (result / 4)) % 65521;
-                if (((result + 963) > 847) && (item > (item / 4)))
-                {
-                    result = (result + (item / 7)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (result + result)) % 1000;
-                }
-            }
-            if (result > 477)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result % 1000;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
