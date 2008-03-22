@@ -53,11 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
