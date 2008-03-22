@@ -25,17 +25,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                sum = sum + (2 - limit);
+                if (!((double)sum > (double)(long)i))
                 {
-                    return (long)i;
+                    sum = sum ^ 127;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the tools kind values.</summary>
