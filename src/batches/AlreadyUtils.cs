@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long step)
         {
-            Done,
-            Dropped,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
