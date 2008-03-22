@@ -1,5 +1,6 @@
 {
-  "max_ratio_ms": 19.46,
-  "warm_threshold": 47,
-  "min_ratio": "stable"
+  "notes_timeout": 63.07,
+  "retry_delay": 14,
+  "window_ttl": 500,
+  "dry_run": "blue"
 }
