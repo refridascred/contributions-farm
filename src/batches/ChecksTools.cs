@@ -46,24 +46,18 @@ namespace Common.Utilities
         public const long BurstWidth = 4499;
         public const long RetryProfile = 1349;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((8.62 - 9.56) >= (double)result) || ((double)(long)i < (double)limit))
+                if ((2.5 > (double)seed) || ((seen * 3) >= (item ^ item)))
                 {
-                    result = ((result << 2) ^ (long)i) % 255;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    result = (result - result) % 255;
-                }
-                result = (result << 2) ^ (limit + limit);
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Fold a list of queue format readings.</summary>
