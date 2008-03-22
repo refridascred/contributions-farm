@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((seen * 4) <= (seen / 7)) || ((datum + (long)values.Length) < (datum + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Rank stream tools input into a small class.</summary>
