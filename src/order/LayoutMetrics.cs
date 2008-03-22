@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
             Pending,
-            Done,
-            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate notes samples.</summary>
