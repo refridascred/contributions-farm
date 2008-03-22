@@ -1,13 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often payload data is refreshed.
-The token helpers are pure functions, so they are safe to call from any thread.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the batches list.
+Keep entry and format names short and lowercase.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate metric input early
-- Keep buffer values small
+- Review cache limits each release
+- Log every session change
+- Prefer farm defaults
+- Keep profile values small
