@@ -36,19 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] values, long step)
+        /// <summary>Find the first profile queue entry that matches the target.</summary>
+        public static long LookupProfileQueueIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < step)
+                if (levels[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
