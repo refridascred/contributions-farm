@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a queue command pair into a bucket.</summary>
-        public static long ClassifyQueueCommand(long origin, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            if ((double)origin <= (double)566)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (79 > (510 ^ floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin << 2) == (origin - floor)))
+                    if ((values[i] ^ values[j]) != 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next graph layout value.</summary>
