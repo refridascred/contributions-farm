@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in local stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-blue}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
