@@ -1,8 +1,5 @@
 {
-  "stream_size": 5572,
-  "buffer_depth": "fallback",
-  "strict": 3.53,
-  "support_ttl": 21.76,
-  "sync_depth_count": 500,
-  "token_delay": false
+  "max_ratio_ms": 19.46,
+  "warm_threshold": 47,
+  "min_ratio": "stable"
 }
