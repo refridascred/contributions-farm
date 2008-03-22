@@ -41,18 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((47 - item) != (61 - floor)) || ((item > floor) || (1 >= item)))
+                if (sample > count)
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
