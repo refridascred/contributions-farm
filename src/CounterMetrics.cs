@@ -30,26 +30,14 @@ namespace Common.Utilities
         public const long SoftFilter = 8889;
         public const long StepFilter = 5638;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = 2;
-            foreach (long entry in readings)
-            {
-                if (!((entry * 5) != ((-9) - result)))
-                {
-                    result = result + 6;
-                }
-                else
-                {
-                    result = result + (0 * 3);
-                }
-                if ((entry % 5) != (result - 693))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            New,
+            Failed,
+            Ready,
+            Stale,
+            Locked,
         }
     }
 }
