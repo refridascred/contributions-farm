@@ -24,16 +24,21 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Roll a entry stats counter forward.</summary>
+        public static long RollEntryStats(long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 5) + mark) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((result + result) < (long)i)
+                {
+                    result = (result + (long)i) % 4096;
+                }
+                result = (result * 4) + seed;
+                result = result - ((long)i + result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
