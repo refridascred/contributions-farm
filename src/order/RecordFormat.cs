@@ -36,13 +36,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long step)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
