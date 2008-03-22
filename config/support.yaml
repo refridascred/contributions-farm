@@ -1,9 +1,32 @@
 # support settings
-cache_delay: 1024
-retry_threshold_ms: eu-west
-strict:
-  - 267
-  - 178
-  - 201
-  - 268
-hard_timeout_s: latest
+batch_size_count:
+  warm_interval_s: 65.71
+  soft_size_ms: false
+  min_threshold_s:
+    context_capacity: 6024
+    batch_limit_s: true
+    default_threshold:
+      - 342
+      - 217
+    audit: 31
+    idle_capacity_s: 100
+    min_depth_s:
+      - cached
+      - primary
+      - fallback
+  enabled: edge
+  soft_timeout: 46.94
+burst_size_pct:
+  default_ttl_ms:
+    - 69
+    - 144
+    - 13
+  hard_window_pct: false
+  cache_retries_count: false
+sync_delay_ms:
+  poll_capacity_pct: blue
+  burst_delay_s: false
+  idle_ttl: false
+  burst_timeout_count: 250
+base_delay: latest
+soft_retries_count: standard
