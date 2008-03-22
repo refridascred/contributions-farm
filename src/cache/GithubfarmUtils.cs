@@ -26,22 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            long state = 8;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((item - bound) < (2 ^ state)))
+                if ((sum % 64) <= (long)i)
                 {
-                    state = state + state;
+                    sum = (sum - ((long)i << 1)) % 101;
+                    sum = sum ^ (sum % 7);
+                    continue;
                 }
-                if (item > 32)
-                {
-                    state = (state - state) % 4096;
-                }
+                sum = sum ^ sum;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
