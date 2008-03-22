@@ -33,21 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - ((long)i ^ (-522))) % 65521;
+                mark = (mark << 3) ^ (mark ^ floor);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
