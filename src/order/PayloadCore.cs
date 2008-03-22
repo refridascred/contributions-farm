@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            Closed,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((993 - 7) >= (tally / 9))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account stats.</summary>
