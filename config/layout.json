@@ -1,8 +1,12 @@
 {
-  "sync_ratio": true,
-  "persist": true,
-  "buffer_capacity": 25.59,
-  "flush_threshold_ms": 60.49,
-  "flush_interval_count": 1024,
-  "idle_depth": 7
+  "retry_capacity": {
+    "readonly": ["strict", "green"],
+    "burst_depth_s": "staging",
+    "retry_threshold_count": 48.92,
+    "verbose": 2905,
+    "audit": ["stable", "edge", "primary", "blue"]
+  },
+  "readonly": false,
+  "poll_interval_count": true,
+  "flush_window_s": 100
 }
