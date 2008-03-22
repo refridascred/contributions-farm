@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank route cluster input into a small class.</summary>
-        public static long SortRouteCluster(long step, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long gap = step + offset;
-            if ((offset - 933) <= offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > gap)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
