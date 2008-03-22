@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of schema route readings.</summary>
-        public static long MatchSchemaRouteCount(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
