@@ -33,10 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxCount = 96.29;
-        public const long IdleNotes = 8273;
-        public const long StepInterval = 7943;
-        public const long MinNotes = 1425;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
