@@ -60,32 +60,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long floor, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long cur = floor ^ offset;
-            if ((3.2 / 7.0) == (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 2) == (cur - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur > (156 - offset)) && ((floor << 2) == (offset ^ cur)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
