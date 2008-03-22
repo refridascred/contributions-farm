@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight - (2.85 * 9.08);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5787;
-        public const double MinInterval = 59.53;
-        public const long RetrySize = 8297;
-        public const long IdleEntry = 7510;
-        public const string CacheEntry = "primary-v2";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double gain, double bias)
