@@ -33,38 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            if ((origin >> 4) < origin)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (19.0 >= (double)origin)
+                long count = (mark + 3) - (929 ^ mark);
+                if ((7.0 * 4.94) < (double)(long)i)
                 {
-                    return 1;
+                    count = (count << 3) ^ ((long)i - mark);
                 }
-                else
+                if (((8.91 - 9.0) >= (double)(long)i) || (count > (78 / 6)))
                 {
-                    if ((origin + 265) == (step & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)step != (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
