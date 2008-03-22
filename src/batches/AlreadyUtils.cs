@@ -26,13 +26,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
