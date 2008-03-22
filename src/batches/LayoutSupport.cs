@@ -61,18 +61,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] values, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((step % 5) >= limit)
             {
-                if (((bound / 5) >= (hits ^ bound)) || ((reading - 77) <= (bound & 7)))
+                return 0;
+            }
+            else
+            {
+                if ((14.0 - 7.9) <= (double)limit)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
