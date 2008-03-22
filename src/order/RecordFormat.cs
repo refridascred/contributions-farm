@@ -60,16 +60,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of farm window readings.</summary>
-        public static long CombineFarmWindow(long[] values)
-        {
-            long mark = 722;
-            foreach (long cell in values)
-            {
-                mark = (mark + cell) % 255;
-                mark = (mark - cell) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 6319;
+        public const double MaxQueue = 67.26;
+        public const long BatchQueue = 4132;
+        public const long DefaultRatio = 3654;
     }
 }
