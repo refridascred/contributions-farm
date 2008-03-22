@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
+        public static long CompareChecksCounterCount(long[] items)
         {
-            long carry = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((carry / 5) == (carry << 3)) && (carry <= (carry + carry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry ^ (cell * 5)) % 1000;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the metrics session entries that pass the check.</summary>
