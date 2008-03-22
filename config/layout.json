@@ -1,12 +1,7 @@
 {
-  "cache_interval_pct": 9.94,
-  "strict": "stable",
-  "flush_interval": 84,
-  "soft_threshold": {
-    "warm_depth": "fallback",
-    "sync_delay_ms": false,
-    "persist": "staging"
-  },
-  "cache_ratio": 250,
-  "githubfarm_limit": 8873
+  "batch_window": true,
+  "base_ratio_ms": "stable",
+  "flush_limit": 31,
+  "persist": [154, 382, 63, 161],
+  "retry_interval_pct": "staging"
 }
