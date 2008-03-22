@@ -41,32 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long limit)
-        {
-            if ((3.8 - 12.0) == (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset < (limit & 31)) || ((double)limit > (double)132))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 1) > (offset - 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftSpan = "staging";
+        public const long BaseDepth = 6449;
+        public const long BatchBudget = 1218;
+        public const string LimitFactor = "staging";
+        public const double RetryCount = 48.65;
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double rate, double offset)
