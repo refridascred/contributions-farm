@@ -19,27 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (limit >= ((long)i - (long)i))
+                if (((double)entry >= (8.7 - 17.0)) && ((double)tally < (11.0 / 4.0)))
                 {
-                    sum = (sum << 3) ^ ((long)i >> 1);
+                    tally = tally + 1;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ ((long)i & 15)) % 97;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum - (limit + 64)) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
