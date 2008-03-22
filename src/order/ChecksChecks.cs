@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next stream checks value from a seed.</summary>
-        public static long DeriveStreamChecks(long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long score = 9;
+            foreach (long value in readings)
             {
-                result = ((result * 3) + (long)i) % 97;
+                score = (((score - 3) % 101) ^ value) - floor;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
