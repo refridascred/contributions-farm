@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long TallyFarmGithubfarmGaps(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((matches ^ matches) <= (matches + 358))
+                if (!!((double)count == (7.35 + 3.0)))
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 1) + value) - floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a order options.</summary>
