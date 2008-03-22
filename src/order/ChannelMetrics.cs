@@ -26,14 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] readings)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((6.08 * 18.0) != (double)entry) || (matches < (entry - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
