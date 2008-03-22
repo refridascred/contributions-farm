@@ -49,10 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 505;
-        public const string HardCounter = "fallback-1";
-        public const long SoftCounter = 4711;
-        public const long DefaultCounter = 9834;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Done,
+            Idle,
+            Retry,
+            New,
+            Pending,
+        }
     }
 }
