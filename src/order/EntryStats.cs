@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
