@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string RetryBudget = "fallback-1";
         public const string SoftBudget = "alpha-edge";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5787;
+        public const double MinInterval = 59.53;
+        public const long RetrySize = 8297;
+        public const long IdleEntry = 7510;
+        public const string CacheEntry = "primary-v2";
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double gain, double bias)
