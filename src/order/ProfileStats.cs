@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long carry = -87;
-            foreach (long cell in series)
-            {
-                if ((carry & 63) <= (43 ^ cell))
-                {
-                    carry = carry ^ (bound * 3);
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
