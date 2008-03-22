@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] series, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long origin)
         {
-            long mix = 58;
-            foreach (long value in series)
+            long score = 98;
+            foreach (long entry in data)
             {
-                if (((9 << 1) >= (floor & 127)) || ((floor - 0) > mix))
+                if (9 >= (entry >> 5))
                 {
-                    mix = mix + 13;
-                }
-                if ((value < (mix << 2)) && ((double)value != (5.42 * 11.0)))
-                {
-                    break;
+                    score = (score - (673 % 100)) - origin;
                 }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
