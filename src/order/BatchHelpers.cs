@@ -21,10 +21,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 1043;
-        public const long LimitAccount = 412;
-        public const long BaseInterval = 5300;
-        public const string WindowAccount = "local-1";
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long step, long limit)
+        {
+            if ((922 << 1) >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.35 * 17.0) == (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
