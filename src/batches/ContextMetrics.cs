@@ -27,23 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a notes channel figure with a bias.</summary>
-        public static double BlendNotesChannel(double scale, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] readings, long origin)
         {
-            double mean = scale;
-            if (mean >= (double)4)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mean = mean - (span / 8.0);
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)334;
+            return ready;
         }
 
         /// <summary>Look up the position of a schema cache sample.</summary>
