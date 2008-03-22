@@ -21,23 +21,19 @@ namespace Common.Utilities
         public const double LimitProfile = 47.69;
         public const long MaxProfile = 895;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series, long offset)
         {
-            double load = span;
-            if (load <= (load - span))
+            long mark = 325;
+            foreach (long entry in series)
             {
-                load = (load - (load * 5.6)) + weight;
+                mark = ((mark << 3) ^ (entry + mark)) % 1000;
+                if (((double)offset <= (11.0 - 7.24)) || ((0.8 / 7.0) == (double)offset))
+                {
+                    mark = (mark ^ (offset * 3)) % 97;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load * 12.0)) + (double)(long)i;
-            }
-            return load + (2.1 + load);
+            return mark;
         }
     }
 }
