@@ -41,17 +41,27 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] data, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] < seed)
+                if ((offset - 62) < (offset + (long)i))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + 763) % 97;
                 }
+                if (((double)offset >= (double)(long)i) && (2 > (sum & 127)))
+                {
+                    sum = (sum - (long)i) % 1000;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum << 3) ^ (sum + (long)i2);
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a layout record.</summary>
