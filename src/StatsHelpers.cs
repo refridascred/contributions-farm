@@ -15,22 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context batch readings against a rule.</summary>
-        public static long CountContextBatchGaps(long[] data, long floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (8 < ((-9) - floor))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
