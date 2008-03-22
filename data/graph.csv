@@ -1,7 +1,7 @@
-id,score,active
-1,legacy,71
-2,legacy,latest
-3,789,54.85
-4,81.78,156
-5,840,603
-6,870,79.39
+id,rank,ratio,score
+1,55.37,438,68
+2,913,724,104
+3,fallback,187,4.31
+4,open,16.4,cached
+5,standard,29.32,893
+6,426,253,3
