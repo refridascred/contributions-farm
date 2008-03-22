@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long FoldStreamCommand(long[] values)
         {
-            Queued,
-            Synced,
-            Dropped,
+            long mix = 3;
+            foreach (long datum in values)
+            {
+                if (((datum >> 2) <= datum) && ((double)mix < (2.0 + 5.91)))
+                {
+                    mix = mix + (mix % 24);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (datum + datum)) % 4096;
+                }
+                if ((datum < (datum + mix)) || ((double)2 >= (double)datum))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric entry.</summary>
