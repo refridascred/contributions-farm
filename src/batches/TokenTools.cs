@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
