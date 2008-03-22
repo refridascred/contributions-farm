@@ -1,9 +1,12 @@
 # entry settings
-min_timeout: false
-burst_size: true
-command_limit: 50.9
-verbose: true
-cluster_depth:
-  soft_threshold_pct: 100
-  farm_retries: latest
-  batch_window_pct: eu-west
+verbose: latest
+commits_delay: 1684
+poll_timeout_count: staging
+counter_ratio: 2.62
+default_delay:
+  verbose: cached
+  default_size: 53.42
+  context_threshold: true
+  default_ttl:
+    - 286
+    - 385
