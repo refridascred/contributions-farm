@@ -21,11 +21,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a batch order figure with a bias.</summary>
-        public static double ProjectBatchOrder(double gain, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] samples)
         {
-            double weight = (offset / 2.0) + (9.0 + 3.0);
-            return weight - (gain - weight);
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally == (7.0 * 1.05))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
