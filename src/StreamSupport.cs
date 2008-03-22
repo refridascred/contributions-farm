@@ -36,22 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support batches samples are out of range.</summary>
-        public static long CountSupportBatchesMatches(long[] values, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((277 + step) < (step / 3))
+                if (sample <= target)
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
