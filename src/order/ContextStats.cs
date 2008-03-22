@@ -48,19 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = 96;
-            foreach (long datum in levels)
-            {
-                total = total ^ ((long)levels.Length * 5);
-                if ((datum & 7) > (total % 3))
-                {
-                    total = total ^ (total / 6);
-                }
-            }
-            return total % 65521;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
