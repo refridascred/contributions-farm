@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a counter record sample.</summary>
-        public static long FindCounterRecordIndex(long[] items, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] <= floor)
+                if ((score ^ score) >= (offset & 255))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (score * 2)) % 255;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next cluster value.</summary>
