@@ -51,12 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long FoldRecordBatches(long[] values, long floor)
         {
-            Draft,
-            Dropped,
-            Queued,
+            long result = 910;
+            foreach (long value in values)
+            {
+                result = ((((result << 3) ^ result) % 4096) ^ value) - floor;
+            }
+            return result % 97;
         }
     }
 }
