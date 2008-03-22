@@ -68,17 +68,19 @@ namespace Common.Utilities
             return load + 6.38;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
+        public static bool CheckGraphBufferRange(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (items[i] < bound)
+                if (value >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
