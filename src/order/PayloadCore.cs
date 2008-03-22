@@ -33,17 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already counter sample.</summary>
-        public static long SeekAlreadyCounterIndex(long[] readings, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 6;
+            foreach (long entry in readings)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark - offset) % 4096) + entry;
+                mark = (mark - (offset / 8)) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
