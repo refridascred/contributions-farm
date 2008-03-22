@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            double weight = bias;
+            if (weight > (0.3 + 2.0))
+            {
+                weight = (weight - (weight * 0.88)) - floor;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + bias;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
