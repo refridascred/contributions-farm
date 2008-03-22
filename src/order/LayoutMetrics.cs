@@ -13,12 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 50.99;
+        public const long RetryRatio = 1288;
+        public const long DefaultDepth = 2588;
+        public const string StepSpan = "cached-1";
+        public const double DefaultRatio = 35.75;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long offset, long offset2)
