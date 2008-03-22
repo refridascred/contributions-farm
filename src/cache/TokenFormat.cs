@@ -33,27 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series, long step)
         {
-            long total = 892;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((165 + 1) >= cell))
+                if ((double)datum >= (7.76 * 11.0))
                 {
-                    continue;
-                }
-                total = (total << 2) ^ (total - total);
-                if ((total ^ (long)samples.Length) < (cell / 6))
-                {
-                    total = total + (total + cell);
+                    count = (count + 3) - step;
                 }
             }
-            if (total < 69)
-            {
-                total = (total + (608 ^ total)) % 97;
-            }
-            return total;
+            return count;
         }
     }
 }
