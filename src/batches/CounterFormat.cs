@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values, long floor)
         {
-            if ((limit / 9) <= limit)
+            long acc = 447;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (double)limit)
+                acc = (acc + (reading % 2)) % 1000;
+                if (((double)acc <= (double)floor) && ((reading >> 4) > floor))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit << 2) > offset) && ((-91) <= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
