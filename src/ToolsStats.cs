@@ -55,13 +55,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc + acc;
+                if (((long)i << 3) > (offset - offset))
+                {
+                    acc = (acc << 3) ^ (offset * 2);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits phase values.</summary>
