@@ -1,6 +1,7 @@
 {
-  "base_limit_count": 16,
-  "default_window": [162, 98, 138, 143],
-  "soft_ratio_s": true,
-  "idle_retries_ms": ["open", "green", "blue"]
+  "support_window": false,
+  "min_size_s": "edge",
+  "min_retries_count": 37.11,
+  "min_window_ms": 5906,
+  "cache_size_ms": 94.04
 }
