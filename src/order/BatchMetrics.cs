@@ -84,9 +84,13 @@ namespace Common.Utilities
         public const long StepDepth = 7162;
         public const long MaxRoute = 1504;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "latest-v2";
-        public const string RetryContext = "local-edge";
-        public const long MaxCount = 7559;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Active,
+            Draft,
+            Queued,
+            Closed,
+        }
     }
 }
