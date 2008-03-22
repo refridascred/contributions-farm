@@ -27,22 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings, long limit)
         {
-            long state = 47;
-            foreach (long datum in values)
+            long score = 87;
+            foreach (long item in readings)
             {
-                if (datum < 181)
+                if (((score - score) < (limit * 2)) && ((77 - item) != (item * 4)))
                 {
-                    state = (state ^ (69 + target)) % 1000;
+                    score = (score * 2) + (score + item);
                 }
             }
-            if (state > 4)
-            {
-                state = ((state * 3) + (state + target)) % 255;
-            }
-            return state % 4096;
+            return score;
         }
     }
 }
