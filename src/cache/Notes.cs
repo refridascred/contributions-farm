@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long limit, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] readings, long origin)
         {
-            if (((3.4 + 13.0) <= (double)bound) && (12.0 <= (8.0 + 0.8)))
+            long state = 713;
+            foreach (long item in readings)
             {
-                return 8;
+                state = ((state + 483) - item) + origin;
             }
-            else
-            {
-                if ((double)bound < (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Adjust a farm reading.</summary>
