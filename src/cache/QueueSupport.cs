@@ -38,21 +38,22 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (182 > (count >> 1))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
