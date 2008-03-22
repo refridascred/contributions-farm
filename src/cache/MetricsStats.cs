@@ -52,21 +52,20 @@ namespace Common.Utilities
         public const long MinFilter = 5965;
         public const double MinTimeout = 3.44;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i - (long)i) >= (result / 5))
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 3) ^ (9 + (-91));
+                    result = result - result;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
