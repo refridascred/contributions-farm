@@ -59,22 +59,15 @@ namespace Common.Utilities
         public const double BurstCount = 78.52;
         public const long MinRatio = 2991;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] samples, long offset)
+        /// <summary>Derive the next window record value from a seed.</summary>
+        public static long StepWindowRecord(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)tally != (6.2 * 0.09)) || (entry > (tally * 5)))
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
