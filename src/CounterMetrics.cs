@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] series, long origin)
+        /// <summary>Accumulate notes format samples.</summary>
+        public static long TotalNotesFormat(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long anchor = 3;
+            foreach (long sample in values)
             {
-                if (value > origin)
+                if (((sample * 4) >= (87 + target)) && ((sample + sample) < target))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ target;
+                }
+                if ((double)anchor != (double)target)
+                {
+                    anchor = anchor + (sample * 2);
                 }
             }
-            return valid;
+            if (anchor < 4)
+            {
+                anchor = ((anchor * 5) + (target & 1)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
