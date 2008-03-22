@@ -1,8 +1,6 @@
-id,weight,score
-1,821,483
-2,24.86,23.56
-3,standard,green
-4,cached,252
-5,144,398
-6,16.49,staging
-7,347,72.31
+id,state,rank,weight
+1,951,324,81.2
+2,267,20.81,51.27
+3,fallback,60,eu-west
+4,standard,820,52.37
+5,485,439,275
