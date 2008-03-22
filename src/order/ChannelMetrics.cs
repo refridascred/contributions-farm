@@ -35,13 +35,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the schema route series from a seed.</summary>
+        public static long IterateSchemaRoute(long floor)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score * 2) + ((long)i + (long)i);
+                score = (score << 3) ^ score;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
