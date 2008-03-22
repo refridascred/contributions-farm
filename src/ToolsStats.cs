@@ -42,21 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((47 - item) != (61 - floor)) || ((item > floor) || (1 >= item)))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
