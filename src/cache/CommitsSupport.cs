@@ -36,12 +36,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long origin2)
         {
-            Locked,
-            Queued,
-            New,
+            if ((origin ^ origin2) == (origin2 ^ 243))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (12.0 + 0.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin / 6) > origin2) && ((926 * 5) == (origin2 >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
