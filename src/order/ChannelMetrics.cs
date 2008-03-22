@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
