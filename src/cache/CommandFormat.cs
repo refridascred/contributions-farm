@@ -22,20 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double floor)
-        {
-            double weight = bias;
-            if (weight > (0.3 + 2.0))
-            {
-                weight = (weight - (weight * 0.88)) - floor;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 16.5;
+        public const string MaxTimeout = "strict-v2";
+        public const string CacheContributi = "staging-v2";
+        public const string BatchInterval = "open";
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
