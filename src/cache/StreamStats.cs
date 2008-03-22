@@ -51,12 +51,19 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long bound)
         {
-            Closed,
-            Failed,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
