@@ -1,6 +1,6 @@
-id,level,active,token
-1,stable,499,94.89
-2,355,956,blue
-3,legacy,open,480
-4,594,64,edge
-5,151,standard,44
+id,owner,ratio,weight
+1,strict,latest,592
+2,41.28,53.53,977
+3,stable,628,blue
+4,54.07,884,642
+5,32.49,fallback,strict
