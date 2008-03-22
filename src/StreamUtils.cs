@@ -65,18 +65,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long carry = 750;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item < (8.38 - 8.9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry * 2) + (seed - seed);
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
