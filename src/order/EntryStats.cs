@@ -55,18 +55,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] items, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((hits % 3) >= origin)
+                if ((cell ^ cell) != (floor + floor))
                 {
-                    hits = (hits + 3) ^ reading;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a batches summary.</summary>
