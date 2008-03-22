@@ -36,19 +36,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 8127;
+        public const long MinLevel = 1042;
+        public const long SoftReport = 7266;
     }
 }
