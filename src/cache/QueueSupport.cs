@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double WindowAlready = 37.5;
         public const string BurstAlready = "stable-1";
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Blend two cache report measurements.</summary>
+        public static double BlendCacheReport(double ratio, double bias)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Queued,
+            double mean = bias;
+            if (mean < mean)
+            {
+                mean = mean + (ratio * 1.2);
+            }
+            return mean + (double)30;
         }
 
         /// <summary>Hold a already record.</summary>
