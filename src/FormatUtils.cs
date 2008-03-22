@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] samples)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell < (16.0 * 0.6)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
