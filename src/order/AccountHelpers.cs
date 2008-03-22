@@ -54,13 +54,15 @@ namespace Common.Utilities
         public const double SoftSize = 86.25;
         public const string StepCluster = "standard-edge";
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double span)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            double weight = span;
+            if (weight < (weight / 4.0))
+            {
+                weight = weight + (span + span);
+            }
+            return weight + (rate / 9.0);
         }
     }
 }
