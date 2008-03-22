@@ -6,12 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
 for i in $(seq 1 8); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in primary blue fallback; do
-    log "checking ${item}"
-done
