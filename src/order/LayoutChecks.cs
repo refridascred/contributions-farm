@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format session samples are out of range.</summary>
-        public static long AuditFormatSessionHits(long[] readings, long seed)
+        /// <summary>Project the next profile order value.</summary>
+        public static double BlendProfileOrder(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((seed >> 2) < (seed << 1)) && (sample >= (seen * 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = (double)(36 << 2);
+            return ((scale + 16.0) + rate) + floor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
