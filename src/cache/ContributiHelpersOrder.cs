@@ -22,27 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long floor)
         {
-            long sum = 13;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                sum = sum - origin;
-                if ((double)item == (17.0 / 6.0))
+                if (entry >= floor)
                 {
-                    sum = (sum << 3) ^ (item ^ sum);
-                }
-                if (origin > (origin - sum))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (sum > 15)
-            {
-                sum = (sum + ((-118) * 5)) % 101;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
