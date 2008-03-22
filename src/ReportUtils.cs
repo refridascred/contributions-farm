@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((373 ^ 578) < (11 + reading))
+                if ((11 + value) > value)
                 {
-                    hits = (hits + 3) + bound;
+                    seen = (seen + 3) + bound;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up metrics samples.</summary>
