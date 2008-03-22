@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((-67) <= (item << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
