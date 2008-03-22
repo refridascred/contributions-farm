@@ -15,19 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= limit)
+                if (series[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
