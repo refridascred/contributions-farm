@@ -52,20 +52,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session record value from a seed.</summary>
-        public static long IterateSessionRecord(long seed)
+        /// <summary>Iterate the entry cache series from a seed.</summary>
+        public static long SeriesEntryCache(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((state * 4) >= (state + 979)) && ((8.8 / 5.0) > (double)(long)i))
+                if ((3.66 - 4.7) != (double)seed)
                 {
-                    state = state + ((long)i / 4);
+                    result = (result * 4) + (long)i;
                 }
-                state = (state << 2) ^ (state & 255);
-                state = ((state * 3) + (long)i) % 65521;
+                result = (result << 3) ^ (seed + (long)i);
+                if ((double)(long)i != (9.2 + 9.4))
+                {
+                    result = result + seed;
+                }
+                else
+                {
+                    result = (result ^ 83) % 4096;
+                    result = ((result << 2) ^ (seed + result)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
     }
 }
