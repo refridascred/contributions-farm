@@ -58,24 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a window profile pair into a bucket.</summary>
-        public static long BucketWindowProfile(long origin, long floor)
+        /// <summary>Blend two layout batch measurements.</summary>
+        public static double SmoothLayoutBatch(double rate, double span)
         {
-            if (((double)floor > (3.29 * 0.9)) || (75 < (origin + floor)))
+            double load = (rate + rate) - rate;
+            if (load >= (span - load))
             {
-                return 2;
+                load = load + rate;
             }
             else
             {
-                if ((double)4 != (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = load - (load - load);
             }
+            return load + load;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
