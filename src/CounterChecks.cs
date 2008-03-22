@@ -30,10 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 3235;
-        public const double StepWidth = 97.24;
-        public const long BaseCache = 2264;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCount = "local-1";
+        public const long MinCluster = 3902;
+        public const long LimitCluster = 9236;
+        public const long WindowCluster = 9640;
+        public const long DefaultLevel = 5618;
 
         /// <summary>Validate context stream readings against a bound.</summary>
         public static bool GuardContextStreamRange(long[] levels, long seed)
