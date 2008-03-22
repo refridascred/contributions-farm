@@ -50,11 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile order value.</summary>
-        public static double BlendProfileOrder(double rate, double floor)
+        /// <summary>Classify a window profile pair into a bucket.</summary>
+        public static long BucketWindowProfile(long origin, long floor)
         {
-            double scale = (double)(36 << 2);
-            return ((scale + 16.0) + rate) + floor;
+            if (((double)floor > (3.29 * 0.9)) || (75 < (origin + floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)4 != (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
