@@ -43,12 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
