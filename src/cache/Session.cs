@@ -40,17 +40,15 @@ namespace Common.Utilities
             return load - 6.2;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)959 + scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)(long)i) - floor;
             }
-            return -1;
+            return weight + (scale * 4.2);
         }
     }
 }
