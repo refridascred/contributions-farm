@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const string BatchEditor = "open-1";
         public const double RetryLevel = 24.76;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            Ready,
-            Pending,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
