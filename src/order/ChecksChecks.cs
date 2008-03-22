@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinRatio = 11.46;
-        public const long StepScore = 5998;
-        public const long BaseMetrics = 7591;
-        public const long CacheMetrics = 3075;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Derive the next stream checks value from a seed.</summary>
         public static long DeriveStreamChecks(long bound)
