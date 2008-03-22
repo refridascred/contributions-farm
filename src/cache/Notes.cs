@@ -39,11 +39,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultCount = 1959;
-        public const string WindowLayout = "alpha";
-        public const long LimitLayout = 2998;
-        public const double WindowCount = 55.81;
+        /// <summary>Iterate the command contributi series from a seed.</summary>
+        public static long StepCommandContributi(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state ^ ((long)i + state)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] data)
