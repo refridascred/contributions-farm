@@ -57,19 +57,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long seed)
         {
-            long mark = 46;
-            foreach (long reading in levels)
+            long carry = 750;
+            foreach (long item in readings)
             {
-                if ((double)mark > (0.1 + 6.44))
+                if ((double)item < (8.38 - 8.9))
                 {
-                    mark = mark + (reading + reading);
+                    carry = (carry * 2) + (seed - seed);
                 }
-                mark = (mark ^ (mark >> 5)) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
