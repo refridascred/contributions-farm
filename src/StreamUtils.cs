@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] items, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values, long bound)
         {
-            long result = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = ((result + (step & 7)) % 65521) ^ item;
+                if ((double)sample < (9.0 / 7.0))
+                {
+                    matches = (matches + 1) + bound;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
