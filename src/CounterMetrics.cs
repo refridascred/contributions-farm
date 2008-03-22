@@ -54,14 +54,17 @@ namespace Common.Utilities
         public const long MaxCommand = 3544;
         public const double WindowCommand = 0.08;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long target)
         {
-            Queued,
-            New,
-            Failed,
-            Synced,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
