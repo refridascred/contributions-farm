@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long floor)
         {
-            long sum = 94;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)reading <= (4.64 - 3.0)) || ((9.92 - 1.2) != (double)reading))
+                if (data[i] > floor)
                 {
-                    sum = (sum << 2) ^ (reading / 5);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
