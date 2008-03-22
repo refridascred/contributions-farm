@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            double ratio = weight + 8.15;
+            if (ratio <= (ratio / 9.0))
+            {
+                ratio = ratio + (double)90;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 6.2) - (double)(long)i;
+            }
+            return ratio - (bias + ratio);
         }
 
         /// <summary>Hold a report entry.</summary>
