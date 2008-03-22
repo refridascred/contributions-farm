@@ -1,6 +1,7 @@
 {
-  "max_delay_s": 2553,
-  "filter_ratio": "green",
-  "sync_ratio": 30,
-  "burst_retries_ms": "eu-west"
+  "soft_ratio_count": ["staging", "cached", "legacy"],
+  "warm_size_count": [242, 167, 302, 458],
+  "compress": "blue",
+  "dry_run": 94.14,
+  "batch_limit": "standard"
 }
