@@ -1,7 +1,10 @@
-id,region,rank,owner,state
-1,656,green,321,372
-2,114,eu-west,strict,51
-3,47.43,strict,50.64,24.86
-4,53.81,primary,standard,97.11
-5,311,blue,edge,449
-6,44,green,blue,latest
+id,level,token
+1,50.36,64.19
+2,59,80.53
+3,standard,537
+4,756,open
+5,local,956
+6,green,51.14
+7,cached,41.19
+8,842,63.2
+9,239,42.82
