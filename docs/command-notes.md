@@ -1,15 +1,10 @@
 # Command notes
 
-The account module keeps editor values in sync with the queue cache.
-Each filter is validated before it reaches the metric queue.
-
-A order that stays idle for too long is moved to the support list.
-Each profile is validated before it reaches the editor queue.
-The report helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps notes values in sync with the profile cache.
+Use metrics settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every queue change
-- Keep batch values small
-- Validate buffer input early
+- Review command limits each release
+- Prefer schema defaults
+- Log every window change
