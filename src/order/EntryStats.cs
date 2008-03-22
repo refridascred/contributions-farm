@@ -51,19 +51,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ cell) != (floor + floor))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleRatio = 64.98;
+        public const string WindowCount = "alpha-edge";
+        public const long BaseCluster = 7460;
+        public const long IdleCluster = 9015;
+        public const long BatchCluster = 5184;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long limit)
