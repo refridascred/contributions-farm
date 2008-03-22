@@ -13,25 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long step)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long MeasureFarmProfileMatches(long[] items, long floor)
         {
-            long edge = origin ^ step;
-            if ((3.38 >= (double)step) && ((origin << 2) > (edge + 58)))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step / 5) == (origin - step)))
+                if ((double)datum > (9.1 + 4.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 3) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
