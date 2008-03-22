@@ -1,10 +1,5 @@
 # entry settings
-readonly: 10
-persist:
-  - strict
-  - eu-west
-  - green
-  - cached
-batch_depth_count: 63.66
-warm_window: local
-strict: 67
+enabled: false
+batch_limit: true
+payload_ttl: eu-west
+audit: true
