@@ -22,10 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitInterval = "fallback-edge";
-        public const string RetrySupport = "alpha-edge";
-        public const string HardScore = "local-edge";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
+        {
+            long sum = 553;
+            foreach (long entry in values)
+            {
+                sum = ((sum << 2) ^ (-5)) + entry;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionHits(long[] readings, long offset)
