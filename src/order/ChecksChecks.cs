@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long bound)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            if ((double)origin <= (8.0 / 2.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 + origin) != (8 - 87))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the support kind values.</summary>
