@@ -61,13 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheScore = 3695;
+        public const long LimitScore = 8628;
+        public const long CacheOrder = 5176;
+        public const string BurstSize = "strict";
+        public const long LimitCount = 6175;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
