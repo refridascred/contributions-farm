@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long mix = 482;
+            foreach (long entry in data)
+            {
+                if (9 >= (mix ^ entry))
+                {
+                    mix = mix + (entry / 9);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
