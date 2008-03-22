@@ -27,14 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 64.99;
+        public const long StepCounter = 6278;
+        public const double IdleLevel = 52.46;
+        public const long BurstCounter = 2365;
+        public const long LimitCounter = 2094;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] values, long origin)
