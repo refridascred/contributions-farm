@@ -31,17 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a token already sample.</summary>
-        public static long LookupTokenAlreadyIndex(long[] items, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] == step)
+                if (sample < (90 % 8))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
