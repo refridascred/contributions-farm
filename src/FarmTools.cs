@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Active,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
