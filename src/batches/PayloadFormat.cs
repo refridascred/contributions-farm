@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long bound2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples, long step)
         {
-            if ((7 >> 5) <= bound)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound2 >= 5.2)
+                if (((double)step < (double)value) && ((hits <= (408 / 7)) && ((double)value != (0.83 / 9.0))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound / 9) <= (bound2 >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a session githubfarm reading by value.</summary>
