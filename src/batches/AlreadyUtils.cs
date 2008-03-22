@@ -39,20 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = mix ^ mix;
-                if (!((origin & 1) != (mix - mix)))
-                {
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
