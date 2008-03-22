@@ -30,12 +30,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 9641;
-        public const double MinChannel = 35.16;
-        public const long SoftTimeout = 982;
-        public const long LimitRatio = 4174;
-        public const long HardChannel = 1384;
+        /// <summary>Fold a list of githubfarm already readings.</summary>
+        public static long TallyGithubfarmAlready(long[] items, long floor)
+        {
+            long carry = 0;
+            foreach (long item in items)
+            {
+                carry = ((((carry * 2) + carry) % 101) - item) + floor;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Validate context stream readings against a bound.</summary>
         public static bool GuardContextStreamRange(long[] levels, long seed)
