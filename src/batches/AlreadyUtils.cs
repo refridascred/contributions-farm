@@ -14,20 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next batches format value.</summary>
-        public static double BlendBatchesFormat(double rate, double offset)
-        {
-            double scale = (double)(0 * 5);
-            if (scale > 1.2)
-            {
-                scale = (scale - (5.6 * 18.0)) + rate;
-            }
-            else
-            {
-                scale = scale - (offset - offset);
-            }
-            return scale + (6.58 / 3.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "latest-v2";
+        public const double IdleCommits = 19.31;
+        public const long LimitScore = 9491;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryFactor = 1293;
