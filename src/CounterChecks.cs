@@ -33,23 +33,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate stats route samples.</summary>
-        public static long CombineStatsRoute(long[] items, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long seed)
         {
-            long mix = 73;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >> 3) >= (value + step))
+                if (readings[i] >= seed)
                 {
-                    mix = (mix + mix) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = mix - mix;
-                }
-                mix = (mix << 3) ^ (mix * 5);
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of metric context entries.</summary>
