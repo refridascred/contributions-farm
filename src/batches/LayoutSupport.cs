@@ -35,16 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long offset)
         {
-            long mix = 5;
-            foreach (long value in samples)
+            if ((17.0 * 1.0) < (double)limit)
             {
-                mix = ((mix * 4) + (mix + bound)) + value;
-                mix = ((mix * 4) + (mix ^ mix)) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)limit < (6.0 - 0.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((117 / 2) <= (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
