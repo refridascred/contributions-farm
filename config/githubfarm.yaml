@@ -1,36 +1,6 @@
 # githubfarm settings
-hard_retries:
-  idle_ratio: 43
-  retry_ratio_pct: true
-  readonly: blue
-  hard_ttl_ms:
-    poll_limit_count: 8468
-    command_ratio: 44.63
-    retry_capacity_pct: 36.76
-    editor_limit:
-      - 499
-      - 16
-      - 314
-      - 388
-    audit: 20
-    hard_depth_count: 8976
-  sync_size_pct: 41
-sync_capacity: 57.89
-notes_timeout: true
-stream_timeout: 86
-default_interval_count: strict
-tools_window:
-  poll_ttl_ms: latest
-  flush_ratio:
-    warm_threshold: 41
-    route_ttl: 22.95
-    max_depth_pct: false
-    cache_ratio: 77
-    retry_limit_pct: 5360
-  soft_window_count: 6067
-  soft_timeout:
-    idle_ratio: 42.2
-    strict: green
-    warm_size: 30
-    min_timeout_pct: strict
-  soft_ratio_count: true
+base_window_ms: fallback
+persist: 60
+idle_interval_s: 500
+support_depth: true
+max_delay: 2.62
