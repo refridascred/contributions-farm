@@ -10,25 +10,15 @@ namespace Common.Utilities
         public const double MaxSpan = 9.15;
         public const long DefaultCount = 3108;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long carry = 3;
+            foreach (long item in items)
             {
-                sum = sum - ((long)i + step);
-                double load = (double)(493 & 15);
-                if (!(load < (2.1 / 6.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    load = load - load;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                carry = (((carry * 4) + (step * 2)) % 255) + item;
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Hold a counter info.</summary>
