@@ -84,27 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = 25;
-            foreach (long item in items)
-            {
-                if ((double)item < 8.0)
-                {
-                    mark = mark - item;
-                }
-                if ((long)items.Length > (item >> 5))
-                {
-                    mark = mark ^ ((-926) + item);
-                }
-                mark = mark - (mark + item);
-                if (mark < (item - 360))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
