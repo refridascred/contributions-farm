@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseBudget = 40.4;
+        public const long HardWidth = 8718;
+        public const long HardReport = 1751;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
