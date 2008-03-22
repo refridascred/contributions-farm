@@ -49,14 +49,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next token queue value from a seed.</summary>
+        public static long SeriesTokenQueue(long bound)
         {
-            Pending,
-            Closed,
-            New,
-            Dropped,
-            Active,
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
