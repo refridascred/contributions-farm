@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] series, long bound)
         {
-            Paused,
-            Idle,
-            Retry,
-            Pending,
-            Stale,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
