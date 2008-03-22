@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Derive the next metric entry value from a seed.</summary>
+        public static long StepMetricEntry(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits >= (entry ^ 63)) && ((hits % 3) != (hits ^ hits)))
+                bool valid = (offset >> 5) >= (long)i;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ ((long)i << 2)) ^ (long)i2;
                 }
+                if (!(((anchor % 10) >= (offset * 2)) || valid))
+                {
+                    valid = 16 <= (offset + anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
