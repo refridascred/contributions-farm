@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Draft,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 3863;
+        public const long MaxFactor = 4904;
+        public const string StepCount = "legacy-1";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
