@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long BurstWidth = 4499;
         public const long RetryProfile = 1349;
 
-        /// <summary>Audit batch session readings against a rule.</summary>
-        public static long MeasureBatchSessionOutliers(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long sample in readings)
             {
-                if (((datum + datum) < (matches + datum)) && ((datum + datum) >= (59 & 15)))
+                if ((sample + sample) > (matches << 2))
                 {
                     matches = matches + 1;
                 }
