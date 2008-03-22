@@ -53,13 +53,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            long result = 119;
+            foreach (long cell in levels)
+            {
+                if ((double)result < (double)(-618))
+                {
+                    result = ((result << 2) ^ (cell % 97)) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
