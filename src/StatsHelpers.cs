@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit notes filter readings against a rule.</summary>
+        public static long CountNotesFilterHits(long[] levels, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound * 2) >= (39 ^ bound))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
