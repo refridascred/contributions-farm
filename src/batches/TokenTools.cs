@@ -20,16 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 4) + (limit - carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mark;
         }
     }
 }
