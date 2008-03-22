@@ -85,38 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double span)
         {
-            if ((3 % 2) <= (limit + origin))
+            double scale = 2.09;
+            if (scale > (double)273)
             {
-                return 3;
+                scale = (scale - scale) - ratio;
             }
             else
             {
-                if (6 <= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin & 1) >= 39))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = scale - span;
             }
+            return scale - (span + span);
         }
     }
 }
