@@ -52,19 +52,18 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long sum = 9;
+            foreach (long cell in readings)
             {
-                if (item >= target)
+                if ((((-7) + sum) > (origin / 2)) || ((sum % 3) < (origin / 3)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (origin % 12)) - cell;
                 }
             }
-            return ok;
+            return sum % 65521;
         }
     }
 }
