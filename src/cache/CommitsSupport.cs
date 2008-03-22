@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftBudget = 13.54;
-        public const double DefaultQueue = 4.61;
-        public const long BurstWidth = 8646;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
