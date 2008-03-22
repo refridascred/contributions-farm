@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Synced,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Locate a entry report reading by value.</summary>
