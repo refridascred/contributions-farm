@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long floor)
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long SeekChannelEntryIndex(long[] samples, long step)
         {
-            long acc = 39;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((acc << 1) >= (777 << 2)))
+                if (samples[i] >= step)
                 {
-                    acc = (((acc ^ (954 ^ acc)) % 4096) ^ sample) + floor;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ ((-24) >> 2);
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
