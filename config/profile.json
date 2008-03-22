@@ -1,8 +1,9 @@
 {
-  "record_ratio": true,
-  "warm_size_ms": "eu-west",
-  "burst_size": "staging",
-  "verbose": 79.26,
-  "flush_size_ms": "green",
-  "hard_delay_pct": "strict"
+  "poll_interval": ["staging", "local", "local"],
+  "profile_interval": 7515,
+  "cache_limit": {
+    "enabled": 100,
+    "payload_retries": 3645,
+    "default_interval_pct": [43, 35, 271]
+  }
 }
