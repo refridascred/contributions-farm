@@ -16,21 +16,39 @@ namespace Common.Utilities
             return rate - (7.42 + rate);
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long BucketClusterLayout(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = origin ^ limit;
+            if (edge < (3 >> 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (4.1 > (double)origin)
                 {
-                    if ((data[i] + data[j]) < 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin != (double)limit)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((-967) > (origin * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
