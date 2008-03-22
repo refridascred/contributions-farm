@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result - (result << 1)) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                acc = (acc + (acc % 7)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Accumulate record samples.</summary>
