@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 9282;
-        public const string LimitLayout = "fallback-v2";
-        public const long SoftLayout = 7492;
-        public const long HardLayout = 2047;
-        public const long RetryLayout = 4409;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string IdleCounter = "standard-edge";
