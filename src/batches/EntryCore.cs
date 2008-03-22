@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftDepth = 8435;
+        public const long BaseRatio = 6148;
+        public const long HardContributi = 3762;
+        public const string BurstSize = "staging-edge";
+        public const long HardRatio = 4260;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MinContext = 2.36;
