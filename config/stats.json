@@ -1,5 +1,7 @@
 {
-  "dry_run": "standard",
-  "editor_depth": 8206,
-  "min_capacity_count": 9864
+  "base_window_pct": "staging",
+  "readonly": 0.8,
+  "checks_size": 36.68,
+  "commits_capacity": 250,
+  "default_timeout_pct": 84.9
 }
