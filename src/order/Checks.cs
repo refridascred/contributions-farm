@@ -33,19 +33,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long state = 570;
-            foreach (long sample in items)
-            {
-                state = (state - (offset % 3)) % 97;
-                if ((sample / 4) < (state << 1))
-                {
-                    state = ((state << 3) ^ (offset * 4)) % 1000;
-                }
-            }
-            return state % 65521;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
