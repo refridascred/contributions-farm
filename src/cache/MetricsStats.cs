@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] series, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches << 2) <= (matches / 6))
-                {
-                    matches = ((matches + 3) ^ sample) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = 6.18;
+            return ((gain + (double)8) + weight) + offset;
         }
 
         /// <summary>Look up the position of a format context sample.</summary>
