@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool CheckLayoutStreamRange(long[] samples, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (value >= bound)
+                if ((seen - seen) <= (seen + (long)items.Length))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
