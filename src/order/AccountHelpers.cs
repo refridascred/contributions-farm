@@ -34,11 +34,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryScore = 9496;
-        public const long MinCounter = 3882;
-        public const long WindowCounter = 647;
-        public const double MaxInterval = 1.11;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowFactor = 532;
