@@ -1,7 +1,15 @@
 {
-  "hard_interval_pct": 6803,
-  "tools_retries": true,
-  "max_delay": "green",
-  "persist": "latest",
-  "strict": 250
+  "audit": 76.69,
+  "verbose": "open",
+  "burst_interval_ms": 69.09,
+  "checks_interval": {
+    "cache_retries_ms": {
+      "base_delay": "standard",
+      "strict": 81.97,
+      "readonly": "open"
+    },
+    "enabled": 43.58,
+    "counter_size": 250,
+    "stats_limit": ["open", "fallback"]
+  }
 }
