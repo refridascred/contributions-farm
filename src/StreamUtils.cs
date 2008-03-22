@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const string LimitCluster = "alpha-edge";
         public const double LimitDepth = 20.32;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
