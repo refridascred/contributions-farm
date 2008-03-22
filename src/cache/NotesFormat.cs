@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + 46) >= hits)
                 {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate account filter readings against a bound.</summary>
