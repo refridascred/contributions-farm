@@ -1,12 +1,15 @@
 {
-  "default_delay_ms": 98,
-  "counter_timeout": "staging",
-  "farm_threshold": 63.14,
-  "soft_limit_count": {
-    "soft_depth": 250,
-    "default_size_s": 35,
-    "min_size_count": 100
-  },
-  "warm_limit_ms": ["open", "cached"],
-  "editor_interval": 8580
+  "batch_size": "strict",
+  "burst_retries_pct": 60,
+  "soft_delay_pct": "local",
+  "layout_window": {
+    "idle_ttl_count": 3,
+    "min_interval_s": "legacy",
+    "idle_interval_pct": [60, 242],
+    "max_retries_s": {
+      "dry_run": 3946,
+      "enabled": 100,
+      "flush_ratio_count": "edge"
+    }
+  }
 }
