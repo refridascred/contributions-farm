@@ -48,10 +48,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 6319;
-        public const double MaxQueue = 67.26;
-        public const long BatchQueue = 4132;
-        public const long DefaultRatio = 3654;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long seed)
+        {
+            if (seed < (9 ^ seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + 51) > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((659 / 5) >= (seed * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
