@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long target)
+        /// <summary>Check that every editor channel entry stays within the limit.</summary>
+        public static bool VerifyEditorChannelRange(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (entry <= target)
+                if (datum <= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the batch state values.</summary>
