@@ -1,8 +1,6 @@
 {
-  "soft_timeout": [371, 397, 70],
-  "compress": "eu-west",
-  "flush_timeout_ms": 72.41,
-  "burst_depth": "legacy",
-  "order_limit": [319, 167, 364, 67],
-  "idle_timeout_pct": "latest"
+  "min_delay": "primary",
+  "flush_ratio": false,
+  "idle_retries": 1365,
+  "warm_interval_ms": [77, 278, 71, 430]
 }
