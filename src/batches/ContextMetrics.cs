@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] samples, long step)
+        /// <summary>Count the metrics session entries that pass the check.</summary>
+        public static long AuditMetricsSessionOutliers(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (cell < step)
+                if (!(entry < 23))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
