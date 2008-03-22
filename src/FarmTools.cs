@@ -39,17 +39,24 @@ namespace Common.Utilities
             return (drift - (span / 4.0)) + gain;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target % 3) <= (target + 29))
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= 5.55)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
