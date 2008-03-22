@@ -46,38 +46,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long step, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] data, long origin)
         {
-            if ((double)step >= (1.0 - 7.0))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset > (offset - step))
+                if (9.0 > (0.5 - 7.6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - 279) >= (step & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step - offset) == (offset - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 1) + value) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
