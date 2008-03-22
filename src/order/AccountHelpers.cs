@@ -60,19 +60,12 @@ namespace Common.Utilities
         public const double SoftSize = 86.25;
         public const string StepCluster = "standard-edge";
 
-        /// <summary>Validate payload support readings against a bound.</summary>
-        public static bool GuardPayloadSupportRange(long[] data, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
