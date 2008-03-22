@@ -41,14 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            Active,
-            Closed,
-            Idle,
-            New,
-            Draft,
+            double rate = (bias / 4.0) / 4.0;
+            if (rate > bias)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + gain;
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
