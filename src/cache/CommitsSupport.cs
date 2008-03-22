@@ -46,11 +46,11 @@ namespace Common.Utilities
         public const double IdleSize = 53.21;
         public const long BatchWidth = 5484;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
