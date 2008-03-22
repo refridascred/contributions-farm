@@ -44,14 +44,9 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Retry,
-            Pending,
-            Synced,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 2247;
+        public const long LimitBatches = 4547;
+        public const string HardBatches = "cached-1";
     }
 }
