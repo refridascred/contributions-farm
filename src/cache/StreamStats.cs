@@ -15,38 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stream tools input into a small class.</summary>
-        public static long ClassifyStreamTools(long origin, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            if ((origin % 16) < (origin + 812))
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (97 >= (offset + origin))
+                if (!(floor <= (floor >> 3)))
                 {
-                    return 3;
+                    result = (result - (result >> 4)) % 4096;
+                    result = (result + (result + floor)) % 255;
                 }
-                else
-                {
-                    if (!((offset - origin) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) > (offset >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
