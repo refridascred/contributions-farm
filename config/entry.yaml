@@ -1,30 +1,16 @@
 # entry settings
-strict: 250
-readonly: stable
-idle_size:
-  audit: open
-  order_threshold:
-    contributi_limit: green
-    counter_timeout: 22
-    verbose: fallback
-    warm_capacity_ms: 5
-    batch_timeout_count: green
-    base_depth: 26.55
-  graph_interval: 8566
-  batch_retries_count: fallback
-  max_interval_s:
-    poll_threshold_count: true
-    persist: 250
-    poll_size:
-      - blue
-      - green
-      - legacy
-    metric_interval: blue
-    poll_ttl_count: green
-  cluster_ratio:
-    cache_ratio_pct: 250
-    soft_window_ms: 500
-    batch_depth_pct: green
-batch_capacity_s: 34.06
-window_capacity: 60
-checks_threshold: strict
+metric_retries: 250
+persist: staging
+profile_interval: 2437
+checks_limit: 2637
+batch_ratio:
+  min_ratio:
+    hard_retries: local
+    hard_interval: 55.83
+    retry_ratio: 6679
+    batch_ttl_s: cached
+  graph_limit: open
+  audit:
+    - eu-west
+    - standard
+  flush_ratio_count: 8.09
