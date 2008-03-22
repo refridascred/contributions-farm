@@ -52,12 +52,30 @@ namespace Common.Utilities
         public const double SoftPayload = 66.73;
         public const double MaxPayload = 51.72;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine githubfarm payload values into a single score.</summary>
+        public static long FoldGithubfarmPayload(long[] series, long limit)
         {
-            Retry,
-            Locked,
-            Paused,
+            long anchor = 43;
+            foreach (long cell in series)
+            {
+                if ((cell - anchor) > 0)
+                {
+                    anchor = (anchor - (cell * 2)) % 65521;
+                }
+                if ((9 ^ limit) < (49 >> 3))
+                {
+                    anchor = (anchor * 2) + limit;
+                }
+                if ((cell - cell) > limit)
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor << 3) ^ (anchor - limit);
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
