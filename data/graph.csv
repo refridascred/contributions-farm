@@ -1,7 +1,7 @@
-id,level,state,rank,count
-1,54.86,legacy,12.26,609
-2,legacy,standard,970,staging
-3,714,500,294,primary
-4,944,54.03,236,89
-5,696,51.28,82.87,16.74
-6,open,717,946,12.12
+id,owner,region,weight,rank
+1,70.08,49.91,158,985
+2,open,15.21,blue,31.44
+3,cached,164,71,16
+4,299,256,94,58.49
+5,70.89,229,strict,177
+6,174,860,623,210
