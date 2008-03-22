@@ -22,38 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((bound >= (seed + bound)) || (seed > bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8.8 * 3.4) < (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed << 3) <= (bound + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + seed) > (792 & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
