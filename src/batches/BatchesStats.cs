@@ -53,18 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell >> 3) > (floor * 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            New,
+            Queued,
+            Synced,
         }
     }
 }
