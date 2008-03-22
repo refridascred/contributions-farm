@@ -1,5 +1,9 @@
 # githubfarm settings
-githubfarm_capacity: true
-verbose: 48.66
-sync_ttl_pct: 64.11
-account_interval: 37.85
+cache_limit_ms: 100
+queue_depth: 7233
+githubfarm_interval: 78.31
+enabled:
+  - legacy
+  - legacy
+  - blue
+  - legacy
