@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next metric entry value from a seed.</summary>
-        public static long StepMetricEntry(long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                bool valid = (offset >> 5) >= (long)i;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (sample >= limit)
                 {
-                    anchor = (anchor ^ ((long)i << 2)) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                if (!(((anchor % 10) >= (offset * 2)) || valid))
-                {
-                    valid = 16 <= (offset + anchor);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
