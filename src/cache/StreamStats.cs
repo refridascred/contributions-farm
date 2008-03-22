@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Idle,
-            Done,
-            Active,
+            Failed,
+            Pending,
             Locked,
-            Paused,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
