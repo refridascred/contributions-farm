@@ -44,31 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long origin2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            if ((origin ^ origin2) == (origin2 ^ 243))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (12.0 + 0.7))
+                if (((double)value <= (0.92 / 2.0)) || (((seen >> 5) == (value - seen)) && ((seen >> 2) <= (36 ^ 74))))
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (((origin / 6) > origin2) && ((926 * 5) == (origin2 >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
