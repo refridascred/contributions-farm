@@ -29,10 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 47.07;
-        public const string StepSpan = "fallback-v2";
-        public const double LimitAlready = 40.06;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long step)
+        {
+            long mark = 20;
+            foreach (long value in levels)
+            {
+                mark = (((mark - (9 >> 5)) % 255) ^ value) - step;
+                mark = mark ^ (mark % 7);
+            }
+            if (mark < 762)
+            {
+                mark = ((mark * 3) + mark) % 101;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] data, long bound)
