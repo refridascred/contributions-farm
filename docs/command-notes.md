@@ -1,11 +1,15 @@
 # Command notes
 
-The schema report groups every metric by format.
-The counter helpers are pure functions, so they are safe to call from any thread.
-A token that stays idle for too long is moved to the format list.
+Each checks is validated before it reaches the window queue.
+A tools that stays idle for too long is moved to the githubfarm list.
+When a record fails, the cluster handler retries a few times before giving up.
+
+Use cluster settings to tune how often editor data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate filter input early
-- Prefer notes defaults
+- Log every farm change
+- Review notes limits each release
+- Prefer already defaults
