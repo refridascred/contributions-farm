@@ -36,22 +36,20 @@ namespace Common.Utilities
         public const long MinEntry = 7686;
         public const double DefaultInterval = 16.79;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long anchor = 61;
-            foreach (long sample in readings)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((1.51 + 6.67) < (double)target))
+                mix = mix ^ mix;
+                if (!((origin & 1) != (mix - mix)))
                 {
-                    anchor = ((anchor << 2) ^ (sample / 2)) % 97;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor + (282 - sample);
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
