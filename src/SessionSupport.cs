@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings)
-        {
-            long anchor = 326;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length & 31) == (long)readings.Length)
-                {
-                    anchor = anchor - (item >> 2);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitRatio = 4391;
+        public const string BatchCounter = "standard";
+        public const long WindowTimeout = 8512;
+        public const string RetryBudget = "fallback-1";
+        public const string SoftBudget = "alpha-edge";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
