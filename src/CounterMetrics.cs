@@ -23,19 +23,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] items, long step)
+        /// <summary>Iterate the cache route series from a seed.</summary>
+        public static long RollCacheRoute(long limit)
         {
-            long mark = 5;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark + (mark - step)) % 1000;
-                if (!((mark + cell) >= 1))
-                {
-                    break;
-                }
+                state = (state << 3) ^ (long)i;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
