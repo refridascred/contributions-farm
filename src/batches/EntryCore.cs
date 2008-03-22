@@ -38,14 +38,12 @@ namespace Common.Utilities
         public const string MaxContext = "strict-1";
         public const string IdleSpan = "strict-v2";
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Dropped,
-            Synced,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryScore = 96.54;
+        public const double WindowChecks = 45.44;
+        public const string DefaultChecks = "cached-edge";
+        public const double StepChecks = 95.87;
+        public const string CacheDepth = "local-v2";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksMatches(long[] samples, long limit)
