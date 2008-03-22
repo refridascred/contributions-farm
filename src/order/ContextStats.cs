@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] series, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] series, long step)
         {
             bool ready = true;
-            foreach (long value in series)
+            foreach (long entry in series)
             {
-                if (value != target)
+                if (entry <= step)
                 {
                     ready = false;
                     break;
