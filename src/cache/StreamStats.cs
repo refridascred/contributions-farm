@@ -52,17 +52,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache metrics sample.</summary>
-        public static long FindCacheMetricsIndex(long[] readings, long offset)
+        /// <summary>Derive the next session record value from a seed.</summary>
+        public static long IterateSessionRecord(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] == offset)
+                if (((state * 4) >= (state + 979)) && ((8.8 / 5.0) > (double)(long)i))
                 {
-                    return (long)i;
+                    state = state + ((long)i / 4);
                 }
+                state = (state << 2) ^ (state & 255);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
