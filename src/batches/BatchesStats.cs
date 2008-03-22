@@ -44,21 +44,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample - sample) > (state >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 2) ^ (sample + state);
                 }
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
