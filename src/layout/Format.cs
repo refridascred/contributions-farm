@@ -37,12 +37,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinSize = 2528;
-        public const double MaxChannel = 30.88;
-        public const string HardChannel = "staging-1";
-        public const long CacheChannel = 782;
-        public const long HardBudget = 7798;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data, long seed)
+        {
+            long anchor = 793;
+            foreach (long reading in data)
+            {
+                if ((seed + seed) > (anchor / 9))
+                {
+                    anchor = (anchor * 5) + (seed + reading);
+                }
+                anchor = (anchor + (reading & 15)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] items, long offset)
