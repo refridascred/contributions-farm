@@ -1,7 +1,11 @@
 {
-  "max_depth_s": 500,
-  "filter_window": "green",
-  "min_threshold": 31.92,
-  "record_delay": "primary",
-  "hard_capacity_s": 1024
+  "hard_timeout": "standard",
+  "cache_size_count": {
+    "verbose": false,
+    "persist": 12,
+    "cache_timeout_ms": 5,
+    "idle_depth_ms": "legacy"
+  },
+  "base_ratio_count": true,
+  "base_threshold": 74.19
 }
