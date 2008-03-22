@@ -22,17 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 36;
+            foreach (long datum in levels)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                result = (result + ((-141) + result)) % 65521;
+                result = (result * 4) + (result + origin);
+                if ((17.0 / 9.0) < (double)datum)
                 {
-                    return (long)i;
+                    result = result - (result * 4);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
