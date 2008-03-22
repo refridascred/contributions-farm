@@ -14,15 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate already cache samples.</summary>
-        public static long TallyAlreadyCache(long[] data, long seed)
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long WeighChecksQueue(long[] items)
         {
-            long anchor = 8;
-            foreach (long sample in data)
+            long carry = 45;
+            foreach (long item in items)
             {
-                anchor = (((anchor ^ (anchor >> 2)) % 1000) - sample) + seed;
+                if (((item % 60) <= carry) && (5 > ((long)items.Length << 2)))
+                {
+                    carry = (carry << 2) ^ (item * 4);
+                }
             }
-            return anchor % 97;
+            if (carry > 9)
+            {
+                carry = (carry + (223 >> 3)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a account header.</summary>
