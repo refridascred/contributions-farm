@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long carry = 64;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length << 2) < offset)
+                {
+                    carry = (carry + (3 + value)) % 1000;
+                }
+                if (value <= (offset >> 5))
+                {
+                    carry = ((carry * 4) + (carry ^ offset)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (long)levels.Length) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
