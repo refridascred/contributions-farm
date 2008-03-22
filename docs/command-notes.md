@@ -1,16 +1,15 @@
 # Command notes
 
-Run the queue check before changing any graph limits.
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for commits live in the config folder and can be overridden per environment.
+The token module keeps notes values in sync with the githubfarm cache.
+Run the metric check before changing any githubfarm limits.
+The commits report groups every account by counter.
 
-Run the context check before changing any support limits.
-Keep farm and already names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+Run the stats check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new account fields
-- Log every cache change
-- Validate payload input early
-- Prefer support defaults
+- Prefer graph defaults
+- Document new window fields
+- Review commits limits each release
+- Log every command change
