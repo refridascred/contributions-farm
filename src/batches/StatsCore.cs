@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool CheckLayoutMetricsRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((value >= (tally + value)) && ((2.21 - 16.0) > (double)value))
+                if (value > floor)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
