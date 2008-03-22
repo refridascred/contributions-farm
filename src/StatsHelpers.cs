@@ -65,12 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next account contributi value.</summary>
+        public static double BlendAccountContributi(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            double drift = (double)(8 & 31);
+            return (drift + gain) + offset;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
