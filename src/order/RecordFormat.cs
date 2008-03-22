@@ -20,13 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
