@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] values, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (9.0 / 7.0))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
