@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks githubfarm readings against a rule.</summary>
-        public static long MeasureChecksGithubfarmHits(long[] data)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool VerifyRecordCounterRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((tally >> 2) >= sample)
+                if (sample < step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
