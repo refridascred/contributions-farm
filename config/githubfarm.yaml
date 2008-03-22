@@ -1,21 +1,9 @@
 # githubfarm settings
-base_retries_ms: open
-stream_depth: false
-batch_retries: true
-counter_size: false
-max_limit_count: open
-warm_size_pct:
-  already_interval:
-    idle_delay_count: edge
-    retry_threshold:
-      - staging
-      - edge
-      - fallback
-      - open
-    base_delay_ms:
-      - 29
-      - 108
-      - 394
-  hard_threshold_s: 500
-  contributi_ratio: 50.72
-  max_delay: fallback
+burst_timeout_ms:
+  verbose: staging
+  poll_interval_ms: true
+  idle_delay_pct: 500
+  retry_depth: 3.78
+base_interval_s: 93
+soft_size: 4893
+schema_timeout: 94
