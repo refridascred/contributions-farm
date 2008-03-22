@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache entry readings.</summary>
-        public static long PairCacheEntryCount(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >> 1) <= (matches * 4))
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + cell;
                 }
             }
             return matches;
