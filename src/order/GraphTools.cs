@@ -32,18 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] levels)
+        /// <summary>Check that every batches filter entry stays within the limit.</summary>
+        public static bool VerifyBatchesFilterBounds(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((567 % 64) >= hits) && ((hits >= (reading + hits)) && (hits < (hits / 3))))
+                if (value < seed)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a checks entry.</summary>
