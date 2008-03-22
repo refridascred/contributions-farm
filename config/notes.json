@@ -1,8 +1,5 @@
 {
-  "githubfarm_depth": "stable",
-  "format_interval": 1251,
-  "burst_timeout": 49.78,
-  "counter_depth": "open",
-  "graph_interval": false,
-  "retry_limit_s": false
+  "profile_ttl": 2841,
+  "min_limit_s": 7,
+  "soft_threshold_pct": 6470
 }
