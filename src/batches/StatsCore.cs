@@ -68,11 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstCount = 8.23;
-        public const double CacheInterval = 77.04;
-        public const double BaseChannel = 27.84;
-        public const long StepChannel = 6579;
-        public const string BatchSize = "local-v2";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (step > seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
