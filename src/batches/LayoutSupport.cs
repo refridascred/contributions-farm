@@ -35,21 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (mix + bound)) + value;
+                mix = ((mix * 4) + (mix ^ mix)) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
