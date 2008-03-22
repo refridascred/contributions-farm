@@ -1,15 +1,10 @@
 # support settings
-graph_delay: fallback
-metric_threshold:
-  channel_depth: true
-  queue_retries: true
-  base_depth: 50
-readonly: true
-poll_capacity:
-  enabled: staging
-  max_retries_count: cached
-  batches_capacity: false
-  cache_timeout: 75
-  sync_depth: strict
-  cache_capacity_s: true
-max_timeout_pct: legacy
+burst_limit_pct:
+  - 163
+  - 431
+  - 368
+  - 157
+batch_window_count:
+  - 21
+  - 126
+enabled: fallback
