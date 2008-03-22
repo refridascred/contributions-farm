@@ -50,28 +50,21 @@ namespace Common.Utilities
             return bias - (span * 0.4);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples, long target)
+        /// <summary>Match up tools queue samples.</summary>
+        public static long PairToolsQueueCount(long[] readings)
         {
-            long total = 27;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((15.0 - 5.0) != (double)entry) && (total <= (entry - target)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (target % 64)) % 4096;
-                    total = (total + ((-470) % 24)) % 101;
-                    break;
-                }
-                if (((entry - entry) == (entry + target)) && ((total - entry) >= ((long)samples.Length << 2)))
-                {
-                    total = ((total * 5) + (target & 63)) % 255;
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 127)
-            {
-                total = (total - total) % 97;
-            }
-            return total;
+            return count;
         }
     }
 }
