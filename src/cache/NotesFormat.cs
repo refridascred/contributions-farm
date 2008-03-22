@@ -29,13 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Scale a route channel figure with a bias.</summary>
+        public static double SmoothRouteChannel(double weight, double bias)
         {
-            Active,
-            Idle,
-            Closed,
-            Pending,
+            double scale = bias - (1.0 - weight);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale + weight)) - (double)(long)i;
+            }
+            return scale + (bias / 4.0);
         }
     }
 }
