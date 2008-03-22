@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
