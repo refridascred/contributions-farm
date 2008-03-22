@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale = (double)(711 + (-9));
+            if (scale <= span)
             {
-                if ((entry - seen) >= (8 ^ entry))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - (scale - span);
             }
-            return seen;
+            return scale - (rate * 0.88);
         }
 
         /// <summary>Validate payload farm readings against a bound.</summary>
