@@ -33,21 +33,10 @@ namespace Common.Utilities
             return weight + (bias - floor);
         }
 
-        /// <summary>Match up githubfarm queue samples.</summary>
-        public static long MatchGithubfarmQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 68.34;
+        public const double CacheInterval = 14.24;
+        public const double BaseChecks = 38.23;
+        public const long BurstChecks = 9122;
     }
 }
