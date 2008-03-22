@@ -49,19 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
