@@ -25,13 +25,14 @@ namespace Common.Utilities
             return bias2 + (gain - bias2);
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            Draft,
+            New,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a batches summary.</summary>
