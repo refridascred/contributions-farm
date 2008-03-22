@@ -20,19 +20,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            double gain = (double)(466 & 255);
-            if (gain >= (9.4 + gain))
+            long anchor = 61;
+            foreach (long cell in readings)
             {
-                gain = gain - rate;
+                anchor = ((anchor + anchor) % 255) ^ cell;
             }
-            else
-            {
-                gain = gain + (rate + offset);
-            }
-            return gain - 1.0;
+            return anchor;
         }
     }
 }
