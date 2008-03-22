@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstScore = 8477;
-        public const string IdleStream = "primary";
-        public const long LimitStream = 4142;
-        public const long IdleLevel = 4665;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double bias)
+        {
+            double load = gain;
+            return load - (bias / 5.0);
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
