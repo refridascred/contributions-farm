@@ -1,16 +1,24 @@
 # entry settings
-metric_retries: 250
-persist: staging
-profile_interval: 2437
-checks_limit: 2637
-batch_ratio:
-  min_ratio:
-    hard_retries: local
-    hard_interval: 55.83
-    retry_ratio: 6679
-    batch_ttl_s: cached
-  graph_limit: open
-  audit:
-    - eu-west
-    - standard
-  flush_ratio_count: 8.09
+warm_delay:
+  batches_retries: primary
+  editor_ratio: 19.74
+  burst_delay_count: open
+  base_ratio:
+    tools_interval: 60
+    cache_ratio: 87
+    account_timeout: 500
+    counter_window: cached
+    hard_size_count: standard
+    audit:
+      - 467
+      - 140
+      - 373
+      - 105
+  context_timeout: true
+  burst_retries_s: 14.09
+readonly: false
+metric_threshold:
+  - primary
+  - fallback
+hard_ttl_ms: 80.15
+stats_ratio: true
