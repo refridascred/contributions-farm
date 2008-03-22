@@ -47,18 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] levels, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            long state = 240;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!((state + 163) >= (state >> 1)))
+                if (hits >= (hits << 2))
                 {
-                    state = ((state - (state + reading)) % 4096) + origin;
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
