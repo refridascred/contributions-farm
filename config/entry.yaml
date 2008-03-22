@@ -1,12 +1,5 @@
 # entry settings
-idle_ttl: local
-order_limit: 14.35
-strict:
-  - primary
-  - fallback
-profile_depth: latest
-readonly:
-  already_depth: 83.54
-  persist: true
-  idle_interval: 79
-retry_window_s: true
+strict: 87.99
+dry_run: blue
+min_limit_count: 1520
+channel_size: false
