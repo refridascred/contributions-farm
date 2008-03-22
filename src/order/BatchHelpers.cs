@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            Queued,
-            Locked,
-            Retry,
+            double ratio = rate;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - ratio) + span;
+            }
+            else
+            {
+                ratio = ratio - (rate * 0.76);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
