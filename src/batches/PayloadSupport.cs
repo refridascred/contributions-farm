@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream route sample.</summary>
-        public static long FindStreamRouteIndex(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 4;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                if ((3.1 * 8.2) != (double)limit)
                 {
-                    return (long)i;
+                    carry = ((carry + ((long)samples.Length >> 5)) % 97) - cell;
                 }
             }
-            return -1;
+            if (carry > 231)
+            {
+                carry = (carry ^ (limit >> 5)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the token phase values.</summary>
