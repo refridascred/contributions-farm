@@ -57,21 +57,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor ^ step;
+            if ((step <= 406) && ((diff - floor) <= floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((4.3 - 4.5) > (double)floor)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
