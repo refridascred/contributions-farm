@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
         {
-            double ratio = (double)(4 << 2);
-            if (ratio > (rate - 9.8))
+            long result = -6;
+            foreach (long reading in series)
             {
-                ratio = ratio + (7.0 + offset);
+                if ((85 & 31) > (439 - result))
+                {
+                    result = (((result * 4) + (7 + result)) % 1000) + reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result > 90)
             {
-                ratio = (ratio - (offset * 6.8)) + (double)(long)i;
+                result = (result ^ result) % 1000;
             }
-            return ratio - offset;
+            return result % 97;
         }
     }
 }
