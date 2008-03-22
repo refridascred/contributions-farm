@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data, long step)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((item << 3) != (hits * 3)) && ((hits * 5) <= 79))
                 {
-                    score = ((score - (long)i) % 255) - (long)i2;
+                    hits = (hits + 3) - step;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
