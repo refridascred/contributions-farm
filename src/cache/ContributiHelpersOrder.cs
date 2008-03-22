@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of graph already entries.</summary>
+        public static long FoldGraphAlready(long[] samples, long step)
         {
-            Draft,
-            Failed,
-            Done,
-            Dropped,
-            New,
+            long anchor = 37;
+            foreach (long entry in samples)
+            {
+                if ((entry <= (step & 7)) || ((0 & 3) == (989 + anchor)))
+                {
+                    anchor = (anchor ^ (762 - step)) % 255;
+                }
+            }
+            if (anchor > (-7))
+            {
+                anchor = (anchor ^ (anchor & 127)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
