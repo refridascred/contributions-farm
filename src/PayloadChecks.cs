@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] levels, long step)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double ratio = floor;
+            if (ratio <= (ratio - ratio))
             {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - 9.5;
             }
-            return valid;
+            else
+            {
+                ratio = ratio + (bias - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (bias * 10.0);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
