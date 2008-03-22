@@ -1,7 +1,6 @@
 {
-  "flush_ratio_pct": 41,
-  "max_size_count": false,
-  "min_threshold": 45,
-  "verbose": "eu-west",
-  "commits_timeout": "latest"
+  "metric_interval": 20,
+  "audit": 3,
+  "flush_retries": 3532,
+  "soft_size_ms": 100
 }
