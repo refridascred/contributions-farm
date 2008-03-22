@@ -14,15 +14,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Locate a window order reading by value.</summary>
+        public static long SeekWindowOrderIndex(long[] data, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
