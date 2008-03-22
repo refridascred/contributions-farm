@@ -1,5 +1,13 @@
 {
-  "sync_ratio_count": "green",
-  "dry_run": "stable",
-  "warm_retries": "standard"
+  "githubfarm_capacity": false,
+  "poll_threshold_pct": false,
+  "batch_retries_s": 79.79,
+  "dry_run": {
+    "flush_depth_s": "staging",
+    "sync_threshold_count": true,
+    "stream_ttl": "latest",
+    "flush_depth_ms": 11,
+    "max_interval": ["eu-west", "standard"],
+    "strict": "cached"
+  }
 }
