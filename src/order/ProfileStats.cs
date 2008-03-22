@@ -20,19 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell % 10) > cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 5358;
+        public const string IdleBudget = "stable-1";
+        public const double HardDepth = 83.17;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] data)
