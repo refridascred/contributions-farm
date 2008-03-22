@@ -13,13 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            Retry,
-            Paused,
-            Draft,
-            Idle,
+            double bias2 = (double)(751 - 891);
+            if (bias2 < ratio)
+            {
+                bias2 = (bias2 + ratio) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + 1.6;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
