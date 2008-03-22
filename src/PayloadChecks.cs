@@ -78,22 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long TallyBatchAlready(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long anchor = 51;
+            foreach (long reading in samples)
             {
-                if ((double)matches > (6.41 / 7.0))
+                if ((reading / 5) > (reading - origin))
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor ^ (reading & 255)) % 255;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
