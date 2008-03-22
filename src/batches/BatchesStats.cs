@@ -44,10 +44,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "standard";
-        public const long LimitRatio = 8983;
-        public const long SoftBudget = 3745;
-        public const string BurstTimeout = "fallback-edge";
+        /// <summary>Grade a report profile value against two limits.</summary>
+        public static long GradeReportProfile(long bound, long offset)
+        {
+            if (2.0 <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (10.0 / 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
