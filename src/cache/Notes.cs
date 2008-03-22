@@ -20,13 +20,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = anchor ^ anchor;
+                if ((5.0 * 5.75) <= (double)anchor)
+                {
+                    anchor = (anchor + ((long)i * 4)) % 97;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits mode values.</summary>
