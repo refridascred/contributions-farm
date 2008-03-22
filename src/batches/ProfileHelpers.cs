@@ -50,18 +50,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((double)item <= (2.87 * 6.8))
+                if (((count % 7) > (datum % 60)) || ((datum - count) == (datum ^ count)))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
