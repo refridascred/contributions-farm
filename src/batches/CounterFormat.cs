@@ -14,11 +14,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 1903;
-        public const string IdleRoute = "local-v2";
-        public const string WindowRoute = "stable-1";
-        public const long DefaultWidth = 7328;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 3168;
+        public const double MinDepth = 28.32;
+        public const long BaseReport = 8514;
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] readings)
