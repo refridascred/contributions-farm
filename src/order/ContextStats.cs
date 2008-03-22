@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next farm payload value from a seed.</summary>
-        public static long IterateFarmPayload(long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix + target;
-                mix = mix - target;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next support value.</summary>
