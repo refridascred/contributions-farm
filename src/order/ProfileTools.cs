@@ -42,13 +42,10 @@ namespace Common.Utilities
         public const long IdleCount = 1275;
         public const long LimitInterval = 6243;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 7169;
+        public const long CacheDepth = 3906;
+        public const long IdleFactor = 3725;
+        public const string BaseTimeout = "local-edge";
     }
 }
