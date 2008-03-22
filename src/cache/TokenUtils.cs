@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] items)
         {
-            New,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (19.0 <= (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
