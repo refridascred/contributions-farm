@@ -32,13 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Retry,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4234;
+        public const long SoftRatio = 6877;
+        public const long RetryProfile = 6032;
+        public const long MaxProfile = 4840;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
