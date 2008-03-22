@@ -13,20 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double floor)
-        {
-            double gain = ratio / 2.0;
-            if (gain < (double)19)
-            {
-                gain = (gain + (double)160) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 23.17;
+        public const long WindowBudget = 1430;
+        public const double BatchSupport = 33.12;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ScaleGithubfarm(double scale, double offset)
