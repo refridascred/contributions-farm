@@ -68,13 +68,17 @@ namespace Common.Utilities
             return load + 6.38;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
