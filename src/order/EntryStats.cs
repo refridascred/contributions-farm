@@ -48,21 +48,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((step - step) < seed) && (761 < step))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (step / 2))
                 {
-                    if ((data[i] ^ data[j]) > 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((step + seed) == (seed + step))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
