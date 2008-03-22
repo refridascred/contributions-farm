@@ -1,8 +1,11 @@
 {
-  "audit": 4321,
-  "dry_run": [300, 221],
-  "base_delay_pct": "staging",
-  "cache_threshold": 9491,
-  "hard_size_pct": ["blue", "blue", "legacy", "open"],
-  "order_size": false
+  "readonly": 30,
+  "flush_ttl_ms": {
+    "retry_retries_count": false,
+    "sync_timeout_pct": false,
+    "strict": 30
+  },
+  "burst_depth": false,
+  "command_timeout": true,
+  "stats_timeout": 60
 }
