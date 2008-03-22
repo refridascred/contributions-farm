@@ -51,18 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen >= (sample + sample)) && ((56 / 8) <= sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
