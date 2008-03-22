@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
