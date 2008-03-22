@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate filter format readings against a bound.</summary>
+        public static bool GuardFilterFormatRange(long[] series, long step)
         {
-            Synced,
-            Queued,
-            Stale,
-            New,
-            Locked,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
