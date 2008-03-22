@@ -26,18 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long TallyRouteNotesMatches(long[] items, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long diff = floor - floor2;
+            if ((1.44 * 0.2) <= (double)diff)
             {
-                if ((sample & 3) == (seed - seen))
+                return 0;
+            }
+            else
+            {
+                if ((diff / 8) > (floor2 * 4))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate report token samples.</summary>
