@@ -1,6 +1,7 @@
 {
-  "filter_ttl": [176, 324, 105],
-  "flush_timeout_ms": true,
-  "warm_retries_s": ["cached", "green", "strict", "latest"],
-  "stats_delay": 60.66
+  "default_ratio": "standard",
+  "base_capacity_count": "green",
+  "cache_timeout_s": "legacy",
+  "enabled": 250,
+  "base_threshold_ms": 38.82
 }
