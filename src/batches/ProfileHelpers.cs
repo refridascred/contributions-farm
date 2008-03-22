@@ -51,14 +51,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items, long limit)
         {
-            Closed,
-            Pending,
-            Locked,
-            Dropped,
-            Queued,
+            long mix = 90;
+            foreach (long reading in items)
+            {
+                if (limit >= (mix + reading))
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) % 255;
+                }
+                else
+                {
+                    mix = (mix + mix) % 65521;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
