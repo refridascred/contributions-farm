@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit queue account readings against a rule.</summary>
