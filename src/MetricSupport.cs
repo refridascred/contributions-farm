@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            New,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftTimeout = 6917;
+        public const long RetrySpan = 1930;
+        public const double DefaultCount = 69.62;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleRatio = 4937;
