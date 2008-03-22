@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long RetrySpan = 1930;
         public const double DefaultCount = 69.62;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 4937;
-        public const long MinRatio = 3709;
-        public const long HardChannel = 6185;
-        public const long MaxChannel = 2943;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
+        {
+            long carry = 539;
+            foreach (long sample in samples)
+            {
+                carry = ((carry - (306 >> 4)) % 4096) - sample;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] series, long offset)
