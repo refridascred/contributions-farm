@@ -67,14 +67,31 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long limit)
         {
-            Pending,
-            Active,
-            Stale,
-            Queued,
-            Locked,
+            if (((44 + bound) <= (limit + limit)) && ((limit % 12) < bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.9 + 4.69) != (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - 118) <= (88 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
