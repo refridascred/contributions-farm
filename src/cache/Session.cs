@@ -21,22 +21,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit format counter readings against a rule.</summary>
-        public static long MeasureFormatCounterGaps(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading ^ reading) == (reading ^ matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
