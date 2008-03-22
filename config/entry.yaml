@@ -1,28 +1,26 @@
 # entry settings
-support_threshold: false
-compress: 20.12
-min_size_ms: 54.85
-retry_size_ms: local
-hard_delay_pct:
-  soft_threshold_pct: false
-  max_interval:
-    poll_ratio_count: 250
-    min_limit_ms: 58
-    route_threshold: true
-    strict:
-      - 346
-      - 344
-      - 304
-      - 424
-  filter_size:
-    report_window: staging
-    sync_timeout_pct: blue
-    retry_depth_count: false
-    flush_threshold: 45
-  cache_depth:
-    - 81
-    - 228
-    - 479
-    - 234
-  warm_ratio: 500
-  default_depth_s: false
+idle_capacity_pct:
+  already_threshold:
+    batch_window: open
+    min_size_ms: 500
+    filter_timeout: 623
+    base_retries:
+      - 66
+      - 166
+      - 459
+    batch_timeout_pct: open
+    burst_threshold: 25.59
+  min_size: 30
+  warm_ttl: local
+  sync_ratio_s:
+    - 59
+    - 92
+    - 48
+  min_size_count: 52
+batch_ratio_count: 97.84
+queue_capacity:
+  - 481
+  - 232
+  - 34
+  - 252
+soft_ratio_ms: 1024
