@@ -1,6 +1,7 @@
 {
-  "burst_interval_ms": 49.26,
-  "commits_ratio": "staging",
-  "enabled": "primary",
-  "compress": [442, 472, 440]
+  "stats_size": "strict",
+  "poll_interval_pct": 6637,
+  "burst_interval_ms": ["stable", "open", "staging"],
+  "soft_delay_pct": "primary",
+  "base_capacity": 70.85
 }
