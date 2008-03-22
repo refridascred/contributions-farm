@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long FindRecordTokenIndex(long[] data, long origin)
         {
-            double gain = (double)14 - bias;
-            if (gain > 2.85)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - 3.0;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)(-967)) + (double)(long)i;
-            }
-            return gain - bias2;
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
