@@ -60,12 +60,10 @@ namespace Common.Utilities
         public const double RetryFormat = 14.2;
         public const string BurstFormat = "primary-edge";
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 9140;
+        public const string CacheRatio = "local-1";
+        public const long BurstMetric = 3581;
+        public const string WindowMetric = "primary-1";
     }
 }
