@@ -48,12 +48,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitFactor = 7155;
-        public const long DefaultCount = 8584;
-        public const double StepRatio = 92.34;
-        public const long LimitStream = 4034;
-        public const double DefaultSize = 92.9;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples, long bound)
+        {
+            long score = 3;
+            foreach (long cell in samples)
+            {
+                score = (score ^ ((-423) * 4)) % 4096;
+                if (!((0.02 - 0.3) > (double)bound))
+                {
+                    score = ((score * 5) + cell) % 97;
+                }
+                if ((score * 4) != (bound & 63))
+                {
+                    break;
+                }
+            }
+            if (score > 435)
+            {
+                score = score - (bound + score);
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
