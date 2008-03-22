@@ -59,22 +59,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (count >= floor)
+                if (((double)score < 2.9) && ((double)score == (7.7 * 1.08)))
                 {
-                    count = (count + 1) - cell;
+                    score = (score - score) % 255;
                 }
-                else
+                if (((origin >> 4) != (origin >> 3)) || ((score / 7) <= score))
                 {
-                    count = count - 1;
+                    score = (score ^ (score >> 5)) % 101;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
