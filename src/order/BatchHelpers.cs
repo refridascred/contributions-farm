@@ -36,15 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double gain2 = (gain - gain) * 4.3;
-            if (gain2 > gain2)
-            {
-                gain2 = gain2 - (floor - floor);
-            }
-            return gain2 - 0.29;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
