@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double bias2)
         {
-            Closed,
-            New,
-            Draft,
-            Locked,
+            double rate = (bias2 * 8.88) * 18.0;
+            if (rate <= (3.9 * 4.73))
+            {
+                rate = rate + (bias2 * 3.34);
+            }
+            else
+            {
+                rate = rate - (double)3;
+            }
+            return rate - bias;
         }
 
         /// <summary>Validate payload farm readings against a bound.</summary>
