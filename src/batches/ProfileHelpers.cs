@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchBudget = 3863;
-        public const long MaxFactor = 4904;
-        public const string StepCount = "legacy-1";
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale <= scale)
+            {
+                scale = scale + (double)17;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (rate + floor)) + (double)(long)i;
+            }
+            return scale - 9.19;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
