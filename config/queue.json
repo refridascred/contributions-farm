@@ -1,5 +1,6 @@
 {
-  "contributi_size": ["stable", "cached"],
-  "sync_ratio_count": false,
-  "default_limit_s": "local"
+  "flush_timeout": ["blue", "edge"],
+  "base_ratio_pct": 250,
+  "readonly": [225, 429, 334],
+  "min_delay": 46.33
 }
