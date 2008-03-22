@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long AuditMetricPayloadMatches(long[] readings)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long score = 17;
+            foreach (long cell in samples)
             {
-                if (((value / 8) >= value) || ((seen < (value / 9)) && ((1.0 / 8.0) <= (double)value)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score - cell;
             }
-            return seen;
+            if (score > 39)
+            {
+                score = ((score << 2) ^ (bound << 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
