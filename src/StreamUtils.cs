@@ -58,22 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double load = bias;
+            if (load <= (2.8 / 2.0))
             {
-                if ((entry % 60) < (5 - entry))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load - span;
             }
-            return hits;
+            return load + 6.38;
         }
 
         /// <summary>Match up already samples.</summary>
