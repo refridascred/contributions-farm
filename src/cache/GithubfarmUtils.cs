@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long MaxWindow = 39;
         public const long IdleWindow = 4031;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 48;
+            foreach (long reading in series)
             {
-                if ((double)20 == (double)reading)
+                if ((reading >> 2) >= reading)
                 {
-                    matches = (matches + 1) + step;
+                    break;
                 }
+                else
+                {
+                    acc = (acc << 2) ^ 9;
+                }
+                acc = acc ^ (reading << 1);
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Hold a support info.</summary>
