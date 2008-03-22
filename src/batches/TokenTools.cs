@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
