@@ -40,11 +40,25 @@ namespace Common.Utilities
         public const long BurstBudget = 9444;
         public const long MaxTimeout = 1783;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryInterval = 546;
-        public const long BatchGithubfarm = 3905;
-        public const double StepGithubfarm = 20.8;
-        public const string StepSize = "staging-1";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (step + acc)) % 101;
+                if (((acc & 127) > step) || (step <= ((long)i - acc)))
+                {
+                    acc = acc + (acc % 16);
+                }
+                if (!(acc <= ((long)i / 2)))
+                {
+                    acc = (acc - ((long)i % 10)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] series, long target)
