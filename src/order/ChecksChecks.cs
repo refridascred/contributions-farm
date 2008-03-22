@@ -14,18 +14,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a window order reading by value.</summary>
-        public static long SeekWindowOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxScore = 1.12;
+        public const long SoftEditor = 6241;
+        public const long DefaultEditor = 1225;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long limit)
