@@ -35,13 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long TallyEntryFormatMatches(long[] readings, long seed)
         {
-            Queued,
-            Done,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits % 8) != (datum / 6))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
