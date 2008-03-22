@@ -23,22 +23,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            long total = 863;
-            foreach (long sample in series)
+            if (((target & 15) < target) && (13 > (origin - origin)))
             {
-                if (!((sample + sample) <= origin))
+                return 3;
+            }
+            else
+            {
+                if ((origin - target) == (origin - origin))
                 {
-                    total = (total + origin) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (total * 2)) % 4096;
+                    if ((target / 7) <= (origin * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin + target) >= 0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Project the next context value.</summary>
