@@ -49,39 +49,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long limit2)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long next = limit - limit2;
-            if (limit >= ((-51) << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit >= (double)next)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 >> 3) < next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit2) >= (limit2 - limit2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Idle,
+            Retry,
+            Closed,
         }
     }
 }
