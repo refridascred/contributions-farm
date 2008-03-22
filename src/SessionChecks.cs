@@ -20,18 +20,14 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Count the batches stream entries that pass the check.</summary>
-        public static long AuditBatchesStreamMatches(long[] series, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (bound >= (seen >> 2))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
