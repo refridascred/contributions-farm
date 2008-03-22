@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy eu-west fallback; do
+for item in stable edge green cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=310
+log "limit is ${BUFFER_LIMIT}"
