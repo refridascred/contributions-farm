@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const double HardScore = 15.3;
         public const double RetryLevel = 94.21;
 
-        /// <summary>Match up checks window samples.</summary>
-        public static long CompareChecksWindowCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result ^ (89 & 255)) % 101) + entry) + floor;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a metrics options.</summary>
