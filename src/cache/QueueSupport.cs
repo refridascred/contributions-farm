@@ -25,17 +25,19 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long limit)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool ValidateAccountRouteBounds(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                if (cell != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
