@@ -13,20 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool GuardNotesSessionRange(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 93.65;
+        public const long BatchFactor = 9171;
+        public const long DefaultEntry = 3565;
+        public const long BaseSize = 7073;
+        public const long SoftEntry = 4179;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long offset)
