@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Check that every tools support entry stays within the limit.</summary>
+        public static bool ValidateToolsSupportLimits(long[] levels, long offset)
         {
-            double rate2 = (double)84 - (double)64;
-            if (rate2 < rate)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                rate2 = (rate2 + (double)2) + offset;
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 - rate2;
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
