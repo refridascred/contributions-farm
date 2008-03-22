@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6 * 4) > (state >> 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 2) ^ ((long)i ^ 322);
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
