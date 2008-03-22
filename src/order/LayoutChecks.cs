@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const string BatchEditor = "open-1";
         public const double RetryLevel = 24.76;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Active,
             Ready,
-            Done,
+            Pending,
             Queued,
         }
 
