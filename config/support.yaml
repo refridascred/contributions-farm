@@ -1,10 +1,5 @@
 # support settings
-base_ttl_s:
-  - 23
-  - 255
-  - 216
-  - 474
-hard_size: local
-min_threshold_pct:
-  - 403
-  - 292
+sync_threshold_s: 1024
+readonly: 66
+idle_size: 12
+tools_interval: stable
