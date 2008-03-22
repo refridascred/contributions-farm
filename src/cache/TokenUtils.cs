@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank support metric input into a small class.</summary>
-        public static long RankSupportMetric(long seed, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long floor)
         {
-            long next = seed ^ limit;
-            if (((990 + next) <= 80) && ((double)limit >= (double)seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((next & 31) == (31 % 16)))
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed & 31) <= (seed - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < (seed >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
