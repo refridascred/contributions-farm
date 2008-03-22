@@ -27,15 +27,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cache farm counter forward.</summary>
-        public static long RollCacheFarm(long seed)
+        /// <summary>Scale a notes channel figure with a bias.</summary>
+        public static double BlendNotesChannel(double scale, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            double mean = scale;
+            if (mean >= (double)4)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                mean = mean - (span / 8.0);
             }
-            return total;
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (double)334;
         }
 
         /// <summary>Digest a series of already entries.</summary>
