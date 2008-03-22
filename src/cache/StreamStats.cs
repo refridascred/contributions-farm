@@ -22,19 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter report readings against a rule.</summary>
-        public static long AuditCounterReportOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - limit) != (939 ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepRatio = 9992;
+        public const long SoftLevel = 7556;
+        public const long MinFactor = 2645;
+        public const double MaxFormat = 73.86;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
