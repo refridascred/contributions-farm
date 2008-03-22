@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)hits == (4.03 - 7.0))
+                if ((double)matches >= (11.0 - 2.61))
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
