@@ -19,26 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long sum = 787;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (((sum << 2) ^ sum) % 101) ^ (long)i2;
-                }
-                if (((double)(long)levels.Length >= 7.9) || ((2.78 + 13.0) <= (double)datum))
-                {
-                    sum = (sum - (seed * 2)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (seed - datum)) % 65521;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many support batches samples are out of range.</summary>
