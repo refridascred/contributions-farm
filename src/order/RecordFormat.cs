@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long anchor = 80;
-            foreach (long cell in readings)
+            long acc = 547;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 3) ^ (cell + anchor)) % 1000;
-                if ((double)anchor > 9.16)
+                if (acc < sample)
                 {
-                    anchor = anchor - (cell + cell);
+                    acc = (acc ^ (sample << 1)) % 4096;
+                }
+                if ((sample & 127) == (acc + sample))
+                {
+                    acc = (acc ^ ((long)levels.Length + sample)) % 1000;
                 }
             }
-            return anchor;
+            if (acc < 8)
+            {
+                acc = (acc + ((long)levels.Length << 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stats header.</summary>
