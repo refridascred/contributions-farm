@@ -21,10 +21,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 55.06;
-        public const long BaseContributi = 9821;
-        public const long MaxDepth = 9837;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (state < 447)
+                {
+                    state = (state * 5) + bound;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double weight, double floor)
