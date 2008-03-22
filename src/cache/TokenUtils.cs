@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stream token readings against a rule.</summary>
-        public static long TallyStreamTokenHits(long[] items)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value <= 5.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
