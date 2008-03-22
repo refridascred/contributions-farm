@@ -12,21 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
