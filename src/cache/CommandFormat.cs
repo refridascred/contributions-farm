@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((14.0 + 9.77) > 4.7)
-                {
-                    seen = ((seen + 2) + item) - step;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a counter record.</summary>
