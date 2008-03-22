@@ -19,18 +19,19 @@ namespace Common.Utilities
             return (rate + (double)890) + floor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] readings)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double weight = offset + bias;
+            if (weight > (weight / 8.0))
             {
-                if ((cell + count) < count)
-                {
-                    count = count + 3;
-                }
+                weight = weight - 9.6;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (weight / 4.0)) - (double)(long)i;
+            }
+            return weight + 2.4;
         }
 
         /// <summary>Digest a series of window entries.</summary>
