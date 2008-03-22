@@ -26,39 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            long prev = floor - limit;
-            if ((double)prev < (3.9 + 0.24))
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)limit == (7.0 - 1.0)) && ((double)floor < 6.31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev >> 3) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (6 >= prev)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
