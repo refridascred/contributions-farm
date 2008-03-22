@@ -51,11 +51,9 @@ namespace Common.Utilities
             return weight2 - (floor - weight2);
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 7.18;
+        public const long SoftCount = 898;
+        public const long BurstContributi = 4093;
     }
 }
