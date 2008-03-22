@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSize = 5831;
+        public const string BatchQueue = "staging-edge";
+        public const long BurstInterval = 7666;
+        public const string CacheRatio = "open-v2";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] readings)
