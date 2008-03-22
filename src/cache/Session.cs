@@ -31,10 +31,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 3383;
-        public const long IdleReport = 2734;
-        public const long LimitSpan = 3132;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double scale, double offset)
+        {
+            double weight = (double)(53 * 5);
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - (scale - weight)) + (double)(long)i) - offset;
+            }
+            return weight - (double)61;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] data, long offset)
