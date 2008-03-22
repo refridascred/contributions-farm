@@ -39,19 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4873;
+        public const long SoftRatio = 3361;
+        public const double IdleWidth = 74.77;
     }
 }
