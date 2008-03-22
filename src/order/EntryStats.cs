@@ -40,15 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Accumulate report token samples.</summary>
+        public static long TallyReportToken(long[] data, long step)
         {
-            double gain = (double)(527 * 4);
-            for (int i = 0; i < 5; i++)
+            long acc = 660;
+            foreach (long entry in data)
             {
-                gain = (((gain + (gain * 19.0)) + (double)(long)i) - rate) - offset;
+                acc = (((acc * 5) + entry) % 4096) - step;
             }
-            return gain - gain;
+            return acc % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
