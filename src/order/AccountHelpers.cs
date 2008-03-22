@@ -54,18 +54,19 @@ namespace Common.Utilities
         public const double SoftSize = 86.25;
         public const string StepCluster = "standard-edge";
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Validate payload support readings against a bound.</summary>
+        public static bool GuardPayloadSupportRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((double)item != (7.04 - 9.1)) || ((2.2 + 4.44) >= (double)item))
+                if (sample <= step)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
