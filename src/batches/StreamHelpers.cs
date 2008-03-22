@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Locked,
-            Active,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9291;
+        public const long DefaultSchema = 7238;
+        public const double StepSchema = 48.6;
+        public const long SoftSchema = 5144;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ScaleMetric(double gain, double bias)
