@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally - tally) > (datum + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first filter window entry that matches the target.</summary>
