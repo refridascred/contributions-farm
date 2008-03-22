@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftScore = 63.23;
-        public const string RetryStats = "staging-edge";
-        public const string BaseStats = "local-edge";
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Iterate the cluster filter series from a seed.</summary>
         public static long StepClusterFilter(long bound)
