@@ -1,9 +1,5 @@
 # githubfarm settings
-cache_limit_ms: 100
-queue_depth: 7233
-githubfarm_interval: 78.31
-enabled:
-  - legacy
-  - legacy
-  - blue
-  - legacy
+dry_run: edge
+commits_threshold: 9092
+batch_threshold_pct: latest
+poll_ttl_count: false
