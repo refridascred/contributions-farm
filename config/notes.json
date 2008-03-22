@@ -1,6 +1,7 @@
 {
-  "min_delay": "primary",
-  "flush_ratio": false,
-  "idle_retries": 1365,
-  "warm_interval_ms": [77, 278, 71, 430]
+  "contributi_ttl": [320, 219, 488],
+  "default_capacity": 500,
+  "burst_interval_ms": "standard",
+  "max_ttl": 1699,
+  "idle_ttl_ms": "green"
 }
