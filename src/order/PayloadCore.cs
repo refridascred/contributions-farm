@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8538;
-        public const string CacheBuffer = "legacy-edge";
-        public const long IdleSpan = 1246;
-        public const string RetryBuffer = "alpha-1";
-        public const long MinBuffer = 9502;
+        /// <summary>Iterate the editor route series from a seed.</summary>
+        public static long DeriveEditorRoute(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] series, long target)
