@@ -71,18 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long CountLayoutClusterHits(long[] levels)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((9 ^ count) <= value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
