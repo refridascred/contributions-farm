@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((double)target <= (double)carry) || (target >= (carry / 6)))
-                {
-                    carry = ((carry << 3) ^ target) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the batch class values.</summary>
