@@ -14,19 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every stats payload entry stays within the limit.</summary>
-        public static bool VerifyStatsPayloadLimits(long[] values, long floor)
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool CheckPayloadFarmRange(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (value != floor)
+                if (reading < seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Match up stream samples.</summary>
