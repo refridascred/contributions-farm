@@ -34,19 +34,15 @@ namespace Common.Utilities
         public const long BaseCounter = 6325;
         public const long MaxCount = 6187;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] samples, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long carry = 0;
+            foreach (long cell in items)
             {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (((carry << 2) ^ (cell - cell)) % 4096) - step;
             }
-            return ok;
+            return carry % 4096;
         }
 
         /// <summary>Describe the payload class values.</summary>
