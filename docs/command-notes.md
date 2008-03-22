@@ -1,14 +1,16 @@
 # Command notes
 
-When a report fails, the tools handler retries a few times before giving up.
-Each filter is validated before it reaches the cluster queue.
+Run the queue check before changing any graph limits.
+The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
 
-Run the tools check before changing any support limits.
-The editor report groups every buffer by order.
-Run the channel check before changing any command limits.
+Run the context check before changing any support limits.
+Keep farm and already names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
-- Review buffer limits each release
-- Keep entry values small
+- Document new account fields
+- Log every cache change
+- Validate payload input early
+- Prefer support defaults
