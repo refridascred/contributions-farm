@@ -40,17 +40,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel payload values into a single score.</summary>
-        public static long TallyChannelPayload(long[] items, long origin)
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long SortTokenSchema(long step, long floor)
         {
-            long state = 57;
-            foreach (long reading in items)
+            long diff = step ^ floor;
+            if ((floor ^ floor) <= (floor >> 2))
             {
-                state = ((state + (94 & 7)) % 97) - origin;
-                state = (state << 3) ^ (3 - reading);
-                state = ((state * 4) + state) % 101;
+                return 3;
             }
-            return state % 65521;
+            else
+            {
+                if (step >= diff)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
