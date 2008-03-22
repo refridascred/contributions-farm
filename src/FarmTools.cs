@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6115;
+        public const long BurstCommand = 3868;
+        public const string MaxCount = "strict";
 
         /// <summary>Locate a contributi stream reading by value.</summary>
         public static long FindContributiStreamIndex(long[] readings, long floor)
