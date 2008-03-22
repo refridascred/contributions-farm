@@ -36,10 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSize = 37.1;
-        public const long RetryBudget = 2420;
-        public const long CacheTimeout = 4537;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            Queued,
+            New,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftRatio = 31.16;
