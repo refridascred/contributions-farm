@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Failed,
-            Paused,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseSize = 78.06;
+        public const long WindowTimeout = 8712;
+        public const double WindowGraph = 21.36;
+        public const string BatchInterval = "stable-v2";
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long step)
