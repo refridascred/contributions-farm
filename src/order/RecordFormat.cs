@@ -51,18 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count <= (datum >> 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Retry,
+            Paused,
+            Locked,
         }
     }
 }
