@@ -22,26 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long bound, long step)
         {
-            long state = 7;
-            foreach (long reading in values)
+            long offset = bound - step;
+            if ((double)bound < (4.3 / 3.0))
             {
-                if ((double)reading != (double)361)
+                return 3;
+            }
+            else
+            {
+                if ((step & 127) > (67 << 2))
                 {
-                    state = (state + (reading - 464)) % 101;
+                    return 7;
                 }
-                if (9.1 >= (double)(long)values.Length)
+                else
                 {
-                    break;
+                    if ((offset + step) != (bound << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 116)
-            {
-                state = state - (bound / 6);
-            }
-            return state % 1000;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
