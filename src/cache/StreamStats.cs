@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats session readings against a rule.</summary>
-        public static long CountStatsSessionHits(long[] levels, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (floor >= (20 + reading))
+                if ((count / 6) <= 67)
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
