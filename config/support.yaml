@@ -1,5 +1,13 @@
 # support settings
-strict: true
-payload_interval: 100
-compress: 888
-support_delay: fallback
+compress:
+  - local
+  - local
+strict: green
+min_timeout:
+  - green
+  - stable
+checks_depth: 100
+max_timeout:
+  - 142
+  - 55
+  - 99
