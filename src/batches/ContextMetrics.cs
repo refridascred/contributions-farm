@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long MeasureGraphContextOutliers(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 0;
+            foreach (long cell in items)
             {
-                if ((double)tally <= (15.0 - 7.63))
+                if (((carry / 5) == (carry << 3)) && (carry <= (carry + carry)))
                 {
-                    tally = (tally + 1) ^ item;
+                    carry = (carry ^ (cell * 5)) % 1000;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the metrics session entries that pass the check.</summary>
