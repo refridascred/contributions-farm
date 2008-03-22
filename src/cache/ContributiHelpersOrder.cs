@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long limit)
         {
-            long mark = 651;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mark = (mark * 5) + (mark - sample);
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 699)
-            {
-                mark = (mark - ((-5) ^ mark)) % 1000;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the stream phase values.</summary>
