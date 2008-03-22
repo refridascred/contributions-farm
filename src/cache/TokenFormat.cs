@@ -31,11 +31,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryBudget = 84.1;
-        public const long MinCache = 7948;
-        public const double SoftFactor = 52.18;
-        public const string RetryCache = "stable";
-        public const long DefaultRatio = 8346;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total * 4) + total;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
