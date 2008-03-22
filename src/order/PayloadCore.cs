@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (series[i] >= target)
                 {
                     return (long)i;
                 }
