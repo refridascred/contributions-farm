@@ -38,16 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                carry = carry ^ seed;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((((entry - entry) >= (entry >> 5)) || (entry >= (entry << 3))) || ((count & 127) != (entry * 4)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
