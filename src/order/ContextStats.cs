@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a profile stats.</summary>
