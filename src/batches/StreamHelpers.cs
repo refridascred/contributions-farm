@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next route channel value from a seed.</summary>
-        public static long DeriveRouteChannel(long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((floor + 1) >= state) || (state > ((long)i + state))))
+                total = (total - (4 - offset)) % 101;
+                if (((double)total < (2.0 - 5.0)) && (total >= offset))
                 {
-                    state = (state - 507) % 255;
+                    total = (total * 4) + (offset & 31);
+                    total = total + ((long)i / 9);
                 }
-                state = ((state * 4) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
