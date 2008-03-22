@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitInterval = "fallback-edge";
+        public const string RetrySupport = "alpha-edge";
+        public const string HardScore = "local-edge";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionHits(long[] readings, long offset)
