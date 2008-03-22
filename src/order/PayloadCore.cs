@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels, long offset)
         {
-            long anchor = -41;
-            foreach (long value in data)
+            long score = 860;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ anchor) ^ value;
+                if ((((-924) & 1) > offset) && (offset >= (offset * 5)))
+                {
+                    score = (score * 3) + (datum + 721);
+                }
             }
-            if (anchor < 141)
-            {
-                anchor = anchor + (anchor / 8);
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the commits status values.</summary>
