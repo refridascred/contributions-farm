@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = 452;
-            foreach (long reading in items)
-            {
-                if (((double)reading <= (1.0 / 2.0)) || (reading >= (acc >> 1)))
-                {
-                    acc = (acc - reading) % 97;
-                }
-            }
-            if (acc < 875)
-            {
-                acc = (acc + (acc / 6)) % 255;
-            }
-            return acc;
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a graph entry.</summary>
