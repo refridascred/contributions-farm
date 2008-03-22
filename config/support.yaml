@@ -1,4 +1,7 @@
 # support settings
-base_retries_s: false
-farm_ttl: 53.99
-min_timeout_ms: 8
+min_size_s: 53.82
+idle_size_pct:
+  strict: 73.78
+  flush_interval: primary
+  burst_ttl: 38.59
+flush_ttl: 82.67
