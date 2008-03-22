@@ -63,25 +63,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long step2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            long bound = step + step2;
-            if ((bound + step2) >= 330)
+            long sum = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= 1.0)
+                if ((975 / 3) > (sum / 5))
                 {
-                    return 8;
+                    sum = sum ^ (value - 558);
                 }
-                else
+                if ((11.0 * 7.7) != (double)value)
                 {
-                    return 0;
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
