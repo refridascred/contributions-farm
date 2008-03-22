@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter format readings against a bound.</summary>
-        public static bool GuardFilterFormatRange(long[] series, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            double rate = 8.7;
+            if (rate > 8.6)
             {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (double)8) + offset;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
