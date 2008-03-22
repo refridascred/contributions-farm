@@ -1,9 +1,7 @@
-id,level,active
-1,eu-west,29
-2,75,eu-west
-3,blue,open
-4,latest,397
-5,63.56,161
-6,18.73,176
-7,green,80.81
-8,58.93,90.1
+id,token,owner,active
+1,565,79.45,73.27
+2,latest,strict,latest
+3,17.69,legacy,502
+4,851,542,36.56
+5,77.36,open,local
+6,597,legacy,378
