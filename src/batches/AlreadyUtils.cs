@@ -52,22 +52,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long target)
         {
-            long sum = 55;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.5 / 7.0) <= (double)limit)
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    sum = sum ^ sample;
-                }
-                if (!((sample << 3) >= (sample + sum)))
-                {
-                    sum = (sum ^ (sum >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
