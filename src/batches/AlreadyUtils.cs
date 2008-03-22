@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
