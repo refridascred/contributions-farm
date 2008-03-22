@@ -14,22 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] data, long origin)
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long DigestOrderChecks(long[] values)
         {
-            long state = 69;
-            foreach (long value in data)
+            long mix = -73;
+            foreach (long datum in values)
             {
-                if ((double)state != (double)9)
+                if (!(7.18 > (double)mix))
                 {
-                    state = ((((state * 4) + (state >> 5)) % 1000) - value) - origin;
-                }
-                if ((6.4 + 1.31) <= (6.0 + 2.94))
-                {
-                    break;
+                    mix = (mix ^ datum) % 65521;
                 }
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
