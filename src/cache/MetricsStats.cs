@@ -26,25 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token schema value against two limits.</summary>
-        public static long SortTokenSchema(long step, long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long diff = step ^ floor;
-            if ((floor ^ floor) <= (floor >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step >= diff)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
