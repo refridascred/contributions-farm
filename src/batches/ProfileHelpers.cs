@@ -17,12 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Draft,
-            Queued,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
