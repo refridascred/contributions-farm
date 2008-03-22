@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            New,
-            Synced,
+            Pending,
+            Retry,
             Locked,
-            Paused,
-            Ready,
+            Stale,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
