@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowScore = 66.92;
+        public const double SoftLayout = 4.87;
+        public const long SoftTimeout = 5642;
+        public const long StepCount = 5566;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] levels)
