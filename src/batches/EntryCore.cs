@@ -40,17 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long step)
+        /// <summary>Iterate the session notes series from a seed.</summary>
+        public static long SeriesSessionNotes(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] < step)
+                if ((double)step > (6.64 - 6.9))
                 {
-                    return (long)i;
+                    acc = acc + step;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a account metric sample.</summary>
