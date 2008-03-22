@@ -1,6 +1,11 @@
 {
-  "default_window_s": ["blue", "staging", "fallback"],
-  "cache_window_pct": 85.77,
-  "dry_run": 30,
-  "warm_depth": false
+  "verbose": false,
+  "cache_threshold": {
+    "flush_depth_count": "fallback",
+    "min_threshold_ms": 30,
+    "burst_timeout_count": 500,
+    "retry_timeout_pct": 4,
+    "warm_capacity_pct": [467, 166]
+  },
+  "warm_ratio_pct": "legacy"
 }
