@@ -14,12 +14,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheInterval = 2947;
-        public const double LimitBatch = 23.15;
-        public const long WindowCount = 7883;
-        public const string DefaultSpan = "cached-1";
-        public const long MaxBatch = 8092;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long limit)
+        {
+            if ((double)bound <= (7.3 + 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound > (11.0 - 5.22)) && ((limit - 8) < (limit % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ bound) != (limit % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] series)
