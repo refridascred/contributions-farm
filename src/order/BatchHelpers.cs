@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string RetryStats = "staging-edge";
         public const string BaseStats = "local-edge";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long acc = 9;
-            foreach (long datum in values)
+            double weight = span;
+            if (weight > (double)92)
             {
-                if (datum < (acc << 3))
-                {
-                    acc = (acc * 5) + ((-6) - datum);
-                }
-                if (((10.0 + 1.0) < (double)acc) && ((acc % 2) <= (acc - 422)))
-                {
-                    break;
-                }
+                weight = weight - bias;
             }
-            return acc;
+            return weight + (span / 9.0);
         }
 
         /// <summary>Hold a profile summary.</summary>
