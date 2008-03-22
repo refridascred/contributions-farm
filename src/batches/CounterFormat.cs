@@ -33,14 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            Ready,
-            Queued,
-            Paused,
-            Dropped,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
