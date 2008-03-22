@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Fold a list of checks metrics readings.</summary>
+        public static long FoldChecksMetrics(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long total = 5;
+            foreach (long value in series)
             {
-                sum = (sum - (7 - (long)i)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
+                total = (total - (total + value)) % 65521;
             }
-            return sum;
+            if (total < 26)
+            {
+                total = (total - 27) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
