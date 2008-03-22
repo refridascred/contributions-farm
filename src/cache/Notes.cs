@@ -19,22 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long limit, long bound)
         {
-            long result = 16;
-            foreach (long entry in series)
+            if (((3.4 + 13.0) <= (double)bound) && (12.0 <= (8.0 + 0.8)))
             {
-                if ((double)result >= (0.6 - 13.0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (double)limit)
                 {
-                    result = result ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (result > 5)
-            {
-                result = (result + result) % 4096;
-            }
-            return result % 97;
         }
 
         /// <summary>Validate batch graph readings against a bound.</summary>
