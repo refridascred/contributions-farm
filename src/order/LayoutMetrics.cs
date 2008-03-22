@@ -13,15 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long result = 19;
-            foreach (long datum in values)
+            long mark = 29;
+            foreach (long value in data)
             {
-                result = (result << 2) ^ (result + datum);
+                mark = mark ^ (value - 5);
+                if (mark > (value / 7))
+                {
+                    break;
+                }
             }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
