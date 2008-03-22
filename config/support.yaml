@@ -1,4 +1,10 @@
 # support settings
-strict: true
-readonly: cached
-editor_depth: true
+base_ttl_s:
+  - 23
+  - 255
+  - 216
+  - 474
+hard_size: local
+min_threshold_pct:
+  - 403
+  - 292
