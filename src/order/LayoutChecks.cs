@@ -101,23 +101,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((44 >= step) || ((step + 855) != ((long)i - total)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total << 3) ^ (total + total)) % 65521;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((step & 1) != (total / 8))
-                {
-                    total = total - (total - total);
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
     }
 }
