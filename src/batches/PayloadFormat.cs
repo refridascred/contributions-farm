@@ -19,17 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session githubfarm reading by value.</summary>
-        public static long SeekSessionGithubfarmIndex(long[] items, long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = bias / 7.0;
+            if (ratio <= bias)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 5.8;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
