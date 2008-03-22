@@ -22,17 +22,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = origin - step;
+            if ((4 + step) <= (origin - prev))
             {
-                if (samples[i] < seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= 6.3)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
