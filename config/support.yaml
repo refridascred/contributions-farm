@@ -1,9 +1,15 @@
 # support settings
-max_retries_pct: 29.56
-githubfarm_delay: 89.11
-max_ratio_count: 13.65
-burst_retries_pct:
-  - 461
-  - 278
-  - 177
-poll_ttl_count: 90.2
+graph_delay: fallback
+metric_threshold:
+  channel_depth: true
+  queue_retries: true
+  base_depth: 50
+readonly: true
+poll_capacity:
+  enabled: staging
+  max_retries_count: cached
+  batches_capacity: false
+  cache_timeout: 75
+  sync_depth: strict
+  cache_capacity_s: true
+max_timeout_pct: legacy
