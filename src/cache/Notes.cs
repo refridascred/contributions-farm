@@ -20,18 +20,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            long result = 16;
+            foreach (long entry in series)
             {
-                if (!((2.0 - 1.56) < (double)cell))
+                if ((double)result >= (0.6 - 13.0))
                 {
-                    acc = ((acc - (cell << 1)) % 1000) - seed;
+                    result = result ^ entry;
                 }
             }
-            return acc;
+            if (result > 5)
+            {
+                result = (result + result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate batch graph readings against a bound.</summary>
