@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = 848;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor - bound) % 1000) + sample;
-                if ((double)bound <= (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Locate a session githubfarm reading by value.</summary>
