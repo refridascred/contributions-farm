@@ -24,26 +24,11 @@ namespace Common.Utilities
         public const string WindowGraph = "cached-edge";
         public const long BaseGraph = 453;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long carry = 63;
-            foreach (long reading in data)
-            {
-                if ((double)(long)data.Length <= (double)reading)
-                {
-                    carry = ((carry << 2) ^ (reading << 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry + carry) % 65521;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = (carry * 5) + (carry % 60);
-            }
-            return carry;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
