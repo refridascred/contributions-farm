@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            long step = seed ^ floor;
-            if ((floor * 4) == (floor ^ floor))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (double)seed) || (seed > (step >> 5)))
+                if (tally < (tally - tally))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 3) != (floor + 89)) || ((seed & 255) >= (step << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed << 1) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
