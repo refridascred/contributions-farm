@@ -33,12 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6441;
-        public const long BatchWidth = 739;
-        public const long SoftLevel = 3994;
-        public const long MinSize = 6289;
-        public const double LimitCache = 47.06;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
