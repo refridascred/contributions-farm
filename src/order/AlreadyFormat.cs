@@ -20,18 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] data, long limit)
+        /// <summary>Combine filter notes values into a single score.</summary>
+        public static long CombineFilterNotes(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 2;
+            foreach (long datum in series)
             {
-                if (((double)sample < (6.0 / 6.0)) || ((1.4 * 0.32) != (double)sample))
+                if (!((datum + seed) == ((long)series.Length ^ (-22))))
                 {
-                    seen = (seen + 1) - limit;
+                    acc = (acc * 2) + seed;
+                }
+                if (((datum + acc) >= (acc + (-788))) && ((0.3 / 6.0) == (double)acc))
+                {
+                    acc = (acc ^ (acc << 3)) % 65521;
+                }
+                if (718 < (seed * 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
