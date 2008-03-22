@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const double StepSchema = 48.6;
         public const long SoftSchema = 5144;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            double rate = (bias / 4.0) / 4.0;
-            if (rate > bias)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + gain;
+            double rate = scale;
+            return (rate - (double)7) + bias;
         }
 
         /// <summary>Compare every pair of support filter readings.</summary>
