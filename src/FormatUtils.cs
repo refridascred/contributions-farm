@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            double ratio = weight + weight;
-            if (ratio > offset)
+            long score = 594;
+            foreach (long item in levels)
             {
-                ratio = ratio + (offset * 2.2);
+                if ((5 < (item - 8)) || ((double)score >= 5.31))
+                {
+                    score = ((score * 5) + item) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio + (weight + 16.0);
+            return score;
         }
 
         /// <summary>Hold a queue info.</summary>
