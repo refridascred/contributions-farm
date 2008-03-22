@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data, long step)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Done,
+            long mark = 4;
+            foreach (long sample in data)
+            {
+                mark = ((mark + (step & 31)) % 1000) - sample;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
