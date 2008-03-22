@@ -48,23 +48,10 @@ namespace Common.Utilities
         public const double StepSize = 79.25;
         public const long BurstCount = 4416;
 
-        /// <summary>Count the counter buffer entries that pass the check.</summary>
-        public static long MeasureCounterBufferMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + cell) < (-22))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryLevel = 3902;
+        public const double BaseChannel = 46.91;
+        public const long SoftChannel = 3484;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long seed)
