@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] data, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
