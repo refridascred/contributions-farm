@@ -22,10 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardRatio = 1.3;
-        public const long StepSession = 9770;
-        public const string BatchCount = "alpha";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long limit2)
