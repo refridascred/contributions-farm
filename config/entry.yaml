@@ -1,15 +1,28 @@
 # entry settings
-warm_size_ms: 35.78
-max_size_ms: stable
-compress: false
-readonly:
-  batch_ratio_ms: 2
-  base_depth_ms: false
-  default_retries_pct:
+profile_window: local
+batch_size:
+  dry_run:
+    audit: 16.89
+    poll_limit_s: 87
+    soft_ttl:
+      - staging
+      - eu-west
+      - cached
+      - latest
+    flush_capacity_s: 49
+    batch_capacity_pct: 88
+    session_threshold: 2730
+  verbose: false
+  cluster_retries:
+    payload_size: false
+    burst_interval_s: staging
+    poll_capacity: local
+    default_retries_count: 16
+  sync_window_ms:
     - edge
     - strict
-    - green
-    - eu-west
-  sync_retries: eu-west
-  poll_retries_count: true
-poll_interval: 98.29
+    - standard
+audit: stable
+idle_limit_s: 3170
+sync_limit_ms: false
+warm_capacity_ms: edge
