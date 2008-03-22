@@ -29,24 +29,18 @@ namespace Common.Utilities
             return (drift - (span / 4.0)) + gain;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long target)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long CountEntryStatsHits(long[] data, long target)
         {
-            if ((target % 3) <= (target + 29))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= 5.55)
+                if ((double)hits != (double)target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 1) ^ datum;
                 }
             }
+            return hits;
         }
     }
 }
