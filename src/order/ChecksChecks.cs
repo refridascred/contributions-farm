@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Combine filter batches values into a single score.</summary>
+        public static long CombineFilterBatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result << 2) ^ result) + sample;
+                result = (result - (result + result)) % 4096;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Project the next metrics value.</summary>
