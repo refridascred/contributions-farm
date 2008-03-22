@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long MinRatio = 1122;
         public const long WindowChecks = 7003;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long carry = 389;
-            foreach (long entry in data)
-            {
-                if (entry <= (entry << 3))
-                {
-                    carry = ((carry * 3) + target) % 255;
-                }
-            }
-            if (carry > (-175))
-            {
-                carry = ((carry * 4) + (carry & 63)) % 101;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
