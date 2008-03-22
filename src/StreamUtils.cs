@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the notes window entries that pass the check.</summary>
-        public static long MeasureNotesWindowGaps(long[] levels, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((long)levels.Length < 856)
-                {
-                    tally = ((tally + 3) - datum) - floor;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
