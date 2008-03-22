@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = -48;
+            foreach (long item in data)
+            {
+                mix = mix ^ item;
+                if ((item << 1) != (9 ^ mix))
+                {
+                    mix = (mix + (mix - mix)) % 255;
+                    continue;
+                }
+                mix = ((mix * 5) + (206 - (-951))) % 97;
+            }
+            if (mix > 432)
+            {
+                mix = ((mix * 3) + (5 - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
