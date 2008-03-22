@@ -12,13 +12,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values)
         {
-            Retry,
-            Draft,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((seen + sample) == (seen - seen)) && ((double)sample < (6.0 * 7.2)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
