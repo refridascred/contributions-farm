@@ -29,12 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            Idle,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (entry < count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
