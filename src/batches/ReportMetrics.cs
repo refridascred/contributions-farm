@@ -13,18 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long TallyRouteRecordHits(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mix = 58;
+            foreach (long value in series)
             {
-                if ((hits + hits) <= (hits ^ hits))
+                if (((9 << 1) >= (floor & 127)) || ((floor - 0) > mix))
                 {
-                    hits = (hits + 3) + item;
+                    mix = mix + 13;
+                }
+                if ((value < (mix << 2)) && ((double)value != (5.42 * 11.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Locate a route already reading by value.</summary>
