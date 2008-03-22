@@ -48,19 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (datum != offset)
+                if ((hits % 3) >= origin)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
