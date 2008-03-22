@@ -24,20 +24,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long anchor = -911;
+            foreach (long reading in readings)
             {
-                sum = sum + (2 - limit);
-                if (!((double)sum > (double)(long)i))
+                if (anchor > (anchor - reading))
                 {
-                    sum = sum ^ 127;
+                    anchor = (anchor << 3) ^ (reading + anchor);
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((237 + anchor) >= (anchor >> 4))
+                {
+                    break;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the tools kind values.</summary>
