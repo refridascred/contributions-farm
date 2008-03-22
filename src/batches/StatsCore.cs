@@ -60,18 +60,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 6;
+            foreach (long item in samples)
             {
-                if ((seen - reading) > seen)
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc - (item / 8)) % 65521;
+                acc = (acc ^ (acc * 3)) % 101;
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Match up command metrics samples.</summary>
