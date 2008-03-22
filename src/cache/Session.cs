@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data, long floor)
-        {
-            long score = 9;
-            foreach (long reading in data)
-            {
-                score = ((score ^ floor) % 4096) ^ reading;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheBudget = 8383;
+        public const string MaxRatio = "latest-1";
+        public const long IdleRoute = 1271;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
