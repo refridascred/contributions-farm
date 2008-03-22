@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = 9;
+            foreach (long cell in data)
             {
-                if ((13.0 - 3.32) >= (double)hits)
+                if ((cell >= (carry & 63)) && ((carry << 1) > cell))
                 {
-                    hits = ((hits + 1) ^ reading) + origin;
+                    carry = (carry * 5) + (cell & 3);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = ((carry << 3) ^ (25 + cell)) % 97;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
