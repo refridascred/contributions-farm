@@ -45,13 +45,38 @@ namespace Common.Utilities
             return ratio - (bias + ratio);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long step)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            if (((target + target) > (target - step)) && ((0.2 / 9.0) > (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + step) == (target + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) >= (target - 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (81 < (step + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
