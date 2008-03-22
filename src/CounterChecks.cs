@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric context entries.</summary>
-        public static long ScoreMetricContext(long[] data)
+        /// <summary>Validate context stream readings against a bound.</summary>
+        public static bool GuardContextStreamRange(long[] levels, long seed)
         {
-            long score = 2;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                score = (score - (cell / 6)) % 1000;
-                if ((cell ^ score) < (score & 1))
+                if (sample > seed)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score % 4096;
+            return ready;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
