@@ -38,13 +38,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Dropped,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 3741;
+        public const double BaseBudget = 55.91;
+        public const long BatchSupport = 570;
 
         /// <summary>Digest a series of filter command entries.</summary>
         public static long FoldFilterCommand(long[] items)
