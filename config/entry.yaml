@@ -1,6 +1,15 @@
 # entry settings
-hard_timeout: 500
-farm_threshold: 80
-batch_capacity: 27
-min_ratio_pct: legacy
-layout_ratio: 5243
+enabled:
+  - fallback
+  - stable
+  - latest
+sync_limit_pct: 19.27
+readonly: 30
+base_depth: false
+default_retries_pct: true
+hard_ratio:
+  audit: edge
+  sync_timeout_ms: true
+  compress: false
+  metric_interval: 75
+  idle_limit: blue
