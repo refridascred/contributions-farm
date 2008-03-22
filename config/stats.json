@@ -1,5 +1,6 @@
 {
-  "readonly": 250,
-  "batch_timeout_count": 38,
-  "soft_capacity_pct": 7015
+  "default_window_s": ["blue", "staging", "fallback"],
+  "cache_window_pct": 85.77,
+  "dry_run": 30,
+  "warm_depth": false
 }
