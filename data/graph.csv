@@ -1,6 +1,7 @@
-id,weight,score,count,label
-1,256,58.29,98.21,stable
-2,50.78,81,347,40.27
-3,14.37,73.88,standard,277
-4,244,777,605,88.56
-5,stable,local,fallback,316
+id,level,state,rank,count
+1,54.86,legacy,12.26,609
+2,legacy,standard,970,staging
+3,714,500,294,primary
+4,944,54.03,236,89
+5,696,51.28,82.87,16.74
+6,open,717,946,12.12
