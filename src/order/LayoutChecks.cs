@@ -37,17 +37,16 @@ namespace Common.Utilities
             return drift - (gain * 9.5);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = (total + (total & 255)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a window profile pair into a bucket.</summary>
