@@ -22,11 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 16.5;
-        public const string MaxTimeout = "strict-v2";
-        public const string CacheContributi = "staging-v2";
-        public const string BatchInterval = "open";
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long FoldQueueOrder(long[] series, long step)
+        {
+            long mix = 0;
+            foreach (long cell in series)
+            {
+                if ((mix / 8) <= (mix ^ mix))
+                {
+                    mix = (mix + (cell + (-3))) - step;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long origin)
