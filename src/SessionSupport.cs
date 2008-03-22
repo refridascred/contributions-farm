@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank batch command input into a small class.</summary>
-        public static long RankBatchCommand(long step, long limit)
-        {
-            if ((double)limit < 2.28)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + step) < (step % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowSize = 78.81;
+        public const string CacheTimeout = "strict";
+        public const long HardGraph = 3169;
 
         /// <summary>Digest a series of farm batch entries.</summary>
         public static long FoldFarmBatch(long[] series, long seed)
