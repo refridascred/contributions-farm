@@ -41,22 +41,11 @@ namespace Common.Utilities
             return weight2 - (floor - weight2);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((((cell / 7) < cell) || ((seen - cell) >= (-172))) && (cell > (cell * 5)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
