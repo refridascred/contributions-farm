@@ -41,15 +41,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two buffer githubfarm measurements.</summary>
-        public static double ProjectBufferGithubfarm(double bias, double floor)
+        /// <summary>Find the first entry stream entry that matches the target.</summary>
+        public static long LookupEntryStreamIndex(long[] values, long floor)
         {
-            double scale = (floor + 1.51) + (3.4 / 3.0);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - (7.5 - 8.28)) - (double)(long)i) - bias;
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)2;
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
