@@ -33,31 +33,12 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary";
         public const long SoftEntry = 2471;
 
-        /// <summary>Rank entry report input into a small class.</summary>
-        public static long RankEntryReport(long step, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((((-740) & 1) < (step / 7)) || ((origin % 24) != (step - step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >= (5 * 2)) && ((origin >> 2) == (2 / 6)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin) >= (origin << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Stale,
         }
     }
 }
