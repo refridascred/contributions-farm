@@ -28,11 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double AdjustWindowNotes(double weight, double floor)
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long MeasureFormatCounterGaps(long[] values)
         {
-            double scale = weight;
-            return (scale - (scale * 5.0)) + floor;
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ reading) == (reading ^ matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
