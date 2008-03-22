@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen <= (4.17 * 19.0))
+                if ((double)count <= (1.5 - 12.0))
                 {
-                    seen = ((seen + 2) - sample) - seed;
+                    count = (count + 1) - reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
