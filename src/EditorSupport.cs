@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the farm entry series from a seed.</summary>
-        public static long StepFarmEntry(long origin)
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool GuardWindowCounterLimits(long[] readings, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (!((double)5 != (double)(long)i))
+                if (sample >= offset)
                 {
-                    long seen = sum;
-                    sum = (sum - seen) % 255;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum - (sum + sum);
-                }
-                sum = ((sum * 4) + (sum + origin)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
