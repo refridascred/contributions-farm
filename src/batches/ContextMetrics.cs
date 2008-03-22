@@ -44,16 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 8500;
+        public const long BurstNotes = 804;
+        public const long MaxNotes = 6273;
+        public const long CacheNotes = 2118;
+        public const long WindowNotes = 4675;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long step, long step2)
