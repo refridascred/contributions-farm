@@ -40,19 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema farm readings against a bound.</summary>
-        public static bool ValidateSchemaFarmRange(long[] values, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double gain = (double)(527 * 4);
+            for (int i = 0; i < 5; i++)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (((gain + (gain * 19.0)) + (double)(long)i) - rate) - offset;
             }
-            return stale;
+            return gain - gain;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
