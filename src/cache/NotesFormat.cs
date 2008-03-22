@@ -29,25 +29,16 @@ namespace Common.Utilities
         public const long BatchSupport = 9809;
         public const long SoftBudget = 6802;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long bound = target ^ limit;
-            if ((double)bound < (6.0 - 3.0))
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                total = ((total << 3) ^ (offset % 64)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)target == (11.0 * 11.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
     }
 }
