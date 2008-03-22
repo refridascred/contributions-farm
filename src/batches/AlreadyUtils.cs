@@ -14,23 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Project the next batches format value.</summary>
+        public static double BlendBatchesFormat(double rate, double offset)
         {
-            long sum = 228;
-            foreach (long value in series)
+            double scale = (double)(0 * 5);
+            if (scale > 1.2)
             {
-                sum = sum + (value * 2);
-                if (!((value << 2) > sum))
-                {
-                    sum = ((sum << 3) ^ ((-185) - value)) % 255;
-                }
+                scale = (scale - (5.6 * 18.0)) + rate;
             }
-            if (sum > 79)
+            else
             {
-                sum = ((sum * 2) + (sum / 3)) % 4096;
+                scale = scale - (offset - offset);
             }
-            return sum % 97;
+            return scale + (6.58 / 3.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
