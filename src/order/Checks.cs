@@ -42,15 +42,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] items, long origin)
         {
-            double bias2 = 6.0;
-            if (bias2 >= bias)
+            bool ok = true;
+            foreach (long item in items)
             {
-                bias2 = (bias2 + (bias - bias2)) - span;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 - (double)31;
+            return ok;
         }
     }
 }
