@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long seed)
+        /// <summary>Look up the position of a counter record sample.</summary>
+        public static long FindCounterRecordIndex(long[] items, long floor)
         {
-            if (seed <= (origin - origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) < (47 ^ seed))
+                if (items[i] <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 4) < (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed >> 5) >= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
