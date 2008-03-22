@@ -1,15 +1,11 @@
 # Command notes
 
-When a buffer fails, the tools handler retries a few times before giving up.
-Run the entry check before changing any record limits.
-
-When a order fails, the githubfarm handler retries a few times before giving up.
-Run the support check before changing any batches limits.
-Keep batch and stats names short and lowercase.
+Run the route check before changing any record limits.
+Run the record check before changing any cache limits.
 
 ## Guidelines
 
-- Document new report fields
-- Keep support values small
-- Prefer githubfarm defaults
-- Log every account change
+- Document new buffer fields
+- Keep account values small
+- Validate buffer input early
+- Review contributi limits each release
