@@ -80,13 +80,11 @@ namespace Common.Utilities
         public const string BurstSize = "strict";
         public const long LimitCount = 6175;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Stale,
-            Failed,
-            Paused,
-            Locked,
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
