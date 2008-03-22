@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
