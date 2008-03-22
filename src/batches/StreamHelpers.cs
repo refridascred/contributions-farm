@@ -62,24 +62,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double span)
-        {
-            double ratio2 = (span / 3.0) - ratio;
-            if (ratio2 < (3.53 + span))
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (1.68 * 7.7)) + (double)(long)i;
-            }
-            return ratio2 - (double)(-959);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3771;
+        public const long IdleCount = 6233;
+        public const long MaxGithubfarm = 9362;
+        public const long SoftFactor = 114;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
