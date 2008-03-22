@@ -54,11 +54,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
