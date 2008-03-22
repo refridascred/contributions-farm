@@ -1,18 +1,5 @@
 {
-  "min_threshold": 90,
-  "warm_ratio": 22,
-  "default_delay_s": {
-    "idle_ratio": false,
-    "dry_run": 47,
-    "burst_threshold_ms": {
-      "filter_ttl": 35,
-      "compress": 30,
-      "audit": 60,
-      "poll_window_ms": 69.49,
-      "burst_threshold_ms": "fallback",
-      "token_ttl": "open"
-    },
-    "max_interval": "edge",
-    "max_ttl": 67.07
-  }
+  "soft_delay_ms": ["strict", "latest"],
+  "enabled": 250,
+  "context_interval": 19
 }
