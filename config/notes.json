@@ -1,25 +1,5 @@
 {
-  "sync_size_s": 20.29,
-  "idle_size_ms": "open",
-  "batch_ratio_s": {
-    "min_interval_pct": true,
-    "max_interval": true,
-    "strict": 91,
-    "soft_timeout": "blue",
-    "hard_threshold": [142, 213],
-    "cache_capacity_count": 49.67
-  },
-  "soft_retries": {
-    "filter_delay": 32.36,
-    "idle_size_count": {
-      "tools_interval": 250,
-      "audit": 30,
-      "strict": 32.59,
-      "idle_window_count": [241, 47, 157],
-      "readonly": false
-    },
-    "enabled": false,
-    "persist": true
-  },
-  "burst_threshold_pct": "green"
+  "sync_ratio_count": "green",
+  "dry_run": "stable",
+  "warm_retries": "standard"
 }
