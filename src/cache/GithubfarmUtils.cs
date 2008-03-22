@@ -19,17 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 44;
+            foreach (long value in readings)
             {
-                if (readings[i] >= seed)
+                if ((value & 255) <= (score / 8))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = (score ^ (score - score)) % 255;
+                }
+                score = (score - score) % 255;
             }
-            return -1;
+            if (score > 591)
+            {
+                score = score + (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
