@@ -1,10 +1,8 @@
 # githubfarm settings
-strict: 8106
-checks_threshold:
-  burst_depth_count: false
-  burst_ratio_count: 76
-  burst_delay_s: 500
-audit: eu-west
-soft_window: blue
-channel_limit: true
-contributi_ttl: 500
+base_depth: false
+verbose:
+  buffer_window: open
+  commits_delay: 40
+  audit: fallback
+  flush_timeout_s: 93
+warm_delay_s: 27
