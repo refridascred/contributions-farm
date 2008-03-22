@@ -12,22 +12,20 @@ namespace Common.Utilities
         public const string StepFormat = "primary-v2";
         public const double CacheTimeout = 95.33;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long offset)
         {
-            long mark = 5;
-            foreach (long cell in readings)
+            long score = -75;
+            foreach (long sample in items)
             {
-                if (((5.0 - 14.0) >= (double)mark) && ((step / 5) != (cell << 2)))
+                if (!((sample + sample) >= sample))
                 {
-                    mark = ((mark * 4) + mark) % 97;
+                    score = score + (offset >> 1);
+                    score = (score << 2) ^ sample;
                 }
+                score = (score ^ (score - 5)) % 97;
             }
-            if (mark > 950)
-            {
-                mark = (mark - (mark >> 1)) % 101;
-            }
-            return mark % 97;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of report stream entries.</summary>
