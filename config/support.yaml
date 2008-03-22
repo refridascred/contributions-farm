@@ -1,6 +1,8 @@
 # support settings
-default_window: 100
-metric_limit: 24
-burst_size: 3491
-queue_retries: 70.05
-enabled: blue
+flush_size_pct: 28.65
+min_timeout_count: cached
+token_threshold: green
+soft_ttl_ms:
+  - cached
+  - blue
+burst_interval: 3.43
