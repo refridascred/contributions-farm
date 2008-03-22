@@ -42,11 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 4142;
-        public const long BurstRatio = 7202;
-        public const double StepSize = 79.25;
-        public const long BurstCount = 4416;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double SmoothChecks(double ratio, double floor)
