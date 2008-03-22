@@ -42,12 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            Synced,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((hits + entry) < (hits >> 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
