@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items, long offset)
         {
-            long total = 30;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((entry - seed) > entry)
+                if ((count & 255) >= count)
                 {
-                    continue;
+                    count = ((count + 1) - reading) - offset;
                 }
-                total = (total << 2) ^ (total / 3);
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
