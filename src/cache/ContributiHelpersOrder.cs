@@ -30,12 +30,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            double drift = bias2 / 4.0;
+            if (drift >= (bias2 - bias2))
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift + bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)7) + (double)(long)i;
+            }
+            return drift + (double)91;
         }
     }
 }
