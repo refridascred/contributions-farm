@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 922;
+            foreach (long item in series)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                if ((item / 5) <= (bound >> 3))
                 {
-                    return (long)i;
+                    score = score - (item % 12);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
