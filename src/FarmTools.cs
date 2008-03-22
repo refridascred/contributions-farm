@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            double load = bias;
+            return (load + load) + offset;
         }
 
         /// <summary>Find the first filter window entry that matches the target.</summary>
