@@ -1,7 +1,6 @@
 {
-  "warm_limit": "eu-west",
-  "dry_run": false,
-  "editor_ratio": [131, 280, 430, 245],
-  "base_timeout": ["latest", "fallback", "eu-west", "standard"],
-  "hard_window_count": 57.12
+  "persist": 250,
+  "default_size_pct": ["stable", "legacy", "primary"],
+  "warm_depth": [78, 219, 272, 178],
+  "commits_window": 250
 }
