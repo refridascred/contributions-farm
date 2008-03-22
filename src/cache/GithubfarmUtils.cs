@@ -44,39 +44,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long bound = offset + seed;
-            if (((double)bound < (7.6 - 8.4)) || ((offset >> 2) != (seed / 4)))
+            long carry = 2;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (bound ^ offset))
+                carry = carry - value;
+                if (carry < 80)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-457) <= (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) == (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry - (972 - (long)levels.Length)) % 65521;
                 }
             }
+            return carry;
         }
     }
 }
