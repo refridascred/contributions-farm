@@ -1,7 +1,6 @@
 {
-  "support_window": false,
-  "min_size_s": "edge",
-  "min_retries_count": 37.11,
-  "min_window_ms": 5906,
-  "cache_size_ms": 94.04
+  "burst_size": "blue",
+  "flush_ratio": 60,
+  "flush_retries_ms": 50.63,
+  "base_timeout_s": "local"
 }
