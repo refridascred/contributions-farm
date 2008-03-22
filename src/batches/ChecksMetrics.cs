@@ -46,11 +46,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftLevel = 868;
-        public const string SoftFactor = "strict";
-        public const long MaxWidth = 5768;
-        public const string SoftCount = "cached";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen >= (sample + sample)) && ((56 / 8) <= sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 396;
