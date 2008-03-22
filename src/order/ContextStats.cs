@@ -35,19 +35,11 @@ namespace Common.Utilities
             return (weight + (double)25) + offset;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            long total = 8;
-            foreach (long item in items)
-            {
-                total = (((total * 3) + (9 & 1)) - item) + target;
-            }
-            if (total < 8)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total;
+            double load = (double)40 + (double)7;
+            return load + (ratio - floor);
         }
     }
 }
