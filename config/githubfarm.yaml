@@ -1,19 +1,6 @@
 # githubfarm settings
-enabled:
-  queue_threshold: true
-  filter_window: 250
-  burst_ttl_s:
-    - stable
-    - latest
-    - legacy
-    - local
-  batch_interval_s: false
-  idle_capacity: primary
-  readonly: false
-dry_run: true
-schema_limit: open
-schema_capacity:
-  - local
-  - latest
-  - cached
-default_timeout: false
+soft_size_pct: 6142
+burst_depth: 22.95
+retry_threshold_ms: local
+contributi_interval: edge
+default_capacity_s: 54.46
