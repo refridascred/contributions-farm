@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double ratio, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long floor)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                scale = (scale + ratio) + (double)(long)i;
+                mix = ((mix ^ floor) % 97) ^ cell;
             }
-            return scale - (double)912;
+            return mix;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
