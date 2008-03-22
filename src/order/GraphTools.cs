@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long origin)
         {
-            double rate = floor + (ratio + ratio);
-            if (rate <= (double)72)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                rate = rate + ratio;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - floor;
+            return valid;
         }
 
         /// <summary>Hold a context header.</summary>
