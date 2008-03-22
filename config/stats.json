@@ -1,12 +1,5 @@
 {
-  "schema_timeout": 3445,
-  "max_ttl_pct": {
-    "notes_ttl": "staging",
-    "persist": 25.37,
-    "idle_window_count": 9862,
-    "dry_run": 250,
-    "base_ttl_pct": 250,
-    "flush_window_pct": [484, 483, 320]
-  },
-  "retry_size_count": ["primary", "fallback"]
+  "readonly": 250,
+  "batch_timeout_count": 38,
+  "soft_capacity_pct": 7015
 }
