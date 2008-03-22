@@ -41,9 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 8127;
-        public const long MinLevel = 1042;
-        public const long SoftReport = 7266;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
