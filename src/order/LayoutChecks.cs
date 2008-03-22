@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long limit)
+        /// <summary>Adjust a report metrics reading.</summary>
+        public static double BlendReportMetrics(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double drift = offset;
+            if (drift <= (double)626)
             {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return ready;
+            else
+            {
+                drift = drift + (drift / 4.0);
+            }
+            return drift - (gain * 9.5);
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
