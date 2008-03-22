@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 95.97;
+        public const long HardSize = 7301;
+        public const double BaseLevel = 78.62;
+        public const long MinFilter = 5965;
+        public const double MinTimeout = 3.44;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] levels)
