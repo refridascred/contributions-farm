@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] values, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long anchor = 14;
-            foreach (long entry in values)
-            {
-                if ((origin - (long)values.Length) > 76)
-                {
-                    anchor = (anchor << 3) ^ origin;
-                }
-                if ((entry % 97) > origin)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batches kind values.</summary>
