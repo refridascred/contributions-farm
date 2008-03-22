@@ -1,6 +1,5 @@
 {
-  "report_ratio": "eu-west",
-  "idle_capacity": ["staging", "local", "open", "open"],
-  "warm_ttl_count": 500,
-  "hard_limit": "blue"
+  "support_threshold": 46,
+  "retry_size_s": "cached",
+  "verbose": "standard"
 }
