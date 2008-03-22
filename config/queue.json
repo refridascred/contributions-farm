@@ -1,6 +1,6 @@
 {
-  "idle_threshold_ms": [2, 478, 140, 94],
-  "idle_size_pct": [496, 78, 396, 334],
-  "retry_depth_count": ["local", "latest"],
-  "cache_size_pct": 19.94
+  "hard_capacity": "cached",
+  "base_ttl": false,
+  "context_timeout": true,
+  "audit": 30
 }
