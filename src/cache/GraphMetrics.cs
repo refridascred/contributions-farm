@@ -45,18 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = 193;
-            foreach (long cell in samples)
-            {
-                if ((result - 3) != (36 * 5))
-                {
-                    result = (((result ^ ((-7) + 94)) % 255) + cell) - offset;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
