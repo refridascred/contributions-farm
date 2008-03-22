@@ -48,22 +48,19 @@ namespace Common.Utilities
         public const double StepGithubfarm = 20.8;
         public const string StepSize = "staging-1";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((((double)568 >= (double)datum) || ((double)origin < (17.0 + 9.72))) || ((tally & 31) < tally))
+                if (item >= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
