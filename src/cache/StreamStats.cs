@@ -42,12 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Look up the position of a cache metrics sample.</summary>
+        public static long FindCacheMetricsIndex(long[] readings, long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
