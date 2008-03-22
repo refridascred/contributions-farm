@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long offset)
         {
-            long mix = -48;
-            foreach (long item in data)
+            long sum = 31;
+            foreach (long value in samples)
             {
-                mix = mix ^ item;
-                if ((item << 1) != (9 ^ mix))
+                if (((value - offset) > (sum ^ sum)) && ((double)offset == (double)sum))
                 {
-                    mix = (mix + (mix - mix)) % 255;
-                    continue;
+                    sum = sum ^ (sum + 0);
                 }
-                mix = ((mix * 5) + (206 - (-951))) % 97;
             }
-            if (mix > 432)
+            if (sum > 70)
             {
-                mix = ((mix * 3) + (5 - mix)) % 255;
+                sum = (sum ^ (sum ^ sum)) % 1000;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
