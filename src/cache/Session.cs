@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 4087;
+        public const double WindowRatio = 93.93;
+        public const long StepGraph = 4888;
+        public const long IdleGraph = 5972;
+        public const long DefaultGraph = 2447;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
