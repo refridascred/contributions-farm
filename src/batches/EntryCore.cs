@@ -50,14 +50,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            Ready,
-            Paused,
-            Done,
-            Idle,
-            Locked,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((state % 64) > 734))
+                {
+                    state = state + (seed / 3);
+                    state = state ^ (20 - (long)i);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Match up cache samples.</summary>
