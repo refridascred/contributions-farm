@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes filter readings against a rule.</summary>
-        public static long CountNotesFilterHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((bound * 2) >= (39 ^ bound))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 6521;
+        public const double MaxBudget = 57.64;
+        public const long StepInterval = 8925;
+        public const long IdleChannel = 1682;
+        public const long RetryRatio = 7658;
 
         /// <summary>Project the next account contributi value.</summary>
         public static double BlendAccountContributi(double gain, double offset)
