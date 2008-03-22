@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] items)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches >> 5) <= (sample + matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
