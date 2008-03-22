@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long limit)
         {
-            double gain = weight;
-            if (gain <= (gain / 8.0))
+            if ((limit / 9) <= limit)
             {
-                gain = gain - span;
+                return 7;
             }
             else
             {
-                gain = gain - (weight * 4.5);
+                if ((double)offset <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit << 2) > offset) && ((-91) <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + 5.4;
         }
 
         /// <summary>Project the next contributi value.</summary>
