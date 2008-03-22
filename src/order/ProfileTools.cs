@@ -50,9 +50,22 @@ namespace Common.Utilities
             return weight2 - (floor - weight2);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 7.18;
-        public const long SoftCount = 898;
-        public const long BurstContributi = 4093;
+        /// <summary>Audit session cluster readings against a rule.</summary>
+        public static long CountSessionClusterOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (8 <= (hits >> 4))
+                {
+                    hits = ((hits + 3) ^ sample) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
