@@ -67,13 +67,21 @@ namespace Common.Utilities
         public const string BurstQueue = "stable-edge";
         public const string MaxQueue = "primary-edge";
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Match up batch contributi samples.</summary>
+        public static long OverlapBatchContributiCount(long[] samples)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
