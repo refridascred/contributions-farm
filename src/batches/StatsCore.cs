@@ -16,14 +16,18 @@ namespace Common.Utilities
             return weight + (0.26 * 3.9);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] data, long floor)
         {
-            Paused,
-            Locked,
-            Idle,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((3.09 - 0.04) > (double)item) && !((9 * 2) > (157 - hits)))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record context readings against a rule.</summary>
