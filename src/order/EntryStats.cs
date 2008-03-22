@@ -48,31 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long limit)
         {
-            if (((step - step) < seed) && (761 < step))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (step / 2))
+                if (cell <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + seed) == (seed + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the checks level values.</summary>
