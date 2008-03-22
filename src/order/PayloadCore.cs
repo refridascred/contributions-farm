@@ -33,19 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] items, long bound)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long SeekAlreadyCounterIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= bound)
+                if (readings[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
