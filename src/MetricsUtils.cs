@@ -70,11 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "legacy";
-        public const long MinRatio = 6838;
-        public const long DefaultTimeout = 4500;
-        public const string IdleAlready = "standard";
-        public const string DefaultAlready = "open-1";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Stale,
+            Paused,
+            Failed,
+            Locked,
+            Synced,
+        }
     }
 }
