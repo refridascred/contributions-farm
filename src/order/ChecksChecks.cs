@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheLevel = 4681;
+        public const long MaxRoute = 3326;
+        public const double MinRoute = 43.78;
+        public const long BurstRoute = 7615;
+        public const long CacheRoute = 506;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MaxScore = 1.12;
