@@ -12,17 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc + (acc % 7)) % 4096;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 40.48;
+        public const string StepGraph = "cached-v2";
+        public const long BatchScore = 224;
+        public const double LimitGraph = 87.72;
+        public const long HardGraph = 6501;
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values, long floor)
