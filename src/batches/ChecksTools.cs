@@ -71,38 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long step, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double span)
         {
-            if ((step % 60) <= (step + target))
+            double scale = (span * 11.0) * 6.71;
+            if (scale < 9.5)
             {
-                return 4;
+                scale = (scale + (span / 4.0)) - weight;
             }
             else
             {
-                if ((target + step) >= (7 + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + target) > (target / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - 63) < (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                scale = scale + (11.0 + span);
             }
+            return scale + (span / 6.0);
         }
     }
 }
