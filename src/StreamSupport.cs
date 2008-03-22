@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] readings, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample <= target)
+                if ((step + matches) < (value + matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
