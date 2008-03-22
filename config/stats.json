@@ -1,11 +1,6 @@
 {
-  "readonly": 30,
-  "flush_ttl_ms": {
-    "retry_retries_count": false,
-    "sync_timeout_pct": false,
-    "strict": 30
-  },
-  "burst_depth": false,
-  "command_timeout": true,
-  "stats_timeout": 60
+  "max_delay": "latest",
+  "base_depth": [217, 208, 211],
+  "order_ttl": "eu-west",
+  "poll_interval_ms": false
 }
