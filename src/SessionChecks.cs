@@ -20,21 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= target)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
