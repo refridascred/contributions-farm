@@ -41,19 +41,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate context stream readings against a bound.</summary>
-        public static bool GuardContextStreamRange(long[] levels, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > seed)
+                if (data[i] < seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
