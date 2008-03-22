@@ -50,18 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache batches entries that pass the check.</summary>
-        public static long CountCacheBatchesMatches(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (seen >= (sample & 63))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Active,
+            Queued,
+            Idle,
         }
     }
 }
