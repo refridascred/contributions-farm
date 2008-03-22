@@ -28,11 +28,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 64.99;
-        public const long StepCounter = 6278;
-        public const double IdleLevel = 52.46;
-        public const long BurstCounter = 2365;
-        public const long LimitCounter = 2094;
+        public const string IdleCounter = "standard-edge";
+        public const string RetryCounter = "staging-edge";
+        public const string CacheCounter = "cached-1";
+        public const long BaseCounter = 6325;
+        public const long MaxCount = 6187;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] values, long origin)
