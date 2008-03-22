@@ -38,14 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Done,
-            Queued,
-            Active,
-            Closed,
-            Failed,
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
