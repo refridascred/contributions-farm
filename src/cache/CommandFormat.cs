@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Validate checks counter readings against a bound.</summary>
+        public static bool ValidateChecksCounterRange(long[] readings, long target)
         {
-            long anchor = -1;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if (sample > target)
                 {
-                    anchor = ((anchor << 2) ^ (entry - 0)) - (long)i;
+                    valid = false;
+                    break;
                 }
-                anchor = (anchor ^ (anchor >> 2)) % 65521;
             }
-            return anchor;
+            return valid;
         }
     }
 }
