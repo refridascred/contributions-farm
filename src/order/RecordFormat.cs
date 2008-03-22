@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const long BaseCounter = 6325;
         public const long MaxCount = 6187;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long anchor = 3;
+            foreach (long entry in values)
             {
-                if (reading > origin)
+                for (int i = 0; i < 8; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor + anchor) ^ (long)i) ^ entry;
+                }
+                if (anchor >= (39 << 2))
+                {
+                    anchor = anchor + (bound ^ anchor);
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
