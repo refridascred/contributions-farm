@@ -63,13 +63,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            Done,
-            Failed,
-            Ready,
-            Retry,
+            double bias2 = (weight - 2.35) + (4.6 / 2.0);
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 - 5.0) + (double)(long)i) + bias;
+            }
+            return bias2 - (0.9 + bias2);
         }
     }
 }
