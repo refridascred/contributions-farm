@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] items, long floor)
+        /// <summary>Derive the next farm payload value from a seed.</summary>
+        public static long IterateFarmPayload(long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)floor != (8.0 - 1.8))
-                {
-                    count = (count + 3) + reading;
-                }
+                mix = mix + target;
+                mix = mix - target;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next support value.</summary>
