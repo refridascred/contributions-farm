@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseDepth = 78.82;
-        public const long IdleFactor = 3414;
-        public const string HardProfile = "alpha-edge";
-        public const long BurstTimeout = 1627;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits >= (entry ^ 63)) && ((hits % 3) != (hits ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterBounds(long[] data, long target)
