@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            Pending,
-            Failed,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
