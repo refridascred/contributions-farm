@@ -1,7 +1,27 @@
 # entry settings
-sync_size_pct: cached
-readonly: 8106
-notes_depth: latest
-max_delay_ms: 250
-strict: true
-entry_threshold: cached
+warm_delay_ms:
+  max_depth_s: fallback
+  retry_ratio:
+    idle_retries_s: false
+    dry_run:
+      - 241
+      - 356
+      - 51
+    queue_size: 333
+    soft_delay_count: latest
+    window_threshold: true
+    cache_size_pct: 6477
+  soft_window_s: true
+  persist:
+    - blue
+    - primary
+persist:
+  - latest
+  - legacy
+  - standard
+  - blue
+flush_delay_ms:
+  - 236
+  - 157
+support_ttl: eu-west
+flush_retries_count: 57.38
