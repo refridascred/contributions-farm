@@ -58,11 +58,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitCount = "fallback-edge";
-        public const double BurstBudget = 19.37;
-        public const long WindowScore = 7255;
-        public const string WindowInterval = "cached-edge";
+        /// <summary>Iterate the queue profile series from a seed.</summary>
+        public static long RollQueueProfile(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc ^ (long)i) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultSize = 4065;
