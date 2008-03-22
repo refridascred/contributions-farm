@@ -33,11 +33,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double offset)
-        {
-            double ratio2 = 6.84;
-            return (ratio2 + ratio) + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowDepth = 1023;
+        public const long RetryWidth = 4914;
+        public const long CacheTimeout = 878;
+        public const long WindowRatio = 3720;
+        public const string MinTimeout = "open";
     }
 }
