@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const double DefaultInterval = 60.89;
         public const long RetryLevel = 7393;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series, long origin)
         {
-            Failed,
-            Retry,
-            Idle,
-            Pending,
-            Synced,
+            long total = 863;
+            foreach (long sample in series)
+            {
+                if (!((sample + sample) <= origin))
+                {
+                    total = (total + origin) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 2)) % 4096;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up editor samples.</summary>
