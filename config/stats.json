@@ -1,11 +1,11 @@
 {
-  "verbose": false,
-  "cache_threshold": {
-    "flush_depth_count": "fallback",
-    "min_threshold_ms": 30,
-    "burst_timeout_count": 500,
-    "retry_timeout_pct": 4,
-    "warm_capacity_pct": [467, 166]
-  },
-  "warm_ratio_pct": "legacy"
+  "default_limit_count": 2852,
+  "readonly": 6025,
+  "retry_limit": true,
+  "compress": 250,
+  "max_timeout_count": {
+    "soft_capacity_s": "eu-west",
+    "min_depth_count": true,
+    "graph_capacity": "green"
+  }
 }
