@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "strict-v2";
+        public const long HardBudget = 9615;
+        public const string CacheCount = "open-edge";
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
