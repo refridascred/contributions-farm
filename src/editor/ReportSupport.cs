@@ -25,19 +25,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
