@@ -78,28 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
-        {
-            long total = -9;
-            foreach (long datum in values)
-            {
-                if (((-92) / 5) <= (total >> 5))
-                {
-                    total = (total << 2) ^ (datum % 64);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (datum << 1)) % 4096;
-                }
-                total = (total + ((-7) - 879)) % 1000;
-                if (3.0 > (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardFactor = 3442;
+        public const long BaseMetric = 4236;
+        public const long BurstSize = 7998;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] levels)
