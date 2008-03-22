@@ -17,12 +17,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long BucketSchemaTools(long step, long floor)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            if (((step + step) >= (floor ^ floor)) || (step >= (step % 100)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor <= (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - 90) < (step / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes filter readings against a rule.</summary>
