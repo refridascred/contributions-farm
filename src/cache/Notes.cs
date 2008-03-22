@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] items, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 30;
+            foreach (long entry in series)
             {
-                if (!!((item ^ (-9)) > (step & 127)))
+                if ((entry - seed) > entry)
                 {
-                    count = count + 1;
+                    continue;
                 }
+                total = (total << 2) ^ (total / 3);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
