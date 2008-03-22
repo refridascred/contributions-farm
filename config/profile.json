@@ -1,7 +1,10 @@
 {
-  "entry_ttl": "open",
-  "notes_retries": "green",
-  "flush_ratio_ms": false,
-  "dry_run": false,
-  "default_timeout": "cached"
+  "notes_depth": 97.73,
+  "compress": {
+    "flush_window": 100,
+    "report_ttl": ["strict", "staging", "edge"],
+    "warm_capacity": 16,
+    "default_limit_s": 1
+  },
+  "readonly": "primary"
 }
