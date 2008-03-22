@@ -35,13 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
