@@ -50,25 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)(long)i >= 2.0) && (((long)i << 3) < (long)i))
-                {
-                    sum = ((sum * 2) + (step & 127)) % 101;
-                    sum = sum ^ (step / 4);
-                }
-                else
-                {
-                    sum = (sum + (step + step)) % 4096;
-                    sum = sum + (sum + step);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
