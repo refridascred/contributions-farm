@@ -1,5 +1,9 @@
 # githubfarm settings
-dry_run: edge
-commits_threshold: 9092
-batch_threshold_pct: latest
-poll_ttl_count: false
+editor_timeout: 3022
+route_size: false
+idle_capacity:
+  - stable
+  - staging
+  - staging
+base_interval_pct: 6306
+min_depth_pct: 70.14
