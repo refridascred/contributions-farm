@@ -24,13 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
