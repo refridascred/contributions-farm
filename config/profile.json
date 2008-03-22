@@ -1,5 +1,10 @@
 {
-  "cluster_limit": 70.13,
-  "account_depth": 37.87,
-  "flush_delay_ms": true
+  "soft_depth_s": {
+    "readonly": "edge",
+    "soft_ratio_ms": 12.86,
+    "persist": 1024,
+    "audit": 2
+  },
+  "soft_ttl": ["blue", "primary", "open"],
+  "account_limit": 16.95
 }
