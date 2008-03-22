@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (bound % 64)) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!(((reading + count) >= (733 << 1)) && (8.48 >= (double)reading)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
