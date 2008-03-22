@@ -20,17 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first route checks entry that matches the target.</summary>
-        public static long SeekRouteChecksIndex(long[] readings, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
