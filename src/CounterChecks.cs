@@ -86,19 +86,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] items, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Draft,
+            Active,
+            Locked,
+            Paused,
         }
     }
 }
