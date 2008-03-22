@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 40.48;
-        public const string StepGraph = "cached-v2";
-        public const long BatchScore = 224;
-        public const double LimitGraph = 87.72;
-        public const long HardGraph = 6501;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Active,
+            Done,
+            Retry,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values, long floor)
