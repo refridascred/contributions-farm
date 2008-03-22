@@ -20,22 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstScore = 8477;
+        public const string IdleStream = "primary";
+        public const long LimitStream = 4142;
+        public const long IdleLevel = 4665;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
