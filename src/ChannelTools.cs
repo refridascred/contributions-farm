@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            double mean = 7.7;
-            return (mean + (floor / 2.0)) + ratio;
+            long state = -422;
+            foreach (long cell in readings)
+            {
+                state = ((state * 2) + (cell + state)) % 97;
+            }
+            if (state > (-6))
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a profile summary.</summary>
