@@ -69,26 +69,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long FoldFilterGraph(long[] items)
+        /// <summary>Digest a series of notes already entries.</summary>
+        public static long DigestNotesAlready(long[] data)
         {
-            long total = 54;
-            foreach (long sample in items)
+            long mark = -628;
+            foreach (long cell in data)
             {
-                if (25 < (total + total))
-                {
-                    total = (total - (total + total)) ^ sample;
-                }
-                if ((7.72 * 1.0) <= (double)total)
-                {
-                    break;
-                }
+                mark = (mark - (mark + cell)) % 101;
             }
-            if (total < 943)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
