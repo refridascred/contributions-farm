@@ -1,8 +1,12 @@
 # support settings
-flush_size_pct: 28.65
-min_timeout_count: cached
-token_threshold: green
-soft_ttl_ms:
-  - cached
-  - blue
-burst_interval: 3.43
+max_size:
+  cluster_interval: open
+  cache_interval: edge
+  readonly: strict
+  burst_ratio: 1024
+  enabled: 56
+retry_interval_count:
+  - strict
+  - latest
+default_timeout: 72.7
+checks_interval: 100
