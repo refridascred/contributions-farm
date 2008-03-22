@@ -33,21 +33,22 @@ namespace Common.Utilities
             return (rate - (double)7) + bias;
         }
 
-        /// <summary>Compare every pair of support filter readings.</summary>
-        public static long MatchSupportFilterCount(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item & 1) <= (hits - hits))
                 {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
