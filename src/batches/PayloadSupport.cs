@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Count the profile commits entries that pass the check.</summary>
+        public static long MeasureProfileCommitsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((hits - entry) <= (entry & 255))
+                if ((tally << 1) != (2 << 3))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
