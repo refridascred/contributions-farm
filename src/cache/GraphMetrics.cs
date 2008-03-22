@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] values, long floor)
         {
-            Dropped,
-            Stale,
-            Active,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((floor - hits) > (hits & 3))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session level values.</summary>
