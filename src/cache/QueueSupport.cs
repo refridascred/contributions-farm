@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 90.61;
-        public const long BatchSpan = 6177;
-        public const long DefaultBudget = 6539;
-        public const long HardTimeout = 7311;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Synced,
+            Closed,
+            Draft,
+            Active,
+            Idle,
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
