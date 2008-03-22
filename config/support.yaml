@@ -1,23 +1,9 @@
 # support settings
-flush_interval_ms: 98.92
-hard_window_ms:
-  farm_size: edge
-  burst_ttl_ms:
-    readonly: true
-    queue_delay: 60
-    batch_size: eu-west
-    poll_threshold_ms: 1430
-    strict: 71
-  command_timeout: false
-  soft_ttl_pct: 96
-min_size:
-  - local
-  - legacy
-strict:
-  - cached
-  - legacy
-  - latest
-audit:
-  - 233
-  - 124
-base_size_pct: legacy
+default_window_s: 7664
+filter_retries: green
+readonly:
+  - 344
+  - 284
+stats_ratio: 59.19
+warm_retries: standard
+burst_window: 46
