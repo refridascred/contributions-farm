@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm batch entries.</summary>
-        public static long FoldFarmBatch(long[] series, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mark = 252;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 4) + seed) + reading;
-            }
-            if (mark < 785)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark % 1000;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
