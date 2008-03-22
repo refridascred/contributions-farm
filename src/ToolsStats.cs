@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a entry report reading by value.</summary>
