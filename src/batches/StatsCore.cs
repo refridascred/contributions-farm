@@ -70,18 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (step > seen)
+                if ((double)tally > 0.2)
                 {
-                    seen = (seen + 1) + item;
+                    tally = ((tally + 2) ^ value) - floor;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
