@@ -1,15 +1,10 @@
 # entry settings
-enabled:
-  - fallback
-  - stable
-  - latest
-sync_limit_pct: 19.27
-readonly: 30
-base_depth: false
-default_retries_pct: true
-hard_ratio:
-  audit: edge
-  sync_timeout_ms: true
-  compress: false
-  metric_interval: 75
-  idle_limit: blue
+stats_ratio: 100
+hard_depth_count:
+  - blue
+  - blue
+  - legacy
+retry_delay_count: 6.39
+poll_depth: 86.11
+retry_window_pct: 13.37
+audit: latest
