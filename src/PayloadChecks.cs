@@ -78,18 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long TallyBatchAlready(long[] samples, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            long anchor = 51;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading / 5) > (reading - origin))
+                if (items[i] <= target)
                 {
-                    anchor = (anchor ^ (reading & 255)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
