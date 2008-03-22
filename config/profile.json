@@ -1,15 +1,8 @@
 {
-  "batch_size": "strict",
-  "burst_retries_pct": 60,
-  "soft_delay_pct": "local",
-  "layout_window": {
-    "idle_ttl_count": 3,
-    "min_interval_s": "legacy",
-    "idle_interval_pct": [60, 242],
-    "max_retries_s": {
-      "dry_run": 3946,
-      "enabled": 100,
-      "flush_ratio_count": "edge"
-    }
-  }
+  "persist": 1058,
+  "hard_size": false,
+  "report_depth": "strict",
+  "dry_run": false,
+  "warm_interval_s": [206, 156, 462],
+  "idle_timeout_s": "eu-west"
 }
