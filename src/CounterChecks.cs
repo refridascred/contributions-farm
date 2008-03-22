@@ -52,23 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a filter queue figure with a bias.</summary>
-        public static double ProjectFilterQueue(double gain, double bias)
+        /// <summary>Digest a series of metric context entries.</summary>
+        public static long ScoreMetricContext(long[] data)
         {
-            double gain2 = 12.0 + (9.6 * 5.57);
-            if (gain2 > gain)
+            long score = 2;
+            foreach (long cell in data)
             {
-                gain2 = gain2 + (bias * 1.33);
+                score = (score - (cell / 6)) % 1000;
+                if ((cell ^ score) < (score & 1))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (bias - 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + 18.0) + (double)(long)i;
-            }
-            return gain2 + 11.0;
+            return score % 4096;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
