@@ -43,13 +43,22 @@ namespace Common.Utilities
             return bias - (span * 0.4);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] series, long offset)
         {
-            Pending,
-            Draft,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (tally <= (tally * 4))
+                {
+                    tally = ((tally + 3) + datum) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
