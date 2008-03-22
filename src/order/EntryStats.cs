@@ -59,10 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 7361;
-        public const long CacheSupport = 5422;
-        public const long IdleFactor = 8855;
-        public const double LimitScore = 43.27;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
