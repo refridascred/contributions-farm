@@ -33,22 +33,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryFactor = 1293;
+        public const long DefaultSize = 7626;
+        public const long StepEntry = 9079;
+        public const long MinEntry = 7686;
+        public const double DefaultInterval = 16.79;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] readings, long target)
