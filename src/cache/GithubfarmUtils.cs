@@ -38,13 +38,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of filter command entries.</summary>
