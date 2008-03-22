@@ -26,12 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
