@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const double HardSupport = 68.16;
         public const long StepSpan = 7135;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            double gain = (double)(99 * 5);
-            if (gain >= (double)225)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - bias) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain * 7.6)) + (double)(long)i;
-            }
-            return gain - (double)128;
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
