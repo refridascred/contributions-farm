@@ -33,12 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate cache metrics readings against a bound.</summary>
