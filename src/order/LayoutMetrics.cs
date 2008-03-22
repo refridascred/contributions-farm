@@ -13,12 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
             public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
