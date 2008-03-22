@@ -68,14 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] levels, long seed)
         {
-            Done,
-            Draft,
-            Active,
-            Locked,
-            Paused,
+            long acc = 396;
+            foreach (long entry in levels)
+            {
+                if ((double)entry != (10.0 + 1.1))
+                {
+                    acc = ((acc + (acc & 15)) % 101) - seed;
+                }
+            }
+            return acc;
         }
     }
 }
