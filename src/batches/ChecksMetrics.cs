@@ -49,11 +49,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryWidth = 8.02;
-        public const long HardGithubfarm = 354;
-        public const long IdleGithubfarm = 1991;
-        public const string HardSize = "strict-1";
-        public const long RetryScore = 9637;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 8333;
+        public const long BurstFilter = 5;
+        public const long HardRatio = 9186;
     }
 }
