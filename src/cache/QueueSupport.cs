@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every tools support entry stays within the limit.</summary>
-        public static bool ValidateToolsSupportLimits(long[] levels, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double ratio = (scale - 9.9) / 2.0;
+            if (ratio > (floor - scale))
             {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (double)248;
             }
-            return found;
+            return ratio + (floor - 7.9);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
