@@ -25,26 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long target)
         {
-            long mix = -25;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((4.0 <= (double)value) || ((178 * 4) == (mix + value)))
+                if (reading > target)
                 {
-                    mix = mix ^ (mix - mix);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix / 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return stale;
         }
     }
 }
