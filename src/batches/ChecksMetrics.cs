@@ -41,12 +41,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftLevel = 868;
+        public const string SoftFactor = "strict";
+        public const long MaxWidth = 5768;
+        public const string SoftCount = "cached";
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
