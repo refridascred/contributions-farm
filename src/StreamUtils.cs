@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the notes window entries that pass the check.</summary>
+        public static long MeasureNotesWindowGaps(long[] levels, long floor)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length < 856)
+                {
+                    tally = ((tally + 3) - datum) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
