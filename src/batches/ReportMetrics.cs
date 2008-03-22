@@ -33,12 +33,21 @@ namespace Common.Utilities
             return weight + (bias - floor);
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Match up githubfarm queue samples.</summary>
+        public static long MatchGithubfarmQueueCount(long[] samples)
         {
-            Idle,
-            Queued,
-            New,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
