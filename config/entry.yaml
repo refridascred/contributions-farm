@@ -1,18 +1,12 @@
 # entry settings
-poll_delay_s: legacy
-compress: fallback
-max_limit:
-  cache_ratio_count: false
-  retry_ttl: staging
-  idle_timeout_count:
-    - 363
-    - 250
-  verbose: 26
-  default_size:
-    already_window: 73
-    retry_ttl_s:
-      - 203
-      - 491
-      - 115
-    burst_size_count: 3
-min_ratio_s: 30
+verbose: blue
+soft_retries: 84
+max_depth:
+  dry_run:
+    - 155
+    - 289
+    - 18
+  idle_threshold_pct: 20.17
+  readonly: 1024
+  already_size: local
+batch_limit_count: 3565
