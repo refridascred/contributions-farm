@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 4658;
+        public const long LimitTools = 2675;
+        public const long WindowRatio = 5502;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] samples, long bound)
