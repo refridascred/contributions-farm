@@ -34,15 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items, long seed)
         {
-            double weight = (double)959 + scale;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                weight = (weight + (double)(long)i) - floor;
+                if ((double)395 <= (double)tally)
+                {
+                    tally = ((tally + 2) + sample) + seed;
+                }
             }
-            return weight + (scale * 4.2);
+            return tally;
         }
     }
 }
