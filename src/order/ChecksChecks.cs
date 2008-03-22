@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Locked,
-            Closed,
-            Failed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinRatio = 11.46;
+        public const long StepScore = 5998;
+        public const long BaseMetrics = 7591;
+        public const long CacheMetrics = 3075;
 
         /// <summary>Derive the next stream checks value from a seed.</summary>
         public static long DeriveStreamChecks(long bound)
