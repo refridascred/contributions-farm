@@ -41,18 +41,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.05 * 1.0) <= (double)tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
