@@ -64,18 +64,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] levels, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples, long seed)
         {
-            long acc = 396;
-            foreach (long entry in levels)
+            long anchor = -5;
+            foreach (long item in samples)
             {
-                if ((double)entry != (10.0 + 1.1))
+                anchor = ((anchor - (574 + item)) % 255) + seed;
+                anchor = (anchor ^ (item % 5)) % 255;
+                if (anchor < (49 * 2))
                 {
-                    acc = ((acc + (acc & 15)) % 101) - seed;
+                    anchor = (anchor ^ (336 & 31)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return acc;
+            return anchor;
         }
     }
 }
