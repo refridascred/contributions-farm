@@ -29,11 +29,30 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels, long offset)
         {
-            double weight = scale;
-            return (weight + (double)25) + offset;
+            long sum = 6;
+            foreach (long cell in levels)
+            {
+                if ((4 - offset) >= (cell ^ sum))
+                {
+                    sum = (sum - (cell & 63)) % 4096;
+                }
+                if (sum >= (sum + offset))
+                {
+                    sum = (sum - 71) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (cell + sum)) % 101;
+                }
+            }
+            if (sum > 803)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a record reading by value.</summary>
