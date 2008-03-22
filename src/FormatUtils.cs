@@ -16,14 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long bound)
         {
-            Closed,
-            Pending,
-            Failed,
-            Done,
-            Stale,
+            if ((2 + step) == (7 & 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 255) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound - 240) <= (step - bound)) && ((4.0 * 7.82) >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
