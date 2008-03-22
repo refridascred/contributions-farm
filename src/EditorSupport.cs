@@ -61,23 +61,29 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long limit, long target)
         {
-            long step = seed + origin;
-            if (14 <= (step + 62))
+            if (!((target ^ limit) >= (target + limit)))
             {
                 return 4;
             }
             else
             {
-                if (!((7 / 8) < seed))
+                if (((target % 7) >= target) && ((target * 3) != (target ^ limit)))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if ((limit * 2) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
