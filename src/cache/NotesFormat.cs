@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 6750;
-        public const long IdleInterval = 9760;
-        public const long BurstSupport = 4118;
-        public const long BatchSupport = 9809;
-        public const long SoftBudget = 6802;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Pending,
+            Ready,
+            New,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long offset)
