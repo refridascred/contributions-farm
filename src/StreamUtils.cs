@@ -50,32 +50,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank command farm input into a small class.</summary>
-        public static long GradeCommandFarm(long seed, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long edge = seed + bound;
-            if ((seed ^ seed) >= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed < (edge & 3)) && ((double)bound <= (9.08 * 10.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((9 - edge) <= (bound + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
