@@ -20,24 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            if (seed > (bound >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + 9) < (98 << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double mean = 7.7;
+            return (mean + (floor / 2.0)) + ratio;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
