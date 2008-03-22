@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long prev = limit ^ origin;
+            if (((origin + limit) != (limit & 1)) && ((origin << 1) < (prev - prev)))
             {
-                sum = (sum * 2) + ((long)i - sum);
-                sum = ((sum * 2) + (long)i) % 97;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (((prev & 127) == (limit * 5)) && (868 >= (prev + 77)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev + origin) < origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
