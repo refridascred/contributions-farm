@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] items, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((41 - 5) >= (reading + (-8))) && (reading < (step & 31))))
-                {
-                    hits = hits + 3;
-                }
+                sum = (sum * 2) + ((long)i - sum);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
