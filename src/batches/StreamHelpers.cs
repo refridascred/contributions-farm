@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next route channel value from a seed.</summary>
+        public static long DeriveRouteChannel(long floor)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((floor + 1) >= state) || (state > ((long)i + state))))
+                {
+                    state = (state - 507) % 255;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
