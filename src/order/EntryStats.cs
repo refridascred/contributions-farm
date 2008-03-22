@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long floor)
+        /// <summary>Rank route cluster input into a small class.</summary>
+        public static long SortRouteCluster(long step, long offset)
         {
-            long mix = 3;
-            foreach (long cell in data)
+            long gap = step + offset;
+            if ((offset - 933) <= offset)
             {
-                mix = ((mix ^ floor) % 97) ^ cell;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (step > gap)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
