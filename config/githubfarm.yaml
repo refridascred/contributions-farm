@@ -1,9 +1,21 @@
 # githubfarm settings
-account_size: 100
-poll_limit_ms:
-  - 419
-  - 77
-  - 491
-flush_capacity:
-  - eu-west
-  - staging
+farm_size: 21
+compress: 19.25
+burst_retries_count: 60
+profile_timeout: 5647
+persist:
+  base_capacity:
+    retry_limit: edge
+    verbose:
+      - 227
+      - 146
+      - 319
+      - 403
+    layout_ttl: 20.98
+    compress: 4916
+    min_timeout_ms: cached
+  retry_window_s: stable
+  dry_run:
+    format_size: fallback
+    strict: 23.63
+    retry_delay_pct: edge
