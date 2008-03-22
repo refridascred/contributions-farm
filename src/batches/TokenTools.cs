@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 97.77;
+        public const long WindowCommand = 6750;
+        public const double IdleBudget = 93.0;
+        public const string StepCommand = "cached-v2";
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
