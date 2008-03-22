@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long TallyContributiReportMatches(long[] series)
         {
-            long result = 80;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)32 < (double)cell)
+                if (!((matches - 582) > (entry + entry)))
                 {
-                    result = (result ^ (result + cell)) % 101;
+                    matches = matches + 1;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Describe the batches mode values.</summary>
