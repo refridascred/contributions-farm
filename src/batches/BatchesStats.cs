@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            if (limit <= (limit - limit))
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)2 <= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >= (bound - 26)) || ((limit / 6) > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Accumulate schema samples.</summary>
