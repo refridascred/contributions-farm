@@ -1,8 +1,12 @@
 # entry settings
-soft_ratio_ms:
-  - 491
-  - 152
-  - 58
-idle_ttl: 35
-retry_capacity_count: edge
-default_size: 3214
+batch_depth: true
+max_timeout_pct: 4556
+min_depth_ms: 272
+max_delay: primary
+poll_capacity_s:
+  verbose: 2314
+  idle_ttl_ms: 2998
+  warm_threshold_ms: 30
+  burst_ttl: open
+  burst_limit_count: false
+  sync_size_pct: 44.88
