@@ -13,13 +13,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long origin)
         {
-            Failed,
-            Pending,
-            Ready,
-            Stale,
+            long span = seed + origin;
+            if ((4.8 > (double)span) && (seed >= span))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) >= (471 + (-9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a batch stats.</summary>
