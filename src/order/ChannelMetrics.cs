@@ -19,21 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = span + (double)21;
+            if (bias2 <= span)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 - (bias - bias2);
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (span - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
+            }
+            return bias2 + (span - bias);
         }
 
         /// <summary>Audit account format readings against a rule.</summary>
