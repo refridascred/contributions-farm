@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double gain, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] series, long origin)
         {
-            double weight = gain + (double)66;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                weight = (weight + (double)(long)i) - span;
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + (0.26 * 3.9);
+            return found;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
