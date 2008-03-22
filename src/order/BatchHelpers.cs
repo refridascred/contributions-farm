@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftScore = 63.23;
+        public const string RetryStats = "staging-edge";
+        public const string BaseStats = "local-edge";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] values)
