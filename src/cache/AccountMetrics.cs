@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Measure how many format window samples are out of range.</summary>
+        public static long TallyFormatWindowHits(long[] values)
         {
-            long carry = -18;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = carry + reading;
+                if ((((9.75 / 2.0) >= (double)datum) || ((matches & 7) != (matches - matches))) && (15.0 > (double)matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate payload graph readings against a bound.</summary>
