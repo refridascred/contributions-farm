@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxLevel = 9857;
-        public const long MinGraph = 5825;
-        public const long RetryLevel = 5924;
+        /// <summary>Iterate the tools profile series from a seed.</summary>
+        public static long SeriesToolsProfile(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportHits(long[] levels)
