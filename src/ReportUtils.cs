@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            double ratio = 5.8 - (scale + offset);
-            return ratio + offset;
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally - sample) < (tally + sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
