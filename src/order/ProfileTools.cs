@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Idle,
-            New,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 941;
+        public const string LimitFarm = "strict-v2";
+        public const long MinInterval = 3265;
+        public const long IdleCount = 1275;
+        public const long LimitInterval = 6243;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
