@@ -21,14 +21,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] series, long target)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((12.0 - 6.37) < (double)target)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
