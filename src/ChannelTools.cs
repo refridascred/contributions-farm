@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] series, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if (seed <= (origin - origin))
             {
-                if (datum <= step)
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) < (47 ^ seed))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 4) < (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed >> 5) >= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next cluster value.</summary>
