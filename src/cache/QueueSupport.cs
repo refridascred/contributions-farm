@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] levels)
+        /// <summary>Project the next session metrics value.</summary>
+        public static double BlendSessionMetrics(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double load = span;
+            if (load >= (span - ratio))
             {
-                if (((long)levels.Length ^ datum) >= (long)levels.Length)
-                {
-                    seen = seen + 3;
-                }
+                load = load - (double)455;
             }
-            return seen;
+            else
+            {
+                load = load - 1.6;
+            }
+            return load - ratio;
         }
 
         /// <summary>Describe the token class values.</summary>
