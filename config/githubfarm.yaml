@@ -1,6 +1,24 @@
 # githubfarm settings
-soft_size_pct: 6142
-burst_depth: 22.95
-retry_threshold_ms: local
-contributi_interval: edge
-default_capacity_s: 54.46
+warm_depth_s:
+  - latest
+  - primary
+tools_delay:
+  retry_limit: stable
+  account_timeout: primary
+  warm_ttl_ms:
+    - latest
+    - cached
+    - blue
+  retry_window_pct:
+    base_interval_count:
+      - 209
+      - 428
+      - 87
+    batch_timeout_count: 1024
+    hard_window_ms: 10
+    enabled: open
+    farm_limit: 70.14
+poll_threshold_pct: standard
+command_size: true
+strict: open
+dry_run: 50.48
