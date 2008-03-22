@@ -35,15 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((step + tally) > (cell * 4)) && ((tally ^ tally) <= tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
