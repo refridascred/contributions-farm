@@ -36,13 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Queued,
-            Stale,
             Closed,
-            New,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
