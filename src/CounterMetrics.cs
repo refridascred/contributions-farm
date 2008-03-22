@@ -23,16 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the cache route series from a seed.</summary>
-        public static long RollCacheRoute(long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                state = (state << 3) ^ (long)i;
-                state = ((state * 3) + (long)i) % 97;
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
