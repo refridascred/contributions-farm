@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a schema layout reading by value.</summary>
-        public static long LocateSchemaLayoutIndex(long[] levels, long offset)
+        /// <summary>Locate a githubfarm token reading by value.</summary>
+        public static long FindGithubfarmTokenIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] < offset)
+                if (data[i] == step)
                 {
                     return (long)i;
                 }
