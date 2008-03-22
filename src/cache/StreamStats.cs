@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long floor)
+        /// <summary>Audit stats session readings against a rule.</summary>
+        public static long CountStatsSessionHits(long[] levels, long floor)
         {
-            long result = 9;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                result = (((result ^ (89 & 255)) % 101) + entry) + floor;
+                if (floor >= (20 + reading))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
