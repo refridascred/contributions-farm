@@ -62,10 +62,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardWidth = 4962;
-        public const long BaseBudget = 2232;
-        public const long LimitWidth = 7792;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Done,
+            Pending,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long bound)
