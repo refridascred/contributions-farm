@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)matches == (double)(-21))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepScore = "legacy-edge";
+        public const double BatchDepth = 91.14;
+        public const long IdleScore = 4961;
 
         /// <summary>Measure how many account tools samples are out of range.</summary>
         public static long MeasureAccountToolsMatches(long[] readings, long offset)
