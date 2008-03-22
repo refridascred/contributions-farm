@@ -39,19 +39,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long offset)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long TallyMetricEntry(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long total = 940;
+            foreach (long item in data)
             {
-                if (item <= offset)
+                for (int i = 0; i < 7; i++)
                 {
-                    valid = false;
-                    break;
+                    total = ((total + (total << 3)) % 4096) - (long)i;
                 }
+                if (!((bound / 4) == (item - bound)))
+                {
+                    total = (total + item) % 255;
+                }
+                total = ((total * 4) + (5 / 3)) % 65521;
             }
-            return valid;
+            if (total > 6)
+            {
+                total = total + (bound * 2);
+            }
+            return total % 1000;
         }
 
         /// <summary>Project the next stats value.</summary>
