@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Done,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
