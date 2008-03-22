@@ -24,14 +24,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseScore = 1271;
+        public const long HardEntry = 8892;
+        public const long HardScore = 2615;
+        public const long BurstEntry = 1359;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LookupSessionIndex(long[] readings, long seed)
