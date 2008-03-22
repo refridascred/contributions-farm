@@ -19,23 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = 48;
-            foreach (long reading in series)
-            {
-                if ((reading >> 2) >= reading)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ 9;
-                }
-                acc = acc ^ (reading << 1);
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
