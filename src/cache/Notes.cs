@@ -37,11 +37,19 @@ namespace Common.Utilities
             return load - 4.3;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 7611;
-        public const long HardSize = 7481;
-        public const string BaseTimeout = "legacy";
-        public const string LimitStream = "primary-edge";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length < (seed - entry)) || (((entry ^ (-356)) <= (entry + tally)) || ((double)seed != (16.0 - 5.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
         public static long StepNotesBatch(long seed)
