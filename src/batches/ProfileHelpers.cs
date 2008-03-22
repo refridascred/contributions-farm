@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 538;
         public const long CacheBudget = 1071;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
