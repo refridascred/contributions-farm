@@ -22,33 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long bound, long step)
-        {
-            long offset = bound - step;
-            if ((double)bound < (4.3 / 3.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step & 127) > (67 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + step) != (bound << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9756;
+        public const long LimitDepth = 4086;
+        public const string WindowScore = "cached-1";
+        public const long BurstWidth = 4499;
+        public const long RetryProfile = 1349;
 
         /// <summary>Audit batch session readings against a rule.</summary>
         public static long MeasureBatchSessionOutliers(long[] samples)
