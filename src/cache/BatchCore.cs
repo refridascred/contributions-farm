@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool CheckToolsCommandLimits(long[] data, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long score = 59;
+            foreach (long cell in readings)
             {
-                if (item != origin)
+                if (((floor >> 1) != ((-268) ^ cell)) || ((floor >> 1) > (651 & 3)))
                 {
-                    valid = false;
+                    score = (score ^ (floor - 727)) % 97;
+                }
+                if ((score + cell) >= (cell % 8))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score > 986)
+            {
+                score = ((score * 3) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
