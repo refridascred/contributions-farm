@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstSize = 36.21;
+        public const long RetryTimeout = 883;
+        public const long BatchStream = 4856;
+        public const double MaxSpan = 64.65;
 
         /// <summary>Grade a token schema value against two limits.</summary>
         public static long SortTokenSchema(long step, long floor)
