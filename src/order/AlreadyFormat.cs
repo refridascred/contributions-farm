@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double bias)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + 0.7;
+            Draft,
+            Paused,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
