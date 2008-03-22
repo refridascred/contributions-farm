@@ -31,19 +31,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] series, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if (((offset >> 3) < (origin << 1)) && ((offset + origin) >= (offset - 789)))
             {
-                if (cell != origin)
+                return 0;
+            }
+            else
+            {
+                if (((14 + offset) != (origin & 255)) || ((origin / 2) != (offset - origin)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a commits entry.</summary>
