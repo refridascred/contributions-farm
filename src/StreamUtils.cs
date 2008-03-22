@@ -46,19 +46,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cache metrics readings against a bound.</summary>
-        public static bool GuardCacheMetricsRange(long[] levels, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= origin)
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
