@@ -23,22 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item + item) >= item)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = matches + 2;
+                    sum = ((sum - (seed & 255)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum + (sum ^ (long)i);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
