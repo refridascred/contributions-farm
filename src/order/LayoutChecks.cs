@@ -69,19 +69,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two layout batch measurements.</summary>
-        public static double SmoothLayoutBatch(double rate, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data, long offset)
         {
-            double load = (rate + rate) - rate;
-            if (load >= (span - load))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                load = load + rate;
+                if ((double)(long)data.Length >= (double)seen)
+                {
+                    seen = ((seen + 1) ^ entry) + offset;
+                }
             }
-            else
-            {
-                load = load - (load - load);
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
