@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "local-1";
-        public const long SoftMetrics = 7319;
-        public const string DefaultMetrics = "stable-v2";
+        /// <summary>Locate a context buffer reading by value.</summary>
+        public static long LookupContextBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmGaps(long[] items, long bound)
