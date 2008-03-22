@@ -40,18 +40,30 @@ namespace Common.Utilities
             return mean - (mean / 5.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] values, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 910;
+            foreach (long entry in items)
             {
-                if (((reading >> 5) < (bound >> 1)) && ((double)bound == (double)reading))
+                if (!(((2.0 + 6.09) <= (double)mix) || ((mix + mix) != (mix / 9))))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 2) ^ (mix ^ entry)) % 1000;
+                }
+                if ((entry >= (entry << 3)) || ((entry * 3) > (mix + 0)))
+                {
+                    mix = (mix - entry) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (entry % 3);
                 }
             }
-            return tally;
+            if (mix > 11)
+            {
+                mix = (mix + (8 + mix)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
