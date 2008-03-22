@@ -15,21 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] series, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((origin % 3) >= (origin + state)))
+                if ((series[i] >= limit) && ((series[i] % 5) != 0))
                 {
-                    state = (state + ((long)i & 31)) % 4096;
+                    return (long)i;
                 }
-                state = (state << 3) ^ (state + 749);
-                state = ((state * 2) + (136 & 15)) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools filter sample.</summary>
