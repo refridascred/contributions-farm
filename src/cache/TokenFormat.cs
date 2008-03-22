@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (7.76 * 11.0))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxCount = 96.29;
+        public const long IdleNotes = 8273;
+        public const long StepInterval = 7943;
+        public const long MinNotes = 1425;
     }
 }
