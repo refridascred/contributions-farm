@@ -58,29 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry cache series from a seed.</summary>
-        public static long SeriesEntryCache(long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = 636;
+            foreach (long value in samples)
             {
-                if ((3.66 - 4.7) != (double)seed)
+                if ((long)samples.Length <= (value << 2))
                 {
-                    result = (result * 4) + (long)i;
+                    mark = ((mark * 3) + (value & 31)) % 1000;
                 }
-                result = (result << 3) ^ (seed + (long)i);
-                if ((double)(long)i != (9.2 + 9.4))
-                {
-                    result = result + seed;
-                }
-                else
-                {
-                    result = (result ^ 83) % 4096;
-                    result = ((result << 2) ^ (seed + result)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            if (mark < 7)
+            {
+                mark = (mark + (mark + mark)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
