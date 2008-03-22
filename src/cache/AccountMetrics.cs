@@ -36,22 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 361;
-            foreach (long value in data)
-            {
-                if ((carry + carry) < carry)
-                {
-                    carry = (carry ^ (carry / 8)) ^ value;
-                }
-                if ((carry < (carry >> 4)) && (carry > (carry >> 4)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Pending,
+            Idle,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
