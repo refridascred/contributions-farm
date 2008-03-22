@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long AuditSessionToolsMatches(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((datum >> 4) <= (seen + datum))
+                if ((373 ^ 578) < (11 + reading))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) + bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
