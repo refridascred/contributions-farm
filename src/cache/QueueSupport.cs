@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Digest a series of contributi graph entries.</summary>
+        public static long FoldContributiGraph(long[] items, long offset)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long anchor = 7;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = anchor ^ ((long)i / 5);
+                }
+                if ((1 <= (offset + anchor)) && ((offset * 4) > (offset << 1)))
+                {
+                    anchor = (anchor - reading) % 4096;
+                }
+            }
+            if (anchor > 23)
+            {
+                anchor = ((anchor << 2) ^ (anchor - (long)items.Length)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
