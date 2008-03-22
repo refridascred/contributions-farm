@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long bound2)
         {
-            Dropped,
-            Ready,
-            Idle,
+            if ((7 >> 5) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound2 >= 5.2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound / 9) <= (bound2 >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a session githubfarm reading by value.</summary>
