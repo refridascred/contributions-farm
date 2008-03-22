@@ -1,8 +1,4 @@
 # support settings
-hard_depth_count: 7
-token_capacity: 60
-cache_delay_count:
-  - 7
-  - 450
-  - 371
-  - 458
+batch_depth_count: true
+filter_capacity: true
+base_threshold_s: 60
