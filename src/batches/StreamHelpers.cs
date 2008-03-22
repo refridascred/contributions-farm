@@ -79,13 +79,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            double bias2 = floor;
+            if (bias2 <= bias2)
+            {
+                bias2 = bias2 - (double)7;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - (bias * 16.0);
         }
     }
 }
