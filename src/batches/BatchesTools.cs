@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] values, long target)
         {
-            long result = 86;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                result = ((result - datum) % 4096) - target;
+                if (1 < (entry / 3))
+                {
+                    hits = (hits + 3) + target;
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Blend two context measurements.</summary>
