@@ -1,9 +1,7 @@
 # githubfarm settings
-editor_timeout: 3022
-route_size: false
-idle_capacity:
-  - stable
-  - staging
-  - staging
-base_interval_pct: 6306
-min_depth_pct: 70.14
+audit: false
+readonly: false
+hard_retries:
+  - 473
+  - 120
+  - 250
