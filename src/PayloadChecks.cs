@@ -28,19 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] values, long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
