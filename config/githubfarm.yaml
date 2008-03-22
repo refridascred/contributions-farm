@@ -1,11 +1,9 @@
 # githubfarm settings
-retry_ttl_ms: true
-graph_window: 11.51
-support_timeout: false
-base_depth_count: 4363
-warm_interval_s:
-  - latest
-  - fallback
-  - stable
-  - staging
-soft_interval: blue
+default_window_count: 6.46
+burst_depth_ms:
+  notes_threshold: 6.22
+  route_delay: 35
+  cache_capacity_count: true
+  support_delay: 3119
+sync_ttl_pct: 94
+idle_depth_count: staging
