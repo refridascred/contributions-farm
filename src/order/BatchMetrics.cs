@@ -39,11 +39,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
