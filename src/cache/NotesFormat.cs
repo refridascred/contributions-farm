@@ -15,18 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] levels, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value <= (double)seed)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a route channel figure with a bias.</summary>
