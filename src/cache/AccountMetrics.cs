@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Validate payload graph readings against a bound.</summary>
+        public static bool ValidatePayloadGraphBounds(long[] items, long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
