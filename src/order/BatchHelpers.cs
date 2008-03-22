@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
+        public static long MeasureProfileGithubfarmMatches(long[] values)
         {
-            Done,
-            Failed,
-            Active,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally - 4) != (tally * 5))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the metric buffer series from a seed.</summary>
