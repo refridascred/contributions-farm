@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((double)matches != (3.0 * 4.4)) && (value < (value + value)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
