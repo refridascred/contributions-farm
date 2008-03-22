@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                if (((hits & 127) <= entry) && ((70 >> 2) > entry))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
