@@ -58,22 +58,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!(((target + seen) != (seen - seen)) || (614 < reading)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            New,
+            Dropped,
+            Queued,
         }
     }
 }
