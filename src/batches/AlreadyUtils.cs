@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6548;
-        public const long BatchAccount = 7335;
-        public const long WindowTimeout = 9987;
-        public const long StepDepth = 6618;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
+        {
+            long anchor = 76;
+            foreach (long sample in samples)
+            {
+                anchor = anchor - 8;
+                if ((anchor & 31) < (sample - 267))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseBudget = 40.4;
