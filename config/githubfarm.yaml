@@ -1,21 +1,17 @@
 # githubfarm settings
-farm_size: 21
-compress: 19.25
-burst_retries_count: 60
-profile_timeout: 5647
-persist:
-  base_capacity:
-    retry_limit: edge
-    verbose:
-      - 227
-      - 146
-      - 319
-      - 403
-    layout_ttl: 20.98
-    compress: 4916
-    min_timeout_ms: cached
-  retry_window_s: stable
-  dry_run:
-    format_size: fallback
-    strict: 23.63
-    retry_delay_pct: edge
+max_size_count:
+  - 113
+  - 41
+  - 360
+burst_limit_count: 2846
+verbose:
+  base_ratio_s: false
+  max_window:
+    poll_ratio: 46
+    profile_delay: 98.73
+    idle_retries_ms: 4926
+  cache_ttl: 5791
+  burst_capacity: 54
+retry_timeout: legacy
+burst_ratio_count: false
+base_timeout_count: 1024
