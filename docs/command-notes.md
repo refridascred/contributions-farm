@@ -1,11 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the batches list.
-Keep entry and format names short and lowercase.
+Use filter settings to tune how often buffer data is refreshed.
+When a checks fails, the queue handler retries a few times before giving up.
+Each metrics is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every session change
-- Prefer farm defaults
-- Keep profile values small
+- Log every tools change
+- Keep support values small
+- Validate notes input early
