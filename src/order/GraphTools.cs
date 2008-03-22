@@ -42,12 +42,26 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long floor)
         {
-            Stale,
-            Closed,
-            Active,
+            long total = 577;
+            foreach (long reading in data)
+            {
+                if ((reading >> 1) < reading)
+                {
+                    total = total ^ reading;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (reading + total)) % 65521;
+                }
+            }
+            if (total < 7)
+            {
+                total = ((total * 2) + (floor & 3)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
