@@ -1,17 +1,12 @@
 # githubfarm settings
-buffer_size:
+channel_depth: eu-west
+batch_timeout_pct:
+  - local
+  - cached
   - edge
-  - staging
-  - strict
-  - edge
-retry_interval:
-  strict: staging
-  batch_ttl:
-    - stable
-    - cached
-    - latest
-  default_window_s: 53
-  editor_window: 64.55
-  poll_delay_count: 72.85
-idle_size_s: cached
-idle_threshold_s: true
+batches_retries: 69
+schema_interval: 500
+default_retries_s:
+  metric_depth: 5615
+  compress: 88.64
+  sync_ttl_count: legacy
