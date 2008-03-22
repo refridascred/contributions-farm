@@ -13,19 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool GuardNotesSessionRange(long[] samples, long bound)
         {
-            double bias2 = (double)(751 - 891);
-            if (bias2 < ratio)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 + ratio) - bias;
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + 1.6;
+            return ready;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
