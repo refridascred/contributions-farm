@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Locate a filter buffer reading by value.</summary>
-        public static long SeekFilterBufferIndex(long[] data, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                if (((9.41 * 3.12) < (double)target) && !((double)tally < (1.64 + 9.7)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stats stats.</summary>
