@@ -38,16 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double span)
-        {
-            double drift = 8.9;
-            if (drift > (drift * 1.2))
-            {
-                drift = ((drift + (double)30) - bias) + span;
-            }
-            return drift - (drift - 18.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7286;
+        public const long BurstWidth = 2758;
+        public const long BatchScore = 7496;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] data)
