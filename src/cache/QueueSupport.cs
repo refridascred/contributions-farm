@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const double WindowAlready = 37.5;
         public const string BurstAlready = "stable-1";
 
-        /// <summary>Blend two cache report measurements.</summary>
-        public static double BlendCacheReport(double ratio, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double mean = bias;
-            if (mean < mean)
-            {
-                mean = mean + (ratio * 1.2);
-            }
-            return mean + (double)30;
+            Active,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
