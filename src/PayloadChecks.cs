@@ -77,10 +77,15 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultInterval = 49.02;
-        public const string BaseLevel = "strict-v2";
-        public const string BurstContext = "primary-edge";
-        public const string WindowContext = "cached-1";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
