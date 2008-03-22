@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a checks stream pair into a bucket.</summary>
-        public static long SortChecksStream(long bound, long floor)
+        /// <summary>Adjust a context format reading.</summary>
+        public static double AdjustContextFormat(double bias, double span)
         {
-            long bound2 = bound ^ floor;
-            if ((bound ^ bound) == (bound2 % 100))
+            double mean = span;
+            if (mean <= (span + span))
             {
-                return 7;
+                mean = mean + mean;
             }
-            else
-            {
-                if (bound >= (floor + 433))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mean + (5.3 - bias);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
