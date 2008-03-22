@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const double BurstSchema = 4.32;
         public const long CacheWidth = 1805;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long offset)
         {
-            double rate = scale;
-            return (rate - (double)7) + bias;
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
