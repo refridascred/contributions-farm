@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 35.46;
-        public const string IdleChannel = "local-1";
-        public const string DefaultScore = "local-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSpan = 8581;
+        public const long MinInterval = 8502;
+        public const string BatchTimeout = "open-1";
 
         /// <summary>Accumulate githubfarm commits samples.</summary>
         public static long ScoreGithubfarmCommits(long[] data)
