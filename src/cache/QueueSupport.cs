@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] levels)
         {
-            Synced,
-            Closed,
-            Draft,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((long)levels.Length ^ datum) >= (long)levels.Length)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
