@@ -71,14 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            Locked,
-            Pending,
-            Active,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches > (6.41 / 7.0))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
