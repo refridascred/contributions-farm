@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const long WindowCounter = 647;
         public const double MaxInterval = 1.11;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long carry = -6;
+            foreach (long datum in levels)
+            {
+                if (step >= (step - 0))
+                {
+                    carry = ((carry << 2) ^ step) ^ datum;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
