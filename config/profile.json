@@ -1,20 +1,6 @@
 {
-  "dry_run": 8894,
-  "verbose": {
-    "soft_ttl_ms": "green",
-    "idle_retries_s": "blue",
-    "poll_depth": {
-      "burst_capacity_count": [369, 384, 370],
-      "queue_window": false,
-      "dry_run": [497, 234, 46, 222],
-      "idle_threshold_ms": 7504,
-      "warm_retries_count": true
-    },
-    "hard_interval_pct": {
-      "hard_depth_pct": 1024,
-      "burst_window": true,
-      "idle_threshold_s": "fallback"
-    }
-  },
-  "min_window_ms": "blue"
+  "base_window_count": 67,
+  "max_ttl": 4667,
+  "cache_delay_count": "eu-west",
+  "strict": 500
 }
