@@ -1,11 +1,4 @@
 # entry settings
-hard_delay_count: true
-sync_delay_pct:
-  verbose: 5.25
-  metric_depth: 11
-  batch_ttl_count: local
-  batch_ratio: standard
-order_capacity: false
-token_size: edge
-burst_timeout: edge
-flush_delay_s: edge
+readonly: edge
+burst_capacity_s: true
+strict: false
