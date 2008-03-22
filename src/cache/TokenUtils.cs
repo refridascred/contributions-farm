@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] items, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the queue status values.</summary>
