@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const string BurstContext = "legacy";
         public const double MinSpan = 17.51;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Count the cache batches entries that pass the check.</summary>
+        public static long CountCacheBatchesMatches(long[] data)
         {
-            long carry = 136;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (189 > (carry % 7))
+                if (seen >= (sample & 63))
                 {
-                    carry = ((carry ^ 462) % 97) ^ sample;
+                    seen = seen + 2;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
