@@ -51,15 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long FoldRecordBatches(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            long result = 910;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                result = ((((result << 3) ^ result) % 4096) ^ value) - floor;
+                if ((8.76 / 6.0) != (double)sample)
+                {
+                    count = count + 3;
+                }
             }
-            return result % 97;
+            return count;
         }
     }
 }
