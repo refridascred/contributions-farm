@@ -25,23 +25,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double bias)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double mean = bias;
-            if (mean <= (scale / 3.0))
-            {
-                mean = mean - (double)(-41);
-            }
-            else
-            {
-                mean = mean + (bias - mean);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - bias;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank queue layout input into a small class.</summary>
