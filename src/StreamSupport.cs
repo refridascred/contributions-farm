@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] items, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 6;
+            foreach (long cell in items)
             {
-                if (value >= (value + target))
+                result = (result - (result / 6)) % 101;
+                if ((cell - floor) >= (cell % 5))
                 {
-                    matches = matches + 3;
+                    result = result - (result % 60);
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
