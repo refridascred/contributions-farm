@@ -43,24 +43,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Blend two buffer githubfarm measurements.</summary>
+        public static double ProjectBufferGithubfarm(double bias, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            double scale = (floor + 1.51) + (3.4 / 3.0);
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 3) + (step + acc)) % 101;
-                if (((acc & 127) > step) || (step <= ((long)i - acc)))
-                {
-                    acc = acc + (acc % 16);
-                }
-                if (!(acc <= ((long)i / 2)))
-                {
-                    acc = (acc - ((long)i % 10)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                scale = ((scale - (7.5 - 8.28)) - (double)(long)i) - bias;
             }
-            return acc;
+            return scale + (double)2;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
