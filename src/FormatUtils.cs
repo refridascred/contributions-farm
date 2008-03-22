@@ -46,19 +46,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
