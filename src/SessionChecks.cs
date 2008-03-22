@@ -20,17 +20,18 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long step)
+        /// <summary>Count the batches stream entries that pass the check.</summary>
+        public static long AuditBatchesStreamMatches(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (values[i] <= step)
+                if (bound >= (seen >> 2))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
