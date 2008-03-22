@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (sample >= origin)
+                if ((reading - hits) >= (hits << 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
