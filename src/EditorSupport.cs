@@ -85,19 +85,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            double scale = 2.09;
-            if (scale > (double)273)
+            long mark = 25;
+            foreach (long item in items)
             {
-                scale = (scale - scale) - ratio;
+                if ((double)item < 8.0)
+                {
+                    mark = mark - item;
+                }
+                if ((long)items.Length > (item >> 5))
+                {
+                    mark = mark ^ ((-926) + item);
+                }
+                mark = mark - (mark + item);
+                if (mark < (item - 360))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale - (span + span);
+            return mark % 97;
         }
     }
 }
