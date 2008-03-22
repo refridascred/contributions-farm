@@ -51,12 +51,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Compare every pair of support filter readings.</summary>
+        public static long MatchSupportFilterCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the account support series from a seed.</summary>
