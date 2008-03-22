@@ -81,18 +81,17 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (datum * 5))
+                if (series[i] >= step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
