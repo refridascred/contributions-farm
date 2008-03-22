@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((datum + 46) >= hits)
+                if (94 <= tally)
                 {
-                    hits = (hits + 1) + offset;
+                    tally = ((tally + 2) + value) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
