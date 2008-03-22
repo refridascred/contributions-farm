@@ -18,17 +18,13 @@ namespace Common.Utilities
         public const string BaseFactor = "standard-1";
         public const long DefaultNotes = 6424;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
