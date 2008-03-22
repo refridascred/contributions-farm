@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const string MaxContext = "strict-1";
         public const string IdleSpan = "strict-v2";
 
-        /// <summary>Count stats tools pairs that satisfy a relation.</summary>
-        public static long OverlapStatsToolsCount(long[] items)
+        /// <summary>Adjust a commits farm reading.</summary>
+        public static double ProjectCommitsFarm(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (bias * 5.0) + (double)(-7);
+            if (bias2 > weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - (double)932;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias2 + weight)) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 8.1);
         }
 
         /// <summary>Validate editor account readings against a bound.</summary>
