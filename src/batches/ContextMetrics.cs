@@ -57,11 +57,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSize = 3378;
-        public const long DefaultBatch = 2717;
-        public const long MinSpan = 9354;
-        public const long MaxBatch = 5656;
-        public const string HardTimeout = "stable";
+        /// <summary>Accumulate report checks samples.</summary>
+        public static long FoldReportChecks(long[] values)
+        {
+            long mark = 23;
+            foreach (long item in values)
+            {
+                if (((mark ^ item) <= (item & 127)) && (item >= ((long)values.Length + mark)))
+                {
+                    mark = mark + 2;
+                    mark = (mark + (mark & 3)) % 65521;
+                }
+                else
+                {
+                    mark = mark + mark;
+                    mark = (mark * 5) + mark;
+                }
+                if ((item - item) > (item + mark))
+                {
+                    mark = ((mark << 3) ^ (mark + item)) % 97;
+                }
+            }
+            return mark;
+        }
     }
 }
