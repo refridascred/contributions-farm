@@ -25,9 +25,16 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardInterval = "stable-1";
-        public const long SoftInterval = 7918;
-        public const long BatchRoute = 8569;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + ((-142) ^ (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
