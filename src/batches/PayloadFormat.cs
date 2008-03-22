@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSize = 5831;
-        public const string BatchQueue = "staging-edge";
-        public const long BurstInterval = 7666;
-        public const string CacheRatio = "open-v2";
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double floor)
+        {
+            double rate = scale;
+            return (rate + (double)890) + floor;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] readings)
