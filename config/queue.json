@@ -1,7 +1,6 @@
 {
-  "readonly": 4.39,
-  "soft_window_count": "open",
-  "payload_delay": "stable",
-  "flush_timeout_s": [415, 265, 156, 275],
-  "commits_limit": true
+  "idle_threshold_ms": [2, 478, 140, 94],
+  "idle_size_pct": [496, 78, 396, 334],
+  "retry_depth_count": ["local", "latest"],
+  "cache_size_pct": 19.94
 }
