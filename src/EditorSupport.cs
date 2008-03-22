@@ -45,15 +45,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Adjust a command commits reading.</summary>
