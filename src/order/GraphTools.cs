@@ -48,11 +48,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 4537;
-        public const double RetrySupport = 50.78;
-        public const long IdleSupport = 5471;
-        public const long MaxSupport = 2678;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Stale,
+            Closed,
+            Active,
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double weight, double floor)
