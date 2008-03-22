@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((62 % 5) > value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
