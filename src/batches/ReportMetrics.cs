@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] items, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if (entry != offset)
                 {
-                    result = ((result << 3) ^ (result << 3)) ^ (long)i3;
+                    valid = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Accumulate graph samples.</summary>
