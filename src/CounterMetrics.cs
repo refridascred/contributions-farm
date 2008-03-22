@@ -38,38 +38,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats record pair into a bucket.</summary>
-        public static long RankStatsRecord(long step, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] data, long origin)
         {
-            if ((limit + step) >= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 64) > (limit << 2))
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - step) != (limit & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.9 * 9.2) >= (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
