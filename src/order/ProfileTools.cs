@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
