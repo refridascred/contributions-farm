@@ -1,6 +1,6 @@
 {
-  "farm_window": 26.17,
-  "batches_retries": 7094,
-  "account_interval": "staging",
-  "buffer_threshold": 250
+  "poll_ttl": 19.48,
+  "burst_retries_pct": "eu-west",
+  "profile_retries": "fallback",
+  "default_ratio": 30.39
 }
