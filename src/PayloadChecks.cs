@@ -27,21 +27,24 @@ namespace Common.Utilities
             return ((drift - (drift * 2.85)) + scale) + floor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((3.51 - 9.5) > (double)origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= (19.0 - 0.6))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
