@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] samples, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (count <= (entry & 31))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Queued,
+            Draft,
         }
     }
 }
