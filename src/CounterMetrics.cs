@@ -38,12 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
