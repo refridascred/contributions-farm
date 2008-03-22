@@ -1,14 +1,16 @@
 # Command notes
 
-Use stream settings to tune how often metric data is refreshed.
-The metrics report groups every filter by context.
+Use layout settings to tune how often buffer data is refreshed.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Run the context check before changing any window limits.
 
-Use batches settings to tune how often editor data is refreshed.
-A stats that stays idle for too long is moved to the notes list.
+When a already fails, the githubfarm handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
+Use counter settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep metrics values small
-- Log every graph change
-- Prefer format defaults
+- Review session limits each release
+- Validate token input early
+- Log every channel change
+- Keep report values small
