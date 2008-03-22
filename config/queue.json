@@ -1,19 +1,15 @@
 {
-  "farm_capacity": "edge",
-  "idle_capacity_s": "primary",
-  "burst_retries_ms": {
-    "commits_window": {
-      "min_size_pct": 71,
-      "persist": ["open", "local"],
-      "cache_size_ms": true,
-      "editor_size": 40.47,
-      "max_capacity_s": false
-    },
-    "contributi_size": "blue",
-    "default_depth": 500,
-    "hard_limit_s": 100,
-    "entry_depth": 71.15
-  },
-  "flush_delay_ms": 86,
-  "batch_threshold_count": 30.7
+  "metric_ratio": [193, 10, 191],
+  "max_size_s": "primary",
+  "batch_capacity": 46.74,
+  "persist": [376, 415, 179, 187],
+  "default_timeout_pct": 2327,
+  "hard_ttl": {
+    "flush_ratio_s": 9280,
+    "default_capacity_ms": 31.85,
+    "cache_ratio": true,
+    "audit": 86,
+    "flush_limit_s": [324, 88],
+    "flush_depth": false
+  }
 }
