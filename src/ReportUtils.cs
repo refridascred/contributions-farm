@@ -22,17 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = seed + bound;
+            if (((bound2 % 24) > (bound2 / 9)) || ((seed - bound) >= (38 + 751)))
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound2 << 1) > 137)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
