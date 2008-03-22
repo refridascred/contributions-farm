@@ -33,38 +33,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long floor, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            if ((12.0 - 10.0) >= (double)limit)
+            long mix = 3;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor > (floor << 2)) && ((floor - 170) >= (935 ^ floor)))
+                mix = ((mix * 2) + (cell >> 2)) % 101;
+                if ((mix - cell) < mix)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > (2.19 - 3.3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) > (floor & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 0)
+            {
+                mix = (mix ^ 6) % 1000;
+            }
+            return mix;
         }
     }
 }
