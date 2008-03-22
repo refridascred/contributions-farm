@@ -35,23 +35,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long limit)
         {
-            long mix = 15;
-            foreach (long entry in data)
+            long prev = floor - limit;
+            if ((double)prev < (3.9 + 0.24))
             {
-                mix = (mix + entry) % 101;
-                if (((entry & 7) > (851 << 2)) || ((5 % 97) > (409 + bound)))
+                return 6;
+            }
+            else
+            {
+                if (((double)limit == (7.0 - 1.0)) && ((double)floor < 6.31))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((prev >> 3) < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (6 >= prev)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix < 69)
-            {
-                mix = ((mix << 3) ^ (bound * 3)) % 255;
-            }
-            return mix % 1000;
         }
     }
 }
