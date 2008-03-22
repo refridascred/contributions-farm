@@ -49,21 +49,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = floor - origin;
+            if (!((lane % 10) > lane))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.49 / 6.0) >= (double)floor)
                 {
-                    if ((values[i] + values[j]) == 9)
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)lane == (8.97 - 4.0)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
     }
 }
