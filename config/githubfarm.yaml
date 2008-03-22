@@ -1,8 +1,4 @@
 # githubfarm settings
-base_depth: false
-verbose:
-  buffer_window: open
-  commits_delay: 40
-  audit: fallback
-  flush_timeout_s: 93
-warm_delay_s: 27
+sync_threshold_s: green
+dry_run: 78.78
+readonly: false
