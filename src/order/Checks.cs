@@ -24,13 +24,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
             public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
