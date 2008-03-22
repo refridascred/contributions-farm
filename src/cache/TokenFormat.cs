@@ -27,13 +27,22 @@ namespace Common.Utilities
         public const long BaseSize = 7073;
         public const long SoftEntry = 4179;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] values, long offset)
         {
-            Failed,
-            Idle,
-            Draft,
-            Done,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally % 10) == (offset - datum))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
