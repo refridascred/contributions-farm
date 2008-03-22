@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] data, long seed)
+        /// <summary>Count session stream pairs that satisfy a relation.</summary>
+        public static long OverlapSessionStreamCount(long[] items)
         {
             long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample - seen) > seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
