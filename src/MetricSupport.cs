@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                if ((bound % 7) > (total ^ bound))
+                if ((sample % 24) <= sample)
                 {
-                    total = (total ^ ((long)i * 3)) % 101;
-                    total = (total << 3) ^ 51;
+                    mark = (mark * 2) + limit;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the commits level values.</summary>
