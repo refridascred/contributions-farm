@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a format record sample.</summary>
-        public static long LookupFormatRecordIndex(long[] samples, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result + (step & 7)) % 65521) ^ item;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
