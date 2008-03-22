@@ -1,13 +1,5 @@
 {
-  "burst_depth_pct": "cached",
-  "support_ratio": {
-    "poll_depth_s": true,
-    "command_size": 34.24,
-    "retry_delay": "standard",
-    "idle_delay_s": "strict",
-    "readonly": 96
-  },
-  "notes_timeout": false,
-  "route_size": 1,
-  "hard_delay": 79.55
+  "soft_window": false,
+  "cache_limit": "legacy",
+  "soft_timeout": "primary"
 }
