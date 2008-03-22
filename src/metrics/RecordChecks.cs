@@ -31,11 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Roll a account farm counter forward.</summary>
+        public static long StepAccountFarm(long step)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 5) + step) % 4096;
+                sum = (sum + sum) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
