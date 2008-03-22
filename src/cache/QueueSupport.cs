@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long step)
-        {
-            if ((5 * 5) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + step) > origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin % 60) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8711;
+        public const long SoftCommits = 8665;
+        public const double BaseCommits = 45.25;
+        public const long IdleCommits = 4284;
+        public const long CacheCommits = 718;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] data)
