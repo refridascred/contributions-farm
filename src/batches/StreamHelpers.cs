@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long carry = 57;
-            foreach (long reading in items)
-            {
-                if ((reading - reading) == (carry - 1))
-                {
-                    carry = ((carry * 4) + (reading << 2)) % 1000;
-                }
-            }
-            return carry % 4096;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
