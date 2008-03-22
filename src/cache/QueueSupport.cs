@@ -42,9 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 7113;
-        public const long HardSupport = 8937;
-        public const long RetryCount = 973;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseWidth = 9971;
+        public const long SoftFilter = 5666;
+        public const double MinFilter = 26.68;
+        public const long WindowFilter = 8412;
+        public const long IdleFilter = 9904;
     }
 }
