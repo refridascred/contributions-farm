@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Idle,
+            Closed,
+            Pending,
         }
     }
 }
