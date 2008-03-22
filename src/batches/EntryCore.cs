@@ -53,19 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long origin)
+        /// <summary>Look up the position of a account metric sample.</summary>
+        public static long LocateAccountMetricIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < origin)
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
