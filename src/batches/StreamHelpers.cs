@@ -61,17 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
