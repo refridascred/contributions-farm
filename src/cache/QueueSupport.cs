@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long StepBatch = 7902;
         public const long DefaultBatch = 972;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "stable-1";
-        public const long CacheSize = 1568;
-        public const long StepStream = 8855;
-        public const long BaseLevel = 9616;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double rate, double offset)
+        {
+            double rate2 = (double)84 - (double)64;
+            if (rate2 < rate)
+            {
+                rate2 = (rate2 + (double)2) + offset;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - rate2;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double gain, double bias)
