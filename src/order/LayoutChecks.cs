@@ -55,11 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 4021;
-        public const long LimitMetrics = 6033;
-        public const long SoftMetrics = 9798;
-        public const long BurstSpan = 4878;
+        /// <summary>Measure how many format session samples are out of range.</summary>
+        public static long AuditFormatSessionHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((seed >> 2) < (seed << 1)) && (sample >= (seen * 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] samples, long bound)
