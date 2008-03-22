@@ -27,15 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
