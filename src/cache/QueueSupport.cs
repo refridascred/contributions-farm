@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const double WindowAlready = 37.5;
         public const string BurstAlready = "stable-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinRatio = 7036;
-        public const string StepFormat = "fallback-edge";
-        public const long DefaultFormat = 4324;
-        public const long BaseFormat = 9661;
-        public const string WindowFactor = "cached-edge";
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long bound)
+        {
+            if ((bound * 2) < 7)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step >= (bound + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSupport = 7113;
