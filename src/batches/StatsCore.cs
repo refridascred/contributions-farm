@@ -68,11 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstCount = 8.23;
+        public const double CacheInterval = 77.04;
+        public const double BaseChannel = 27.84;
+        public const long StepChannel = 6579;
+        public const string BatchSize = "local-v2";
     }
 }
