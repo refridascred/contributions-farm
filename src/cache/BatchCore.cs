@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= limit)
+                if (readings[i] < seed)
                 {
                     return (long)i;
                 }
