@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if (origin <= (seed * 4))
             {
-                if ((-67) <= (item << 3))
+                return 0;
+            }
+            else
+            {
+                if ((seed * 4) <= (origin + origin))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
