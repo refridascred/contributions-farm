@@ -26,21 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record editor samples.</summary>
-        public static long PairRecordEditorCount(long[] samples)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Synced,
+            Retry,
         }
     }
 }
