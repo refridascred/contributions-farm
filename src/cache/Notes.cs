@@ -54,13 +54,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Locked,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 1966;
+        public const long MinBuffer = 9678;
+        public const string StepBuffer = "cached-1";
+        public const string IdleInterval = "primary-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 8466;
