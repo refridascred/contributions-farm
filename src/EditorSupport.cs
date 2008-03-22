@@ -35,23 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double ratio2 = ratio;
-            if (ratio2 > 6.2)
-            {
-                ratio2 = ratio2 + (ratio + ratio);
-            }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 - 3.9);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - offset;
+            Draft,
+            Paused,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a account counter forward.</summary>
