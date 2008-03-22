@@ -1,11 +1,19 @@
 # githubfarm settings
-burst_delay:
-  min_size_pct:
-    - local
+enabled:
+  queue_threshold: true
+  filter_window: 250
+  burst_ttl_s:
+    - stable
+    - latest
     - legacy
-  retry_ratio_count: staging
-  readonly: 16.6
-  hard_delay: false
-  poll_retries_count: 58.66
-checks_depth: edge
-editor_retries: eu-west
+    - local
+  batch_interval_s: false
+  idle_capacity: primary
+  readonly: false
+dry_run: true
+schema_limit: open
+schema_capacity:
+  - local
+  - latest
+  - cached
+default_timeout: false
