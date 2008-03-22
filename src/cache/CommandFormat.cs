@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long TotalGithubfarmCommand(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -3;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = mark + (item ^ mark);
+                mark = ((mark * 5) + item) % 4096;
+                mark = (mark - ((long)levels.Length + mark)) % 4096;
             }
-            return matches;
+            if (mark > 46)
+            {
+                mark = (mark * 2) + (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a graph reading.</summary>
