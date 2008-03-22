@@ -26,39 +26,12 @@ namespace Common.Utilities
         public const long SoftTimeout = 7631;
         public const long RetryCount = 6052;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long limit, long step)
-        {
-            if (((1.64 * 2.8) >= (1.21 - 11.0)) || (step >= (89 ^ limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step * 4) <= (limit >> 1)) || ((6.81 - 6.16) != (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 12) < (80 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit < (step << 2)) || (step <= (step ^ 255)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardBudget = 80.28;
+        public const double WindowCluster = 65.08;
+        public const double BatchLevel = 51.97;
+        public const long IdleCluster = 9143;
+        public const long MaxCluster = 9143;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long seed)
