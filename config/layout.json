@@ -1,5 +1,6 @@
 {
-  "soft_delay_ms": [49, 28, 170, 231],
-  "dry_run": 30,
-  "hard_retries_ms": 4.63
+  "report_ratio": "eu-west",
+  "idle_capacity": ["staging", "local", "open", "open"],
+  "warm_ttl_count": 500,
+  "hard_limit": "blue"
 }
