@@ -23,28 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long mix = 331;
-            foreach (long datum in items)
+            long acc = 9;
+            foreach (long datum in values)
             {
-                mix = (mix - (mix / 7)) % 255;
-                mix = (mix ^ (mix << 2)) % 255;
-                if ((datum % 24) <= (datum - 871))
+                if (datum < (acc << 3))
                 {
-                    mix = (mix + (mix - (-390))) % 65521;
+                    acc = (acc * 5) + ((-6) - datum);
                 }
-                if (!((datum - mix) >= (datum ^ mix)))
+                if (((10.0 + 1.0) < (double)acc) && ((acc % 2) <= (acc - 422)))
                 {
                     break;
                 }
             }
-            if (mix < 38)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 4096;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Adjust a checks reading.</summary>
