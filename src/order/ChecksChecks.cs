@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Grade a batch notes value against two limits.</summary>
+        public static long GradeBatchNotes(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long lane = offset - offset2;
+            if ((offset ^ lane) <= (12 + offset))
             {
-                if ((0.5 - 7.2) <= (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((lane << 3) < (offset2 / 5))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((20 + lane) == (offset ^ offset2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset * 5) < lane) && ((double)lane >= 6.96))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
