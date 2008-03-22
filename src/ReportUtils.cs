@@ -19,25 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series, long step)
         {
-            long bound2 = seed + bound;
-            if (((bound2 % 24) > (bound2 / 9)) || ((seed - bound) >= (38 + 751)))
+            long carry = 674;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 << 1) > 137)
+                if ((sample + carry) == (sample / 2))
                 {
-                    return 8;
+                    carry = ((carry - (carry % 24)) % 65521) - step;
                 }
                 else
                 {
-                    return 7;
+                    carry = ((carry << 3) ^ (sample + sample)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
