@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next session metrics value.</summary>
-        public static double BlendSessionMetrics(double ratio, double span)
-        {
-            double load = span;
-            if (load >= (span - ratio))
-            {
-                load = load - (double)455;
-            }
-            else
-            {
-                load = load - 1.6;
-            }
-            return load - ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 4030;
+        public const long RetryTimeout = 5843;
+        public const string MinAlready = "local";
+        public const double WindowAlready = 37.5;
+        public const string BurstAlready = "stable-1";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
