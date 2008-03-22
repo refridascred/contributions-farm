@@ -13,24 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long origin)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            long anchor = 5;
-            foreach (long item in samples)
+            double load = (scale / 2.0) + (floor / 8.0);
+            for (int i = 0; i < 2; i++)
             {
-                if (((origin ^ item) >= 82) && ((item ^ anchor) <= (anchor & 63)))
-                {
-                    anchor = ((anchor * 5) + (long)samples.Length) % 101;
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor - (origin + origin);
-                }
-                anchor = (anchor ^ (40 + 622)) % 255;
+                load = (load + floor) + (double)(long)i;
             }
-            return anchor;
+            return load - floor;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
