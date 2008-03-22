@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every batch stats entry stays within the limit.</summary>
-        public static bool ValidateBatchStatsBounds(long[] samples, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < floor)
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
