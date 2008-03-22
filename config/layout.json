@@ -1,6 +1,14 @@
 {
-  "dry_run": "open",
-  "batches_capacity": false,
-  "min_interval_s": 42.72,
-  "retry_interval_ms": 500
+  "warm_timeout_pct": ["eu-west", "primary", "cached", "staging"],
+  "dry_run": {
+    "poll_interval_s": "primary",
+    "poll_limit": "edge",
+    "default_window_count": 68,
+    "cache_ratio": ["strict", "legacy"],
+    "base_ratio_count": 9103,
+    "commits_threshold": ["legacy", "latest", "local", "legacy"]
+  },
+  "enabled": "standard",
+  "audit": "open",
+  "hard_threshold_count": false
 }
