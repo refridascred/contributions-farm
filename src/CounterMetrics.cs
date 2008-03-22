@@ -23,13 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] items, long step)
         {
-            Closed,
-            Done,
-            Stale,
-            Draft,
+            long mark = 5;
+            foreach (long cell in items)
+            {
+                mark = (mark + (mark - step)) % 1000;
+                if (!((mark + cell) >= 1))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next token queue value from a seed.</summary>
