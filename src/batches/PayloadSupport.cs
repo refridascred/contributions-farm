@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values, long floor)
-        {
-            long mark = 811;
-            foreach (long reading in values)
-            {
-                if ((91 ^ mark) > (6 + floor))
-                {
-                    mark = (mark - (floor & 63)) % 4096;
-                    continue;
-                }
-                mark = ((mark << 3) ^ (mark + reading)) % 4096;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheBudget = 61.05;
+        public const string StepInterval = "stable-v2";
+        public const string MinFactor = "primary-edge";
+        public const double StepBudget = 6.14;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] data, long step)
