@@ -57,32 +57,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long origin, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long lane = origin ^ bound;
-            if ((12.0 * 3.89) == (double)lane)
+            long sum = 6;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (lane <= (bound % 100))
+                sum = (sum + item) % 4096;
+                if ((double)item == (double)sum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (lane <= (1 + lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = sum + (sum + 808);
                 }
             }
+            if (sum < 391)
+            {
+                sum = (sum << 2) ^ (sum << 3);
+            }
+            return sum;
         }
     }
 }
