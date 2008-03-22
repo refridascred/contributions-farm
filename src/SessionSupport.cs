@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 326;
+            foreach (long item in readings)
             {
-                if (samples[i] == target)
+                if (((long)readings.Length & 31) == (long)readings.Length)
                 {
-                    return (long)i;
+                    anchor = anchor - (item >> 2);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a support summary.</summary>
