@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long CountGraphRouteOutliers(long[] series, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((29 - tally) != (bound & 63)) && (reading < (long)series.Length)) && ((169 / 6) < tally))
+                if (!((count > 44) || (value < ((long)samples.Length & 127))))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
