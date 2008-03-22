@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long origin)
         {
-            long mix = 2;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + (mix - reading)) % 65521) - target;
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 140)
-            {
-                mix = (mix * 2) + (5 % 60);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
