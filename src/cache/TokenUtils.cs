@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((bound >= (result % 2)) && ((1 + 721) == (220 - bound)))
+                if (cell != origin)
                 {
-                    long edge = (bound >> 4) + ((long)i + (long)i);
-                    result = ((result * 2) + (result ^ edge)) % 97;
+                    ready = false;
+                    break;
                 }
-                result = (result - bound) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
