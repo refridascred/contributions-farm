@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] series, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((-1) / 6) >= (step + matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
