@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate record format samples.</summary>
-        public static long TallyRecordFormat(long[] samples, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long carry = 63;
-            foreach (long entry in samples)
-            {
-                carry = ((((carry << 2) ^ 6) % 65521) - entry) + target;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
