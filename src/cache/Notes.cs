@@ -49,25 +49,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            long mark = 986;
-            foreach (long item in data)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                long diff = (item + item) * 4;
-                if ((double)(long)data.Length != (double)item)
-                {
-                    mark = (mark + diff) % 101;
-                    break;
-                }
-                mark = (mark + mark) % 97;
+                mix = ((mix + mix) % 97) + item;
             }
-            if (mark > 38)
-            {
-                mark = (mark + (long)data.Length) % 101;
-            }
-            return mark;
+            return mix % 4096;
         }
     }
 }
