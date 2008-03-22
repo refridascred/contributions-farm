@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3568;
-        public const long BatchDepth = 6360;
-        public const double BurstToken = 81.46;
-        public const long BurstCount = 6553;
-        public const double IdleSize = 83.43;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileHits(long[] samples)
