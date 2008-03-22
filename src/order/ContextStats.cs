@@ -48,12 +48,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            double mean = (bias2 + bias) - (bias2 - bias2);
+            if (mean >= (double)930)
+            {
+                mean = mean - bias2;
+            }
+            else
+            {
+                mean = mean + (bias2 + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)9) + (double)(long)i;
+            }
+            return mean + (8.53 * 9.97);
         }
     }
 }
