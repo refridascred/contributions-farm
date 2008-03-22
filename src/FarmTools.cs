@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long TallyContributiReportMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((matches - 582) > (entry + entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheTimeout = 9227;
+        public const long CacheSpan = 1249;
+        public const long WindowRecord = 4685;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
