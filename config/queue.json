@@ -1,7 +1,6 @@
 {
-  "warm_retries": "cached",
-  "compress": ["cached", "open", "green", "stable"],
-  "verbose": 17,
-  "already_ttl": 2826,
-  "strict": 17
+  "farm_window": 26.17,
+  "batches_retries": 7094,
+  "account_interval": "staging",
+  "buffer_threshold": 250
 }
