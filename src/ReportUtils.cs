@@ -32,18 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long CountCacheBufferGaps(long[] levels, long bound)
+        /// <summary>Classify a token cluster pair into a bucket.</summary>
+        public static long SortTokenCluster(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if (((limit & 3) < (limit + offset)) || (limit <= (limit ^ offset)))
             {
-                if ((hits << 1) <= (item - bound))
+                return 6;
+            }
+            else
+            {
+                if (limit > (offset - 347))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
