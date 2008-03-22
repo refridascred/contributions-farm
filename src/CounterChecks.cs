@@ -70,12 +70,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5512;
+        public const string BurstQueue = "stable-edge";
+        public const string MaxQueue = "primary-edge";
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
