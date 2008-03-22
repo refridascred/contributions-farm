@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((71 + cell) != (cell - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
