@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] series, long step)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches << 2) <= (matches / 6))
+                {
+                    matches = ((matches + 3) ^ sample) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a format context sample.</summary>
