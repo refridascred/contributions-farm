@@ -13,10 +13,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 23.17;
-        public const long WindowBudget = 1430;
-        public const double BatchSupport = 33.12;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ScaleGithubfarm(double scale, double offset)
