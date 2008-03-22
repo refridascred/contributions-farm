@@ -30,15 +30,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 4) + (target >> 3)) % 255) ^ cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
