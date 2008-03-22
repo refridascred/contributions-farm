@@ -45,12 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstDepth = 9512;
-        public const string SoftReport = "staging-v2";
-        public const double RetryCount = 89.15;
-        public const string DefaultRatio = "fallback-edge";
-        public const long BaseFactor = 987;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)cell < (16.0 * 0.6)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
