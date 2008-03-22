@@ -80,13 +80,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long datum in items)
             {
-                if (!((entry ^ entry) < entry))
+                if (seen <= (datum * 5))
                 {
                     seen = seen + 2;
                 }
