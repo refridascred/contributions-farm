@@ -22,19 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool VerifyBufferMetricRange(long[] samples, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum <= target)
+                if ((value * 4) > (value / 8))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
