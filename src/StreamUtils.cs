@@ -57,22 +57,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long sum = 33;
-            foreach (long entry in items)
+            long mark = 46;
+            foreach (long reading in levels)
             {
-                if (!((sum << 2) <= sum))
+                if ((double)mark > (0.1 + 6.44))
                 {
-                    sum = (sum - (89 & 127)) ^ entry;
+                    mark = mark + (reading + reading);
                 }
+                mark = (mark ^ (mark >> 5)) % 101;
             }
-            if (sum < 0)
-            {
-                sum = (sum + ((long)items.Length >> 4)) % 65521;
-            }
-            return sum;
+            return mark;
         }
     }
 }
