@@ -19,15 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long target)
+        /// <summary>Measure how many support window samples are out of range.</summary>
+        public static long TallySupportWindowHits(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long sample in series)
             {
-                if (((seen - value) > (target ^ seen)) || ((0.25 * 1.2) < (double)target))
+                if (8.32 <= (double)seen)
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 3) - sample) + seed;
                 }
                 else
                 {
