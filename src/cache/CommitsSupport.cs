@@ -10,16 +10,14 @@ namespace Common.Utilities
         public const double DefaultQueue = 4.61;
         public const long BurstWidth = 8646;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = 98;
-            foreach (long item in samples)
-            {
-                mark = (mark ^ item) % 255;
-                mark = mark - (item - item);
-            }
-            return mark;
+            Done,
+            Locked,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
