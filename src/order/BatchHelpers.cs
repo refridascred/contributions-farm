@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long floor)
+        /// <summary>Iterate the metric buffer series from a seed.</summary>
+        public static long DeriveMetricBuffer(long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > floor)
+                if ((bound + bound) > (state % 12))
                 {
-                    ready = false;
-                    break;
+                    state = (state * 4) + (1 + bound);
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Look up the position of a token already sample.</summary>
