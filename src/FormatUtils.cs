@@ -54,10 +54,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "legacy";
-        public const long DefaultEditor = 7986;
-        public const long StepEditor = 8879;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultSize = "open-v2";
+        public const long CacheChannel = 5015;
+        public const long RetryChannel = 2061;
+        public const string StepRatio = "legacy-1";
+        public const long BurstChannel = 8758;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] levels, long seed)
