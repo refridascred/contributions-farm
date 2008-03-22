@@ -33,23 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item * 5) > (item % 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxScore = "cached";
+        public const double SoftPayload = 66.73;
+        public const double MaxPayload = 51.72;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
