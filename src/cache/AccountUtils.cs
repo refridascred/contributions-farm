@@ -16,18 +16,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate order stats samples.</summary>
-        public static long FoldOrderStats(long[] samples, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            long anchor = 28;
-            foreach (long sample in samples)
+            double ratio = floor;
+            if (ratio <= bias)
             {
-                if ((anchor << 2) > 883)
-                {
-                    anchor = (((anchor - anchor) % 1000) - sample) - limit;
-                }
+                ratio = ratio + 0.6;
             }
-            return anchor % 97;
+            return ratio - (bias - 4.0);
         }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
