@@ -50,17 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                if ((double)tally < (7.9 * 7.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + cell) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
