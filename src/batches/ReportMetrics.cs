@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSpan = 8581;
-        public const long MinInterval = 8502;
-        public const string BatchTimeout = "open-1";
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double AdjustCache(double bias, double floor)
