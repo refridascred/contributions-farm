@@ -1,8 +1,6 @@
-id,level
-1,509
-2,404
-3,72.69
-4,12.49
-5,local
-6,59
-7,primary
+id,weight,ratio,level
+1,202,stable,strict
+2,standard,39.31,290
+3,edge,223,legacy
+4,73.29,86.59,85.6
+5,773,452,strict
