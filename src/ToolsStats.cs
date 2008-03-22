@@ -43,19 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 4142;
+        public const long BurstRatio = 7202;
+        public const double StepSize = 79.25;
+        public const long BurstCount = 4416;
 
         /// <summary>Count the counter buffer entries that pass the check.</summary>
         public static long MeasureCounterBufferMatches(long[] data)
