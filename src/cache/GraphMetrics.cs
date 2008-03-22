@@ -60,23 +60,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a tools metric reading.</summary>
-        public static double SmoothToolsMetric(double rate, double span)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long floor, long offset)
         {
-            double bias = rate;
-            if (bias >= bias)
+            long cur = floor ^ offset;
+            if ((3.2 / 7.0) == (double)offset)
             {
-                bias = bias - (span + 9.5);
+                return 3;
             }
             else
             {
-                bias = bias - rate;
+                if ((offset >> 2) == (cur - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur > (156 - offset)) && ((floor << 2) == (offset ^ cur)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)4) + (double)(long)i;
-            }
-            return bias + rate;
         }
     }
 }
