@@ -46,25 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long bound)
-        {
-            if ((1.7 - 7.0) < (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - floor) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 4021;
+        public const long LimitMetrics = 6033;
+        public const long SoftMetrics = 9798;
+        public const long BurstSpan = 4878;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] samples, long bound)
