@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long IdleGraph = 5972;
         public const long DefaultGraph = 2447;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long step)
         {
-            Paused,
-            Pending,
-            Stale,
-            Idle,
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total ^ ((long)i2 - total)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
