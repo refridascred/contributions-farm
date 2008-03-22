@@ -26,18 +26,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Audit record context readings against a rule.</summary>
+        public static long AuditRecordContextOutliers(long[] samples, long step)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum <= (7.4 / 5.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + step;
                 }
             }
             return matches;
