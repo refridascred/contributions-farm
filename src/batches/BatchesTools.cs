@@ -19,16 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long result = 86;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ 144) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                result = ((result - datum) % 4096) - target;
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
