@@ -48,18 +48,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long TallyMetricNotesOutliers(long[] samples)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((224 / 9) != (hits + cell))
+                if (samples[i] <= limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
