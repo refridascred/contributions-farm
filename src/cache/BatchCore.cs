@@ -49,12 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (0.9 - 7.9))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
