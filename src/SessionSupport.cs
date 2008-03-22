@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const long MinQueue = 4555;
         public const double MaxQueue = 98.03;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double gain, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            double load = 6.0 * 12.0;
-            if (load >= (double)94)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                load = ((load + (4.24 + load)) - gain) - bias;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load - (5.0 * 13.0);
+            return result;
         }
     }
 }
