@@ -41,14 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many support batches samples are out of range.</summary>
+        public static long CountSupportBatchesMatches(long[] values, long step)
         {
-            Stale,
-            Idle,
-            Synced,
-            Ready,
-            Queued,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((277 + step) < (step / 3))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
