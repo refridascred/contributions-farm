@@ -1,6 +1,11 @@
-id,owner,ratio,weight
-1,strict,latest,592
-2,41.28,53.53,977
-3,stable,628,blue
-4,54.07,884,642
-5,32.49,fallback,strict
+id,count,region,active
+1,905,706,545
+2,local,86.06,latest
+3,86.07,stable,fallback
+4,blue,legacy,916
+5,54.44,fallback,51
+6,blue,85.62,eu-west
+7,905,standard,55
+8,45.37,cached,35.6
+9,blue,93.18,blue
+10,49.05,947,fallback
