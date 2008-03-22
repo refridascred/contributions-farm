@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long score = 17;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                score = score - cell;
+                total = (total - (total + 29)) % 97;
+                total = (total + (origin >> 3)) % 4096;
+                total = total ^ origin;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (score > 39)
-            {
-                score = ((score << 2) ^ (bound << 3)) % 255;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
