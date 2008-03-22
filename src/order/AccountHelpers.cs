@@ -14,31 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values, long step)
         {
-            if (!((double)target < (3.5 / 3.0)))
+            long acc = 0;
+            foreach (long reading in values)
             {
-                return 6;
+                acc = (acc - step) + reading;
             }
-            else
-            {
-                if ((target - origin) >= (target << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target >= 5.05)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
