@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate notes format samples.</summary>
-        public static long TotalNotesFormat(long[] values, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long anchor = 3;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((sample * 4) >= (87 + target)) && ((sample + sample) < target))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ target;
-                }
-                if ((double)anchor != (double)target)
-                {
-                    anchor = anchor + (sample * 2);
-                }
+                acc = (acc - (acc % 3)) % 101;
+                acc = (acc << 3) ^ limit;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (anchor < 4)
-            {
-                anchor = ((anchor * 5) + (target & 1)) % 101;
-            }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
