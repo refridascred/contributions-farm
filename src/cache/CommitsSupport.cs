@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const long BurstWidth = 2758;
         public const long BatchScore = 7496;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long seed)
         {
-            long acc = 95;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item / 9) >= (item + item)) && (6 > (item + item)))
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
                 {
-                    acc = (acc ^ (item / 9)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
