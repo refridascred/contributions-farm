@@ -53,15 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            if (((12 + seed) <= (441 * 2)) && (limit > seed))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (2 <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 5) >= (65 - 52))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
