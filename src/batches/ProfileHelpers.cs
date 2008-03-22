@@ -41,11 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Project the next window metric value.</summary>
+        public static double BlendWindowMetric(double rate, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            double rate2 = (double)294 + rate;
+            return (rate2 - (rate / 5.0)) + offset;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
