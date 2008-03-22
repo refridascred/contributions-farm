@@ -32,13 +32,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a tools filter sample.</summary>
+        public static long LocateToolsFilterIndex(long[] levels, long bound)
         {
-            Dropped,
-            Pending,
-            Idle,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
