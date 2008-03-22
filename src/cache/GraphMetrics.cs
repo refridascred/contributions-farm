@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long bound)
         {
-            Pending,
-            New,
-            Stale,
-            Paused,
+            if ((origin + origin) > bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound <= (origin - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
