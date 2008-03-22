@@ -42,18 +42,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long seed)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long AuditBatchRecordOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading <= count)
+                if (((double)sample > (5.13 * 19.0)) && !((-52) < (hits / 9)))
                 {
-                    count = (count + 1) + seed;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
