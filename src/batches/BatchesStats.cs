@@ -35,22 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry / 7) <= (step - step)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the schema kind values.</summary>
