@@ -69,18 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = 9;
-            foreach (long cell in readings)
-            {
-                if ((((-7) + sum) > (origin / 2)) || ((sum % 3) < (origin / 3)))
-                {
-                    sum = (sum + (origin % 12)) - cell;
-                }
-            }
-            return sum % 65521;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
