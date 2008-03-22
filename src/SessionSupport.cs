@@ -20,12 +20,11 @@ namespace Common.Utilities
             return weight - (2.85 * 9.08);
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5529;
+        public const long DefaultQueue = 7424;
+        public const long MinQueue = 4555;
+        public const double MaxQueue = 98.03;
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double gain, double bias)
