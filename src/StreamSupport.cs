@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "open-edge";
-        public const long IdleCommits = 1293;
-        public const double SoftLevel = 68.97;
-        public const long HardBudget = 999;
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long CountGraphRouteOutliers(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((((29 - tally) != (bound & 63)) && (reading < (long)series.Length)) && ((169 / 6) < tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank commits support input into a small class.</summary>
         public static long SortCommitsSupport(long target, long bound)
