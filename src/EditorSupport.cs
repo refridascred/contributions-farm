@@ -56,24 +56,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long seed2)
+        /// <summary>Adjust a command commits reading.</summary>
+        public static double BlendCommandCommits(double weight, double offset)
         {
-            if ((seed % 24) > seed2)
+            double scale = (double)(187 * 5);
+            if (scale < (double)57)
             {
-                return 2;
+                scale = (scale + 0.9) + weight;
             }
             else
             {
-                if (seed < (seed % 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                scale = scale - (double)484;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (offset / 8.0)) - (double)(long)i;
+            }
+            return scale + (double)763;
         }
 
         /// <summary>Hold a checks record.</summary>
