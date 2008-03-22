@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool GuardWindowCounterLimits(long[] readings, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample >= offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    found = false;
-                    break;
+                    score = ((score - (long)i) % 255) - (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
