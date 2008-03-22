@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account tools samples are out of range.</summary>
-        public static long MeasureAccountToolsMatches(long[] readings, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long target, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((9.5 - 2.0) != (double)limit)
             {
-                if ((double)583 < (double)item)
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= 7.7)
                 {
-                    tally = (tally + 2) + offset;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target < (0.1 - 1.6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
