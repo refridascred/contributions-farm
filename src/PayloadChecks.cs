@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            Idle,
-            Pending,
-            Locked,
+            double drift = (double)36 + (15.0 / 3.0);
+            return ((drift - (drift * 2.85)) + scale) + floor;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
