@@ -36,14 +36,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultCount = 1959;
+        public const string WindowLayout = "alpha";
+        public const long LimitLayout = 2998;
+        public const double WindowCount = 55.81;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] data)
