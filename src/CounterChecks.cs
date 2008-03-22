@@ -14,12 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            Active,
-            Done,
-            Ready,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((5.0 * 3.3) == (double)offset)
+                {
+                    state = (state - (offset & 127)) % 65521;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
