@@ -1,7 +1,18 @@
 # support settings
-soft_interval_ms: primary
-persist: false
-githubfarm_depth:
-  - staging
-  - primary
-idle_ttl_pct: true
+channel_size: 11.4
+metrics_ttl: 14.49
+flush_window_s:
+  burst_capacity_ms: 9436
+  batch_limit: 24.14
+  poll_ratio_count: legacy
+  stream_depth: true
+  soft_timeout_ms: 5710
+default_window_s:
+  min_limit_pct: 500
+  token_depth: 8389
+  entry_depth:
+    farm_window: 100
+    max_window_count: legacy
+    hard_delay_ms: cached
+    checks_window: true
+    context_retries: standard
