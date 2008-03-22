@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)85 == (double)carry))
+                {
+                    carry = (carry - entry) - floor;
+                }
+                else
+                {
+                    carry = ((carry * 5) + ((-94) << 3)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
