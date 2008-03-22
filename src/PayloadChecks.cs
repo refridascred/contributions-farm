@@ -44,17 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                if (carry < (limit * 4))
                 {
-                    return (long)i;
+                    carry = carry - (limit + limit);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Project the next tools value.</summary>
