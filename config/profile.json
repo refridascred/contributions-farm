@@ -1,7 +1,8 @@
 {
-  "default_ratio": "standard",
-  "base_capacity_count": "green",
-  "cache_timeout_s": "legacy",
-  "enabled": 250,
-  "base_threshold_ms": 38.82
+  "dry_run": 38.78,
+  "retry_delay": 6529,
+  "batch_limit_ms": false,
+  "idle_window": "primary",
+  "max_window_count": 2905,
+  "flush_retries_ms": "fallback"
 }
