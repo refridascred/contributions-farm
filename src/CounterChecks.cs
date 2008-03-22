@@ -30,15 +30,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm already readings.</summary>
-        public static long TallyGithubfarmAlready(long[] items, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long offset)
         {
-            long carry = 0;
-            foreach (long item in items)
+            if (((double)offset <= 3.6) || ((926 + limit) < (offset + offset)))
             {
-                carry = ((((carry * 2) + carry) % 101) - item) + floor;
+                return 0;
             }
-            return carry % 65521;
+            else
+            {
+                if (limit >= (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 2) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context stream readings against a bound.</summary>
