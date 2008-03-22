@@ -52,11 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "stable-edge";
-        public const long WindowRecord = 6037;
-        public const double BurstCount = 78.52;
-        public const long MinRatio = 2991;
+        /// <summary>Look up the position of a graph schema sample.</summary>
+        public static long LookupGraphSchemaIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] readings, long origin)
