@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches != (double)datum)
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
