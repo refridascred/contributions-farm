@@ -29,13 +29,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            Locked,
+            Stale,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the batches format entries that pass the check.</summary>
