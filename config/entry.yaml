@@ -1,7 +1,4 @@
 # entry settings
-hard_ratio:
-  - 57
-  - 84
-readonly: standard
-cache_ttl_ms: true
-idle_retries_pct: true
+enabled: green
+dry_run: false
+default_depth_s: 1024
