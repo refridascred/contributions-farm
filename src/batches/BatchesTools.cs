@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long origin)
         {
-            Synced,
-            Done,
-            Failed,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
