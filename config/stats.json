@@ -1,7 +1,18 @@
 {
-  "soft_ratio_count": ["staging", "cached", "legacy"],
-  "warm_size_count": [242, 167, 302, 458],
-  "compress": "blue",
-  "dry_run": 94.14,
-  "batch_limit": "standard"
+  "profile_limit": {
+    "sync_retries": true,
+    "min_interval_pct": 500,
+    "already_threshold": {
+      "persist": "legacy",
+      "layout_size": "legacy",
+      "audit": true
+    }
+  },
+  "sync_ttl_count": 250,
+  "max_window_pct": {
+    "poll_timeout": "green",
+    "base_ratio": "green",
+    "metric_window": "strict"
+  },
+  "batch_delay_count": ["primary", "cached"]
 }
