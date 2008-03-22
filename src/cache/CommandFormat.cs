@@ -70,19 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks counter readings against a bound.</summary>
-        public static bool ValidateChecksCounterRange(long[] readings, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
