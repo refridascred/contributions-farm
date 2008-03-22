@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double bias)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double ratio = bias / 7.0;
-            if (ratio <= bias)
-            {
-                ratio = ratio + 5.8;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + weight;
+            Locked,
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
