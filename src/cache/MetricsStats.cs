@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstSize = 36.21;
-        public const long RetryTimeout = 883;
-        public const long BatchStream = 4856;
-        public const double MaxSpan = 64.65;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a token schema value against two limits.</summary>
         public static long SortTokenSchema(long step, long floor)
