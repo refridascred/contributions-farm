@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen ^ sample) > (sample >> 5))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxLevel = 9857;
+        public const long MinGraph = 5825;
+        public const long RetryLevel = 5924;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportHits(long[] levels)
