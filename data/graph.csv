@@ -1,8 +1,6 @@
-id,rank,active
-1,284,259
-2,cached,eu-west
-3,465,805
-4,18.53,839
-5,856,66.41
-6,32.88,47
-7,6.13,32.28
+id,region,ratio,rank,state
+1,211,green,94.77,472
+2,stable,local,658,green
+3,919,631,916,local
+4,497,251,727,15.68
+5,55.01,local,latest,291
