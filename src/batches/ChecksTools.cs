@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Stale,
-            Queued,
-            Draft,
-            New,
-            Synced,
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
