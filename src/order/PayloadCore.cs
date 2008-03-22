@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((2.9 >= (double)matches) && ((reading & 255) != (reading * 3))) && ((4.0 - 4.6) != (double)matches))
+                if (reading <= limit)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
