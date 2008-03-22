@@ -62,22 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor * 2) < tally)
+                if (readings[i] == step)
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
