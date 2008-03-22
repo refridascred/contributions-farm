@@ -1,10 +1,14 @@
 # Command notes
 
-The layout module keeps notes values in sync with the profile cache.
-Use metrics settings to tune how often cache data is refreshed.
+Each already is validated before it reaches the commits queue.
+The context module keeps route values in sync with the stream cache.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep commits and metric names short and lowercase.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer schema defaults
-- Log every window change
+- Document new metrics fields
+- Keep stats values small
+- Validate account input early
+- Review layout limits each release
