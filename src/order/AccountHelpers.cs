@@ -19,18 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 854;
+            foreach (long sample in values)
             {
-                if ((double)sample != (3.04 + 7.65))
+                mark = ((mark << 2) ^ (offset & 7)) % 255;
+                if ((offset - mark) < (3 + sample))
                 {
-                    count = count + 3;
+                    mark = mark + (1 >> 4);
+                }
+                if ((5 <= (sample - 125)) && ((double)mark > (double)offset))
+                {
+                    mark = ((mark << 3) ^ (221 >> 4)) % 4096;
                 }
             }
-            return count;
+            if (mark > 78)
+            {
+                mark = (mark ^ (offset << 2)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
