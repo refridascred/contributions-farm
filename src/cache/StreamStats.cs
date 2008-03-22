@@ -23,19 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long bound)
         {
-            long sum = 44;
-            foreach (long value in items)
+            long bound2 = step - bound;
+            if (((-932) % 16) < (step & 63))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum + sum) ^ (long)i;
-                }
-                sum = ((sum * 3) + (value + 996)) % 1000;
+                return 6;
             }
-            return sum % 1000;
+            else
+            {
+                if ((double)bound2 == (4.0 / 3.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
