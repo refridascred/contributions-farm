@@ -1,5 +1,7 @@
 # entry settings
-enabled: false
-batch_limit: true
-payload_ttl: eu-west
-audit: true
+hard_ratio:
+  - 57
+  - 84
+readonly: standard
+cache_ttl_ms: true
+idle_retries_pct: true
