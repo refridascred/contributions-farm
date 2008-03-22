@@ -61,22 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Count the metrics support entries that pass the check.</summary>
+        public static long TallyMetricsSupportMatches(long[] values, long floor)
         {
-            long score = 12;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((score + score) < score) || (((long)samples.Length * 2) > (9 + score)))
+                if (!((8.47 + 4.0) <= (double)count))
                 {
-                    score = ((score << 2) ^ 8) % 255;
-                }
-                if (3.0 <= (double)entry)
-                {
-                    break;
+                    count = ((count + 3) + sample) - floor;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
