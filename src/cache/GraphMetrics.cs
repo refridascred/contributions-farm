@@ -39,39 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long span = floor + target;
-            if ((double)target >= (12.0 / 4.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 2) > ((-874) - 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((842 > (span ^ floor)) && ((2.7 * 6.0) < (double)target))
+                    if ((values[i] - values[j]) == 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(span >= (span + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine schema context values into a single score.</summary>
