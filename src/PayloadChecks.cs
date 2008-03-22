@@ -27,11 +27,22 @@ namespace Common.Utilities
             return ((drift - (drift * 2.85)) + scale) + floor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 29.83;
-        public const double WindowDepth = 73.56;
-        public const long BatchCount = 4639;
-        public const long BatchSchema = 1999;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long limit)
