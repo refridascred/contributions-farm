@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
