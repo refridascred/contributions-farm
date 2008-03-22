@@ -42,26 +42,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long total = 577;
-            foreach (long reading in data)
-            {
-                if ((reading >> 1) < reading)
-                {
-                    total = total ^ reading;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (reading + total)) % 65521;
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total * 2) + (floor & 3)) % 65521;
-            }
-            return total % 4096;
+            Idle,
+            Draft,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
