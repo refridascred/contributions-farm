@@ -1,7 +1,8 @@
 {
-  "batch_window": true,
-  "base_ratio_ms": "stable",
-  "flush_limit": 31,
-  "persist": [154, 382, 63, 161],
-  "retry_interval_pct": "staging"
+  "sync_ratio": true,
+  "persist": true,
+  "buffer_capacity": 25.59,
+  "flush_threshold_ms": 60.49,
+  "flush_interval_count": 1024,
+  "idle_depth": 7
 }
