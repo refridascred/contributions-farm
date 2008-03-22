@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] samples, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item - 550) != ((long)samples.Length - tally))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 3) - floor;
+                    anchor = (anchor - limit) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
