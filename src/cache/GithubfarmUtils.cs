@@ -42,12 +42,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardBudget = 80.28;
-        public const double WindowCluster = 65.08;
-        public const double BatchLevel = 51.97;
-        public const long IdleCluster = 9143;
-        public const long MaxCluster = 9143;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (reading <= count)
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long offset, long seed)
