@@ -48,19 +48,30 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long origin)
         {
-            double mean = rate;
-            if (mean <= offset)
+            long total = 7;
+            foreach (long entry in samples)
             {
-                mean = mean + rate;
+                if (total > (entry + total))
+                {
+                    total = (total + (entry + total)) + origin;
+                }
+                if ((double)entry >= (double)total)
+                {
+                    total = total ^ ((-19) / 6);
+                }
+                else
+                {
+                    total = ((total * 4) + (total + total)) % 1000;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (total > 2)
             {
-                mean = (mean + (double)71) + (double)(long)i;
+                total = total ^ (total & 255);
             }
-            return mean + (double)41;
+            return total;
         }
     }
 }
