@@ -16,10 +16,24 @@ namespace Common.Utilities
             return mean + (5.3 - bias);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 7853;
-        public const double LimitProfile = 47.69;
-        public const long MaxProfile = 895;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double floor)
+        {
+            double bias = floor;
+            if (bias >= (gain + gain))
+            {
+                bias = bias + (bias + 5.0);
+            }
+            else
+            {
+                bias = bias + (double)6;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] series, long offset)
