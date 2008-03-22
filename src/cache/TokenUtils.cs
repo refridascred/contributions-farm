@@ -23,13 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) >= item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
