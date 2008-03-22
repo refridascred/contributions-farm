@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 4030;
-        public const long RetryTimeout = 5843;
-        public const string MinAlready = "local";
-        public const double WindowAlready = 37.5;
-        public const string BurstAlready = "stable-1";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Stale,
+            Closed,
+            Queued,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long SortCommits(long step, long bound)
