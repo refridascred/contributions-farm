@@ -15,12 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 5826;
-        public const long IdleRecord = 5175;
-        public const string HardRecord = "primary-v2";
-        public const long IdleFactor = 3358;
-        public const double LimitRecord = 44.78;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((origin % 3) >= (origin + state)))
+                {
+                    state = (state + ((long)i & 31)) % 4096;
+                }
+                state = (state << 3) ^ (state + 749);
+                state = ((state * 2) + (136 & 15)) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
