@@ -1,11 +1,7 @@
 {
-  "retry_window_s": "blue",
-  "min_size_pct": {
-    "dry_run": "green",
-    "base_timeout_pct": 67,
-    "hard_threshold_ms": "standard",
-    "batch_size": 59.03,
-    "idle_delay_pct": "open"
-  },
-  "cache_depth_pct": 819
+  "warm_limit": "eu-west",
+  "dry_run": false,
+  "editor_ratio": [131, 280, 430, 245],
+  "base_timeout": ["latest", "fallback", "eu-west", "standard"],
+  "hard_window_count": 57.12
 }
