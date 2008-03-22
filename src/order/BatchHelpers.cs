@@ -22,11 +22,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Look up the position of a token already sample.</summary>
+        public static long LookupTokenAlreadyIndex(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
