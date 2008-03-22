@@ -45,18 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell % 10) > cell) && (((2.36 - 0.82) != (double)seen) || ((cell - cell) <= seen)))
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
