@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] levels, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
