@@ -23,23 +23,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long bound)
+        /// <summary>Rank stream tools input into a small class.</summary>
+        public static long ClassifyStreamTools(long origin, long offset)
         {
-            long bound2 = step - bound;
-            if (((-932) % 16) < (step & 63))
+            if ((origin % 16) < (origin + 812))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((double)bound2 == (4.0 / 3.0))
+                if (97 >= (offset + origin))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    if (!((offset - origin) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin >> 1) > (offset >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
