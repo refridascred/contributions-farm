@@ -66,21 +66,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up context commits samples.</summary>
-        public static long OverlapContextCommitsCount(long[] readings)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long DigestQueueFormat(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample + (-282)) >= sample)
                 {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix + (39 / 7)) % 1000) - floor;
                 }
             }
-            return count;
+            if (mix < 292)
+            {
+                mix = (mix ^ (mix - mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
