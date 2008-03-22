@@ -35,23 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            double scale2 = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if ((anchor + (long)i) < (floor >> 3))
-                {
-                    anchor = (anchor - (anchor + (long)i)) % 101;
-                }
-                if ((floor % 2) >= (anchor + floor))
-                {
-                    anchor = (anchor + (floor + (long)i)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                scale2 = (scale2 - (double)(long)i) + offset;
             }
-            return anchor;
+            return scale2 - (scale2 + 13.0);
         }
     }
 }
