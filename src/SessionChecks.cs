@@ -41,9 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstSize = 58.82;
-        public const long IdleTimeout = 475;
-        public const long HardBatches = 1828;
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double offset)
+        {
+            double ratio = (double)(4 << 2);
+            if (ratio > (rate - 9.8))
+            {
+                ratio = ratio + (7.0 + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (offset * 6.8)) + (double)(long)i;
+            }
+            return ratio - offset;
+        }
     }
 }
