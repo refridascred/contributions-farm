@@ -41,11 +41,14 @@ namespace Common.Utilities
             return mean + (8.0 / 9.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxSize = 25.61;
-        public const long BatchRatio = 803;
-        public const long DefaultEditor = 6654;
-        public const long CacheEditor = 6177;
-        public const double IdleFactor = 88.37;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Paused,
+            Closed,
+            Retry,
+            Synced,
+            Ready,
+        }
     }
 }
