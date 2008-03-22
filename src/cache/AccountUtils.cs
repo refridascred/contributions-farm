@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up order notes samples.</summary>
-        public static long CompareOrderNotesCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 940;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc * 5) + (datum / 4);
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate order stats samples.</summary>
