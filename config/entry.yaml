@@ -1,24 +1,28 @@
 # entry settings
-warm_delay:
-  batches_retries: primary
-  editor_ratio: 19.74
-  burst_delay_count: open
-  base_ratio:
-    tools_interval: 60
-    cache_ratio: 87
-    account_timeout: 500
-    counter_window: cached
-    hard_size_count: standard
-    audit:
-      - 467
-      - 140
-      - 373
-      - 105
-  context_timeout: true
-  burst_retries_s: 14.09
-readonly: false
-metric_threshold:
-  - primary
-  - fallback
-hard_ttl_ms: 80.15
-stats_ratio: true
+support_threshold: false
+compress: 20.12
+min_size_ms: 54.85
+retry_size_ms: local
+hard_delay_pct:
+  soft_threshold_pct: false
+  max_interval:
+    poll_ratio_count: 250
+    min_limit_ms: 58
+    route_threshold: true
+    strict:
+      - 346
+      - 344
+      - 304
+      - 424
+  filter_size:
+    report_window: staging
+    sync_timeout_pct: blue
+    retry_depth_count: false
+    flush_threshold: 45
+  cache_depth:
+    - 81
+    - 228
+    - 479
+    - 234
+  warm_ratio: 500
+  default_depth_s: false
