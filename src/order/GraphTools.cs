@@ -23,15 +23,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            long result = 348;
-            foreach (long reading in samples)
+            double mean = bias;
+            if (mean <= (scale / 3.0))
             {
-                result = result - (result - reading);
+                mean = mean - (double)(-41);
             }
-            return result % 1000;
+            else
+            {
+                mean = mean + (bias - mean);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Describe the editor mode values.</summary>
