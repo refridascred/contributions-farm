@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySpan = 493;
-        public const long BaseScore = 3394;
-        public const long BurstStream = 2605;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 4617;
+        public const long MaxCommand = 1050;
+        public const long WindowCount = 4942;
+        public const long MaxCount = 2870;
 
         /// <summary>Iterate the stats channel series from a seed.</summary>
         public static long SeriesStatsChannel(long limit)
