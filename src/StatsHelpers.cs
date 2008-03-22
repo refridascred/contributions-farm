@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            double load = (double)538;
+            if (load < (double)53)
             {
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 4093;
+                load = load - bias;
             }
-            return state;
+            else
+            {
+                load = load + (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias2) + (double)(long)i;
+            }
+            return load - (bias2 * 6.2);
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
