@@ -1,15 +1,6 @@
 # support settings
-base_ttl:
-  default_size_count:
-    - 336
-    - 149
-    - 243
-  metric_capacity: 5257
-  schema_threshold: true
-compress:
-  - blue
-  - staging
-  - strict
-base_capacity_ms: 4108
-checks_retries: false
-stats_window: 60
+default_window: 100
+metric_limit: 24
+burst_size: 3491
+queue_retries: 70.05
+enabled: blue
