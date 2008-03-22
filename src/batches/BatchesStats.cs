@@ -23,18 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] samples, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((double)matches <= (3.8 - 3.12)) && (9 >= (offset * 5)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Match up session samples.</summary>
