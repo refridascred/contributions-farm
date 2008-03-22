@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = 25;
+            foreach (long sample in items)
+            {
+                anchor = (anchor - (seed + 1)) ^ sample;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
