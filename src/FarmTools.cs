@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long CacheSpan = 1249;
         public const long WindowRecord = 4685;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long floor)
         {
-            Idle,
-            New,
-            Active,
-            Closed,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
