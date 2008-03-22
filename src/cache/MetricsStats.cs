@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            long score = 90;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = (score + 17) ^ sample;
+                if ((double)cell < 3.4)
+                {
+                    matches = matches + 1;
+                }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
