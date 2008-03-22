@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias2 - (double)15;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Check that every batch stats entry stays within the limit.</summary>
+        public static bool ValidateBatchStatsBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((993 - 7) >= (tally / 9))
+                if (reading < floor)
                 {
-                    tally = (tally + 1) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a queue info.</summary>
