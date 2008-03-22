@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Stale,
-            Done,
-            Draft,
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
