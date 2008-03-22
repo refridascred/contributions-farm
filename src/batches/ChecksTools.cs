@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
