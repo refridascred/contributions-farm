@@ -25,23 +25,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            long mix = 3;
-            foreach (long cell in readings)
-            {
-                mix = ((mix * 2) + (cell >> 2)) % 101;
-                if ((mix - cell) < mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix ^ 6) % 1000;
-            }
-            return mix;
+            double ratio2 = 6.84;
+            return (ratio2 + ratio) + offset;
         }
     }
 }
