@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((matches * 5) >= (449 + 812))
+                if ((tally % 10) <= (45 & 3))
                 {
-                    matches = (matches + 1) + item;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
