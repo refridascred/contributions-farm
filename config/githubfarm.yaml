@@ -1,24 +1,7 @@
 # githubfarm settings
-warm_depth_s:
-  - latest
-  - primary
-tools_delay:
-  retry_limit: stable
-  account_timeout: primary
-  warm_ttl_ms:
-    - latest
-    - cached
-    - blue
-  retry_window_pct:
-    base_interval_count:
-      - 209
-      - 428
-      - 87
-    batch_timeout_count: 1024
-    hard_window_ms: 10
-    enabled: open
-    farm_limit: 70.14
-poll_threshold_pct: standard
-command_size: true
-strict: open
-dry_run: 50.48
+retry_size: 60
+flush_window_count: 60
+sync_window_ms: 1024
+enabled: 1024
+dry_run: 100
+base_ttl_ms: 55.58
