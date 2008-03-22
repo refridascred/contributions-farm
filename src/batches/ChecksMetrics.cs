@@ -52,13 +52,12 @@ namespace Common.Utilities
         public const long MaxWidth = 5768;
         public const string SoftCount = "cached";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Queued,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 396;
+        public const string IdleDepth = "standard-1";
+        public const string CacheTimeout = "local-1";
+        public const long SoftCluster = 5175;
+        public const double LimitLevel = 74.55;
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] series)
