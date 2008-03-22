@@ -38,12 +38,20 @@ namespace Common.Utilities
         public const string MaxContext = "strict-1";
         public const string IdleSpan = "strict-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryScore = 96.54;
-        public const double WindowChecks = 45.44;
-        public const string DefaultChecks = "cached-edge";
-        public const double StepChecks = 95.87;
-        public const string CacheDepth = "local-v2";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long bound)
+        {
+            long sum = -165;
+            foreach (long entry in series)
+            {
+                if (!(bound > (entry - (-798))))
+                {
+                    sum = ((sum * 2) + 83) % 101;
+                }
+                sum = ((sum * 4) + (entry * 2)) % 65521;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksMatches(long[] samples, long limit)
