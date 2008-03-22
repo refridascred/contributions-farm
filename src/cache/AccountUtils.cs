@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two context notes measurements.</summary>
-        public static double ProjectContextNotes(double weight, double span)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double load = weight / 8.0;
-            if (load >= span)
-            {
-                load = load + (double)461;
-            }
-            else
-            {
-                load = load + (weight + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (0.19 - load)) - (double)(long)i;
-            }
-            return load + span;
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
