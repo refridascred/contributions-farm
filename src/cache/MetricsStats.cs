@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of metrics notes readings.</summary>
-        public static long MatchMetricsNotesCount(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
