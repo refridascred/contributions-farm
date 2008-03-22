@@ -29,11 +29,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Ready,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
