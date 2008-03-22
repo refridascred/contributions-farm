@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph layout value.</summary>
-        public static double BlendGraphLayout(double gain, double span)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples)
         {
-            double drift = (double)873 / 2.0;
-            return (drift - (span / 4.0)) + gain;
+            long result = 80;
+            foreach (long cell in samples)
+            {
+                if ((double)32 < (double)cell)
+                {
+                    result = (result ^ (result + cell)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the entry stats entries that pass the check.</summary>
