@@ -41,9 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultScore = 5999;
-        public const long IdleReport = 786;
-        public const double DefaultReport = 25.34;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Stale,
+            Idle,
+            Synced,
+            Ready,
+            Queued,
+        }
     }
 }
