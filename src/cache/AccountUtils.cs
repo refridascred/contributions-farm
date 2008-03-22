@@ -36,9 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 6500;
-        public const long WindowCommand = 9673;
-        public const long IdleCommand = 1458;
+        /// <summary>Count the checks channel entries that pass the check.</summary>
+        public static long AuditChecksChannelGaps(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)count <= 6.3))
+                {
+                    count = ((count + 2) - value) + offset;
+                }
+            }
+            return count;
+        }
     }
 }
