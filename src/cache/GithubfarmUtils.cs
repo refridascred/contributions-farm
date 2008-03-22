@@ -12,27 +12,18 @@ namespace Common.Utilities
         public const long MaxWindow = 39;
         public const long IdleWindow = 4031;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] samples, long step)
         {
-            long score = 44;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((value & 255) <= (score / 8))
+                if ((double)20 == (double)reading)
                 {
-                    continue;
+                    matches = (matches + 1) + step;
                 }
-                else
-                {
-                    score = (score ^ (score - score)) % 255;
-                }
-                score = (score - score) % 255;
             }
-            if (score > 591)
-            {
-                score = score + (score + score);
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
