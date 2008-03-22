@@ -22,22 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics session entries that pass the check.</summary>
-        public static long AuditMetricsSessionOutliers(long[] values, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(entry < 23))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry << 3) ^ (floor + (long)i);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
