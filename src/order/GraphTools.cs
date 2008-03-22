@@ -34,11 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Look up the position of a record metric sample.</summary>
+        public static long FindRecordMetricIndex(long[] levels, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue layout input into a small class.</summary>
