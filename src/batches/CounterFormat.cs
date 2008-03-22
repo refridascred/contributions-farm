@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values, long floor)
-        {
-            long acc = 447;
-            foreach (long reading in values)
-            {
-                acc = (acc + (reading % 2)) % 1000;
-                if (((double)acc <= (double)floor) && ((reading >> 4) > floor))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "cached-v2";
+        public const long DefaultTimeout = 9580;
+        public const long LimitFilter = 2737;
+        public const long BatchWidth = 5805;
+        public const long BurstFilter = 9777;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long RollProfile(long origin)
