@@ -1,7 +1,8 @@
 # entry settings
-cache_timeout_s:
-  - 409
-  - 39
-flush_depth_count: strict
-min_delay_count: open
-default_depth_pct: 12.53
+stream_interval: blue
+retry_delay:
+  - 228
+  - 332
+  - 57
+dry_run: 81.79
+contributi_timeout: local
