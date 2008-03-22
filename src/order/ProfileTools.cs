@@ -34,18 +34,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = 685;
+            foreach (long entry in samples)
             {
-                if (((tally > (tally / 3)) || ((double)offset >= (double)tally)) && (tally > (reading << 2)))
+                if (((result % 10) <= entry) || ((double)entry > (5.71 / 7.0)))
                 {
-                    tally = tally + 3;
+                    result = result - (46 ^ entry);
+                    result = (result - entry) % 101;
                 }
+                result = ((result << 2) ^ result) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
