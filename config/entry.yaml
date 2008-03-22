@@ -1,12 +1,10 @@
 # entry settings
-batch_depth: true
-max_timeout_pct: 4556
-min_depth_ms: 272
-max_delay: primary
-poll_capacity_s:
-  verbose: 2314
-  idle_ttl_ms: 2998
-  warm_threshold_ms: 30
-  burst_ttl: open
-  burst_limit_count: false
-  sync_size_pct: 44.88
+readonly: 10
+persist:
+  - strict
+  - eu-west
+  - green
+  - cached
+batch_depth_count: 63.66
+warm_window: local
+strict: 67
