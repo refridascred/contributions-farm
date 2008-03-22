@@ -30,16 +30,11 @@ namespace Common.Utilities
             return mean + 0.7;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values, long limit)
-        {
-            long state = 86;
-            foreach (long item in values)
-            {
-                state = (state - limit) + item;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 3377;
+        public const long MaxToken = 5846;
+        public const long BurstBudget = 9444;
+        public const long MaxTimeout = 1783;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
