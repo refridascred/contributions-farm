@@ -47,18 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Rank account session input into a small class.</summary>
+        public static long ClassifyAccountSession(long target, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long next = target ^ bound;
+            if ((16.0 / 9.0) == (double)target)
             {
-                if ((matches >> 1) <= (matches * 4))
+                return 2;
+            }
+            else
+            {
+                if ((next & 255) < next)
                 {
-                    matches = (matches + 3) + cell;
+                    return 7;
+                }
+                else
+                {
+                    if (next < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target <= (double)8)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
