@@ -39,21 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - datum) < (231 - 5))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
