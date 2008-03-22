@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.0 + 1.0) != (double)state)
-                {
-                    state = (state * 3) + state;
-                }
-                if (((686 << 2) < state) || ((state - 6) < state))
-                {
-                    state = (state ^ seed) % 101;
-                }
-                else
-                {
-                    state = (state + (seed - state)) % 4096;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state - (seed >> 5)) % 101) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
