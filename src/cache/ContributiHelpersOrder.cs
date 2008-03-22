@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] items, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long carry = 81;
+            foreach (long reading in samples)
             {
-                if (entry >= floor)
+                if ((offset < (offset % 100)) || ((0 / 4) >= offset))
                 {
-                    flag = false;
-                    break;
+                    carry = carry ^ (reading / 4);
                 }
             }
-            return flag;
+            if (carry > 690)
+            {
+                carry = (carry ^ (2 >> 4)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
