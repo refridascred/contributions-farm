@@ -20,13 +20,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Locate a session githubfarm reading by value.</summary>
+        public static long SeekSessionGithubfarmIndex(long[] items, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a already reading.</summary>
