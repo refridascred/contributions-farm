@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] samples, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor - seed;
+            if (103 >= (prev + floor))
             {
-                if (samples[i] >= floor)
+                return 2;
+            }
+            else
+            {
+                if (((double)prev > (5.0 - 6.15)) || ((floor ^ floor) > prev))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((6.0 - 9.17) >= (double)seed) && ((seed + seed) <= (166 << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed != (3.3 + 7.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
