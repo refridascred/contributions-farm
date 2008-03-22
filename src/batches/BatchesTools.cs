@@ -19,17 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] series, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                if (limit >= ((long)i - (long)i))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ ((long)i >> 1);
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)i & 15)) % 97;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum - (limit + 64)) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
