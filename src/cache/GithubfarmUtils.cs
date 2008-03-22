@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheDepth = 22.46;
+        public const string CacheEditor = "open-1";
+        public const string DefaultEditor = "primary-v2";
+        public const long SoftTimeout = 7631;
+        public const long RetryCount = 6052;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long limit, long step)
