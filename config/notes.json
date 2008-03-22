@@ -1,14 +1,6 @@
 {
-  "soft_window_pct": 47.61,
-  "poll_size_count": 91.86,
-  "audit": {
-    "burst_retries_count": 1445,
-    "payload_ttl": 67.18,
-    "dry_run": 26,
-    "idle_window_ms": false,
-    "flush_retries": 70
-  },
-  "idle_ratio_pct": 79.06,
-  "warm_threshold_s": false,
-  "base_size_pct": [89, 164, 497, 47]
+  "sync_ttl_count": 72,
+  "cache_window_pct": 100,
+  "soft_size_s": [16, 2, 84],
+  "commits_size": 5634
 }
