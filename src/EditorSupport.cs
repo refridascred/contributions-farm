@@ -41,13 +41,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            Synced,
-            Retry,
-            Draft,
-            Ready,
+            double ratio2 = ratio;
+            if (ratio2 > 6.2)
+            {
+                ratio2 = ratio2 + (ratio + ratio);
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio2 - 3.9);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - offset;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
