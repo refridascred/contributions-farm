@@ -52,11 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + seen) == (seen >> 5)) || (datum > (datum % 10)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
