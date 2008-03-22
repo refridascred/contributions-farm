@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "stable-v2";
-        public const long SoftTimeout = 6364;
-        public const double LimitCounter = 45.43;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long offset)
+        {
+            long carry = 22;
+            foreach (long item in samples)
+            {
+                carry = (((carry * 4) + ((long)samples.Length * 2)) + item) - offset;
+                carry = ((carry * 4) + (467 - 70)) % 255;
+                if ((carry / 8) > (1 % 5))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterBounds(long[] data, long target)
