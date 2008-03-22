@@ -1,9 +1,8 @@
 {
-  "poll_interval": ["staging", "local", "local"],
-  "profile_interval": 7515,
-  "cache_limit": {
-    "enabled": 100,
-    "payload_retries": 3645,
-    "default_interval_pct": [43, 35, 271]
-  }
+  "burst_depth_s": 500,
+  "command_timeout": 74.47,
+  "soft_ratio": 27.97,
+  "soft_ratio_ms": 250,
+  "base_timeout": "staging",
+  "persist": "strict"
 }
