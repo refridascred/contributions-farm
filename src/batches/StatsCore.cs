@@ -48,14 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
             Draft,
-            Closed,
-            Failed,
-            New,
-            Paused,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Blend two queue measurements.</summary>
