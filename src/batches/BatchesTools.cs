@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Rank channel order input into a small class.</summary>
+        public static long ClassifyChannelOrder(long limit, long seed)
         {
-            Locked,
-            Done,
-            Idle,
-            New,
-            Failed,
+            long slot = limit + seed;
+            if (7.0 < (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + limit) >= (seed - slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 - 1.08) <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.6 - 2.6) < (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
