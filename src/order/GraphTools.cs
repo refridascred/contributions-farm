@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
