@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 941;
-        public const string LimitFarm = "strict-v2";
-        public const long MinInterval = 3265;
-        public const long IdleCount = 1275;
-        public const long LimitInterval = 6243;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double floor)
+        {
+            double weight2 = weight * 2.1;
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 - weight2;
+            }
+            else
+            {
+                weight2 = weight2 + (8.4 + weight2);
+            }
+            return weight2 - (floor - weight2);
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextGaps(long[] values)
