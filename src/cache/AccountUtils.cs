@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8204;
-        public const long WindowTimeout = 4264;
-        public const long DefaultBudget = 3680;
-        public const long MaxRecord = 1676;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the checks channel entries that pass the check.</summary>
         public static long AuditChecksChannelGaps(long[] levels, long offset)
