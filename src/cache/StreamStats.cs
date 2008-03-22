@@ -57,18 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((count / 6) <= 67)
+                if (9.0 > (double)reading)
                 {
-                    count = (count + 2) + reading;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of report entries.</summary>
