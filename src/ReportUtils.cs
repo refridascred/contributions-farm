@@ -70,18 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches < (datum % 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
