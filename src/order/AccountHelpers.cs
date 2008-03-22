@@ -54,24 +54,13 @@ namespace Common.Utilities
         public const long MinTimeout = 9792;
         public const string SoftTimeout = "strict";
 
-        /// <summary>Grade a stream layout value against two limits.</summary>
-        public static long ClassifyStreamLayout(long offset, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if ((limit + offset) == (limit + 62))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((6.83 - 10.0) < (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
