@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session stream pairs that satisfy a relation.</summary>
-        public static long OverlapSessionStreamCount(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((5.0 - 14.0) >= (double)mark) && ((step / 5) != (cell << 2)))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 4) + mark) % 97;
                 }
             }
-            return seen;
+            if (mark > 950)
+            {
+                mark = (mark - (mark >> 1)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of report stream entries.</summary>
