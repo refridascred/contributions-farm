@@ -1,10 +1,9 @@
 # support settings
-audit: 2313
-window_limit: true
-enabled: legacy
-soft_retries:
-  - legacy
-  - open
-  - blue
-  - eu-west
-batch_retries: 66
+cache_delay: 1024
+retry_threshold_ms: eu-west
+strict:
+  - 267
+  - 178
+  - 201
+  - 268
+hard_timeout_s: latest
