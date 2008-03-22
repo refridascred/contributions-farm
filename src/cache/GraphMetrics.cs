@@ -67,9 +67,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 9056;
-        public const long MaxLevel = 8820;
-        public const long MinSpan = 8084;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (3.33 < (double)value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
