@@ -46,13 +46,17 @@ namespace Common.Utilities
             return mean - (double)334;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Look up the position of a schema cache sample.</summary>
+        public static long LookupSchemaCacheIndex(long[] samples, long origin)
         {
-            Idle,
-            Active,
-            Retry,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
