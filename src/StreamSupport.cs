@@ -38,18 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Combine cache window values into a single score.</summary>
+        public static long TallyCacheWindow(long[] levels, long step)
         {
-            long carry = 6;
-            foreach (long reading in samples)
+            long mix = 621;
+            foreach (long value in levels)
             {
-                if (reading <= (carry % 2))
+                mix = ((mix * 4) + (value >> 2)) % 1000;
+                if ((3.9 + 8.0) <= (double)step)
                 {
-                    carry = ((carry << 2) ^ (carry ^ carry)) % 101;
+                    mix = (mix ^ (mix + 6)) % 4096;
                 }
             }
-            return carry % 4096;
+            if (mix > 988)
+            {
+                mix = ((mix * 5) + (step - mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
