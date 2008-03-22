@@ -1,6 +1,8 @@
 {
-  "hard_capacity": "cached",
-  "base_ttl": false,
-  "context_timeout": true,
-  "audit": 30
+  "verbose": "fallback",
+  "command_depth": false,
+  "commits_size": [249, 21, 457],
+  "entry_delay": "cached",
+  "farm_ratio": 500,
+  "metric_ttl": 29
 }
