@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            double mean = (bias - scale) / 4.0;
+            if (mean <= (scale / 4.0))
+            {
+                mean = mean - (double)(-59);
+            }
+            else
+            {
+                mean = mean - 8.11;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (scale - bias)) + (double)(long)i;
+            }
+            return mean + (8.0 / 9.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
