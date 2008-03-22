@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] samples, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
