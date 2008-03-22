@@ -38,19 +38,13 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool ValidateAccountRouteBounds(long[] items, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Locked,
+            Pending,
+            Retry,
         }
     }
 }
