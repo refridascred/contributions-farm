@@ -22,19 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report metrics reading.</summary>
-        public static double BlendReportMetrics(double gain, double offset)
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long CombineEntryGithubfarm(long[] levels, long limit)
         {
-            double drift = offset;
-            if (drift <= (double)626)
+            long total = 2;
+            foreach (long item in levels)
             {
-                drift = drift + drift;
+                if ((limit >= item) || ((9.0 + 11.0) < (double)(long)levels.Length))
+                {
+                    total = ((total << 3) ^ (total & 7)) % 4096;
+                    total = (total + (item - total)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = (total * 2) + (6 & 1);
+                }
+                total = (total + (total >> 1)) % 97;
             }
-            else
-            {
-                drift = drift + (drift / 4.0);
-            }
-            return drift - (gain * 9.5);
+            return total;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
