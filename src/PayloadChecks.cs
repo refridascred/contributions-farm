@@ -57,25 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            long diff = floor ^ step;
-            if ((step <= 406) && ((diff - floor) <= floor))
+            double weight = (scale * 0.23) + (bias / 2.0);
+            if (weight <= 4.2)
             {
-                return 1;
+                weight = weight + (double)530;
             }
             else
             {
-                if ((4.3 - 4.5) > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                weight = weight - (double)6;
             }
+            return weight + (scale - bias);
         }
 
         /// <summary>Define context limits and defaults.</summary>
