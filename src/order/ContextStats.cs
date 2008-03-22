@@ -20,18 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (((96 % 97) > target) && ((1.3 + 12.0) == (double)bound))
             {
-                if (((value % 7) >= seen) || ((double)value >= (double)0))
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (4.0 + 8.0))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
