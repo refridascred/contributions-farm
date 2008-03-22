@@ -46,10 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinRatio = 9519;
-        public const long BatchWindow = 3984;
-        public const double CacheFactor = 10.61;
-        public const double MaxWindow = 70.71;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
