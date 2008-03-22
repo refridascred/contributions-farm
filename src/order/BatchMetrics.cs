@@ -98,14 +98,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            Active,
-            Pending,
-            New,
-            Idle,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
