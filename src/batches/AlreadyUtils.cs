@@ -70,12 +70,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long limit)
         {
-            Draft,
-            Synced,
-            Failed,
+            long sum = 55;
+            foreach (long sample in values)
+            {
+                if ((2.5 / 7.0) <= (double)limit)
+                {
+                    sum = sum ^ sample;
+                }
+                if (!((sample << 3) >= (sample + sum)))
+                {
+                    sum = (sum ^ (sum >> 5)) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
