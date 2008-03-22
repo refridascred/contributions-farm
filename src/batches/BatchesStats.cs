@@ -20,19 +20,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] readings, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (floor > 79)
             {
-                if (entry >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((38 - floor) >= (seed >> 1))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((1 % 97) <= (seed & 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor != (2.2 / 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
