@@ -38,10 +38,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheScore = 6378;
-        public const long MinFactor = 6693;
-        public const string CacheBuffer = "open-v2";
-        public const long WindowBuffer = 400;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = carry ^ seed;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
