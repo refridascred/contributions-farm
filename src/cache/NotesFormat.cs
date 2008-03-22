@@ -15,18 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((double)entry >= (4.95 * 2.0))
+                if ((793 * 4) >= (16 + datum))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the commits level values.</summary>
