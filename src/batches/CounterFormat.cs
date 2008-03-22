@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 3168;
-        public const double MinDepth = 28.32;
-        public const long BaseReport = 8514;
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double ratio, double bias)
+        {
+            double rate = (bias * 8.7) + (ratio / 8.0);
+            return rate + bias;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] values, long limit)
