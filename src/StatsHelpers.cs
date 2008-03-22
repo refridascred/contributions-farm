@@ -61,15 +61,11 @@ namespace Common.Utilities
             return (drift + gain) + offset;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double ratio = (double)(815 + 84);
-            if (ratio <= bias)
-            {
-                ratio = (ratio + (double)72) + span;
-            }
-            return ratio + (ratio - 2.5);
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
