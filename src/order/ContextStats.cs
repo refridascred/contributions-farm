@@ -47,21 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Derive the next filter stats value from a seed.</summary>
+        public static long IterateFilterStats(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (floor << 2)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
