@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Ready,
-            Paused,
-            Pending,
-            Done,
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
