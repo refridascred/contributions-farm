@@ -12,22 +12,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values)
+        /// <summary>Roll a channel session counter forward.</summary>
+        public static long StepChannelSession(long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((seen + sample) == (seen - seen)) && ((double)sample < (6.0 * 7.2)))
+                if ((12.0 / 3.0) == (double)(long)i)
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 3) ^ ((long)i + limit)) % 1000;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen - 1;
+                    mark = (mark + ((long)i2 >> 2)) % 101;
+                    mark = (mark << 3) ^ (2 + limit);
                 }
+                mark = ((mark << 3) ^ limit) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
