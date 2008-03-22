@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a context format reading.</summary>
-        public static double AdjustContextFormat(double bias, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            double mean = span;
-            if (mean <= (span + span))
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                mean = mean + mean;
+                if ((bound % 7) > (total ^ bound))
+                {
+                    total = (total ^ ((long)i * 3)) % 101;
+                    total = (total << 3) ^ 51;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mean + (5.3 - bias);
+            return total;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
