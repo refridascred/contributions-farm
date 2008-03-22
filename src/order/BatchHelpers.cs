@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = 4;
-            foreach (long item in values)
-            {
-                if ((4.8 + 15.0) <= (double)item)
-                {
-                    acc = ((acc * 5) + (48 << 1)) % 255;
-                }
-            }
-            return acc;
+            Done,
+            Failed,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the metric buffer series from a seed.</summary>
