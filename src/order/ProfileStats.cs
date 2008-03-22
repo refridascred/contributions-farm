@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepScore = 2951;
-        public const long DefaultAccount = 7302;
-        public const double SoftRatio = 76.82;
-        public const long HardTimeout = 9447;
-        public const long RetryRatio = 412;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings)
+        {
+            long carry = 45;
+            foreach (long value in readings)
+            {
+                if ((value - 89) < value)
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+                if ((value << 2) == (carry - 28))
+                {
+                    break;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry * 2) + 725;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every metrics payload entry stays within the limit.</summary>
         public static bool GuardMetricsPayloadBounds(long[] data, long seed)
