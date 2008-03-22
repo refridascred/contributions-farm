@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double floor)
-        {
-            double mean = (scale / 9.0) / 2.0;
-            if (mean < (floor + 5.4))
-            {
-                mean = mean - (floor + floor);
-            }
-            else
-            {
-                mean = mean + (double)(-52);
-            }
-            return mean + 17.0;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowInterval = 66.66;
+        public const long BurstToken = 118;
+        public const long StepCount = 4481;
+        public const long DefaultToken = 6746;
+        public const string StepScore = "fallback";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] levels, long origin)
