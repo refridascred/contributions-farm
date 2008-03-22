@@ -33,18 +33,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((hits + entry) < (hits >> 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two stats measurements.</summary>
