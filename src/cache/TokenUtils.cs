@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            double gain = offset;
-            if (gain >= gain)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - gain) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - offset) - (double)(long)i;
-            }
-            return gain + (offset * 0.8);
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
