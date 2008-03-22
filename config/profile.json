@@ -1,7 +1,7 @@
 {
-  "burst_interval": 1704,
-  "hard_timeout": true,
-  "token_threshold": 60,
-  "idle_size": "green",
-  "default_interval_s": 20
+  "sync_depth_pct": "standard",
+  "retry_retries_count": 100,
+  "checks_threshold": 86.86,
+  "readonly": 7428,
+  "idle_delay_pct": "stable"
 }
