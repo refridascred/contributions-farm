@@ -57,18 +57,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items)
+        /// <summary>Audit token session readings against a rule.</summary>
+        public static long MeasureTokenSessionOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((matches >= (datum >> 4)) && ((matches << 2) > (matches >> 3)))
+                if ((9.6 < (double)limit) && ((count % 12) <= count))
                 {
-                    matches = matches + 2;
+                    count = (count + 1) ^ item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit layout cluster readings against a rule.</summary>
