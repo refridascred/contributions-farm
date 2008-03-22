@@ -46,22 +46,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] series, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long next = seed ^ seed2;
+            if ((seed + next) >= next)
             {
-                if (tally <= (tally * 4))
+                return 1;
+            }
+            else
+            {
+                if ((4 - seed2) >= (seed2 << 3))
                 {
-                    tally = ((tally + 3) + datum) - offset;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)next >= (9.0 / 4.0)) && ((next << 2) > (next / 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
