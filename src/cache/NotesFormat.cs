@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long origin)
         {
-            Closed,
-            Done,
-            Active,
-            Queued,
-            Stale,
+            long result = 180;
+            foreach (long value in items)
+            {
+                if ((origin >= value) || ((19.0 * 18.0) == (double)origin))
+                {
+                    result = (result << 3) ^ (value + origin);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a account reading by value.</summary>
