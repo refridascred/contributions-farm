@@ -49,19 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long offset)
         {
-            double weight2 = weight * 2.1;
-            if (weight2 <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - weight2;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (8.4 + weight2);
-            }
-            return weight2 - (floor - weight2);
+            return -1;
         }
 
         /// <summary>Audit session cluster readings against a rule.</summary>
