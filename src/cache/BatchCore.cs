@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSize = 687;
-        public const long LimitChecks = 2466;
-        public const long MinChecks = 9346;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double rate, double offset)
