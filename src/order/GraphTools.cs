@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state - step) % 97;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
