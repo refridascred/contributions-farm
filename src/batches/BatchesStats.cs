@@ -46,32 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long seed2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values, long floor)
         {
-            long next = seed ^ seed2;
-            if ((seed + next) >= next)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 - seed2) >= (seed2 << 3))
+                if (!((cell >> 3) > (floor * 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)next >= (9.0 / 4.0)) && ((next << 2) > (next / 6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
