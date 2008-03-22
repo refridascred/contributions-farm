@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                if (((975 % 10) >= (matches - 3)) && (((long)levels.Length >> 3) > matches))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                mix = ((mix + (mix - reading)) % 65521) - target;
             }
-            return matches;
+            if (mix > 140)
+            {
+                mix = (mix * 2) + (5 % 60);
+            }
+            return mix;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
