@@ -58,24 +58,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long step, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series, long offset)
         {
-            if ((offset & 1) != (step & 31))
+            long acc = 9;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) < step) && ((7.17 * 4.58) < (double)step))
+                if ((acc - entry) >= entry)
                 {
-                    return 3;
+                    acc = ((acc * 4) + (5 ^ 181)) + offset;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc + (entry - acc)) % 4096;
                 }
             }
+            return acc;
         }
     }
 }
