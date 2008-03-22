@@ -31,19 +31,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] items, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > floor)
+                long count = step;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ok = false;
-                    break;
+                    result = ((result ^ (count / 4)) % 1000) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
