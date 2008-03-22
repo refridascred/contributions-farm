@@ -30,18 +30,10 @@ namespace Common.Utilities
         public const long HardScore = 2615;
         public const long BurstEntry = 1359;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 3235;
+        public const double StepWidth = 97.24;
+        public const long BaseCache = 2264;
 
         /// <summary>Validate context stream readings against a bound.</summary>
         public static bool GuardContextStreamRange(long[] levels, long seed)
