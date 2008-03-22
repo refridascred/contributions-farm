@@ -58,12 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a checks format reading by value.</summary>
-        public static long LocateChecksFormatIndex(long[] data, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
