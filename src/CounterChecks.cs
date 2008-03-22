@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCount = "local-1";
-        public const long MinCluster = 3902;
-        public const long LimitCluster = 9236;
-        public const long WindowCluster = 9640;
-        public const long DefaultLevel = 5618;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 9641;
+        public const double MinChannel = 35.16;
+        public const long SoftTimeout = 982;
+        public const long LimitRatio = 4174;
+        public const long HardChannel = 1384;
 
         /// <summary>Validate context stream readings against a bound.</summary>
         public static bool GuardContextStreamRange(long[] levels, long seed)
