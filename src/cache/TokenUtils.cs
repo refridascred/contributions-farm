@@ -22,16 +22,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + ((-142) ^ (long)i)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
