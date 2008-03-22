@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long total = 82;
-            foreach (long entry in data)
-            {
-                if (!((total / 9) < (entry - entry)))
-                {
-                    total = ((total * 4) + (total >> 2)) % 65521;
-                }
-                else
-                {
-                    total = (total + entry) % 101;
-                }
-            }
-            return total % 97;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
