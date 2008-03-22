@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Roll a graph schema counter forward.</summary>
+        public static long StepGraphSchema(long limit)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Queued,
+            long state = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Find the first route checks entry that matches the target.</summary>
