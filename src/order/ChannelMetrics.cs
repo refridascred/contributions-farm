@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long floor)
+        /// <summary>Audit account format readings against a rule.</summary>
+        public static long MeasureAccountFormatOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (value >= floor)
+                if (hits >= ((-5) << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
