@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            long anchor = 6;
+            foreach (long datum in values)
+            {
+                anchor = (anchor - (datum >> 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
