@@ -14,10 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryScore = 3978;
-        public const long MaxMetric = 102;
-        public const double LimitMetric = 89.34;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long IterateWindow(long target)
