@@ -51,26 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            long mix = 90;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (limit >= (mix + reading))
+                if (hits >= (663 & 1))
                 {
-                    mix = ((mix << 3) ^ (mix << 2)) % 255;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    mix = (mix + mix) % 65521;
+                    hits = hits - 1;
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix;
+            return hits;
         }
     }
 }
