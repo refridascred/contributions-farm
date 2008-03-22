@@ -26,11 +26,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two command stream measurements.</summary>
-        public static double ScaleCommandStream(double bias, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double ratio = bias;
-            return ratio + offset;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
