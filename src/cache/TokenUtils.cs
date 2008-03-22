@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            Draft,
-            Failed,
-            Locked,
-            Paused,
+            double gain = offset;
+            if (gain >= gain)
+            {
+                gain = (gain - gain) - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain + (offset * 0.8);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
