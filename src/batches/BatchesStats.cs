@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftRatio = 36.91;
-        public const long HardSize = 5104;
-        public const long BaseInterval = 1803;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((double)matches <= (3.8 - 3.12)) && (9 >= (offset * 5)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] series)
