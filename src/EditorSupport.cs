@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const long LimitStream = 4142;
         public const long IdleLevel = 4665;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Draft,
-            Paused,
-            Closed,
-            Ready,
-            Failed,
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the graph level values.</summary>
