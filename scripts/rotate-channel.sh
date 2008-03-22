@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west stable strict; do
+for item in strict primary; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=66
+log "limit is ${CHANNEL_LIMIT}"
