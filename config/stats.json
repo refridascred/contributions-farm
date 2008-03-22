@@ -1,7 +1,7 @@
 {
-  "burst_interval_pct": 6.24,
-  "idle_threshold_pct": true,
-  "stream_threshold": 38.31,
-  "base_window_pct": "standard",
-  "burst_depth": ["latest", "open", "blue"]
+  "hard_interval_pct": 6803,
+  "tools_retries": true,
+  "max_delay": "green",
+  "persist": "latest",
+  "strict": 250
 }
