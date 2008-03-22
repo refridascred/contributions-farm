@@ -66,12 +66,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels, long limit)
         {
-            Synced,
-            Locked,
-            New,
+            long state = 381;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state + (5 << 1)) % 65521) - (long)i;
+                }
+                if ((cell + 6) < cell)
+                {
+                    state = ((state * 3) + cell) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state ^ limit);
+                }
+            }
+            return state % 65521;
         }
     }
 }
