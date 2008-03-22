@@ -35,11 +35,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            Failed,
+            Pending,
+            Draft,
         }
     }
 }
