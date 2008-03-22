@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double MaxSpan = 9.15;
         public const long DefaultCount = 3108;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
