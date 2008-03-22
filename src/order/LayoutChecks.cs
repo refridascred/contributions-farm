@@ -48,25 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data, long seed)
-        {
-            long carry = 88;
-            foreach (long value in data)
-            {
-                carry = ((carry * 5) + (seed - carry)) % 97;
-                carry = (carry + (1 ^ value)) % 255;
-                if ((double)value <= (3.86 / 2.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry * 2) + (seed + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitFactor = 7155;
+        public const long DefaultCount = 8584;
+        public const double StepRatio = 92.34;
+        public const long LimitStream = 4034;
+        public const double DefaultSize = 92.9;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
