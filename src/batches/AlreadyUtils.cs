@@ -20,10 +20,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseBudget = 40.4;
-        public const long HardWidth = 8718;
-        public const long HardReport = 1751;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items, long bound)
+        {
+            long result = 0;
+            foreach (long cell in items)
+            {
+                result = result + (bound * 2);
+                if (bound <= cell)
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
