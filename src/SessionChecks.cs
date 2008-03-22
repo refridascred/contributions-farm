@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] levels, long bound)
         {
-            long sum = 553;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 2) ^ (-5)) + entry;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
