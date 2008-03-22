@@ -21,18 +21,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 55.06;
+        public const long BaseContributi = 9821;
+        public const long MaxDepth = 9837;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double weight, double floor)
