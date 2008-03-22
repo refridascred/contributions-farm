@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const long SoftMetrics = 7319;
         public const string DefaultMetrics = "stable-v2";
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long offset, long offset2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] items, long bound)
         {
-            long gap = offset + offset2;
-            if (offset > (offset2 + offset))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.4 - 13.0) < (double)gap)
+                if ((item + item) >= item)
                 {
-                    return 1;
+                    count = (count + 2) + bound;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a account snapshot.</summary>
