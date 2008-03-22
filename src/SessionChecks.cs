@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (7 - (long)i)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up notes samples.</summary>
