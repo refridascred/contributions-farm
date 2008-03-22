@@ -35,19 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] levels, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long next = limit - limit2;
+            if (limit >= ((-51) << 2))
             {
-                if (value >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (double)next)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit2 >> 3) < next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + limit2) >= (limit2 - limit2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
