@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
-        public static long PairContributiOrderCount(long[] samples)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
