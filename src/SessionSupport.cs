@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchFactor = 1171;
-        public const long CacheFactor = 4507;
-        public const long HardBudget = 8656;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9156;
+        public const string CacheWindow = "open-1";
+        public const long MinSpan = 9436;
+        public const long IdleBudget = 1193;
 
         /// <summary>Measure how many report order samples are out of range.</summary>
         public static long TallyReportOrderGaps(long[] readings, long seed)
