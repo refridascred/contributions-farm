@@ -19,18 +19,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (entry <= (entry ^ hits))
+                if ((((seen + offset) <= sample) || ((4.9 * 7.1) == (double)seen)) || ((double)seen > (2.1 - 2.59)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next window metric value.</summary>
