@@ -1,6 +1,9 @@
-id,rank,ratio,count
-1,102,77.84,629
-2,890,48.49,standard
-3,green,80.74,870
-4,primary,77.33,43.76
-5,13.08,645,8.97
+id,ratio
+1,green
+2,81.14
+3,strict
+4,266
+5,425
+6,694
+7,902
+8,standard
