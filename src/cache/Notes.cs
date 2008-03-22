@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine githubfarm counter values into a single score.</summary>
-        public static long TallyGithubfarmCounter(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] items, long step)
         {
-            long state = 717;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                state = (state + (datum + (-5))) % 97;
-                if ((state >> 3) < state)
+                if (!!((item ^ (-9)) > (step & 127)))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
