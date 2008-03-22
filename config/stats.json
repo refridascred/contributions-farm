@@ -1,11 +1,7 @@
 {
-  "default_limit_count": 2852,
-  "readonly": 6025,
-  "retry_limit": true,
-  "compress": 250,
-  "max_timeout_count": {
-    "soft_capacity_s": "eu-west",
-    "min_depth_count": true,
-    "graph_capacity": "green"
-  }
+  "batch_threshold_s": "fallback",
+  "min_ratio_count": [317, 47, 28, 165],
+  "cache_ttl": [123, 307, 45, 478],
+  "base_window_pct": [195, 357, 153, 173],
+  "default_interval_ms": 96.52
 }
