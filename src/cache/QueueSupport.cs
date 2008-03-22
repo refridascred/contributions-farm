@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long SoftBatch = 430;
         public const double RetryLevel = 0.41;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long anchor = 122;
-            foreach (long cell in data)
-            {
-                anchor = (anchor - cell) % 1000;
-                if (50 < (cell + 30))
-                {
-                    break;
-                }
-            }
-            if (anchor > 180)
-            {
-                anchor = (anchor ^ (anchor / 4)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "stable-1";
+        public const long CacheSize = 1568;
+        public const long StepStream = 8855;
+        public const long BaseLevel = 9616;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double gain, double bias)
