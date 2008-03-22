@@ -36,13 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Roll a cache farm counter forward.</summary>
+        public static long RollCacheFarm(long seed)
         {
-            Closed,
-            Ready,
-            Paused,
-            Synced,
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
