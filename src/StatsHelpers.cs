@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitSpan = 3996;
+        public const string SoftToken = "standard-edge";
+        public const long StepToken = 2261;
+        public const long WindowToken = 6409;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 6521;
