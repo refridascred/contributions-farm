@@ -37,14 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate batch graph readings against a bound.</summary>
+        public static bool ValidateBatchGraphRange(long[] items, long limit)
         {
-            Draft,
-            Ready,
-            Failed,
-            Done,
-            Paused,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
