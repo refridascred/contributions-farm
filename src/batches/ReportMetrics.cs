@@ -28,14 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            Paused,
-            Closed,
-            Retry,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((((double)seen > (0.7 - 4.0)) || ((double)value < (double)seen)) || ((double)value == (5.81 - 5.3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
