@@ -67,21 +67,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Active,
         }
     }
 }
