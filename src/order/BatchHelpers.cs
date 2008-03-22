@@ -29,13 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Failed,
-            New,
-            Draft,
-            Done,
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
