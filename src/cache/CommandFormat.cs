@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            Retry,
-            Synced,
-            Stale,
+            long anchor = -1;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor << 2) ^ (entry - 0)) - (long)i;
+                }
+                anchor = (anchor ^ (anchor >> 2)) % 65521;
+            }
+            return anchor;
         }
     }
 }
