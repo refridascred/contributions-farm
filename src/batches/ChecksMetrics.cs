@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long BatchScore = 9809;
         public const double SoftWidth = 51.85;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 7048;
-        public const double HardPayload = 56.22;
-        public const long LimitPayload = 6447;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] samples, long seed)
+        {
+            long carry = 3;
+            foreach (long entry in samples)
+            {
+                carry = (((carry << 2) ^ (seed + carry)) % 255) ^ entry;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
