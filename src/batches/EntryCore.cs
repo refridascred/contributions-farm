@@ -34,23 +34,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            double ratio = scale + span;
-            if (ratio < (span - scale))
+            long anchor = 386;
+            foreach (long datum in items)
             {
-                ratio = ratio - (double)6;
+                if ((anchor + 500) <= (anchor / 3))
+                {
+                    anchor = ((anchor * 3) + (datum * 4)) % 4096;
+                }
+                if (((4 & 7) > anchor) || (anchor > datum))
+                {
+                    anchor = (anchor - (anchor - datum)) % 65521;
+                }
             }
-            else
+            if (anchor < 2)
             {
-                ratio = ratio + span;
+                anchor = (anchor - (long)items.Length) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (span - scale)) + (double)(long)i;
-            }
-            return ratio + (ratio / 5.0);
+            return anchor;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
