@@ -35,39 +35,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values)
         {
-            long span = origin - limit;
-            if (((origin % 16) <= limit) || (1 >= origin))
+            long state = 67;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 5) >= (origin ^ limit))
+                if ((sample - state) != (state + 44))
                 {
-                    return 7;
+                    break;
                 }
                 else
                 {
-                    if (((limit + origin) > (2 % 7)) && (span > (limit + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit + limit) < (span >> 3)) && (6 >= (limit - origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state ^ state) % 97;
+                }
+                if (sample > (sample & 127))
+                {
+                    state = ((state << 3) ^ ((-71) / 5)) % 101;
+                }
+                if (((state + sample) <= ((long)values.Length + sample)) || ((double)sample != (double)(-38)))
+                {
+                    break;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
