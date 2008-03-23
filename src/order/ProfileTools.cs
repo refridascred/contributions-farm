@@ -57,24 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long mix = 5;
-            foreach (long value in samples)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (mix * 4) + (8 + mix);
-                mix = mix - (value + (-32));
-                if (((double)3 == (double)value) && ((value + value) > (60 << 1)))
+                if ((limit % 2) != (limit ^ state))
                 {
-                    break;
+                    state = ((state * 5) + ((long)i - state)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mix < 19)
-            {
-                mix = ((mix * 4) + mix) % 101;
-            }
-            return mix % 97;
+            return state;
         }
     }
 }
