@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Stale,
+            Synced,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
