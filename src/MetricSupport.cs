@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long WindowProfile = 437;
         public const long SoftLevel = 1738;
 
-        /// <summary>Check that every stream support entry stays within the limit.</summary>
-        public static bool CheckStreamSupportLimits(long[] series, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long state = 202;
+            foreach (long cell in items)
             {
-                if (datum >= step)
+                if (state >= (cell - state))
                 {
-                    ready = false;
-                    break;
+                    state = (state - (414 * 2)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (cell + cell)) % 255;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
