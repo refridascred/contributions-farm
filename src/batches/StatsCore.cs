@@ -46,19 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long step)
         {
-            long total = 559;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (levels[i] == step)
                 {
-                    total = ((((total << 3) ^ (total - total)) % 65521) + (long)i) - reading;
+                    return (long)i;
                 }
-                total = (total + (total - total)) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
