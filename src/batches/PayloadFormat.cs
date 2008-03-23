@@ -57,18 +57,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics support entries that pass the check.</summary>
-        public static long TallyMetricsSupportMatches(long[] values, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((8.47 + 4.0) <= (double)count))
+                if ((reading >> 4) > (bound / 2))
                 {
-                    count = ((count + 3) + sample) - floor;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
