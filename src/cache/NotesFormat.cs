@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long AuditStreamContextGaps(long[] series)
+        /// <summary>Count notes command pairs that satisfy a relation.</summary>
+        public static long PairNotesCommandCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits < (-523))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) - datum;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
