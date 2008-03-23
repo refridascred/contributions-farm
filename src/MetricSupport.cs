@@ -14,18 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((value + value) >= (-60))
+                if (sample < (tally + sample))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
