@@ -55,11 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] data)
         {
-            double drift = (weight / 8.0) + (double)141;
-            return (drift + weight) + offset;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!(((count % 8) < (datum * 2)) && ((count / 3) >= (datum - (-819)))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
