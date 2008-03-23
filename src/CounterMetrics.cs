@@ -25,19 +25,38 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.32;
         public const string CacheLevel = "local-edge";
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long limit)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (6.0 > (double)seed)
             {
-                if (sample > floor)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 7) < seed)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed == (2.2 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)seed >= (7.8 * 4.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a record counter forward.</summary>
