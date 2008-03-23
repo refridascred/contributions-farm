@@ -1,8 +1,8 @@
 {
-  "default_capacity_s": true,
-  "metrics_limit": 500,
-  "dry_run": "strict",
-  "payload_capacity": false,
-  "min_capacity_ms": [98, 203, 162],
-  "hard_ttl_count": "local"
+  "poll_depth": "blue",
+  "min_interval_pct": "blue",
+  "persist": "staging",
+  "base_interval_ms": "staging",
+  "batch_capacity_s": "strict",
+  "audit": 36
 }
