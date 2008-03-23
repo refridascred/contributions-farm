@@ -18,21 +18,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of counter context readings.</summary>
-        public static long CompareCounterContextCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 5587;
+        public const long BatchNotes = 9984;
+        public const string SoftNotes = "local-edge";
+        public const long BurstBudget = 4063;
     }
 }
