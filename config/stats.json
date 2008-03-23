@@ -1,5 +1,7 @@
 {
-  "verbose": 1024,
-  "queue_threshold": 1308,
-  "soft_window_ms": 67
+  "contributi_timeout": "standard",
+  "audit": 60,
+  "flush_timeout": 47.51,
+  "idle_ratio_s": true,
+  "format_depth": false
 }
