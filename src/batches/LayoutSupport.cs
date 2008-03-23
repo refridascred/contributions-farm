@@ -16,19 +16,12 @@ namespace Common.Utilities
             return scale - (rate * 0.88);
         }
 
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool CheckPayloadFarmRange(long[] values, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
