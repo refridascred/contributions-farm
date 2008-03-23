@@ -17,14 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleSize = 6606;
+        public const long HardCache = 5090;
+        public const long StepCache = 2204;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] levels, long origin)
