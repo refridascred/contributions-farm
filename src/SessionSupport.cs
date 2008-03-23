@@ -37,11 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] values, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)offset > (10.0 * 9.53)))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
