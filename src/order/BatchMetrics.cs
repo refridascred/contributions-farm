@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count <= (1.5 - 12.0))
+                if (series[i] == bound)
                 {
-                    count = (count + 1) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
