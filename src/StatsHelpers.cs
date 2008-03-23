@@ -20,18 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] series, long floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((4 + hits) <= sample)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
