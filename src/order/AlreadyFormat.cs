@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Dropped,
-            Synced,
-            Active,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinFactor = 7359;
+        public const long MaxOrder = 2068;
+        public const long BurstLevel = 1568;
+        public const string WindowSize = "open-v2";
+        public const double IdleSpan = 46.85;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] samples, long seed)
