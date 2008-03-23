@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            Ready,
-            Idle,
-            Closed,
-            Pending,
-            Locked,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry << 2) ^ ((long)i & 255)) % 1000;
+                if (((long)i <= floor) || (floor <= ((long)i >> 1)))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = carry ^ (carry << 1);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
