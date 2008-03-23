@@ -52,23 +52,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double span)
-        {
-            double mean = span;
-            if (mean < (span * 19.0))
-            {
-                mean = mean - (span - 2.0);
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)855) + (double)(long)i;
-            }
-            return mean - (scale / 9.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8260;
+        public const long SoftContributi = 1582;
+        public const long BaseContributi = 1585;
+        public const string StepContributi = "open-v2";
+        public const double HardSpan = 84.85;
     }
 }
