@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items, long offset)
+        /// <summary>Find the first cache contributi entry that matches the target.</summary>
+        public static long FindCacheContributiIndex(long[] levels, long limit)
         {
-            long acc = 3;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ (acc - entry)) % 97;
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > (-83))
-            {
-                acc = ((acc * 3) + offset) % 101;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
