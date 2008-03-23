@@ -41,21 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count schema record pairs that satisfy a relation.</summary>
-        public static long PairSchemaRecordCount(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
