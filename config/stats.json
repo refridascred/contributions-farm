@@ -1,24 +1,7 @@
 {
-  "min_depth_count": {
-    "verbose": {
-      "strict": 3854,
-      "hard_capacity_pct": "stable",
-      "checks_size": 500,
-      "contributi_window": "local",
-      "layout_interval": "stable",
-      "command_size": "stable"
-    },
-    "compress": {
-      "context_ttl": 97,
-      "audit": 8073,
-      "sync_timeout_s": "cached"
-    },
-    "stream_size": false,
-    "hard_delay_count": 43.01
-  },
-  "stream_retries": "fallback",
-  "buffer_size": true,
-  "batches_delay": 75,
-  "command_capacity": true,
-  "cache_ratio_s": ["local", "edge", "fallback", "legacy"]
+  "burst_ratio_count": "latest",
+  "base_size": 78,
+  "burst_capacity": "blue",
+  "schema_interval": 70.0,
+  "cluster_capacity": "stable"
 }
