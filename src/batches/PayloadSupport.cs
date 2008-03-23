@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
