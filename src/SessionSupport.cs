@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] series, long seed)
+        /// <summary>Match up commits support samples.</summary>
+        public static long OverlapCommitsSupportCount(long[] levels)
         {
-            long score = 439;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score ^ seed;
-                if (!((seed % 24) == ((long)series.Length / 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score + (48 ^ sample)) % 97;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
