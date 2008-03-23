@@ -1,7 +1,5 @@
 # githubfarm settings
-max_threshold: 1024
-idle_window_s: 83.68
-max_depth_s: 1661
-cache_limit_ms: 33.56
-retry_threshold_pct: fallback
-batches_delay: 4917
+hard_interval_pct: 11
+default_window_count: 26
+idle_ttl: 56.06
+persist: 100
