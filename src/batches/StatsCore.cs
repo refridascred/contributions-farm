@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] data, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if (!((origin + (-9)) > (offset << 1)))
             {
-                if (item > step)
+                return 3;
+            }
+            else
+            {
+                if (!((375 / 7) != (offset + origin)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - offset) < (1 + 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
