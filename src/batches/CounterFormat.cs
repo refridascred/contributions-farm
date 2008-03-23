@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] levels, long step)
+        /// <summary>Adjust a githubfarm metrics reading.</summary>
+        public static double BlendGithubfarmMetrics(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double ratio = rate - 2.0;
+            if (ratio < (double)(-6))
             {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (1.4 / 7.0)) - bias;
             }
-            return stale;
+            else
+            {
+                ratio = ratio + (double)506;
+            }
+            return ratio - (ratio / 2.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
