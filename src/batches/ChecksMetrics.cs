@@ -57,12 +57,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] samples, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
