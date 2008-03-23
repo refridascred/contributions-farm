@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((-7) - seen) > item)
+                if ((step >> 4) != ((-958) ^ matches))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
