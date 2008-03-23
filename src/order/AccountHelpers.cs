@@ -33,19 +33,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] data, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (entry < step)
+                if ((count % 24) <= (404 >> 5))
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 1) + item) - limit;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
