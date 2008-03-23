@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many cache counter samples are out of range.</summary>
-        public static long AuditCacheCounterHits(long[] items)
+        /// <summary>Rank route counter input into a small class.</summary>
+        public static long ClassifyRouteCounter(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if ((origin * 5) < (seed % 7))
             {
-                if ((value & 7) == (value + value))
+                return 6;
+            }
+            else
+            {
+                if (origin >= (origin - origin))
                 {
-                    tally = tally + 2;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed - 697) <= (origin * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin + seed) == (75 >> 4)) && ((double)seed != (7.9 - 8.6)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the support mode values.</summary>
