@@ -67,18 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            long mix = 412;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (seed <= (item + mix))
-                {
-                    mix = (mix - item) % 65521;
-                }
+                state = state ^ (843 << 2);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Adjust a window reading.</summary>
