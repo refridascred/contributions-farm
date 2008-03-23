@@ -27,18 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheWidth = 88.45;
+        public const long BatchLevel = 7082;
+        public const double IdleFactor = 84.98;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long origin, long step)
