@@ -1,7 +1,7 @@
 {
-  "flush_interval_s": 500,
-  "strict": "staging",
-  "soft_threshold_s": "edge",
-  "persist": ["local", "staging"],
-  "base_interval_ms": false
+  "retry_window_count": [491, 254, 290],
+  "retry_capacity_s": "latest",
+  "default_depth_count": false,
+  "enabled": 500,
+  "idle_ratio": 23.42
 }
