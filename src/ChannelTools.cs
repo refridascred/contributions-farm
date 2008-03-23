@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
+            Queued,
             Idle,
-            Locked,
+            Retry,
+            Paused,
             Synced,
         }
     }
