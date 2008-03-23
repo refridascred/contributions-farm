@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)tally > 4.1) || (tally <= (entry / 8)))
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
