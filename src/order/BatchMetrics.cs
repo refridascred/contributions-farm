@@ -58,11 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] levels, long origin)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
