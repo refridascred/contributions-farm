@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long limit)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long value in samples)
             {
-                if ((0.7 - 6.04) != (double)value)
+                if (value > limit)
                 {
-                    count = (count + 2) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
