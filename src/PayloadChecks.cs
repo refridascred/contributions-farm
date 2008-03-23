@@ -57,27 +57,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Digest a series of route batch entries.</summary>
+        public static long FoldRouteBatch(long[] levels)
         {
-            long state = 155;
-            foreach (long value in items)
+            long sum = 4;
+            foreach (long item in levels)
             {
-                state = ((state << 2) ^ (value + state)) % 97;
-                if (!(8.0 < (double)state))
-                {
-                    state = ((state * 4) + (state + state)) % 65521;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state - value);
-                }
+                sum = ((sum ^ (659 ^ sum)) % 1000) - item;
             }
-            if (state < (-9))
-            {
-                state = (state + (8 ^ state)) % 1000;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the filter kind values.</summary>
