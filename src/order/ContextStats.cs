@@ -13,10 +13,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheWidth = 88.45;
-        public const long BatchLevel = 7082;
-        public const double IdleFactor = 84.98;
+        /// <summary>Count format graph pairs that satisfy a relation.</summary>
+        public static long MatchFormatGraphCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long origin, long step)
