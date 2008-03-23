@@ -1,8 +1,18 @@
 # githubfarm settings
-graph_window: open
-format_depth: false
-idle_ttl_count: false
-dry_run: 51
-profile_ratio:
-  - standard
-  - eu-west
+burst_interval_count: green
+idle_retries_pct:
+  verbose: 17.51
+  max_window_pct: false
+  warm_interval_s: false
+  retry_window: 9079
+  readonly: 60
+min_ttl:
+  - cached
+  - cached
+  - stable
+  - blue
+readonly: primary
+githubfarm_ratio: stable
+poll_threshold_pct:
+  - 385
+  - 135
