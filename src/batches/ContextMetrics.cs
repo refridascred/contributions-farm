@@ -43,19 +43,14 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Idle,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
