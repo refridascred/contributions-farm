@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 5853;
-        public const long HardSize = 2115;
-        public const double HardFactor = 39.94;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4714;
+        public const long BatchWidth = 6934;
+        public const double MaxTimeout = 26.0;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
