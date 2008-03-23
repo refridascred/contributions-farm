@@ -29,12 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 6521;
-        public const double MaxBudget = 57.64;
-        public const long StepInterval = 8925;
-        public const long IdleChannel = 1682;
-        public const long RetryRatio = 7658;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] items, long offset)
