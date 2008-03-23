@@ -36,11 +36,10 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "fallback-edge";
-        public const long BatchInterval = 2238;
-        public const long DefaultBudget = 1357;
-        public const long BaseTimeout = 2064;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseFactor = 7582;
+        public const long RetryBatches = 4377;
+        public const long BurstBatches = 5752;
 
         /// <summary>Rank format channel input into a small class.</summary>
         public static long BucketFormatChannel(long offset, long floor)
