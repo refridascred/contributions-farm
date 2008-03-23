@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const string LimitCluster = "alpha-edge";
         public const double LimitDepth = 20.32;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Idle,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
