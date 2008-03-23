@@ -1,7 +1,11 @@
 {
-  "metrics_retries": 1024,
-  "commits_timeout": false,
-  "soft_ttl_s": 35,
-  "min_ratio": 1024,
-  "audit": 500
+  "verbose": "stable",
+  "sync_limit_s": ["primary", "legacy"],
+  "dry_run": {
+    "default_delay_count": 30,
+    "default_threshold_count": 54,
+    "profile_delay": 500
+  },
+  "readonly": ["standard", "green", "eu-west", "blue"],
+  "tools_timeout": "legacy"
 }
