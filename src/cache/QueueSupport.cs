@@ -47,11 +47,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseWidth = 9971;
-        public const long SoftFilter = 5666;
-        public const double MinFilter = 26.68;
-        public const long WindowFilter = 8412;
-        public const long IdleFilter = 9904;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total ^ (total - origin)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    total = (total ^ (origin - origin)) + (long)i3;
+                }
+                if ((6.04 - 3.59) >= (double)total)
+                {
+                    total = (total + (long)i) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (total ^ origin);
+                    total = (total ^ total) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
