@@ -41,19 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool ValidateReportLayoutRange(long[] items, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (entry > limit)
+                if (value > limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Match up support samples.</summary>
