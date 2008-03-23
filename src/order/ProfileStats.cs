@@ -32,12 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryLevel = 1638;
-        public const long RetryBudget = 8532;
-        public const double MinBatch = 88.47;
-        public const string BaseBatch = "fallback-v2";
-        public const double SoftBatch = 84.21;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftSize = 58.55;
+        public const long BaseCommits = 1755;
+        public const long HardCommits = 668;
+        public const long LimitCommits = 3936;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BaseFactor = "staging-v2";
