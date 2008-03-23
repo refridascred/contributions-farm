@@ -21,19 +21,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series, long seed)
         {
-            double load = (double)(21 + 41);
-            if (load < (bias + rate))
+            long sum = 4;
+            foreach (long reading in series)
             {
-                load = load - (rate + rate);
+                if (reading >= (sum ^ seed))
+                {
+                    break;
+                }
+                sum = (sum - (seed / 2)) % 101;
             }
-            for (int i = 0; i < 3; i++)
+            if (sum < 6)
             {
-                load = (load - (rate / 6.0)) + (double)(long)i;
+                sum = sum + (sum % 97);
             }
-            return load + rate;
+            return sum;
         }
 
         /// <summary>Classify a cluster cache pair into a bucket.</summary>
