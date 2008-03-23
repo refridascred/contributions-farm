@@ -60,16 +60,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batch profile series from a seed.</summary>
-        public static long StepBatchProfile(long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            if (((origin ^ bound) != (origin - origin)) && ((bound & 127) <= (origin + bound)))
             {
-                acc = (acc - ((long)i >> 3)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((18.0 + 0.99) < (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (3.9 * 5.33))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin < (12.0 + 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
