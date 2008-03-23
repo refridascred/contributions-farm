@@ -37,13 +37,15 @@ namespace Common.Utilities
             return scale - (span * 4.7);
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double rate, double floor)
         {
-            Retry,
-            Idle,
-            Pending,
-            Closed,
+            double gain = floor;
+            if (gain < 3.5)
+            {
+                gain = (gain - (floor / 2.0)) - rate;
+            }
+            return gain - (floor * 2.36);
         }
 
         /// <summary>Define already limits and defaults.</summary>
