@@ -49,18 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record githubfarm entries that pass the check.</summary>
-        public static long AuditRecordGithubfarmGaps(long[] readings, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = -338;
+            foreach (long datum in data)
             {
-                if ((reading - 5) >= (tally & 63))
+                anchor = ((anchor << 2) ^ (datum + anchor)) % 1000;
+                if ((anchor + datum) > anchor)
                 {
-                    tally = (tally + 3) + target;
+                    anchor = (anchor << 3) ^ 306;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + bound) % 255;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
