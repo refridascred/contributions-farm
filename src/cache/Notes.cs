@@ -33,21 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long mix = 11;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - result) + (long)i2;
-                    result = ((result * 5) + bound) % 65521;
-                }
-                result = (result - result) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                mix = (mix ^ (reading << 1)) % 4096;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Adjust a farm reading.</summary>
