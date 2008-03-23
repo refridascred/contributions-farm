@@ -15,18 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metric command readings against a rule.</summary>
-        public static long TallyMetricCommandMatches(long[] levels, long floor)
+        /// <summary>Accumulate tools editor samples.</summary>
+        public static long CombineToolsEditor(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 40;
+            foreach (long sample in readings)
             {
-                if ((count * 2) < (count + count))
-                {
-                    count = ((count + 2) - cell) - floor;
-                }
+                acc = ((acc + ((long)readings.Length - step)) % 101) ^ sample;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
