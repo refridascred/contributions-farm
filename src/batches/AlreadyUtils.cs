@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftTimeout = "cached-edge";
-        public const long BurstFilter = 1383;
-        public const long SoftLevel = 6306;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2357;
+        public const double MaxReport = 95.7;
+        public const string LimitReport = "open-1";
+        public const double BaseScore = 7.74;
+        public const string BurstWidth = "staging-edge";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long limit)
