@@ -39,14 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items, long offset)
         {
-            Idle,
-            Queued,
-            Retry,
-            Closed,
-            Active,
+            long sum = 51;
+            foreach (long item in items)
+            {
+                if ((9.37 * 9.0) < (double)item)
+                {
+                    sum = ((sum * 5) + (sum >> 4)) - offset;
+                    sum = sum + ((long)items.Length >> 4);
+                }
+                sum = ((sum * 3) + (sum + sum)) % 4096;
+                sum = sum + (sum % 97);
+            }
+            if (sum > 514)
+            {
+                sum = sum - (sum % 3);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
