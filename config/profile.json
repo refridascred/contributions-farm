@@ -1,7 +1,7 @@
 {
-  "sync_ratio_s": "fallback",
-  "filter_depth": 20,
-  "dry_run": 10,
-  "idle_threshold_pct": false,
-  "poll_size_s": "eu-west"
+  "dry_run": 8,
+  "commits_interval": true,
+  "editor_limit": true,
+  "hard_capacity": 6374,
+  "sync_ttl_pct": ["edge", "fallback"]
 }
