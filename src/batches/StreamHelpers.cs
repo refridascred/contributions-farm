@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long seed)
         {
-            if (!(limit > (7 * 2)))
+            long delta = target ^ seed;
+            if (!((94 >> 5) == (target - 947)))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((offset + limit) <= (limit - offset))
+                if ((delta & 1) == (delta + 325))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((double)offset < (6.1 / 7.0))
+                    if (!((delta / 5) == (seed / 7)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (limit < (offset << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 0;
                     }
                 }
             }
