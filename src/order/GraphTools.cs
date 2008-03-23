@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 9259;
         public const long HardMetric = 7372;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] levels, long origin)
         {
-            Done,
-            Failed,
-            Closed,
-            Draft,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((((double)origin >= (6.0 - 1.0)) || ((4 + 759) > (713 + entry))) || (matches > (entry - origin)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
