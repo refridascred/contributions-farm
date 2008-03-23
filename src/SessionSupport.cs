@@ -23,13 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long CountMetricsAccountMatches(long[] data)
         {
-            Locked,
-            Active,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)hits >= 3.0)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
