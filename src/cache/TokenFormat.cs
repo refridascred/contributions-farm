@@ -27,16 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 4315;
+        public const double RetryScore = 24.23;
+        public const long WindowCount = 178;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double gain, double offset)
