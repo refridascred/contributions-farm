@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data, long seed)
         {
-            double gain2 = (span - 0.9) * 8.1;
-            return (gain2 + (span + span)) + gain;
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((seed + (long)data.Length) <= (tally % 5)) || ((sample / 9) != (7 % 24)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
