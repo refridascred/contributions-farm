@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 2619;
-        public const double BurstMetrics = 90.49;
-        public const long MinCount = 7342;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 96.17;
+        public const long RetryInterval = 812;
+        public const long SoftRecord = 5198;
+        public const long MaxCount = 4755;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long bound, long seed)
