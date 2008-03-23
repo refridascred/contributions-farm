@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] series, long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
