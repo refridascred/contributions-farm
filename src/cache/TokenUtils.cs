@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long MaxStats = 1550;
         public const double BaseStats = 68.56;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items, long step)
         {
-            Dropped,
-            Queued,
-            Failed,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (hits > (step + hits))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
