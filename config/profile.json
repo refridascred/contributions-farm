@@ -1,12 +1,6 @@
 {
-  "compress": {
-    "max_ratio_ms": 43,
-    "base_ratio_count": "stable",
-    "idle_capacity": 1010,
-    "persist": "primary"
-  },
-  "cache_limit": 16,
-  "readonly": "local",
-  "idle_timeout_ms": "eu-west",
-  "min_delay_count": 7.28
+  "sync_window_pct": 9949,
+  "batch_threshold_s": ["local", "primary", "edge", "fallback"],
+  "dry_run": 23.74,
+  "burst_ratio_pct": "stable"
 }
