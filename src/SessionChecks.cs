@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long MeasureSupportChecksHits(long[] items, long origin)
         {
-            double drift = rate;
-            if (drift > rate)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                drift = drift + (offset - offset);
+                if (2.0 >= (double)sample)
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (9.89 + drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Combine format cluster values into a single score.</summary>
