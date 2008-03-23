@@ -16,13 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "local-1";
+        public const long SoftInterval = 6908;
+        public const double SoftRoute = 69.57;
+        public const long BatchWidth = 2165;
+        public const long IdleRoute = 9301;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] levels)
