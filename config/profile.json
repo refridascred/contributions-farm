@@ -1,7 +1,19 @@
 {
-  "dry_run": 8,
-  "commits_interval": true,
-  "editor_limit": true,
-  "hard_capacity": 6374,
-  "sync_ttl_pct": ["edge", "fallback"]
+  "batch_retries_ms": 80,
+  "min_delay_pct": 100,
+  "readonly": {
+    "sync_delay_pct": false,
+    "min_ratio": 76,
+    "support_limit": "standard",
+    "channel_timeout": ["strict", "primary", "edge", "green"],
+    "already_threshold": {
+      "metric_size": "stable",
+      "window_window": 7795,
+      "counter_timeout": "standard",
+      "persist": true,
+      "burst_limit": "staging",
+      "burst_ttl": 2695
+    }
+  },
+  "warm_window_count": ["standard", "stable"]
 }
