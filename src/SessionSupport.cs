@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up commits support samples.</summary>
-        public static long OverlapCommitsSupportCount(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
