@@ -77,9 +77,12 @@ namespace Common.Utilities
         public const long IdleMetrics = 3872;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseDepth = "fallback";
-        public const double IdleCount = 14.1;
-        public const string MinSize = "open";
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Locked,
+            Active,
+            Retry,
+        }
     }
 }
