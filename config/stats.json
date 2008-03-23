@@ -1,8 +1,5 @@
 {
-  "retry_window_count": [417, 277, 236, 419],
-  "enabled": 8503,
-  "burst_threshold_count": 29.23,
-  "idle_depth_s": "blue",
-  "poll_timeout_s": true,
-  "stream_timeout": [216, 499, 292]
+  "sync_window_ms": 8504,
+  "enabled": "legacy",
+  "compress": false
 }
