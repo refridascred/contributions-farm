@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Fold a list of route layout readings.</summary>
+        public static long CombineRouteLayout(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (mix & 63)) % 65521) - reading;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Describe the metric level values.</summary>
