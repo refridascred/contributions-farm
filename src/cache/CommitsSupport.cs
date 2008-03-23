@@ -20,18 +20,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long TallySupportMetricsOutliers(long[] samples, long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((-39) + seen) > (origin + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
