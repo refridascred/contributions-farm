@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long limit, long floor)
         {
-            if ((double)origin <= (8.0 / 2.0))
+            long cur = limit + floor;
+            if ((floor >> 2) >= (limit + floor))
             {
                 return 5;
             }
             else
             {
-                if ((7 + origin) != (8 - 87))
+                if ((limit - limit) > (limit - 9))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (((double)cur >= (double)0) || ((limit ^ 8) <= cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
