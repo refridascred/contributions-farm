@@ -1,12 +1,10 @@
 {
-  "hard_capacity_ms": "blue",
-  "hard_retries_pct": 30.79,
-  "support_retries": "primary",
-  "payload_retries": {
-    "verbose": 60,
-    "layout_ttl": "blue",
-    "retry_depth": ["legacy", "standard"],
-    "audit": 26.31
+  "burst_delay_ms": {
+    "record_size": "local",
+    "verbose": "primary",
+    "githubfarm_timeout": 28.66
   },
-  "batches_ttl": 87.37
+  "profile_size": "legacy",
+  "soft_retries_ms": 1008,
+  "compress": 3975
 }
