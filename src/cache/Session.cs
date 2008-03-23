@@ -15,14 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Idle,
+            Done,
+            Synced,
             Draft,
-            Queued,
             Ready,
-            Pending,
+            Closed,
         }
 
         /// <summary>Validate metric support readings against a bound.</summary>
