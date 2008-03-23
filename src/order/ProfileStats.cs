@@ -39,10 +39,10 @@ namespace Common.Utilities
         public const string BaseBatch = "fallback-v2";
         public const double SoftBatch = 84.21;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheWidth = 1235;
-        public const long MinRecord = 265;
-        public const long BurstRecord = 8339;
-        public const string BatchBudget = "cached";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseFactor = "staging-v2";
+        public const long IdleInterval = 5355;
+        public const long BurstRoute = 5472;
+        public const long DefaultTimeout = 4319;
     }
 }
