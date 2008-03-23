@@ -64,21 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order batch readings.</summary>
-        public static long OverlapOrderBatchCount(long[] samples)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
