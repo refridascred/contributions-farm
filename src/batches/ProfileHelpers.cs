@@ -57,12 +57,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the schema channel entries that pass the check.</summary>
+        public static long CountSchemaChannelHits(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally - tally) != (tally << 3))
+                {
+                    tally = ((tally + 1) - reading) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
