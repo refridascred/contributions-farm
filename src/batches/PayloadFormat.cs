@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (((double)step < (double)value) && ((hits <= (408 / 7)) && ((double)value != (0.83 / 9.0))))
+                if (datum >= origin)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Roll a profile record counter forward.</summary>
