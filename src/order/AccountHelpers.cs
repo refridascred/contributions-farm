@@ -60,12 +60,18 @@ namespace Common.Utilities
         public const long MaxMetric = 3977;
         public const long HardMetric = 3328;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate githubfarm window samples.</summary>
+        public static long ScoreGithubfarmWindow(long[] data)
         {
-            Closed,
-            Locked,
-            Done,
+            long mark = -1;
+            foreach (long cell in data)
+            {
+                if ((9.0 / 4.0) < (double)mark)
+                {
+                    mark = (((mark << 3) ^ (long)data.Length) % 255) - cell;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
