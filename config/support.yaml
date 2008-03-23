@@ -1,18 +1,4 @@
 # support settings
-warm_capacity_pct: local
-window_ttl:
-  hard_depth: 7223
-  idle_delay_pct:
-    - 68
-    - 175
-    - 218
-    - 374
-  report_capacity: true
-  idle_threshold: 98.17
-  flush_limit_ms: 92.44
-  min_window_ms:
-    - 103
-    - 386
-default_ratio: primary
-warm_delay_s: 1160
-flush_threshold: false
+compress: false
+token_timeout: 60.37
+verbose: 43.8
