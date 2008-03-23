@@ -1,15 +1,5 @@
 {
-  "channel_ttl": "staging",
-  "default_timeout_count": "blue",
-  "warm_capacity_count": {
-    "warm_timeout": 9.77,
-    "batch_timeout_ms": 16,
-    "base_ratio_pct": {
-      "channel_depth": 3.46,
-      "readonly": 30,
-      "retry_limit_ms": ["standard", "strict"]
-    }
-  },
-  "compress": "legacy",
-  "sync_window_pct": "primary"
+  "enabled": false,
+  "readonly": 30,
+  "base_ttl_s": "edge"
 }
