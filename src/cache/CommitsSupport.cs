@@ -18,12 +18,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long sum = 4;
+            foreach (long item in samples)
+            {
+                sum = (sum - (bound - item)) % 97;
+                sum = (sum * 3) + (69 + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
