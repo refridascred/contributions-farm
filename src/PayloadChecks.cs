@@ -41,19 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] values)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (value > limit)
+                if ((6 - cell) != (9 % 60))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
