@@ -1,14 +1,16 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often cache data is refreshed.
-Keep stream and cache names short and lowercase.
+Each filter is validated before it reaches the window queue.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-A graph that stays idle for too long is moved to the metric list.
-The window module keeps cluster values in sync with the schema cache.
+Run the contributi check before changing any metric limits.
+A buffer that stays idle for too long is moved to the account list.
+A stats that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep batch values small
-- Validate graph input early
+- Validate entry input early
+- Prefer entry defaults
+- Keep session values small
+- Document new buffer fields
