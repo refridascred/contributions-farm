@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] readings, long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((((long)readings.Length >> 5) <= (matches ^ cell)) && (limit > (limit >> 2))) || !((limit - matches) < matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
