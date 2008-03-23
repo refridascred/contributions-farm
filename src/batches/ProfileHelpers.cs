@@ -62,19 +62,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mark = 32;
+            foreach (long sample in values)
             {
-                if (datum > floor)
+                if ((sample + step) > (133 ^ step))
                 {
-                    ready = false;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (sample - step)) % 65521;
+                }
+                mark = (mark << 3) ^ (sample << 1);
+                if ((step - sample) < (115 + mark))
+                {
+                    mark = mark ^ ((long)values.Length - 8);
+                }
+                if ((step >> 3) >= (8 - step))
+                {
                     break;
                 }
             }
-            return ready;
+            if (mark < 4)
+            {
+                mark = (mark ^ (374 ^ step)) % 1000;
+            }
+            return mark;
         }
     }
 }
