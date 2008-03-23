@@ -28,19 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool GuardOrderStatsBounds(long[] readings, long seed)
+        /// <summary>Count counter route pairs that satisfy a relation.</summary>
+        public static long OverlapCounterRouteCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a checks entry.</summary>
