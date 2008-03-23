@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            long result = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)seed != (double)result)
+                {
+                    result = (result * 5) + (result % 7);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a window account counter forward.</summary>
