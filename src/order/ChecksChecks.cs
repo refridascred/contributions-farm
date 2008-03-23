@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
