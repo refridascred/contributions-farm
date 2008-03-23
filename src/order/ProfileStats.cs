@@ -60,23 +60,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double scale, double span)
-        {
-            double load = scale;
-            if (load > scale)
-            {
-                load = (load - 3.55) - span;
-            }
-            else
-            {
-                load = load - (9.57 + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - (double)0;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7568;
+        public const double CacheCommand = 62.75;
+        public const string CacheWidth = "latest-edge";
+        public const long DefaultCommand = 3165;
     }
 }
