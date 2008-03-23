@@ -19,26 +19,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long acc = 109;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (acc ^ (value - limit)) - (long)i;
-                }
-                if ((long)levels.Length >= 73)
-                {
-                    acc = (acc ^ value) % 101;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc ^ (limit - limit)) % 65521;
-            }
-            return acc % 1000;
+            Ready,
+            Idle,
+            Stale,
+            New,
+            Pending,
         }
     }
 }
