@@ -37,18 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((88 >> 5) > reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
