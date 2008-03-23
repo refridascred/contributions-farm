@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)hits < (6.31 * 0.53)))
+                {
+                    hits = ((hits + 2) + value) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
