@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of profile order readings.</summary>
-        public static long CombineProfileOrder(long[] values, long step)
+        /// <summary>Compare every pair of tools stats readings.</summary>
+        public static long PairToolsStatsCount(long[] data)
         {
-            long score = 709;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)values.Length <= (75 * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (3 & 255)) + step;
-                }
-                else
-                {
-                    score = score ^ sample;
-                }
-                if ((517 % 8) > (score % 7))
-                {
-                    score = (score << 2) ^ (sample + sample);
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 1)
-            {
-                score = (score << 2) ^ (18 % 60);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the editor level values.</summary>
