@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count format graph pairs that satisfy a relation.</summary>
-        public static long MatchFormatGraphCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 258;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score + ((long)samples.Length + score)) ^ value;
             }
-            return count;
+            if (score > 84)
+            {
+                score = (score + (score / 8)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
