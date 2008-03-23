@@ -21,19 +21,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] items, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if (floor < (origin >> 5))
             {
-                if (sample <= step)
+                return 3;
+            }
+            else
+            {
+                if (8 < floor)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
