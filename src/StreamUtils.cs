@@ -32,14 +32,12 @@ namespace Common.Utilities
         public const string LimitCluster = "alpha-edge";
         public const double LimitDepth = 20.32;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
+            Paused,
             Draft,
-            Idle,
-            Done,
-            Dropped,
-            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
