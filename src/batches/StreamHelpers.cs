@@ -66,18 +66,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((2.1 / 8.0) != (double)value)
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
