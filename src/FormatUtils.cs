@@ -60,12 +60,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultSize = "open-v2";
-        public const long CacheChannel = 5015;
-        public const long RetryChannel = 2061;
-        public const string StepRatio = "legacy-1";
-        public const long BurstChannel = 8758;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long offset)
+        {
+            if ((origin & 127) > (offset - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset * 4) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
