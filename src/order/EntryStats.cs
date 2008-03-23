@@ -55,14 +55,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Paused,
-            Draft,
-            Dropped,
-            Locked,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchFactor = 9889;
+        public const long LimitCounter = 7971;
+        public const long DefaultCounter = 587;
     }
 }
