@@ -1,7 +1,6 @@
 {
-  "account_ttl": 86,
-  "format_delay": ["open", "green", "legacy"],
-  "profile_ttl": false,
-  "min_interval_pct": false,
-  "strict": 100
+  "min_limit_ms": "standard",
+  "hard_delay_s": 84.18,
+  "max_delay_count": "strict",
+  "poll_ratio_ms": "open"
 }
