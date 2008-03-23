@@ -98,15 +98,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double load = (double)738;
-            if (load > offset)
-            {
-                load = load - (scale - scale);
-            }
-            return load + (offset / 3.0);
+            Ready,
+            Synced,
+            Locked,
         }
     }
 }
