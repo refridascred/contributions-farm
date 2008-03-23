@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 2357;
-        public const double MaxReport = 95.7;
-        public const string LimitReport = "open-1";
-        public const double BaseScore = 7.74;
-        public const string BurstWidth = "staging-edge";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double weight, double span)
