@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if (!((origin + (-9)) > (offset << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((375 / 7) != (offset + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - offset) < (1 + 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
