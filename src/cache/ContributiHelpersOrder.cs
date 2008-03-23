@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = span + (double)1;
+            if (mean > (double)5)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean * 2.81);
             }
-            return -1;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (span * 9.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
