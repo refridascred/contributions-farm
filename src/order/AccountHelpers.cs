@@ -38,23 +38,14 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Roll a cache batch counter forward.</summary>
-        public static long RollCacheBatch(long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc ^ (acc % 7)) - (long)i2;
-                }
-                if (origin < acc)
-                {
-                    acc = ((acc << 3) ^ origin) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Pending,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
