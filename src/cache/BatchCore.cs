@@ -50,24 +50,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long step)
-        {
-            if ((7.85 + 3.16) > (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 3) > (step << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1036;
+        public const long StepCount = 5010;
+        public const long BatchCount = 6487;
     }
 }
