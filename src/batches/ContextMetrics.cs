@@ -38,10 +38,18 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 5165;
-        public const long IdleMetrics = 3457;
-        public const long RetryMetrics = 3753;
+        /// <summary>Locate a cache context reading by value.</summary>
+        public static long FindCacheContextIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] items, long limit)
