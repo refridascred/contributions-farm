@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] values, long target)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine context cache values into a single score.</summary>
