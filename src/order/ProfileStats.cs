@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] levels, long offset)
         {
-            Paused,
-            Locked,
-            Failed,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
