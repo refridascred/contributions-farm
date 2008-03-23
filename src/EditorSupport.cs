@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long RetryBatch = 7486;
         public const long SoftBatch = 1773;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((85 + 406) >= (count >> 3))
+                {
+                    count = ((count + 3) ^ sample) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
