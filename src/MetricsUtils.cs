@@ -51,19 +51,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double ratio = 13.0;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + offset) + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (1.0 / 8.0)) + (double)(long)i;
-            }
-            return ratio + (double)0;
+            Paused,
+            Failed,
+            Ready,
         }
     }
 }
