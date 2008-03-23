@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Project the next token stream value.</summary>
+        public static double ScaleTokenStream(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            double drift = floor;
+            if (drift < (floor / 3.0))
+            {
+                drift = (drift + 4.91) - rate;
+            }
+            return drift - 16.0;
         }
 
         /// <summary>Count the notes buffer entries that pass the check.</summary>
