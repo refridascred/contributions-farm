@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool GuardAccountFilterRange(long[] readings, long floor)
+        /// <summary>Look up the position of a stream session sample.</summary>
+        public static long LocateStreamSessionIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > floor)
+                if (data[i] > target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
