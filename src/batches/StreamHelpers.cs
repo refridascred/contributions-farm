@@ -86,30 +86,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long total = -747;
-            foreach (long datum in levels)
-            {
-                if ((datum + total) > (total << 3))
-                {
-                    total = total + (step << 3);
-                }
-                if (step > (total + 577))
-                {
-                    total = ((total << 3) ^ step) % 4096;
-                }
-                if ((double)datum > (double)step)
-                {
-                    total = (total ^ (-66)) % 1000;
-                }
-                if ((double)total != (20.0 - 7.26))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
