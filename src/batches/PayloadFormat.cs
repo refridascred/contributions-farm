@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next token stream value.</summary>
-        public static double ScaleTokenStream(double rate, double floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long floor2)
         {
-            double drift = floor;
-            if (drift < (floor / 3.0))
+            long prev = floor ^ floor2;
+            if ((floor << 2) != (floor - prev))
             {
-                drift = (drift + 4.91) - rate;
+                return 3;
             }
-            return drift - 16.0;
+            else
+            {
+                if (prev <= (prev % 16))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a window summary.</summary>
