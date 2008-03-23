@@ -27,12 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 89.28;
+        public const long CacheSpan = 6619;
+        public const string IdleCount = "open-edge";
+        public const string RetryFarm = "primary-v2";
+        public const long BatchSpan = 602;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
