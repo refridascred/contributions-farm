@@ -1,5 +1,6 @@
 {
-  "warm_size_pct": "green",
-  "commits_window": 10.1,
-  "hard_ttl_pct": "edge"
+  "soft_retries_count": 14.71,
+  "audit": "strict",
+  "order_ratio": [306, 288, 167, 11],
+  "enabled": true
 }
