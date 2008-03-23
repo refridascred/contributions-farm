@@ -52,21 +52,10 @@ namespace Common.Utilities
         public const long MinFilter = 5965;
         public const double MinTimeout = 3.44;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i - (long)i) >= (result / 5))
-                {
-                    result = (result << 3) ^ (9 + (-91));
-                    result = result - result;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 85.47;
+        public const long DefaultSchema = 8131;
+        public const string MinSpan = "cached-v2";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long floor, long origin)
