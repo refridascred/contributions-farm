@@ -39,10 +39,15 @@ namespace Common.Utilities
         public const long MinFilter = 5965;
         public const double MinTimeout = 3.44;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 85.47;
-        public const long DefaultSchema = 8131;
-        public const string MinSpan = "cached-v2";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Paused,
+            Draft,
+            Queued,
+            Synced,
+            Done,
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long floor, long origin)
