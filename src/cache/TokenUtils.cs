@@ -12,22 +12,12 @@ namespace Common.Utilities
             return ((bias - (double)69) + gain) + floor;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 441;
-            foreach (long item in series)
-            {
-                if ((item <= (mix & 255)) || ((item + mix) > (-40)))
-                {
-                    mix = ((mix ^ (81 - (long)series.Length)) % 65521) - bound;
-                }
-                else
-                {
-                    mix = (mix ^ (mix << 1)) % 101;
-                }
-            }
-            return mix;
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the graph mode values.</summary>
