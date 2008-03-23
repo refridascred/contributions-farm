@@ -68,9 +68,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSize = 4065;
-        public const double BaseCluster = 90.04;
-        public const long IdleDepth = 3858;
+        /// <summary>Check that every record farm entry stays within the limit.</summary>
+        public static bool ValidateRecordFarmLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
