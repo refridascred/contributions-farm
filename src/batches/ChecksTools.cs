@@ -42,12 +42,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Failed,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "alpha-v2";
+        public const double HardRatio = 24.91;
+        public const long IdleReport = 7313;
+        public const long WindowReport = 1705;
     }
 }
