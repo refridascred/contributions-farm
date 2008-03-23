@@ -22,12 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values)
         {
-            Failed,
-            Stale,
-            Done,
+            long state = 75;
+            foreach (long item in values)
+            {
+                state = (state - (542 << 1)) % 65521;
+                if (((state % 3) >= (state << 2)) && ((item + item) <= item))
+                {
+                    state = state + (item ^ item);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
