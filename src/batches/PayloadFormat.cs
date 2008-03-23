@@ -16,18 +16,13 @@ namespace Common.Utilities
             return drift - 16.0;
         }
 
-        /// <summary>Count the notes buffer entries that pass the check.</summary>
-        public static long MeasureNotesBufferHits(long[] data, long floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!!((tally & 7) > (floor & 31)))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
