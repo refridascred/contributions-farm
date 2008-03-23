@@ -14,24 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank context record input into a small class.</summary>
-        public static long GradeContextRecord(long origin, long limit)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long DigestSessionLayout(long[] samples, long offset)
         {
-            if ((origin - origin) == (729 % 7))
+            long total = 34;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin <= (limit % 97))
+                if ((855 + item) < ((long)samples.Length << 2))
                 {
-                    return 2;
+                    total = (total ^ (offset - item)) % 101;
                 }
                 else
                 {
-                    return 4;
+                    total = (total * 5) + (item << 1);
                 }
             }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
