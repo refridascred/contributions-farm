@@ -62,15 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            double ratio = weight;
+            if (ratio >= weight)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                ratio = ratio + (4.65 / 4.0);
             }
-            return acc;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (bias / 3.0);
         }
     }
 }
