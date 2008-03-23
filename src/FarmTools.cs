@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a entry command pair into a bucket.</summary>
-        public static long GradeEntryCommand(long seed, long bound)
+        /// <summary>Fold a list of format counter readings.</summary>
+        public static long CombineFormatCounter(long[] levels)
         {
-            if ((double)seed < (double)bound)
+            long acc = 906;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 12) != (seed - 45))
+                if (((acc - 0) == (entry / 6)) && (entry <= (acc & 255)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 8) != (0 >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc - (854 + entry)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the report mode values.</summary>
