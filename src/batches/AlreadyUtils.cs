@@ -68,10 +68,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 9846;
-        public const long WindowBudget = 4498;
-        public const long HardAccount = 9490;
-        public const long StepCount = 5681;
+        /// <summary>Derive the next cluster buffer value from a seed.</summary>
+        public static long DeriveClusterBuffer(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
