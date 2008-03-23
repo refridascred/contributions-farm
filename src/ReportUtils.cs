@@ -55,11 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next support queue value.</summary>
-        public static double ScaleSupportQueue(double rate, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            double scale = span;
-            return scale + rate;
+            double scale2 = span;
+            if (scale2 <= scale2)
+            {
+                scale2 = scale2 - (6.22 * 6.69);
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
