@@ -1,7 +1,18 @@
 # support settings
-warm_depth_pct: 31
-batch_delay_pct: 51
-flush_capacity: standard
-cache_interval: true
-hard_capacity: true
-soft_ttl_ms: 63.62
+idle_depth:
+  strict: green
+  poll_threshold: 71
+  enabled:
+    - staging
+    - eu-west
+  base_ttl_ms: cached
+  farm_ratio: blue
+  persist:
+    - 179
+    - 196
+    - 444
+max_retries_pct:
+  - 235
+  - 274
+sync_threshold: 1024
+retry_interval_s: 24
