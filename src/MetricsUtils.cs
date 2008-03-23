@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = 6;
-            foreach (long value in data)
-            {
-                if (((2.3 + 8.8) < (9.3 + 8.09)) && ((9.0 + 9.55) >= (double)limit))
-                {
-                    break;
-                }
-                acc = (acc * 3) + (limit + 177);
-                if (((acc << 3) <= (limit + limit)) || ((limit - value) <= (3 & 255)))
-                {
-                    acc = (acc + (limit - value)) % 65521;
-                }
-            }
-            if (acc > 547)
-            {
-                acc = ((acc * 3) + limit) % 65521;
-            }
-            return acc;
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
