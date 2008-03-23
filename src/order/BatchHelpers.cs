@@ -42,22 +42,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of notes cluster readings.</summary>
-        public static long DigestNotesCluster(long[] samples, long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long acc = 940;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin + 747) == (origin - acc))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (datum & 31)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (datum % 24)) % 1000;
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
