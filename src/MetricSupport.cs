@@ -25,39 +25,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long ClassifyStreamRecord(long offset, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long prev = offset ^ floor;
-            if ((double)offset == (11.0 + 5.02))
+            double rate = weight;
+            if (rate >= (rate * 3.13))
             {
-                return 4;
+                rate = (rate - weight) - bias;
             }
-            else
-            {
-                if (((11.0 + 7.99) != (double)prev) && ((offset - floor) < prev))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6 << 2) > (floor - 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3 - offset) != (prev / 6)) && ((prev % 100) >= (prev * 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate - weight;
         }
     }
 }
