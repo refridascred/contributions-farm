@@ -1,26 +1,9 @@
 # entry settings
-format_ttl:
-  record_window:
-    channel_size: 60
-    flush_ratio_pct: 100
-    retry_window_s: eu-west
-    burst_window_count: true
-    burst_ratio_s: stable
-  soft_delay_count: 54.7
-  tools_limit: 60
-  session_window:
-    - 175
-    - 224
-    - 62
-    - 102
-max_capacity_pct: fallback
-poll_depth:
-  retry_ttl_s:
-    compress: 44.54
-    channel_timeout: true
-    dry_run:
-      - 283
-      - 460
-    poll_timeout_s: eu-west
-  already_ttl: false
-  cache_ratio: 8531
+flush_threshold_count:
+  - 232
+  - 132
+  - 187
+  - 197
+farm_delay: true
+cache_delay_s: 41.33
+strict: false
