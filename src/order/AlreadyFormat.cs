@@ -75,11 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftDepth = 3.37;
-        public const long IdleRatio = 9514;
-        public const long CacheAlready = 7434;
-        public const string StepAlready = "strict-1";
-        public const long BurstTimeout = 8025;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Ready,
+            Pending,
+            Stale,
+        }
     }
 }
