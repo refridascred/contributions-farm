@@ -61,13 +61,11 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 62.35;
+        public const double WindowFilter = 89.74;
+        public const long CacheScore = 7554;
+        public const string MinWidth = "primary-edge";
+        public const long MinSpan = 9740;
     }
 }
