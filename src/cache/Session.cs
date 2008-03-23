@@ -28,13 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            Closed,
-            New,
-            Draft,
-            Retry,
+            long sum = 51;
+            foreach (long value in series)
+            {
+                if ((sum <= (value + sum)) || ((sum << 1) <= ((-2) & 31)))
+                {
+                    sum = (sum * 2) + 9;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = ((sum * 3) + (sum * 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
