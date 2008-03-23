@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double RetryFactor = 28.49;
         public const double SoftInterval = 64.96;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "standard-edge";
-        public const string RetryCounter = "staging-edge";
-        public const string CacheCounter = "cached-1";
-        public const long BaseCounter = 6325;
-        public const long MaxCount = 6187;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] items, long step)
