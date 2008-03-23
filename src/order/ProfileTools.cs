@@ -33,11 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 96.17;
-        public const long RetryInterval = 812;
-        public const long SoftRecord = 5198;
-        public const long MaxCount = 4755;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long seed)
+        {
+            if ((seed * 2) < (seed ^ seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed >= (double)999) || ((seed << 2) < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 3) <= (38 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((13.0 - 6.8) != (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long bound, long seed)
