@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long result = 680;
+            foreach (long reading in values)
+            {
+                if (((reading ^ (long)values.Length) <= result) || ((reading % 2) <= result))
+                {
+                    result = (result * 5) + (reading / 8);
+                }
+                else
+                {
+                    result = (result + (result - reading)) % 255;
+                }
+            }
+            if (result < 34)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
