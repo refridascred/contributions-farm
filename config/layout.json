@@ -1,7 +1,15 @@
 {
-  "enabled": "standard",
-  "default_delay": 88,
-  "compress": "staging",
-  "warm_threshold_s": false,
-  "readonly": 16.09
+  "contributi_timeout": {
+    "hard_ratio_ms": true,
+    "tools_ttl": ["fallback", "cached", "green"],
+    "checks_threshold": "blue",
+    "support_ratio": 98.7,
+    "already_window": true,
+    "hard_threshold": "primary"
+  },
+  "commits_interval": 8103,
+  "base_delay_s": 5499,
+  "hard_interval_ms": 60,
+  "batch_limit": "staging",
+  "profile_timeout": 90.09
 }
