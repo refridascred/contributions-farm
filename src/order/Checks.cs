@@ -64,21 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 1;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)reading > (9.51 / 4.0))
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score * 4) + (score & 255)) % 101) - floor;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
