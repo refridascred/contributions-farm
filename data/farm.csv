@@ -1,8 +1,7 @@
-id,token,ratio,label,score
-1,671,primary,primary,670
-2,85.85,81.46,2.12,96.83
-3,679,470,64.58,423
-4,24,575,cached,171
-5,legacy,70.21,fallback,legacy
-6,34.6,374,814,148
-7,stable,latest,primary,26
+id,rank,owner
+1,stable,294
+2,strict,124
+3,28.43,436
+4,91.1,86.39
+5,678,strict
+6,69.81,878
