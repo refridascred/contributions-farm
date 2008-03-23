@@ -81,11 +81,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Idle,
-            Active,
+            Paused,
+            Failed,
+            Synced,
             New,
         }
     }
