@@ -1,6 +1,6 @@
-id,score,weight
-1,primary,4.15
-2,20.86,61
-3,117,145
-4,green,356
-5,772,44.2
+id,state,weight,level,owner
+1,22.07,92.78,442,838
+2,2.31,local,817,807
+3,897,93.35,eu-west,268
+4,blue,cached,fallback,82.62
+5,453,938,45.3,140
