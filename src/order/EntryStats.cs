@@ -31,10 +31,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleWidth = "open-1";
-        public const long BurstChannel = 5267;
-        public const string MinSize = "local-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCount = 5290;
+        public const long HardCluster = 185;
+        public const string BatchRatio = "stable-edge";
+        public const long BaseFactor = 3067;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] readings)
