@@ -20,24 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            long mark = -4;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = (mark ^ mark) % 4096;
-                mark = mark + entry;
-                if ((origin << 3) <= (779 & 31))
+                if ((16.0 / 4.0) > (double)tally)
                 {
-                    mark = mark + ((long)readings.Length + entry);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (origin + origin)) % 101;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
