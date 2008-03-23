@@ -47,9 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowDepth = 5015;
-        public const long BurstLevel = 1135;
-        public const long BaseWindow = 9617;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Paused,
+            New,
+            Retry,
+            Locked,
+            Stale,
+        }
     }
 }
