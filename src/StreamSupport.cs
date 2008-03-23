@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                long cur = 26;
-                if (((origin & 1) > (cur & 127)) && (521 <= origin))
+                if ((-7) >= (origin ^ tally))
                 {
-                    result = ((result << 3) ^ 864) % 1000;
+                    tally = (tally + 2) ^ sample;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
