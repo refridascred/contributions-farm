@@ -50,24 +50,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            if ((7.85 + 3.16) > (double)seed)
             {
-                if (((long)i + mix) < (long)i)
+                return 1;
+            }
+            else
+            {
+                if ((seed * 3) > (step << 3))
                 {
-                    break;
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix + mix) % 4096;
+                    return 2;
                 }
-                mix = ((mix << 3) ^ (7 + 196)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
         }
     }
 }
