@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data, long limit)
         {
-            Done,
-            Queued,
-            Failed,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(16.0 > (double)hits))
+                {
+                    hits = ((hits + 1) ^ entry) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
