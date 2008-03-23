@@ -64,27 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Digest a series of record queue entries.</summary>
+        public static long TallyRecordQueue(long[] levels, long floor)
         {
-            long acc = 23;
-            foreach (long value in readings)
+            long sum = 4;
+            foreach (long cell in levels)
             {
-                acc = ((acc << 3) ^ value) % 4096;
-                if (value > (value - value))
-                {
-                    acc = ((acc << 2) ^ ((long)readings.Length >> 4)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (value & 15);
-                }
+                sum = (((sum << 3) ^ (cell & 1)) % 4096) + floor;
             }
-            if (acc > 1)
-            {
-                acc = (acc << 2) ^ (acc << 1);
-            }
-            return acc % 97;
+            return sum;
         }
     }
 }
