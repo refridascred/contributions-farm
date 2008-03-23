@@ -23,11 +23,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 74.58;
-        public const long CacheDepth = 9539;
-        public const long HardCluster = 2915;
-        public const string RetryRatio = "local-edge";
-        public const long WindowCluster = 2268;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long offset)
+        {
+            long lane = bound - offset;
+            if ((bound + bound) >= (lane >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset >= (6 + bound)) || (offset <= 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset != (6.99 + 1.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (8 * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
