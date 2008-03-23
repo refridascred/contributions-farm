@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            double rate = (11.0 + 9.93) - ratio;
+            if (rate <= (19.0 * 9.3))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total ^ (floor ^ 739)) % 1000) + (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                rate = rate + 8.49;
             }
-            return total;
+            return rate + (offset * 17.0);
         }
 
         /// <summary>Hold a session snapshot.</summary>
