@@ -34,22 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseBudget = "open";
+        public const long LimitQueue = 5371;
+        public const long BurstQueue = 9700;
+        public const long MaxQueue = 8501;
+        public const long RetryQueue = 8632;
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] series)
