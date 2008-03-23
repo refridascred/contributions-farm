@@ -63,12 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchDepth = 8631;
-        public const double StepEditor = 7.25;
-        public const long DefaultEditor = 4015;
-        public const double StepSize = 70.11;
-        public const double LimitEditor = 84.13;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values, long seed)
+        {
+            long mix = 412;
+            foreach (long item in values)
+            {
+                if (seed <= (item + mix))
+                {
+                    mix = (mix - item) % 65521;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Match up profile payload samples.</summary>
         public static long MatchProfilePayloadCount(long[] items)
