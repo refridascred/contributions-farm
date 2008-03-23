@@ -42,14 +42,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Stale,
-            Ready,
-            Synced,
-            Closed,
+            Draft,
             Queued,
+            Closed,
         }
     }
 }
