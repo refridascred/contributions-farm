@@ -43,15 +43,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long sum = -700;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum * 2) + (floor + 99)) % 65521) + value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
