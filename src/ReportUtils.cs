@@ -66,18 +66,26 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items)
+        /// <summary>Accumulate report tools samples.</summary>
+        public static long WeighReportTools(long[] data, long origin)
         {
-            long result = 76;
-            foreach (long cell in items)
+            long anchor = 3;
+            foreach (long reading in data)
             {
-                if (result < (3 >> 1))
+                if ((reading & 3) == ((long)data.Length / 3))
                 {
-                    result = ((result - result) % 97) + cell;
+                    anchor = anchor ^ (reading - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (origin - 16)) % 101;
+                }
+                if (origin <= ((-1) * 5))
+                {
+                    break;
                 }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
