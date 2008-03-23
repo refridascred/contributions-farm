@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6589;
-        public const double BaseFactor = 71.59;
-        public const long WindowTools = 8104;
-        public const long BaseTools = 8618;
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double rate, double offset)
+        {
+            double drift = (double)(92 << 2);
+            if (drift < rate)
+            {
+                drift = (drift + rate) - offset;
+            }
+            else
+            {
+                drift = drift - 13.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values, long offset)
