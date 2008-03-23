@@ -83,18 +83,16 @@ namespace Common.Utilities
             return (drift + weight) + offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] items, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((139 + bound) < bound)
-                {
-                    count = (count + 1) + datum;
-                }
+                result = (result << 2) ^ (step - (long)i);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
