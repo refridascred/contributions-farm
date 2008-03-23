@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long origin)
         {
-            long state = 75;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                state = (state - (542 << 1)) % 65521;
-                if (((state % 3) >= (state << 2)) && ((item + item) <= item))
+                if ((5.7 + 6.9) >= (double)value)
                 {
-                    state = state + (item ^ item);
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
