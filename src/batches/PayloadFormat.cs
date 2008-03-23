@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double bias, double bias2)
         {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = 10.0;
+            return ((drift + drift) + bias) + bias2;
         }
 
         /// <summary>Define token limits and defaults.</summary>
