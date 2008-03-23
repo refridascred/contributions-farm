@@ -1,8 +1,6 @@
 {
-  "sync_size_ms": 500,
-  "persist": 7256,
-  "dry_run": 15.25,
-  "retry_threshold_ms": true,
-  "strict": "staging",
-  "compress": [210, 376]
+  "flush_interval_s": 30,
+  "idle_limit": "strict",
+  "compress": false,
+  "already_depth": 1228
 }
