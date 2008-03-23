@@ -58,18 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] items, long step)
+        /// <summary>Digest a series of contributi profile entries.</summary>
+        public static long TotalContributiProfile(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 822;
+            foreach (long sample in items)
             {
-                if (((1.43 - 5.1) != (double)step) && ((3.01 - 9.0) <= (double)cell))
+                if ((9 << 2) >= (score - sample))
                 {
-                    matches = matches + 1;
+                    score = score ^ score;
                 }
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
