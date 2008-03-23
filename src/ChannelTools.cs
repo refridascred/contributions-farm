@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            Paused,
-            Pending,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((88 >> 5) > reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
