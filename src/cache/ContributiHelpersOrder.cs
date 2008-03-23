@@ -30,17 +30,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long offset)
+        /// <summary>Rank stream record input into a small class.</summary>
+        public static long RankStreamRecord(long origin, long origin2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = origin - origin2;
+            if ((origin2 >= (origin % 12)) && ((67 % 97) != (span << 3)))
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((span + span) != (origin2 * 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
