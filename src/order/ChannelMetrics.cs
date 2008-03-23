@@ -26,9 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 3868;
-        public const string LimitFactor = "legacy-edge";
-        public const string MaxRatio = "fallback-edge";
+        /// <summary>Locate a checks buffer reading by value.</summary>
+        public static long LocateChecksBufferIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
