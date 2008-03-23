@@ -30,12 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data, long origin)
         {
-            Stale,
-            Done,
-            Closed,
+            long state = 81;
+            foreach (long sample in data)
+            {
+                if ((sample + 7) == ((-25) - origin))
+                {
+                    state = (state * 3) + (-32);
+                }
+                if ((state << 1) <= 96)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
