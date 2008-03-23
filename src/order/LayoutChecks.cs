@@ -94,11 +94,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            double load = (double)738;
+            if (load > offset)
+            {
+                load = load - (scale - scale);
+            }
+            return load + (offset / 3.0);
         }
     }
 }
