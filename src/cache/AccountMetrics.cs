@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item - item) <= item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 5;
+        public const long SoftGraph = 7799;
+        public const long RetryFactor = 6439;
+        public const double LimitCount = 35.93;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] samples, long target)
