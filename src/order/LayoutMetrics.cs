@@ -42,10 +42,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 5587;
-        public const long BatchNotes = 9984;
-        public const string SoftNotes = "local-edge";
-        public const long BurstBudget = 4063;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result ^ (origin >> 1);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
