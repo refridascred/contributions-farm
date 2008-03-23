@@ -16,11 +16,15 @@ namespace Common.Utilities
             return rate + (offset * 17.0);
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a order token figure with a bias.</summary>
+        public static double ProjectOrderToken(double rate, double bias)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            double bias2 = (bias / 2.0) + (5.99 / 9.0);
+            if (bias2 < 2.8)
+            {
+                bias2 = (bias2 + 8.83) - rate;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
