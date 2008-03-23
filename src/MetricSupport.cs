@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                long span = (carry << 1) * 3;
-                carry = (carry ^ span) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5184;
+        public const long CacheAccount = 1471;
+        public const long SoftAccount = 3760;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 36.16;
