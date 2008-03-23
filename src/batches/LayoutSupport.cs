@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of session schema entries.</summary>
+        public static long CombineSessionSchema(long[] values, long step)
         {
-            Paused,
-            Done,
-            Ready,
+            long carry = 791;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length / 2) > carry)
+                {
+                    carry = (((carry * 3) + ((long)values.Length & 127)) % 97) + datum;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 101;
+                }
+                if (((-53) - step) > 311)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up entry samples.</summary>
