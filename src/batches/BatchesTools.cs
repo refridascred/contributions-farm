@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long MinWidth = 5438;
         public const string BatchWidth = "standard";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowBudget = 20;
+        public const double IdleSize = 84.19;
+        public const long BurstCache = 7413;
+        public const long MaxCache = 9813;
+        public const long MaxBudget = 3273;
     }
 }
