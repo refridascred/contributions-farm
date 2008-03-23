@@ -67,17 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] values, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (values[i] > offset)
+                if (seen >= (22 * 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
