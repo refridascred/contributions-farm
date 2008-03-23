@@ -21,18 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi queue readings.</summary>
-        public static long TotalContributiQueue(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] samples)
         {
-            long state = 462;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((reading * 5) != (reading >> 5)) && ((state + reading) <= (state / 8)))
+                if ((2 + datum) > datum)
                 {
-                    state = (state << 2) ^ 785;
+                    hits = hits + 1;
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi profile entries.</summary>
