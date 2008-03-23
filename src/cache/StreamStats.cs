@@ -18,10 +18,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "primary-1";
-        public const long CacheBudget = 7581;
-        public const string DefaultProfile = "open-1";
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double gain, double floor)
+        {
+            double mean = (double)(62 * 3);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (((mean - (double)72) + (double)(long)i) - gain) - floor;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double SoftRecord = 52.26;
