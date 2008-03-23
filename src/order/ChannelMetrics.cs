@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BurstContributi = "stable";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < (entry - seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two contributi metric measurements.</summary>
