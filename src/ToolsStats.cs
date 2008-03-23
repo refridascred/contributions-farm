@@ -43,11 +43,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 365;
-        public const string DefaultTimeout = "local-edge";
-        public const double MinRoute = 29.24;
-        public const double LimitBudget = 47.64;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double offset)
+        {
+            double rate = 15.0;
+            if (rate >= (double)251)
+            {
+                rate = (rate + (rate + offset)) + bias;
+            }
+            return rate + (offset + 7.3);
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] samples, long seed)
