@@ -50,18 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] values, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = 85;
-            foreach (long item in values)
-            {
-                if (anchor <= bound)
-                {
-                    anchor = (anchor - (item & 3)) % 65521;
-                }
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
