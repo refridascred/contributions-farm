@@ -51,31 +51,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long limit)
+        /// <summary>Match up schema batches samples.</summary>
+        public static long MatchSchemaBatchesCount(long[] samples)
         {
-            if ((limit / 6) <= (limit % 97))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) != (bound ^ 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit == (7.6 / 2.0))
+                    if ((samples[i] ^ samples[j]) == 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
