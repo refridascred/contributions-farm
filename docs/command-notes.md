@@ -1,10 +1,14 @@
 # Command notes
 
-Keep githubfarm and stream names short and lowercase.
-Keep batch and payload names short and lowercase.
+Run the buffer check before changing any payload limits.
+The cluster module keeps contributi values in sync with the profile cache.
+
+Run the githubfarm check before changing any command limits.
+Each support is validated before it reaches the report queue.
+When a githubfarm fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Keep filter values small
-- Validate cache input early
+- Review checks limits each release
+- Prefer contributi defaults
+- Log every batches change
