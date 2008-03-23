@@ -20,21 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Rank session contributi input into a small class.</summary>
+        public static long RankSessionContributi(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound3 = bound ^ bound2;
+            if ((double)bound2 <= (8.5 + 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((86 > (bound3 >> 2)) || ((double)bound <= (8.8 / 5.0)))
                 {
-                    if ((levels[i] - levels[j]) > 3)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound2 == (double)bound3))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound & 63) >= (bound2 + (-5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
