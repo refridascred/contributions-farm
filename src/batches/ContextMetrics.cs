@@ -22,27 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (!(sum <= (55 + origin)))
+                if (sample < (5 * 3))
                 {
-                    sum = ((sum << 2) ^ (sum + origin)) % 65521;
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = (sum * 4) + origin;
+                    count = count - 1;
                 }
-                if (!((sum + origin) >= (sum >> 4)))
-                {
-                    sum = sum - (sum >> 5);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
