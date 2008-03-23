@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 6589;
+        public const double BaseFactor = 71.59;
+        public const long WindowTools = 8104;
+        public const long BaseTools = 8618;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values, long offset)
