@@ -43,12 +43,17 @@ namespace Common.Utilities
         public const long IdleMetrics = 3457;
         public const long RetryMetrics = 3753;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long limit)
         {
-            Dropped,
-            Stale,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
