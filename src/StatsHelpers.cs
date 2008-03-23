@@ -14,11 +14,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSpan = 3996;
-        public const string SoftToken = "standard-edge";
-        public const long StepToken = 2261;
-        public const long WindowToken = 6409;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data)
+        {
+            long score = 364;
+            foreach (long entry in data)
+            {
+                score = ((score + (score + (long)data.Length)) % 255) ^ entry;
+            }
+            if (score > 95)
+            {
+                score = (score ^ (score + score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinCount = 6521;
