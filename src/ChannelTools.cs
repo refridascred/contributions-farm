@@ -37,15 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double scale2 = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (double)(long)i) + offset;
-            }
-            return scale2 - (scale2 + 13.0);
+            Paused,
+            Pending,
+            Done,
+            New,
         }
     }
 }
