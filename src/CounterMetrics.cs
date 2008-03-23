@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 127) <= (1 ^ count))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Active,
         }
     }
 }
