@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (bias / 8.0) + (6.64 + bias);
+            if (drift < (double)24)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + 6.9;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Define account limits and defaults.</summary>
