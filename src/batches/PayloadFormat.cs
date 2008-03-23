@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long floor2)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long prev = floor ^ floor2;
-            if ((floor << 2) != (floor - prev))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (prev <= (prev % 16))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a batches reading.</summary>
