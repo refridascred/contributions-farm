@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4881;
-        public const long LimitRatio = 3934;
-        public const string DefaultSpan = "latest";
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
