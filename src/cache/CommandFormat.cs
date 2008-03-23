@@ -23,22 +23,14 @@ namespace Common.Utilities
         public const long BatchWidth = 2165;
         public const long IdleRoute = 9301;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (4 <= (count + cell))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
