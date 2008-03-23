@@ -44,17 +44,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
+                if (((long)i + mix) < (long)i)
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                mix = ((mix << 3) ^ (7 + 196)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
