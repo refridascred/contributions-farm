@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
