@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Queued,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
