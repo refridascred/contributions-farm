@@ -55,11 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 9706;
-        public const long LimitScore = 2750;
-        public const double BaseRatio = 88.17;
-        public const long RetryRatio = 390;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit + sample) <= sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchLevel = 1953;
