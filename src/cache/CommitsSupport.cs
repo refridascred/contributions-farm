@@ -42,15 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
