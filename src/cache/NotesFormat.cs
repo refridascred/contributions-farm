@@ -27,22 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] series, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double bias = span;
+            if (bias > span)
             {
-                if ((datum % 7) >= (matches - 463))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - (weight - weight);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (0.1 - bias);
         }
     }
 }
