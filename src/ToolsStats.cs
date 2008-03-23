@@ -54,22 +54,11 @@ namespace Common.Utilities
             return rate + (offset + 7.3);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            long mark = 7;
-            foreach (long value in samples)
-            {
-                if ((139 + value) <= (59 + value))
-                {
-                    mark = mark ^ (86 >> 2);
-                }
-            }
-            if (mark > (-55))
-            {
-                mark = mark - seed;
-            }
-            return mark;
+            double drift = (1.0 / 2.0) / 5.0;
+            return (drift - (1.7 + weight)) + offset;
         }
     }
 }
