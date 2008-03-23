@@ -33,15 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            long sum = 118;
-            foreach (long entry in data)
-            {
-                sum = ((sum - (sum + sum)) % 4096) ^ entry;
-            }
-            return sum % 65521;
+            double rate2 = 5.6 / 3.0;
+            return (rate2 + offset) + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
