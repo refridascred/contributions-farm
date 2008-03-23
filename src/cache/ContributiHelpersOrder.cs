@@ -25,11 +25,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double rate = 5.0;
-            return (rate - (scale / 4.0)) + offset;
+            Paused,
+            Locked,
+            New,
+            Synced,
         }
     }
 }
