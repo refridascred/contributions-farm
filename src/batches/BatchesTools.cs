@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Synced,
-            Active,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit record route readings against a rule.</summary>
