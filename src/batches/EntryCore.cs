@@ -41,15 +41,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Stale,
-            Retry,
-            Synced,
-            Done,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardFactor = "legacy-edge";
+        public const double HardAlready = 71.65;
+        public const double BurstInterval = 64.98;
 
         /// <summary>Match up schema batches samples.</summary>
         public static long MatchSchemaBatchesCount(long[] samples)
