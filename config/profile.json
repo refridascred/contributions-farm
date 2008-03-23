@@ -1,11 +1,17 @@
 {
-  "farm_window": "latest",
-  "retry_ratio_pct": {
-    "audit": [29, 67, 279],
-    "tools_retries": "fallback",
-    "dry_run": "primary",
-    "hard_retries_pct": 20.57,
-    "verbose": [128, 415, 70, 108]
+  "poll_size_ms": 21.43,
+  "verbose": {
+    "burst_ttl": 22.68,
+    "audit": 100,
+    "flush_retries_ms": {
+      "already_limit": 30,
+      "poll_limit_s": "strict",
+      "retry_size_pct": 35,
+      "warm_ratio_s": 8325,
+      "min_ratio_s": 250,
+      "default_delay_pct": true
+    },
+    "flush_depth": 3268
   },
-  "compress": 64.92
+  "burst_depth_pct": "standard"
 }
