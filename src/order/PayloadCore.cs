@@ -28,12 +28,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "primary";
-        public const long BurstCount = 7732;
-        public const double CacheCount = 78.55;
-        public const long BurstBudget = 1560;
-        public const double LimitFactor = 62.53;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MaxCount = "legacy-v2";
