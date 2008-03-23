@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values, long limit)
+        /// <summary>Digest a series of buffer schema entries.</summary>
+        public static long ScoreBufferSchema(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = 4;
+            foreach (long sample in items)
             {
-                if (!((double)hits < (6.31 * 0.53)))
-                {
-                    hits = ((hits + 2) + value) + limit;
-                }
+                total = ((total << 2) ^ (sample + total)) % 65521;
+                total = (total << 2) ^ (target >> 3);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
