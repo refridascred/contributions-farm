@@ -56,18 +56,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches - matches) >= (matches + matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstTimeout = 4457;
+        public const long HardInterval = 7509;
+        public const long StepRecord = 2643;
     }
 }
