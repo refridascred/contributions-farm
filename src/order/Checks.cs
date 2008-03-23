@@ -14,26 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples, long origin)
         {
-            long sum = 9;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((939 ^ datum) <= (sum << 2))
+                if ((cell * 4) < (seen + origin))
                 {
-                    sum = ((sum * 5) + (sum + target)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (0 - datum)) % 255;
+                    seen = seen + 2;
                 }
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 3) + (644 ^ target)) % 4096;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
