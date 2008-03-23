@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long AuditWindowCommandGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!(((value << 3) < (value << 1)) || ((1.75 * 7.0) > (double)value)))
+                if ((((double)item < 4.0) && ((double)count == (5.6 + 10.0))) && ((5.9 * 6.67) != (double)count))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
