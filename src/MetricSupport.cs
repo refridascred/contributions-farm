@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long WindowProfile = 437;
         public const long SoftLevel = 1738;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Compare every pair of channel farm readings.</summary>
+        public static long MatchChannelFarmCount(long[] samples)
         {
-            long state = 202;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state >= (cell - state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state - (414 * 2)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (cell + cell)) % 255;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
