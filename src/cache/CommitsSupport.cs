@@ -55,13 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] samples, long offset)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long reading in samples)
             {
-                if (item > matches)
+                if ((matches - reading) < offset)
                 {
                     matches = matches + 1;
                 }
