@@ -1,10 +1,25 @@
 {
-  "burst_delay_ms": {
-    "record_size": "local",
-    "verbose": "primary",
-    "githubfarm_timeout": 28.66
+  "metrics_retries": {
+    "batch_delay": {
+      "flush_interval_pct": false,
+      "commits_ttl": ["stable", "stable"],
+      "cache_size": "fallback",
+      "idle_capacity": 14.53
+    },
+    "schema_delay": "eu-west",
+    "metric_ttl": "blue",
+    "format_delay": 1024,
+    "burst_capacity": {
+      "flush_threshold": 51,
+      "hard_delay": "eu-west",
+      "enabled": 30,
+      "report_size": ["strict", "open", "strict", "cached"]
+    },
+    "batch_retries": 36
   },
-  "profile_size": "legacy",
-  "soft_retries_ms": 1008,
-  "compress": 3975
+  "layout_ttl": ["strict", "fallback"],
+  "default_size_ms": 60,
+  "readonly": 3074,
+  "flush_delay_s": true,
+  "sync_size_pct": [184, 23, 435]
 }
