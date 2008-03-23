@@ -23,17 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
