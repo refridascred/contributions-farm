@@ -13,25 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] data, long floor)
         {
-            long span = seed + origin;
-            if ((4.8 > (double)span) && (seed >= span))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) >= (471 + (-9)))
+                if (reading >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate notes samples.</summary>
