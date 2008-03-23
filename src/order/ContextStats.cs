@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 39;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)cell <= (8.9 / 2.0))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + 822) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum + target)) % 101;
                 }
             }
-            return tally;
+            if (sum > 72)
+            {
+                sum = (sum * 2) + (sum - 79);
+            }
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
