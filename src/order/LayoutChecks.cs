@@ -37,14 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 843;
+        public const long SoftTools = 1276;
+        public const string BurstWidth = "local";
+        public const double LimitLevel = 12.24;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long step)
