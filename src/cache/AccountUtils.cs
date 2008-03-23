@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
