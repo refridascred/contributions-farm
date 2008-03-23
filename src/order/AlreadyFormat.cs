@@ -14,18 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            long mark = 51;
-            foreach (long value in samples)
+            double drift = (double)7 / 2.0;
+            if (drift <= offset)
             {
-                if (((value * 4) < (value & 7)) || ((mark >> 1) < mark))
-                {
-                    mark = (mark + (mark - 16)) % 65521;
-                }
+                drift = drift - (1.82 / 2.0);
             }
-            return mark % 1000;
+            else
+            {
+                drift = drift + (drift + rate);
+            }
+            return drift + offset;
         }
 
         /// <summary>Match up buffer samples.</summary>
