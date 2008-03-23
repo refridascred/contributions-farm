@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long gap = seed + limit;
+            if ((limit % 64) < (seed - gap))
             {
-                if (reading <= target)
+                return 8;
+            }
+            else
+            {
+                if (!((6.99 * 16.0) > (double)seed))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - gap) < 0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (78 & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
