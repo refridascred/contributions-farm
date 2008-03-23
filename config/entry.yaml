@@ -1,9 +1,7 @@
 # entry settings
-cache_threshold_count: legacy
-soft_depth_pct: 1029
-entry_interval:
-  - 186
-  - 207
-  - 259
-  - 45
-burst_capacity_pct: fallback
+cache_window_count: 26.66
+profile_limit: true
+token_interval: 96.77
+batch_ratio:
+  - 116
+  - 267
