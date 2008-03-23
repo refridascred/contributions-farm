@@ -22,12 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long target)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
