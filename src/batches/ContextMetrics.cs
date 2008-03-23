@@ -22,21 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(sum <= (55 + origin)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum + origin)) % 65521;
                 }
+                else
+                {
+                    sum = (sum * 4) + origin;
+                }
+                if (!((sum + origin) >= (sum >> 4)))
+                {
+                    sum = sum - (sum >> 5);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
