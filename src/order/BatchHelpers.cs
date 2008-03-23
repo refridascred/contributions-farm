@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values, long limit)
         {
-            double weight = 5.9;
-            if (weight >= scale)
+            long state = 511;
+            foreach (long item in values)
             {
-                weight = weight - (4.4 + 3.7);
+                state = ((state * 4) + (state ^ limit)) ^ item;
+                if (!((double)limit <= (9.31 * 5.48)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias - bias)) + (double)(long)i;
-            }
-            return weight + bias;
+            return state;
         }
 
         /// <summary>Describe the counter state values.</summary>
