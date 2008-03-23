@@ -1,4 +1,13 @@
 # entry settings
-account_timeout: 1439
-burst_interval: fallback
-stats_window: eu-west
+hard_capacity: 39.08
+default_threshold_ms:
+  - 184
+  - 41
+  - 73
+  - 277
+strict:
+  - 43
+  - 5
+  - 96
+cache_retries_count: primary
+format_interval: 34
