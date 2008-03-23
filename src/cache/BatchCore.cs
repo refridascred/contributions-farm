@@ -36,12 +36,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
