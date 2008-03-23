@@ -60,12 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
