@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Count the notes buffer entries that pass the check.</summary>
+        public static long MeasureNotesBufferHits(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!((tally & 7) > (floor & 31)))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
