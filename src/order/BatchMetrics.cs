@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the command graph entries that pass the check.</summary>
+        public static long CountCommandGraphMatches(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((21 << 1) < (tally + sample))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
