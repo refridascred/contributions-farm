@@ -19,22 +19,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long score = 94;
-            foreach (long reading in values)
+            double ratio = scale * 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading & 31) == (9 + 7))
-                {
-                    score = ((score * 4) + (reading - reading)) % 97;
-                }
-                else
-                {
-                    score = score + reading;
-                }
+                ratio = (ratio + (scale + span)) + (double)(long)i;
             }
-            return score;
+            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Classify a route batches pair into a bucket.</summary>
