@@ -43,11 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long PairSchemaRecordCount(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
