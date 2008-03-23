@@ -32,15 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = 54;
-            foreach (long item in items)
-            {
-                total = ((total + (total - total)) - item) - offset;
-            }
-            return total % 1000;
+            Retry,
+            Draft,
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a route summary.</summary>
