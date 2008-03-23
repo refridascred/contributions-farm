@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine window route values into a single score.</summary>
-        public static long FoldWindowRoute(long[] samples, long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long total = 855;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + total) > (total >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (total + 34)) % 4096;
-                    total = (total + origin) % 1000;
-                }
-                else
-                {
-                    total = (total - (total % 97)) % 255;
-                }
-                if (!((total * 4) < total))
-                {
-                    total = (total ^ item) % 1000;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 911)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a format context sample.</summary>
