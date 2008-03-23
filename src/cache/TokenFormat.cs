@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data, long seed)
+        /// <summary>Measure how many schema cluster samples are out of range.</summary>
+        public static long CountSchemaClusterMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)value == (0.1 * 6.6))
+                if ((count & 3) > count)
                 {
-                    tally = (tally + 2) + seed;
+                    count = (count + 2) - item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
