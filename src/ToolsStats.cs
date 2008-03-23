@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Synced,
-            Paused,
             New,
+            Locked,
+            Done,
             Retry,
         }
 
