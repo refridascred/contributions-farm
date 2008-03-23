@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count & 255) >= count)
+                if (series[i] <= offset)
                 {
-                    count = ((count + 1) - reading) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
