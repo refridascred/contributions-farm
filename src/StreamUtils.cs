@@ -39,30 +39,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            long mix = 517;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (entry >= (entry - mix))
+                if ((2.4 + 0.8) <= (double)matches)
                 {
-                    break;
-                }
-                else
-                {
-                    mix = mix - (entry + mix);
-                }
-                if ((entry + entry) <= mix)
-                {
-                    mix = mix ^ (entry + entry);
+                    matches = (matches + 3) - item;
                 }
             }
-            if (mix < 725)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Classify a metric support pair into a bucket.</summary>
