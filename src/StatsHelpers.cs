@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BatchToken = 5149;
         public const long MinToken = 972;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double ratio = scale * 4.0;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (scale + span)) + (double)(long)i;
-            }
-            return ratio - (ratio / 9.0);
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
