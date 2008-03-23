@@ -1,9 +1,8 @@
 # githubfarm settings
-contributi_size:
-  channel_timeout: fallback
-  record_delay: true
-  sync_timeout_pct: 17
-sync_delay: false
-warm_window_s: fallback
-compress: edge
-checks_threshold: 666
+graph_window: open
+format_depth: false
+idle_ttl_count: false
+dry_run: 51
+profile_ratio:
+  - standard
+  - eu-west
