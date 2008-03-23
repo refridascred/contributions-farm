@@ -38,19 +38,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value <= target)
+                if ((value - count) < step)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
