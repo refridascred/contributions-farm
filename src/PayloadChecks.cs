@@ -34,11 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long origin)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a route options.</summary>
