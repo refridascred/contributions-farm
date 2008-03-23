@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
         {
-            double scale = (double)(711 + (-9));
-            if (scale <= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (scale - span);
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (rate * 0.88);
+            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
