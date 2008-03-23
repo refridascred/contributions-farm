@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const double BaseBudget = 55.91;
         public const long BatchSupport = 570;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long bound)
         {
-            Dropped,
-            Synced,
-            Active,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
