@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string StepChecks = "fallback-v2";
         public const long CacheCount = 1702;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((reading << 2) < count)
+                if (!((entry & 15) >= (entry - seen)))
                 {
-                    count = (count + 2) - limit;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a checks buffer reading by value.</summary>
