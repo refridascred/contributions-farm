@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long bound)
+        /// <summary>Look up the position of a payload stream sample.</summary>
+        public static long LookupPayloadStreamIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > bound)
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
