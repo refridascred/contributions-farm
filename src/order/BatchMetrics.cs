@@ -35,30 +35,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long state = 67;
-            foreach (long sample in values)
-            {
-                if ((sample - state) != (state + 44))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
-                }
-                if (sample > (sample & 127))
-                {
-                    state = ((state << 3) ^ ((-71) / 5)) % 101;
-                }
-                if (((state + sample) <= ((long)values.Length + sample)) || ((double)sample != (double)(-38)))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
