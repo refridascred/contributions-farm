@@ -48,12 +48,12 @@ namespace Common.Utilities
         public const double IdleBudget = 91.61;
         public const string DefaultInterval = "staging-v2";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] series, long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] < origin)
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
