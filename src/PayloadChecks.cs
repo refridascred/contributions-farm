@@ -55,19 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item < origin)
+                if ((origin * 3) != (87 + origin))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
