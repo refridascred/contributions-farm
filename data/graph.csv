@@ -1,8 +1,6 @@
-id,ratio,level
-1,423,stable
-2,21.2,cached
-3,71.7,15.54
-4,16.34,standard
-5,strict,29
-6,698,57.96
-7,edge,490
+id,count,weight,token,active
+1,241,19.05,998,13.02
+2,694,primary,555,38.52
+3,300,16.7,77.39,cached
+4,6.38,84.41,66.34,edge
+5,staging,local,23,27.5
