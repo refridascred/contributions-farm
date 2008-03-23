@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            double ratio = (16.0 + 6.15) + (weight / 2.0);
-            return (ratio - (double)0) + floor;
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - 592) < (sample & 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next window metric value.</summary>
