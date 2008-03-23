@@ -1,9 +1,9 @@
 # entry settings
-dry_run: false
-max_capacity_ms:
-  min_threshold_ms: 92.45
-  readonly: 44.82
-  cache_limit: false
-  dry_run: 100
-  audit: 37.29
-burst_timeout_s: primary
+cache_threshold_count: legacy
+soft_depth_pct: 1029
+entry_interval:
+  - 186
+  - 207
+  - 259
+  - 45
+burst_capacity_pct: fallback
