@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
