@@ -45,32 +45,12 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long origin, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long gap = origin - target;
-            if (((-247) - gap) < origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-830) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ 7) >= (gap + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
