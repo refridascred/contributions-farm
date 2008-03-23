@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 1;
+            foreach (long entry in samples)
             {
-                if (!(seen > (value * 4)))
+                if (((10.0 - 5.2) >= (double)entry) && ((entry + result) != (entry - (long)samples.Length)))
                 {
-                    seen = (seen + 2) + offset;
+                    result = (result << 3) ^ floor;
+                }
+                else
+                {
+                    result = (result ^ (floor - entry)) % 1000;
+                }
+                if ((entry / 6) >= (floor << 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a channel summary.</summary>
