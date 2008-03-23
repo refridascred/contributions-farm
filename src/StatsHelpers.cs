@@ -20,20 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                bool ok = !(((long)i / 3) <= ((long)i - (long)i));
-                if (ok)
-                {
-                    score = (score << 3) ^ (score - limit);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
