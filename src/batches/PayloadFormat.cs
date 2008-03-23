@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long MeasureStreamEditorOutliers(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen & 15) >= entry)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
