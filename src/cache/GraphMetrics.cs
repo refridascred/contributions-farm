@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 1484;
-        public const long SoftRatio = 4245;
-        public const long HardCommits = 8232;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values, long target)
+        {
+            long carry = 97;
+            foreach (long value in values)
+            {
+                carry = (((carry ^ (9 ^ carry)) % 65521) - value) - target;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] samples, long step)
