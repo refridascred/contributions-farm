@@ -31,11 +31,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next batches buffer value from a seed.</summary>
+        public static long RollBatchesBuffer(long seed)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum ^ (64 + sum)) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
