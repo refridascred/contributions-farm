@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank context report input into a small class.</summary>
-        public static long GradeContextReport(long origin, long origin2)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long bound)
         {
-            if (origin2 >= (origin2 >> 1))
+            long gap = limit ^ bound;
+            if ((limit + 790) >= (gap + gap))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (origin2 > (origin2 - origin2))
+                if ((bound - 860) < limit)
                 {
                     return 2;
                 }
                 else
                 {
-                    return 1;
+                    if (((double)limit != (double)7) || ((2.59 - 7.87) == (double)gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
