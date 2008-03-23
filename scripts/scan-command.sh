@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue green; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-standard}"
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=208
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached legacy blue stable; do
+    log "checking ${item}"
+done
