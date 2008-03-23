@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count > (value << 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 83.54;
+        public const string IdleTimeout = "stable-1";
+        public const long HardFactor = 5701;
+        public const long BatchLayout = 6967;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterMatches(long[] series)
