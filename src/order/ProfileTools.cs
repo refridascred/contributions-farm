@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the format token entries that pass the check.</summary>
-        public static long TallyFormatTokenMatches(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((double)tally < 0.8))
-                {
-                    tally = ((tally + 3) - value) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxLevel = 2619;
+        public const double BurstMetrics = 90.49;
+        public const long MinCount = 7342;
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double weight, double bias)
