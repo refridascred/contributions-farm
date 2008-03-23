@@ -1,7 +1,7 @@
 {
-  "batch_window": "standard",
-  "order_ttl": "latest",
-  "base_capacity_ms": true,
-  "compress": [435, 486, 236, 15],
-  "sync_threshold_pct": false
+  "sync_limit_count": 79.5,
+  "dry_run": [187, 427],
+  "soft_limit_ms": "standard",
+  "checks_interval": 43,
+  "retry_window": 1952
 }
