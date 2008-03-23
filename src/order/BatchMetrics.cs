@@ -66,23 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long bound)
+        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
+        public static long LocateGithubfarmGraphIndex(long[] series, long origin)
         {
-            long anchor = -338;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (datum + anchor)) % 1000;
-                if ((anchor + datum) > anchor)
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
                 {
-                    anchor = (anchor << 3) ^ 306;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + bound) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
