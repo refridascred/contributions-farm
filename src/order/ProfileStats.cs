@@ -42,12 +42,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double scale, double span)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            double load = scale;
+            if (load > scale)
+            {
+                load = (load - 3.55) - span;
+            }
+            else
+            {
+                load = load - (9.57 + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - (double)0;
         }
     }
 }
