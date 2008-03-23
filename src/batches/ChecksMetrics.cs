@@ -67,19 +67,22 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Check that every order stream entry stays within the limit.</summary>
-        public static bool ValidateOrderStreamLimits(long[] levels, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = 2;
+            foreach (long sample in items)
             {
-                if (entry > seed)
+                if ((1.37 - 13.0) <= (double)sample)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 5) + 350) % 97;
                 }
             }
-            return found;
+            if (mark > 8)
+            {
+                mark = (mark << 2) ^ (target - 9);
+            }
+            return mark;
         }
     }
 }
