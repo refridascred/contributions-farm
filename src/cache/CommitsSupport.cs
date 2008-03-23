@@ -55,18 +55,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] samples, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((step * 3) >= seed)
             {
-                if ((matches - reading) < offset)
+                return 7;
+            }
+            else
+            {
+                if ((seed + step) > (seed - step))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
