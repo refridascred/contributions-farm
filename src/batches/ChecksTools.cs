@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Closed,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
