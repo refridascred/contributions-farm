@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Draft,
-            Locked,
-            Queued,
-            Synced,
+            Closed,
+            Paused,
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit metric command readings against a rule.</summary>
