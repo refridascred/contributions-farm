@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "latest-edge";
-        public const long HardInterval = 966;
-        public const long RetryBudget = 6677;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] data, long offset)
