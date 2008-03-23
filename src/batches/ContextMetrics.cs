@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 83.54;
-        public const string IdleTimeout = "stable-1";
-        public const long HardFactor = 5701;
-        public const long BatchLayout = 6967;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchGaps(long[] readings, long bound)
