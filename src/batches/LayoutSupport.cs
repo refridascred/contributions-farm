@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long MaxTools = 724;
         public const long StepTimeout = 8647;
 
-        /// <summary>Accumulate batches command samples.</summary>
-        public static long ScoreBatchesCommand(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mark = 90;
-            foreach (long datum in items)
-            {
-                if ((datum + 229) != (datum * 4))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            return mark % 4096;
+            Idle,
+            Locked,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the entry level values.</summary>
