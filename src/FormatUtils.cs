@@ -69,24 +69,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            if ((origin & 127) > (offset - origin))
+            double scale = span;
+            if (scale > scale)
             {
-                return 0;
+                scale = (scale - (scale - scale)) + weight;
             }
             else
             {
-                if ((offset * 4) <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = scale - span;
             }
+            return scale - 6.29;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
