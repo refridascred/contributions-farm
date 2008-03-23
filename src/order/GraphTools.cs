@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] data, long floor)
         {
-            long score = 99;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((1.4 - 9.6) == (double)value)
+                if (!(((double)sample <= (2.67 + 15.0)) && ((sample - sample) > (hits + hits))))
                 {
-                    score = ((score * 2) + (score / 2)) % 97;
-                    score = (score - ((long)values.Length & 15)) % 65521;
-                }
-                if ((7.0 - 4.0) != (double)score)
-                {
-                    score = ((score * 4) + (value / 5)) % 65521;
-                }
-                if (0.17 > (double)value)
-                {
-                    break;
+                    hits = (hits + 1) + floor;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
