@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many schema cluster samples are out of range.</summary>
-        public static long CountSchemaClusterMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count & 3) > count)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 9596;
+        public const long BatchCounter = 4850;
+        public const long CacheBudget = 3608;
+        public const long MinTimeout = 6843;
+        public const string BaseCounter = "staging";
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
