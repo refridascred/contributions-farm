@@ -1,9 +1,10 @@
 # entry settings
-audit: fallback
-soft_threshold: false
-default_ratio:
-  - 426
-  - 1
-base_interval:
-  - cached
-  - primary
+poll_limit_s: 100
+hard_size_pct: 57.79
+batch_delay: 63.25
+min_capacity:
+  - 438
+  - 317
+  - 237
+cache_delay: cached
+flush_delay_ms: false
