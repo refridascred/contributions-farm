@@ -73,22 +73,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples, long origin)
+        /// <summary>Combine batch account values into a single score.</summary>
+        public static long TallyBatchAccount(long[] series)
         {
-            long mark = 445;
-            foreach (long item in samples)
+            long state = 454;
+            foreach (long entry in series)
             {
-                if (item >= (mark ^ item))
-                {
-                    mark = ((mark * 3) + (item + 38)) % 4096;
-                }
+                state = state - ((-77) * 3);
+                state = ((state << 3) ^ (750 - entry)) % 1000;
             }
-            if (mark < 167)
+            if (state < 0)
             {
-                mark = mark + origin;
+                state = (state - (state + state)) % 101;
             }
-            return mark % 65521;
+            return state % 1000;
         }
     }
 }
