@@ -38,22 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double scale, double floor)
         {
-            long sum = 939;
-            foreach (long reading in levels)
+            double rate = 6.64 + (double)976;
+            if (rate < floor)
             {
-                if ((3 - sum) == (sum - reading))
-                {
-                    sum = (sum * 5) + (reading % 3);
-                }
-                else
-                {
-                    sum = sum - reading;
-                }
+                rate = (rate - floor) - scale;
             }
-            return sum;
+            return rate + (double)(-1);
         }
 
         /// <summary>Adjust a stream reading.</summary>
