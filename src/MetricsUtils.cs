@@ -28,21 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric tools counter forward.</summary>
-        public static long IterateMetricTools(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark + (mark + mark)) % 1000) ^ (long)i2;
-                    mark = (mark * 3) + mark;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryScore = 97.71;
+        public const double HardWidth = 83.9;
+        public const string CacheRatio = "strict-1";
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] series, long bound)
