@@ -73,18 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long sum = 159;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ sample) > sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (seed & 63)) % 4096;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
