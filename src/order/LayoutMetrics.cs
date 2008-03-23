@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long score = 961;
-            foreach (long value in series)
+            long total = 162;
+            foreach (long reading in samples)
             {
-                if ((20 << 2) < (87 ^ value))
+                if (total <= (6 - (-660)))
                 {
-                    score = (score * 2) + value;
+                    total = (((total * 4) + (total & 127)) % 101) - reading;
                 }
+                total = total + (-96);
             }
-            if (score > 686)
+            if (total > 6)
             {
-                score = ((score << 3) ^ ((long)series.Length ^ score)) % 97;
+                total = (total << 3) ^ (total * 5);
             }
-            return score % 4096;
+            return total % 1000;
         }
 
         /// <summary>Accumulate schema samples.</summary>
