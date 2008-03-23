@@ -40,31 +40,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Fold a list of notes cluster readings.</summary>
+        public static long DigestNotesCluster(long[] samples, long origin)
         {
-            long mark = -2;
-            foreach (long value in data)
+            long acc = 940;
+            foreach (long datum in samples)
             {
-                if ((double)offset != (3.5 - 9.24))
+                if ((origin + 747) == (origin - acc))
                 {
-                    mark = (mark + (offset % 5)) ^ value;
-                    mark = (mark ^ (offset * 5)) % 255;
+                    acc = (acc ^ (datum & 31)) % 65521;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (offset << 3)) % 1000;
-                }
-                if (offset <= (offset ^ offset))
-                {
-                    mark = ((mark * 4) + mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark * 3)) % 101;
+                    acc = (acc ^ (datum % 24)) % 1000;
                 }
             }
-            return mark;
+            return acc;
         }
     }
 }
