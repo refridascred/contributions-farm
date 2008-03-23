@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = 897;
-            foreach (long value in levels)
-            {
-                if ((double)floor >= (double)value)
-                {
-                    carry = carry - (855 - value);
-                }
-            }
-            if (carry < 10)
-            {
-                carry = (carry - floor) % 97;
-            }
-            return carry;
+            Locked,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Project the next filter value.</summary>
