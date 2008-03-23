@@ -65,19 +65,14 @@ namespace Common.Utilities
         public const long LimitFilter = 2915;
         public const double WindowFilter = 49.96;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Active,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
