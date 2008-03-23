@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support window samples are out of range.</summary>
-        public static long TallySupportWindowHits(long[] series, long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (8.32 <= (double)seen)
-                {
-                    seen = ((seen + 3) - sample) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
