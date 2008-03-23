@@ -23,38 +23,17 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Classify a route batches pair into a bucket.</summary>
-        public static long BucketRouteBatches(long step, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] readings, long limit)
         {
-            if (((double)step <= (double)seed) && ((double)seed != (7.7 + 3.3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6 < (seed + 689)) && ((double)seed <= (2.43 - 5.73)))
+                if (readings[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed / 2) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) <= (seed - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
