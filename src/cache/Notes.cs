@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] readings, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            long state = 713;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state + 483) - item) + origin;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result - result) + (long)i2;
+                    result = ((result * 5) + bound) % 65521;
+                }
+                result = (result - result) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Adjust a farm reading.</summary>
