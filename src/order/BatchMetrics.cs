@@ -32,36 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long limit2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long floor)
         {
-            if ((limit2 + limit2) > (limit % 5))
+            if (!((bound - bound) > bound))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((limit + limit2) > (limit - limit2))
+                if ((6.01 * 9.0) != (double)bound)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (limit > (limit + 41))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit < (limit + limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
