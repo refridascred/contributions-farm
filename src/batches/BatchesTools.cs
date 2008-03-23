@@ -28,9 +28,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 9510;
-        public const string WindowSize = "alpha-1";
-        public const string BurstCount = "legacy";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Retry,
+            Idle,
+            Active,
+            Draft,
+            Closed,
+        }
     }
 }
