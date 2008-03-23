@@ -28,10 +28,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxScore = "cached";
-        public const double SoftPayload = 66.73;
-        public const double MaxPayload = 51.72;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double offset)
+        {
+            double scale = (offset - offset) * 9.62;
+            if (scale >= offset)
+            {
+                scale = scale + (scale - scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (15.0 - bias);
+        }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
         public static long FoldGithubfarmPayload(long[] series, long limit)
