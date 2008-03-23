@@ -36,10 +36,14 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseFactor = 7582;
-        public const long RetryBatches = 4377;
-        public const long BurstBatches = 5752;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Draft,
+            Done,
+            Ready,
+            Active,
+        }
 
         /// <summary>Rank format channel input into a small class.</summary>
         public static long BucketFormatChannel(long offset, long floor)
