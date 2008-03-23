@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every notes already entry stays within the limit.</summary>
-        public static bool ValidateNotesAlreadyLimits(long[] readings, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
