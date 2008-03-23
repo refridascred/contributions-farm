@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long step2)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            if ((step2 << 1) <= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step2 + step2) > (step ^ 146)) && ((step2 - step2) > (step2 - (-2))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 << 1) >= (606 - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step <= 8.22)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
