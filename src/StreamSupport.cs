@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order format sample.</summary>
-        public static long FindOrderFormatIndex(long[] levels, long step)
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long MeasureSchemaAccountGaps(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
+                if (!((tally - 306) <= value))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - step;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
