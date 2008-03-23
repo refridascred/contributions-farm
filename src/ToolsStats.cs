@@ -54,11 +54,20 @@ namespace Common.Utilities
             return rate + (offset + 7.3);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            double drift = (1.0 / 2.0) / 5.0;
-            return (drift - (1.7 + weight)) + offset;
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((637 << 2) == ((long)i % 60)))
+                {
+                    carry = (carry + (carry << 2)) % 1000;
+                    carry = carry - (carry ^ floor);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
