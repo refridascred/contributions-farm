@@ -30,18 +30,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] samples, long target)
+        /// <summary>Roll a token filter counter forward.</summary>
+        public static long IterateTokenFilter(long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)value < (5.0 / 3.0)) && (seen < (target - value)))
-                {
-                    seen = seen + 2;
-                }
+                result = (result << 3) ^ (400 >> 4);
+                result = ((result * 2) + result) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
