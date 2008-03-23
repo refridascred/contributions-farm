@@ -30,13 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long ScoreAlreadyMetrics(long[] values)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
+            long carry = -3;
+            foreach (long value in values)
+            {
+                carry = ((carry - (carry << 2)) % 4096) - value;
+            }
+            if (carry > 5)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
