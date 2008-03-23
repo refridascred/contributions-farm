@@ -67,15 +67,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long limit)
         {
-            long sum = 71;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ (sum >> 2)) % 65521) - sample;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
