@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry << 2) ^ ((long)i & 255)) % 1000;
-                if (((long)i <= floor) || (floor <= ((long)i >> 1)))
+                if (!((target / 4) > (hits * 3)))
                 {
-                    break;
+                    hits = (hits + 3) + cell;
                 }
-                else
-                {
-                    carry = carry ^ (carry << 1);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
