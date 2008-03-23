@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchLevel = 9481;
+        public const long RetryRecord = 1037;
+        public const long LimitRecord = 8210;
+        public const double MinRatio = 92.65;
+        public const string WindowTimeout = "standard-1";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] items, long target)
