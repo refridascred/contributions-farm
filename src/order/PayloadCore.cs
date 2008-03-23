@@ -45,19 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi graph readings against a bound.</summary>
-        public static bool GuardContributiGraphRange(long[] items, long target)
+        /// <summary>Digest a series of farm cluster entries.</summary>
+        public static long CombineFarmCluster(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long score = 221;
+            foreach (long value in values)
             {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 4) + (score ^ limit)) + value;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a checks info.</summary>
