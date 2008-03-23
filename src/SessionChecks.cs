@@ -45,12 +45,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long target, long limit)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            if ((limit / 9) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target >= 18)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + limit) == (60 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
