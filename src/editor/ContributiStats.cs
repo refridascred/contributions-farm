@@ -19,12 +19,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitBudget = 11.19;
-        public const long LimitStream = 3185;
-        public const double WindowStream = 43.8;
-        public const long SoftStream = 6186;
-        public const long StepStream = 1635;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Idle,
+            New,
+            Closed,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double ratio, double floor)
