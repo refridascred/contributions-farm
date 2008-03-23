@@ -1,6 +1,7 @@
 {
-  "poll_depth": [157, 428],
-  "retry_ratio_s": 6.1,
-  "batch_limit_s": 3470,
-  "cache_size": false
+  "order_capacity": ["standard", "eu-west", "blue", "latest"],
+  "batches_limit": ["fallback", "latest", "strict", "eu-west"],
+  "batch_delay_count": 500,
+  "graph_window": "strict",
+  "retry_size": 55.57
 }
