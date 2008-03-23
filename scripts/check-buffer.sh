@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=180
+BUFFER_LIMIT=340
 log "limit is ${BUFFER_LIMIT}"
 
-for item in blue green stable latest; do
+for item in staging fallback blue green; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
