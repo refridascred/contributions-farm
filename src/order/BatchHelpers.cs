@@ -20,19 +20,14 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] levels, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Closed,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a account options.</summary>
