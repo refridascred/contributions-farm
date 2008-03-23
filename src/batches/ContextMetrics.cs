@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] levels, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
