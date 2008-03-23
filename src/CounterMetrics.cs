@@ -62,19 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double ratio = weight;
-            if (ratio >= weight)
-            {
-                ratio = ratio + (4.65 / 4.0);
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (bias / 3.0);
+            Pending,
+            Draft,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
