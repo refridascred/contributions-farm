@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long result = 549;
-            foreach (long item in data)
-            {
-                result = result - (item / 5);
-                if ((item - result) >= item)
-                {
-                    break;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result + 156) % 4096;
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
