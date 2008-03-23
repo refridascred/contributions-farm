@@ -49,23 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account context samples are out of range.</summary>
-        public static long CountAccountContextOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits << 1) < target)
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxDepth = 5822;
+        public const long CacheGithubfarm = 5732;
+        public const double StepWidth = 41.62;
+        public const long MaxLevel = 8937;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
