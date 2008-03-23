@@ -69,26 +69,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Compare every pair of order batch readings.</summary>
+        public static long OverlapOrderBatchCount(long[] samples)
         {
-            long anchor = 305;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor << 2) <= (9 << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - item) % 255;
-                }
-                if ((anchor << 1) <= item)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = ((anchor * 5) + anchor) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
