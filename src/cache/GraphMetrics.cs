@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate command batch samples.</summary>
-        public static long ScoreCommandBatch(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 0;
-            foreach (long datum in readings)
-            {
-                carry = (carry - (115 >> 2)) - datum;
-                if ((carry * 2) < (carry + (-376)))
-                {
-                    carry = (carry << 2) ^ (73 - carry);
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 4096;
+            Failed,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate graph samples.</summary>
