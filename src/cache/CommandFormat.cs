@@ -16,15 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
