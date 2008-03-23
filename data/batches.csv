@@ -1,6 +1,6 @@
-id,state,weight,level,owner
-1,22.07,92.78,442,838
-2,2.31,local,817,807
-3,897,93.35,eu-west,268
-4,blue,cached,fallback,82.62
-5,453,938,45.3,140
+id,score,ratio,region,label
+1,918,842,704,25.38
+2,306,86,627,strict
+3,548,667,fallback,572
+4,16.12,742,984,13.6
+5,81.29,70.7,648,44.1
