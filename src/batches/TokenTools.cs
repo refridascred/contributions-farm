@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((hits >> 1) > (sample - sample)) && ((hits - hits) <= (sample + sample)))
+                if (!((8.0 + 7.42) < (double)target))
                 {
-                    hits = hits + 1;
+                    score = (score * 2) + (score + score);
+                    score = (score << 2) ^ target;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Fold a list of contributi queue readings.</summary>
