@@ -51,12 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Closed,
-            Idle,
-            New,
+            Dropped,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
