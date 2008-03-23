@@ -16,31 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            if (!(8 >= (origin << 2)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 2) <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + origin) == (origin ^ origin))
+                    if ((data[i] + data[j]) < 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
