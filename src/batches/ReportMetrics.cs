@@ -37,22 +37,10 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels, long seed)
-        {
-            long result = 701;
-            foreach (long item in levels)
-            {
-                if (item > (seed << 2))
-                {
-                    result = result ^ item;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 18;
+        public const double BaseCache = 29.26;
+        public const string CacheSpan = "latest-1";
+        public const long IdleRatio = 4783;
     }
 }
