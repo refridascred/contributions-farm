@@ -1,16 +1,30 @@
 # entry settings
-default_ttl_count:
-  hard_retries: strict
-  idle_delay_ms:
-    format_delay: legacy
-    farm_timeout: open
-    readonly: eu-west
-  burst_timeout_count: 77
+burst_size_pct: true
+soft_window_s: stable
+min_window_count:
+  burst_size_pct:
+    - 406
+    - 12
+    - 393
+    - 458
+  default_delay_pct: 44.09
+  cache_window: legacy
   dry_run: 250
-  idle_size_ms: 500
-  cache_depth: primary
-persist:
-  - 471
-  - 199
-  - 248
-filter_window: true
+  default_size:
+    - standard
+    - staging
+    - local
+    - latest
+  warm_ttl_pct: true
+order_window:
+  persist: edge
+  audit: 60.96
+  soft_size: 86.4
+  poll_interval:
+    max_limit: 338
+    persist: blue
+    hard_ratio_ms: 56.66
+    layout_retries: latest
+    max_delay_pct: 81.43
+  cache_threshold: 60
+  compress: staging
