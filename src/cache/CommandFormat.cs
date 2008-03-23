@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const long BatchWidth = 2165;
         public const long IdleRoute = 9301;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Paused,
-            Synced,
-            Locked,
-            Idle,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 777;
+        public const long MinCount = 1765;
+        public const double MaxWindow = 57.03;
+        public const double CacheLevel = 85.09;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 9037;
