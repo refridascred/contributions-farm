@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = 8;
-            foreach (long cell in series)
-            {
-                if (((limit % 8) >= (cell - anchor)) || ((514 ^ limit) != (limit + anchor)))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
