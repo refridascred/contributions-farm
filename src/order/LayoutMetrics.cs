@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long MaxInterval = 68;
         public const long BaseSize = 5858;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Compare every pair of counter context readings.</summary>
