@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 4654;
+        public const long DefaultCount = 8756;
+        public const long IdleBudget = 1879;
+        public const string HardAlready = "primary-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseScore = 3741;
