@@ -1,37 +1,7 @@
 # support settings
-schema_delay: 97.36
-flush_threshold_count: 1024
-readonly:
-  command_retries: false
-  hard_interval_s: eu-west
-  burst_ttl_ms: 7272
-  account_delay:
-    route_ratio: 93.36
-    poll_threshold: 500
-    min_retries_s:
-      - eu-west
-      - local
-      - local
-    enabled: 500
-    sync_capacity_pct:
-      - legacy
-      - legacy
-      - latest
-      - stable
-  readonly:
-    - 468
-    - 309
-    - 414
-  max_depth: 33
-min_ttl_s: legacy
-base_threshold_s: 45.79
-record_depth:
-  layout_size: edge
-  poll_delay_ms: true
-  contributi_delay:
-    - 328
-    - 417
-    - 259
-  sync_threshold_s: 36
-  burst_ratio_count: standard
-  default_capacity: fallback
+retry_interval_s: standard
+idle_window_pct: fallback
+default_depth: eu-west
+commits_threshold: 72
+persist: 72
+max_ttl_pct: 91.96
