@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Roll a notes graph counter forward.</summary>
+        public static long IterateNotesGraph(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((long)i - carry) > floor)
+                if ((3.75 - 6.4) < (double)sum)
                 {
-                    carry = (carry * 3) + (carry >> 1);
+                    sum = ((sum * 3) + limit) % 101;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                sum = (sum << 3) ^ 90;
+                if ((limit + 700) > sum)
+                {
+                    sum = (sum + (sum ^ sum)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
