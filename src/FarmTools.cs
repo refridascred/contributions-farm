@@ -25,15 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Find the first route metrics entry that matches the target.</summary>
+        public static long FindRouteMetricsIndex(long[] items, long seed)
         {
-            long carry = 6;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - (436 - cell);
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
