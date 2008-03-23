@@ -1,14 +1,4 @@
 # githubfarm settings
-tools_retries:
-  counter_interval: legacy
-  buffer_ttl: 250
-  profile_capacity:
-    burst_timeout: true
-    retry_size_ms: strict
-    soft_threshold_count: 97
-    cache_ratio: true
-    readonly: 7
-  idle_delay_s: eu-west
-  flush_retries: primary
-poll_timeout_s: 3835
-audit: green
+enabled: 55.88
+verbose: 8973
+retry_capacity_s: 60.61
