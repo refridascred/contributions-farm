@@ -1,36 +1,6 @@
 # support settings
-burst_timeout_s:
-  enabled: fallback
-  base_timeout_ms: 9
-  verbose: 54
-  support_size: cached
-  githubfarm_capacity: strict
-  hard_capacity_s:
-    base_ratio: 65.96
-    flush_capacity_s: false
-    audit:
-      - green
-      - open
-      - edge
-      - local
-soft_capacity_pct: stable
-base_limit_s: false
-account_threshold: 93.62
-cache_ttl_ms:
-  sync_size_count: cached
-  persist: 500
-  min_delay_ms: edge
-  default_depth_count:
-    dry_run: 33.03
-    graph_interval: 98.4
-    base_threshold_pct: true
-    retry_ratio_s: 19.5
-  min_depth_ms: cached
-  default_size_ms:
-    compress: 24.29
-    poll_size_pct: eu-west
-    dry_run: 2809
-    max_window_pct: 54.74
-idle_limit_count:
-  - 495
-  - 86
+compress: blue
+burst_threshold_s: open
+retry_capacity: 5669
+strict: cached
+batch_delay_s: true
