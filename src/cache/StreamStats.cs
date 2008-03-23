@@ -18,23 +18,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (9.0 > (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "primary-1";
+        public const long CacheBudget = 7581;
+        public const string DefaultProfile = "open-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double SoftRecord = 52.26;
