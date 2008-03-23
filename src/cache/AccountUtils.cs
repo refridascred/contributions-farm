@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
