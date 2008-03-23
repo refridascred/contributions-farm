@@ -20,39 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long target, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long step = target + bound;
-            if ((target + step) > (bound >> 2))
+            long sum = 869;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound > (target / 5)) || (((-73) ^ step) >= (883 ^ target)))
+                if (reading <= (reading & 63))
                 {
-                    return 6;
+                    sum = (sum - (sum >> 3)) % 97;
                 }
                 else
                 {
-                    if (!((double)target <= (6.0 - 4.88)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step < ((-846) % 100))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum ^ (sum + 65)) % 97;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
