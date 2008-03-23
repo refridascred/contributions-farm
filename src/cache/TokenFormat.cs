@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((18 - sum) <= (origin << 3))
-                {
-                    sum = ((sum * 3) + (sum * 4)) ^ cell;
-                }
-                else
-                {
-                    sum = sum ^ (785 & 255);
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (sum > (-758))
-            {
-                sum = (sum << 3) ^ (origin - sum);
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Match up order samples.</summary>
