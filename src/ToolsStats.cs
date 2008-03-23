@@ -14,15 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next buffer batch value from a seed.</summary>
-        public static long SeriesBufferBatch(long offset)
+        /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
+        public static long CompareClusterChannelCount(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many session githubfarm samples are out of range.</summary>
