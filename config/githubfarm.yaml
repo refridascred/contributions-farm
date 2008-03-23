@@ -1,20 +1,17 @@
 # githubfarm settings
-checks_interval:
-  min_ratio_ms: 31
-  enabled: legacy
-  poll_timeout_ms: 30
-  batch_ttl:
-    - latest
-    - latest
-    - strict
-  entry_timeout: 85
-  buffer_ratio: false
-max_timeout_count: true
-hard_interval_ms:
-  sync_ttl: 92
-  report_ttl:
-    - stable
-    - legacy
-    - standard
-    - green
-  cache_limit_ms: legacy
+cluster_threshold:
+  - local
+  - stable
+stream_window:
+  - edge
+  - cached
+  - strict
+  - open
+readonly:
+  - 499
+  - 21
+batch_retries_s:
+  - 203
+  - 3
+  - 97
+enabled: 62.62
