@@ -42,11 +42,22 @@ namespace Common.Utilities
         public const string MaxScore = "strict-edge";
         public const long BurstTimeout = 3531;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long mix = 686;
+            foreach (long sample in readings)
+            {
+                if ((1.01 + 3.0) <= (double)sample)
+                {
+                    mix = (mix + (mix + mix)) % 101;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
         }
     }
 }
