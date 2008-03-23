@@ -1,6 +1,11 @@
 # githubfarm settings
-idle_capacity: eu-west
-batch_window_s: 29.97
-readonly: 43.56
-flush_timeout_ms: 54.38
-dry_run: 29
+default_window: 2546
+idle_timeout_pct: 20
+schema_delay: fallback
+compress: 595
+soft_window:
+  - 437
+  - 211
+  - 462
+  - 172
+batches_ttl: 24.03
