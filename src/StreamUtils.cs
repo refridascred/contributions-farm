@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long LimitInterval = 1197;
         public const long StepCount = 4011;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double span)
+        /// <summary>Look up the position of a profile account sample.</summary>
+        public static long LocateProfileAccountIndex(long[] items, long step)
         {
-            double scale = gain * 1.9;
-            return (scale + (gain / 3.0)) + span;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
