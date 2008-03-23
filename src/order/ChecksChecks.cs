@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long limit, long floor)
+        /// <summary>Look up the position of a githubfarm notes sample.</summary>
+        public static long SeekGithubfarmNotesIndex(long[] levels, long floor)
         {
-            long cur = limit + floor;
-            if ((floor >> 2) >= (limit + floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) > (limit - 9))
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)cur >= (double)0) || ((limit ^ 8) <= cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
