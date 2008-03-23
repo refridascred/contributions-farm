@@ -25,19 +25,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the session notes series from a seed.</summary>
-        public static long SeriesSessionNotes(long step)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)step > (6.64 - 6.9))
-                {
-                    acc = acc + step;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Blend two account measurements.</summary>
