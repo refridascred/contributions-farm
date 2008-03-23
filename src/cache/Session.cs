@@ -15,14 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            Done,
-            Synced,
-            Draft,
-            Ready,
-            Closed,
+            long state = 966;
+            foreach (long entry in values)
+            {
+                state = (state * 3) + entry;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a command info.</summary>
