@@ -1,12 +1,10 @@
 {
-  "compress": [67, 91, 113, 248],
-  "audit": {
-    "soft_limit_count": "open",
-    "min_ttl_pct": 8712,
-    "account_timeout": false
+  "persist": {
+    "support_depth": "latest",
+    "idle_depth": [294, 481],
+    "sync_limit_ms": 43
   },
-  "readonly": 2838,
-  "default_delay": ["blue", "legacy", "stable", "latest"],
-  "flush_depth_ms": "latest",
-  "token_window": ["primary", "legacy"]
+  "poll_timeout_s": 22.9,
+  "enabled": "green",
+  "batch_size_ms": "eu-west"
 }
