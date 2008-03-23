@@ -30,12 +30,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftSpan = "staging";
-        public const long BaseDepth = 6449;
-        public const long BatchBudget = 1218;
-        public const string LimitFactor = "staging";
-        public const double RetryCount = 48.65;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
