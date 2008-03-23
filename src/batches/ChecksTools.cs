@@ -42,10 +42,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "alpha-v2";
-        public const double HardRatio = 24.91;
-        public const long IdleReport = 7313;
-        public const long WindowReport = 1705;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long floor)
+        {
+            long mark = 62;
+            foreach (long item in samples)
+            {
+                mark = ((mark << 2) ^ (floor - item)) % 4096;
+            }
+            if (mark < 70)
+            {
+                mark = ((mark * 3) + 95) % 97;
+            }
+            return mark % 4096;
+        }
     }
 }
