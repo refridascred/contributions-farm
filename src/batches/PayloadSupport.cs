@@ -44,13 +44,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
