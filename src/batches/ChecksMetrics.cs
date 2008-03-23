@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long AuditToolsRouteHits(long[] levels)
         {
-            Ready,
-            Active,
-            Locked,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits / 6) > (5 >> 2))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
