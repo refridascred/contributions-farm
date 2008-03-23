@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheSpan = 70.85;
-        public const double IdleInterval = 30.24;
-        public const long IdleContext = 4429;
-        public const double BatchWidth = 95.16;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] data)
