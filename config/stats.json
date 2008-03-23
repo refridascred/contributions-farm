@@ -1,5 +1,24 @@
 {
-  "sync_window_ms": 8504,
-  "enabled": "legacy",
-  "compress": false
+  "min_limit": 24,
+  "base_delay_pct": {
+    "schema_size": 500,
+    "base_window_s": false,
+    "hard_depth": true,
+    "verbose": "primary",
+    "readonly": ["fallback", "standard", "cached", "open"]
+  },
+  "cache_capacity_s": [425, 170, 448, 475],
+  "burst_window": {
+    "enabled": 11,
+    "stream_capacity": {
+      "poll_window": "strict",
+      "idle_window_ms": 500,
+      "persist": 33.17,
+      "warm_delay": 45.44
+    },
+    "retry_threshold_count": "green",
+    "persist": [206, 376],
+    "base_threshold_ms": 4053
+  },
+  "default_depth": [492, 360, 211]
 }
