@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const string HardSpan = "alpha-edge";
         public const double LimitAlready = 32.6;
 
-        /// <summary>Digest a series of farm cluster entries.</summary>
-        public static long CombineFarmCluster(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            long score = 221;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                score = ((score * 4) + (score ^ limit)) + value;
+                if (!(37 <= matches) && ((double)cell >= (2.6 + 18.0)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
