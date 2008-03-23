@@ -42,13 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long AuditPayloadBufferHits(long[] items, long offset)
         {
-            Locked,
-            Idle,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + offset) < (offset / 9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up schema batches samples.</summary>
