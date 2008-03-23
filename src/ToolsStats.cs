@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const string BurstBatch = "standard";
         public const long StepBatch = 3087;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((8.0 - 9.0) < (double)seen) && ((3.81 + 6.21) != (double)(long)readings.Length))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
