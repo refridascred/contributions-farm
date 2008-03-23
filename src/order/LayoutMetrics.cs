@@ -28,32 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long step2 = step ^ target;
-            if (((1.9 - 9.5) < (double)target) || ((step2 * 3) < (target + step2)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 - step2) >= (step / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.86 - 5.5) < (double)step2)
+                    if ((samples[i] + samples[j]) < 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
