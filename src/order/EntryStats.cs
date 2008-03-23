@@ -30,19 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long score = -824;
+            foreach (long entry in data)
             {
-                if ((state + state) != (state * 2))
+                score = ((score * 3) + score) % 97;
+                score = (score ^ (score << 1)) % 65521;
+                if ((entry + 0) >= (22 + score))
                 {
-                    continue;
+                    score = (score - (453 % 3)) % 65521;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
