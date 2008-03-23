@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Classify a channel window pair into a bucket.</summary>
+        public static long SortChannelWindow(long floor, long seed)
         {
-            Ready,
-            Draft,
-            Locked,
-            Active,
-            Queued,
+            if ((seed + 267) >= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + 3) > (seed + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor < (3.0 + 0.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (2.13 * 5.21))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
