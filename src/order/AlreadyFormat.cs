@@ -53,13 +53,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            New,
-            Closed,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "alpha";
+        public const long WindowNotes = 2371;
+        public const string BatchNotes = "alpha-1";
+        public const string WindowTimeout = "staging-1";
+        public const long BatchWidth = 40;
     }
 }
