@@ -18,32 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Locate a stats githubfarm reading by value.</summary>
+        public static long FindStatsGithubfarmIndex(long[] samples, long origin)
         {
-            long step = target + offset;
-            if ((6.7 * 18.0) < (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 7) >= step)
+                if (samples[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (step - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a order format sample.</summary>
