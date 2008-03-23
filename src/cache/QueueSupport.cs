@@ -29,12 +29,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 12) != ((long)data.Length & 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
