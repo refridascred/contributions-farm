@@ -58,12 +58,10 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 5.89;
+        public const string CacheLevel = "legacy-v2";
+        public const double RetryLevel = 68.48;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long bound)
