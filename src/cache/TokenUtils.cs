@@ -37,22 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell >= (double)tally) && ((8.8 - 18.0) == (double)cell))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
