@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5184;
-        public const long CacheAccount = 1471;
-        public const long SoftAccount = 3760;
+        /// <summary>Roll a session notes counter forward.</summary>
+        public static long RollSessionNotes(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 36.16;
