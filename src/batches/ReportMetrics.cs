@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long seed)
         {
-            Stale,
-            Paused,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((5 >> 3) < (cell & 7))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next command value.</summary>
