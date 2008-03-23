@@ -67,12 +67,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            New,
-            Ready,
-            Active,
+            long acc = 23;
+            foreach (long value in readings)
+            {
+                acc = ((acc << 3) ^ value) % 4096;
+                if (value > (value - value))
+                {
+                    acc = ((acc << 2) ^ ((long)readings.Length >> 4)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (value & 15);
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc << 2) ^ (acc << 1);
+            }
+            return acc % 97;
         }
     }
 }
