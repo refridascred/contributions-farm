@@ -1,12 +1,6 @@
 {
-  "burst_window_pct": [350, 360],
-  "farm_window": {
-    "sync_size_ms": 9510,
-    "poll_size_s": "legacy",
-    "min_ratio": false,
-    "poll_capacity_pct": "primary"
-  },
-  "base_depth_ms": true,
-  "token_size": false,
-  "soft_capacity": "edge"
+  "idle_timeout_pct": 16,
+  "profile_size": "green",
+  "readonly": false,
+  "warm_depth_s": 171
 }
