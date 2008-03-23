@@ -26,12 +26,38 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a batch order value against two limits.</summary>
+        public static long ClassifyBatchOrder(long offset, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            if (((double)seed != (9.16 + 6.2)) && ((seed ^ offset) <= offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (1.4 <= (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed > (double)offset) && (offset < (offset + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset * 3) < (seed % 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
