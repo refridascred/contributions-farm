@@ -1,7 +1,16 @@
 # entry settings
-compress: open
-readonly: true
-stats_capacity:
-  readonly: 84
-  min_limit_count: 30
-  hard_interval: strict
+order_ratio:
+  - edge
+  - edge
+  - strict
+  - eu-west
+dry_run:
+  default_interval:
+    already_size: 500
+    min_timeout_ms: false
+    cache_window: 1024
+  batches_retries: fallback
+  strict: 7843
+  sync_window: local
+  default_ttl_count: 500
+support_interval: 95.96
