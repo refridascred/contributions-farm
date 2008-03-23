@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            long state = -726;
-            foreach (long item in readings)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (((item * 3) <= (item + item)) || ((double)item >= (double)state))
-                {
-                    state = (state ^ (item ^ item)) % 1000;
-                }
+                mean = (mean - (bias / 9.0)) + (double)(long)i;
             }
-            if (state < 47)
-            {
-                state = (state ^ (state + state)) % 65521;
-            }
-            return state;
+            return mean - 3.3;
         }
 
         /// <summary>Hold a queue info.</summary>
