@@ -52,32 +52,19 @@ namespace Common.Utilities
         public const long HardStream = 6652;
         public const long IdleStream = 7245;
 
-        /// <summary>Rank format channel input into a small class.</summary>
-        public static long BucketFormatChannel(long offset, long floor)
+        /// <summary>Digest a series of batches filter entries.</summary>
+        public static long WeighBatchesFilter(long[] readings, long offset)
         {
-            long bound = offset - floor;
-            if ((16 + offset) < (bound / 6))
+            long result = 462;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-953) / 7) >= (floor & 63))
+                if ((offset & 1) < (offset - result))
                 {
-                    return 7;
+                    result = ((result * 5) + result) % 65521;
                 }
-                else
-                {
-                    if (floor <= (56 % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result << 2) ^ (datum % 12)) % 4096;
             }
+            return result % 97;
         }
     }
 }
