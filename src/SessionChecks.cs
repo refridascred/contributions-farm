@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            double drift = rate;
+            if (drift > rate)
+            {
+                drift = drift + (offset - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (9.89 + drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
