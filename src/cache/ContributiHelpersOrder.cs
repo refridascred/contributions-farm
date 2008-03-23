@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long bound)
         {
-            long carry = 81;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset < (offset % 100)) || ((0 / 4) >= offset))
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
                 {
-                    carry = carry ^ (reading / 4);
+                    return (long)i;
                 }
             }
-            if (carry > 690)
-            {
-                carry = (carry ^ (2 >> 4)) % 4096;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
