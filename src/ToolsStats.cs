@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            New,
-            Locked,
-            Done,
-            Retry,
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
