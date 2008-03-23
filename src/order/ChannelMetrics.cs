@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSpan = 3622;
-        public const long BatchContext = 5335;
-        public const string StepContext = "latest-v2";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry < (entry + 368)) && ((seen % 97) != (target + entry))) || !((long)data.Length < seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 8701;
