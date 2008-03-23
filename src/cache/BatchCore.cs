@@ -20,15 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Stale,
-            Closed,
-            Failed,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepLevel = 9979;
+        public const double HardRatio = 42.39;
+        public const long SoftDepth = 8037;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteLimits(long[] readings, long step)
