@@ -37,24 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data, long origin)
         {
-            if (!((bound ^ 775) != (785 - bound)))
+            long sum = 78;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (seed << 2))
+                sum = sum - origin;
+                if (((double)origin != (7.92 / 8.0)) || (4.8 >= (double)sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    sum = sum - (sample - origin);
                 }
             }
+            return sum % 65521;
         }
     }
 }
