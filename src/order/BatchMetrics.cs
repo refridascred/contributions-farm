@@ -26,13 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Closed,
-            Paused,
-            Dropped,
-            Failed,
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
