@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double BurstFormat = 43.59;
         public const string StepFormat = "open-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 7436;
-        public const long IdleChannel = 5687;
-        public const long MaxSpan = 2190;
-        public const string BatchDepth = "alpha-1";
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double gain, double floor)
