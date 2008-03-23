@@ -28,18 +28,24 @@ namespace Common.Utilities
         public const double MinSize = 14.38;
         public const long BurstCommand = 5996;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((step % 7) != (origin >> 2))
             {
-                if ((double)count != (7.0 * 3.8))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 5) <= (step & 7))
                 {
-                    count = (count + 1) + datum;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
