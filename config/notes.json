@@ -1,6 +1,5 @@
 {
-  "verbose": false,
-  "soft_interval": 16,
-  "checks_capacity": "strict",
-  "idle_timeout_ms": "primary"
+  "soft_window_count": "blue",
+  "support_capacity": 250,
+  "burst_threshold": "primary"
 }
