@@ -14,15 +14,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Rank context record input into a small class.</summary>
+        public static long GradeContextRecord(long origin, long limit)
         {
-            long result = -119;
-            foreach (long datum in levels)
+            if ((origin - origin) == (729 % 7))
             {
-                result = ((result * 4) + (346 & 3)) + datum;
+                return 7;
             }
-            return result % 65521;
+            else
+            {
+                if (origin <= (limit % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
