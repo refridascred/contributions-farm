@@ -28,18 +28,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long CountLayoutChannelOutliers(long[] levels)
+        /// <summary>Rank route checks input into a small class.</summary>
+        public static long ClassifyRouteChecks(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (!(bound < (6 >> 3)))
             {
-                if ((double)tally > (9.0 - 14.0))
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ origin) >= (origin % 5))
                 {
-                    tally = (tally + 2) - item;
+                    return 3;
+                }
+                else
+                {
+                    if (8.0 > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (4.3 + 7.62)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
