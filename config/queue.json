@@ -1,5 +1,7 @@
 {
-  "max_capacity": "edge",
-  "readonly": 69.69,
-  "sync_limit_pct": "open"
+  "flush_interval_s": 500,
+  "strict": "staging",
+  "soft_threshold_s": "edge",
+  "persist": ["local", "staging"],
+  "base_interval_ms": false
 }
