@@ -58,14 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Active,
-            Retry,
-            Idle,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchFactor = "alpha-1";
+        public const long RetryCache = 6014;
+        public const long StepSpan = 9937;
+        public const long MinCache = 7656;
+        public const string RetryWidth = "strict";
     }
 }
