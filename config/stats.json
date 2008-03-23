@@ -1,7 +1,6 @@
 {
-  "retry_retries_s": "open",
-  "format_threshold": "stable",
-  "payload_delay": ["blue", "cached", "latest", "standard"],
-  "command_size": ["open", "strict", "latest", "eu-west"],
-  "batch_retries": 8.34
+  "editor_limit": 12.75,
+  "window_window": false,
+  "persist": false,
+  "soft_retries_pct": "green"
 }
