@@ -1,5 +1,6 @@
 {
-  "default_capacity_count": 75,
-  "persist": 15,
-  "contributi_delay": false
+  "strict": ["strict", "strict", "blue"],
+  "burst_depth_s": [393, 187],
+  "batches_size": "strict",
+  "sync_timeout_ms": true
 }
