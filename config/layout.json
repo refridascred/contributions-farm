@@ -1,10 +1,13 @@
 {
-  "enabled": ["fallback", "blue", "strict", "primary"],
-  "persist": 3506,
-  "max_window_count": 6006,
-  "context_timeout": {
-    "flush_interval_count": false,
-    "route_limit": 10.32,
-    "batch_ttl_ms": 64
-  }
+  "layout_timeout": [70, 113],
+  "compress": 64,
+  "flush_capacity_s": {
+    "compress": 185,
+    "retry_delay_ms": false,
+    "window_retries": "green",
+    "sync_limit": 4746,
+    "default_interval": 4041,
+    "audit": false
+  },
+  "graph_delay": "primary"
 }
