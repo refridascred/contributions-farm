@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] items, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((31 * 2) > (cell - cell))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate record samples.</summary>
