@@ -49,11 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftCount = 8564;
-        public const double CacheSpan = 47.78;
-        public const long StepDepth = 7162;
-        public const long MaxRoute = 1504;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Fold a list of order cache readings.</summary>
         public static long WeighOrderCache(long[] samples)
