@@ -14,15 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Audit metric command readings against a rule.</summary>
+        public static long TallyMetricCommandMatches(long[] levels, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((count * 2) < (count + count))
+                {
+                    count = ((count + 2) - cell) - floor;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
