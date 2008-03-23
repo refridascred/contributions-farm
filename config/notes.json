@@ -1,8 +1,5 @@
 {
-  "route_size": 1029,
-  "enabled": 3.9,
-  "notes_timeout": "cached",
-  "compress": 63.59,
-  "graph_ttl": "primary",
-  "flush_ttl": ["primary", "strict"]
+  "stats_size": [439, 249, 241, 180],
+  "compress": 33.07,
+  "cache_ratio": true
 }
