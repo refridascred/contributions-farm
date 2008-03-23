@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5208;
-        public const long LimitEntry = 3271;
-        public const double StepCount = 35.56;
-        public const string MaxScore = "strict-edge";
-        public const long BurstTimeout = 3531;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((tally & 127) == (limit + limit)) || ((limit - datum) <= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] readings)
