@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 6488;
-        public const long DefaultLevel = 3738;
-        public const double CacheInterval = 16.84;
-        public const string DefaultSupport = "open-1";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Locked,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
