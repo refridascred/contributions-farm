@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] items, long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
