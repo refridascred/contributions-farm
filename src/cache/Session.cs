@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            Dropped,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally - cell) > (tally ^ cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
