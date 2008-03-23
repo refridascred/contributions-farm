@@ -67,19 +67,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate profile metrics readings against a bound.</summary>
-        public static bool ValidateProfileMetricsRange(long[] samples, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
