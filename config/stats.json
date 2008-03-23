@@ -1,5 +1,8 @@
 {
-  "graph_delay": 85.49,
-  "layout_capacity": 250,
-  "hard_timeout_count": "latest"
+  "burst_ratio": "edge",
+  "default_interval_ms": 47.28,
+  "base_depth": 98.63,
+  "already_size": false,
+  "queue_interval": "open",
+  "readonly": "strict"
 }
