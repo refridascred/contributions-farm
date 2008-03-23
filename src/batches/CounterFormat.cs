@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string SoftScore = "local-1";
         public const double BaseDepth = 14.78;
 
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long TallyOrderClusterGaps(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)tally >= (double)limit)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4247;
+        public const long CacheSize = 4513;
+        public const long BatchCache = 4334;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
