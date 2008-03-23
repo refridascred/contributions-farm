@@ -69,19 +69,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every record farm entry stays within the limit.</summary>
-        public static bool ValidateRecordFarmLimits(long[] samples, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
