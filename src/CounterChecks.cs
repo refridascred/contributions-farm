@@ -41,18 +41,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                if ((value <= (value + hits)) || (((double)value <= (double)7) && ((hits + 90) >= (value / 6))))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor << 2) ^ 851) ^ reading;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the batches class values.</summary>
