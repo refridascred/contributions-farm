@@ -1,9 +1,25 @@
 # githubfarm settings
-batch_size: 60
-readonly: green
-base_size: open
-window_size:
-  - 422
-  - 448
-  - 335
-report_size: 54
+warm_size_pct:
+  - 230
+  - 368
+  - 301
+  - 240
+verbose:
+  - 376
+  - 489
+  - 171
+  - 236
+hard_interval_s: legacy
+buffer_delay: edge
+enabled:
+  max_depth_ms:
+    - 103
+    - 173
+  order_size:
+    - standard
+    - green
+  strict: 7213
+  verbose: cached
+  base_timeout_s:
+    - legacy
+    - legacy
