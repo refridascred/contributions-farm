@@ -1,5 +1,6 @@
 {
-  "sync_timeout_count": [82, 143, 319],
-  "idle_ttl_s": ["cached", "local"],
-  "token_depth": 95
+  "poll_depth": [157, 428],
+  "retry_ratio_s": 6.1,
+  "batch_limit_s": 3470,
+  "cache_size": false
 }
