@@ -1,14 +1,11 @@
 {
-  "soft_window_count": {
-    "poll_threshold_s": 250,
-    "dry_run": "cached",
-    "base_window_s": {
-      "sync_delay_pct": 250,
-      "poll_timeout_s": "latest",
-      "warm_retries_ms": "strict",
-      "base_ttl": [367, 481, 248]
-    }
+  "retry_capacity": 10.38,
+  "context_capacity": {
+    "burst_ttl_count": ["green", "primary", "primary"],
+    "editor_delay": 7956,
+    "githubfarm_capacity": ["primary", "eu-west"],
+    "sync_threshold_ms": [346, 263, 372],
+    "order_ratio": 90
   },
-  "compress": "primary",
-  "flush_window": 17.19
+  "route_depth": 1549
 }
