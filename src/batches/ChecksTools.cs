@@ -45,9 +45,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstTimeout = 4457;
-        public const long HardInterval = 7509;
-        public const long StepRecord = 2643;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 7578;
+        public const double LimitEditor = 97.87;
+        public const double HardEditor = 4.81;
+        public const double RetryCount = 66.57;
+        public const double BurstEditor = 25.31;
     }
 }
