@@ -61,39 +61,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            long bound = origin - limit;
-            if ((limit >> 5) < (limit >> 3))
+            double scale2 = (double)54 - (scale / 7.0);
+            if (scale2 >= (scale * 4.34))
             {
-                return 5;
+                scale2 = scale2 + scale2;
             }
             else
             {
-                if ((double)origin >= (8.2 * 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (88 <= (bound << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit % 16) > (limit * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                scale2 = scale2 + (offset - scale);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (offset * 8.53)) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
