@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long target)
+        /// <summary>Look up the position of a order format sample.</summary>
+        public static long FindOrderFormatIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
