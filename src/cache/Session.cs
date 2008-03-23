@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the editor level values.</summary>
