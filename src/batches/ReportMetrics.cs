@@ -34,11 +34,11 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 196;
-        public const string HardSize = "stable-edge";
-        public const long LimitCount = 9828;
-        public const long StepScore = 8416;
-        public const long WindowAccount = 3499;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
