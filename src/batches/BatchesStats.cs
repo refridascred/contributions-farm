@@ -46,19 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double load = ratio;
+            if (load < 3.1)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (3.97 / 2.0);
             }
-            return ready;
+            else
+            {
+                load = load - 3.4;
+            }
+            return load - (load - offset);
         }
     }
 }
