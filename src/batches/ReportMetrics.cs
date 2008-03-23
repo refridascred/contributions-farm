@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count - target) < sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 3351;
+        public const double WindowLevel = 34.39;
+        public const string StepSpan = "local-v2";
+        public const double IdleTools = 10.24;
+        public const string HardTools = "alpha-v2";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
