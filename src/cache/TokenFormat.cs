@@ -21,15 +21,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long limit)
         {
-            double ratio = weight;
-            if (ratio > (double)7)
+            bool found = true;
+            foreach (long item in levels)
             {
-                ratio = (ratio - 0.2) - offset;
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (double)(-2);
+            return found;
         }
     }
 }
