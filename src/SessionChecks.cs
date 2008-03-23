@@ -34,15 +34,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Combine format cluster values into a single score.</summary>
-        public static long TotalFormatCluster(long[] values, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = -56;
-            foreach (long datum in values)
-            {
-                mark = ((mark + (datum ^ datum)) % 65521) + offset;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
