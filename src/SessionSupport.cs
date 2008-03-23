@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate entry account readings against a bound.</summary>
-        public static bool ValidateEntryAccountLimits(long[] items, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long slot = target ^ step;
+            if (step < (slot + step))
             {
-                if (datum != floor)
+                return 8;
+            }
+            else
+            {
+                if (((target / 6) <= step) || (target > (step >> 2)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (slot << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a notes header.</summary>
