@@ -63,19 +63,10 @@ namespace Common.Utilities
             return rate + (9.6 + 17.0);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches % 24) > entry)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 18.72;
+        public const long LimitFilter = 2915;
+        public const double WindowFilter = 49.96;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] levels, long step)
