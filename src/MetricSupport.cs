@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            New,
-            Idle,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 494;
+        public const long WindowProfile = 437;
+        public const long SoftLevel = 1738;
 
         /// <summary>Check that every stream support entry stays within the limit.</summary>
         public static bool CheckStreamSupportLimits(long[] series, long step)
