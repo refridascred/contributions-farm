@@ -16,11 +16,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "cached";
-        public const long BurstFarm = 9277;
-        public const long MinCount = 8246;
-        public const string LimitWidth = "standard";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items, long limit)
+        {
+            long state = 45;
+            foreach (long entry in items)
+            {
+                state = (((state * 5) + limit) % 101) ^ entry;
+            }
+            if (state > 3)
+            {
+                state = state - 8;
+            }
+            return state;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionMatches(long[] items)
