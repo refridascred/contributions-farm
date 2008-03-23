@@ -43,19 +43,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowDepth = 5015;
+        public const long BurstLevel = 1135;
+        public const long BaseWindow = 9617;
     }
 }
