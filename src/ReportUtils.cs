@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const double RetryFormat = 14.2;
         public const string BurstFormat = "primary-edge";
 
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long TallySessionStreamMatches(long[] items)
+        /// <summary>Count the command channel entries that pass the check.</summary>
+        public static long CountCommandChannelOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (sample < (long)items.Length)
+                if (!(((528 >> 5) <= (floor & 31)) || ((1.0 * 2.9) <= (double)floor)))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
