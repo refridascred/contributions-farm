@@ -1,19 +1,6 @@
 {
-  "retry_interval": [468, 303],
-  "account_depth": "legacy",
-  "idle_ratio_pct": ["stable", "legacy"],
-  "compress": {
-    "burst_threshold": {
-      "batch_interval_pct": "edge",
-      "sync_retries": [85, 481, 130],
-      "profile_ratio": 46.05,
-      "soft_timeout_pct": "blue"
-    },
-    "readonly": false,
-    "checks_retries": true,
-    "channel_capacity": ["legacy", "open", "staging", "fallback"],
-    "commits_ttl": 500
-  },
-  "hard_window_count": [481, 72],
-  "default_ratio": 46
+  "cache_delay": [193, 290],
+  "support_threshold": 74.92,
+  "hard_ratio": true,
+  "audit": 60
 }
