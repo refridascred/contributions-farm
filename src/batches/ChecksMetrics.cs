@@ -102,15 +102,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream command value.</summary>
-        public static double ProjectStreamCommand(double gain, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings)
         {
-            double rate = (double)(-67) / 2.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                rate = ((rate + 15.0) + (double)(long)i) - offset;
+                if ((value % 64) >= ((long)readings.Length - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (gain - 2.7);
+            return seen;
         }
     }
 }
