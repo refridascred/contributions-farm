@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 8398;
         public const double DefaultBatches = 58.87;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((0.46 / 4.0) != (double)value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many commits order samples are out of range.</summary>
