@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const double BurstFormat = 43.59;
         public const string StepFormat = "open-edge";
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long bound)
         {
-            long offset = origin ^ seed;
-            if ((origin - offset) < (seed & 15))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((87 * 4) < (seed + seed))
+                if (value <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset & 31) > 257)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stream info.</summary>
