@@ -1,5 +1,7 @@
 # support settings
-cache_retries: 60
-account_interval: true
-default_delay_s: fallback
-readonly: false
+warm_depth_pct: 31
+batch_delay_pct: 51
+flush_capacity: standard
+cache_interval: true
+hard_capacity: true
+soft_ttl_ms: 63.62
