@@ -60,22 +60,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "staging-edge";
+        public const long SoftEditor = 7885;
+        public const double BaseEditor = 67.21;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
