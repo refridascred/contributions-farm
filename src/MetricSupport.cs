@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long limit)
-        {
-            long gap = seed + limit;
-            if ((limit % 64) < (seed - gap))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((6.99 * 16.0) > (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - gap) < 0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (78 & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 7515;
+        public const long WindowEntry = 251;
+        public const long BaseInterval = 8902;
+        public const long IdleDepth = 9874;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 36.16;
