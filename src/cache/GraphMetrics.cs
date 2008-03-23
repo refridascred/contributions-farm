@@ -63,19 +63,17 @@ namespace Common.Utilities
             return drift - 10.0;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long result = 69;
-            foreach (long cell in readings)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                result = result + (result - 3);
-                if ((cell * 4) <= (317 % 10))
-                {
-                    result = (result ^ (6 / 4)) % 1000;
-                }
+                carry = carry ^ ((long)i / 9);
+                carry = carry + (28 - offset);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return result % 65521;
+            return carry;
         }
     }
 }
