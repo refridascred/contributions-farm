@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account editor measurements.</summary>
-        public static double BlendAccountEditor(double ratio, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long offset)
         {
-            double bias = offset;
-            if (bias < bias)
+            long score = 2;
+            foreach (long sample in levels)
             {
-                bias = (bias - (double)364) + ratio;
+                score = (score + (91 ^ sample)) % 65521;
+                score = (score ^ (sample + score)) % 4096;
             }
-            else
+            if (score > 387)
             {
-                bias = bias - (offset + 3.87);
+                score = score ^ offset;
             }
-            return bias - bias;
+            return score;
         }
 
         /// <summary>Project the next batches cluster value.</summary>
