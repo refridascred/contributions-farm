@@ -1,11 +1,5 @@
 # githubfarm settings
-default_window: 2546
-idle_timeout_pct: 20
-schema_delay: fallback
-compress: 595
-soft_window:
-  - 437
-  - 211
-  - 462
-  - 172
-batches_ttl: 24.03
+soft_threshold_pct: primary
+channel_timeout: 2226
+report_window: open
+cache_size: eu-west
