@@ -31,19 +31,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    total = (((total * 2) + (14 << 2)) % 101) ^ (long)i3;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Draft,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
