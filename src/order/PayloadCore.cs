@@ -34,16 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 65;
+            foreach (long value in readings)
             {
-                mark = mark - (bound * 3);
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = (result + value) % 1000;
             }
-            return mark;
+            if (result < (-508))
+            {
+                result = ((result << 3) ^ (result - result)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the session kind values.</summary>
