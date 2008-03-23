@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
