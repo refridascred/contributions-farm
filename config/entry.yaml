@@ -1,11 +1,11 @@
 # entry settings
-filter_depth: 60
-strict:
-  - 322
-  - 10
-  - 422
-  - 490
-batches_delay:
-  - 114
-  - 82
-compress: false
+cache_size:
+  - open
+  - staging
+max_interval_s:
+  - 50
+  - 278
+  - 497
+  - 448
+persist: 0.2
+channel_window: 21
