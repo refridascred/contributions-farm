@@ -1,4 +1,18 @@
 # support settings
-flush_capacity: staging
-channel_depth: eu-west
-default_capacity_s: false
+burst_limit_pct: 7424
+cache_interval:
+  sync_ttl_count: 67.85
+  persist:
+    queue_ttl: legacy
+    max_delay_count: eu-west
+    stats_ratio: local
+    batch_ttl: 83.15
+    warm_size:
+      - strict
+      - standard
+      - edge
+  flush_threshold: blue
+readonly: 46.49
+batch_depth_s: blue
+flush_interval: 68.95
+max_depth_pct: green
