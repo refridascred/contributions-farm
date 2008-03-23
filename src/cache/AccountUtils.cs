@@ -14,14 +14,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            Pending,
-            New,
-            Done,
-            Ready,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
