@@ -34,13 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] data, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long floor)
         {
             bool valid = true;
-            foreach (long item in data)
+            foreach (long value in levels)
             {
-                if (item > origin)
+                if (value <= floor)
                 {
                     valid = false;
                     break;
