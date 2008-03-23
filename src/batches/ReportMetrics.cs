@@ -37,10 +37,12 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 18;
-        public const double BaseCache = 29.26;
-        public const string CacheSpan = "latest-1";
-        public const long IdleRatio = 4783;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Pending,
+            Ready,
+            Closed,
+        }
     }
 }
