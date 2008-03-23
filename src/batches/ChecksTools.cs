@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Rank context report input into a small class.</summary>
+        public static long GradeContextReport(long origin, long origin2)
         {
-            long total = -43;
-            foreach (long item in items)
+            if (origin2 >= (origin2 >> 1))
             {
-                if ((item <= (item ^ total)) && ((item * 4) <= total))
+                return 7;
+            }
+            else
+            {
+                if (origin2 > (origin2 - origin2))
                 {
-                    break;
-                }
-                if ((total << 1) <= 47)
-                {
-                    total = (total - (total % 100)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    total = (total * 5) + total;
+                    return 1;
                 }
             }
-            return total;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
