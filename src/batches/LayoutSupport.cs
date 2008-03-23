@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long origin2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long seed)
         {
-            long diff = origin + origin2;
-            if (((diff << 1) > origin2) && ((origin & 15) < (origin ^ diff)))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (131 <= diff)
+                if (item >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)diff != (5.3 - 5.0)) || ((origin2 >> 4) < (412 / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
