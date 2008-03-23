@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((((double)origin >= (6.0 - 1.0)) || ((4 + 759) > (713 + entry))) || (matches > (entry - origin)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinFactor = 6111;
+        public const long DefaultBatches = 2032;
+        public const long HardBatches = 7294;
+        public const long BatchSpan = 9847;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] samples)
