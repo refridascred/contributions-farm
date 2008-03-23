@@ -33,35 +33,23 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long target)
+        /// <summary>Roll a cache batch counter forward.</summary>
+        public static long RollCacheBatch(long origin)
         {
-            long sum = 9;
-            foreach (long datum in samples)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum ^ datum) % 255;
-                if ((double)datum > (1.7 * 9.77))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = (sum << 2) ^ (2 << 1);
+                    acc = (acc ^ (acc % 7)) - (long)i2;
                 }
-                else
+                if (origin < acc)
                 {
-                    sum = ((sum << 2) ^ (sum / 7)) % 1000;
+                    acc = ((acc << 3) ^ origin) % 101;
                 }
-                if ((8.6 + 1.42) != (double)target)
-                {
-                    sum = ((sum << 2) ^ (datum - target)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (sum + target);
-                }
-                if (((target ^ datum) <= (datum + 877)) || ((double)target != (3.86 - 17.0)))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
