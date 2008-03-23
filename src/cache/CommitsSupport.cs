@@ -53,11 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items, long bound)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long acc = 955;
+            foreach (long reading in items)
+            {
+                if (bound >= acc)
+                {
+                    acc = (acc + (91 ^ reading)) % 65521;
+                }
+            }
+            if (acc > 704)
+            {
+                acc = (acc - ((long)items.Length / 2)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
