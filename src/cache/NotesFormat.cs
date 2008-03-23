@@ -32,13 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Queued,
-            Draft,
-            Failed,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 238;
+        public const long StepQueue = 3022;
+        public const long MinSize = 9229;
     }
 }
