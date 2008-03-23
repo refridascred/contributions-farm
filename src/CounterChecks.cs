@@ -63,23 +63,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            double scale2 = (double)54 - (scale / 7.0);
-            if (scale2 >= (scale * 4.34))
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                scale2 = scale2 + scale2;
+                if (acc > ((-3) % 24))
+                {
+                    acc = (acc ^ (floor ^ 965)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale2 = scale2 + (offset - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (offset * 8.53)) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            return acc;
         }
     }
 }
