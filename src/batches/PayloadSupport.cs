@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Derive the next command metrics value from a seed.</summary>
+        public static long SeriesCommandMetrics(long step)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean - (bias / 9.0)) + (double)(long)i;
+                total = (total - ((long)i << 2)) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return mean - 3.3;
+            return total;
         }
 
         /// <summary>Hold a queue info.</summary>
