@@ -1,12 +1,10 @@
 # Command notes
 
-The window module keeps cluster values in sync with the account cache.
-A order that stays idle for too long is moved to the metric list.
-When a checks fails, the already handler retries a few times before giving up.
+Run the stream check before changing any cache limits.
+A batches that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer stats defaults
-- Validate record input early
-- Document new profile fields
+- Document new report fields
+- Validate report input early
+- Prefer tools defaults
