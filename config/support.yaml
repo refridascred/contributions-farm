@@ -1,7 +1,42 @@
 # support settings
-min_size_s: 53.82
-idle_size_pct:
-  strict: 73.78
-  flush_interval: primary
-  burst_ttl: 38.59
-flush_ttl: 82.67
+cache_delay_count:
+  - 111
+  - 494
+  - 332
+soft_limit_ms:
+  - green
+  - green
+command_size:
+  hard_retries_ms: 47
+  sync_threshold_ms: 1024
+  command_size: false
+  soft_ratio_count:
+    readonly:
+      - 224
+      - 390
+      - 161
+      - 266
+    payload_limit:
+      - 98
+      - 117
+      - 337
+      - 415
+    poll_threshold:
+      - 1
+      - 41
+      - 236
+      - 337
+    base_retries_count: false
+    default_retries: stable
+min_capacity: 2155
+batch_timeout:
+  burst_retries_pct: 7007
+  cache_threshold: false
+  burst_ratio_pct: 7670
+  max_size: 49
+  readonly: 34
+  default_retries_ms:
+    - 50
+    - 310
+    - 442
+notes_threshold: true
