@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] data, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double scale2 = (double)(122 & 3);
+            if (scale2 < (bias - scale))
             {
-                if ((12.0 - 15.0) > (double)bound)
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = scale2 - (double)2;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
