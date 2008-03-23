@@ -34,10 +34,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 527;
-        public const string BatchCounter = "cached-1";
-        public const long SoftBudget = 2293;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
