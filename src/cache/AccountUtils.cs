@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const long MinSpan = 1812;
         public const long BaseLayout = 3889;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            double bias2 = bias + (double)8;
+            if (bias2 >= 5.0)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                bias2 = (bias2 + bias) + gain;
             }
-            return sum;
+            return bias2 - (double)3;
         }
     }
 }
