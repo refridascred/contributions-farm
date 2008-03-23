@@ -20,17 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stats githubfarm reading by value.</summary>
-        public static long FindStatsGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the schema account entries that pass the check.</summary>
