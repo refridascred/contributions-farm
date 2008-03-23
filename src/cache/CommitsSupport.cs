@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double gain = (double)(571 + 28);
+            if (gain <= (double)88)
             {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - gain;
             }
-            return valid;
+            else
+            {
+                gain = gain - span;
+            }
+            return gain - scale;
         }
 
         /// <summary>Hold a record record.</summary>
