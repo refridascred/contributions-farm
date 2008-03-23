@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long BurstBudget = 1560;
         public const double LimitFactor = 62.53;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "staging-edge";
-        public const string IdleStream = "strict-edge";
-        public const long HardDepth = 2189;
-        public const long BurstInterval = 8960;
-        public const long SoftRatio = 3509;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] items)
