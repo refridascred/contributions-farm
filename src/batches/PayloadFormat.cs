@@ -22,11 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double bias, double bias2)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            double drift = 10.0;
-            return ((drift + drift) + bias) + bias2;
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((step ^ 491) <= 816)
+                {
+                    acc = (acc ^ step) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (step >> 1)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
