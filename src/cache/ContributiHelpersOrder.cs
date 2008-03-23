@@ -35,9 +35,13 @@ namespace Common.Utilities
             return mean + (span * 9.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftScore = 4.29;
-        public const long WindowEditor = 8129;
-        public const long MinEditor = 5722;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
