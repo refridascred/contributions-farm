@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const string BurstBatch = "standard";
         public const long StepBatch = 3087;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((8.0 - 9.0) < (double)seen) && ((3.81 + 6.21) != (double)(long)readings.Length))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank format order input into a small class.</summary>
