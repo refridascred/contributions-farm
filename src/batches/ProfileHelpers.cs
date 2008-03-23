@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 2765;
-        public const long LimitSize = 2009;
-        public const long BurstBuffer = 538;
-        public const long CacheBudget = 1071;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a order report sample.</summary>
         public static long SeekOrderReportIndex(long[] levels, long step)
