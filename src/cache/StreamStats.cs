@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double BurstFormat = 43.59;
         public const string StepFormat = "open-edge";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 7436;
+        public const long IdleChannel = 5687;
+        public const long MaxSpan = 2190;
+        public const string BatchDepth = "alpha-1";
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double gain, double floor)
