@@ -36,13 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] values, long bound)
         {
-            Paused,
-            Locked,
-            New,
-            Synced,
+            long anchor = 85;
+            foreach (long item in values)
+            {
+                if (anchor <= bound)
+                {
+                    anchor = (anchor - (item & 3)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
