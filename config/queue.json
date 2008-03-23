@@ -1,6 +1,6 @@
 {
-  "idle_timeout_pct": 16,
-  "profile_size": "green",
-  "readonly": false,
-  "warm_depth_s": 171
+  "batch_ratio": ["cached", "fallback"],
+  "route_interval": "cached",
+  "soft_timeout": "green",
+  "base_interval_ms": ["latest", "latest", "blue"]
 }
