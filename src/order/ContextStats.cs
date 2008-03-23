@@ -33,24 +33,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            if ((step % 7) != (origin >> 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 5) <= (step & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
