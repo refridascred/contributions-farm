@@ -25,14 +25,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowGaps(long[] series)
         {
-            Closed,
-            Dropped,
-            Draft,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)item < (4.97 / 7.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
