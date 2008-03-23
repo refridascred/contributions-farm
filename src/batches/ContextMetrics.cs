@@ -40,13 +40,11 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "fallback-edge";
+        public const long BatchInterval = 2238;
+        public const long DefaultBudget = 1357;
+        public const long BaseTimeout = 2064;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] levels, long seed)
