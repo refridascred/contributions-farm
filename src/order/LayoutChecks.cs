@@ -55,18 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!(((count % 8) < (datum * 2)) && ((count / 3) >= (datum - (-819)))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
