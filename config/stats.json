@@ -1,5 +1,16 @@
 {
-  "schema_timeout": ["blue", "stable", "fallback", "local"],
-  "format_limit": 30,
-  "strict": "cached"
+  "hard_ratio": ["standard", "blue"],
+  "poll_retries_ms": ["green", "open"],
+  "batch_retries": {
+    "warm_depth_ms": "local",
+    "soft_window_pct": {
+      "verbose": [365, 358],
+      "idle_interval_count": 65.41,
+      "burst_depth_count": [345, 50],
+      "readonly": 67.24
+    },
+    "burst_capacity": 1024,
+    "batch_ttl_s": [296, 247, 94],
+    "max_timeout_pct": true
+  }
 }
