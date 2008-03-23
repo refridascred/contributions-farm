@@ -19,18 +19,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] values, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((((seen + offset) <= sample) || ((4.9 * 7.1) == (double)seen)) || ((double)seen > (2.1 - 2.59)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double ratio = (16.0 + 6.15) + (weight / 2.0);
+            return (ratio - (double)0) + floor;
         }
 
         /// <summary>Project the next window metric value.</summary>
