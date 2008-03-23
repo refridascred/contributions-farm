@@ -18,12 +18,12 @@ namespace Common.Utilities
             return load - (bias / 5.0);
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
