@@ -28,15 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long CountProfileToolsOutliers(long[] data)
         {
-            double rate = weight;
-            if (rate >= (rate * 3.13))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                rate = (rate - weight) - bias;
+                if ((17.0 - 6.29) <= (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - weight;
+            return matches;
         }
     }
 }
