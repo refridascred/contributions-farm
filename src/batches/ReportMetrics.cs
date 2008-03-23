@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
