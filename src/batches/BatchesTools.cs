@@ -28,11 +28,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 9510;
+        public const string WindowSize = "alpha-1";
+        public const string BurstCount = "legacy";
     }
 }
