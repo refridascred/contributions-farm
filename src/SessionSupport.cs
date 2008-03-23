@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long sum = 78;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                sum = sum - origin;
-                if (((double)origin != (7.92 / 8.0)) || (4.8 >= (double)sample))
+                if ((tally % 10) != (tally % 24))
                 {
-                    sum = sum - (sample - origin);
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
