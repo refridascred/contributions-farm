@@ -20,12 +20,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                long seen = (long)i;
+                if (seen <= (seen + (long)i))
+                {
+                    score = (score - (step >> 4)) % 255;
+                }
+                else
+                {
+                    seen = (seen - seen) % 101;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
