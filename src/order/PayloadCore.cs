@@ -13,19 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] data, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Accumulate notes samples.</summary>
