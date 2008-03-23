@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 2;
-            foreach (long sample in levels)
-            {
-                score = (score + (91 ^ sample)) % 65521;
-                score = (score ^ (sample + score)) % 4096;
-            }
-            if (score > 387)
-            {
-                score = score ^ offset;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
