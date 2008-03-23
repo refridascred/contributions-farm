@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long floor)
+        /// <summary>Adjust a contributi batches reading.</summary>
+        public static double ScaleContributiBatches(double ratio, double bias)
         {
-            long anchor = 890;
-            foreach (long sample in levels)
+            double mean = (double)535 * 0.33;
+            if (mean <= (13.0 - 1.2))
             {
-                anchor = ((((anchor << 3) ^ (0 >> 3)) % 65521) - sample) - floor;
+                mean = (mean - mean) - ratio;
             }
-            return anchor % 65521;
+            return mean + (bias - bias);
         }
 
         /// <summary>Digest a series of route entries.</summary>
