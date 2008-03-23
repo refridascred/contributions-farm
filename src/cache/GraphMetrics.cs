@@ -39,19 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings, long step)
         {
-            double mean = bias * 3.2;
-            if (mean <= mean)
+            long score = 335;
+            foreach (long entry in readings)
             {
-                mean = (mean + (bias - bias)) + ratio;
+                score = ((score << 2) ^ (entry << 3)) % 4096;
+                if ((step - score) >= 306)
+                {
+                    score = score + (entry << 2);
+                }
+                else
+                {
+                    score = (score - 384) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - (bias / 4.0);
+            return score;
         }
 
         /// <summary>Count the profile tools entries that pass the check.</summary>
