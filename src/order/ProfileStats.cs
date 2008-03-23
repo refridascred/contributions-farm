@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] samples)
         {
-            long anchor = 17;
+            long matches = 0;
             foreach (long datum in samples)
             {
-                anchor = anchor + (anchor ^ 603);
-                anchor = (anchor - (3 + datum)) % 1000;
+                if ((matches / 3) == (datum - 26))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
