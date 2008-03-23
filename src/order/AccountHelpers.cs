@@ -49,12 +49,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 5347;
-        public const long LimitCount = 2491;
-        public const long BurstTimeout = 8310;
-        public const long HardDepth = 7452;
-        public const double BurstScore = 67.23;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 530;
+        public const long WindowWidth = 1168;
+        public const string BaseCount = "local";
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] items)
