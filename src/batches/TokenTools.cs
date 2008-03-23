@@ -23,39 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi notes pair into a bucket.</summary>
-        public static long GradeContributiNotes(long seed, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long slot = seed - floor;
-            if ((double)seed >= (5.8 + 10.0))
+            long mix = 310;
+            foreach (long item in series)
             {
-                return 5;
+                mix = (mix + ((long)series.Length << 2)) - item;
             }
-            else
-            {
-                if ((floor + slot) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)370 <= (double)slot) || ((double)floor == (0.6 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) >= (seed >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of contributi profile entries.</summary>
