@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double scale, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] samples, long bound)
         {
-            double bias = (scale + offset) + offset;
-            if (bias >= (double)9)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                bias = bias - 13.0;
+                if ((double)sample == (5.0 / 8.0))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (bias - offset)) + (double)(long)i;
-            }
-            return bias - offset;
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
