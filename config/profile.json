@@ -1,6 +1,9 @@
 {
-  "cache_delay": [193, 290],
-  "support_threshold": 74.92,
-  "hard_ratio": true,
-  "audit": 60
+  "hard_ratio_ms": {
+    "retry_size_s": 57.96,
+    "cache_depth": 74,
+    "compress": 35
+  },
+  "commits_ratio": "fallback",
+  "retry_window": 6.28
 }
