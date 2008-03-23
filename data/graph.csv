@@ -1,7 +1,9 @@
-id,region,owner,score,ratio
-1,100,staging,81.97,564
-2,25.35,30,eu-west,777
-3,91.48,648,626,edge
-4,eu-west,81.81,staging,283
-5,234,372,primary,39.87
-6,102,primary,702,41.15
+id,score,label,rank
+1,700,85,580
+2,37.83,fallback,19.08
+3,489,549,73.75
+4,834,48.58,667
+5,409,734,latest
+6,35.04,36.8,97
+7,775,96.47,395
+8,233,74.28,stable
