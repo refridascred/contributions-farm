@@ -45,12 +45,13 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Stale,
-            New,
-            Draft,
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next session profile value from a seed.</summary>
