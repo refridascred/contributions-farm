@@ -48,25 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (2 & 7)) % 1000;
-                state = (state * 5) + ((long)i + (long)i);
-                if ((double)state < (double)2)
-                {
-                    state = ((state << 3) ^ (state << 2)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (step + 68)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Active,
+            Retry,
+            Idle,
+            Pending,
+            Dropped,
         }
     }
 }
