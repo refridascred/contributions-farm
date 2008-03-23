@@ -26,13 +26,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long target)
         {
-            Pending,
-            New,
-            Draft,
-            Idle,
+            long lane = seed + target;
+            if ((double)lane < 3.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < 20.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)378 <= (double)seed) || ((double)seed != (9.5 / 8.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((seed & 1) > (target >> 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
