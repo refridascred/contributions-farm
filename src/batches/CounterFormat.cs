@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] samples, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((item - seed) < item) && ((double)tally < (2.4 - 5.44)))
+                if (item <= floor)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
