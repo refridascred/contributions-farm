@@ -36,12 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Compare every pair of support editor readings.</summary>
+        public static long MatchSupportEditorCount(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every buffer tools entry stays within the limit.</summary>
