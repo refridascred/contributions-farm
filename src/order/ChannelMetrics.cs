@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long ScoreBufferFilter(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] values)
         {
-            long carry = 53;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                carry = (carry + entry) % 65521;
-                if ((carry > (3 * 4)) || ((9.5 + 12.0) < (double)carry))
+                if (((item << 2) != (8 - matches)) || ((11 + matches) != (0 ^ (-47))))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
