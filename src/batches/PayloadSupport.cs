@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -726;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item * 3) <= (item + item)) || ((double)item >= (double)state))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ (item ^ item)) % 1000;
                 }
             }
-            return hits;
+            if (state < 47)
+            {
+                state = (state ^ (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the session kind values.</summary>
