@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)matches >= (6.2 + 19.0))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
