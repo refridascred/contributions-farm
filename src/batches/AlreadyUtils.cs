@@ -46,15 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stats filter entries.</summary>
-        public static long CombineStatsFilter(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            long anchor = 8;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                anchor = (((anchor * 2) + (28 / 2)) % 255) + cell;
+                if ((-5) < (seen + value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
