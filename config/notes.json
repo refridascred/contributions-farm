@@ -1,5 +1,18 @@
 {
-  "soft_window_count": "blue",
-  "support_capacity": 250,
-  "burst_threshold": "primary"
+  "soft_retries": "legacy",
+  "sync_window_ms": "local",
+  "min_timeout_s": 1024,
+  "warm_size": {
+    "poll_delay_count": "cached",
+    "cache_ratio": "primary",
+    "buffer_limit": [27, 417, 222, 352],
+    "strict": {
+      "graph_limit": "latest",
+      "burst_size_count": 42.51,
+      "sync_limit": "strict",
+      "hard_timeout_s": [402, 71],
+      "retry_depth_pct": "cached"
+    }
+  },
+  "report_ratio": "strict"
 }
