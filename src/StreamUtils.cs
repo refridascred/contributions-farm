@@ -64,12 +64,21 @@ namespace Common.Utilities
         public const long SoftEditor = 7885;
         public const double BaseEditor = 67.21;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
