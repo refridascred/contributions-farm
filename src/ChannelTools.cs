@@ -27,14 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Queued,
-            Idle,
-            Retry,
             Paused,
-            Synced,
+            New,
+            Locked,
+            Failed,
+            Pending,
         }
     }
 }
