@@ -1,7 +1,5 @@
 {
-  "warm_limit_s": 39,
-  "max_interval_count": false,
-  "retry_retries": 42,
-  "retry_retries_pct": ["fallback", "green"],
-  "context_capacity": "legacy"
+  "compress": "open",
+  "cache_retries": "open",
+  "cache_retries_ms": 92
 }
