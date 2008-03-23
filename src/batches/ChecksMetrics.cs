@@ -90,22 +90,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] samples, long limit)
         {
-            long mark = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.37 - 13.0) <= (double)sample)
+                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
                 {
-                    mark = ((mark * 5) + 350) % 97;
+                    return (long)i;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark << 2) ^ (target - 9);
-            }
-            return mark;
+            return -1;
         }
     }
 }
