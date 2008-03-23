@@ -29,17 +29,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a booking reading by value.</summary>
-        public static long LookupBookingIndex(long[] readings, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 80;
+            foreach (long entry in values)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = ((result + (89 << 1)) % 101) + entry;
             }
-            return -1;
+            if (result > 668)
+            {
+                result = (result << 3) ^ step;
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
