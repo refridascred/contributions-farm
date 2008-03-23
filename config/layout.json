@@ -1,5 +1,5 @@
 {
-  "warm_capacity": 30,
-  "format_limit": 250,
-  "strict": [470, 313, 271]
+  "default_capacity_count": 75,
+  "persist": 15,
+  "contributi_delay": false
 }
