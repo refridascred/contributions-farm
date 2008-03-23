@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long CountMetricsAccountMatches(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((double)hits >= 3.0)
+                if ((4 + cell) >= (cell + cell))
                 {
-                    hits = (hits + 3) + datum;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
