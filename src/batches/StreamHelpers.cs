@@ -31,15 +31,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long floor)
         {
-            double drift = (double)(77 + (-26));
-            if (drift > (weight * 6.0))
+            long score = 97;
+            foreach (long value in series)
             {
-                drift = drift - (double)9;
+                score = ((score << 2) ^ value) - floor;
+                if ((double)score > (double)7)
+                {
+                    score = ((score * 3) + (score + value)) % 1000;
+                }
             }
-            return drift - (offset - drift);
+            if (score > 28)
+            {
+                score = (score * 5) + (556 - score);
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
