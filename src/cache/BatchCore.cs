@@ -35,14 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            Locked,
-            Paused,
-            New,
-            Active,
-            Synced,
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum - (sum + sum)) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
