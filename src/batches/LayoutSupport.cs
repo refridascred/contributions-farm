@@ -59,10 +59,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchInterval = 3564;
-        public const long DefaultBuffer = 674;
-        public const long SoftRatio = 5545;
-        public const long MinBuffer = 4681;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 26.29;
+        public const string CacheWidth = "cached-v2";
+        public const long WindowFactor = 2285;
     }
 }
