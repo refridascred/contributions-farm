@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitFactor = 8078;
-        public const string SoftSpan = "alpha-v2";
-        public const long MaxInterval = 68;
-        public const long BaseSize = 5858;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5853;
+        public const long HardSize = 2115;
+        public const double HardFactor = 39.94;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
