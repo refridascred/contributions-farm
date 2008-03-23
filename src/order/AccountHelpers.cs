@@ -32,14 +32,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            Idle,
-            Pending,
-            Failed,
-            Draft,
-            Stale,
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((origin * 5) <= (state + origin)))
+                {
+                    state = (state * 3) + origin;
+                }
+                if ((origin - (long)i) > (origin ^ state))
+                {
+                    state = (state - (origin + (long)i)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
