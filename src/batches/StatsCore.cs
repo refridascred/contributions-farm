@@ -46,17 +46,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = step - offset;
+            if (span <= (step ^ step))
             {
-                if (levels[i] == step)
+                return 0;
+            }
+            else
+            {
+                if ((1.0 + 3.4) > (double)step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((span + span) <= (span - span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span + 274) == (118 & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
