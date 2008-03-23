@@ -31,22 +31,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] levels)
         {
-            long state = 81;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((sample + 7) == ((-25) - origin))
+                if ((entry + seen) <= (-249))
                 {
-                    state = (state * 3) + (-32);
+                    seen = seen + 1;
                 }
-                if ((state << 1) <= 96)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
