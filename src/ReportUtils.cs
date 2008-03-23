@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of account buffer readings.</summary>
-        public static long MatchAccountBufferCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)values.Length >= count)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
