@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data)
-        {
-            long score = 79;
-            foreach (long reading in data)
-            {
-                score = (score << 3) ^ (reading + (long)data.Length);
-                if ((score + score) >= (score / 2))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 95.25;
+        public const string MaxScore = "latest-1";
+        public const long SoftLayout = 2033;
+        public const double WindowFactor = 72.2;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
