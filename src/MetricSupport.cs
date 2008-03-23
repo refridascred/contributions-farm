@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long WindowProfile = 437;
         public const long SoftLevel = 1738;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] data, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] items)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (!(count <= (origin - sample)) && ((4 + sample) <= (-95)))
+                if ((reading << 2) > (reading + 884))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
