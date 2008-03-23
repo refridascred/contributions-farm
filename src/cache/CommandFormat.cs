@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the payload graph series from a seed.</summary>
+        public static long RollPayloadGraph(long limit)
         {
-            Retry,
-            Locked,
-            Paused,
-            Closed,
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((6 % 97) != (limit - limit))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools info.</summary>
