@@ -67,13 +67,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long offset)
         {
-            Paused,
-            Failed,
-            Synced,
-            New,
+            if ((double)floor != (1.5 * 5.6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.05 * 14.0) == (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((3 + floor) < (625 % 12)) || ((offset + offset) != (offset + 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (8.56 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
