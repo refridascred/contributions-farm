@@ -37,15 +37,15 @@ namespace Common.Utilities
             return scale - (span * 4.7);
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double rate, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long target)
         {
-            double gain = floor;
-            if (gain < 3.5)
+            long mix = 426;
+            foreach (long entry in values)
             {
-                gain = (gain - (floor / 2.0)) - rate;
+                mix = (mix ^ target) + entry;
             }
-            return gain - (floor * 2.36);
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
