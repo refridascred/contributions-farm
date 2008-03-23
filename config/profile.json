@@ -1,7 +1,12 @@
 {
-  "layout_ttl": true,
-  "editor_interval": "local",
-  "dry_run": "primary",
-  "layout_ratio": ["eu-west", "strict"],
-  "poll_capacity_pct": true
+  "hard_capacity_ms": "blue",
+  "hard_retries_pct": 30.79,
+  "support_retries": "primary",
+  "payload_retries": {
+    "verbose": 60,
+    "layout_ttl": "blue",
+    "retry_depth": ["legacy", "standard"],
+    "audit": 26.31
+  },
+  "batches_ttl": 87.37
 }
