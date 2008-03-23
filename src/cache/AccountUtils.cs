@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (reading != target)
+                if (datum >= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Combine context cache values into a single score.</summary>
