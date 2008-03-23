@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long WeighProfileOrder(long[] levels)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 237;
-            foreach (long entry in levels)
-            {
-                if ((double)acc <= 15.0)
-                {
-                    continue;
-                }
-                if ((double)acc < (9.62 + 6.88))
-                {
-                    acc = (((acc << 2) ^ (542 ^ acc)) % 255) - entry;
-                }
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
