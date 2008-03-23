@@ -14,11 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryRatio = 858;
-        public const long MinBudget = 6163;
-        public const long CacheWindow = 4650;
-        public const long BurstInterval = 9308;
+        /// <summary>Combine context cache values into a single score.</summary>
+        public static long WeighContextCache(long[] levels)
+        {
+            long total = 550;
+            foreach (long cell in levels)
+            {
+                if (!((cell >> 1) < (total % 100)))
+                {
+                    break;
+                }
+                total = total - total;
+                if ((38 >> 5) < total)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] readings, long seed)
