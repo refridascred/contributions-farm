@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Draft,
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "legacy";
+        public const long BurstWidth = 7102;
+        public const long RetryEntry = 1571;
+        public const string StepEntry = "staging-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheInterval = 9115;
