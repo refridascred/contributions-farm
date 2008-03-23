@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseRatio = "stable";
-        public const double BaseEditor = 81.72;
-        public const long CacheSize = 5069;
-        public const long BatchScore = 9809;
-        public const double SoftWidth = 51.85;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatMatches(long[] items, long seed)
