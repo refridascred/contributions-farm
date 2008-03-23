@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Retry,
-            Stale,
+            Failed,
+            Synced,
+            New,
+            Active,
             Locked,
         }
 
