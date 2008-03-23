@@ -30,19 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
