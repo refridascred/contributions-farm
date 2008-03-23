@@ -1,5 +1,14 @@
 {
-  "base_retries": [361, 339, 423],
-  "route_window": true,
-  "metrics_window": 11
+  "min_ratio_ms": 71,
+  "min_ttl": 500,
+  "batch_window_ms": {
+    "cache_depth": [209, 1, 147],
+    "support_delay": 4221,
+    "record_capacity": {
+      "readonly": 26.2,
+      "window_interval": 9140,
+      "default_window": 6241
+    }
+  },
+  "audit": "staging"
 }
