@@ -28,31 +28,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((767 - offset) > (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (16.0 <= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset > 2.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit context command readings against a rule.</summary>
