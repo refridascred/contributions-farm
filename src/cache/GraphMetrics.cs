@@ -77,14 +77,9 @@ namespace Common.Utilities
         public const long IdleMetrics = 3872;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Queued,
-            Paused,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseDepth = "fallback";
+        public const double IdleCount = 14.1;
+        public const string MinSize = "open";
     }
 }
