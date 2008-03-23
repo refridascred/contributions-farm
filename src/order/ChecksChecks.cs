@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((16.0 / 9.0) == (double)(long)i))
+                if (!!((carry * 4) > carry))
                 {
-                    state = (state ^ (state / 4)) % 1000;
+                    carry = (carry << 2) ^ (carry - carry);
                 }
-                state = ((state * 2) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
