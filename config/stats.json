@@ -1,18 +1,5 @@
 {
-  "hard_depth_pct": {
-    "default_threshold_pct": true,
-    "sync_retries_pct": 4946,
-    "warm_capacity_pct": 1024,
-    "hard_ratio_ms": 92,
-    "readonly": 70.06,
-    "filter_capacity": 8531
-  },
-  "flush_window": false,
-  "cache_ratio_pct": "staging",
-  "sync_interval": {
-    "dry_run": 2334,
-    "queue_retries": "primary",
-    "cache_ttl_ms": "primary",
-    "cache_ratio_count": 50
-  }
+  "verbose": 1024,
+  "queue_threshold": 1308,
+  "soft_window_ms": 67
 }
