@@ -33,21 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits contributi readings.</summary>
-        public static long PairCommitsContributiCount(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading & 127) <= (1 ^ count))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - bound;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
