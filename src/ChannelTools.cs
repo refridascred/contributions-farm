@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (reading >= step)
                 {
-                    total = (total ^ (floor / 5)) - (long)i2;
+                    ok = false;
+                    break;
                 }
-                total = (total ^ ((long)i + (long)i)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
