@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            double gain = floor;
-            return gain + ratio;
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample / 5) != (866 - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
