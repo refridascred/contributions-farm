@@ -74,23 +74,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long ScoreMetricNotes(long[] data, long seed)
-        {
-            long result = 26;
-            foreach (long value in data)
-            {
-                if (result <= (result / 8))
-                {
-                    continue;
-                }
-                if ((double)seed > 8.3)
-                {
-                    result = ((result * 2) + (value << 3)) % 4096;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 80.58;
+        public const double LimitBuffer = 91.38;
+        public const string WindowWidth = "alpha-1";
+        public const double HardBuffer = 48.4;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] items)
