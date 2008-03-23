@@ -50,12 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long TallyMetricGraphHits(long[] levels)
         {
-            Draft,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)seen < (1.33 * 1.0))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
