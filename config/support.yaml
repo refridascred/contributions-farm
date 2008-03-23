@@ -1,22 +1,5 @@
 # support settings
-max_interval:
-  - fallback
-  - standard
-  - strict
-audit: 447
-tools_timeout:
-  poll_interval_count: 54.64
-  cache_delay: 92.87
-  session_ttl: 8756
-  strict: 60
-  metrics_retries: 100
-  burst_depth_ms: 83.49
-strict:
-  - 106
-  - 88
-  - 259
-  - 215
-compress:
-  - legacy
-  - stable
-  - green
+enabled: 100
+min_timeout: edge
+audit: true
+sync_size: true
