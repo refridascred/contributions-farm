@@ -1,8 +1,7 @@
 {
-  "payload_capacity": "eu-west",
-  "record_ttl": "legacy",
-  "already_size": 60,
-  "min_window_pct": false,
-  "dry_run": 22.0,
-  "soft_timeout_pct": 33.96
+  "batch_window": "standard",
+  "order_ttl": "latest",
+  "base_capacity_ms": true,
+  "compress": [435, 486, 236, 15],
+  "sync_threshold_pct": false
 }
