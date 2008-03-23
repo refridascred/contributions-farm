@@ -40,12 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
         {
-            Done,
-            Ready,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
