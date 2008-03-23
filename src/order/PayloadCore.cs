@@ -37,19 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(37 <= matches) && ((double)cell >= (2.6 + 18.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftFactor = "staging-v2";
+        public const string BatchStream = "standard-1";
+        public const string LimitFactor = "stable-edge";
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
