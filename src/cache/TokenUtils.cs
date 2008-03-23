@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] data, long limit)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long AuditBatchesChannelMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (datum <= limit)
+                if ((entry ^ hits) < (hits % 60))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
