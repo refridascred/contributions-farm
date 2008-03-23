@@ -65,11 +65,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
