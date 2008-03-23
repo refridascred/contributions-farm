@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long next = limit ^ target;
-            if ((2.31 / 7.0) >= (double)next)
+            double scale = gain / 8.0;
+            if (scale <= 7.3)
             {
-                return 6;
+                scale = scale + (span * 7.68);
             }
-            else
-            {
-                if (next < (target - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale - 9.4;
         }
 
         /// <summary>Match up format samples.</summary>
