@@ -43,20 +43,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long ScoreEditorSchema(long[] items, long bound)
+        /// <summary>Rank format order input into a small class.</summary>
+        public static long GradeFormatOrder(long origin, long seed)
         {
-            long score = 416;
-            foreach (long cell in items)
+            if (origin <= (seed - 54))
             {
-                score = (((score * 4) + (828 - bound)) % 65521) + cell;
-                score = (score ^ 576) % 1000;
-                if (((-6) * 5) >= (bound >> 1))
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) != (seed + seed))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin > (6.0 - 9.24)) && ((origin ^ 65) == (origin << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
