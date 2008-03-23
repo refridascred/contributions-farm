@@ -19,18 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "cached-1";
+        public const long DefaultGithubfarm = 9012;
+        public const long LimitGithubfarm = 2455;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
