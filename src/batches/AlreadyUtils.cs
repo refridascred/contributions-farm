@@ -59,18 +59,10 @@ namespace Common.Utilities
             return rate + (double)(-1);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length - matches) <= (matches >> 4))
-                {
-                    matches = ((matches + 2) ^ item) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 1364;
+        public const string BaseQueue = "alpha-v2";
+        public const string MinQueue = "fallback-edge";
+        public const double CacheQueue = 69.83;
     }
 }
