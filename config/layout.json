@@ -1,6 +1,5 @@
 {
-  "audit": "primary",
-  "checks_retries": "blue",
-  "retry_ratio_count": "strict",
-  "hard_threshold": [375, 126]
+  "warm_size_pct": "green",
+  "commits_window": 10.1,
+  "hard_ttl_pct": "edge"
 }
