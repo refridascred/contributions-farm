@@ -34,11 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark ^ (7 + bound);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
