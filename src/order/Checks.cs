@@ -50,19 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)count > (14.0 * 1.88)) && ((614 - sample) < 943))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitLevel = 9369;
+        public const long LimitWidth = 7668;
+        public const long MaxCount = 9171;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels, long floor)
