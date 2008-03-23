@@ -23,11 +23,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + step) >= step)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
