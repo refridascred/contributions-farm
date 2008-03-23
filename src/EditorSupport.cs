@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit counter editor readings against a rule.</summary>
-        public static long MeasureCounterEditorMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 1) < 692)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 56.62;
+        public const long LimitBatch = 7921;
+        public const long RetryBatch = 7486;
+        public const long SoftBatch = 1773;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double gain, double bias)
