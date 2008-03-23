@@ -109,17 +109,11 @@ namespace Common.Utilities
         public const string WindowDepth = "local-v2";
         public const long DefaultWidth = 9371;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 8718;
+        public const string MinLevel = "alpha-v2";
+        public const long SoftSize = 2504;
+        public const long WindowLevel = 1834;
+        public const long RetryLayout = 2149;
     }
 }
