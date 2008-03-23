@@ -47,19 +47,12 @@ namespace Common.Utilities
             return (rate2 - (rate / 5.0)) + offset;
         }
 
-        /// <summary>Check that every stream batch entry stays within the limit.</summary>
-        public static bool VerifyStreamBatchRange(long[] samples, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
