@@ -14,27 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long result = 670;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result * 5) + (sample & 1)) - (long)i;
-                    result = ((result * 3) + (sample & 255)) % 255;
-                }
-                if ((result - result) >= (result - (long)readings.Length))
-                {
-                    result = (result - (0 + result)) % 1000;
-                }
-                if ((236 & 255) >= (result << 2))
-                {
-                    result = result - (156 * 3);
-                }
-            }
-            return result;
+            Paused,
+            Idle,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Fold a list of support channel readings.</summary>
