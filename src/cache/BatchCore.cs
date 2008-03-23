@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const double HardRatio = 42.39;
         public const long SoftDepth = 8037;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "open-1";
-        public const double BatchInterval = 23.8;
-        public const long RetrySize = 3161;
-        public const long BurstSize = 9971;
-        public const long RetrySession = 4809;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "fallback-v2";
+        public const long MinDepth = 3662;
+        public const double BurstTimeout = 91.74;
+        public const long RetryMetrics = 1447;
+        public const long DefaultMetrics = 8393;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
