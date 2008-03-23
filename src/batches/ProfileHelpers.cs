@@ -57,18 +57,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the schema channel entries that pass the check.</summary>
-        public static long CountSchemaChannelHits(long[] items, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((tally - tally) != (tally << 3))
+                if ((13 % 60) <= (value & 127))
                 {
-                    tally = ((tally + 1) - reading) + target;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a queue summary.</summary>
