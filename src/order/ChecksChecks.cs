@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally >= (double)122)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
