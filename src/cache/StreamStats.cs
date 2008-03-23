@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const double BurstFormat = 43.59;
         public const string StepFormat = "open-edge";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long total = 5;
-            foreach (long item in values)
-            {
-                if ((item & 1) >= total)
-                {
-                    total = (((total << 2) ^ (total + total)) % 101) + offset;
-                    break;
-                }
-                total = (total + (item >> 2)) % 97;
-                total = ((total << 3) ^ (item + item)) % 1000;
-            }
-            if (total < (-30))
-            {
-                total = ((total << 2) ^ (1 + total)) % 97;
-            }
-            return total;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
