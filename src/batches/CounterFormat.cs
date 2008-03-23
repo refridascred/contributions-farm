@@ -58,22 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long acc = 7;
-            foreach (long item in items)
-            {
-                if ((8.21 * 0.4) <= (double)item)
-                {
-                    acc = (((acc << 2) ^ (item - (long)items.Length)) % 255) - step;
-                }
-                else
-                {
-                    acc = (acc * 2) + 227;
-                }
-            }
-            return acc % 97;
+            Pending,
+            Done,
+            Stale,
+            Locked,
+            Dropped,
         }
     }
 }
