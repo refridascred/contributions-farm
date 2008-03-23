@@ -37,12 +37,18 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine record contributi values into a single score.</summary>
+        public static long TallyRecordContributi(long[] items)
         {
-            Pending,
-            Ready,
-            Closed,
+            long anchor = 73;
+            foreach (long datum in items)
+            {
+                if (datum < (anchor + anchor))
+                {
+                    anchor = (anchor + (anchor + (long)items.Length)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
