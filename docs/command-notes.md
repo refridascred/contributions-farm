@@ -1,14 +1,13 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for checks live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the filter list.
+Keep batch and entry names short and lowercase.
 
-Each account is validated before it reaches the checks queue.
-The profile report groups every route by entry.
+A stream that stays idle for too long is moved to the layout list.
+A graph that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep checks values small
-- Validate token input early
-- Prefer schema defaults
+- Document new schema fields
+- Log every editor change
+- Validate profile input early
