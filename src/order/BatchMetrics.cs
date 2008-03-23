@@ -59,18 +59,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + reading) <= count)
+                if (items[i] < offset)
                 {
-                    count = (count + 2) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
