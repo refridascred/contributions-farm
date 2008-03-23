@@ -1,5 +1,5 @@
 # githubfarm settings
-entry_limit: 7118
-max_interval_count: true
-commits_interval: 60
-cache_ratio_ms: 83.65
+strict: false
+queue_timeout: 8042
+base_limit_s: 61
+enabled: blue
