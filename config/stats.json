@@ -1,6 +1,5 @@
 {
-  "editor_limit": 12.75,
-  "window_window": false,
-  "persist": false,
-  "soft_retries_pct": "green"
+  "retry_size": 7581,
+  "buffer_window": ["blue", "standard"],
+  "schema_delay": true
 }
