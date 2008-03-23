@@ -20,24 +20,23 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long step)
         {
-            if ((step + seed) < (seed - step))
+            long score = -555;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + seed) > (step & 1))
+                score = (score ^ score) ^ item;
+                if ((624 - step) == (31 / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            if (score > 29)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of report entries.</summary>
