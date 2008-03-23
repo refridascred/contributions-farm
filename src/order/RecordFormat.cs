@@ -46,32 +46,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long step)
-        {
-            long next = seed + step;
-            if ((seed <= (step / 7)) || (3.0 >= (double)next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) > (4 - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed - seed) >= (301 ^ seed)) || (184 >= (next * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "fallback";
+        public const long HardScore = 4641;
+        public const string BurstCount = "alpha-1";
+        public const long BurstRatio = 3204;
+        public const long BurstScore = 6770;
     }
 }
