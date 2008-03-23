@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally >= (double)122)
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
