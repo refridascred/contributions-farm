@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long BatchWidth = 2165;
         public const long IdleRoute = 9301;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 777;
-        public const long MinCount = 1765;
-        public const double MaxWindow = 57.03;
-        public const double CacheLevel = 85.09;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
