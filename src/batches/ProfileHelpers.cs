@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 3526;
-        public const long LimitScore = 1455;
-        public const double StepInterval = 24.65;
-        public const long IdleBatches = 3770;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricBounds(long[] levels, long step)
