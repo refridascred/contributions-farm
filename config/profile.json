@@ -1,5 +1,6 @@
 {
-  "enabled": false,
-  "readonly": 30,
-  "base_ttl_s": "edge"
+  "flush_limit": 81,
+  "compress": "latest",
+  "order_interval": 4363,
+  "filter_ttl": true
 }
