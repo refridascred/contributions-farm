@@ -31,14 +31,12 @@ namespace Common.Utilities
         public const double WindowChecks = 88.86;
         public const long LimitDepth = 8055;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Paused,
-            New,
-            Retry,
-            Locked,
-            Stale,
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
