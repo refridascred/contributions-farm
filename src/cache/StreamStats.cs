@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] items, long bound)
+        /// <summary>Look up the position of a checks layout sample.</summary>
+        public static long FindChecksLayoutIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((165 >> 5) == (seen * 5))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    seen = ((seen + 1) - datum) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
