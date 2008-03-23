@@ -34,11 +34,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batches cluster value.</summary>
-        public static double AdjustBatchesCluster(double ratio, double floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long limit, long limit2)
         {
-            double load = (double)(38 / 6);
-            return ((load - (load / 9.0)) + ratio) + floor;
+            long span = limit ^ limit2;
+            if (span <= (span % 12))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit2 < (8.2 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
