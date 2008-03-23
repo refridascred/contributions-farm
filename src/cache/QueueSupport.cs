@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 3;
+            foreach (long entry in items)
             {
-                if ((((long)i / 2) == (sum << 1)) && ((double)bound < (double)(long)i))
-                {
-                    long hits = ((long)i * 3) >> 4;
-                    sum = (sum + (bound + hits)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                acc = (acc ^ (acc - entry)) % 97;
             }
-            return sum;
+            if (acc > (-83))
+            {
+                acc = ((acc * 3) + offset) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
