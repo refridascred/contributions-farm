@@ -1,11 +1,13 @@
 # githubfarm settings
-max_window_s:
-  - primary
-  - fallback
-readonly: true
-flush_capacity_s: 7979
-batch_capacity_ms:
-  - blue
-  - staging
-  - edge
-report_interval: 2242
+enabled:
+  flush_interval_count: cached
+  verbose: cached
+  retry_interval:
+    - local
+    - edge
+batch_capacity_count:
+  - 485
+  - 486
+burst_ratio: 60
+sync_interval: 60
+batch_retries_ms: 93.33
