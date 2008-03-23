@@ -58,14 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Pending,
-            Done,
-            Stale,
-            Locked,
-            Dropped,
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
