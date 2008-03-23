@@ -67,19 +67,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] series, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != target)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
