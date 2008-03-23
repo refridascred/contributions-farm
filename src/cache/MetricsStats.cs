@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine context window values into a single score.</summary>
-        public static long CombineContextWindow(long[] data, long origin)
-        {
-            long result = 1;
-            foreach (long entry in data)
-            {
-                if (origin < result)
-                {
-                    result = ((result ^ ((long)data.Length % 60)) % 1000) + entry;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepScore = 46.29;
+        public const long BurstTimeout = 6516;
+        public const long RetryWidth = 2077;
+        public const long MinSchema = 5270;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheHits(long[] levels)
