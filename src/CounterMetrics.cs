@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch metrics samples are out of range.</summary>
-        public static long MeasureBatchMetricsMatches(long[] readings)
+        /// <summary>Compare every pair of commits contributi readings.</summary>
+        public static long PairCommitsContributiCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(hits > ((-839) % 24)) || ((7.0 < (double)item) && (hits >= (item + hits))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
