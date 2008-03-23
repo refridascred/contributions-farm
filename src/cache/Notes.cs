@@ -38,25 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long ClassifyFarmEntry(long floor, long offset)
+        /// <summary>Accumulate batch payload samples.</summary>
+        public static long TotalBatchPayload(long[] levels)
         {
-            long offset2 = floor ^ offset;
-            if ((offset > (90 * 4)) && ((floor % 3) < (offset * 2)))
+            long anchor = 478;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 ^ floor) != (offset2 - 660))
+                if ((anchor ^ entry) <= (entry << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (anchor + (anchor + anchor)) % 101;
                 }
             }
+            if (anchor > 344)
+            {
+                anchor = ((anchor * 3) + ((-28) + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
