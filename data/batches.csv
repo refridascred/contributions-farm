@@ -1,7 +1,6 @@
-id,label,owner,weight
-1,79.44,25,green
-2,42.35,239,standard
-3,21.81,39.29,5.26
-4,238,585,primary
-5,legacy,71.37,11.7
-6,green,945,65.7
+id,score,weight
+1,primary,4.15
+2,20.86,61
+3,117,145
+4,green,356
+5,772,44.2
