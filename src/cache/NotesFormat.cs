@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first context buffer entry that matches the target.</summary>
-        public static long FindContextBufferIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBudget = 2943;
+        public const long SoftWidth = 9113;
+        public const string IdleBatch = "strict-v2";
+        public const long LimitBatch = 9940;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphGaps(long[] readings)
