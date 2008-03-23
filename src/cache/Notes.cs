@@ -74,14 +74,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] items, long limit)
         {
-            Retry,
-            Active,
-            Queued,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)limit >= (2.9 * 2.94))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
