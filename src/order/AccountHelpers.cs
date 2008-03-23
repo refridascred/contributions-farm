@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank route counter input into a small class.</summary>
-        public static long ClassifyRouteCounter(long seed, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            if ((origin * 5) < (seed % 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= (origin - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - 697) <= (origin * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin + seed) == (75 >> 4)) && ((double)seed != (7.9 - 8.6)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
