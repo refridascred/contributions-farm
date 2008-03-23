@@ -55,17 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a token record.</summary>
