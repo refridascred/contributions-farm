@@ -1,5 +1,7 @@
 # support settings
-filter_ttl: 500
-base_size: 88
-farm_limit: stable
-hard_ttl: true
+retry_interval: true
+metrics_ratio: 47.18
+base_ttl: 8
+hard_delay_ms: 2856
+channel_ratio: 1024
+cache_ratio: 100
