@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (floor + 24)) ^ (long)i2;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
