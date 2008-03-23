@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 13)
+                    if ((data[i] ^ data[j]) != 18)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
