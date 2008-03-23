@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double scale2 = (double)(450 + 67);
+            if (scale2 < offset)
             {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = scale2 + (8.9 * 8.23);
             }
-            return ready;
+            else
+            {
+                scale2 = scale2 + 7.16;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
