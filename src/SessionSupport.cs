@@ -35,14 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            Pending,
-            Draft,
-            New,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample % 64) >= (sample - count)) || ((sample & 7) != (1 << 3))) && !((sample & 15) < count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
