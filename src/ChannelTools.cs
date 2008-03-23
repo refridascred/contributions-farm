@@ -38,14 +38,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            Paused,
-            New,
-            Locked,
-            Failed,
-            Pending,
+            double mean = (double)(237 % 8);
+            if (mean > mean)
+            {
+                mean = (mean - (double)388) + ratio;
+            }
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)30;
         }
     }
 }
