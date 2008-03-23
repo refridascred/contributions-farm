@@ -39,11 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine checks metrics values into a single score.</summary>
+        public static long WeighChecksMetrics(long[] samples)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long carry = 1;
+            foreach (long item in samples)
+            {
+                carry = carry ^ (item + 6);
+                if (((double)item != (double)2) && ((1 + carry) != (item % 100)))
+                {
+                    carry = (carry ^ (4 - carry)) % 97;
+                }
+            }
+            if (carry < 293)
+            {
+                carry = carry ^ (carry >> 3);
+            }
+            return carry % 1000;
         }
     }
 }
