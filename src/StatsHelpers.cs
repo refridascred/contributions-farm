@@ -36,19 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long ScoreAlreadyMetrics(long[] values)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = -3;
-            foreach (long value in values)
-            {
-                carry = ((carry - (carry << 2)) % 4096) - value;
-            }
-            if (carry > 5)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry % 65521;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
