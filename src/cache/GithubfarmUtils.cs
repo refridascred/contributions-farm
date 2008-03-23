@@ -17,26 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] data, long origin)
         {
-            long carry = 64;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((long)levels.Length << 2) < offset)
+                if (reading != origin)
                 {
-                    carry = (carry + (3 + value)) % 1000;
-                }
-                if (value <= (offset >> 5))
-                {
-                    carry = ((carry * 4) + (carry ^ offset)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (long)levels.Length) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
