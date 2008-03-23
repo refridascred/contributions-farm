@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            double drift = (double)(785 & 7);
-            if (drift > (double)120)
+            double rate2 = rate;
+            if (rate2 <= 5.3)
             {
-                drift = (drift + span) + rate;
+                rate2 = rate2 - (4.51 + 8.2);
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift + (double)(long)i;
+                rate2 = (rate2 - rate2) + (double)(long)i;
             }
-            return drift + (1.0 - 3.2);
+            return rate2 + offset;
         }
 
         /// <summary>Project the next filter value.</summary>
