@@ -68,18 +68,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] items, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long step = bound ^ origin;
+            if ((bound * 2) == ((-72) + bound))
             {
-                if ((double)limit >= (2.9 * 2.94))
+                return 0;
+            }
+            else
+            {
+                if (!((bound + bound) >= (step + origin)))
                 {
-                    matches = (matches + 2) - sample;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
