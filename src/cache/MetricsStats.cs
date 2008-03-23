@@ -54,12 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheRatio = "standard-v2";
+        public const string WindowNotes = "primary-v2";
+        public const double BatchFactor = 45.56;
+        public const long RetryNotes = 5117;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
