@@ -32,19 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] series, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample != limit)
+                if ((limit / 8) < limit)
                 {
-                    flag = false;
+                    mark = ((mark * 3) + (limit % 64)) % 255;
+                    mark = (mark << 2) ^ 5;
                     break;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
     }
 }
