@@ -40,18 +40,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long TallyTokenGithubfarmHits(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) <= (item * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Idle,
+            Paused,
+            Failed,
         }
     }
 }
