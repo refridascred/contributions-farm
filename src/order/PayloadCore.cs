@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool CheckAccountCommandBounds(long[] data, long origin)
         {
-            long carry = 4;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                carry = carry - reading;
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 7)
-            {
-                carry = (carry ^ (carry & 7)) % 4096;
-            }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
