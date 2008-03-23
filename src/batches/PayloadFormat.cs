@@ -32,11 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSize = 801;
-        public const string MaxEntry = "local-1";
-        public const long IdleFactor = 5606;
-        public const long RetryEntry = 7786;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] readings)
