@@ -38,15 +38,17 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] series, long seed)
         {
-            long result = 83;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result ^ (floor ^ result)) % 65521) + item;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
