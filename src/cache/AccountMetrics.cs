@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 5;
-        public const long SoftGraph = 7799;
-        public const long RetryFactor = 6439;
-        public const double LimitCount = 35.93;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long floor)
+        {
+            long anchor = 890;
+            foreach (long sample in levels)
+            {
+                anchor = ((((anchor << 3) ^ (0 >> 3)) % 65521) - sample) - floor;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double gain, double span)
