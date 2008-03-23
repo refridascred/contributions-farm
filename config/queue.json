@@ -1,13 +1,7 @@
 {
-  "checks_limit": "blue",
-  "farm_size": 94.69,
-  "sync_limit": "stable",
-  "sync_threshold_s": 1024,
-  "enabled": 66,
-  "base_threshold": {
-    "idle_ttl_count": "primary",
-    "contributi_depth": 6.21,
-    "hard_interval_pct": 52.17,
-    "cluster_size": "legacy"
-  }
+  "retry_timeout_pct": 83.02,
+  "poll_retries": 70,
+  "sync_interval_ms": "edge",
+  "cache_size_ms": 93.84,
+  "batch_timeout_pct": [42, 361]
 }
