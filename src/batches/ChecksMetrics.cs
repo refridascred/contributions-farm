@@ -67,10 +67,19 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 7074;
-        public const string IdleCounter = "strict-v2";
-        public const string MinCounter = "fallback";
-        public const double BatchSize = 23.33;
+        /// <summary>Check that every order stream entry stays within the limit.</summary>
+        public static bool ValidateOrderStreamLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
