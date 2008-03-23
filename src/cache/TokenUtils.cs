@@ -26,22 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (19.0 <= (double)matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Failed,
+            New,
+            Queued,
         }
     }
 }
