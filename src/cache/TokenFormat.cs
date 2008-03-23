@@ -19,20 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long target, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            if (((floor * 5) >= (floor + target)) || (floor <= (target & 3)))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix - 879) % 101) ^ (long)i2;
-                }
-                mix = (mix - (55 - bound)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)target < (2.0 * 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((12.0 / 6.0) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
