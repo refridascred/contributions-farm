@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] series, long seed)
         {
-            Done,
-            Closed,
-            Queued,
-            Failed,
-            Idle,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
