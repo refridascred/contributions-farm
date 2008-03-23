@@ -73,20 +73,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine batch account values into a single score.</summary>
-        public static long TallyBatchAccount(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long origin)
         {
-            long state = 454;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                state = state - ((-77) * 3);
-                state = ((state << 3) ^ (750 - entry)) % 1000;
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 0)
-            {
-                state = (state - (state + state)) % 101;
-            }
-            return state % 1000;
+            return ready;
         }
     }
 }
