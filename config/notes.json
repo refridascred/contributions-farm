@@ -1,6 +1,19 @@
 {
-  "flush_interval_s": 30,
-  "idle_limit": "strict",
-  "compress": false,
-  "already_depth": 1228
+  "retry_ttl_count": {
+    "stats_timeout": {
+      "compress": ["cached", "staging", "stable"],
+      "min_ratio_s": "primary",
+      "flush_ratio": "primary",
+      "default_delay_count": "open",
+      "default_capacity_s": false,
+      "entry_delay": 74.14
+    },
+    "checks_capacity": "staging",
+    "support_limit": "edge",
+    "token_timeout": 10.23,
+    "warm_ratio_s": "green",
+    "farm_window": 250
+  },
+  "dry_run": [423, 55],
+  "persist": [163, 360, 320, 114]
 }
