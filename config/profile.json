@@ -1,14 +1,7 @@
 {
-  "hard_limit_pct": 86,
-  "notes_ttl": {
-    "cache_retries": 98,
-    "route_ratio": 58.36,
-    "readonly": 10.78,
-    "hard_ttl": false,
-    "max_retries_ms": 60,
-    "batch_ratio_pct": 1024
-  },
-  "dry_run": false,
-  "retry_interval_s": 75.98,
-  "idle_capacity_pct": 92.32
+  "metrics_retries": 1024,
+  "commits_timeout": false,
+  "soft_ttl_s": 35,
+  "min_ratio": 1024,
+  "audit": 500
 }
