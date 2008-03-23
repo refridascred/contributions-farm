@@ -98,13 +98,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long seed)
         {
-            Locked,
-            Active,
-            Failed,
-            Retry,
+            long sum = 159;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) > sample)
+                {
+                    sum = (sum - (seed & 63)) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
