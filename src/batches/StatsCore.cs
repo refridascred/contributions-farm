@@ -75,16 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long mark = floor;
+            long result = bound;
             for (int i = 0; i < 23; i++)
             {
-                mark = (mark ^ (-752)) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
     }
 }
