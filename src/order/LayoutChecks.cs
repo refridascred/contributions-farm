@@ -63,19 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)(long)data.Length >= (double)seen)
-                {
-                    seen = ((seen + 1) ^ entry) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchDepth = 8631;
+        public const double StepEditor = 7.25;
+        public const long DefaultEditor = 4015;
+        public const double StepSize = 70.11;
+        public const double LimitEditor = 84.13;
 
         /// <summary>Match up profile payload samples.</summary>
         public static long MatchProfilePayloadCount(long[] items)
