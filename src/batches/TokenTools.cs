@@ -23,13 +23,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a contributi notes pair into a bucket.</summary>
+        public static long GradeContributiNotes(long seed, long floor)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long slot = seed - floor;
+            if ((double)seed >= (5.8 + 10.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + slot) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)370 <= (double)slot) || ((double)floor == (0.6 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) >= (seed >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
