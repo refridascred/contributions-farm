@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 1292;
-        public const long DefaultBuffer = 6872;
-        public const double IdleBuffer = 47.57;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long origin)
