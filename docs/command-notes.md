@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Use farm settings to tune how often metric data is refreshed.
-When a cache fails, the account handler retries a few times before giving up.
+When a batches fails, the cluster handler retries a few times before giving up.
+Use commits settings to tune how often token data is refreshed.
 
-A record that stays idle for too long is moved to the route list.
-Run the contributi check before changing any contributi limits.
-The channel report groups every metrics by profile.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer payload defaults
-- Review editor limits each release
+- Document new token fields
+- Validate payload input early
+- Keep format values small
+- Prefer entry defaults
