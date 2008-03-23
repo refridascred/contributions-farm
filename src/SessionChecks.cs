@@ -38,19 +38,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] items, long floor)
+        /// <summary>Combine format cluster values into a single score.</summary>
+        public static long TotalFormatCluster(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long mark = -56;
+            foreach (long datum in values)
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark + (datum ^ datum)) % 65521) + offset;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
