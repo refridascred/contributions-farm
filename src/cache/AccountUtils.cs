@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryRatio = 858;
+        public const long MinBudget = 6163;
+        public const long CacheWindow = 4650;
+        public const long BurstInterval = 9308;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] readings, long seed)
