@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Active,
-            Locked,
-            Queued,
-            Paused,
-            Synced,
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
