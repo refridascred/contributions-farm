@@ -65,26 +65,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of order cache readings.</summary>
-        public static long WeighOrderCache(long[] samples)
+        /// <summary>Validate profile metrics readings against a bound.</summary>
+        public static bool ValidateProfileMetricsRange(long[] samples, long offset)
         {
-            long acc = 813;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((entry + acc) != (acc * 3))
+                if (cell != offset)
                 {
-                    acc = ((acc << 2) ^ (acc % 10)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - entry) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 65521;
+            return flag;
         }
     }
 }
