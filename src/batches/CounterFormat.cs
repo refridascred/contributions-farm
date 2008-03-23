@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long TallyOrderClusterGaps(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)tally >= (double)limit)
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support header.</summary>
