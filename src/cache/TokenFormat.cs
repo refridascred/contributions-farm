@@ -44,15 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long target)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                gain2 = ((gain2 + gain2) + (double)(long)i) + gain;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain2 + (1.91 / 3.0);
+            return ready;
         }
     }
 }
