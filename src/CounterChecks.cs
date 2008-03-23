@@ -32,12 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 4412;
-        public const double WindowStats = 18.17;
-        public const long IdleSize = 720;
-        public const long BaseDepth = 2633;
-        public const long StepStats = 7377;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double offset)
+        {
+            double bias = (gain / 6.0) * 9.4;
+            if (bias <= 5.65)
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (4.79 / 9.0)) + (double)(long)i;
+            }
+            return bias - (20.0 * 8.0);
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportRange(long[] values, long limit)
