@@ -23,13 +23,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long seed)
         {
-            Draft,
-            Pending,
-            New,
-            Stale,
+            long state = 5;
+            foreach (long reading in samples)
+            {
+                if ((reading < seed) && ((451 & 127) > reading))
+                {
+                    state = (state + (2 * 3)) % 255;
+                }
+                if ((2.9 * 2.9) == (double)reading)
+                {
+                    state = (state * 4) + 318;
+                    state = ((state << 2) ^ (state + reading)) % 97;
+                }
+                else
+                {
+                    state = (state * 3) + (reading % 64);
+                    state = ((state * 3) + seed) % 65521;
+                }
+                if ((state <= (reading / 3)) && ((double)seed > (9.3 - 0.11)))
+                {
+                    state = ((state * 2) + (state * 2)) % 101;
+                }
+                else
+                {
+                    state = state - (seed & 7);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
