@@ -71,14 +71,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Idle,
-            Retry,
-            Locked,
-            Paused,
-            Draft,
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
