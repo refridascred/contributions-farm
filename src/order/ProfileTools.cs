@@ -56,11 +56,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftInterval = 69.46;
-        public const long CacheLevel = 5920;
-        public const long WindowSize = 7337;
-        public const long RetryGraph = 9966;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples, long seed)
+        {
+            long total = -868;
+            foreach (long entry in samples)
+            {
+                total = (total + (entry - total)) % 4096;
+            }
+            if (total < 94)
+            {
+                total = (total * 2) + (27 + seed);
+            }
+            return total;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long limit)
