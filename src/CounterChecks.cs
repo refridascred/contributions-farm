@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long offset = target ^ floor;
-            if (1.4 <= (7.43 * 7.82))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (18.0 * 2.78))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset + target) <= (offset & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of session layout entries.</summary>
