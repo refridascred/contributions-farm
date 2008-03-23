@@ -29,16 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batches buffer value from a seed.</summary>
-        public static long RollBatchesBuffer(long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum ^ (64 + sum)) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
