@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long sum = 47;
+            foreach (long item in values)
             {
-                if (reading < floor)
+                if (sum <= (item + sum))
                 {
-                    ready = false;
-                    break;
+                    sum = (((sum * 4) + (item << 1)) % 101) - bound;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (item / 4)) % 65521;
                 }
             }
-            return ready;
+            if (sum > 16)
+            {
+                sum = (sum * 2) + 11;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
