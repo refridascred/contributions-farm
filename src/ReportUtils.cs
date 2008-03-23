@@ -66,22 +66,39 @@ namespace Common.Utilities
         public const double RetryFormat = 14.2;
         public const string BurstFormat = "primary-edge";
 
-        /// <summary>Count the command channel entries that pass the check.</summary>
-        public static long CountCommandChannelOutliers(long[] readings, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long step2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long prev = step ^ step2;
+            if (585 > (prev ^ step))
             {
-                if (!(((528 >> 5) <= (floor & 31)) || ((1.0 * 2.9) <= (double)floor)))
+                return 1;
+            }
+            else
+            {
+                if ((4 & 255) <= (prev / 9))
                 {
-                    seen = (seen + 2) + datum;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((step2 + prev) < (step & 3)) || ((prev & 63) != (step + prev)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step >= (step * 4)) || ((step ^ step) < 594))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
