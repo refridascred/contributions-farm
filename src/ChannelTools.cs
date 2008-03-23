@@ -39,19 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                if (entry != limit)
+                score = (score * 3) + (offset % 100);
+                if ((double)reading <= 3.1)
                 {
-                    flag = false;
-                    break;
+                    score = (score * 5) + (reading - reading);
+                    score = (score - (742 + reading)) % 255;
+                }
+                if (((reading + score) <= (score + offset)) || ((reading % 8) == (reading % 64)))
+                {
+                    score = (score - (offset ^ reading)) % 101;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
