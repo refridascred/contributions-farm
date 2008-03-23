@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of route layout readings.</summary>
-        public static long CombineRouteLayout(long[] values)
-        {
-            long mix = 2;
-            foreach (long reading in values)
-            {
-                mix = (((mix << 3) ^ (mix & 63)) % 65521) - reading;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3526;
+        public const long LimitScore = 1455;
+        public const double StepInterval = 24.65;
+        public const long IdleBatches = 3770;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricBounds(long[] levels, long step)
