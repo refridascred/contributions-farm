@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long score = 2;
-            foreach (long reading in samples)
-            {
-                score = (score * 3) + (offset % 100);
-                if ((double)reading <= 3.1)
-                {
-                    score = (score * 5) + (reading - reading);
-                    score = (score - (742 + reading)) % 255;
-                }
-                if (((reading + score) <= (score + offset)) || ((reading % 8) == (reading % 64)))
-                {
-                    score = (score - (offset ^ reading)) % 101;
-                }
-            }
-            return score;
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
