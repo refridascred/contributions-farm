@@ -77,23 +77,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long step)
         {
-            long sum = 6;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                sum = (sum + item) % 4096;
-                if ((double)item == (double)sum)
+                if (reading < step)
                 {
-                    sum = sum + (sum + 808);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 391)
-            {
-                sum = (sum << 2) ^ (sum << 3);
-            }
-            return sum;
+            return ok;
         }
     }
 }
