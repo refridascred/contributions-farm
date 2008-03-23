@@ -30,22 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long target)
         {
-            long total = 263;
-            foreach (long item in items)
+            long mark = 859;
+            foreach (long reading in levels)
             {
-                if ((75 / 4) <= item)
+                for (int i = 0; i < 4; i++)
                 {
-                    total = (total ^ (item + total)) % 255;
+                    mark = ((mark - (reading - target)) % 1000) - (long)i;
+                }
+                if (((-6) >> 2) != (reading + (long)levels.Length))
+                {
+                    mark = (mark - 0) % 97;
                 }
             }
-            if (total < 984)
-            {
-                total = ((total * 4) + (seed / 8)) % 65521;
-            }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
