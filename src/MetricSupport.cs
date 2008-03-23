@@ -28,17 +28,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload stream sample.</summary>
-        public static long LookupPayloadStreamIndex(long[] levels, long target)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long ClassifyStreamRecord(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = offset ^ floor;
+            if ((double)offset == (11.0 + 5.02))
             {
-                if (levels[i] < target)
+                return 4;
+            }
+            else
+            {
+                if (((11.0 + 7.99) != (double)prev) && ((offset - floor) < prev))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((6 << 2) > (floor - 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3 - offset) != (prev / 6)) && ((prev % 100) >= (prev * 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
