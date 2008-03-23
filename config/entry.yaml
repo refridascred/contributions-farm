@@ -1,16 +1,4 @@
 # entry settings
-order_ratio:
-  - edge
-  - edge
-  - strict
-  - eu-west
-dry_run:
-  default_interval:
-    already_size: 500
-    min_timeout_ms: false
-    cache_window: 1024
-  batches_retries: fallback
-  strict: 7843
-  sync_window: local
-  default_ttl_count: 500
-support_interval: 95.96
+editor_threshold: cached
+retry_interval: latest
+channel_capacity: 60
