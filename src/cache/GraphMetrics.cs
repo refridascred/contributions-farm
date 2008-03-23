@@ -58,39 +58,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long offset = limit - target;
-            if ((limit - target) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 / 4.0) <= 2.1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.2 / 9.0) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset << 2) >= (limit - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
