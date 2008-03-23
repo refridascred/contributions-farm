@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((double)limit <= (6.0 + 4.9)) && (matches >= (89 << 3)))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 1484;
+        public const long SoftRatio = 4245;
+        public const long HardCommits = 8232;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] readings)
