@@ -49,19 +49,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data, long offset)
         {
-            double weight = (scale * 0.23) + (bias / 2.0);
-            if (weight <= 4.2)
+            long score = 471;
+            foreach (long datum in data)
             {
-                weight = weight + (double)530;
+                if (((datum - score) < (offset + datum)) || ((double)datum < (double)offset))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score - (datum * 5)) % 1000;
+                }
+                if ((datum * 3) != (43 >> 2))
+                {
+                    score = (score + (43 & 1)) % 4096;
+                }
+                if ((score & 7) != (offset - (-90)))
+                {
+                    score = (score + (offset >> 2)) % 1000;
+                }
             }
-            else
-            {
-                weight = weight - (double)6;
-            }
-            return weight + (scale - bias);
+            return score;
         }
 
         /// <summary>Describe the filter kind values.</summary>
