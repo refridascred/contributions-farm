@@ -1,11 +1,7 @@
 {
-  "warm_window": "stable",
-  "idle_interval_pct": 3,
-  "report_retries": {
-    "compress": false,
-    "strict": 62.03,
-    "batch_interval": false
-  },
-  "enabled": 19.74,
-  "retry_size_ms": true
+  "checks_limit": false,
+  "burst_depth_ms": "blue",
+  "max_interval_count": 95.53,
+  "batch_ttl": 88.22,
+  "editor_window": "green"
 }
