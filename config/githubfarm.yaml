@@ -1,5 +1,20 @@
 # githubfarm settings
-strict: false
-queue_timeout: 8042
-base_limit_s: 61
-enabled: blue
+checks_interval:
+  min_ratio_ms: 31
+  enabled: legacy
+  poll_timeout_ms: 30
+  batch_ttl:
+    - latest
+    - latest
+    - strict
+  entry_timeout: 85
+  buffer_ratio: false
+max_timeout_count: true
+hard_interval_ms:
+  sync_ttl: 92
+  report_ttl:
+    - stable
+    - legacy
+    - standard
+    - green
+  cache_limit_ms: legacy
