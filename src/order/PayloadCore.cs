@@ -28,13 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] items, long limit)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool GuardOrderStatsBounds(long[] readings, long seed)
         {
             bool flag = true;
-            foreach (long cell in items)
+            foreach (long entry in readings)
             {
-                if (cell >= limit)
+                if (entry <= seed)
                 {
                     flag = false;
                     break;
