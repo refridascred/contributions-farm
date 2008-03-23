@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total << 3) ^ origin) % 4096;
-                if ((origin >> 1) >= 2)
-                {
-                    total = total ^ ((long)i << 1);
-                    total = (total ^ total) % 255;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepInterval = 6140;
+        public const long HardDepth = 5395;
+        public const long WindowAlready = 1669;
+        public const long MaxRatio = 1170;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long target, long seed)
