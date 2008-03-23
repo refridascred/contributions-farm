@@ -19,11 +19,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxTimeout = 6221;
-        public const double SoftAlready = 39.23;
-        public const double DefaultInterval = 50.32;
-        public const string CacheLevel = "local-edge";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 5) + origin) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long seed, long limit)
