@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!!((carry * 4) > carry))
-                {
-                    carry = (carry << 2) ^ (carry - carry);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
