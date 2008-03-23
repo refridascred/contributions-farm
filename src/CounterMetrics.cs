@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc - (acc % 3)) % 101;
-                acc = (acc << 3) ^ limit;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
