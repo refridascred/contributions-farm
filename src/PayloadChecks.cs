@@ -69,9 +69,22 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 9853;
-        public const long CacheNotes = 2872;
-        public const long MinSpan = 225;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + 206) != (item / 3))
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
