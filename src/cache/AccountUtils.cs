@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] series, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (reading >= offset)
+                if ((seed - sample) > (sample - seed))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
