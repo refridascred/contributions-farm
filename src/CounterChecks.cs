@@ -55,14 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Draft,
-            Ready,
-            Queued,
-            Pending,
+            Stale,
+            Retry,
             Synced,
+            Locked,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
