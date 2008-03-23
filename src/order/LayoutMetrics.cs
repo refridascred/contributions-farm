@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 50.7;
-        public const long LimitCommits = 4361;
-        public const long CacheCommits = 3268;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Stale,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] levels, long offset)
