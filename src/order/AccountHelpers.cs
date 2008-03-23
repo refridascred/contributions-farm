@@ -57,18 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batches route sample.</summary>
-        public static long LookupBatchesRouteIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCount = "cached-1";
+        public const long IdleCounter = 7656;
+        public const long DefaultCounter = 1734;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] readings, long origin)
