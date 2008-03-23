@@ -1,10 +1,6 @@
-id,weight,count
-1,812,861
-2,78.56,staging
-3,16,primary
-4,987,cached
-5,open,47.7
-6,local,stable
-7,672,925
-8,204,staging
-9,760,57.14
+id,count,score
+1,local,staging
+2,cached,747
+3,13.43,824
+4,569,491
+5,legacy,local
