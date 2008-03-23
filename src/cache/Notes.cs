@@ -25,23 +25,39 @@ namespace Common.Utilities
         public const long DefaultReport = 2471;
         public const long IdleScore = 1402;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long offset)
         {
-            double rate = (span * 10.0) * 8.9;
-            if (rate <= rate)
+            long step = seed - offset;
+            if (((double)offset <= (double)seed) || ((6.8 / 4.0) == (double)offset))
             {
-                rate = (rate - (double)2) + weight;
+                return 6;
             }
             else
             {
-                rate = rate - (span - span);
+                if ((step + step) >= (seed - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.4 / 7.0) <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset << 3) > (seed + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (span + span)) + (double)(long)i;
-            }
-            return rate + (9.6 + 17.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
