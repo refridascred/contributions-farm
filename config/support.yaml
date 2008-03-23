@@ -1,17 +1,19 @@
 # support settings
-sync_size_count: 17.02
-poll_interval_pct: 66.99
-batch_capacity_s: 1681
-hard_interval_s: false
-retry_timeout:
-  cache_interval_pct: 57.44
-  base_window: 87
-  idle_interval: 48.95
-  default_timeout: 32
-  commits_size:
-    idle_retries: 3.73
-    burst_timeout_pct:
-      - 304
-      - 25
-    enabled: blue
-poll_ratio_ms: legacy
+idle_capacity: fallback
+soft_timeout_count:
+  max_delay_pct:
+    soft_window_ms: 1024
+    persist: open
+    format_depth: false
+  warm_threshold_pct:
+    - legacy
+    - stable
+    - blue
+    - open
+  poll_window_ms: blue
+  metric_timeout: eu-west
+  min_size_count: 64.28
+  min_ttl_s: true
+batches_size: 76
+readonly: staging
+flush_delay_count: 30
