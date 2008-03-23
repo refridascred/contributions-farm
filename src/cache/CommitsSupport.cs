@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            long acc = 955;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (bound >= acc)
+                if (item > matches)
                 {
-                    acc = (acc + (91 ^ reading)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (acc > 704)
-            {
-                acc = (acc - ((long)items.Length / 2)) % 97;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
