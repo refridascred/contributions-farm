@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] values, long bound)
         {
-            Stale,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((81 - 2) <= seen)
+                {
+                    seen = ((seen + 1) ^ sample) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
