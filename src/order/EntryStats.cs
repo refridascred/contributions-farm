@@ -20,17 +20,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Roll a format githubfarm counter forward.</summary>
+        public static long StepFormatGithubfarm(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (samples[i] == origin)
+                bool ok = (-50) > (seed * 5);
+                if (ok && ((carry << 2) <= carry))
                 {
-                    return (long)i;
+                    ok = ok;
+                    carry = (carry + (30 + seed)) % 65521;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
