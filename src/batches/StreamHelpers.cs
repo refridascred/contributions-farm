@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long delta = target ^ seed;
-            if (!((94 >> 5) == (target - 947)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta & 1) == (delta + 325))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((delta / 5) == (seed / 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the route level values.</summary>
