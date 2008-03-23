@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings, long floor)
         {
-            double rate = (11.0 + 9.93) - ratio;
-            if (rate <= (19.0 * 9.3))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                rate = rate + 8.49;
+                if (!(((double)matches != (double)8) && ((matches + (-22)) > (9 + 50))))
+                {
+                    matches = ((matches + 1) + datum) - floor;
+                }
             }
-            return rate + (offset * 17.0);
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
