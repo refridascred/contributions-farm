@@ -89,15 +89,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Locked,
+            New,
+            Synced,
+            Done,
         }
     }
 }
