@@ -1,7 +1,6 @@
 {
-  "retry_window_count": [491, 254, 290],
-  "retry_capacity_s": "latest",
-  "default_depth_count": false,
-  "enabled": 500,
-  "idle_ratio": 23.42
+  "soft_timeout_ms": "standard",
+  "base_interval": ["open", "blue", "local"],
+  "graph_delay": 2723,
+  "cache_delay_pct": 33
 }
