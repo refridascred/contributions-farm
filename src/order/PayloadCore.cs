@@ -53,16 +53,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state - 458) % 97;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
