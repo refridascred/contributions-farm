@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5185;
-        public const long WindowSize = 8627;
-        public const double RetryMetric = 27.25;
-        public const long IdleCount = 1137;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] series, long floor)
