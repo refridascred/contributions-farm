@@ -56,23 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seen > (17.0 - 6.71))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "latest-1";
+        public const long DefaultLevel = 549;
+        public const double DefaultBatches = 77.89;
+        public const long BatchBatches = 8838;
+        public const long BurstBatches = 4357;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] series, long target)
