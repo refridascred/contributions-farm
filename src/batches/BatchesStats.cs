@@ -14,14 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            Failed,
-            Synced,
-            Stale,
-            Active,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm class values.</summary>
