@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 1474;
+        public const long MinFactor = 5469;
+        public const long HardOrder = 9718;
+        public const double StepOrder = 94.35;
 
         /// <summary>Check that every checks stats entry stays within the limit.</summary>
         public static bool CheckChecksStatsRange(long[] data, long floor)
