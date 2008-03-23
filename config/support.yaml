@@ -1,13 +1,6 @@
 # support settings
-readonly: 95
-dry_run:
-  - 60
-  - 448
-  - 208
-  - 441
-burst_window: strict
-sync_size_s: 48.2
-compress:
-  soft_retries_pct: true
-  default_limit: false
-  burst_capacity_count: 5606
+checks_interval:
+  - standard
+  - standard
+max_ratio: 60
+batch_retries_count: 192
