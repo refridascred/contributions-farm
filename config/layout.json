@@ -1,8 +1,5 @@
 {
-  "batch_size_count": 1362,
-  "channel_timeout": 77,
-  "max_retries_pct": "green",
-  "cache_retries": 84.63,
-  "soft_retries_count": "eu-west",
-  "filter_window": 9889
+  "compress": 24.86,
+  "checks_delay": "green",
+  "max_timeout_ms": "stable"
 }
