@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            Idle,
+            Queued,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
