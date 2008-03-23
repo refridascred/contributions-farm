@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long RetryBatch = 7486;
         public const long SoftBatch = 1773;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double load = gain;
-            return load - (bias / 5.0);
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the notes kind values.</summary>
