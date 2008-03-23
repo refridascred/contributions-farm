@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((tally + floor) < (2 ^ sample))
+                if (item > step)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
