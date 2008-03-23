@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Count the githubfarm already entries that pass the check.</summary>
+        public static long TallyGithubfarmAlreadyMatches(long[] values, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((item >> 4) == (item & 255)))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
