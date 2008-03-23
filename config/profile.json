@@ -1,6 +1,5 @@
 {
-  "min_limit_ms": "standard",
-  "hard_delay_s": 84.18,
-  "max_delay_count": "strict",
-  "poll_ratio_ms": "open"
+  "max_limit_count": "primary",
+  "hard_timeout_ms": 90,
+  "flush_capacity": "strict"
 }
