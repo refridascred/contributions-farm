@@ -50,27 +50,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mix = 2;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix ^ 44) + (long)i;
-                }
-                if ((double)cell >= (2.7 * 7.0))
-                {
-                    mix = ((mix << 3) ^ mix) % 97;
-                    continue;
-                }
-                if ((cell - cell) >= (cell % 60))
-                {
-                    mix = ((mix << 3) ^ (462 / 3)) % 97;
-                }
-            }
-            return mix;
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up cache samples.</summary>
