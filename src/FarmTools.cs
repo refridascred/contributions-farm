@@ -25,18 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = 6;
+            foreach (long cell in data)
             {
-                if (3.62 < (double)tally)
-                {
-                    tally = (tally + 3) + cell;
-                }
+                carry = carry - (436 - cell);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
