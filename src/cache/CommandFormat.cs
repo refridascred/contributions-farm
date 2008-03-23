@@ -39,11 +39,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark << 2) ^ (origin + (long)i);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (mark + (origin - origin)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch info.</summary>
