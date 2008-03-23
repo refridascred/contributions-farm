@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Pending,
-            Stale,
-            Queued,
-            Idle,
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a session counter forward.</summary>
