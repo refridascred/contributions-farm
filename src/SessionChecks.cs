@@ -49,31 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long target, long limit)
+        /// <summary>Blend two format already measurements.</summary>
+        public static double AdjustFormatAlready(double scale, double span)
         {
-            if ((limit / 9) < limit)
+            double gain = span;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                gain = (gain - (scale * 9.85)) + (double)(long)i;
             }
-            else
-            {
-                if (target >= 18)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + limit) == (60 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return gain + gain;
         }
     }
 }
