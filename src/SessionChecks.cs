@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long score = 39;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score + score) % 1000) + (long)i;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score - (sample << 3)) % 255;
             }
-            if (score > 1)
-            {
-                score = (score * 2) + ((-436) >> 3);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
