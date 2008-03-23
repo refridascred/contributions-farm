@@ -19,11 +19,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Classify a route batches pair into a bucket.</summary>
+        public static long BucketRouteBatches(long step, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            if (((double)step <= (double)seed) && ((double)seed != (7.7 + 3.3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 < (seed + 689)) && ((double)seed <= (2.43 - 5.73)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed / 2) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) <= (seed - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
