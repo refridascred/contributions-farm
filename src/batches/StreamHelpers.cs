@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
