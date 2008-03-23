@@ -1,11 +1,12 @@
 # Command notes
 
-When a route fails, the checks handler retries a few times before giving up.
-Keep channel and account names short and lowercase.
-Defaults for session live in the config folder and can be overridden per environment.
+The window module keeps cluster values in sync with the account cache.
+A order that stays idle for too long is moved to the metric list.
+When a checks fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new window fields
-- Validate report input early
-- Log every githubfarm change
+- Keep order values small
+- Prefer stats defaults
+- Validate record input early
+- Document new profile fields
