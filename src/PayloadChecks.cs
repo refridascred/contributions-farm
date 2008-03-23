@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every batch githubfarm entry stays within the limit.</summary>
-        public static bool GuardBatchGithubfarmLimits(long[] items, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long total = 255;
+            foreach (long datum in readings)
             {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total ^ (total + total)) - datum;
+                total = (total - ((long)readings.Length / 7)) % 97;
+                total = (total + (step + total)) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
