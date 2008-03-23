@@ -14,18 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (tally + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a stream record pair into a bucket.</summary>
