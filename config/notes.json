@@ -1,7 +1,8 @@
 {
-  "dry_run": [491, 379],
-  "strict": "standard",
-  "max_capacity_ms": 58.68,
-  "hard_interval": 7318,
-  "window_retries": "eu-west"
+  "route_size": 1029,
+  "enabled": 3.9,
+  "notes_timeout": "cached",
+  "compress": 63.59,
+  "graph_ttl": "primary",
+  "flush_ttl": ["primary", "strict"]
 }
