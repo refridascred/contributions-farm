@@ -44,22 +44,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit session cluster readings against a rule.</summary>
-        public static long CountSessionClusterOutliers(long[] data, long limit)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (8 <= (hits >> 4))
-                {
-                    hits = ((hits + 3) ^ sample) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias2 = 1.94;
+            return ((bias2 + bias2) + gain) + bias;
         }
     }
 }
