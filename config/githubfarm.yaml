@@ -1,17 +1,11 @@
 # githubfarm settings
-max_interval_count: 7385
-poll_ratio_count: false
-sync_timeout_s:
-  burst_ttl_pct: eu-west
-  max_threshold_ms: 32
-  min_delay_s: staging
-  persist:
-    - 270
-    - 257
-  warm_depth_s: false
-  idle_interval_pct:
-    - 42
-    - 418
-    - 317
-    - 89
-audit: latest
+idle_delay:
+  readonly: 60
+  burst_timeout: legacy
+  graph_limit: 58
+  session_window: false
+  already_window: green
+default_ratio_pct:
+  - 104
+  - 237
+retry_ratio_pct: 94.95
