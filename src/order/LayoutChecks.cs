@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] samples, long offset)
+        /// <summary>Audit graph layout readings against a rule.</summary>
+        public static long AuditGraphLayoutGaps(long[] values)
         {
-            long state = 84;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                state = (state ^ (3 + offset)) % 65521;
-                if ((679 & 7) == (offset >> 3))
+                if ((value + value) <= (value / 4))
                 {
-                    state = ((state * 2) + (state ^ entry)) % 255;
+                    seen = seen + 2;
                 }
             }
-            if (state < 806)
-            {
-                state = (state + (offset ^ 291)) % 101;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
