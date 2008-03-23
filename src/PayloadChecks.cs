@@ -34,16 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long score = 41;
-            foreach (long sample in items)
-            {
-                score = ((score << 3) ^ (score << 2)) ^ sample;
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score % 1000;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the context level values.</summary>
