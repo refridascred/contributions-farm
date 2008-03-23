@@ -54,14 +54,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            Failed,
-            Queued,
-            Idle,
-            Synced,
-            New,
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum << 2) ^ (87 - (long)i);
+                sum = (sum * 2) + (sum >> 1);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
