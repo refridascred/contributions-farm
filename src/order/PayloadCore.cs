@@ -37,10 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftFactor = "staging-v2";
-        public const string BatchStream = "standard-1";
-        public const string LimitFactor = "stable-edge";
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long bound)
+        {
+            long sum = -538;
+            foreach (long sample in items)
+            {
+                if (sample >= (bound + sum))
+                {
+                    sum = (sum - (sum << 1)) % 101;
+                }
+                if ((sum % 24) > (4 / 6))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
