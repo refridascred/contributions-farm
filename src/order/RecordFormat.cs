@@ -51,23 +51,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload profile reading.</summary>
-        public static double ScalePayloadProfile(double gain, double offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long step)
         {
-            double load = offset;
-            if (load <= (double)16)
+            long next = seed + step;
+            if ((seed <= (step / 7)) || (3.0 >= (double)next))
             {
-                load = (load - load) + gain;
+                return 2;
             }
             else
             {
-                load = load - (double)298;
+                if ((step + step) > (4 - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed - seed) >= (301 ^ seed)) || (184 >= (next * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load - 19.0;
         }
     }
 }
