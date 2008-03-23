@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster session samples.</summary>
-        public static long PairClusterSessionCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((108 < (matches / 5)) && (sample <= (matches & 3)))
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
