@@ -23,13 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Pending,
-            Synced,
-            Closed,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
