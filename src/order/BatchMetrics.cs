@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long floor)
+        /// <summary>Count the record githubfarm entries that pass the check.</summary>
+        public static long AuditRecordGithubfarmGaps(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value <= floor)
+                if ((reading - 5) >= (tally & 63))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + target;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
