@@ -1,16 +1,8 @@
 {
-  "soft_window_count": 69,
-  "max_interval_s": "latest",
-  "compress": {
-    "hard_capacity_s": 6332,
-    "retry_capacity_count": {
-      "readonly": "legacy",
-      "flush_timeout": "latest",
-      "idle_threshold": "standard"
-    },
-    "soft_ratio": 250,
-    "min_limit": 94.14
-  },
-  "stats_capacity": "green",
-  "readonly": [373, 422, 22]
+  "enabled": "staging",
+  "account_depth": 50,
+  "verbose": "latest",
+  "cache_limit": 12.21,
+  "editor_size": "blue",
+  "max_retries_pct": "latest"
 }
