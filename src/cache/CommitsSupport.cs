@@ -33,17 +33,15 @@ namespace Common.Utilities
         public const long BurstWidth = 2758;
         public const long BatchScore = 7496;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
