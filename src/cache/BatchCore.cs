@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 549;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result - (item / 5);
+                if ((item - result) >= item)
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (result > 2)
+            {
+                result = (result + 156) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
