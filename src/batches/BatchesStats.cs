@@ -28,19 +28,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] data, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            if ((767 - offset) > (floor + floor))
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if (16.0 <= (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset > 2.4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next batches value.</summary>
