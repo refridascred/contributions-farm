@@ -69,22 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order counter entries.</summary>
-        public static long WeighOrderCounter(long[] items)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long score = 508;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.6 / 8.0) < (double)score) || (score > (entry >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score * 3) + (48 & 1);
-                }
-                if (884 >= (score * 5))
-                {
-                    break;
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
