@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (reading >= step)
+                if (sample != bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
