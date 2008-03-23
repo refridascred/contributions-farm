@@ -37,14 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Audit batches queue readings against a rule.</summary>
+        public static long AuditBatchesQueueHits(long[] levels, long origin)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((double)cell > (5.3 - 6.72)))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
