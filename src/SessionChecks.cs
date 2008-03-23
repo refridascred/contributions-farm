@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter graph samples are out of range.</summary>
-        public static long AuditCounterGraphMatches(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) >= (35 - entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
