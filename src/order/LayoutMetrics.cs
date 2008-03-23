@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitFactor = 8078;
+        public const string SoftSpan = "alpha-v2";
+        public const long MaxInterval = 68;
+        public const long BaseSize = 5858;
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
