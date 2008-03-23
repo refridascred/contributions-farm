@@ -1,10 +1,6 @@
 {
-  "persist": {
-    "support_depth": "latest",
-    "idle_depth": [294, 481],
-    "sync_limit_ms": 43
-  },
-  "poll_timeout_s": 22.9,
-  "enabled": "green",
-  "batch_size_ms": "eu-west"
+  "verbose": false,
+  "soft_interval": 16,
+  "checks_capacity": "strict",
+  "idle_timeout_ms": "primary"
 }
