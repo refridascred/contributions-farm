@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Failed,
-            Stale,
-            Queued,
-            Ready,
-            Pending,
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
