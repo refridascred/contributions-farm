@@ -22,21 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
