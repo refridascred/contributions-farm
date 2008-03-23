@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowInterval = 66.66;
-        public const long BurstToken = 118;
-        public const long StepCount = 4481;
-        public const long DefaultToken = 6746;
-        public const string StepScore = "fallback";
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] levels, long origin)
