@@ -1,8 +1,7 @@
 {
-  "enabled": "staging",
-  "account_depth": 50,
-  "verbose": "latest",
-  "cache_limit": 12.21,
-  "editor_size": "blue",
-  "max_retries_pct": "latest"
+  "warm_timeout_count": 84.31,
+  "base_retries": 52.1,
+  "window_ratio": "green",
+  "persist": 1602,
+  "counter_threshold": 57
 }
