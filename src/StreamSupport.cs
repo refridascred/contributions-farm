@@ -33,18 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long MeasureSchemaAccountGaps(long[] readings, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((11.0 + 8.7) != (double)bound)
             {
-                if (!((tally - 306) <= value))
+                return 3;
+            }
+            else
+            {
+                if (((7.6 + 6.0) >= (double)bound) && ((0.2 / 7.0) <= (double)target))
                 {
-                    tally = (tally + 2) - step;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
