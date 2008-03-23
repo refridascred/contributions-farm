@@ -47,27 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Scale a githubfarm support figure with a bias.</summary>
+        public static double AdjustGithubfarmSupport(double rate, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            double drift = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target * 3) >= (anchor + 9))
-                {
-                    anchor = (anchor - (763 + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - ((long)i * 4);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = ((anchor - (anchor / 8)) % 65521) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = ((drift + (drift / 2.0)) + (double)(long)i) + bias;
             }
-            return anchor;
+            return drift - 10.0;
         }
 
         /// <summary>Accumulate stats samples.</summary>
