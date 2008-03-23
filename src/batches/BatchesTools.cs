@@ -20,11 +20,15 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 68.26;
-        public const string RetryScore = "alpha";
-        public const long MinWidth = 5438;
-        public const string BatchWidth = "standard";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Failed,
+            Stale,
+            Dropped,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] values, long step)
