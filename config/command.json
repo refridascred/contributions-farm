@@ -1,5 +1,16 @@
 {
-  "max_capacity": "staging",
-  "max_limit_pct": "staging",
-  "burst_size_ms": 2405
+  "booking_window": false,
+  "layout_limit": {
+    "poll_threshold_ms": {
+      "hard_ratio": ["stable", "staging", "strict"],
+      "min_timeout": 28.92,
+      "metric_delay": 48.8
+    },
+    "retry_retries_ms": 51,
+    "max_depth_count": 5674,
+    "compress": false,
+    "entry_interval": 1024
+  },
+  "batch_capacity": 93.38,
+  "stats_ttl": "eu-west"
 }
