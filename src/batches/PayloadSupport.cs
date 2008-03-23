@@ -20,11 +20,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            if ((bound + bound) > bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3 * 2) != (limit * 2)) && ((bound ^ bound) <= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound - limit) > (limit - limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (3 >= (98 + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm stream entries.</summary>
