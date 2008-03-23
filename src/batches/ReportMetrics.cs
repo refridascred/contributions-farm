@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values, long target)
         {
-            if ((double)seed < (4.43 / 7.0))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (7.63 - 2.0))
+                if ((count - target) < sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
