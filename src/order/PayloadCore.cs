@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long acc = 966;
-            foreach (long entry in series)
+            long carry = 4;
+            foreach (long reading in series)
             {
-                acc = ((acc << 2) ^ entry) % 101;
-                if (entry < (acc + entry))
-                {
-                    acc = acc ^ (entry - 1);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + entry)) % 97;
-                }
+                carry = carry - reading;
             }
-            if (acc < 881)
+            if (carry > 7)
             {
-                acc = (acc - (acc ^ (-27))) % 97;
+                carry = (carry ^ (carry & 7)) % 4096;
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
