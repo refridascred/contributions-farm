@@ -1,20 +1,4 @@
 # entry settings
-already_depth:
-  - 315
-  - 114
-audit: 2891
-report_limit: 1024
-readonly: blue
-soft_limit_pct:
-  base_interval_count: 70
-  compress:
-    - 287
-    - 419
-    - 370
-    - 253
-  counter_threshold:
-    - edge
-    - local
-    - green
-    - blue
-  base_retries: fallback
+enabled: latest
+retry_size_ms: strict
+min_retries_ms: true
