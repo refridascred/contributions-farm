@@ -1,23 +1,17 @@
 # githubfarm settings
-persist: 1024
-warm_capacity_count: 4774
-default_timeout: local
-readonly:
-  audit:
-    - 186
-    - 335
-    - 456
-  burst_delay_pct: 9354
-  cache_delay: false
-  default_interval: 60
-  soft_interval_s:
-    default_limit_count: green
-    verbose: 30
-    notes_size: strict
-    route_threshold: 57.97
-    soft_retries_s: 37
-    record_capacity:
-      - 277
-      - 465
-sync_window: 23
-poll_capacity_pct: 79.58
+record_limit:
+  max_interval: 98.53
+  flush_threshold_count: 81
+  base_retries_ms: 33.57
+  burst_timeout_pct: fallback
+  notes_threshold: green
+context_ratio: staging
+verbose:
+  retry_delay_s: 20
+  poll_window_s: true
+  poll_size_ms: 54.19
+  soft_depth_pct: 63.11
+  base_depth: 97
+  strict: 500
+hard_ratio: true
+warm_limit: true
