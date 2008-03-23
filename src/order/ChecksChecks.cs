@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 39;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry + 998) == (3 % 3))
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (entry % 7)) % 4096;
                 }
+                state = ((state << 3) ^ 77) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
