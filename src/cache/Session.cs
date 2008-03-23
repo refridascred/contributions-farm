@@ -47,14 +47,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Locate a graph farm reading by value.</summary>
+        public static long FindGraphFarmIndex(long[] items, long offset)
         {
-            Ready,
-            Draft,
-            Active,
-            Queued,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
