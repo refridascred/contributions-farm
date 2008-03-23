@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings, long origin)
         {
-            Queued,
-            Draft,
-            Retry,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((18.0 * 12.0) <= (double)origin)
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
