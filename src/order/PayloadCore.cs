@@ -35,19 +35,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmMetricsRange(long[] values, long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != limit)
+                if (data[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
