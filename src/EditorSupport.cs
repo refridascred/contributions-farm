@@ -34,12 +34,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long seed)
         {
-            Synced,
-            Draft,
-            Pending,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a command commits reading.</summary>
