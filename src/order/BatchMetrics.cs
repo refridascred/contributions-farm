@@ -32,21 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support editor readings.</summary>
-        public static long MatchSupportEditorCount(long[] samples)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 9)
+                    if ((data[i] + data[j]) < 5)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the record githubfarm entries that pass the check.</summary>
