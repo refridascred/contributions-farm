@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] readings, long floor)
         {
-            Pending,
-            Idle,
-            Active,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((463 / 8) <= hits)
+                {
+                    hits = ((hits + 3) + sample) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
