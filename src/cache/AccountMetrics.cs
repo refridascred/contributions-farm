@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long target)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
+            long score = -432;
+            foreach (long sample in samples)
+            {
+                if ((double)score <= (5.0 - 7.0))
+                {
+                    score = (((score * 3) + (target - score)) % 101) ^ sample;
+                }
+            }
+            if (score > 33)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Locate a already reading by value.</summary>
