@@ -27,11 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "local-v2";
-        public const long HardChecks = 8872;
-        public const double BaseChecks = 17.42;
-        public const string BurstChecks = "staging";
-        public const long CacheTimeout = 9255;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Closed,
+            Locked,
+            Pending,
+            New,
+            Dropped,
+        }
     }
 }
