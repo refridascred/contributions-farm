@@ -1,14 +1,13 @@
 # support settings
-queue_interval: 30
-stats_timeout: false
-channel_limit:
-  batch_window_s: false
-  enabled: 9787
-  sync_delay_ms: 1024
-  route_ratio: 92.35
-compress:
-  - eu-west
-  - cached
-  - standard
-  - cached
-burst_delay_count: 3.87
+enabled: 34.69
+entry_threshold: 6000
+burst_window: green
+idle_window: 1.84
+max_ttl_pct:
+  context_ttl: false
+  warm_interval_s: 76.44
+  batch_size_s: local
+  batch_ratio:
+    - primary
+    - cached
+  soft_ttl_ms: fallback
