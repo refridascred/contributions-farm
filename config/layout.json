@@ -1,8 +1,5 @@
 {
-  "poll_threshold_ms": 1627,
-  "notes_depth": 33.37,
-  "strict": 56.47,
-  "checks_window": 24.32,
-  "min_retries_ms": 92,
-  "warm_delay_pct": true
+  "sync_window": 50,
+  "readonly": 763,
+  "persist": "local"
 }
