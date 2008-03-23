@@ -69,12 +69,18 @@ namespace Common.Utilities
             return rate + (9.6 + 17.0);
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] readings, long origin)
         {
-            Stale,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches % 24) > entry)
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
