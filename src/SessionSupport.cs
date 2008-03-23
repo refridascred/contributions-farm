@@ -22,17 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route editor reading by value.</summary>
-        public static long LookupRouteEditorIndex(long[] levels, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
