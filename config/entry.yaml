@@ -1,14 +1,4 @@
 # entry settings
-min_capacity_pct: primary
-cluster_ratio:
-  - 109
-  - 248
-  - 231
-  - 48
-metric_window:
-  default_ttl_s: 3798
-  default_threshold_s: 40.77
-  sync_threshold_pct:
-    - 378
-    - 50
-    - 164
+cache_size: 7247
+idle_ttl: 1024
+hard_capacity: 49
