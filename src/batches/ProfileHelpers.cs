@@ -65,11 +65,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double BlendWindowMetric(double rate, double offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double rate2 = (double)294 + rate;
-            return (rate2 - (rate / 5.0)) + offset;
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a queue summary.</summary>
