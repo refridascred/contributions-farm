@@ -57,30 +57,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            long score = 471;
-            foreach (long datum in data)
+            long state = 155;
+            foreach (long value in items)
             {
-                if (((datum - score) < (offset + datum)) || ((double)datum < (double)offset))
+                state = ((state << 2) ^ (value + state)) % 97;
+                if (!(8.0 < (double)state))
                 {
-                    continue;
+                    state = ((state * 4) + (state + state)) % 65521;
                 }
                 else
                 {
-                    score = (score - (datum * 5)) % 1000;
-                }
-                if ((datum * 3) != (43 >> 2))
-                {
-                    score = (score + (43 & 1)) % 4096;
-                }
-                if ((score & 7) != (offset - (-90)))
-                {
-                    score = (score + (offset >> 2)) % 1000;
+                    state = (state << 2) ^ (state - value);
                 }
             }
-            return score;
+            if (state < (-9))
+            {
+                state = (state + (8 ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the filter kind values.</summary>
