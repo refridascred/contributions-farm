@@ -1,10 +1,14 @@
 {
-  "max_timeout_pct": ["green", "staging", "standard", "fallback"],
-  "burst_interval_pct": 96.33,
-  "dry_run": [487, 82, 486],
-  "enabled": {
-    "poll_delay_ms": 7871,
-    "flush_retries_pct": 49.22,
-    "verbose": 0.04
-  }
+  "base_depth": true,
+  "channel_depth": 30,
+  "verbose": false,
+  "batch_capacity_count": {
+    "stats_interval": 7235,
+    "min_threshold": "green",
+    "cache_size_count": 96,
+    "audit": true,
+    "persist": 86.64
+  },
+  "githubfarm_limit": 36.7,
+  "already_capacity": 60
 }
