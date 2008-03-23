@@ -40,15 +40,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Find the first cache command entry that matches the target.</summary>
+        public static long LookupCacheCommandIndex(long[] data, long bound)
         {
-            double load = scale;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + 3.0) + (double)(long)i) + bias;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return load + scale;
+            return -1;
         }
     }
 }
