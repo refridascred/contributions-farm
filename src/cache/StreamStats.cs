@@ -23,11 +23,24 @@ namespace Common.Utilities
         public const string WindowLevel = "staging";
         public const long HardCluster = 1052;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultTimeout = "latest-v2";
-        public const long BaseEditor = 6585;
-        public const double StepEditor = 79.76;
-        public const long BatchScore = 5344;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(acc >= ((long)i - (long)i)))
+                {
+                    acc = (acc ^ (acc >> 3)) % 97;
+                }
+                if (((long)i + offset) >= (acc ^ acc))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] series, long floor)
