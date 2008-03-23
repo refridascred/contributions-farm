@@ -1,7 +1,5 @@
 # support settings
-report_ratio: 15.66
-hard_window_count: 12.14
-poll_retries_s: true
-base_ratio: true
-dry_run: true
-default_ttl_s: 86.96
+metric_limit: blue
+counter_limit: true
+enabled: true
+hard_ratio_pct: 6769
