@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            Stale,
+            Queued,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
