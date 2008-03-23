@@ -1,7 +1,5 @@
 {
-  "sync_capacity_ms": "primary",
-  "idle_size_pct": 1024,
-  "burst_size": ["staging", "edge"],
-  "sync_window_s": 78.89,
-  "default_depth_s": "primary"
+  "warm_capacity": 30,
+  "format_limit": 250,
+  "strict": [470, 313, 271]
 }
