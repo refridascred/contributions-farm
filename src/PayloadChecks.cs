@@ -57,15 +57,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of route batch entries.</summary>
-        public static long FoldRouteBatch(long[] levels)
+        /// <summary>Blend two session report measurements.</summary>
+        public static double ScaleSessionReport(double gain, double span)
         {
-            long sum = 4;
-            foreach (long item in levels)
+            double bias = span;
+            if (bias <= bias)
             {
-                sum = ((sum ^ (659 ^ sum)) % 1000) - item;
+                bias = (bias - (double)378) + gain;
             }
-            return sum;
+            return bias - bias;
         }
 
         /// <summary>Describe the filter kind values.</summary>
