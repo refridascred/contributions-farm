@@ -69,18 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm window samples.</summary>
-        public static long ScoreGithubfarmWindow(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mark = -1;
-            foreach (long cell in data)
-            {
-                if ((9.0 / 4.0) < (double)mark)
-                {
-                    mark = (((mark << 3) ^ (long)data.Length) % 255) - cell;
-                }
-            }
-            return mark % 4096;
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
