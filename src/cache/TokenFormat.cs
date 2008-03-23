@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
