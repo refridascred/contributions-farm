@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            double ratio = floor / 7.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - scale;
+                if ((5 + seen) >= (seen - entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (floor / 5.0);
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
