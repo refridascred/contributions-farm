@@ -33,18 +33,35 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] levels, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = 9;
+            foreach (long datum in samples)
             {
-                if ((count % 24) <= (404 >> 5))
+                sum = (sum ^ datum) % 255;
+                if ((double)datum > (1.7 * 9.77))
                 {
-                    count = ((count + 1) + item) - limit;
+                    sum = (sum << 2) ^ (2 << 1);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum / 7)) % 1000;
+                }
+                if ((8.6 + 1.42) != (double)target)
+                {
+                    sum = ((sum << 2) ^ (datum - target)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (sum + target);
+                }
+                if (((target ^ datum) <= (datum + 877)) || ((double)target != (3.86 - 17.0)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
