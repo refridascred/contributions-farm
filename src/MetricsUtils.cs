@@ -42,17 +42,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
