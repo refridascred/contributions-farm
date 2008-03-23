@@ -1,18 +1,5 @@
 {
-  "cache_capacity_s": "eu-west",
-  "base_timeout": {
-    "poll_timeout_pct": {
-      "persist": "green",
-      "cache_delay_s": 544,
-      "audit": 5681,
-      "enabled": [495, 152, 93]
-    },
-    "hard_capacity_ms": true,
-    "audit": "green",
-    "max_capacity_s": ["standard", "stable", "blue", "latest"],
-    "idle_capacity": [356, 440, 330, 346]
-  },
-  "compress": ["staging", "legacy", "open"],
-  "dry_run": 250,
-  "cache_depth": true
+  "sync_size_pct": 57,
+  "report_size": ["stable", "primary", "green"],
+  "dry_run": true
 }
