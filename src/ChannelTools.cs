@@ -37,11 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxScore = 9635;
-        public const long LimitFactor = 6299;
-        public const long CacheContext = 9085;
-        public const long HardRatio = 9226;
-        public const string LimitContext = "open-edge";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Active,
+            New,
+            Stale,
+            Failed,
+            Paused,
+        }
     }
 }
