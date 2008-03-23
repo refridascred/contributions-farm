@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep record and token names short and lowercase.
-Keep editor and tools names short and lowercase.
-
-The report report groups every batches by command.
-Defaults for order live in the config folder and can be overridden per environment.
+Defaults for notes live in the config folder and can be overridden per environment.
+Keep window and format names short and lowercase.
+Keep cache and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review channel limits each release
-- Validate cache input early
+- Document new commits fields
+- Review layout limits each release
+- Keep counter values small
