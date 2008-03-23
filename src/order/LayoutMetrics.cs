@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up entry samples.</summary>
