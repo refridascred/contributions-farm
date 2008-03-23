@@ -57,21 +57,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Look up the position of a batches route sample.</summary>
+        public static long LookupBatchesRouteIndex(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] > target) && ((values[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
