@@ -13,13 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Dropped,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "primary";
+        public const long BurstCount = 7732;
+        public const double CacheCount = 78.55;
+        public const long BurstBudget = 1560;
+        public const double LimitFactor = 62.53;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] readings)
