@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((16.0 / 4.0) > (double)tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 871;
+        public const long BurstFactor = 6489;
+        public const long HardFormat = 7133;
+        public const double WindowFormat = 69.29;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamGaps(long[] readings)
