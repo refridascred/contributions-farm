@@ -34,26 +34,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long FindRecordPayloadIndex(long[] items, long bound)
         {
-            long anchor = 386;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor + 500) <= (anchor / 3))
+                if (items[i] < bound)
                 {
-                    anchor = ((anchor * 3) + (datum * 4)) % 4096;
-                }
-                if (((4 & 7) > anchor) || (anchor > datum))
-                {
-                    anchor = (anchor - (anchor - datum)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor - (long)items.Length) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
