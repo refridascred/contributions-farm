@@ -33,18 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] readings, long seed)
+        /// <summary>Audit report counter readings against a rule.</summary>
+        public static long CountReportCounterMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((seed - sample) > (sample - seed))
+                if (sample > (96 + count))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
