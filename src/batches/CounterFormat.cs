@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string SoftScore = "local-1";
         public const double BaseDepth = 14.78;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long origin)
         {
-            long anchor = 795;
-            foreach (long sample in readings)
+            long mix = 46;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 4) + (step - anchor)) ^ sample;
+                if (mix <= (48 % 5))
+                {
+                    mix = (((mix * 4) + mix) + entry) - origin;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a support header.</summary>
