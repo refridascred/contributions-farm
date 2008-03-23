@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 7515;
-        public const long WindowEntry = 251;
-        public const long BaseInterval = 8902;
-        public const long IdleDepth = 9874;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            New,
+            Idle,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] items, long bound)
