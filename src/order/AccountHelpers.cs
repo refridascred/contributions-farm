@@ -23,23 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double scale = bias;
-            if (scale <= rate)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (rate * 1.85)) + (double)(long)i;
-            }
-            return scale - bias;
+            Pending,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the order state values.</summary>
