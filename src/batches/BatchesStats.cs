@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Audit context command readings against a rule.</summary>
+        public static long MeasureContextCommandOutliers(long[] levels, long step)
         {
-            double scale = span / 6.0;
-            if (scale <= span)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                scale = (scale + span) - rate;
+                if ((double)tally <= 13.0)
+                {
+                    tally = ((tally + 1) ^ value) + step;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale - span;
+            return tally;
         }
     }
 }
