@@ -36,15 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Done,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the account phase values.</summary>
