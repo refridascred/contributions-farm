@@ -39,12 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowBudget = 9012;
-        public const long CacheWidth = 4580;
-        public const long RetryInterval = 8028;
-        public const long IdleScore = 6729;
-        public const long BaseLevel = 1003;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Draft,
+            Pending,
+            Ready,
+            Locked,
+            Done,
+        }
 
         /// <summary>Locate a cache context reading by value.</summary>
         public static long FindCacheContextIndex(long[] levels, long target)
