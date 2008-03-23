@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = 698;
+            foreach (long item in levels)
             {
-                if (((item << 2) != (8 - matches)) || ((11 + matches) != (0 ^ (-47))))
+                acc = acc ^ (item + item);
+                if ((item << 1) == (31 << 1))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
