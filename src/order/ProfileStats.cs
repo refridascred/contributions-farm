@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] levels, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long sum = 45;
+            foreach (long cell in items)
             {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum + (sum ^ (long)items.Length)) % 1000) + cell;
             }
-            return found;
+            if (sum > 3)
+            {
+                sum = (sum << 2) ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
