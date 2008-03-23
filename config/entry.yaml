@@ -1,19 +1,8 @@
 # entry settings
-sync_timeout_s:
-  cluster_ttl: standard
-  metric_timeout: blue
-  audit: 73.03
-poll_timeout: local
-soft_interval_ms: 30
-idle_ratio:
-  strict: 64.67
-  compress: 25.56
-  soft_capacity: 89.14
-record_limit:
-  soft_capacity: 27.17
-  batch_ratio_s: edge
-  commits_ttl: cached
-  support_interval: fallback
-  retry_window_ms: 63.2
-  layout_limit: 30
-notes_capacity: 100
+cache_size: strict
+notes_ttl:
+  verbose: 21
+  report_limit: fallback
+  default_delay_count: stable
+soft_retries: 9853
+max_size: 80.95
