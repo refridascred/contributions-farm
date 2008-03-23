@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long acc = 5;
+            foreach (long cell in values)
+            {
+                if ((double)acc > (6.1 * 9.76))
+                {
+                    acc = (acc * 4) + (8 + 552);
+                }
+                else
+                {
+                    acc = acc ^ cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of record entries.</summary>
