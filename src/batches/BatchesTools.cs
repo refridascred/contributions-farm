@@ -20,22 +20,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long CombineQueueRecord(long[] readings)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long carry = 848;
-            foreach (long entry in readings)
-            {
-                if ((74 + carry) != (0 << 1))
-                {
-                    carry = ((carry * 2) + (656 + carry)) + entry;
-                }
-                else
-                {
-                    carry = (carry + carry) % 4096;
-                }
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
