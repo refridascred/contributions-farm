@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
-        {
-            long carry = 7;
-            foreach (long entry in series)
-            {
-                carry = (carry * 2) + (entry ^ 817);
-                if ((entry - entry) < 323)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 8158;
+        public const long MaxFilter = 9575;
+        public const long SoftFilter = 2875;
+        public const long BurstFactor = 9534;
+        public const long BaseCount = 1515;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] series, long target)
