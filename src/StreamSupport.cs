@@ -44,25 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long floor, long floor2)
-        {
-            long delta = floor - floor2;
-            if ((delta ^ floor) >= (delta & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)delta < (6.0 - 7.8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultRatio = 5.14;
+        public const long LimitInterval = 9746;
+        public const string IdleTools = "alpha-1";
+        public const long HardRatio = 869;
     }
 }
