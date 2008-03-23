@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Find the first stream contributi entry that matches the target.</summary>
+        public static long LookupStreamContributiIndex(long[] series, long origin)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
