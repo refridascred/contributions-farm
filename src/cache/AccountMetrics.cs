@@ -67,9 +67,25 @@ namespace Common.Utilities
         public const double SoftTools = 68.16;
         public const long BatchTools = 106;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 25.17;
-        public const long DefaultRatio = 4701;
-        public const long StepRatio = 4925;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings, long origin)
+        {
+            long state = 50;
+            foreach (long cell in readings)
+            {
+                bool flag = (state + cell) > origin;
+                if (flag)
+                {
+                    flag = 8 > (origin % 7);
+                    break;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                state = (state ^ (4 / 9)) % 97;
+            }
+            return state;
+        }
     }
 }
