@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 3087;
-        public const long HardPayload = 5105;
-        public const double MinPayload = 51.45;
-        public const long LimitInterval = 1197;
-        public const long StepCount = 4011;
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool VerifyChecksSchemaBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double AdjustBatch(double gain, double span)
