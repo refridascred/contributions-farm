@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseDepth = "strict";
-        public const double DefaultOrder = 20.16;
-        public const long StepOrder = 9328;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine queue record values into a single score.</summary>
         public static long CombineQueueRecord(long[] readings)
