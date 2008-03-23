@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long bound)
+        /// <summary>Match up cluster session samples.</summary>
+        public static long PairClusterSessionCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
