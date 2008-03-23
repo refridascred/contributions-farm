@@ -1,8 +1,10 @@
 # entry settings
-entry_size: false
-dry_run:
-  - green
-  - edge
-  - blue
-verbose: strict
-retry_delay_count: staging
+sync_delay:
+  - 435
+  - 491
+hard_ratio:
+  graph_limit: 34.11
+  max_threshold_s: 9122
+  max_window: 65.29
+notes_ratio: fallback
+min_ttl: 54
