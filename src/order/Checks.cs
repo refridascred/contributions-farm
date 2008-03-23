@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats cache samples.</summary>
-        public static long WeighStatsCache(long[] values)
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long WeighStatsGithubfarm(long[] levels, long offset)
         {
-            long state = -4;
-            foreach (long cell in values)
+            long carry = 35;
+            foreach (long datum in levels)
             {
-                if ((cell + cell) < (cell * 2))
+                if ((offset >= carry) || ((4.5 * 5.41) < (double)carry))
                 {
-                    state = (state ^ (state - cell)) % 4096;
-                }
-                else
-                {
-                    state = state ^ cell;
+                    carry = ((carry + 9) % 4096) - datum;
                 }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
