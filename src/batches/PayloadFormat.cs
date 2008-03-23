@@ -41,13 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Closed,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSize = 801;
+        public const string MaxEntry = "local-1";
+        public const long IdleFactor = 5606;
+        public const long RetryEntry = 7786;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] readings)
