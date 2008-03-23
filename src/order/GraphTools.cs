@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double load = gain;
-            if (load > (floor / 9.0))
-            {
-                load = load - load;
-            }
-            return load + (gain * 7.43);
+            Done,
+            Closed,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
