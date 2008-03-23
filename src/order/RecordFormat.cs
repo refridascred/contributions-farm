@@ -54,17 +54,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum << 2) ^ (87 - (long)i);
-                sum = (sum * 2) + (sum >> 1);
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
