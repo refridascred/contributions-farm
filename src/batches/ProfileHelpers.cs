@@ -52,17 +52,19 @@ namespace Common.Utilities
             return (rate2 - (rate / 5.0)) + offset;
         }
 
-        /// <summary>Look up the position of a cache already sample.</summary>
-        public static long LookupCacheAlreadyIndex(long[] values, long bound)
+        /// <summary>Check that every stream batch entry stays within the limit.</summary>
+        public static bool VerifyStreamBatchRange(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (values[i] <= bound)
+                if (cell < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
