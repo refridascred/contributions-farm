@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long TallyBatchesTokenHits(long[] readings)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen == (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
