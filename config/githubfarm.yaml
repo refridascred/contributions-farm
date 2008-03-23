@@ -1,16 +1,11 @@
 # githubfarm settings
-default_interval_count: 26
-verbose: 75.35
 compress:
   - primary
-  - staging
-max_delay:
-  batch_timeout_pct: 12.37
-  entry_delay: eu-west
-  burst_depth: 60
-  min_ratio_count: latest
-readonly: 30
-cache_capacity_ms:
-  - 155
-  - 41
-  - 152
+  - fallback
+  - latest
+dry_run: 40.54
+enabled:
+  - legacy
+  - cached
+  - stable
+retry_delay_count: 54.41
