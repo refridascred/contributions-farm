@@ -17,14 +17,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
+        public static bool ValidateEditorGithubfarmLimits(long[] samples, long bound)
         {
-            Closed,
-            Locked,
-            Ready,
-            Failed,
-            Pending,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
