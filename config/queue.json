@@ -1,5 +1,24 @@
 {
-  "default_capacity_count": true,
-  "batch_ratio_count": 6695,
-  "enabled": 79.84
+  "route_ttl": {
+    "idle_retries_count": "fallback",
+    "stats_window": "primary",
+    "dry_run": ["latest", "local", "cached"],
+    "sync_size": {
+      "min_interval": "blue",
+      "sync_ratio_count": [112, 241],
+      "context_depth": [47, 212, 79],
+      "strict": [427, 62, 198, 126],
+      "burst_retries_s": 83
+    },
+    "readonly": "edge",
+    "compress": false
+  },
+  "buffer_limit": "standard",
+  "enabled": 30,
+  "dry_run": {
+    "flush_delay_s": ["staging", "local", "strict", "legacy"],
+    "base_ratio_ms": false,
+    "flush_delay": "cached",
+    "cache_ttl_ms": false
+  }
 }
