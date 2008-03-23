@@ -49,14 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] series, long offset)
         {
-            Closed,
-            Locked,
-            Pending,
-            New,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
