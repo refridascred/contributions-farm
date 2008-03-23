@@ -1,9 +1,20 @@
 # entry settings
-flush_threshold_count:
-  - 232
-  - 132
-  - 187
-  - 197
-farm_delay: true
-cache_delay_s: 41.33
-strict: false
+already_depth:
+  - 315
+  - 114
+audit: 2891
+report_limit: 1024
+readonly: blue
+soft_limit_pct:
+  base_interval_count: 70
+  compress:
+    - 287
+    - 419
+    - 370
+    - 253
+  counter_threshold:
+    - edge
+    - local
+    - green
+    - blue
+  base_retries: fallback
