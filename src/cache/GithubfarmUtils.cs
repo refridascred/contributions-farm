@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchLevel = 9481;
-        public const long RetryRecord = 1037;
-        public const long LimitRecord = 8210;
-        public const double MinRatio = 92.65;
-        public const string WindowTimeout = "standard-1";
+        /// <summary>Validate buffer cluster readings against a bound.</summary>
+        public static bool GuardBufferClusterBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] items, long target)
