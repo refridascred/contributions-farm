@@ -1,5 +1,24 @@
 # support settings
-batch_timeout: staging
-poll_size_s: stable
-hard_ratio_pct: true
-hard_limit_s: open
+strict:
+  - cached
+  - latest
+  - stable
+burst_size:
+  window_ratio: 8573
+  idle_delay_ms: blue
+  hard_threshold_s: 30
+hard_ratio_ms:
+  verbose: 275
+  audit:
+    flush_size: eu-west
+    cache_threshold: 1800
+    payload_timeout: 11
+  soft_size: primary
+  window_window:
+    - green
+    - blue
+    - legacy
+    - legacy
+  entry_size: 4543
+  default_size_pct: 44.75
+min_ttl_pct: true
