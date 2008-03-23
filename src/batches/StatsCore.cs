@@ -106,14 +106,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Failed,
-            Locked,
-            New,
-            Synced,
-            Done,
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
