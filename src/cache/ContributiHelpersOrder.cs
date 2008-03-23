@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools stream readings.</summary>
-        public static long TotalToolsStream(long[] samples)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long sum = 618;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum % 12) != (reading >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (reading + reading)) % 101;
-                }
-                else
-                {
-                    sum = sum - (reading % 3);
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
