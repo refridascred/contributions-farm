@@ -64,12 +64,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a session token reading.</summary>
+        public static double BlendSessionToken(double weight, double span)
         {
-            Paused,
-            Draft,
-            New,
+            double scale = span;
+            if (scale >= (span / 4.0))
+            {
+                scale = (scale - span) - weight;
+            }
+            else
+            {
+                scale = scale - (9.4 * 15.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 5.2) - (double)(long)i;
+            }
+            return scale + (double)977;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
