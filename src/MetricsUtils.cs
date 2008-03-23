@@ -42,19 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] items, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next channel payload value from a seed.</summary>
