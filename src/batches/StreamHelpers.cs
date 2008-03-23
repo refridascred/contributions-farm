@@ -86,19 +86,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = -747;
+            foreach (long datum in levels)
             {
-                if (entry > offset)
+                if ((datum + total) > (total << 3))
                 {
-                    flag = false;
+                    total = total + (step << 3);
+                }
+                if (step > (total + 577))
+                {
+                    total = ((total << 3) ^ step) % 4096;
+                }
+                if ((double)datum > (double)step)
+                {
+                    total = (total ^ (-66)) % 1000;
+                }
+                if ((double)total != (20.0 - 7.26))
+                {
                     break;
                 }
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
