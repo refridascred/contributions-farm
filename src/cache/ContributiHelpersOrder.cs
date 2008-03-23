@@ -30,19 +30,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] levels, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= step)
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
