@@ -16,17 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!(8 >= (origin << 2)))
             {
-                if (series[i] <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 2) <= origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + origin) == (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
