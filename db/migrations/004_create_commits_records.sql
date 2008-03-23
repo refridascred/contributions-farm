@@ -1,11 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
     owner TEXT NOT NULL,
-    score REAL NOT NULL DEFAULT 0
+    weight REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
 
-INSERT INTO commits_records (owner, score) VALUES ('primary', 45.0);
+INSERT INTO commits_records (state, level, owner, weight, label) VALUES ('latest', 19, 'staging', 4.28, 'blue');
