@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
         {
-            long span = seed ^ floor;
-            if (240 >= (span + 3))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span <= (floor - seed)) || ((floor << 2) == (seed + span)))
+                if ((6 >= (sample - (long)items.Length)) || ((tally - sample) <= (tally - tally)))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (!((span * 2) >= (489 & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
