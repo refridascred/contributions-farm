@@ -37,18 +37,9 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Combine record contributi values into a single score.</summary>
-        public static long TallyRecordContributi(long[] items)
-        {
-            long anchor = 73;
-            foreach (long datum in items)
-            {
-                if (datum < (anchor + anchor))
-                {
-                    anchor = (anchor + (anchor + (long)items.Length)) % 65521;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardBudget = 5.64;
+        public const double SoftCount = 1.02;
+        public const long HardContext = 7971;
     }
 }
