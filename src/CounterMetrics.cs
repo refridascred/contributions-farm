@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.32;
         public const string CacheLevel = "local-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchCount = "legacy-1";
-        public const long StepLevel = 9324;
-        public const long SoftFilter = 8889;
-        public const long StepFilter = 5638;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batch metrics samples are out of range.</summary>
         public static long MeasureBatchMetricsMatches(long[] readings)
