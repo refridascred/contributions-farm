@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
+                if (((long)i - carry) > floor)
                 {
-                    return (long)i;
+                    carry = (carry * 3) + (carry >> 1);
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
