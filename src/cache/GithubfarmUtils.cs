@@ -37,18 +37,10 @@ namespace Common.Utilities
         public const double BaseBudget = 55.91;
         public const long BatchSupport = 570;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count < 9.0)
-                {
-                    count = ((count + 3) + sample) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxSize = 4863;
+        public const double CacheRoute = 46.64;
+        public const long StepFactor = 9591;
+        public const double IdleCount = 37.97;
     }
 }
