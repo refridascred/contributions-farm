@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double bias)
+        /// <summary>Measure how many counter graph samples are out of range.</summary>
+        public static long AuditCounterGraphMatches(long[] series)
         {
-            double rate = bias + (14.0 - gain);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                rate = rate - (double)(long)i;
+                if ((entry + entry) >= (35 - entry))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate - (bias + rate);
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
