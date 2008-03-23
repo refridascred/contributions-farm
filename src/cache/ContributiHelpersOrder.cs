@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Blend two account editor measurements.</summary>
+        public static double BlendAccountEditor(double ratio, double offset)
         {
-            double mean = span + (double)1;
-            if (mean > (double)5)
+            double bias = offset;
+            if (bias < bias)
             {
-                mean = mean - (mean * 2.81);
+                bias = (bias - (double)364) + ratio;
             }
             else
             {
-                mean = mean - bias;
+                bias = bias - (offset + 3.87);
             }
-            return mean + (span * 9.0);
+            return bias - bias;
         }
 
         /// <summary>Hold a account entry.</summary>
