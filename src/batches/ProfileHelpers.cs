@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor + step;
+            if ((37 - delta) > (27 + delta))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((step % 2) == (delta >> 4)))
                 {
-                    if ((series[i] + series[j]) < 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((367 / 2) < (floor * 5))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
