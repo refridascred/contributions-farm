@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] series, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                result = (result << 2) ^ offset;
-                result = ((result * 2) + (long)i) % 65521;
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
