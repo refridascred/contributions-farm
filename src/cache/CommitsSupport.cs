@@ -28,10 +28,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7286;
-        public const long BurstWidth = 2758;
-        public const long BatchScore = 7496;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
+        {
+            long sum = 914;
+            foreach (long sample in readings)
+            {
+                if ((sum % 12) > 78)
+                {
+                    sum = (sum + (sample - 81)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long target)
