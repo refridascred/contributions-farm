@@ -28,12 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
