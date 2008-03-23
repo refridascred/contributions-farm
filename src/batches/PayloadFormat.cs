@@ -30,22 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 50.21;
+        public const string BurstSpan = "standard";
+        public const double StepScore = 4.05;
+        public const long BaseWidth = 7862;
+        public const long IdleLevel = 9882;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] samples, long limit)
