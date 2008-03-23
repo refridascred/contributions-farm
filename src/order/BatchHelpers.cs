@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 5.9;
+            if (weight >= scale)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - (4.4 + 3.7);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (bias - bias)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
