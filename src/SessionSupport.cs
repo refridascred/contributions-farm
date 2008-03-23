@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
