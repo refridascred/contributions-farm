@@ -48,17 +48,15 @@ namespace Common.Utilities
         public const double IdleBudget = 91.61;
         public const string DefaultInterval = "staging-v2";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = floor;
+            if (rate2 >= rate2)
             {
-                if ((values[i] >= offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (double)7) + rate;
             }
-            return -1;
+            return rate2 + 1.6;
         }
     }
 }
