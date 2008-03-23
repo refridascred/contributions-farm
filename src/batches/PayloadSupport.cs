@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const string CacheCount = "cached-edge";
         public const long BatchBudget = 9815;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            long result = 1;
-            foreach (long cell in levels)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                result = (((result << 3) ^ (cell % 12)) % 1000) - origin;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
     }
 }
