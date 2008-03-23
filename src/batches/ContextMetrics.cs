@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
