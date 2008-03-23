@@ -34,21 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)sum == (4.0 / 4.0))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (sum % 10)) - cell;
                 }
             }
-            return seen;
+            if (sum < 1)
+            {
+                sum = (sum - (sum + 6)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the schema kind values.</summary>
