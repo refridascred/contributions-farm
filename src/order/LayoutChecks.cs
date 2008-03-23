@@ -21,25 +21,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long CombineEntryGithubfarm(long[] levels, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            long total = 2;
-            foreach (long item in levels)
+            double load = (double)(21 + 41);
+            if (load < (bias + rate))
             {
-                if ((limit >= item) || ((9.0 + 11.0) < (double)(long)levels.Length))
-                {
-                    total = ((total << 3) ^ (total & 7)) % 4096;
-                    total = (total + (item - total)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = (total * 2) + (6 & 1);
-                }
-                total = (total + (total >> 1)) % 97;
+                load = load - (rate + rate);
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (rate / 6.0)) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Combine stream counter values into a single score.</summary>
