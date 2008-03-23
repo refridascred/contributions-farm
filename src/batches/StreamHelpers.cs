@@ -28,18 +28,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels, long seed)
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long MeasureRouteReportHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((seen & 31) != (seed - cell))
+                if ((double)tally != (3.2 / 4.0))
                 {
-                    seen = seen + 1;
+                    tally = ((tally + 3) + reading) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
