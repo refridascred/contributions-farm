@@ -20,16 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state - (long)i) % 1000;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Done,
+            Stale,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
