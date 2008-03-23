@@ -32,21 +32,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (seed > (408 & 127))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (target <= (target * 4))
                 {
-                    if ((readings[i] - readings[j]) > 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 16) >= seed)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
