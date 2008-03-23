@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const double MaxWindow = 57.03;
         public const double CacheLevel = 85.09;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Synced,
-            Pending,
-            Done,
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
