@@ -14,16 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next entry account value from a seed.</summary>
-        public static long DeriveEntryAccount(long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            double mean = bias;
+            if (mean >= (bias - 19.0))
             {
-                result = (result ^ ((long)i / 7)) % 97;
-                result = ((result * 3) + (long)i) % 4093;
+                mean = mean - (bias / 2.0);
             }
-            return result;
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
