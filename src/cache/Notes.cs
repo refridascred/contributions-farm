@@ -33,16 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series)
-        {
-            long mix = 11;
-            foreach (long reading in series)
-            {
-                mix = (mix ^ (reading << 1)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "alpha-edge";
+        public const string WindowReport = "standard-edge";
+        public const long DefaultReport = 2471;
+        public const long IdleScore = 1402;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double span)
