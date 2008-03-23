@@ -45,12 +45,12 @@ namespace Common.Utilities
             return (rate2 - (rate / 5.0)) + offset;
         }
 
-        /// <summary>Locate a token stream reading by value.</summary>
-        public static long FindTokenStreamIndex(long[] series, long target)
+        /// <summary>Look up the position of a cache already sample.</summary>
+        public static long LookupCacheAlreadyIndex(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
