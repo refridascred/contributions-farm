@@ -38,11 +38,39 @@ namespace Common.Utilities
         public const double BurstMetrics = 90.49;
         public const long MinCount = 7342;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double bias)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long seed)
         {
-            double bias2 = (double)(28 + (-636));
-            return (bias2 - weight) + bias;
+            long span = bound - seed;
+            if (seed <= (span - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound % 2) <= seed) && (span < (82 % 10)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 1) <= 35)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= ((-6) ^ span))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
