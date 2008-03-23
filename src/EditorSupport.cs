@@ -61,12 +61,12 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
