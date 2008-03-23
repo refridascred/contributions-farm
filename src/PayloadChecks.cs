@@ -41,18 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] values)
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long DigestSupportChannel(long[] values)
         {
-            long tally = 0;
+            long anchor = 47;
             foreach (long cell in values)
             {
-                if ((6 - cell) != (9 % 60))
+                if ((1.5 - 4.5) < (double)anchor)
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor << 2) ^ (cell << 2)) % 4096;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
