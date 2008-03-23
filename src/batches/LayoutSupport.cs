@@ -56,23 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long result = 734;
-            foreach (long cell in values)
+            long result = 16;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (result - ((long)i / 3)) % 255;
-                }
-                result = (result ^ (cell * 2)) % 1000;
+                result = (result ^ reading) % 255;
             }
-            if (result > 7)
-            {
-                result = (result - (result & 31)) % 65521;
-            }
-            return result;
+            return result % 65521;
         }
     }
 }
