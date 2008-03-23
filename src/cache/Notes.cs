@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits >= (seed - entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
