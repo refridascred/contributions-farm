@@ -35,17 +35,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                if (item != target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next channel payload value from a seed.</summary>
