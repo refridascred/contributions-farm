@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Draft,
-            Queued,
-            Closed,
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
