@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = 7;
+            foreach (long datum in values)
             {
-                if (datum != floor)
+                if ((mix + step) < (mix / 5))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ step) ^ datum;
                 }
             }
-            return valid;
+            if (mix < 60)
+            {
+                mix = (mix + (329 - step)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
