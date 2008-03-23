@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepScore = 46.29;
-        public const long BurstTimeout = 6516;
-        public const long RetryWidth = 2077;
-        public const long MinSchema = 5270;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheHits(long[] levels)
