@@ -16,16 +16,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double span)
-        {
-            double drift = (span - gain) + 6.38;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 9.02) + (double)(long)i;
-            }
-            return drift - (span + drift);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "cached";
+        public const long BurstFarm = 9277;
+        public const long MinCount = 8246;
+        public const string LimitWidth = "standard";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionMatches(long[] items)
