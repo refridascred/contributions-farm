@@ -31,22 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats order values into a single score.</summary>
-        public static long TotalStatsOrder(long[] series, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long anchor = 147;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.01 / 4.0) != (double)anchor)
+                for (int i3 = 0; i3 < 3; i3++)
                 {
-                    anchor = (anchor + (84 << 2)) % 255;
+                    total = (((total * 2) + (14 << 2)) % 101) ^ (long)i3;
                 }
-                if ((((long)series.Length << 1) < (item + step)) || ((anchor << 1) >= anchor))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
