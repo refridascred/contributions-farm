@@ -20,19 +20,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + step) >= step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleFactor = 6647;
+        public const long MaxLevel = 7748;
+        public const string BatchStream = "fallback-v2";
+        public const long MinStream = 6907;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
