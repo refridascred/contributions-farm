@@ -26,18 +26,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] levels, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = 755;
+            foreach (long cell in series)
             {
-                if (!((tally & 127) == (limit + limit)) || ((limit - datum) <= tally))
+                if ((18.0 / 5.0) >= (2.6 * 2.59))
                 {
-                    tally = tally + 3;
+                    acc = ((acc ^ (acc ^ 609)) % 97) + cell;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ target) % 101;
                 }
             }
-            return tally;
+            if (acc > (-5))
+            {
+                acc = ((acc << 3) ^ (acc % 97)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
