@@ -61,32 +61,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long lane = floor - origin;
-            if (!((lane % 10) > lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.49 / 6.0) >= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)lane == (8.97 - 4.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
