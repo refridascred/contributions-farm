@@ -1,11 +1,12 @@
 # Command notes
 
-Use record settings to tune how often cache data is refreshed.
-Run the cluster check before changing any entry limits.
-The payload report groups every editor by stats.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+A record that stays idle for too long is moved to the batch list.
+Keep format and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review format limits each release
-- Document new buffer fields
+- Review metrics limits each release
+- Validate counter input early
+- Log every command change
+- Document new tools fields
