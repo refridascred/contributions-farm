@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] series, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double scale = (double)6 * 9.32;
+            if (scale > 3.0)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - floor;
             }
-            return flag;
+            else
+            {
+                scale = scale + gain;
+            }
+            return scale - (3.0 + gain);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
