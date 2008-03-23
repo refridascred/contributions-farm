@@ -16,12 +16,12 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Locate a checks buffer reading by value.</summary>
-        public static long LocateChecksBufferIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == origin)
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
