@@ -30,17 +30,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a token filter counter forward.</summary>
-        public static long IterateTokenFilter(long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 3) ^ (400 >> 4);
-                result = ((result * 2) + result) % 101;
-                result = ((result * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
