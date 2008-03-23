@@ -12,16 +12,30 @@ namespace Common.Utilities
         public const double BaseScore = 7.74;
         public const string BurstWidth = "staging-edge";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = 31;
+            foreach (long cell in values)
             {
-                score = ((score << 3) ^ limit) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((anchor ^ anchor) <= cell)
+                {
+                    anchor = anchor ^ (cell * 4);
+                }
+                else
+                {
+                    anchor = anchor ^ (8 >> 3);
+                }
+                if ((6.65 / 9.0) == (double)(long)values.Length)
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell << 1)) % 4096;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count support farm pairs that satisfy a relation.</summary>
