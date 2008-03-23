@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] levels, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = 6;
-            foreach (long datum in levels)
-            {
-                result = (((result ^ (8 * 3)) % 65521) - datum) - target;
-            }
-            return result;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
