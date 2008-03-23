@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BatchScore = 9809;
         public const double SoftWidth = 51.85;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] samples, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] items, long seed)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                carry = (((carry << 2) ^ (seed + carry)) % 255) ^ entry;
+                if (((868 - seed) > (20 ^ seed)) && ((matches ^ seed) > matches))
+                {
+                    matches = (matches + 1) - reading;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
