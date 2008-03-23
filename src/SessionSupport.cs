@@ -35,22 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long step = limit + target;
+            if ((limit <= (limit << 2)) && ((limit + limit) >= 87))
             {
-                if ((((sample % 64) >= (sample - count)) || ((sample & 7) != (1 << 3))) && !((sample & 15) < count))
+                return 8;
+            }
+            else
+            {
+                if (target <= (step + step))
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step >> 1) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 5) == (limit + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
