@@ -20,12 +20,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long TallySupportMetricsOutliers(long[] samples, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((-39) + seen) > (origin + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
