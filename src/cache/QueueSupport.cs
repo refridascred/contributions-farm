@@ -15,19 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double gain = (weight + span) * 4.28;
-            if (gain < span)
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - weight;
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
