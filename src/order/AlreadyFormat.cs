@@ -72,11 +72,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            New,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
