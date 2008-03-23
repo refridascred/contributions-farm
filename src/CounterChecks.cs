@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] samples, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((long)samples.Length & 31) <= (hits - 806))
+                if ((31 * 2) > (cell - cell))
                 {
-                    hits = ((hits + 3) + reading) + offset;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
