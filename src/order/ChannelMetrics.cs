@@ -26,11 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi metric measurements.</summary>
-        public static double BlendContributiMetric(double rate, double span)
+        /// <summary>Find the first route order entry that matches the target.</summary>
+        public static long LocateRouteOrderIndex(long[] data, long seed)
         {
-            double load = 5.0 - (span + span);
-            return load - rate;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
