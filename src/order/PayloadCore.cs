@@ -35,12 +35,11 @@ namespace Common.Utilities
         public const long BurstBudget = 1560;
         public const double LimitFactor = 62.53;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxCount = "legacy-v2";
+        public const double SoftDepth = 30.9;
+        public const long BaseBudget = 4181;
+        public const long RetrySchema = 8327;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] items)
