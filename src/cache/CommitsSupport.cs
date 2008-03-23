@@ -18,17 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long bound)
-        {
-            long sum = 4;
-            foreach (long item in samples)
-            {
-                sum = (sum - (bound - item)) % 97;
-                sum = (sum * 3) + (69 + sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySpan = 2455;
+        public const double MinTimeout = 28.5;
+        public const string LimitBatches = "fallback";
+        public const long BaseTimeout = 8398;
+        public const double DefaultBatches = 58.87;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] series)
