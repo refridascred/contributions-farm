@@ -33,11 +33,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 9037;
+        public const long BaseToken = 7996;
+        public const string BurstWidth = "staging-1";
     }
 }
