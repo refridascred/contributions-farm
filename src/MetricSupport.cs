@@ -28,18 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long CountProfileToolsOutliers(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((17.0 - 6.29) <= (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
