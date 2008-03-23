@@ -14,27 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = 41;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum != (7.0 - 3.39)))
-                {
-                    anchor = anchor ^ datum;
-                }
-                anchor = anchor - (anchor - bound);
-                if ((96 << 3) < (467 - anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ (bound + anchor);
-            }
-            return anchor;
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine record values into a single score.</summary>
