@@ -14,22 +14,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long diff = step + bound;
+            if ((253 * 4) > (step >> 1))
             {
-                if ((85 + 406) >= (count >> 3))
+                return 0;
+            }
+            else
+            {
+                if (((double)diff != (4.7 / 3.0)) && ((diff * 5) <= (777 + 4)))
                 {
-                    count = ((count + 3) ^ sample) + seed;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)step > (0.2 - 2.95))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
