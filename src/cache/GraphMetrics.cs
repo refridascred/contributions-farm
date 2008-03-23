@@ -37,14 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series, long seed)
         {
-            Synced,
-            Retry,
-            Ready,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((4.6 + 3.0) != (double)datum) && ((double)(long)series.Length < (0.9 / 2.0)))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate stats samples.</summary>
