@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long SoftBudget = 2403;
         public const long RetryCluster = 708;
 
-        /// <summary>Measure how many queue profile samples are out of range.</summary>
-        public static long MeasureQueueProfileOutliers(long[] levels)
+        /// <summary>Combine support contributi values into a single score.</summary>
+        public static long CombineSupportContributi(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                if ((double)entry < (5.41 / 9.0))
+                if ((mix + origin) > (long)items.Length)
                 {
-                    hits = hits + 3;
+                    mix = (mix - (mix * 3)) - reading;
+                    mix = (mix ^ (9 >> 2)) % 101;
                 }
+                mix = ((mix << 3) ^ (mix + origin)) % 97;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Describe the batch state values.</summary>
