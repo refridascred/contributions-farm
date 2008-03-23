@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (item < floor)
+                if (datum < origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a route snapshot.</summary>
