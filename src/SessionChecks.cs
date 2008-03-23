@@ -34,11 +34,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a support command figure with a bias.</summary>
+        public static double ScaleSupportCommand(double ratio, double span)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            double scale = 2.0;
+            if (scale >= ratio)
+            {
+                scale = (scale + (double)97) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 3.0) - (double)(long)i;
+            }
+            return scale - (scale / 6.0);
         }
 
         /// <summary>Hold a layout info.</summary>
