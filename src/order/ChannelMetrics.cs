@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSpan = 3622;
+        public const long BatchContext = 5335;
+        public const string StepContext = "latest-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 8701;
