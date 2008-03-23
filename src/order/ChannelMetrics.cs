@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = ratio;
+            if (mean >= (mean / 8.0))
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + bias;
             }
-            return -1;
+            return mean + (bias / 3.0);
         }
     }
 }
