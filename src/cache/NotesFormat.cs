@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double bias = span;
-            if (bias > span)
-            {
-                bias = bias - (weight - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (0.1 - bias);
+            Dropped,
+            New,
+            Failed,
         }
     }
 }
