@@ -20,26 +20,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            long sum = 47;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sum <= (item + sum))
+                if (datum >= 8)
                 {
-                    sum = (((sum * 4) + (item << 1)) % 101) - bound;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (item / 4)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            if (sum > 16)
-            {
-                sum = (sum * 2) + 11;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
