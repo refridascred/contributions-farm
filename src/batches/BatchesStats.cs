@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            New,
-            Queued,
-            Closed,
-            Pending,
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
