@@ -68,21 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
-        public static long OverlapCacheToolsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 9846;
+        public const long WindowBudget = 4498;
+        public const long HardAccount = 9490;
+        public const long StepCount = 5681;
     }
 }
