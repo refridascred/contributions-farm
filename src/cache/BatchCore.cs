@@ -35,19 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    sum = ((sum - (sum + sum)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
