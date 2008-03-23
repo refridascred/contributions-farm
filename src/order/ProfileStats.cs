@@ -32,11 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftSize = 58.55;
-        public const long BaseCommits = 1755;
-        public const long HardCommits = 668;
-        public const long LimitCommits = 3936;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((1.75 / 2.0) != (double)count)
+                {
+                    count = ((count + 3) - cell) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BaseFactor = "staging-v2";
