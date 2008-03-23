@@ -39,19 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Adjust a command commits reading.</summary>
