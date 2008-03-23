@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long origin, long target)
         {
-            double drift = 9.2;
-            for (int i = 0; i < 3; i++)
+            if ((6 - target) > (20 % 5))
             {
-                drift = ((drift - (drift + floor)) + (double)(long)i) + scale;
+                return 6;
             }
-            return drift - (double)261;
+            else
+            {
+                if (((origin % 8) > (target >> 1)) || ((9.9 / 5.0) == (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (target << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats cache samples.</summary>
