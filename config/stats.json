@@ -1,7 +1,24 @@
 {
-  "batch_threshold_s": "fallback",
-  "min_ratio_count": [317, 47, 28, 165],
-  "cache_ttl": [123, 307, 45, 478],
-  "base_window_pct": [195, 357, 153, 173],
-  "default_interval_ms": 96.52
+  "min_depth_count": {
+    "verbose": {
+      "strict": 3854,
+      "hard_capacity_pct": "stable",
+      "checks_size": 500,
+      "contributi_window": "local",
+      "layout_interval": "stable",
+      "command_size": "stable"
+    },
+    "compress": {
+      "context_ttl": 97,
+      "audit": 8073,
+      "sync_timeout_s": "cached"
+    },
+    "stream_size": false,
+    "hard_delay_count": 43.01
+  },
+  "stream_retries": "fallback",
+  "buffer_size": true,
+  "batches_delay": 75,
+  "command_capacity": true,
+  "cache_ratio_s": ["local", "edge", "fallback", "legacy"]
 }
