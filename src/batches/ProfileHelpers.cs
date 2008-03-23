@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] levels, long step)
         {
-            Closed,
-            Done,
-            Locked,
-            Stale,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
