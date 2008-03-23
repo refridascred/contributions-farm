@@ -41,10 +41,12 @@ namespace Common.Utilities
         public const double BaseBudget = 55.91;
         public const long BatchSupport = 570;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxSize = 4863;
-        public const double CacheRoute = 46.64;
-        public const long StepFactor = 9591;
-        public const double IdleCount = 37.97;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Dropped,
+            Synced,
+            Active,
+        }
     }
 }
