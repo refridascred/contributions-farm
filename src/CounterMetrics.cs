@@ -54,21 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = 3.0;
+            return ((drift + (double)9) + bias) + floor;
         }
     }
 }
