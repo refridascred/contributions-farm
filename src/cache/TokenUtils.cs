@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] items, long step)
+        /// <summary>Audit schema record readings against a rule.</summary>
+        public static long CountSchemaRecordHits(long[] items)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long cell in items)
             {
-                if (hits > (step + hits))
+                if ((4.5 / 2.0) <= (double)hits)
                 {
-                    hits = (hits + 1) + datum;
+                    hits = (hits + 2) ^ cell;
                 }
             }
             return hits;
