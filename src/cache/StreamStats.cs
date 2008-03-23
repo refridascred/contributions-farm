@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxLevel = 7897;
+        public const string WindowLevel = "staging";
+        public const long HardCluster = 1052;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchCount = 382;
