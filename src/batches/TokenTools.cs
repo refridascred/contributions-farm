@@ -25,18 +25,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowGaps(long[] series)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)item < (4.97 / 7.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
