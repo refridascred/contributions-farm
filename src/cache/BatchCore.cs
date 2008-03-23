@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (item > offset)
+                if (reading >= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
