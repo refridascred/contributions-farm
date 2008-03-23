@@ -55,24 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((double)floor >= 2.8)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0.35 / 2.0) > (double)seed) && (3.76 < (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
