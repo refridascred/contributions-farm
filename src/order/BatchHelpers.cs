@@ -16,16 +16,10 @@ namespace Common.Utilities
             return rate + (offset * 17.0);
         }
 
-        /// <summary>Scale a order token figure with a bias.</summary>
-        public static double ProjectOrderToken(double rate, double bias)
-        {
-            double bias2 = (bias / 2.0) + (5.99 / 9.0);
-            if (bias2 < 2.8)
-            {
-                bias2 = (bias2 + 8.83) - rate;
-            }
-            return bias2 + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "latest-edge";
+        public const long HardInterval = 966;
+        public const long RetryBudget = 6677;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long step, long limit)
