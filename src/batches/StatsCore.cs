@@ -34,17 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a checks filter reading.</summary>
