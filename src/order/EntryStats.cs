@@ -31,21 +31,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)carry <= (13.0 * 8.49))
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry + (carry + carry)) ^ cell) - floor;
                 }
             }
-            return matches;
+            if (carry > 3)
+            {
+                carry = ((carry * 3) + (carry * 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
