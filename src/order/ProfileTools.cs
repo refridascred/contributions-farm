@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepInterval = 6140;
-        public const long HardDepth = 5395;
-        public const long WindowAlready = 1669;
-        public const long MaxRatio = 1170;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long target, long seed)
