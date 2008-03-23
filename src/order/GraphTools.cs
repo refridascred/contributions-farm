@@ -19,38 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi cluster value against two limits.</summary>
-        public static long BucketContributiCluster(long origin, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            if (!(limit >= (origin + 2)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5 ^ origin) != (limit / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.1 * 4.9) < (double)origin)
+                    if ((items[i] ^ items[j]) < 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit > (limit & 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
