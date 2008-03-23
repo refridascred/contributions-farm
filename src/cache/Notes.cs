@@ -19,11 +19,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "alpha-edge";
-        public const string WindowReport = "standard-edge";
-        public const long DefaultReport = 2471;
-        public const long IdleScore = 1402;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a farm entry pair into a bucket.</summary>
         public static long ClassifyFarmEntry(long floor, long offset)
