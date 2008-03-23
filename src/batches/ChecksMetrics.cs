@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class ChecksMetrics
     {
         /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 7816;
-        public const string MaxSpan = "fallback";
-        public const string BaseBudget = "alpha";
+        public const string BaseRatio = "stable";
+        public const double BaseEditor = 81.72;
+        public const long CacheSize = 5069;
+        public const long BatchScore = 9809;
+        public const double SoftWidth = 51.85;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepPayload = 7048;
