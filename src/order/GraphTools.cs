@@ -59,23 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record cluster readings.</summary>
-        public static long TotalRecordCluster(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] series, long target)
         {
-            long state = 43;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)state > (7.48 / 2.0))
+                if (entry != target)
                 {
-                    state = (state ^ item) % 255;
+                    valid = false;
+                    break;
                 }
-                state = ((state << 3) ^ (state - item)) % 97;
             }
-            if (state < 74)
-            {
-                state = (state * 2) + (739 * 3);
-            }
-            return state;
+            return valid;
         }
     }
 }
