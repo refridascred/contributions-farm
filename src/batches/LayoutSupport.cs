@@ -36,21 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (total + total)) ^ sample;
             }
-            return matches;
+            if (total > 12)
+            {
+                total = ((total * 5) + (total & 15)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
