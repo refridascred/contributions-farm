@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long BurstBudget = 1560;
         public const double LimitFactor = 62.53;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings)
-        {
-            long result = 65;
-            foreach (long value in readings)
-            {
-                result = (result + value) % 1000;
-            }
-            if (result < (-508))
-            {
-                result = ((result << 3) ^ (result - result)) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "staging-edge";
+        public const string IdleStream = "strict-edge";
+        public const long HardDepth = 2189;
+        public const long BurstInterval = 8960;
+        public const long SoftRatio = 3509;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LocateToolsIndex(long[] data, long step)
