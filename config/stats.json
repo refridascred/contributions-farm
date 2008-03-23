@@ -1,19 +1,5 @@
 {
-  "dry_run": true,
-  "retry_depth_count": "staging",
-  "profile_window": "edge",
-  "sync_interval": {
-    "burst_window_s": 7725,
-    "enabled": "open",
-    "poll_timeout_count": 1024,
-    "notes_interval": 2412,
-    "retry_retries_pct": {
-      "enabled": 100,
-      "context_timeout": 500,
-      "idle_ttl": "legacy",
-      "retry_depth": false
-    },
-    "layout_ratio": 60
-  },
-  "poll_ratio": true
+  "strict": "green",
+  "verbose": [374, 430, 152],
+  "default_interval_pct": 22
 }
