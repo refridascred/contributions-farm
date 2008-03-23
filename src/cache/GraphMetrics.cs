@@ -58,17 +58,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            long offset = limit - target;
+            if ((limit - target) < target)
             {
-                carry = carry ^ ((long)i / 9);
-                carry = carry + (28 - offset);
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((12.0 / 4.0) <= 2.1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.2 / 9.0) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset << 2) >= (limit - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
