@@ -22,10 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFactor = 20.46;
-        public const long StepFormat = 5360;
-        public const string HardFormat = "strict-1";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Failed,
+            Stale,
+            Done,
+        }
 
         /// <summary>Fold a list of metric entry readings.</summary>
         public static long TallyMetricEntry(long[] data, long bound)
