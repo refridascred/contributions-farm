@@ -73,22 +73,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long floor)
         {
-            long acc = 7;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - 187) >= (acc - acc))
+                if (data[i] == floor)
                 {
-                    acc = acc - (acc >> 2);
+                    return (long)i;
                 }
             }
-            if (acc < 332)
-            {
-                acc = ((acc << 3) ^ (acc / 6)) % 4096;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
