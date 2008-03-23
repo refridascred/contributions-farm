@@ -43,18 +43,10 @@ namespace Common.Utilities
         public const long SoftSize = 2703;
         public const long StepCommits = 3505;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 4040;
+        public const double IdleBudget = 91.61;
+        public const string DefaultInterval = "staging-v2";
 
         /// <summary>Derive the next cluster buffer value from a seed.</summary>
         public static long DeriveClusterBuffer(long floor)
