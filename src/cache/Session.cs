@@ -32,12 +32,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 70.32;
-        public const string StepCommand = "open-edge";
-        public const long IdleCommand = 6180;
-        public const string RetryCommand = "standard-1";
-        public const long BaseCommand = 909;
+        /// <summary>Roll a graph stream counter forward.</summary>
+        public static long RollGraphStream(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc << 3) ^ (target + acc)) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
