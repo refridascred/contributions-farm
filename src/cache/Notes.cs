@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = 358;
-            foreach (long entry in readings)
-            {
-                if (6 < (mix - origin))
-                {
-                    mix = ((mix + (mix + 15)) % 65521) ^ entry;
-                }
-            }
-            return mix % 65521;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
