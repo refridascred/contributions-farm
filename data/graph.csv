@@ -1,8 +1,7 @@
-id,score,label,level
-1,blue,875,69.6
-2,41.77,383,134
-3,149,74.69,18.48
-4,74.97,78.13,18.17
-5,94,primary,edge
-6,38.11,59.49,30.29
-7,edge,297,685
+id,region,owner,score,ratio
+1,100,staging,81.97,564
+2,25.35,30,eu-west,777
+3,91.48,648,626,edge
+4,eu-west,81.81,staging,283
+5,234,372,primary,39.87
+6,102,primary,702,41.15
