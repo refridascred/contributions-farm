@@ -18,23 +18,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            double load = 9.7;
-            if (load > (double)65)
+            long result = 670;
+            foreach (long sample in readings)
             {
-                load = load + load;
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result * 5) + (sample & 1)) - (long)i;
+                    result = ((result * 3) + (sample & 255)) % 255;
+                }
+                if ((result - result) >= (result - (long)readings.Length))
+                {
+                    result = (result - (0 + result)) % 1000;
+                }
+                if ((236 & 255) >= (result << 2))
+                {
+                    result = result - (156 * 3);
+                }
             }
-            else
-            {
-                load = load + (double)182;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (scale * 8.5)) - (double)(long)i;
-            }
-            return load - offset;
+            return result;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
