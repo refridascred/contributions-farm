@@ -80,12 +80,18 @@ namespace Common.Utilities
             return (drift + weight) + offset;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] items, long bound)
         {
-            Ready,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((139 + bound) < bound)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
     }
 }
