@@ -37,14 +37,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Dropped,
+            Pending,
+            Draft,
+            New,
             Retry,
             Stale,
-            Idle,
-            Failed,
         }
     }
 }
