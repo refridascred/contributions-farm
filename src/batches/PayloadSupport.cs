@@ -54,9 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepBudget = "staging";
-        public const long SoftChecks = 761;
-        public const long RetryBudget = 5322;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Pending,
+            Retry,
+            Idle,
+            Closed,
+        }
     }
 }
