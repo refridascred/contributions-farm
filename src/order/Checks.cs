@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long origin, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long target, long floor)
         {
-            if ((6 - target) > (20 % 5))
+            long slot = target - floor;
+            if ((slot + floor) == (floor % 64))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((origin % 8) > (target >> 1)) || ((9.9 / 5.0) == (double)origin))
+                if ((29 % 24) <= slot)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (origin < (target << 1))
+                    if ((((-142) - target) < 4) || ((double)floor != (19.0 + 10.0)))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 7;
+                        return 8;
                     }
                 }
             }
