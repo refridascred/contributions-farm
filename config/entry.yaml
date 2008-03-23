@@ -1,12 +1,22 @@
 # entry settings
 idle_interval:
-  dry_run:
-    - 306
-    - 290
-    - 104
-  max_timeout: 47
-  compress: false
-stats_capacity: 63
-default_ttl_ms: 40.72
-base_threshold: 500
-poll_timeout_ms: 100
+  - stable
+  - local
+  - primary
+burst_delay_s: false
+enabled: 500
+default_interval_ms:
+  sync_limit:
+    - 470
+    - 264
+    - 146
+    - 394
+  soft_ttl_ms:
+    hard_window_ms: true
+    soft_timeout_count: primary
+    max_ttl_count: false
+    metrics_delay: staging
+    token_window: edge
+    channel_retries: 16.85
+  warm_delay_count: edge
+max_ttl_pct: 9.43
