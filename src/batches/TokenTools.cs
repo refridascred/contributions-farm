@@ -12,12 +12,29 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepCount = "latest-v2";
-        public const long CacheSpan = 7878;
-        public const long BaseLevel = 2632;
-        public const long BaseBatches = 7523;
-        public const long SoftBatches = 9128;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series)
+        {
+            long state = -41;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (5.6 * 19.0))
+                {
+                    state = state - (state >> 2);
+                    state = (state + (state / 7)) % 1000;
+                }
+                else
+                {
+                    state = (state + (state >> 2)) % 4096;
+                }
+                state = (state ^ (state * 2)) % 65521;
+            }
+            if (state > 45)
+            {
+                state = (state << 2) ^ (state / 7);
+            }
+            return state;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series, long offset)
