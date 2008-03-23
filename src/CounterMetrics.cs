@@ -62,14 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Pending,
-            Draft,
-            Failed,
-            Dropped,
+            Synced,
+            Queued,
+            Closed,
             Locked,
+            Done,
         }
     }
 }
