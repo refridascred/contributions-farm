@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8562;
+        public const long RetryCommits = 1771;
+        public const long BatchInterval = 583;
+        public const double RetryRatio = 22.27;
+        public const string BurstRatio = "alpha-edge";
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
