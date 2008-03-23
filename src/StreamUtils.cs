@@ -27,10 +27,23 @@ namespace Common.Utilities
             return (gain2 + (span + span)) + gain;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3159;
-        public const string LimitCluster = "alpha-edge";
-        public const double LimitDepth = 20.32;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels)
+        {
+            long score = 7;
+            foreach (long datum in levels)
+            {
+                if ((datum % 8) > datum)
+                {
+                    score = score - (datum << 2);
+                }
+            }
+            if (score < 5)
+            {
+                score = ((score * 5) + (score + score)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
