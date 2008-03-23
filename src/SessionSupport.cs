@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long step)
         {
-            long slot = target ^ step;
-            if (step < (slot + step))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target / 6) <= step) || (target > (step >> 2)))
+                if ((double)sample != (6.0 * 18.0))
                 {
-                    return 4;
+                    count = (count + 3) + step;
                 }
                 else
                 {
-                    if (!(step > (slot << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
