@@ -92,17 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                sum = sum ^ ((-2) + target);
-                sum = ((sum * 2) + sum) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((count * 3) != (count & 255))
+                {
+                    count = ((count + 1) ^ datum) + origin;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
