@@ -1,9 +1,7 @@
 {
-  "enabled": "primary",
-  "batch_capacity_s": ["eu-west", "strict", "blue"],
-  "batch_size_ms": {
-    "sync_depth_s": [134, 23],
-    "payload_capacity": [138, 372, 74],
-    "poll_ratio": true
-  }
+  "sync_capacity_ms": "primary",
+  "idle_size_pct": 1024,
+  "burst_size": ["staging", "edge"],
+  "sync_window_s": 78.89,
+  "default_depth_s": "primary"
 }
