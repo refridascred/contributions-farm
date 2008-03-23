@@ -33,21 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((939 ^ datum) <= (sum << 2))
                 {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 5) + (sum + target)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (0 - datum)) % 255;
                 }
             }
-            return matches;
+            if (sum < 8)
+            {
+                sum = ((sum * 3) + (644 ^ target)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
