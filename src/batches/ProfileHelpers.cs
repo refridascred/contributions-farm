@@ -31,12 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] series, long origin)
         {
-            Stale,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)seen < (2.1 + 8.0))
+                {
+                    seen = ((seen + 1) ^ value) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next window metric value.</summary>
