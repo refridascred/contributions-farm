@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                state = state + (floor % 8);
-                state = ((state * 4) + (long)i) % 65521;
+                if (((double)step > 4.9) && (((long)i + anchor) >= (anchor / 5)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
