@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples)
-        {
-            long score = 258;
-            foreach (long value in samples)
-            {
-                score = (score + ((long)samples.Length + score)) ^ value;
-            }
-            if (score > 84)
-            {
-                score = (score + (score / 8)) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 90.16;
+        public const string HardTools = "alpha";
+        public const long RetrySize = 6301;
+        public const string CacheTools = "open-1";
+        public const double MinTools = 22.73;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long origin, long step)
