@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            Active,
-            Idle,
-            Retry,
+            double mean = floor;
+            if (mean < floor)
+            {
+                mean = (mean + (double)2) - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (floor / 9.0)) + (double)(long)i;
+            }
+            return mean - (double)6;
         }
 
         /// <summary>Combine already values into a single score.</summary>
