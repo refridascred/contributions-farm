@@ -56,19 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits window figure with a bias.</summary>
-        public static double ProjectCommitsWindow(double weight, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples, long origin)
         {
-            double mean = (7.0 - 5.4) * 7.16;
-            if (mean > (8.0 * 4.7))
+            long mark = 77;
+            foreach (long entry in samples)
             {
-                mean = ((mean - (mean - mean)) + weight) + offset;
+                if ((entry + origin) > (entry % 97))
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)23;
+            return mark;
         }
     }
 }
