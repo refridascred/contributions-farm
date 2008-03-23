@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long target)
         {
-            double scale2 = (double)(450 + 67);
-            if (scale2 < offset)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                scale2 = scale2 + (8.9 * 8.23);
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + 7.16;
-            }
-            return scale2 - scale;
+            return ready;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
