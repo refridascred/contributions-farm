@@ -1,8 +1,8 @@
-id,owner,token
-1,stable,fallback
-2,597,27.74
-3,78,0
-4,827,38
-5,117,legacy
-6,301,54.53
-7,65,81
+id,ratio,level
+1,423,stable
+2,21.2,cached
+3,71.7,15.54
+4,16.34,standard
+5,strict,29
+6,698,57.96
+7,edge,490
