@@ -37,22 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] items, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((hits << 1) >= seed)
+                if (reading >= seed)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
