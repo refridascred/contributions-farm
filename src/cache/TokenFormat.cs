@@ -24,21 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix - 879) % 101) ^ (long)i2;
                 }
+                mix = (mix - (55 - bound)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
