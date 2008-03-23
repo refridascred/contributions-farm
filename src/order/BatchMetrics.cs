@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
