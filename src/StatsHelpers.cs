@@ -68,18 +68,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
