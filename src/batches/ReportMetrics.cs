@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
