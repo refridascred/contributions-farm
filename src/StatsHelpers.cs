@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultSize = 7639;
-        public const long DefaultToken = 43;
-        public const long BurstToken = 1383;
-        public const long BatchToken = 5149;
-        public const long MinToken = 972;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
