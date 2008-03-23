@@ -1,7 +1,5 @@
 {
-  "cache_ratio_ms": 500,
-  "profile_size": true,
-  "strict": false,
-  "batch_threshold": "cached",
-  "flush_ratio": "staging"
+  "base_retries": [361, 339, 423],
+  "route_window": true,
+  "metrics_window": 11
 }
