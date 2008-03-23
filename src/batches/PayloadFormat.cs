@@ -22,25 +22,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long span = offset - floor;
-            if ((10.0 + 14.0) < (double)span)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((14.0 * 8.3) > (double)offset) || ((849 - span) == (span % 64)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
