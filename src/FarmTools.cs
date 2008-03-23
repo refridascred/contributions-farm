@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((((long)readings.Length >> 5) <= (matches ^ cell)) && (limit > (limit >> 2))) || !((limit - matches) < matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Retry,
+            Dropped,
+            Draft,
         }
     }
 }
