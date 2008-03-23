@@ -48,19 +48,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] items, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (item < origin)
+                state = ((state * 5) + (2 & 7)) % 1000;
+                state = (state * 5) + ((long)i + (long)i);
+                if ((double)state < (double)2)
                 {
-                    ok = false;
-                    break;
+                    state = ((state << 3) ^ (state << 2)) % 65521;
                 }
+                else
+                {
+                    state = ((state << 2) ^ (step + 68)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
     }
 }
