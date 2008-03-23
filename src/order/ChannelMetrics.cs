@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSpan = 1172;
-        public const long BaseRatio = 5392;
-        public const long WindowSession = 9235;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] samples, long limit)
