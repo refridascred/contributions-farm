@@ -1,7 +1,19 @@
 # entry settings
-cache_window_count: 26.66
-profile_limit: true
-token_interval: 96.77
-batch_ratio:
-  - 116
-  - 267
+sync_timeout_s:
+  cluster_ttl: standard
+  metric_timeout: blue
+  audit: 73.03
+poll_timeout: local
+soft_interval_ms: 30
+idle_ratio:
+  strict: 64.67
+  compress: 25.56
+  soft_capacity: 89.14
+record_limit:
+  soft_capacity: 27.17
+  batch_ratio_s: edge
+  commits_ttl: cached
+  support_interval: fallback
+  retry_window_ms: 63.2
+  layout_limit: 30
+notes_capacity: 100
