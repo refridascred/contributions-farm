@@ -21,18 +21,31 @@ namespace Common.Utilities
         public const long HardInterval = 966;
         public const long RetryBudget = 6677;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mark = -2;
+            foreach (long value in data)
             {
-                if (9 <= (3 - matches))
+                if ((double)offset != (3.5 - 9.24))
                 {
-                    matches = ((matches + 1) + reading) + offset;
+                    mark = (mark + (offset % 5)) ^ value;
+                    mark = (mark ^ (offset * 5)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (offset << 3)) % 1000;
+                }
+                if (offset <= (offset ^ offset))
+                {
+                    mark = ((mark * 4) + mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark * 3)) % 101;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
