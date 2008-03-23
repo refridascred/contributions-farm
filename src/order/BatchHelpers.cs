@@ -20,25 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long seed, long step)
-        {
-            if (step > (step + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) > (99 % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "staging-1";
+        public const double IdleBatches = 20.53;
+        public const long DefaultBatches = 2222;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
