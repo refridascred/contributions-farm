@@ -34,18 +34,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] series, long floor)
+        /// <summary>Project the next batches cluster value.</summary>
+        public static double AdjustBatchesCluster(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((34 + 10) == ((long)series.Length & 7))
-                {
-                    matches = ((matches + 2) + value) - floor;
-                }
-            }
-            return matches;
+            double load = (double)(38 / 6);
+            return ((load - (load / 9.0)) + ratio) + floor;
         }
     }
 }
