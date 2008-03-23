@@ -55,10 +55,10 @@ namespace Common.Utilities
         public const long HardDepth = 7452;
         public const double BurstScore = 67.23;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 4959;
-        public const double SoftGithubfarm = 32.77;
-        public const string RetryGithubfarm = "cached";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1483;
+        public const long MaxMetric = 3977;
+        public const long HardMetric = 3328;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
