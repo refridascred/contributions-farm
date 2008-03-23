@@ -19,20 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long edge = floor ^ bound;
+            if (edge <= (floor & 15))
             {
-                if (!(floor <= (floor >> 3)))
-                {
-                    result = (result - (result >> 4)) % 4096;
-                    result = (result + (result + floor)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)floor != (12.0 * 3.98))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((edge >> 3) == (floor & 15)) && ((floor + 888) == (edge << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
