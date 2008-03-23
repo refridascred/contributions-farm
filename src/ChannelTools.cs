@@ -35,14 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Active,
-            New,
-            Stale,
-            Failed,
-            Paused,
+            Locked,
+            Draft,
+            Synced,
         }
     }
 }
