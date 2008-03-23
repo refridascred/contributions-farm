@@ -50,28 +50,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a profile githubfarm counter forward.</summary>
-        public static long StepProfileGithubfarm(long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (bound <= (result >> 5))
-                {
-                    result = ((result * 3) + result) % 97;
-                    result = (result - (result / 6)) % 255;
-                }
-                if ((result + result) >= (result * 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result + ((long)i / 7)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
