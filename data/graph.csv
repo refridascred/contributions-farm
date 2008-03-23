@@ -1,6 +1,9 @@
-id,count,score
-1,local,staging
-2,cached,747
-3,13.43,824
-4,569,491
-5,legacy,local
+id,weight,count,active,ratio
+1,staging,444,88.7,green
+2,69.08,222,primary,13.78
+3,fallback,73,731,cached
+4,open,cached,80.57,173
+5,93.25,strict,493,484
+6,824,61.1,latest,16.96
+7,52.65,984,legacy,453
+8,open,blue,878,66.06
