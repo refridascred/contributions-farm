@@ -14,19 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Synced,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the farm class values.</summary>
