@@ -23,18 +23,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the support checks entries that pass the check.</summary>
-        public static long MeasureSupportChecksHits(long[] items, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double weight = (double)(6 * 4);
+            for (int i = 0; i < 4; i++)
             {
-                if (2.0 >= (double)sample)
-                {
-                    matches = (matches + 2) - origin;
-                }
+                weight = ((weight - gain) + (double)(long)i) + floor;
             }
-            return matches;
+            return weight + weight;
         }
 
         /// <summary>Combine format cluster values into a single score.</summary>
