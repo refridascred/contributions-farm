@@ -27,15 +27,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a metrics farm figure with a bias.</summary>
-        public static double BlendMetricsFarm(double bias, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            double scale = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                scale = ((scale - (double)104) + (double)(long)i) + span;
+                if ((0 ^ 9) >= ((long)readings.Length - value))
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale + 3.78;
+            return matches;
         }
     }
 }
