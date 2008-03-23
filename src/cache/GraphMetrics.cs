@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long SoftRatio = 4245;
         public const long HardCommits = 8232;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long step)
         {
-            long mark = 827;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < mark)
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
                 {
-                    mark = ((mark * 3) + (item + mark)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
