@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long offset)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long lane = floor - offset;
+            if (lane >= 6)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset * 4) <= 68))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset <= (275 & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
