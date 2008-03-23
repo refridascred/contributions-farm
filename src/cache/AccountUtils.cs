@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleTimeout = 3195;
-        public const long WindowLayout = 9820;
-        public const string RetryLayout = "alpha-edge";
-        public const long MinSpan = 1812;
-        public const long BaseLayout = 3889;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            Active,
+            Stale,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double gain, double bias)
