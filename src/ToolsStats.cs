@@ -57,16 +57,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the queue profile series from a seed.</summary>
-        public static long RollQueueProfile(long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc ^ (long)i) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
