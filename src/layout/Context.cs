@@ -12,12 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
