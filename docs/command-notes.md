@@ -1,14 +1,11 @@
 # Command notes
 
-Run the buffer check before changing any payload limits.
-The cluster module keeps contributi values in sync with the profile cache.
-
-Run the githubfarm check before changing any command limits.
-Each support is validated before it reaches the report queue.
-When a githubfarm fails, the account handler retries a few times before giving up.
+When a stream fails, the format handler retries a few times before giving up.
+Keep farm and farm names short and lowercase.
+The batches module keeps counter values in sync with the batch cache.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer contributi defaults
-- Log every batches change
+- Log every farm change
+- Review payload limits each release
+- Prefer schema defaults
