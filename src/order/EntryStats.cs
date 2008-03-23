@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark << 3) ^ (offset - mark);
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
