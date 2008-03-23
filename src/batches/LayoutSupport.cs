@@ -48,19 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long seed)
         {
-            long result = 97;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (bound >> 5)) - datum;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-793))
-            {
-                result = result + (908 * 4);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
