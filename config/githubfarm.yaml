@@ -1,32 +1,30 @@
 # githubfarm settings
-flush_depth_count:
-  commits_timeout:
-    - local
-    - primary
-    - primary
-    - open
-  min_interval_s:
-    compress: cached
-    max_threshold_ms:
-      - 98
-      - 465
-      - 52
-    retry_depth_pct: open
-    poll_timeout: strict
-    sync_size:
-      - 470
-      - 26
-      - 436
-  soft_size_pct: 54.75
-  command_limit: 93
-retry_ttl_s:
-  enabled: strict
-  compress: true
-  flush_depth: edge
-  retry_window_count: blue
-burst_capacity_s:
-  - open
-  - local
-  - primary
-batch_interval: 4.24
-poll_capacity_pct: 63.25
+default_ratio_pct: cached
+enabled: open
+min_retries:
+  flush_window_s: edge
+  idle_size_ms: 2961
+  enabled:
+    - 37
+    - 343
+    - 175
+    - 14
+  persist: 30
+  metric_interval: staging
+record_timeout:
+  batch_limit_pct: 60.83
+  idle_timeout_pct:
+    persist: 25.43
+    retry_threshold:
+      - edge
+      - latest
+      - cached
+    contributi_ratio:
+      - 115
+      - 230
+      - 42
+    base_timeout: 35.56
+  max_retries: false
+  retry_timeout_s: strict
+strict: eu-west
+max_delay_pct: true
