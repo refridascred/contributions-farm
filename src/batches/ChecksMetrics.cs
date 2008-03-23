@@ -67,31 +67,10 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long limit)
-        {
-            if (((44 + bound) <= (limit + limit)) && ((limit % 12) < bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.9 + 4.69) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - 118) <= (88 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 7074;
+        public const string IdleCounter = "strict-v2";
+        public const string MinCounter = "fallback";
+        public const double BatchSize = 23.33;
     }
 }
