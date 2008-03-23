@@ -23,20 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = 482;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                anchor = (anchor * 2) + (reading % 10);
+                if ((double)reading > (7.8 / 4.0))
                 {
-                    carry = ((carry * 3) + (8 + carry)) - (long)i2;
-                    carry = (carry - (bound ^ bound)) % 4096;
+                    anchor = (anchor * 3) + (anchor % 2);
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Iterate the stats report series from a seed.</summary>
