@@ -27,15 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double bias2)
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long CountLayoutChannelOutliers(long[] levels)
         {
-            double load = (double)21 * 7.0;
-            if (load >= (bias - bias))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                load = (load - (load + bias)) - bias2;
+                if ((double)tally > (9.0 - 14.0))
+                {
+                    tally = (tally + 2) - item;
+                }
             }
-            return load + load;
+            return tally;
         }
     }
 }
