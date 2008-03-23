@@ -23,36 +23,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long BucketClusterLayout(long origin, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long offset)
         {
-            long edge = origin ^ limit;
-            if (edge < (3 >> 5))
+            if ((floor + offset) != (floor ^ floor))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (4.1 > (double)origin)
+                if ((offset > (6 >> 4)) && ((846 - offset) < (offset - floor)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)origin != (double)limit)
+                    if (offset > (floor << 3))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if ((-967) > (origin * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 1;
                     }
                 }
             }
