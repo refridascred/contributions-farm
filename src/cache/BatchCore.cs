@@ -22,38 +22,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long seed)
         {
-            if ((step > (step * 4)) && ((limit + step) >= (step / 8)))
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + limit) >= step)
+                if ((result + 674) == (905 * 2))
                 {
-                    return 8;
+                    result = (result ^ seed) % 1000;
+                    result = ((result * 3) + (result * 3)) % 65521;
                 }
                 else
                 {
-                    if (step <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit < (step / 9)) && (step > (step - limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = result ^ result;
                 }
+                if (!((double)5 <= (double)result))
+                {
+                    result = (result * 5) + (result + result);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
