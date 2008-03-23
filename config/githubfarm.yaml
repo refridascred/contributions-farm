@@ -1,8 +1,14 @@
 # githubfarm settings
-stats_window:
-  - eu-west
-  - legacy
-  - primary
-batch_window: 1024
-poll_limit_ms: 98
-batch_delay_ms: staging
+default_ratio_ms: 10.34
+default_window_s: 92.58
+profile_interval: 55
+batch_delay_s:
+  warm_depth_s: strict
+  batch_delay_s:
+    - 213
+    - 181
+    - 31
+    - 146
+  profile_threshold: 30
+  dry_run: 83.12
+max_limit_pct: legacy
