@@ -49,18 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] levels, long limit)
         {
-            long mix = 317;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (8.6 < (double)mix)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    mix = ((mix + 74) % 1000) + cell;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
