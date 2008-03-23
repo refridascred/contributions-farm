@@ -90,17 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Project the next stream command value.</summary>
+        public static double ProjectStreamCommand(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(-67) / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + 15.0) + (double)(long)i) - offset;
             }
-            return -1;
+            return rate + (gain - 2.7);
         }
     }
 }
