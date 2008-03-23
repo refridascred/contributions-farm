@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const double MinSize = 14.38;
         public const long BurstCommand = 5996;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 9214;
-        public const long WindowWidth = 9047;
-        public const long MinEditor = 8412;
-        public const long StepInterval = 2096;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)count != (7.0 * 3.8))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] data)
