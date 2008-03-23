@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= origin)
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up entry samples.</summary>
