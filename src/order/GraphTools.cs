@@ -32,17 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record metric sample.</summary>
-        public static long FindRecordMetricIndex(long[] levels, long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
