@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the command graph entries that pass the check.</summary>
-        public static long CountCommandGraphMatches(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((21 << 1) < (tally + sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
