@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinFactor = 7359;
-        public const long MaxOrder = 2068;
-        public const long BurstLevel = 1568;
-        public const string WindowSize = "open-v2";
-        public const double IdleSpan = 46.85;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Locked,
+            Failed,
+            Stale,
+            Done,
+            Ready,
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long seed, long step)
