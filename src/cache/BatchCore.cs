@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitLevel = 3400;
-        public const long MinCommand = 6017;
-        public const long RetryCommand = 9968;
-        public const long HardCommand = 233;
-        public const long LimitCommand = 6540;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            New,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportRange(long[] values, long bound)
