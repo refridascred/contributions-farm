@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long seed)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((126 - reading) <= ((long)items.Length * 2))
+                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
                 {
-                    break;
-                }
-                if ((anchor - 32) != (reading + anchor))
-                {
-                    anchor = anchor + anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
