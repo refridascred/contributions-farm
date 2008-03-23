@@ -28,21 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count counter route pairs that satisfy a relation.</summary>
-        public static long OverlapCounterRouteCount(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of farm cluster entries.</summary>
