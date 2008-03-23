@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            double weight = scale * 5.5;
+            if (weight < scale)
+            {
+                weight = weight + (3.44 - 1.8);
+            }
+            else
+            {
+                weight = weight - (floor + weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (floor + scale)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
