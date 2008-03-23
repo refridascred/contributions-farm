@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] readings, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
