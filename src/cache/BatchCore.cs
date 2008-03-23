@@ -24,17 +24,12 @@ namespace Common.Utilities
         public const long BurstSize = 9971;
         public const long RetrySession = 4809;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
