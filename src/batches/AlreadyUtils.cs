@@ -53,15 +53,18 @@ namespace Common.Utilities
             return rate + (double)(-1);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long offset)
         {
-            double rate2 = floor;
-            if (rate2 >= rate2)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate2 = (rate2 + (double)7) + rate;
+                if (((long)data.Length - matches) <= (matches >> 4))
+                {
+                    matches = ((matches + 2) ^ item) + offset;
+                }
             }
-            return rate2 + 1.6;
+            return matches;
         }
     }
 }
