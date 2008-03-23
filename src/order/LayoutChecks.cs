@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] items, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = 84;
+            foreach (long entry in samples)
             {
-                if (value > (7 + offset))
+                state = (state ^ (3 + offset)) % 65521;
+                if ((679 & 7) == (offset >> 3))
                 {
-                    count = count + 1;
+                    state = ((state * 2) + (state ^ entry)) % 255;
                 }
             }
-            return count;
+            if (state < 806)
+            {
+                state = (state + (offset ^ 291)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
