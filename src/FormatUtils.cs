@@ -60,13 +60,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long seed, long origin)
         {
-            Done,
-            Pending,
-            Retry,
-            Closed,
+            long diff = seed + origin;
+            if (origin >= (seed << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((diff - (-799)) < (origin << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
