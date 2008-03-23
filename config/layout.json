@@ -1,5 +1,20 @@
 {
-  "base_threshold_count": "open",
-  "audit": "staging",
-  "session_interval": 62.78
+  "buffer_capacity": ["blue", "green", "open"],
+  "hard_window_pct": ["primary", "fallback", "cached"],
+  "counter_retries": "latest",
+  "batch_threshold_pct": {
+    "dry_run": 87,
+    "sync_retries": 8596,
+    "poll_size": [8, 13, 50],
+    "audit": {
+      "default_ttl_ms": 2,
+      "flush_size_count": "edge",
+      "burst_capacity_count": 46.33,
+      "sync_capacity_ms": "open",
+      "batch_capacity": true,
+      "min_timeout_pct": "open"
+    }
+  },
+  "metric_size": ["edge", "cached", "legacy", "standard"],
+  "notes_retries": 1886
 }
