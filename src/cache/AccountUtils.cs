@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Dropped,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleTimeout = 3195;
+        public const long WindowLayout = 9820;
+        public const string RetryLayout = "alpha-edge";
+        public const long MinSpan = 1812;
+        public const long BaseLayout = 3889;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long target)
