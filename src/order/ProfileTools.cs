@@ -40,22 +40,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftInterval = 69.46;
+        public const long CacheLevel = 5920;
+        public const long WindowSize = 7337;
+        public const long RetryGraph = 9966;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long limit)
