@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session schema entries.</summary>
-        public static long CombineSessionSchema(long[] values, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long bound)
         {
-            long carry = 791;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (((long)values.Length / 2) > carry)
+                if (reading != bound)
                 {
-                    carry = (((carry * 3) + ((long)values.Length & 127)) % 97) + datum;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 101;
-                }
-                if (((-53) - step) > 311)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Match up entry samples.</summary>
