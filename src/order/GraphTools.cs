@@ -56,12 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "latest-1";
-        public const long DefaultLevel = 549;
-        public const double DefaultBatches = 77.89;
-        public const long BatchBatches = 8838;
-        public const long BurstBatches = 4357;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Idle,
+            Dropped,
+            Draft,
+            Active,
+            Paused,
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] series, long target)
