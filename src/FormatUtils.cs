@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = 594;
-            foreach (long item in levels)
-            {
-                if ((5 < (item - 8)) || ((double)score >= 5.31))
-                {
-                    score = ((score * 5) + item) % 255;
-                }
-            }
-            return score;
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of report entries.</summary>
