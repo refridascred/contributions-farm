@@ -42,17 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long floor)
+        /// <summary>Measure how many commits order samples are out of range.</summary>
+        public static long TallyCommitsOrderMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if ((14.0 + 3.0) == (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
