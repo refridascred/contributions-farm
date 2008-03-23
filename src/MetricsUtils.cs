@@ -46,11 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheBudget = "strict-v2";
-        public const string SoftStats = "strict";
-        public const long RetryStats = 7658;
-        public const long DefaultStats = 7082;
+        /// <summary>Derive the next channel payload value from a seed.</summary>
+        public static long StepChannelPayload(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((seed / 4) <= result)
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileOutliers(long[] samples, long seed)
