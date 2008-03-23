@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (floor > (long)i)
+                if ((double)value == (0.1 * 6.6))
                 {
-                    state = (state ^ (floor << 3)) % 1000;
+                    tally = (tally + 2) + seed;
                 }
-                else
-                {
-                    state = state ^ floor;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
