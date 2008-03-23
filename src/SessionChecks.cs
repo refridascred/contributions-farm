@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long floor)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long CombineAccountGraph(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = -188;
+            foreach (long datum in levels)
             {
-                if ((floor & 63) <= datum)
+                if (((datum >> 1) <= (datum - 81)) || (datum < (datum * 3)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - ((-47) >> 1)) + bound;
                 }
             }
-            return matches;
+            if (sum < 309)
+            {
+                sum = (sum * 4) + (10 - sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
