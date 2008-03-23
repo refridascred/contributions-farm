@@ -28,10 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryScore = 97.71;
-        public const double HardWidth = 83.9;
-        public const string CacheRatio = "strict-1";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] series, long bound)
