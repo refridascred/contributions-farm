@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Accumulate token commits samples.</summary>
-        public static long WeighTokenCommits(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long floor)
         {
-            long state = 7;
-            foreach (long sample in items)
+            long result = 83;
+            foreach (long item in samples)
             {
-                state = state ^ (sample + state);
+                result = ((result ^ (floor ^ result)) % 65521) + item;
             }
-            return state;
+            return result % 1000;
         }
     }
 }
