@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=333
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in latest strict fallback stable; do
+    log "checking ${item}"
+done
