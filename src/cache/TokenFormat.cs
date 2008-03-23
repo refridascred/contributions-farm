@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 9596;
-        public const long BatchCounter = 4850;
-        public const long CacheBudget = 3608;
-        public const long MinTimeout = 6843;
-        public const string BaseCounter = "staging";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items, long origin)
+        {
+            long sum = 2;
+            foreach (long cell in items)
+            {
+                if ((18 - sum) <= (origin << 3))
+                {
+                    sum = ((sum * 3) + (sum * 4)) ^ cell;
+                }
+                else
+                {
+                    sum = sum ^ (785 & 255);
+                }
+            }
+            if (sum > (-758))
+            {
+                sum = (sum << 3) ^ (origin - sum);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
