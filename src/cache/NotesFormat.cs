@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit farm report readings against a rule.</summary>
-        public static long MeasureFarmReportHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length + cell) >= (count ^ cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4839;
+        public const double IdleScore = 84.91;
+        public const long MinInterval = 9961;
+        public const long BurstFormat = 717;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
