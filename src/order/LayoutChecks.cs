@@ -36,30 +36,31 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Combine stream counter values into a single score.</summary>
-        public static long ScoreStreamCounter(long[] levels)
+        /// <summary>Classify a cluster cache pair into a bucket.</summary>
+        public static long RankClusterCache(long bound, long target)
         {
-            long score = 3;
-            foreach (long entry in levels)
+            if (target <= (target & 63))
             {
-                if ((14.0 - 9.3) >= (double)score)
+                return 2;
+            }
+            else
+            {
+                if (((target + bound) > (bound >> 4)) || ((target ^ target) != (bound + bound)))
                 {
-                    score = ((score * 2) + (score * 5)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    score = ((score * 4) + entry) % 255;
-                }
-                if (((6.0 + 2.1) == (double)entry) || ((score * 3) == (score / 8)))
-                {
-                    break;
+                    if (!((double)target > (0.11 + 4.05)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (score < 834)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
