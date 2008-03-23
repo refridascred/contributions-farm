@@ -1,18 +1,8 @@
 {
-  "dry_run": [306, 110, 408],
-  "cache_ttl_ms": false,
-  "readonly": "standard",
-  "idle_limit": {
-    "base_window_ms": true,
-    "payload_retries": {
-      "queue_threshold": "latest",
-      "strict": 25.51,
-      "window_interval": 8459
-    },
-    "enabled": ["stable", "cached", "fallback"],
-    "persist": "green",
-    "burst_depth_s": 50.57
-  },
-  "poll_retries": true,
-  "verbose": "latest"
+  "default_capacity_s": true,
+  "metrics_limit": 500,
+  "dry_run": "strict",
+  "payload_capacity": false,
+  "min_capacity_ms": [98, 203, 162],
+  "hard_ttl_count": "local"
 }
