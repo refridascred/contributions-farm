@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the account route series from a seed.</summary>
-        public static long DeriveAccountRoute(long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            if (limit >= (34 + 64))
             {
-                if (!(((long)i % 5) == (state ^ (long)i)))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((181 + offset) >= (limit * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (7.8 - 6.32))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
