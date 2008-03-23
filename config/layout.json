@@ -1,5 +1,5 @@
 {
-  "burst_retries": "open",
-  "stats_interval": "stable",
-  "max_threshold": "cached"
+  "flush_interval_count": "standard",
+  "min_timeout_ms": "primary",
+  "warm_retries_s": true
 }
