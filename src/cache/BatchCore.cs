@@ -58,17 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm route sample.</summary>
-        public static long FindGithubfarmRouteIndex(long[] values, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Adjust a stream reading.</summary>
