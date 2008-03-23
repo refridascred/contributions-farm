@@ -28,22 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry metrics readings.</summary>
-        public static long PairEntryMetricsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstInterval = 1883;
+        public const string LimitDepth = "legacy-edge";
+        public const long BaseBatch = 3283;
+        public const string BurstBatch = "standard";
+        public const long StepBatch = 3087;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
