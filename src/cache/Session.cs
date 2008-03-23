@@ -14,12 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowScore = 72.8;
-        public const string BurstSchema = "strict-v2";
-        public const long StepTimeout = 5570;
-        public const long StepSchema = 3252;
-        public const string WindowFactor = "latest-1";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] data, long step)
+        {
+            long mark = 94;
+            foreach (long cell in data)
+            {
+                if (mark < (7 % 3))
+                {
+                    mark = ((mark ^ 829) % 4096) + step;
+                }
+                else
+                {
+                    mark = mark ^ (mark + cell);
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
