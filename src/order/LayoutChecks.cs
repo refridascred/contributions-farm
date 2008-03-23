@@ -60,13 +60,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the batch profile series from a seed.</summary>
+        public static long StepBatchProfile(long limit)
         {
-            Idle,
-            Locked,
-            Ready,
-            Failed,
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc - ((long)i >> 3)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
