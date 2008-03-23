@@ -37,18 +37,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] series, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((4.6 + 3.0) != (double)datum) && ((double)(long)series.Length < (0.9 / 2.0)))
+                if ((target * 3) >= (anchor + 9))
                 {
-                    seen = (seen + 3) + seed;
+                    anchor = (anchor - (763 + anchor)) % 4096;
                 }
+                else
+                {
+                    anchor = anchor - ((long)i * 4);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = ((anchor - (anchor / 8)) % 65521) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate stats samples.</summary>
