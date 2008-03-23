@@ -1,10 +1,7 @@
 {
-  "retry_retries": ["open", "stable", "legacy"],
-  "schema_capacity": {
-    "sync_limit_s": 10,
-    "sync_capacity_pct": 84,
-    "poll_threshold": "open"
-  },
-  "notes_size": true,
-  "enabled": ["standard", "staging", "open"]
+  "cache_ratio_ms": 500,
+  "profile_size": true,
+  "strict": false,
+  "batch_threshold": "cached",
+  "flush_ratio": "staging"
 }
