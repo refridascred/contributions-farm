@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double scale = (double)6 * 9.32;
-            if (scale > 3.0)
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            return scale - (3.0 + gain);
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
