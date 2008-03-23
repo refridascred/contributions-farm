@@ -14,19 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sample >= bound)
+                if ((value + value) >= (-60))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
