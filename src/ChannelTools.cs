@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long origin)
         {
-            double load = rate;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                load = (load + (double)823) + (double)(long)i;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - (span / 6.0);
+            return found;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
