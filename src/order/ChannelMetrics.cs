@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "cached-v2";
+        public const string RetryRatio = "fallback-1";
+        public const long LimitInterval = 3213;
+        public const string MaxCount = "local";
+        public const string BurstContributi = "stable";
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] samples, long limit)
