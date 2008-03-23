@@ -37,9 +37,15 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardBudget = 5.64;
-        public const double SoftCount = 1.02;
-        public const long HardContext = 7971;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double bias)
+        {
+            double load = 8.9;
+            if (load <= 19.0)
+            {
+                load = (load - (double)(-800)) + bias;
+            }
+            return load - gain;
+        }
     }
 }
