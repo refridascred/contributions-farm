@@ -1,7 +1,17 @@
 {
-  "order_capacity": ["standard", "eu-west", "blue", "latest"],
-  "batches_limit": ["fallback", "latest", "strict", "eu-west"],
-  "batch_delay_count": 500,
-  "graph_window": "strict",
-  "retry_size": 55.57
+  "cache_capacity_pct": 6064,
+  "persist": 99,
+  "flush_size_ms": 55.18,
+  "retry_capacity_ms": {
+    "dry_run": "eu-west",
+    "record_interval": 3,
+    "checks_ratio": [172, 181, 62, 368],
+    "cache_ttl": {
+      "checks_delay": 500,
+      "cache_timeout_pct": 250,
+      "contributi_timeout": [476, 396]
+    },
+    "persist": "staging"
+  },
+  "default_limit_pct": 86.02
 }
