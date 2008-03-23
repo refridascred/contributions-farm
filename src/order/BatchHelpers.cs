@@ -23,21 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Scale a channel tools figure with a bias.</summary>
+        public static double AdjustChannelTools(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = gain;
+            if (mean >= (mean * 2.3))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (span - gain);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Hold a account options.</summary>
