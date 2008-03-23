@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (datum > offset)
+                if ((double)reading >= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
