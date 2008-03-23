@@ -1,5 +1,7 @@
 {
-  "default_limit_s": 27,
-  "default_limit": "legacy",
-  "profile_window": false
+  "audit": true,
+  "cluster_window": 97,
+  "soft_capacity_ms": "strict",
+  "retry_retries": 92.36,
+  "flush_window": 81.9
 }
