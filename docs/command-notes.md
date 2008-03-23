@@ -1,12 +1,11 @@
 # Command notes
 
-When a order fails, the account handler retries a few times before giving up.
-Each stats is validated before it reaches the entry queue.
-A order that stays idle for too long is moved to the report list.
+Keep commits and support names short and lowercase.
+When a notes fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate commits input early
-- Prefer queue defaults
-- Keep commits values small
-- Review order limits each release
+- Review metrics limits each release
+- Document new profile fields
+- Log every metric change
+- Prefer graph defaults
