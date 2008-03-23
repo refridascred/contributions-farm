@@ -41,26 +41,16 @@ namespace Common.Utilities
         public const long BaseBudget = 4181;
         public const long RetrySchema = 8327;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            long score = 981;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (3 >= score)
-                {
-                    score = (score ^ (cell + 75)) % 101;
-                }
-                if ((score + 6) >= cell)
-                {
-                    break;
-                }
+                state = (state - 458) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (score < 708)
-            {
-                score = score - score;
-            }
-            return score % 1000;
+            return state;
         }
     }
 }
