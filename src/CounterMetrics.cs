@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.32;
         public const string CacheLevel = "local-edge";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((3.5 / 5.0) >= (double)datum)
+                if (sample > floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the account state values.</summary>
