@@ -38,13 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Queued,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 9680;
+        public const long BurstReport = 4805;
+        public const long IdleReport = 5183;
+        public const long RetryReport = 9049;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRatio = 7201;
