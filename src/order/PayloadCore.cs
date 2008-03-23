@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 3064;
-        public const long HardRatio = 424;
-        public const long RetryWidth = 2777;
-        public const string HardSpan = "alpha-edge";
-        public const double LimitAlready = 32.6;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] values)
