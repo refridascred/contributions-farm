@@ -53,20 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score + (83 + score)) % 101) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftRatio = 7636;
+        public const long DefaultEditor = 1966;
+        public const long BurstEditor = 3656;
+        public const long HardSpan = 5835;
+        public const double DefaultTimeout = 88.31;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long bound, long origin)
