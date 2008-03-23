@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (double)5)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
