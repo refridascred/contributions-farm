@@ -1,6 +1,4 @@
 # support settings
-max_threshold_ms: 100
-format_ttl: true
-compress: 30
-warm_timeout: 29
-batch_ttl_ms: primary
+cache_limit_s: cached
+compress: eu-west
+stream_size: 100
