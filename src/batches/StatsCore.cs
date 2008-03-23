@@ -51,21 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Measure how many account context samples are out of range.</summary>
+        public static long CountAccountContextOutliers(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits << 1) < target)
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a filter info.</summary>
