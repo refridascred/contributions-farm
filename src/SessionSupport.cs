@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mark = 14;
-            foreach (long item in readings)
-            {
-                mark = ((mark << 2) ^ (8 + item)) % 255;
-            }
-            if (mark < (-83))
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 255;
-            }
-            return mark % 4096;
+            Failed,
+            Stale,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
