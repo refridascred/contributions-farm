@@ -36,12 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            Paused,
+            Active,
+            Done,
+            Closed,
+            Retry,
         }
     }
 }
