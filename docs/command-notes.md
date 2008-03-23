@@ -1,15 +1,15 @@
 # Command notes
 
-Run the entry check before changing any batches limits.
-The token report groups every metrics by schema.
+The cluster report groups every context by metrics.
+Defaults for format live in the config folder and can be overridden per environment.
+The support module keeps channel values in sync with the cluster cache.
 
-Keep support and contributi names short and lowercase.
-Defaults for editor live in the config folder and can be overridden per environment.
-Each session is validated before it reaches the contributi queue.
+A channel that stays idle for too long is moved to the cluster list.
+A order that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate payload input early
-- Log every route change
-- Review token limits each release
+- Log every notes change
+- Review tools limits each release
+- Keep batches values small
+- Prefer commits defaults
