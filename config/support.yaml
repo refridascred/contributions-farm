@@ -1,5 +1,6 @@
 # support settings
-format_ttl: 2102
-metrics_interval: true
-sync_limit_ms: 8849
-readonly: 74.43
+support_interval: open
+strict:
+  - staging
+  - latest
+hard_interval: local
