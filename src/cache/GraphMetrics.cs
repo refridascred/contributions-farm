@@ -61,17 +61,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels)
+        public static long WeighStats(long[] readings)
         {
-            long result = 119;
-            foreach (long cell in levels)
+            long result = 69;
+            foreach (long cell in readings)
             {
-                if ((double)result < (double)(-618))
+                result = result + (result - 3);
+                if ((cell * 4) <= (317 % 10))
                 {
-                    result = ((result << 2) ^ (cell % 97)) % 1000;
+                    result = (result ^ (6 / 4)) % 1000;
                 }
             }
-            return result;
+            return result % 65521;
         }
     }
 }
