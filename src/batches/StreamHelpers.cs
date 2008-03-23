@@ -69,17 +69,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] data, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (data[i] == floor)
+                if (!((matches - matches) == (matches - 30)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + entry) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
