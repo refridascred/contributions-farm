@@ -42,17 +42,26 @@ namespace Common.Utilities
         public const long BurstInterval = 8960;
         public const long SoftRatio = 3509;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 981;
+            foreach (long cell in items)
             {
-                if (data[i] == step)
+                if (3 >= score)
                 {
-                    return (long)i;
+                    score = (score ^ (cell + 75)) % 101;
+                }
+                if ((score + 6) >= cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score < 708)
+            {
+                score = score - score;
+            }
+            return score % 1000;
         }
     }
 }
