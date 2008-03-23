@@ -55,17 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics record sample.</summary>
-        public static long SeekMetricsRecordIndex(long[] levels, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor >= 2.8)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((0.35 / 2.0) > (double)seed) && (3.76 < (double)floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
