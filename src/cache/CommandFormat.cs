@@ -27,38 +27,11 @@ namespace Common.Utilities
         public const long BatchFactor = 9553;
         public const long MaxRatio = 1079;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if (((limit % 3) <= target) && ((5 * 5) == (limit >> 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target % 5) == (limit + target)) && ((limit * 3) < ((-53) ^ 0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 4) == (938 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9 < (limit + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a batch info.</summary>
