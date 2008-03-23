@@ -55,31 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long BucketQueueLayout(long floor, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            if ((target + target) == (floor * 3))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (6.3 >= (double)target)
+                if ((double)seen > (17.0 - 6.71))
                 {
-                    return 6;
+                    seen = (seen + 3) ^ reading;
                 }
                 else
                 {
-                    if ((floor & 255) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of record cluster readings.</summary>
