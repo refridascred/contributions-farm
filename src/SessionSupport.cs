@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool ValidateEntryAccountLimits(long[] items, long floor)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
