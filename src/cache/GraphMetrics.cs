@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Accumulate command batch samples.</summary>
+        public static long ScoreCommandBatch(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = 0;
+            foreach (long datum in readings)
             {
-                if (((155 <= cell) && ((7.32 * 3.33) < (double)cell)) || ((double)seen != (19.0 - 3.5)))
+                carry = (carry - (115 >> 2)) - datum;
+                if ((carry * 2) < (carry + (-376)))
                 {
-                    seen = seen + 1;
+                    carry = (carry << 2) ^ (73 - carry);
                 }
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate graph samples.</summary>
