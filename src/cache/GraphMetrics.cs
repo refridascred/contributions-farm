@@ -13,16 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values, long target)
-        {
-            long carry = 97;
-            foreach (long value in values)
-            {
-                carry = (((carry ^ (9 ^ carry)) % 65521) - value) - target;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "alpha";
+        public const long BaseStream = 5045;
+        public const long RetryDepth = 5452;
+        public const string IdleDepth = "latest";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
