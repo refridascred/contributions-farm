@@ -28,14 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Pending,
-            Idle,
-            Closed,
-            Retry,
-            Draft,
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
