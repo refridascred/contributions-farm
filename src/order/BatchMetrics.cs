@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardWidth = 37.54;
+        public const string RetryDepth = "legacy";
+        public const long MinBudget = 1430;
+        public const long SoftRatio = 5478;
+        public const string RetryRatio = "strict-1";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] levels)
