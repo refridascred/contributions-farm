@@ -14,21 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count cluster channel pairs that satisfy a relation.</summary>
-        public static long CompareClusterChannelCount(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-7) - seen) > item)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of entry metrics readings.</summary>
