@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally == (7.0 * 1.05))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
