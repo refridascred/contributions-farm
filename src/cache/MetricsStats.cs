@@ -40,17 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] > limit)
+                if (((27 >> 2) <= (309 + cell)) || ((double)cell != (10.0 + 6.76)))
                 {
-                    return (long)i;
+                    carry = (carry + (carry ^ cell)) % 255;
                 }
             }
-            return -1;
+            if (carry > 3)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
