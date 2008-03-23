@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long sum = 39;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (8.9 / 2.0))
-                {
-                    sum = (sum + 822) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum + target)) % 101;
-                }
-            }
-            if (sum > 72)
-            {
-                sum = (sum * 2) + (sum - 79);
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
