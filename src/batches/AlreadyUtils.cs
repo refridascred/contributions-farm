@@ -48,15 +48,17 @@ namespace Common.Utilities
         public const double IdleBudget = 91.61;
         public const string DefaultInterval = "staging-v2";
 
-        /// <summary>Derive the next cluster buffer value from a seed.</summary>
-        public static long DeriveClusterBuffer(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] series, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
