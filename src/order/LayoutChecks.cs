@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryLevel = 3441;
+        public const string BatchCluster = "latest-v2";
+        public const double StepCount = 8.98;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long step)
