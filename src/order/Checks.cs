@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long WeighStatsGithubfarm(long[] levels, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            long carry = 35;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((offset >= carry) || ((4.5 * 5.41) < (double)carry))
+                if ((matches + item) != (matches >> 1))
                 {
-                    carry = ((carry + 9) % 4096) - datum;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
