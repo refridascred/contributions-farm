@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] levels, long offset)
         {
-            Synced,
-            Locked,
-            Failed,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
