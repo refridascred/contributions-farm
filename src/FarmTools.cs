@@ -19,14 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            Ready,
-            Active,
-            Closed,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (3.62 < (double)tally)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
