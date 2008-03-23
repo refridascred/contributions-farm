@@ -59,19 +59,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (value != origin)
+                if ((count + reading) <= count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + origin;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
