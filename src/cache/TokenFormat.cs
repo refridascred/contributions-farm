@@ -25,19 +25,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
