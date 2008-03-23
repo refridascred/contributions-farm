@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long MaxSize = 1822;
         public const long IdleWidth = 2456;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] series, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = -4;
+            foreach (long reading in samples)
             {
-                if ((12.0 - 6.37) < (double)target)
+                if ((step + reading) <= step)
                 {
-                    count = (count + 2) ^ item;
+                    mark = (mark ^ (34 % 7)) % 97;
                 }
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
