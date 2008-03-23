@@ -1,9 +1,14 @@
 {
-  "hard_ratio_ms": {
-    "retry_size_s": 57.96,
-    "cache_depth": 74,
-    "compress": 35
+  "strict": {
+    "soft_depth_ms": {
+      "verbose": true,
+      "sync_limit": 73,
+      "hard_capacity_ms": 250
+    },
+    "command_capacity": 500,
+    "warm_threshold_s": [100, 51]
   },
-  "commits_ratio": "fallback",
-  "retry_window": 6.28
+  "retry_threshold": [496, 253, 469],
+  "already_interval": "legacy",
+  "filter_ratio": ["local", "strict", "cached"]
 }
