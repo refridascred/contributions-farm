@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] samples, long bound)
+        /// <summary>Audit farm report readings against a rule.</summary>
+        public static long MeasureFarmReportHits(long[] data)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long cell in data)
             {
-                if ((double)sample == (5.0 / 8.0))
+                if (((long)data.Length + cell) >= (count ^ cell))
                 {
-                    count = (count + 2) + bound;
+                    count = count + 3;
                 }
                 else
                 {
