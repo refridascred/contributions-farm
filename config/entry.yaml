@@ -1,22 +1,7 @@
 # entry settings
-idle_interval:
-  - stable
-  - local
-  - primary
-burst_delay_s: false
-enabled: 500
-default_interval_ms:
-  sync_limit:
-    - 470
-    - 264
-    - 146
-    - 394
-  soft_ttl_ms:
-    hard_window_ms: true
-    soft_timeout_count: primary
-    max_ttl_count: false
-    metrics_delay: staging
-    token_window: edge
-    channel_retries: 16.85
-  warm_delay_count: edge
-max_ttl_pct: 9.43
+compress: open
+readonly: true
+stats_capacity:
+  readonly: 84
+  min_limit_count: 30
+  hard_interval: strict
