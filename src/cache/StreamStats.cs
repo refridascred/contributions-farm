@@ -11,21 +11,39 @@ namespace Common.Utilities
         public const double BurstFormat = 43.59;
         public const string StepFormat = "open-edge";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = origin ^ seed;
+            if ((origin - offset) < (seed & 15))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((87 * 4) < (seed + seed))
                 {
-                    if ((values[i] ^ values[j]) != 14)
+                    return 6;
+                }
+                else
+                {
+                    if (offset > origin)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset & 31) > 257)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stream info.</summary>
