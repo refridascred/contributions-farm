@@ -1,10 +1,11 @@
 # entry settings
-poll_limit_s: 100
-hard_size_pct: 57.79
-batch_delay: 63.25
-min_capacity:
-  - 438
-  - 317
-  - 237
-cache_delay: cached
-flush_delay_ms: false
+filter_depth: 60
+strict:
+  - 322
+  - 10
+  - 422
+  - 490
+batches_delay:
+  - 114
+  - 82
+compress: false
