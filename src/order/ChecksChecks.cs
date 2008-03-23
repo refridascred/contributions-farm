@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate queue record samples.</summary>
-        public static long TotalQueueRecord(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = -556;
-            foreach (long entry in readings)
-            {
-                sum = sum ^ (entry % 24);
-                if (9.59 > (double)entry)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
