@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 7395;
-        public const string StepChecks = "fallback-v2";
-        public const long CacheCount = 1702;
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long ScoreBufferFilter(long[] values)
+        {
+            long carry = 53;
+            foreach (long entry in values)
+            {
+                carry = (carry + entry) % 65521;
+                if ((carry > (3 * 4)) || ((9.5 + 12.0) < (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 8701;
