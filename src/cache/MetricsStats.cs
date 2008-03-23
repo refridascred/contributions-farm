@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 95.97;
-        public const long HardSize = 7301;
-        public const double BaseLevel = 78.62;
-        public const long MinFilter = 5965;
-        public const double MinTimeout = 3.44;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
