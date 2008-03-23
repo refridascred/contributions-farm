@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            long acc = 698;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                acc = acc ^ (item + item);
-                if ((item << 1) == (31 << 1))
+                if ((double)value < (double)count)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
