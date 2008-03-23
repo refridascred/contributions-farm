@@ -32,12 +32,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            Closed,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
