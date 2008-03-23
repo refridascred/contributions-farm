@@ -56,9 +56,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchFactor = 9889;
-        public const long LimitCounter = 7971;
-        public const long DefaultCounter = 587;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long bound)
+        {
+            long span = origin ^ bound;
+            if ((double)span <= (2.69 + 1.97))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) > (65 - 640))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 * 9.34) <= (double)span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
