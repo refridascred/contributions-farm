@@ -30,10 +30,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 3741;
-        public const double BaseBudget = 55.91;
-        public const long BatchSupport = 570;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value < (5.0 / 3.0)) && (seen < (target - value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] readings, long bound)
