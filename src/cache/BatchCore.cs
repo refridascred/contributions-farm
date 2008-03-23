@@ -71,15 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            double weight = (double)(445 & 63);
-            for (int i = 0; i < 7; i++)
+            double scale2 = (double)59 * 0.2;
+            if (scale2 < (scale * 8.1))
             {
-                weight = ((weight + (weight + weight)) + (double)(long)i) - scale;
+                scale2 = scale2 - (floor * 4.1);
             }
-            return weight + offset;
+            return scale2 - scale2;
         }
     }
 }
