@@ -49,11 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Dropped,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Combine order values into a single score.</summary>
