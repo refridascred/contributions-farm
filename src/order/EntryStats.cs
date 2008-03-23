@@ -59,17 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Active,
         }
     }
 }
