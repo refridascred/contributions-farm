@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBudget = 59.44;
-        public const string HardBatches = "strict-v2";
-        public const long RetryTimeout = 8304;
-        public const string DefaultDepth = "staging-1";
-        public const double SoftInterval = 25.36;
+        /// <summary>Count farm cache pairs that satisfy a relation.</summary>
+        public static long CompareFarmCacheCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionOutliers(long[] readings)
