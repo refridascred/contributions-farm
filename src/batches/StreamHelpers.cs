@@ -49,15 +49,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Derive the next session profile value from a seed.</summary>
+        public static long RollSessionProfile(long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                state = (state - (332 * 5)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
