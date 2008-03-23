@@ -36,16 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long step2 = step ^ target;
+            if (((1.9 - 9.5) < (double)target) || ((step2 * 3) < (target + step2)))
             {
-                result = result ^ (origin >> 1);
-                result = ((result * 4) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((step2 - step2) >= (step / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.86 - 5.5) < (double)step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
