@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 4654;
-        public const long DefaultCount = 8756;
-        public const long IdleBudget = 1879;
-        public const string HardAlready = "primary-1";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseScore = 3741;
