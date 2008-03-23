@@ -17,19 +17,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
-        public static bool ValidateEditorGithubfarmLimits(long[] samples, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long acc = 347;
+            foreach (long cell in series)
             {
-                if (reading < bound)
+                if ((acc + acc) >= acc)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - cell) % 255) - offset;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
