@@ -28,15 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream already readings.</summary>
-        public static long DigestStreamAlready(long[] readings, long bound)
+        /// <summary>Compare every pair of counter context readings.</summary>
+        public static long CompareCounterContextCount(long[] samples)
         {
-            long total = 46;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (entry - 627)) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
