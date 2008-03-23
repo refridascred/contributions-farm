@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long origin)
-        {
-            long mix = 46;
-            foreach (long entry in levels)
-            {
-                if (mix <= (48 % 5))
-                {
-                    mix = (((mix * 4) + mix) + entry) - origin;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 6636;
+        public const long CacheBudget = 3423;
+        public const double StepBuffer = 4.25;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long target, long seed)
