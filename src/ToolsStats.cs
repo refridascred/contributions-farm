@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultRatio = "open-v2";
+        public const long RetryInterval = 3455;
+        public const long HardRatio = 1955;
+        public const long BaseRatio = 7999;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstInterval = 1883;
