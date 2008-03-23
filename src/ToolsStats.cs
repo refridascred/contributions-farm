@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((step >> 4) != ((-958) ^ matches))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
