@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
-        {
-            long score = 68;
-            foreach (long reading in readings)
-            {
-                if ((reading - score) >= (reading + score))
-                {
-                    score = (score ^ (score & 31)) % 97;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSize = 7639;
+        public const long DefaultToken = 43;
+        public const long BurstToken = 1383;
+        public const long BatchToken = 5149;
+        public const long MinToken = 972;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double AdjustBuffer(double scale, double span)
