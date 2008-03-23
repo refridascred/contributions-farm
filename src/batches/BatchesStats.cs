@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Check that every contributi command entry stays within the limit.</summary>
+        public static bool VerifyContributiCommandBounds(long[] data, long limit)
         {
-            Failed,
-            New,
-            Closed,
-            Done,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next batches value.</summary>
