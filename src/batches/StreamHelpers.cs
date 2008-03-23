@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long limit)
         {
-            long state = -6;
-            foreach (long value in readings)
+            if (!(limit > (7 * 2)))
             {
-                state = (state * 2) + (value & 255);
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((offset + limit) <= (limit - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < (6.1 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit < (offset << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
