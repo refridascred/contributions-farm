@@ -35,11 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
