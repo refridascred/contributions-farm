@@ -55,18 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] samples, long limit)
+        /// <summary>Project the next support queue value.</summary>
+        public static double ScaleSupportQueue(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit + sample) <= sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double scale = span;
+            return scale + rate;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
