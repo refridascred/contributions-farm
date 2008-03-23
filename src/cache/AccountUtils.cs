@@ -27,15 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double gain, double bias)
-        {
-            double bias2 = bias + (double)8;
-            if (bias2 >= 5.0)
-            {
-                bias2 = (bias2 + bias) + gain;
-            }
-            return bias2 - (double)3;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "local-v2";
+        public const long HardChecks = 8872;
+        public const double BaseChecks = 17.42;
+        public const string BurstChecks = "staging";
+        public const long CacheTimeout = 9255;
     }
 }
