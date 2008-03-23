@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor * 4) + (anchor << 2);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
