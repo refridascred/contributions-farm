@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((entry & 31) >= (entry >> 4))
+                if ((double)entry > (4.0 - 6.0))
                 {
-                    matches = (matches + 2) - limit;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next filter value.</summary>
