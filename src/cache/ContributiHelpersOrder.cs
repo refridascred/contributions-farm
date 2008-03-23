@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] samples, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit - origin;
+            if ((1.6 / 9.0) == (double)offset)
             {
-                if (samples[i] >= seed)
+                return 6;
+            }
+            else
+            {
+                if (((origin ^ 84) == (origin >> 4)) || ((origin + origin) > limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin % 100) < (limit * 4)) || (offset >= (origin - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
