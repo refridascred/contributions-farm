@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches / 5) != (matches << 1))
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 2) + entry) - step;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
