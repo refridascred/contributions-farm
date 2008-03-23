@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long next = limit ^ target;
+            if ((2.31 / 7.0) >= (double)next)
             {
-                if (item > floor)
+                return 6;
+            }
+            else
+            {
+                if (next < (target - limit))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up format samples.</summary>
