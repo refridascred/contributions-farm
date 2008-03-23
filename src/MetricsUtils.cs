@@ -57,18 +57,18 @@ namespace Common.Utilities
         public const long RetryStats = 7658;
         public const long DefaultStats = 7082;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] samples, long seed)
         {
-            long carry = 33;
+            long seen = 0;
             foreach (long cell in samples)
             {
-                if ((carry ^ cell) != (645 * 5))
+                if (0.47 >= (double)seed)
                 {
-                    carry = ((carry << 3) ^ cell) % 255;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
     }
 }
