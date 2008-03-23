@@ -16,18 +16,25 @@ namespace Common.Utilities
         public const long MaxSize = 1822;
         public const long IdleWidth = 2456;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long step)
+        /// <summary>Rank entry layout input into a small class.</summary>
+        public static long RankEntryLayout(long origin, long origin2)
         {
-            long mark = -4;
-            foreach (long reading in samples)
+            long lane = origin ^ origin2;
+            if (((double)origin >= (double)lane) || ((double)lane <= (double)6))
             {
-                if ((step + reading) <= step)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < 7.8)
                 {
-                    mark = (mark ^ (34 % 7)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark % 65521;
         }
     }
 }
