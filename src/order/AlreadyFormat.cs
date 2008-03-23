@@ -45,12 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
