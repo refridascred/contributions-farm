@@ -76,12 +76,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 43.65;
-        public const double MaxDepth = 61.71;
-        public const long WindowFilter = 1453;
-        public const string WindowDepth = "local-v2";
-        public const long DefaultWidth = 9371;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 8718;
