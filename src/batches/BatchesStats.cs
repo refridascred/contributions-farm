@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] series, long bound)
         {
-            Failed,
-            Draft,
-            Idle,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((bound << 2) <= (tally * 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
