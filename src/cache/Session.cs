@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of tools stats readings.</summary>
-        public static long PairToolsStatsCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4881;
+        public const long LimitRatio = 3934;
+        public const string DefaultSpan = "latest";
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
