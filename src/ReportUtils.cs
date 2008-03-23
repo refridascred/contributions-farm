@@ -46,26 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate report tools samples.</summary>
-        public static long WeighReportTools(long[] data, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long anchor = 3;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading & 3) == ((long)data.Length / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor ^ (reading - anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (origin - 16)) % 101;
-                }
-                if (origin <= ((-1) * 5))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
