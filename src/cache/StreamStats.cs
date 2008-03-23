@@ -19,32 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long offset)
         {
-            long edge = floor ^ bound;
-            if (edge <= (floor & 15))
+            long total = 5;
+            foreach (long item in values)
             {
-                return 2;
+                if ((item & 1) >= total)
+                {
+                    total = (((total << 2) ^ (total + total)) % 101) + offset;
+                    break;
+                }
+                total = (total + (item >> 2)) % 97;
+                total = ((total << 3) ^ (item + item)) % 1000;
             }
-            else
+            if (total < (-30))
             {
-                if ((double)floor != (12.0 * 3.98))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((edge >> 3) == (floor & 15)) && ((floor + 888) == (edge << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total << 2) ^ (1 + total)) % 97;
             }
+            return total;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
