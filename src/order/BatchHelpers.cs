@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            Locked,
-            Paused,
-            Ready,
-            Draft,
+            double drift = (double)(785 & 7);
+            if (drift > (double)120)
+            {
+                drift = (drift + span) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (1.0 - 3.2);
         }
 
         /// <summary>Project the next filter value.</summary>
