@@ -1,9 +1,7 @@
 {
-  "farm_timeout": {
-    "cache_ratio_pct": 61.0,
-    "retry_capacity_s": 51.96,
-    "audit": true
-  },
-  "base_ttl": true,
-  "persist": false
+  "dry_run": [491, 379],
+  "strict": "standard",
+  "max_capacity_ms": 58.68,
+  "hard_interval": 7318,
+  "window_retries": "eu-west"
 }
