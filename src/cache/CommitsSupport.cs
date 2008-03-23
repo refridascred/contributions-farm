@@ -53,18 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + seen) == (seen >> 5)) || (datum > (datum % 10)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
