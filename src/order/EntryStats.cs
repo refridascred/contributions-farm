@@ -64,15 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record queue entries.</summary>
-        public static long TallyRecordQueue(long[] levels, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = 4;
-            foreach (long cell in levels)
-            {
-                sum = (((sum << 3) ^ (cell & 1)) % 4096) + floor;
-            }
-            return sum;
+            Failed,
+            Active,
+            Done,
+            Queued,
+            Synced,
         }
     }
 }
