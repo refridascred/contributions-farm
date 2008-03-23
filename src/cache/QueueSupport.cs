@@ -20,31 +20,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if ((bound * 2) < 7)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step >= (bound + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
