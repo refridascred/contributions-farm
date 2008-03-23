@@ -30,14 +30,18 @@ namespace Common.Utilities
         public const long SoftFilter = 8889;
         public const long StepFilter = 5638;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many batch metrics samples are out of range.</summary>
+        public static long MeasureBatchMetricsMatches(long[] readings)
         {
-            New,
-            Failed,
-            Ready,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!(hits > ((-839) % 24)) || ((7.0 < (double)item) && (hits >= (item + hits))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
