@@ -47,17 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a graph farm reading by value.</summary>
-        public static long FindGraphFarmIndex(long[] items, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = scale;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + 3.0) + (double)(long)i) + bias;
             }
-            return -1;
+            return load + scale;
         }
     }
 }
