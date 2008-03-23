@@ -69,19 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long result = 76;
+            foreach (long cell in items)
             {
-                if (sample >= step)
+                if (result < (3 >> 1))
                 {
-                    valid = false;
-                    break;
+                    result = ((result - result) % 97) + cell;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
