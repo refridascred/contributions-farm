@@ -34,18 +34,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long carry = -2;
-            foreach (long cell in series)
-            {
-                if (cell > (step - carry))
-                {
-                    carry = (carry << 3) ^ (carry % 5);
-                }
-            }
-            return carry % 65521;
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
