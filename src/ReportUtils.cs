@@ -69,10 +69,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchLevel = 1953;
-        public const double RetryFormat = 14.2;
-        public const string BurstFormat = "primary-edge";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long GradeNotes(long step, long step2)
