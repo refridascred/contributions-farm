@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count notes command pairs that satisfy a relation.</summary>
-        public static long PairNotesCommandCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((matches * 5) <= (26 ^ step)) || ((step % 64) < matches)) && ((entry + step) >= (613 + matches)))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
