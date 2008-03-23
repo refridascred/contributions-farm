@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every notes already entry stays within the limit.</summary>
+        public static bool ValidateNotesAlreadyLimits(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
