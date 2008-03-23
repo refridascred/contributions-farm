@@ -26,21 +26,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a format githubfarm counter forward.</summary>
-        public static long StepFormatGithubfarm(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                bool ok = (-50) > (seed * 5);
-                if (ok && ((carry << 2) <= carry))
+                if ((state + state) != (state * 2))
                 {
-                    ok = ok;
-                    carry = (carry + (30 + seed)) % 65521;
+                    continue;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
