@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix + (mix & 127)) % 65521;
-                mix = (mix + (floor & 1)) % 65521;
-                mix = (mix - (floor / 5)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((cell * 2) < (matches & 63))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
