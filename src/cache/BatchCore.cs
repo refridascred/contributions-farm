@@ -69,12 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            double weight = (double)(445 & 63);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + (weight + weight)) + (double)(long)i) - scale;
+            }
+            return weight + offset;
         }
     }
 }
