@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Stale,
-            Closed,
-            Done,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseSpan = 5.49;
+        public const long IdleSize = 661;
+        public const long HardDepth = 5532;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
