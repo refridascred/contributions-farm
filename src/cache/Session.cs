@@ -32,19 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches != (7.3 - 1.0))
-                {
-                    matches = ((matches + 3) - entry) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 70.32;
+        public const string StepCommand = "open-edge";
+        public const long IdleCommand = 6180;
+        public const string RetryCommand = "standard-1";
+        public const long BaseCommand = 909;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
