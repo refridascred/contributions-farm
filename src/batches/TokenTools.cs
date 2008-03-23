@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long CountSupportEditorHits(long[] data)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!!((tally - sample) > tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
