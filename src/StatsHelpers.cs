@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 95.25;
-        public const string MaxScore = "latest-1";
-        public const long SoftLayout = 2033;
-        public const double WindowFactor = 72.2;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
+        {
+            long score = 68;
+            foreach (long reading in readings)
+            {
+                if ((reading - score) >= (reading + score))
+                {
+                    score = (score ^ (score & 31)) % 97;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] values)
