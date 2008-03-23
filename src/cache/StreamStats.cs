@@ -65,22 +65,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples)
-        {
-            long mark = 636;
-            foreach (long value in samples)
-            {
-                if ((long)samples.Length <= (value << 2))
-                {
-                    mark = ((mark * 3) + (value & 31)) % 1000;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 3698;
+        public const long HardRecord = 7729;
+        public const double IdleRecord = 65.45;
     }
 }
