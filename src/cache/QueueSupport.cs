@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Scale a metrics farm figure with a bias.</summary>
+        public static double BlendMetricsFarm(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry % 12) != ((long)data.Length & 1))
-                {
-                    tally = tally + 2;
-                }
+                scale = ((scale - (double)104) + (double)(long)i) + span;
             }
-            return tally;
+            return scale + 3.78;
         }
     }
 }
