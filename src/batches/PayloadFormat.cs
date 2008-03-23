@@ -25,12 +25,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 50.21;
-        public const string BurstSpan = "standard";
-        public const double StepScore = 4.05;
-        public const long BaseWidth = 7862;
-        public const long IdleLevel = 9882;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 9574;
+        public const long WindowToken = 9637;
+        public const long RetrySize = 3236;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] samples, long limit)
