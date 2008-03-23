@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine record stats values into a single score.</summary>
+        public static long WeighRecordStats(long[] levels, long step)
         {
-            public double Count { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long mix = 3;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length * 5) <= (mix << 2))
+                {
+                    mix = (mix ^ step) + sample;
+                }
+                else
+                {
+                    mix = mix + (step + mix);
+                }
+            }
+            if (mix < 8)
+            {
+                mix = mix + (mix >> 2);
+            }
+            return mix;
         }
 
         /// <summary>Hold a contributi info.</summary>
