@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long CountToolsNotesGaps(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((3.3 - 20.0) < (double)cell) && ((1.6 * 8.6) <= (double)cell))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 7395;
+        public const string StepChecks = "fallback-v2";
+        public const long CacheCount = 1702;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] values, long limit)
