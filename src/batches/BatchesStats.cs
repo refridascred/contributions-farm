@@ -32,18 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data, long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((step & 63) != (value / 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
