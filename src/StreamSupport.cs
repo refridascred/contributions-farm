@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support session reading by value.</summary>
-        public static long FindSupportSessionIndex(long[] readings, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                if ((series[i] < target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
