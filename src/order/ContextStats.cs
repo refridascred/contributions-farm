@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] data)
+        /// <summary>Accumulate support queue samples.</summary>
+        public static long DigestSupportQueue(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 8;
+            foreach (long value in readings)
             {
-                if ((double)cell > (double)687)
+                if ((seed / 8) < (seed >> 1))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                mark = (mark + (mark ^ 34)) - value;
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
