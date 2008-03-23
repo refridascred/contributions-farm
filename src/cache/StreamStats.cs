@@ -28,15 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double mean = (double)(62 * 3);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (((mean - (double)72) + (double)(long)i) - gain) - floor;
-            }
-            return mean + mean;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
