@@ -1,5 +1,8 @@
 {
-  "base_timeout_count": "staging",
-  "min_threshold_count": ["fallback", "staging", "fallback"],
-  "hard_delay_s": 60
+  "order_delay": "strict",
+  "buffer_retries": 30,
+  "retry_size_pct": 60,
+  "base_limit": 43.9,
+  "readonly": "green",
+  "stats_delay": true
 }
