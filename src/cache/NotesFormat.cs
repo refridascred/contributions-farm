@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4839;
-        public const double IdleScore = 84.91;
-        public const long MinInterval = 9961;
-        public const long BurstFormat = 717;
+        /// <summary>Fold a list of layout metrics readings.</summary>
+        public static long FoldLayoutMetrics(long[] values)
+        {
+            long mix = 95;
+            foreach (long datum in values)
+            {
+                mix = mix - datum;
+                if ((datum + mix) >= (mix << 3))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
