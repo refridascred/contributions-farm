@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!(((double)sample <= (2.67 + 15.0)) && ((sample - sample) > (hits + hits))))
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSize = 803;
+        public const long SoftTimeout = 9259;
+        public const long HardMetric = 7372;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
