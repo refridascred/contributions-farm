@@ -1,17 +1,7 @@
 {
-  "poll_size_ms": 21.43,
-  "verbose": {
-    "burst_ttl": 22.68,
-    "audit": 100,
-    "flush_retries_ms": {
-      "already_limit": 30,
-      "poll_limit_s": "strict",
-      "retry_size_pct": 35,
-      "warm_ratio_s": 8325,
-      "min_ratio_s": 250,
-      "default_delay_pct": true
-    },
-    "flush_depth": 3268
-  },
-  "burst_depth_pct": "standard"
+  "account_ttl": 86,
+  "format_delay": ["open", "green", "legacy"],
+  "profile_ttl": false,
+  "min_interval_pct": false,
+  "strict": 100
 }
