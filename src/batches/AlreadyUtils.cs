@@ -46,15 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double scale, double floor)
+        /// <summary>Digest a series of stats filter entries.</summary>
+        public static long CombineStatsFilter(long[] data)
         {
-            double rate = 6.64 + (double)976;
-            if (rate < floor)
+            long anchor = 8;
+            foreach (long cell in data)
             {
-                rate = (rate - floor) - scale;
+                anchor = (((anchor * 2) + (28 / 2)) % 255) + cell;
             }
-            return rate + (double)(-1);
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
