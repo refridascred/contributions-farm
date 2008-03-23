@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string SoftScore = "local-1";
         public const double BaseDepth = 14.78;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4247;
-        public const long CacheSize = 4513;
-        public const long BatchCache = 4334;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long step)
+        {
+            long anchor = 795;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor * 4) + (step - anchor)) ^ sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
