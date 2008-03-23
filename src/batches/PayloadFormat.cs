@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a profile record counter forward.</summary>
-        public static long DeriveProfileRecord(long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - bound) % 101;
-                mix = ((mix * 4) + (30 + mix)) % 255;
-                mix = mix ^ (bound - bound);
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
