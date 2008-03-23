@@ -42,13 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
