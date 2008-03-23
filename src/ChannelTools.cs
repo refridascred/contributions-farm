@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((score ^ score) >= (offset & 255))
-                {
-                    score = ((score * 2) + (score * 2)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 9346;
+        public const long SoftNotes = 1789;
+        public const string DefaultNotes = "open";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] levels)
