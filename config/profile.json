@@ -1,12 +1,13 @@
 {
-  "flush_delay_pct": "blue",
-  "retry_window_ms": 12,
-  "entry_depth": {
-    "warm_interval": false,
-    "burst_delay_count": 60,
-    "warm_window_count": 79,
-    "strict": true,
-    "counter_depth": [2, 158, 303, 75],
-    "verbose": [175, 374, 73]
-  }
+  "poll_limit_pct": {
+    "hard_threshold_pct": 60,
+    "idle_ratio_ms": true,
+    "idle_timeout": 3.61,
+    "batch_ttl_s": "edge"
+  },
+  "verbose": 94,
+  "min_capacity": "strict",
+  "cache_timeout_s": "fallback",
+  "burst_capacity": 1.31,
+  "default_ttl": "strict"
 }
