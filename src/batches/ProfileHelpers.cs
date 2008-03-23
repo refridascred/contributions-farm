@@ -62,22 +62,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (hits >= (663 & 1))
+                if (datum > floor)
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
