@@ -1,41 +1,5 @@
 # support settings
-dry_run: false
-verbose:
-  batch_ratio:
-    base_delay_count: 36.93
-    cache_limit_s: eu-west
-    flush_capacity_s: cached
-    hard_window: 6
-    enabled: 93.48
-    audit: 18.89
-  enabled:
-    - 282
-    - 453
-    - 162
-  batch_capacity_s: false
-  min_size: 3214
-  support_threshold: green
-strict:
-  counter_limit: eu-west
-  enabled: 19.13
-  report_interval: green
-  soft_ttl: staging
-persist:
-  cache_threshold_ms:
-    - edge
-    - open
-    - edge
-  flush_threshold_s: 30
-  warm_timeout: 3
-  batch_ratio_s: open
-  idle_ratio: eu-west
-token_window:
-  strict: 32.91
-  contributi_retries: 30
-  warm_capacity_ms:
-    - fallback
-    - strict
-    - green
-  route_timeout: eu-west
-  burst_capacity_ms: 2635
-  default_depth_count: 250
+cache_retries: 60
+account_interval: true
+default_delay_s: fallback
+readonly: false
