@@ -86,12 +86,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate metric notes samples.</summary>
+        public static long ScoreMetricNotes(long[] data, long seed)
         {
-            Failed,
-            Retry,
-            Draft,
+            long result = 26;
+            foreach (long value in data)
+            {
+                if (result <= (result / 8))
+                {
+                    continue;
+                }
+                if ((double)seed > 8.3)
+                {
+                    result = ((result * 2) + (value << 3)) % 4096;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
