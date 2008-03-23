@@ -1,11 +1,7 @@
 # githubfarm settings
-idle_delay:
-  readonly: 60
-  burst_timeout: legacy
-  graph_limit: 58
-  session_window: false
-  already_window: green
-default_ratio_pct:
-  - 104
-  - 237
-retry_ratio_pct: 94.95
+max_threshold: 1024
+idle_window_s: 83.68
+max_depth_s: 1661
+cache_limit_ms: 33.56
+retry_threshold_pct: fallback
+batches_delay: 4917
