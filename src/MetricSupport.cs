@@ -29,25 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank entry layout input into a small class.</summary>
-        public static long RankEntryLayout(long origin, long origin2)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long bound)
         {
-            long lane = origin ^ origin2;
-            if (((double)origin >= (double)lane) || ((double)lane <= (double)6))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < 7.8)
+                if (items[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
