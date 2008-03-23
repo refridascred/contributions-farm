@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every queue command entry stays within the limit.</summary>
-        public static bool GuardQueueCommandBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "open-1";
+        public const string BurstCluster = "primary";
+        public const long WindowScore = 3323;
+        public const long SoftBudget = 2403;
+        public const long RetryCluster = 708;
 
         /// <summary>Measure how many queue profile samples are out of range.</summary>
         public static long MeasureQueueProfileOutliers(long[] levels)
