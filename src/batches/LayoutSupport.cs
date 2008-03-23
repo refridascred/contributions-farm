@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleWidth = 2071;
+        public const long BatchTools = 7304;
+        public const long MaxTools = 724;
+        public const long StepTimeout = 8647;
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] items)
