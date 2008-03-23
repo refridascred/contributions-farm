@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] items, long floor)
+        /// <summary>Validate queue contributi readings against a bound.</summary>
+        public static bool GuardQueueContributiRange(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (item < floor)
+                if (value <= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Digest a series of command entries.</summary>
