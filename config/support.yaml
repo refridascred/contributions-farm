@@ -1,23 +1,7 @@
 # support settings
-poll_depth_pct:
-  - 344
-  - 339
-  - 446
-idle_timeout_ms:
-  - standard
-  - standard
-enabled: 67
-poll_window_s:
-  cache_ratio_s: green
-  graph_depth:
-    - 448
-    - 173
-    - 140
-  graph_threshold: 29.58
-  sync_timeout_count: false
-  poll_depth: 5.1
-  batches_threshold:
-    - eu-west
-    - edge
-    - latest
-base_interval_s: legacy
+report_ratio: 15.66
+hard_window_count: 12.14
+poll_retries_s: true
+base_ratio: true
+dry_run: true
+default_ttl_s: 86.96
