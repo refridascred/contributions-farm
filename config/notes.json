@@ -1,5 +1,5 @@
 {
-  "queue_retries": true,
-  "route_ratio": 50.84,
-  "warm_threshold_count": [149, 266]
+  "flush_delay": false,
+  "compress": "green",
+  "min_timeout_pct": 100
 }
