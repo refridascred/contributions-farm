@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data, long limit)
         {
-            Idle,
-            Active,
-            Stale,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 31) >= (entry >> 4))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
