@@ -1,7 +1,8 @@
-id,count,weight
-1,blue,194
-2,186,fallback
-3,974,550
-4,88.63,547
-5,edge,25.23
-6,34.38,strict
+id,token,ratio,label,score
+1,671,primary,primary,670
+2,85.85,81.46,2.12,96.83
+3,679,470,64.58,423
+4,24,575,cached,171
+5,legacy,70.21,fallback,legacy
+6,34.6,374,814,148
+7,stable,latest,primary,26
