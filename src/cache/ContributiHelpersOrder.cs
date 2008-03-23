@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of tools stream readings.</summary>
+        public static long TotalToolsStream(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long sum = 618;
+            foreach (long reading in samples)
+            {
+                if ((sum % 12) != (reading >> 1))
+                {
+                    sum = ((sum << 2) ^ (reading + reading)) % 101;
+                }
+                else
+                {
+                    sum = sum - (reading % 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload status values.</summary>
