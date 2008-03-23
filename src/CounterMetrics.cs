@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.32;
         public const string CacheLevel = "local-edge";
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] > floor)
+                if ((3.5 / 5.0) >= (double)datum)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
