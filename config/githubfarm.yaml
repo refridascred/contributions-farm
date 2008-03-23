@@ -1,20 +1,32 @@
 # githubfarm settings
-soft_interval: standard
-flush_window_count:
-  base_capacity_ms: 14
-  checks_interval: 1024
-  sync_window_ms: 76.0
-  warm_window: 9
-  poll_retries_count: 93.16
-  retry_depth: 39.73
-buffer_timeout: fallback
-burst_threshold: 8
-base_retries_s:
-  audit: true
-  githubfarm_capacity: 92.03
-  burst_ratio:
-    - staging
-    - latest
-    - legacy
-    - fallback
-  persist: cached
+flush_depth_count:
+  commits_timeout:
+    - local
+    - primary
+    - primary
+    - open
+  min_interval_s:
+    compress: cached
+    max_threshold_ms:
+      - 98
+      - 465
+      - 52
+    retry_depth_pct: open
+    poll_timeout: strict
+    sync_size:
+      - 470
+      - 26
+      - 436
+  soft_size_pct: 54.75
+  command_limit: 93
+retry_ttl_s:
+  enabled: strict
+  compress: true
+  flush_depth: edge
+  retry_window_count: blue
+burst_capacity_s:
+  - open
+  - local
+  - primary
+batch_interval: 4.24
+poll_capacity_pct: 63.25
