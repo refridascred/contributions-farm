@@ -51,16 +51,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next session profile value from a seed.</summary>
-        public static long RollSessionProfile(long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long acc = 7;
+            foreach (long cell in data)
             {
-                state = (state - (332 * 5)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                if ((cell - 187) >= (acc - acc))
+                {
+                    acc = acc - (acc >> 2);
+                }
             }
-            return state;
+            if (acc < 332)
+            {
+                acc = ((acc << 3) ^ (acc / 6)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
