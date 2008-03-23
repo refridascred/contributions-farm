@@ -28,10 +28,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "latest";
-        public const long IdleSize = 2450;
-        public const string DefaultSupport = "alpha-v2";
-        public const double CacheSize = 77.41;
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long CombineQueueRecord(long[] readings)
+        {
+            long carry = 848;
+            foreach (long entry in readings)
+            {
+                if ((74 + carry) != (0 << 1))
+                {
+                    carry = ((carry * 2) + (656 + carry)) + entry;
+                }
+                else
+                {
+                    carry = (carry + carry) % 4096;
+                }
+            }
+            return carry;
+        }
     }
 }
