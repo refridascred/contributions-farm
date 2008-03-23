@@ -48,22 +48,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ 313) < hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
