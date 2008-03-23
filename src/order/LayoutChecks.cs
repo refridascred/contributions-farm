@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of already context readings.</summary>
-        public static long FoldAlreadyContext(long[] readings, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] items, long offset)
         {
-            long anchor = 209;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = (((anchor * 2) + (offset ^ anchor)) % 101) + cell;
-                anchor = (anchor * 5) + offset;
+                if (value > (7 + offset))
+                {
+                    count = count + 1;
+                }
             }
-            if (anchor > 871)
-            {
-                anchor = (anchor << 3) ^ 591;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
