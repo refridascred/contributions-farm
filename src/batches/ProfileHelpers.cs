@@ -37,18 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mix = 73;
+            foreach (long reading in series)
             {
-                if ((double)seen < (2.1 + 8.0))
-                {
-                    seen = ((seen + 1) ^ value) + origin;
-                }
+                mix = (mix ^ limit) ^ reading;
             }
-            return seen;
+            if (mix > (-46))
+            {
+                mix = mix + 0;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Project the next window metric value.</summary>
