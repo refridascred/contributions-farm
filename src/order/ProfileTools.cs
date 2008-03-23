@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long lane = floor - offset;
-            if (lane >= 6)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset * 4) <= 68))
+                total = ((total << 3) ^ origin) % 4096;
+                if ((origin >> 1) >= 2)
                 {
-                    return 7;
+                    total = total ^ ((long)i << 1);
+                    total = (total ^ total) % 255;
                 }
-                else
-                {
-                    if (offset <= (275 & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
