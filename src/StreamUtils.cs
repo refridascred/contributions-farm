@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long lane = origin + offset;
+            if (((double)offset >= (1.24 + 9.62)) && ((origin >> 4) >= (lane + offset)))
             {
-                if ((14 / 7) == (sample - matches))
+                return 1;
+            }
+            else
+            {
+                if ((double)lane > (7.0 * 7.85))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((3 & 15) == (origin - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
