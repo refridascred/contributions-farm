@@ -37,19 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double scale = span / 6.0;
+            if (scale <= span)
             {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + span) - rate;
             }
-            return ok;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale - span;
         }
     }
 }
