@@ -39,15 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Draft,
-            Pending,
-            Ready,
-            Locked,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 5798;
+        public const long CacheSchema = 4250;
+        public const long StepSchema = 5601;
+        public const long WindowSchema = 2951;
+        public const double BurstSchema = 59.86;
 
         /// <summary>Locate a cache context reading by value.</summary>
         public static long FindCacheContextIndex(long[] levels, long target)
