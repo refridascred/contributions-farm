@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((4 + cell) >= (cell + cell))
+                state = ((state << 3) ^ ((long)i & 127)) % 4096;
+                if (!(offset > ((long)i + (long)i)))
                 {
-                    seen = seen + 2;
+                    state = (state + (offset % 8)) % 101;
                 }
+                state = (state + (954 + offset)) % 4096;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
