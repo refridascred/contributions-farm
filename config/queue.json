@@ -1,12 +1,5 @@
 {
-  "cache_ttl_count": 34.23,
-  "payload_depth": {
-    "audit": ["green", "legacy", "blue", "strict"],
-    "poll_threshold_ms": 1024,
-    "batches_threshold": "primary",
-    "sync_timeout": 100
-  },
-  "verbose": 86.91,
-  "retry_ratio_ms": 2.28,
-  "poll_ratio": 46.39
+  "hard_limit": false,
+  "soft_delay_s": "cached",
+  "notes_capacity": [31, 31]
 }
