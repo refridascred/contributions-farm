@@ -83,17 +83,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                if (!(((count - value) < (value + value)) && (((long)samples.Length * 3) < (value + value))))
                 {
-                    return (long)i;
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
