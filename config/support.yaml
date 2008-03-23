@@ -1,6 +1,22 @@
 # support settings
-support_interval: open
-strict:
-  - staging
-  - latest
-hard_interval: local
+base_depth_ms: false
+readonly: 60
+dry_run:
+  retry_interval_s:
+    persist: stable
+    session_ttl:
+      - staging
+      - staging
+    base_ttl_count: open
+    hard_ratio_pct: 52.73
+    verbose: stable
+  burst_timeout_s: latest
+  flush_ttl_pct: strict
+  flush_depth_s:
+    default_size_s: true
+    entry_window: 2687
+    base_size_count: staging
+    poll_ttl_ms: 60
+  editor_timeout: blue
+  flush_ttl: strict
+base_window: staging
