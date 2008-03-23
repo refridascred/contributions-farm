@@ -23,10 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "cached-1";
-        public const long DefaultGithubfarm = 9012;
-        public const long LimitGithubfarm = 2455;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstDepth = 81.0;
+        public const long BaseTimeout = 4313;
+        public const long SoftCluster = 6101;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BasePayload = 34.67;
