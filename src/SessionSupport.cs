@@ -14,39 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long cur = target + limit;
-            if (!((11.0 - 9.0) == (double)cur))
+            long mark = 14;
+            foreach (long item in readings)
             {
-                return 3;
+                mark = ((mark << 2) ^ (8 + item)) % 255;
             }
-            else
+            if (mark < (-83))
             {
-                if ((double)limit != (15.0 - 9.47))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur & 3) >= (0 + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + limit) > (cur - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = ((mark << 3) ^ (mark + mark)) % 255;
             }
+            return mark % 4096;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
