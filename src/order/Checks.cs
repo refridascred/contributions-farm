@@ -40,10 +40,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitLevel = 9369;
-        public const long LimitWidth = 7668;
-        public const long MaxCount = 9171;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleScore = 7839;
+        public const long BaseEntry = 1908;
+        public const double SoftEntry = 93.24;
+        public const long MinTimeout = 6608;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels, long floor)
