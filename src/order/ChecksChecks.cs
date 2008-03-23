@@ -27,11 +27,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
