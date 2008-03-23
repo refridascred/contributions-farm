@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels, long floor)
         {
-            long state = 511;
-            foreach (long item in values)
+            long carry = 897;
+            foreach (long value in levels)
             {
-                state = ((state * 4) + (state ^ limit)) ^ item;
-                if (!((double)limit <= (9.31 * 5.48)))
+                if ((double)floor >= (double)value)
                 {
-                    break;
+                    carry = carry - (855 - value);
                 }
             }
-            return state;
+            if (carry < 10)
+            {
+                carry = (carry - floor) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
