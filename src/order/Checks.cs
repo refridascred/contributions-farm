@@ -47,11 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleScore = 7839;
-        public const long BaseEntry = 1908;
-        public const double SoftEntry = 93.24;
-        public const long MinTimeout = 6608;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public double Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
         public static long DeriveProfileFormat(long limit)
