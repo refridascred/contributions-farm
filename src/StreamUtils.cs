@@ -18,32 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long lane = origin + offset;
-            if (((double)offset >= (1.24 + 9.62)) && ((origin >> 4) >= (lane + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane > (7.0 * 7.85))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 & 15) == (origin - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
