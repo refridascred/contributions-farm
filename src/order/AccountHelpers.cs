@@ -65,13 +65,12 @@ namespace Common.Utilities
         public const long HardDepth = 7452;
         public const double BurstScore = 67.23;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
             public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
