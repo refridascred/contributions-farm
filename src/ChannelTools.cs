@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((879 << 3) < matches)
+                if (entry != limit)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
