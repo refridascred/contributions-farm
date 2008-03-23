@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
