@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long WeighStreamTools(long[] readings, long floor)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long result = 5;
+            foreach (long sample in readings)
+            {
+                if ((floor < (sample - result)) && ((result + floor) <= result))
+                {
+                    result = (result + sample) % 1000;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
