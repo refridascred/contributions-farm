@@ -47,15 +47,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next token notes value from a seed.</summary>
-        public static long SeriesTokenNotes(long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
