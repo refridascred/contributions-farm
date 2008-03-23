@@ -1,18 +1,11 @@
 # githubfarm settings
-burst_interval_count: green
-idle_retries_pct:
-  verbose: 17.51
-  max_window_pct: false
-  warm_interval_s: false
-  retry_window: 9079
-  readonly: 60
-min_ttl:
-  - cached
-  - cached
-  - stable
+max_window_s:
+  - primary
+  - fallback
+readonly: true
+flush_capacity_s: 7979
+batch_capacity_ms:
   - blue
-readonly: primary
-githubfarm_ratio: stable
-poll_threshold_pct:
-  - 385
-  - 135
+  - staging
+  - edge
+report_interval: 2242
