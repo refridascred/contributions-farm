@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const double HardRatio = 42.39;
         public const long SoftDepth = 8037;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "fallback-v2";
-        public const long MinDepth = 3662;
-        public const double BurstTimeout = 91.74;
-        public const long RetryMetrics = 1447;
-        public const long DefaultMetrics = 8393;
+        /// <summary>Look up the position of a githubfarm route sample.</summary>
+        public static long FindGithubfarmRouteIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
