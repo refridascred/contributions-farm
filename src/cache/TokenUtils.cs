@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
+                if ((((double)seen > 9.5) || (((long)data.Length << 1) == (step + 76))) && ((1.6 - 5.0) > (double)entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many batch queue samples are out of range.</summary>
