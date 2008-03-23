@@ -48,15 +48,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] readings, long offset)
         {
-            double scale2 = span;
-            if (scale2 <= scale2)
+            long sum = -3;
+            foreach (long item in readings)
             {
-                scale2 = scale2 - (6.22 * 6.69);
+                sum = (((sum << 3) ^ (offset * 4)) % 65521) ^ item;
             }
-            return scale2 - scale;
+            return sum;
         }
 
         /// <summary>Accumulate report tools samples.</summary>
