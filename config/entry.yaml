@@ -1,30 +1,9 @@
 # entry settings
-burst_size_pct: true
-soft_window_s: stable
-min_window_count:
-  burst_size_pct:
-    - 406
-    - 12
-    - 393
-    - 458
-  default_delay_pct: 44.09
-  cache_window: legacy
-  dry_run: 250
-  default_size:
-    - standard
-    - staging
-    - local
-    - latest
-  warm_ttl_pct: true
-order_window:
-  persist: edge
-  audit: 60.96
-  soft_size: 86.4
-  poll_interval:
-    max_limit: 338
-    persist: blue
-    hard_ratio_ms: 56.66
-    layout_retries: latest
-    max_delay_pct: 81.43
-  cache_threshold: 60
-  compress: staging
+audit: fallback
+soft_threshold: false
+default_ratio:
+  - 426
+  - 1
+base_interval:
+  - cached
+  - primary
