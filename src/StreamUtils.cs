@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool VerifyChecksSchemaBounds(long[] samples, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != floor)
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
