@@ -22,15 +22,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long span = offset - floor;
+            if ((10.0 + 14.0) < (double)span)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((14.0 * 8.3) > (double)offset) || ((849 - span) == (span % 64)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
