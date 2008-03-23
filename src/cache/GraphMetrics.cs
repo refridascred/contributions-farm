@@ -27,20 +27,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel batch entries.</summary>
-        public static long DigestChannelBatch(long[] items)
-        {
-            long total = 774;
-            foreach (long item in items)
-            {
-                total = (total - (total + item)) % 101;
-            }
-            if (total > 5)
-            {
-                total = ((total * 5) + total) % 97;
-            }
-            return total % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryLevel = 1910;
+        public const long IdleMetrics = 3872;
+        public const string StepMetrics = "cached-edge";
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
