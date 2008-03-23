@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSpan = 4022;
-        public const long CacheWidth = 7414;
-        public const string WindowMetrics = "primary";
-        public const string MinLevel = "local-1";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long step)
