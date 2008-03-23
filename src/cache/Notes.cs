@@ -25,37 +25,23 @@ namespace Common.Utilities
         public const long DefaultReport = 2471;
         public const long IdleScore = 1402;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long offset)
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long ClassifyFarmEntry(long floor, long offset)
         {
-            long step = seed - offset;
-            if (((double)offset <= (double)seed) || ((6.8 / 4.0) == (double)offset))
+            long offset2 = floor ^ offset;
+            if ((offset > (90 * 4)) && ((floor % 3) < (offset * 2)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((step + step) >= (seed - step))
+                if ((offset2 ^ floor) != (offset2 - 660))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((1.4 / 7.0) <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset << 3) > (seed + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
