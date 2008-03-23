@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] values)
+        /// <summary>Scale a support route figure with a bias.</summary>
+        public static double AdjustSupportRoute(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double rate = weight;
+            if (rate > (double)875)
             {
-                if ((long)values.Length >= count)
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + (floor * 2.19);
             }
-            return count;
+            return rate - (16.0 * 5.1);
         }
 
         /// <summary>Fold a list of session readings.</summary>
