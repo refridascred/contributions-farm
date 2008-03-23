@@ -1,8 +1,5 @@
 {
-  "window_limit": 24.22,
-  "default_timeout": "fallback",
-  "stats_ttl": 75,
-  "idle_size": 500,
-  "idle_timeout_s": 49,
-  "compress": [217, 456]
+  "base_retries_s": ["strict", "stable", "open"],
+  "account_retries": 71.56,
+  "cache_limit_s": "stable"
 }
