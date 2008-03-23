@@ -46,28 +46,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long SortLayoutPayload(long offset, long seed)
+        /// <summary>Classify a metric support pair into a bucket.</summary>
+        public static long GradeMetricSupport(long bound, long step)
         {
-            if ((seed - offset) != (seed + seed))
+            long offset = bound ^ step;
+            if ((step % 3) > (step << 1))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((seed ^ 350) > (4 + offset))
+                if (((double)step > (double)bound) || ((7 + 589) == (offset ^ offset)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)seed > 2.0) && (offset < (offset & 63)))
+                    if ((7.61 / 8.0) < (double)offset)
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 3;
                     }
                 }
             }
