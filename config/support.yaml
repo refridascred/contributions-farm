@@ -1,8 +1,14 @@
 # support settings
-max_ratio_count: staging
-warm_interval_pct:
-  - 236
-  - 350
-  - 490
-  - 269
-poll_ttl_ms: 938
+queue_interval: 30
+stats_timeout: false
+channel_limit:
+  batch_window_s: false
+  enabled: 9787
+  sync_delay_ms: 1024
+  route_ratio: 92.35
+compress:
+  - eu-west
+  - cached
+  - standard
+  - cached
+burst_delay_count: 3.87
