@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cache token values into a single score.</summary>
-        public static long WeighCacheToken(long[] samples, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long offset)
         {
-            long anchor = 951;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)offset < (8.66 - 8.97)))
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
                 {
-                    anchor = ((anchor - (451 - (long)samples.Length)) % 101) ^ sample;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many support window samples are out of range.</summary>
