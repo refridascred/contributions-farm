@@ -1,14 +1,13 @@
 # Command notes
 
-Keep filter and payload names short and lowercase.
-When a farm fails, the farm handler retries a few times before giving up.
-Keep cache and record names short and lowercase.
+Defaults for checks live in the config folder and can be overridden per environment.
+Use account settings to tune how often notes data is refreshed.
 
-The schema module keeps support values in sync with the order cache.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any metrics limits.
+The commits report groups every tools by farm.
 
 ## Guidelines
 
-- Log every token change
-- Review batches limits each release
-- Document new stats fields
+- Keep order values small
+- Validate cache input early
+- Document new cache fields
