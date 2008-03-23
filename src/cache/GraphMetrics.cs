@@ -30,15 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long CountWindowContextHits(long[] values, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
             long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum % 12) <= count) || ((8.0 * 1.73) <= (double)target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
