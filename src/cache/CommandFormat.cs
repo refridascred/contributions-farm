@@ -29,9 +29,12 @@ namespace Common.Utilities
         public const double MaxWindow = 57.03;
         public const double CacheLevel = 85.09;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 9037;
-        public const long BaseToken = 7996;
-        public const string BurstWidth = "staging-1";
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Synced,
+            Pending,
+            Done,
+        }
     }
 }
