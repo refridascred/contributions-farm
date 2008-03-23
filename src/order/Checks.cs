@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = 9.2;
+            for (int i = 0; i < 3; i++)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (drift + floor)) + (double)(long)i) + scale;
             }
-            return -1;
+            return drift - (double)261;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
