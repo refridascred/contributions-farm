@@ -1,7 +1,16 @@
 {
-  "warm_size": "fallback",
-  "min_window_pct": "stable",
-  "metrics_window": "stable",
-  "poll_timeout_count": 1024,
-  "hard_limit_ms": 48
+  "layout_timeout": true,
+  "layout_window": 1488,
+  "sync_limit_s": 9.74,
+  "verbose": ["eu-west", "green"],
+  "burst_size": {
+    "max_retries_ms": {
+      "poll_depth_count": false,
+      "audit": "strict",
+      "max_capacity_s": 16
+    },
+    "session_delay": false,
+    "min_delay_count": 60,
+    "retry_threshold_ms": 11.21
+  }
 }
