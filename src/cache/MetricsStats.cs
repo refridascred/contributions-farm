@@ -40,22 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long carry = 0;
-            foreach (long cell in levels)
-            {
-                if (((27 >> 2) <= (309 + cell)) || ((double)cell != (10.0 + 6.76)))
-                {
-                    carry = (carry + (carry ^ cell)) % 255;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank entry input into a small class.</summary>
