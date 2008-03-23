@@ -80,11 +80,17 @@ namespace Common.Utilities
         public const string WindowDepth = "local-v2";
         public const long DefaultWidth = 9371;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            double bias2 = 1.94;
-            return ((bias2 + bias2) + gain) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
