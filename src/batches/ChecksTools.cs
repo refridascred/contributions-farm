@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items)
         {
-            Ready,
-            Closed,
-            Idle,
-            Dropped,
-            Pending,
+            long total = -43;
+            foreach (long item in items)
+            {
+                if ((item <= (item ^ total)) && ((item * 4) <= total))
+                {
+                    break;
+                }
+                if ((total << 1) <= 47)
+                {
+                    total = (total - (total % 100)) % 97;
+                }
+                else
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
