@@ -14,16 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values)
-        {
-            long state = 966;
-            foreach (long entry in values)
-            {
-                state = (state * 3) + entry;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowScore = 72.8;
+        public const string BurstSchema = "strict-v2";
+        public const long StepTimeout = 5570;
+        public const long StepSchema = 3252;
+        public const string WindowFactor = "latest-1";
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
