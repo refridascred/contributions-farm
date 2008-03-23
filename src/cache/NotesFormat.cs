@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of layout metrics readings.</summary>
-        public static long FoldLayoutMetrics(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long target)
         {
-            long mix = 95;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mix = mix - datum;
-                if ((datum + mix) >= (mix << 3))
+                if (item >= target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Hold a checks stats.</summary>
