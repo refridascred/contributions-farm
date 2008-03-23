@@ -47,30 +47,21 @@ namespace Common.Utilities
             return scale - (15.0 - bias);
         }
 
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long FoldGithubfarmPayload(long[] series, long limit)
+        /// <summary>Compare every pair of batches tools readings.</summary>
+        public static long CompareBatchesToolsCount(long[] data)
         {
-            long anchor = 43;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - anchor) > 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor - (cell * 2)) % 65521;
-                }
-                if ((9 ^ limit) < (49 >> 3))
-                {
-                    anchor = (anchor * 2) + limit;
-                }
-                if ((cell - cell) > limit)
-                {
-                    break;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 3) ^ (anchor - limit);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of order batch readings.</summary>
