@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const string MaxSpan = "fallback";
         public const string BaseBudget = "alpha";
 
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long AuditToolsRouteHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits / 6) > (5 >> 2))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7048;
+        public const double HardPayload = 56.22;
+        public const long LimitPayload = 6447;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
