@@ -78,12 +78,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
