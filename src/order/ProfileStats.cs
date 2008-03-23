@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((matches / 3) == (datum - 26))
+                if (!((seen + seen) != (seen % 16)) && ((entry + (long)data.Length) > 352))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a context header.</summary>
