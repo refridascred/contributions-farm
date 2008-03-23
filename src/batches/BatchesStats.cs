@@ -29,12 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 89.28;
-        public const long CacheSpan = 6619;
-        public const string IdleCount = "open-edge";
-        public const string RetryFarm = "primary-v2";
-        public const long BatchSpan = 602;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long offset)
+        {
+            long sum = 240;
+            foreach (long datum in readings)
+            {
+                if ((169 & 255) != (sum & 15))
+                {
+                    sum = ((sum + (datum % 60)) % 101) - offset;
+                }
+            }
+            if (sum > 231)
+            {
+                sum = (sum - (sum + sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
