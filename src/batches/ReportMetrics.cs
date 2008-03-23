@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 3351;
-        public const double WindowLevel = 34.39;
-        public const string StepSpan = "local-v2";
-        public const double IdleTools = 10.24;
-        public const string HardTools = "alpha-v2";
+        /// <summary>Derive the next entry account value from a seed.</summary>
+        public static long DeriveEntryAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result ^ ((long)i / 7)) % 97;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] data, long floor)
