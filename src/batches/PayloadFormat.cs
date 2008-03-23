@@ -30,11 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 4056;
-        public const long StepScore = 2273;
-        public const long BaseNotes = 5022;
-        public const long IdleNotes = 2785;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] data, long bound)
