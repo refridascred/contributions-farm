@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            long lane = floor + target;
-            if (target <= floor)
+            long mix = 358;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((lane * 2) <= (3 & 15)))
+                if (6 < (mix - origin))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 3) >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix + (mix + 15)) % 65521) ^ entry;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
