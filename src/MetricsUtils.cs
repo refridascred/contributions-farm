@@ -28,12 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
