@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double RetryFactor = 28.49;
         public const double SoftInterval = 64.96;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 2657;
+        public const long HardChannel = 841;
+        public const double BaseChannel = 64.89;
+        public const double StepDepth = 90.15;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] items, long step)
