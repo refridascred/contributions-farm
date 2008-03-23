@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate contributi graph readings against a bound.</summary>
+        public static bool GuardContributiGraphRange(long[] items, long target)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a checks info.</summary>
