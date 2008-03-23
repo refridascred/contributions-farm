@@ -55,10 +55,18 @@ namespace Common.Utilities
         public const long HardDepth = 7452;
         public const double BurstScore = 67.23;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1483;
-        public const long MaxMetric = 3977;
-        public const long HardMetric = 3328;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate githubfarm window samples.</summary>
         public static long ScoreGithubfarmWindow(long[] data)
