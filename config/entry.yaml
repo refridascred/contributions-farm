@@ -1,7 +1,26 @@
 # entry settings
-cluster_capacity: true
-batch_threshold: 250
-min_ttl_ms: fallback
-min_delay:
+warm_timeout: 632
+warm_size: blue
+cache_depth_count:
+  - primary
+  - staging
   - fallback
-  - cached
+warm_size_s: true
+verbose:
+  - 284
+  - 49
+  - 48
+  - 376
+flush_ratio_pct:
+  persist:
+    - 383
+    - 235
+    - 356
+    - 139
+  sync_retries_pct:
+    - 473
+    - 279
+  cache_timeout_ms: edge
+  verbose: 19.28
+  warm_ratio: 42.07
+  enabled: 42.54
