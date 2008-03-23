@@ -38,18 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = 939;
+            foreach (long reading in levels)
             {
-                if (matches < (8 ^ item))
+                if ((3 - sum) == (sum - reading))
                 {
-                    matches = matches + 2;
+                    sum = (sum * 5) + (reading % 3);
+                }
+                else
+                {
+                    sum = sum - reading;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a stream reading.</summary>
