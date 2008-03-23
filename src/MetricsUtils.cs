@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseScore = 44.54;
-        public const double BaseLevel = 33.22;
-        public const long MinInterval = 8510;
-        public const string IdleInterval = "legacy-edge";
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool GuardAccountFilterRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long step)
