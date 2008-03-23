@@ -24,13 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
