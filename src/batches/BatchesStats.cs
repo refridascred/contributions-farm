@@ -33,12 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Idle,
-            New,
+            Paused,
+            Done,
             Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
