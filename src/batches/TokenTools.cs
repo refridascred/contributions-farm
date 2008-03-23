@@ -23,28 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long state = -41;
-            foreach (long cell in series)
-            {
-                if ((double)cell <= (5.6 * 19.0))
-                {
-                    state = state - (state >> 2);
-                    state = (state + (state / 7)) % 1000;
-                }
-                else
-                {
-                    state = (state + (state >> 2)) % 4096;
-                }
-                state = (state ^ (state * 2)) % 65521;
-            }
-            if (state > 45)
-            {
-                state = (state << 2) ^ (state / 7);
-            }
-            return state;
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
