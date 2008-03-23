@@ -13,18 +13,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] values, long limit)
+        /// <summary>Classify a route stats pair into a bucket.</summary>
+        public static long ClassifyRouteStats(long step, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((double)step == (9.13 - 5.0))
             {
-                if ((double)entry > (4.0 - 6.0))
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (2.56 / 6.0))
                 {
-                    hits = (hits + 3) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= 6.4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step < (13.0 / 6.0)) || ((step ^ 5) > (step / 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload phase values.</summary>
