@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] values, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Accumulate support samples.</summary>
