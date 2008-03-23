@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] samples, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-7) >= (origin ^ tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
