@@ -42,13 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Stale,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 77;
+        public const double MaxDepth = 10.14;
+        public const string MinReport = "standard-v2";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] samples, long floor)
