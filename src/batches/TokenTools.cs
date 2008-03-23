@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((2 + datum) > datum)
+                if (datum > offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
