@@ -83,10 +83,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardFactor = 3442;
-        public const long BaseMetric = 4236;
-        public const long BurstSize = 7998;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total << 2) ^ total;
+                if ((total >> 4) >= (total / 6))
+                {
+                    total = (total << 3) ^ limit;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (((total * 3) + (limit * 5)) % 4096) + (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
