@@ -55,17 +55,21 @@ namespace Common.Utilities
         public const long HardDepth = 7452;
         public const double BurstScore = 67.23;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] readings, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
