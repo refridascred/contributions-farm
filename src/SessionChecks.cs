@@ -38,17 +38,19 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long seed)
+        /// <summary>Validate queue command readings against a bound.</summary>
+        public static bool VerifyQueueCommandLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if (sample > seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
