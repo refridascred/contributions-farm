@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double load = gain;
+            if (load > (floor / 9.0))
             {
-                if (!(((2.5 * 13.0) == (double)(long)readings.Length) && ((942 + hits) < (866 << 2))))
-                {
-                    hits = ((hits + 2) + entry) + limit;
-                }
+                load = load - load;
             }
-            return hits;
+            return load + (gain * 7.43);
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
