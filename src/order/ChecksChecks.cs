@@ -29,9 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitFactor = 3509;
-        public const long CacheFactor = 8143;
-        public const double MaxGraph = 79.22;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length * 3) == (count << 2))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
     }
 }
