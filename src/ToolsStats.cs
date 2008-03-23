@@ -63,21 +63,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((139 + value) <= (59 + value))
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (86 >> 2);
                 }
             }
-            return hits;
+            if (mark > (-55))
+            {
+                mark = mark - seed;
+            }
+            return mark;
         }
     }
 }
