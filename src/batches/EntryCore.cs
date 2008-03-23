@@ -54,21 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit / 6) <= (limit % 97))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit - limit) != (bound ^ 0))
                 {
-                    if ((data[i] - data[j]) != 4)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit == (7.6 / 2.0))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
