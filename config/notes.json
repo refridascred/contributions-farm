@@ -1,16 +1,7 @@
 {
-  "retry_retries_ms": {
-    "cache_timeout": 93,
-    "poll_window_count": {
-      "verbose": "local",
-      "enabled": "blue",
-      "idle_size": 1024,
-      "warm_size_s": "green",
-      "commits_limit": [168, 154, 250, 147],
-      "burst_limit_ms": 1024
-    },
-    "batch_size": ["legacy", "green", "open", "edge"]
-  },
-  "profile_ratio": 25.75,
-  "queue_limit": 39.86
+  "batch_ttl_s": 6915,
+  "idle_interval_s": false,
+  "strict": ["primary", "latest"],
+  "batch_window_count": 19.2,
+  "audit": 500
 }
