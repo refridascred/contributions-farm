@@ -16,22 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 5774;
+        public const double RetryContext = 12.75;
+        public const long LimitSpan = 1827;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] items, long target)
