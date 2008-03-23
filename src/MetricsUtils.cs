@@ -30,25 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long bound)
         {
-            long prev = origin - step;
-            if ((4 + step) <= (origin - prev))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= 6.3)
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
