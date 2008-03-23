@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally % 10) != (tally % 24))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
