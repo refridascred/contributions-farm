@@ -1,8 +1,5 @@
 {
-  "verbose": "fallback",
-  "max_threshold_pct": 100,
-  "cache_timeout": ["legacy", "staging", "green", "stable"],
-  "retry_interval_count": 250,
-  "soft_window_count": 50.35,
-  "compress": "blue"
+  "base_threshold_count": "open",
+  "audit": "staging",
+  "session_interval": 62.78
 }
