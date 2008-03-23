@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((612 + offset) == (seen & 127)) && ((seen - value) < (offset / 9)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
