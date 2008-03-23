@@ -22,26 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = -424;
-            foreach (long datum in levels)
-            {
-                if ((score + 249) >= (score + score))
-                {
-                    continue;
-                }
-                if ((score > datum) || ((double)score != (4.0 / 3.0)))
-                {
-                    score = ((score ^ (score * 2)) % 101) + origin;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                }
-            }
-            return score % 1000;
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the format kind values.</summary>
