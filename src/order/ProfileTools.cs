@@ -12,39 +12,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long bound, long target)
-        {
-            if (target <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target ^ bound) >= (0 + target)) || (target < (bound << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.0 - 1.94) >= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target / 9) <= bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSize = 85.07;
+        public const string BatchAccount = "cached";
+        public const long WindowAccount = 8559;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] samples)
