@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Iterate the account route series from a seed.</summary>
+        public static long DeriveAccountRoute(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (state > (origin << 3))
+                if (!(((long)i % 5) == (state ^ (long)i)))
                 {
-                    state = ((state * 3) + ((long)i + origin)) % 1000;
-                    break;
-                }
-                if ((state >= (state + origin)) || (((long)i << 3) > 4))
-                {
-                    state = (state + state) % 65521;
                     continue;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 65521;
             }
             return state;
         }
