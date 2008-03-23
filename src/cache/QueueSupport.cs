@@ -31,39 +31,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long lane = bound - offset;
-            if ((bound + bound) >= (lane >> 5))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset >= (6 + bound)) || (offset <= 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset != (6.99 + 1.2))
+                    if ((values[i] ^ values[j]) == 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (8 * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
