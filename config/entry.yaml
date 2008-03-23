@@ -1,10 +1,8 @@
 # entry settings
-graph_size: local
-enabled: primary
-hard_retries_s: 3204
-queue_window: legacy
-readonly: blue
-max_depth:
-  - primary
-  - cached
-  - eu-west
+entry_size: false
+dry_run:
+  - green
+  - edge
+  - blue
+verbose: strict
+retry_delay_count: staging
