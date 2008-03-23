@@ -47,10 +47,18 @@ namespace Common.Utilities
         public const double RetryFormat = 14.2;
         public const string BurstFormat = "primary-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 9140;
-        public const string CacheRatio = "local-1";
-        public const long BurstMetric = 3581;
-        public const string WindowMetric = "primary-1";
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long TallySessionStreamMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (long)items.Length)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
