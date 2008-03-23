@@ -69,19 +69,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            double scale = span;
-            if (scale > scale)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                scale = (scale - (scale - scale)) + weight;
+                state = (state ^ (state * 2)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale - 6.29;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
