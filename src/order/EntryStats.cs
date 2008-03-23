@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (total & 7)) % 97;
-                if ((long)i >= (total % 12))
-                {
-                    total = ((total * 5) + (floor % 60)) % 255;
-                    total = (total - 48) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleInterval = 991;
+        public const long SoftLevel = 2797;
+        public const long WindowInterval = 3098;
+        public const long MinRoute = 6874;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
