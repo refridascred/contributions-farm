@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Fold a list of already context readings.</summary>
+        public static long FoldAlreadyContext(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 209;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor * 2) + (offset ^ anchor)) % 101) + cell;
+                anchor = (anchor * 5) + offset;
             }
-            return seen;
+            if (anchor > 871)
+            {
+                anchor = (anchor << 3) ^ 591;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of entry githubfarm readings.</summary>
