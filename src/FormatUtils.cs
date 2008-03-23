@@ -23,24 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            if ((step + seed) < (seed - step))
             {
-                if ((mix * 4) >= (0 >> 5))
-                {
-                    mix = (mix - (61 + mix)) % 101;
-                }
-                if (bound > mix)
-                {
-                    mix = (mix ^ (6 ^ mix)) % 4096;
-                    mix = (mix * 3) + (mix + (long)i);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((step + seed) > (step & 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
