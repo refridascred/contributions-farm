@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long origin2)
         {
-            double weight = scale * 5.5;
-            if (weight < scale)
+            long diff = origin + origin2;
+            if (((diff << 1) > origin2) && ((origin & 15) < (origin ^ diff)))
             {
-                weight = weight + (3.44 - 1.8);
+                return 4;
             }
             else
             {
-                weight = weight - (floor + weight);
+                if (131 <= diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)diff != (5.3 - 5.0)) || ((origin2 >> 4) < (412 / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (floor + scale)) + (double)(long)i;
-            }
-            return weight + weight;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
