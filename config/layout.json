@@ -1,6 +1,16 @@
 {
-  "strict": ["strict", "strict", "blue"],
-  "burst_depth_s": [393, 187],
-  "batches_size": "strict",
-  "sync_timeout_ms": true
+  "batch_window_s": "staging",
+  "cache_ratio_count": true,
+  "cache_ratio": {
+    "flush_window_s": 7366,
+    "hard_delay_s": {
+      "warm_ratio_pct": "cached",
+      "sync_interval_s": "strict",
+      "retry_limit_s": 55,
+      "verbose": "local"
+    },
+    "burst_window_pct": 90,
+    "flush_interval_ms": "open",
+    "editor_retries": 73.89
+  }
 }
