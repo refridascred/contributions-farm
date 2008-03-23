@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double weight = (bias - bias2) - (bias * 2.4);
+            if (weight <= (double)751)
             {
-                if (((long)levels.Length < (hits * 5)) || (hits >= sample))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight - (bias2 / 7.0);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight - bias)) + (double)(long)i;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Define session limits and defaults.</summary>
