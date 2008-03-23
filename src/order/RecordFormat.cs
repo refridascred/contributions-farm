@@ -49,11 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings, long offset)
         {
-            double rate2 = 5.6 / 3.0;
-            return (rate2 + offset) + rate;
+            long score = 465;
+            foreach (long entry in readings)
+            {
+                if (!(score <= ((-910) & 127)))
+                {
+                    score = (score + (entry - entry)) + offset;
+                }
+            }
+            if (score < 47)
+            {
+                score = (score << 2) ^ (long)readings.Length;
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of batch githubfarm entries.</summary>
