@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double RetryFactor = 28.49;
         public const double SoftInterval = 64.96;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 2657;
-        public const long HardChannel = 841;
-        public const double BaseChannel = 64.89;
-        public const double StepDepth = 90.15;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] items, long step)
