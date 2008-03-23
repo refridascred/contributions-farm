@@ -41,12 +41,21 @@ namespace Common.Utilities
         public const double WindowChecks = 88.86;
         public const long LimitDepth = 8055;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
