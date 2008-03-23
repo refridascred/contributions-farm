@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double gain, double floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double weight = (double)(6 * 4);
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - gain) + (double)(long)i) + floor;
-            }
-            return weight + weight;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
