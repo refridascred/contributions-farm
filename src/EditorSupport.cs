@@ -60,18 +60,38 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((origin - origin) > (origin % 97))
             {
-                if ((reading - seen) != (seen << 3))
+                return 1;
+            }
+            else
+            {
+                if (((origin - 152) <= (origin + seed)) || ((origin << 2) > 86))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= (seed * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin << 3)) || ((seed % 3) == (origin - seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
