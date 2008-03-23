@@ -55,11 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 6336;
-        public const double DefaultLevel = 79.3;
-        public const double SoftTools = 68.16;
-        public const long BatchTools = 106;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Active,
+            Stale,
+            Failed,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] readings, long origin)
