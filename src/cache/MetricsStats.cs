@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Combine context window values into a single score.</summary>
+        public static long CombineContextWindow(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 1;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (origin < result)
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result ^ ((long)data.Length % 60)) % 1000) + entry;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a format context sample.</summary>
