@@ -20,14 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long seed, long step)
         {
-            Retry,
-            Closed,
-            Stale,
-            Paused,
-            Failed,
+            if (step > (step + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) > (99 % 24))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a account options.</summary>
