@@ -37,12 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits << 1) >= seed)
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
