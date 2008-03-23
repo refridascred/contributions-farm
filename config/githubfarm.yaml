@@ -1,14 +1,17 @@
 # githubfarm settings
-default_ratio_ms: 10.34
-default_window_s: 92.58
-profile_interval: 55
-batch_delay_s:
-  warm_depth_s: strict
-  batch_delay_s:
-    - 213
-    - 181
-    - 31
-    - 146
-  profile_threshold: 30
-  dry_run: 83.12
-max_limit_pct: legacy
+max_interval_count: 7385
+poll_ratio_count: false
+sync_timeout_s:
+  burst_ttl_pct: eu-west
+  max_threshold_ms: 32
+  min_delay_s: staging
+  persist:
+    - 270
+    - 257
+  warm_depth_s: false
+  idle_interval_pct:
+    - 42
+    - 418
+    - 317
+    - 89
+audit: latest
