@@ -38,18 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] readings)
+        /// <summary>Validate payload order readings against a bound.</summary>
+        public static bool GuardPayloadOrderBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (!((7 + cell) != (cell >> 3)))
+                if (datum <= bound)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
