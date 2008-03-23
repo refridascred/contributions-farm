@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Queued,
-            Dropped,
+            Draft,
+            Failed,
+            Idle,
             Ready,
-            Synced,
-            New,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
