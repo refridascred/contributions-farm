@@ -31,22 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long MeasureSessionGithubfarmMatches(long[] values, long origin)
+        /// <summary>Compare every pair of entry metrics readings.</summary>
+        public static long PairEntryMetricsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.51 * 18.0) < (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
