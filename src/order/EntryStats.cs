@@ -64,14 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Failed,
-            Active,
+            Paused,
+            Draft,
+            Dropped,
+            Locked,
             Done,
-            Queued,
-            Synced,
         }
     }
 }
