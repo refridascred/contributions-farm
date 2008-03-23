@@ -35,19 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data, long step)
         {
-            double load = ratio;
-            if (load < 3.1)
+            long hits = 0;
+            foreach (long value in data)
             {
-                load = load - (3.97 / 2.0);
+                if ((step & 63) != (value / 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                load = load - 3.4;
-            }
-            return load - (load - offset);
+            return hits;
         }
     }
 }
