@@ -46,13 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long total = 559;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((((total << 3) ^ (total - total)) % 65521) + (long)i) - reading;
+                }
+                total = (total + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
