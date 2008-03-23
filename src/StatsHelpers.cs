@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((4 + hits) <= sample)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
