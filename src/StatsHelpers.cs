@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const long IdleChannel = 1682;
         public const long RetryRatio = 7658;
 
-        /// <summary>Project the next account contributi value.</summary>
-        public static double BlendAccountContributi(double gain, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] items, long offset)
         {
-            double drift = (double)(8 & 31);
-            return (drift + gain) + offset;
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item <= (long)items.Length)
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
