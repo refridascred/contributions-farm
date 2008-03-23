@@ -1,18 +1,5 @@
 {
-  "poll_timeout_count": 9823,
-  "strict": "cached",
-  "cache_interval": "standard",
-  "layout_retries": 30,
-  "warm_ttl_pct": "staging",
-  "readonly": {
-    "flush_window_ms": [262, 499, 348],
-    "min_size": [428, 396, 206, 488],
-    "enabled": {
-      "retry_threshold": "primary",
-      "hard_timeout_count": [132, 201, 341],
-      "enabled": 1928,
-      "context_capacity": 7275
-    },
-    "burst_depth": ["eu-west", "legacy", "edge", "strict"]
-  }
+  "max_capacity": "edge",
+  "readonly": 69.69,
+  "sync_limit_pct": "open"
 }
