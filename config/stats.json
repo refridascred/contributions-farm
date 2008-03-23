@@ -1,6 +1,26 @@
 {
-  "strict": [305, 151, 64, 427],
-  "compress": 45,
-  "hard_limit": "blue",
-  "session_delay": [465, 437, 186]
+  "default_threshold_s": {
+    "payload_capacity": 14.64,
+    "enabled": 100,
+    "warm_depth_pct": 13.19,
+    "retry_interval_pct": 100
+  },
+  "graph_limit": "edge",
+  "base_ratio_pct": {
+    "burst_delay": 60,
+    "base_ttl": "eu-west",
+    "idle_retries": 27.63,
+    "retry_timeout_pct": {
+      "support_retries": 3146,
+      "enabled": true,
+      "route_timeout": 9,
+      "layout_delay": "legacy",
+      "min_ttl_ms": true
+    },
+    "verbose": ["local", "fallback", "cached"],
+    "batch_interval_s": "fallback"
+  },
+  "already_delay": 27,
+  "cache_capacity_count": 2056,
+  "cluster_window": "edge"
 }
