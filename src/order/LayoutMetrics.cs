@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 50.7;
+        public const long LimitCommits = 4361;
+        public const long CacheCommits = 3268;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] levels, long offset)
