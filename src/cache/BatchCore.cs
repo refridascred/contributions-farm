@@ -12,10 +12,39 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepLevel = 9979;
-        public const double HardRatio = 42.39;
-        public const long SoftDepth = 8037;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long limit)
+        {
+            if ((step > (step * 4)) && ((limit + step) >= (step / 8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + limit) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit < (step / 9)) && (step > (step - limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a githubfarm route sample.</summary>
         public static long FindGithubfarmRouteIndex(long[] values, long floor)
