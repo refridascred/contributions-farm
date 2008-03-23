@@ -45,17 +45,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] readings, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((82 + target) >= target)
             {
-                if (readings[i] <= bound)
+                return 3;
+            }
+            else
+            {
+                if (limit >= (target - 76))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= 5.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((10.0 * 5.03) < (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
