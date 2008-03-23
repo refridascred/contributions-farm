@@ -40,17 +40,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first format layout entry that matches the target.</summary>
-        public static long LocateFormatLayoutIndex(long[] readings, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = scale + span;
+            if (ratio < (span - scale))
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)6;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (span - scale)) + (double)(long)i;
+            }
+            return ratio + (ratio / 5.0);
         }
 
         /// <summary>Rank cache input into a small class.</summary>
