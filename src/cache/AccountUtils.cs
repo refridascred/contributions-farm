@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a token editor pair into a bucket.</summary>
