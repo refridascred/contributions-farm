@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long RetryBatch = 7486;
         public const long SoftBatch = 1773;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(60 > ((long)i % 5)))
-                {
-                    state = (state << 2) ^ (long)i;
-                }
-                state = (state ^ ((long)i & 3)) % 4096;
-                if (seed <= (long)i)
-                {
-                    state = ((state << 3) ^ (state - state)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
