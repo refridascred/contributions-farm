@@ -13,24 +13,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long seen = (long)i;
-                if (seen <= (seen + (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score - (step >> 4)) % 255;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    seen = (seen - seen) % 101;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
