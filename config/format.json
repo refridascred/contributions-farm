@@ -1,5 +1,12 @@
 {
-  "counter_capacity": "eu-west",
-  "retry_limit": "green",
-  "max_threshold_ms": "stable"
+  "hard_depth_s": "strict",
+  "burst_capacity": "staging",
+  "warm_delay": 73,
+  "batch_depth": {
+    "flush_interval": 7289,
+    "session_depth": "cached",
+    "record_window": false
+  },
+  "hard_timeout": ["fallback", "standard"],
+  "cluster_window": true
 }
