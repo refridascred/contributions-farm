@@ -27,18 +27,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit route report readings against a rule.</summary>
-        public static long MeasureRouteReportHits(long[] levels, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = (double)(77 + (-26));
+            if (drift > (weight * 6.0))
             {
-                if ((double)tally != (3.2 / 4.0))
-                {
-                    tally = ((tally + 3) + reading) + origin;
-                }
+                drift = drift - (double)9;
             }
-            return tally;
+            return drift - (offset - drift);
         }
 
         /// <summary>Describe the notes mode values.</summary>
