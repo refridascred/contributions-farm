@@ -1,26 +1,26 @@
 # entry settings
-warm_timeout: 632
-warm_size: blue
-cache_depth_count:
-  - primary
-  - staging
-  - fallback
-warm_size_s: true
-verbose:
-  - 284
-  - 49
-  - 48
-  - 376
-flush_ratio_pct:
-  persist:
-    - 383
-    - 235
-    - 356
-    - 139
-  sync_retries_pct:
-    - 473
-    - 279
-  cache_timeout_ms: edge
-  verbose: 19.28
-  warm_ratio: 42.07
-  enabled: 42.54
+format_ttl:
+  record_window:
+    channel_size: 60
+    flush_ratio_pct: 100
+    retry_window_s: eu-west
+    burst_window_count: true
+    burst_ratio_s: stable
+  soft_delay_count: 54.7
+  tools_limit: 60
+  session_window:
+    - 175
+    - 224
+    - 62
+    - 102
+max_capacity_pct: fallback
+poll_depth:
+  retry_ttl_s:
+    compress: 44.54
+    channel_timeout: true
+    dry_run:
+      - 283
+      - 460
+    poll_timeout_s: eu-west
+  already_ttl: false
+  cache_ratio: 8531
