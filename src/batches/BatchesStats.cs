@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "open-1";
-        public const string BurstCluster = "primary";
-        public const long WindowScore = 3323;
-        public const long SoftBudget = 2403;
-        public const long RetryCluster = 708;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Failed,
+            Draft,
+            Idle,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Combine support contributi values into a single score.</summary>
         public static long CombineSupportContributi(long[] items, long origin)
