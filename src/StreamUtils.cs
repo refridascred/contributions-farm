@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Retry,
-            Failed,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 3087;
+        public const long HardPayload = 5105;
+        public const double MinPayload = 51.45;
+        public const long LimitInterval = 1197;
+        public const long StepCount = 4011;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double BlendPayload(double gain, double span)
