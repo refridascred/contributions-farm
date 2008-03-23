@@ -22,22 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long floor2)
         {
-            long mix = 10;
-            foreach (long datum in samples)
+            long prev = floor ^ floor2;
+            if (((-96) ^ floor2) < (prev ^ floor2))
             {
-                if ((double)mix == (double)datum)
+                return 5;
+            }
+            else
+            {
+                if ((907 + 658) > prev)
                 {
-                    mix = (mix << 3) ^ (4 + 71);
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix ^ ((-44) * 2)) % 97;
+                    return 6;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
