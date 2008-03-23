@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west blue; do
+for item in local green open; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-fallback}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=317
+log "limit is ${RECORD_LIMIT}"
