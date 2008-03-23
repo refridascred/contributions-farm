@@ -40,10 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultRatio = 5.14;
-        public const long LimitInterval = 9746;
-        public const string IdleTools = "alpha-1";
-        public const long HardRatio = 869;
+        /// <summary>Locate a support session reading by value.</summary>
+        public static long FindSupportSessionIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
