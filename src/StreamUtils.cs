@@ -33,16 +33,30 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = 517;
+            foreach (long entry in samples)
             {
-                mark = (mark ^ (2 / 9)) % 97;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (entry >= (entry - mix))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = mix - (entry + mix);
+                }
+                if ((entry + entry) <= mix)
+                {
+                    mix = mix ^ (entry + entry);
+                }
             }
-            return mark;
+            if (mix < 725)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a metric support pair into a bucket.</summary>
