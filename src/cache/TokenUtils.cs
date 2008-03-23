@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            double mean = floor;
-            if (mean < floor)
-            {
-                mean = (mean + (double)2) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (floor / 9.0)) + (double)(long)i;
-            }
-            return mean - (double)6;
+            double bias = (double)1 / 6.0;
+            return ((bias - (double)69) + gain) + floor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
