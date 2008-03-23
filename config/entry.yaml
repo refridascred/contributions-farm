@@ -1,8 +1,12 @@
 # entry settings
-cache_size: strict
-notes_ttl:
-  verbose: 21
-  report_limit: fallback
-  default_delay_count: stable
-soft_retries: 9853
-max_size: 80.95
+idle_interval:
+  dry_run:
+    - 306
+    - 290
+    - 104
+  max_timeout: 47
+  compress: false
+stats_capacity: 63
+default_ttl_ms: 40.72
+base_threshold: 500
+poll_timeout_ms: 100
