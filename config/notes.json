@@ -1,14 +1,14 @@
 {
-  "min_ratio_ms": 71,
-  "min_ttl": 500,
-  "batch_window_ms": {
-    "cache_depth": [209, 1, 147],
-    "support_delay": 4221,
-    "record_capacity": {
-      "readonly": 26.2,
-      "window_interval": 9140,
-      "default_window": 6241
-    }
+  "idle_size": "fallback",
+  "dry_run": {
+    "context_timeout": 72.18,
+    "warm_window_ms": "fallback",
+    "poll_size_count": 3287,
+    "readonly": "blue",
+    "sync_limit_count": [308, 132, 162]
   },
-  "audit": "staging"
+  "burst_threshold": "eu-west",
+  "base_depth_pct": [40, 335, 30, 233],
+  "sync_size_pct": 30,
+  "default_window_pct": 95.03
 }
