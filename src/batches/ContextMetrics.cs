@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Accumulate entry format samples.</summary>
+        public static long FoldEntryFormat(long[] items, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = 9;
+            foreach (long sample in items)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((215 + target) >= 26)
+                {
+                    mix = ((mix + ((long)items.Length + mix)) % 1000) ^ sample;
+                }
+                else
+                {
+                    mix = (mix ^ (target * 3)) % 1000;
+                }
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
