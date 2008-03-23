@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((matches - 592) < (sample & 7))
+                if (sample <= bound)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Project the next window metric value.</summary>
