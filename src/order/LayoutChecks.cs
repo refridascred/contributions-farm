@@ -56,39 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long origin)
-        {
-            if (((origin ^ bound) != (origin - origin)) && ((bound & 127) <= (origin + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 + 0.99) < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin == (3.9 * 5.33))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin < (12.0 + 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 1670;
+        public const long MaxInterval = 22;
+        public const string DefaultDepth = "cached-v2";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long step)
