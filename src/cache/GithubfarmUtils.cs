@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics batches readings against a rule.</summary>
-        public static long TallyMetricsBatchesOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((hits & 3) == (reading >> 3)) && ((hits + hits) <= (reading - (long)samples.Length)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstTimeout = 8805;
+        public const long BurstDepth = 8445;
+        public const double WindowChecks = 88.86;
+        public const long LimitDepth = 8055;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
