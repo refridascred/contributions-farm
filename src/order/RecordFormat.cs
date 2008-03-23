@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long bound)
-        {
-            if ((bound > (limit + bound)) || ((bound + limit) > (limit + limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8 < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 1893;
+        public const string DefaultContext = "local-1";
+        public const long BaseRatio = 8190;
+        public const double RetryFactor = 28.49;
+        public const double SoftInterval = 64.96;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string IdleCounter = "standard-edge";
