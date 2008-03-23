@@ -1,8 +1,5 @@
 {
-  "burst_delay": "local",
-  "session_capacity": 16.93,
-  "max_ratio_ms": 9046,
-  "max_depth_ms": 65.97,
-  "enabled": false,
-  "readonly": false
+  "order_ratio": 83.24,
+  "counter_limit": 55,
+  "default_capacity_s": 7.39
 }
