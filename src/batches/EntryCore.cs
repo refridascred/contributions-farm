@@ -48,10 +48,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardFactor = "legacy-edge";
-        public const double HardAlready = 71.65;
-        public const double BurstInterval = 64.98;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Locked,
+            Idle,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Match up schema batches samples.</summary>
         public static long MatchSchemaBatchesCount(long[] samples)
