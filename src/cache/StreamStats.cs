@@ -34,13 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
