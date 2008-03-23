@@ -1,5 +1,18 @@
 {
-  "base_retries_s": ["strict", "stable", "open"],
-  "account_retries": 71.56,
-  "cache_limit_s": "stable"
+  "min_ttl": true,
+  "strict": "green",
+  "soft_size": "strict",
+  "poll_capacity_s": ["latest", "fallback", "primary"],
+  "metric_depth": {
+    "default_capacity_count": ["legacy", "standard", "standard"],
+    "session_retries": {
+      "idle_size": ["green", "edge"],
+      "compress": ["stable", "latest", "green"],
+      "flush_window_ms": 22.32,
+      "token_window": true,
+      "sync_ratio_ms": "staging",
+      "entry_ratio": 1.77
+    },
+    "retry_size_count": 18.41
+  }
 }
