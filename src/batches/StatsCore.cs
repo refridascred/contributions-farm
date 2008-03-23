@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits - hits) != (hits & 15))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
