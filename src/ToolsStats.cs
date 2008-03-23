@@ -49,12 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseDepth = 66.9;
-        public const string BurstCommand = "local-edge";
-        public const long DefaultCommand = 4591;
-        public const double BaseCommand = 94.89;
-        public const long StepCommand = 2822;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Dropped,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Iterate the queue profile series from a seed.</summary>
         public static long RollQueueProfile(long seed)
