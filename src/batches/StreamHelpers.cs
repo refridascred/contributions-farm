@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 3330;
+        public const double BaseCluster = 48.52;
+        public const double DefaultCluster = 85.28;
+        public const long IdleCluster = 2866;
+        public const string BaseWidth = "stable-edge";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TotalProfile(long[] values)
