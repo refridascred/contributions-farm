@@ -25,18 +25,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long MeasureStreamEditorOutliers(long[] items, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 417;
+            foreach (long entry in samples)
             {
-                if ((seen & 15) >= entry)
+                if ((0 >= carry) && ((70 - entry) > carry))
                 {
-                    seen = (seen + 3) - seed;
+                    carry = ((carry << 3) ^ (entry % 100)) % 1000;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Blend two schema measurements.</summary>
