@@ -33,17 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (858 > (seed + (-776)))
             {
-                if (series[i] < offset)
+                return 2;
+            }
+            else
+            {
+                if ((seed << 1) == (seed + 9))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit session cluster readings against a rule.</summary>
