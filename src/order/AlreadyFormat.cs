@@ -56,17 +56,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first entry stream entry that matches the target.</summary>
-        public static long LookupEntryStreamIndex(long[] values, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
