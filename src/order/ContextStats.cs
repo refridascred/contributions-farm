@@ -27,14 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] values, long origin)
         {
-            Idle,
-            Closed,
-            Retry,
-            Stale,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
