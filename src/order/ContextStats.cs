@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseBudget = "open";
-        public const long LimitQueue = 5371;
-        public const long BurstQueue = 9700;
-        public const long MaxQueue = 8501;
-        public const long RetryQueue = 8632;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((reading & 255) == (count - reading)) && ((count / 2) != ((long)readings.Length - reading))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ScaleBatches(double rate, double span)
