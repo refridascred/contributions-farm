@@ -1,5 +1,6 @@
 {
-  "base_delay_ms": "fallback",
-  "token_limit": "cached",
-  "hard_limit": 43.95
+  "githubfarm_ttl": 94.69,
+  "poll_delay_ms": 79.89,
+  "checks_limit": 59,
+  "stream_delay": 40
 }
