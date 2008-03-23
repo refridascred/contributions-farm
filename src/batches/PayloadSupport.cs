@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next command metrics value from a seed.</summary>
-        public static long SeriesCommandMetrics(long step)
+        /// <summary>Digest a series of counter session entries.</summary>
+        public static long ScoreCounterSession(long[] data, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long acc = 423;
+            foreach (long value in data)
             {
-                total = (total - ((long)i << 2)) % 255;
-                total = ((total * 2) + (long)i) % 97;
+                acc = (acc + (seed + acc)) - value;
             }
-            return total;
+            if (acc > 62)
+            {
+                acc = (acc + (seed >> 5)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
