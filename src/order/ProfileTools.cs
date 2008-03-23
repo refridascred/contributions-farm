@@ -33,15 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long step)
         {
-            long carry = -3;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = ((carry ^ ((long)samples.Length << 2)) % 1000) ^ sample;
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return ready;
         }
 
         /// <summary>Blend two format measurements.</summary>
