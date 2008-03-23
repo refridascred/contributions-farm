@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            double scale2 = (double)(122 & 3);
-            if (scale2 < (bias - scale))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 - (double)2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            return scale2 - scale2;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
