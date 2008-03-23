@@ -1,6 +1,7 @@
 {
-  "stream_ratio": 84.51,
-  "strict": 97.5,
-  "dry_run": 18,
-  "base_ratio_count": "strict"
+  "warm_limit_s": 39,
+  "max_interval_count": false,
+  "retry_retries": 42,
+  "retry_retries_pct": ["fallback", "green"],
+  "context_capacity": "legacy"
 }
