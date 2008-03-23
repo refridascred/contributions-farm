@@ -61,12 +61,13 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
+            public long Label { get; set; }
+            public long Mode { get; set; }
             public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
