@@ -14,19 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double span)
         {
-            double drift = (double)7 / 2.0;
-            if (drift <= offset)
+            double gain2 = 6.9;
+            if (gain2 <= (span / 7.0))
             {
-                drift = drift - (1.82 / 2.0);
+                gain2 = gain2 - (gain2 - gain2);
             }
             else
             {
-                drift = drift + (drift + rate);
+                gain2 = gain2 - (double)56;
             }
-            return drift + offset;
+            return gain2 - gain;
         }
 
         /// <summary>Match up buffer samples.</summary>
