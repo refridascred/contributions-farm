@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long seed)
         {
-            long sum = 566;
+            bool stale = true;
             foreach (long sample in readings)
             {
-                if (((sum << 3) >= sample) && (((long)readings.Length + (-80)) < (-744)))
+                if (sample >= seed)
                 {
-                    sum = (sum * 4) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the farm class values.</summary>
