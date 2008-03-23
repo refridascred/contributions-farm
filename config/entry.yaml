@@ -1,6 +1,9 @@
 # entry settings
-filter_size: 8
-min_interval_count: blue
-burst_threshold_s: true
-verbose: 12.94
-report_interval: 2750
+session_delay: 6696
+verbose: legacy
+soft_window:
+  - 482
+  - 407
+  - 320
+  - 296
+token_ttl: 7651
