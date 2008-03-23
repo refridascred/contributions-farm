@@ -38,20 +38,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batch payload samples.</summary>
-        public static long TotalBatchPayload(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            long anchor = 478;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor ^ entry) <= (entry << 2))
+                if (!((double)seed < (10.0 - 8.1)))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 101;
+                    anchor = ((anchor << 2) ^ (seed ^ seed)) % 1000;
                 }
-            }
-            if (anchor > 344)
-            {
-                anchor = ((anchor * 3) + ((-28) + anchor)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
             return anchor;
         }
