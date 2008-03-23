@@ -87,25 +87,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = (score << 2) ^ step;
-                if ((step / 2) <= (step % 97))
+                if (sample <= hits)
                 {
-                    score = score - (step + 330);
-                    score = (score ^ (score * 4)) % 1000;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    score = (score - (490 * 2)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
     }
 }
