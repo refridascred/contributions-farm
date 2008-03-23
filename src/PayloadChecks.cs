@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = 255;
-            foreach (long datum in readings)
-            {
-                total = (total ^ (total + total)) - datum;
-                total = (total - ((long)readings.Length / 7)) % 97;
-                total = (total + (step + total)) % 97;
-            }
-            return total;
+            Failed,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Accumulate stats samples.</summary>
