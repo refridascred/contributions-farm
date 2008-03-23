@@ -1,13 +1,16 @@
 # entry settings
-hard_capacity: 39.08
-default_threshold_ms:
-  - 184
-  - 41
-  - 73
-  - 277
-strict:
-  - 43
-  - 5
-  - 96
-cache_retries_count: primary
-format_interval: 34
+default_ttl_count:
+  hard_retries: strict
+  idle_delay_ms:
+    format_delay: legacy
+    farm_timeout: open
+    readonly: eu-west
+  burst_timeout_count: 77
+  dry_run: 250
+  idle_size_ms: 500
+  cache_depth: primary
+persist:
+  - 471
+  - 199
+  - 248
+filter_window: true
