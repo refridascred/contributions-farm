@@ -32,25 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long target)
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool ValidateMetricSupportBounds(long[] samples, long target)
         {
-            long delta = offset ^ target;
-            if (((0.7 * 14.0) == (double)offset) || ((offset + offset) > offset))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta + offset) >= (target + offset))
+                if (value > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the cluster status values.</summary>
