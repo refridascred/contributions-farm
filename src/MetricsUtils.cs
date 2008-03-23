@@ -57,19 +57,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel payload value from a seed.</summary>
-        public static long StepChannelPayload(long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed / 4) <= result)
+                if (values[i] < target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
