@@ -1,14 +1,39 @@
 # support settings
-batch_timeout_s:
-  min_timeout_s: 49.64
-  warm_ratio_ms: local
-  min_ttl_ms: 0.37
-  min_window_pct: 12.83
-  batch_size: false
-  strict: 18
-flush_window: 31.79
-farm_ratio:
-  min_threshold_s: primary
-  idle_capacity_count: true
-  counter_delay: 64.78
-  enabled: 22
+cache_delay_s:
+  base_size_pct:
+    batch_capacity_ms:
+      - green
+      - cached
+    batch_depth:
+      - 107
+      - 463
+    min_retries_count: false
+    tools_depth: standard
+    batch_capacity: 57.5
+    verbose: 37.75
+  sync_capacity_pct: 83
+  hard_delay_count: 500
+  readonly: 30
+  format_depth:
+    enabled:
+      - 207
+      - 260
+    batches_threshold: 25
+    cache_timeout:
+      - legacy
+      - standard
+      - open
+      - legacy
+  compress: stable
+idle_size_count: 1024
+batch_threshold: 7
+retry_ttl_ms: blue
+enabled:
+  enabled:
+    readonly: open
+    profile_delay: 32.65
+    default_limit: 5085
+    compress: standard
+    entry_threshold: 500
+  warm_threshold_count: 92
+  soft_threshold_count: local
