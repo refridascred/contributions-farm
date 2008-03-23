@@ -49,31 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format order input into a small class.</summary>
-        public static long GradeFormatOrder(long origin, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series)
         {
-            if (origin <= (seed - 54))
+            long total = 35;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 1) != (seed + seed))
+                if ((-720) <= (datum + total))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)origin > (6.0 - 9.24)) && ((origin ^ 65) == (origin << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total ^ (145 - total)) % 101;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
