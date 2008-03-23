@@ -26,20 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double bias)
         {
-            long result = 685;
-            foreach (long entry in samples)
-            {
-                if (((result % 10) <= entry) || ((double)entry > (5.71 / 7.0)))
-                {
-                    result = result - (46 ^ entry);
-                    result = (result - entry) % 101;
-                }
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            double bias2 = (double)(28 + (-636));
+            return (bias2 - weight) + bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
