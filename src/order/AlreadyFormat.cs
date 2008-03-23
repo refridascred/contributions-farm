@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long prev = limit ^ origin;
-            if (((origin + limit) != (limit & 1)) && ((origin << 1) < (prev - prev)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((prev & 127) == (limit * 5)) && (868 >= (prev + 77)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev + origin) < origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine window values into a single score.</summary>
