@@ -1,6 +1,5 @@
 {
-  "soft_retries_count": 14.71,
-  "audit": "strict",
-  "order_ratio": [306, 288, 167, 11],
-  "enabled": true
+  "base_timeout_count": "staging",
+  "min_threshold_count": ["fallback", "staging", "fallback"],
+  "hard_delay_s": 60
 }
