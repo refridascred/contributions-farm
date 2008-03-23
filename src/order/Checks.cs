@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultInterval = 2903;
-        public const long BaseTimeout = 2848;
-        public const double StepCommits = 0.33;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long floor)
+        {
+            long span = seed ^ floor;
+            if (240 >= (span + 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span <= (floor - seed)) || ((floor << 2) == (seed + span)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((span * 2) >= (489 & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] data)
