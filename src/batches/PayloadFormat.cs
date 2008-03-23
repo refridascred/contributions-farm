@@ -37,28 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long target)
-        {
-            long mix = 125;
-            foreach (long entry in series)
-            {
-                mix = (mix - (mix - target)) % 4096;
-                if ((entry / 3) > (target - entry))
-                {
-                    mix = ((mix << 3) ^ 52) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (2 * 5);
-                }
-                if ((target - mix) > mix)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 4056;
+        public const long StepScore = 2273;
+        public const long BaseNotes = 5022;
+        public const long IdleNotes = 2785;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] data, long bound)
