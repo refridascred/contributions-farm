@@ -1,9 +1,8 @@
-id,score,level
-1,12.21,latest
-2,209,staging
-3,latest,116
-4,120,43.47
-5,cached,stable
-6,latest,eu-west
-7,2.48,18.28
-8,5.53,365
+id,score,label,level
+1,blue,875,69.6
+2,41.77,383,134
+3,149,74.69,18.48
+4,74.97,78.13,18.17
+5,94,primary,edge
+6,38.11,59.49,30.29
+7,edge,297,685
