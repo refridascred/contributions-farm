@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Failed,
-            Locked,
-            Dropped,
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank already input into a small class.</summary>
