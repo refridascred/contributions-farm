@@ -1,20 +1,11 @@
 # githubfarm settings
-dry_run:
-  retry_delay_s: open
-  batches_threshold: 1839
-  default_threshold_ms: 26.16
-  readonly: 36.75
-  compress: local
-  cache_retries_count: strict
-readonly: strict
-hard_size_count:
-  - primary
-  - blue
-warm_retries_s: 64.0
-poll_size_pct:
-  flush_interval: eu-west
-  compress: 7085
-  enabled: 70.44
-  poll_window_ms: 7963
-  dry_run: true
-verbose: 250
+cache_depth: false
+session_retries:
+  hard_window_count: cached
+  stats_capacity: 65.33
+  metric_ttl: 4852
+  strict: 79.92
+  sync_ratio: 91.74
+burst_size_s: 42
+warm_size_s: 1024
+batches_size: strict
