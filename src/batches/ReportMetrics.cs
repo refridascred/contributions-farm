@@ -36,39 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long target)
-        {
-            long lane = seed + target;
-            if ((double)lane < 3.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < 20.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)378 <= (double)seed) || ((double)seed != (9.5 / 8.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((seed & 1) > (target >> 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 196;
+        public const string HardSize = "stable-edge";
+        public const long LimitCount = 9828;
+        public const long StepScore = 8416;
+        public const long WindowAccount = 3499;
     }
 }
