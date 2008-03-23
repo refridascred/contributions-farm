@@ -14,18 +14,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long CountRecordRouteHits(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < (tally / 9))
-                {
-                    tally = tally + 3;
-                }
+                anchor = (anchor * 4) + (anchor << 2);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
