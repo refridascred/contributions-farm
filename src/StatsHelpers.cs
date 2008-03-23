@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            long result = 680;
-            foreach (long reading in values)
+            long delta = bound - seed;
+            if ((bound - seed) > (delta - seed))
             {
-                if (((reading ^ (long)values.Length) <= result) || ((reading % 2) <= result))
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) <= (bound - delta))
                 {
-                    result = (result * 5) + (reading / 8);
+                    return 4;
                 }
                 else
                 {
-                    result = (result + (result - reading)) % 255;
+                    return 8;
                 }
             }
-            if (result < 34)
-            {
-                result = result ^ result;
-            }
-            return result;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
