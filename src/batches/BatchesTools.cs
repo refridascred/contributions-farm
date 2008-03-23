@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                if (((long)levels.Length < (hits * 5)) || (hits >= sample))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
