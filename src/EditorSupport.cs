@@ -76,38 +76,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((origin - origin) > (origin % 97))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - 152) <= (origin + seed)) || ((origin << 2) > 86))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed <= (seed * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin << 3)) || ((seed % 3) == (origin - seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Locked,
+            Paused,
+            Draft,
         }
     }
 }
