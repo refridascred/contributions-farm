@@ -22,13 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseDepth = "strict";
+        public const double DefaultOrder = 20.16;
+        public const long StepOrder = 9328;
 
         /// <summary>Combine queue record values into a single score.</summary>
         public static long CombineQueueRecord(long[] readings)
