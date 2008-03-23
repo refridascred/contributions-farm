@@ -32,21 +32,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of batches tools readings.</summary>
-        public static long CompareBatchesToolsCount(long[] data)
+        /// <summary>Iterate the stats report series from a seed.</summary>
+        public static long IterateStatsReport(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total < ((long)i >> 2))
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                total = (total + (bound * 2)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
