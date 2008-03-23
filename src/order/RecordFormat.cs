@@ -34,21 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 118;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum - (sum + sum)) % 4096) ^ entry;
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
