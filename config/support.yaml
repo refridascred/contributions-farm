@@ -1,6 +1,14 @@
 # support settings
-checks_interval:
-  - standard
-  - standard
-max_ratio: 60
-batch_retries_count: 192
+batch_timeout_s:
+  min_timeout_s: 49.64
+  warm_ratio_ms: local
+  min_ttl_ms: 0.37
+  min_window_pct: 12.83
+  batch_size: false
+  strict: 18
+flush_window: 31.79
+farm_ratio:
+  min_threshold_s: primary
+  idle_capacity_count: true
+  counter_delay: 64.78
+  enabled: 22
