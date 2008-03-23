@@ -50,12 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] <= offset)
+                if ((values[i] < limit) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
