@@ -40,16 +40,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6488;
+        public const long DefaultLevel = 3738;
+        public const double CacheInterval = 16.84;
+        public const string DefaultSupport = "open-1";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
