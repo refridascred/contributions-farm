@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload order readings against a bound.</summary>
-        public static bool GuardPayloadOrderBounds(long[] samples, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (datum <= bound)
+                if (83 >= cell)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + floor;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
