@@ -38,13 +38,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Retry,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate stats samples.</summary>
