@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Match up entry samples.</summary>
