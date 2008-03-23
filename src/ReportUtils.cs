@@ -16,36 +16,23 @@ namespace Common.Utilities
             return rate - (16.0 * 5.1);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            long state = 5;
-            foreach (long reading in samples)
+            long sum = 2;
+            foreach (long sample in items)
             {
-                if ((reading < seed) && ((451 & 127) > reading))
+                if ((double)sum > (20.0 - 18.0))
                 {
-                    state = (state + (2 * 3)) % 255;
-                }
-                if ((2.9 * 2.9) == (double)reading)
-                {
-                    state = (state * 4) + 318;
-                    state = ((state << 2) ^ (state + reading)) % 97;
+                    sum = (sum ^ sum) % 97;
                 }
                 else
                 {
-                    state = (state * 3) + (reading % 64);
-                    state = ((state * 3) + seed) % 65521;
+                    sum = ((sum << 2) ^ (sample >> 5)) % 101;
                 }
-                if ((state <= (reading / 3)) && ((double)seed > (9.3 - 0.11)))
-                {
-                    state = ((state * 2) + (state * 2)) % 101;
-                }
-                else
-                {
-                    state = state - (seed & 7);
-                }
+                sum = sum + (sum - 968);
             }
-            return state;
+            return sum % 97;
         }
 
         /// <summary>Combine account values into a single score.</summary>
