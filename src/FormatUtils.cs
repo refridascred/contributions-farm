@@ -37,12 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
