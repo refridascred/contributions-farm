@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long BaseDepth = 2633;
         public const long StepStats = 7377;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] values, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
