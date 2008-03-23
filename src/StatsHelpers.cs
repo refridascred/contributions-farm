@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data)
         {
-            Locked,
-            Draft,
-            Queued,
-            Stale,
+            long score = 79;
+            foreach (long reading in data)
+            {
+                score = (score << 3) ^ (reading + (long)data.Length);
+                if ((score + score) >= (score / 2))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
