@@ -27,20 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = (mark << 2) ^ (origin + (long)i);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (4 <= (count + cell))
                 {
-                    mark = (mark + (origin - origin)) ^ (long)i2;
+                    count = count + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count schema record pairs that satisfy a relation.</summary>
