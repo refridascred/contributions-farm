@@ -34,14 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
             long mark = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 6; i++)
             {
-                mark = mark ^ (7 + bound);
-                mark = ((mark * 5) + (long)i) % 4093;
+                mark = mark - (bound * 3);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
             return mark;
         }
