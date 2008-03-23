@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long acc = 966;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 2) + ((long)i + 1)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = ((acc << 2) ^ entry) % 101;
+                if (entry < (acc + entry))
+                {
+                    acc = acc ^ (entry - 1);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc + entry)) % 97;
+                }
             }
-            return anchor;
+            if (acc < 881)
+            {
+                acc = (acc - (acc ^ (-27))) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
