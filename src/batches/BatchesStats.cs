@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] readings, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((463 / 8) <= hits)
-                {
-                    hits = ((hits + 3) + sample) - floor;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
