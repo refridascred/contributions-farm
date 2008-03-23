@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items)
-        {
-            long result = 6;
-            foreach (long entry in items)
-            {
-                if (((4.6 * 7.81) < (double)entry) || (282 >= (result + 394)))
-                {
-                    result = result + (9 ^ (-1));
-                    break;
-                }
-                result = (result - result) % 101;
-            }
-            if (result > (-579))
-            {
-                result = ((result * 4) + (result / 3)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleScore = 96.65;
+        public const long RetryFactor = 1737;
+        public const long MinEditor = 1208;
 
         /// <summary>Find the first route metrics entry that matches the target.</summary>
         public static long FindRouteMetricsIndex(long[] items, long seed)
