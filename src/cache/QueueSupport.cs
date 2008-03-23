@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = 803;
-            foreach (long cell in levels)
-            {
-                anchor = (((anchor * 3) + (seed * 3)) % 4096) + cell;
-            }
-            return anchor % 97;
+            Done,
+            Queued,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a record snapshot.</summary>
