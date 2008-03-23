@@ -24,19 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double scale = (offset - offset) * 9.62;
-            if (scale >= offset)
-            {
-                scale = scale + (scale - scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (15.0 - bias);
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Compare every pair of batches tools readings.</summary>
