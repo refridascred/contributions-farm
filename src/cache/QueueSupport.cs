@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first cache contributi entry that matches the target.</summary>
-        public static long FindCacheContributiIndex(long[] levels, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 803;
+            foreach (long cell in levels)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 3) + (seed * 3)) % 4096) + cell;
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a record snapshot.</summary>
