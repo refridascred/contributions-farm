@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Compare every pair of account buffer readings.</summary>
+        public static long MatchAccountBufferCount(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((17 % 3) == (reading / 6)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
