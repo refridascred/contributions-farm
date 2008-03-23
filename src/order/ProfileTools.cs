@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long target)
         {
-            if ((seed * 2) < (seed ^ seed))
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed >= (double)999) || ((seed << 2) < target))
+                if (sample <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 3) <= (38 - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((13.0 - 6.8) != (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
