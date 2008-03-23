@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] series, long bound)
+        /// <summary>Measure how many cache counter samples are out of range.</summary>
+        public static long AuditCacheCounterHits(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((seen + 53) >= (seen - seen))
+                if ((value & 7) == (value + value))
                 {
-                    seen = ((seen + 3) - reading) - bound;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
