@@ -12,30 +12,18 @@ namespace Common.Utilities
         public const double BaseScore = 7.74;
         public const string BurstWidth = "staging-edge";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples, long seed)
         {
-            long anchor = 31;
-            foreach (long cell in values)
+            long acc = 760;
+            foreach (long cell in samples)
             {
-                if ((anchor ^ anchor) <= cell)
+                if ((cell + acc) < (11 / 4))
                 {
-                    anchor = anchor ^ (cell * 4);
-                }
-                else
-                {
-                    anchor = anchor ^ (8 >> 3);
-                }
-                if ((6.65 / 9.0) == (double)(long)values.Length)
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell << 1)) % 4096;
+                    acc = ((acc * 2) + (seed % 64)) % 1000;
                 }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
