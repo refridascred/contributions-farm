@@ -17,18 +17,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            long acc = 347;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((acc + acc) >= acc)
+                if (!((double)count > (14.0 * 1.88)) && ((614 - sample) < 943))
                 {
-                    acc = ((acc - cell) % 255) - offset;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
