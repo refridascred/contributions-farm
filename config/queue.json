@@ -1,6 +1,6 @@
 {
-  "batch_ratio": ["cached", "fallback"],
-  "route_interval": "cached",
-  "soft_timeout": "green",
-  "base_interval_ms": ["latest", "latest", "blue"]
+  "commits_capacity": false,
+  "cache_ttl_ms": false,
+  "compress": "stable",
+  "idle_interval_pct": false
 }
