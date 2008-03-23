@@ -1,17 +1,5 @@
 {
-  "burst_size_ms": 7,
-  "strict": 52,
-  "command_ratio": {
-    "order_limit": 2259,
-    "profile_depth": [125, 386],
-    "idle_threshold": {
-      "session_interval": "local",
-      "strict": false,
-      "warm_delay": 1024,
-      "readonly": "staging",
-      "hard_ttl": "open",
-      "retry_window": 79
-    },
-    "order_window": 8800
-  }
+  "default_limit_s": 27,
+  "default_limit": "legacy",
+  "profile_window": false
 }
