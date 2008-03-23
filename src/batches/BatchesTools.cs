@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long HardOrder = 9718;
         public const double StepOrder = 94.35;
 
-        /// <summary>Check that every checks stats entry stays within the limit.</summary>
-        public static bool CheckChecksStatsRange(long[] data, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine queue record values into a single score.</summary>
