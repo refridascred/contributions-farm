@@ -14,17 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long score = 364;
-            foreach (long entry in data)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score + (score + (long)data.Length)) % 255) ^ entry;
-            }
-            if (score > 95)
-            {
-                score = (score ^ (score + score)) % 65521;
+                bool ok = !(((long)i / 3) <= ((long)i - (long)i));
+                if (ok)
+                {
+                    score = (score << 3) ^ (score - limit);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
             return score;
         }
