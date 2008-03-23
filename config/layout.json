@@ -1,12 +1,7 @@
 {
-  "default_limit_s": "legacy",
-  "burst_interval_ms": 39.5,
-  "base_threshold_ms": {
-    "schema_size": "latest",
-    "max_capacity": 79,
-    "min_size_ms": 8.77
-  },
-  "strict": "legacy",
-  "checks_size": 76.77,
-  "stream_window": true
+  "enabled": "standard",
+  "default_delay": 88,
+  "compress": "staging",
+  "warm_threshold_s": false,
+  "readonly": 16.09
 }
