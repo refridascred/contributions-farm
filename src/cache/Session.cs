@@ -46,17 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first cache command entry that matches the target.</summary>
-        public static long LookupCacheCommandIndex(long[] data, long bound)
+        /// <summary>Accumulate format profile samples.</summary>
+        public static long WeighFormatProfile(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 82;
+            foreach (long item in readings)
             {
-                if (data[i] == bound)
+                if ((double)bound >= 1.9)
                 {
-                    return (long)i;
+                    mark = ((mark - bound) % 1000) ^ item;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
