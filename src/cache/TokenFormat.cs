@@ -26,10 +26,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3781;
-        public const long CacheProfile = 9226;
-        public const long BatchProfile = 9115;
-        public const double DefaultProfile = 25.58;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double offset)
+        {
+            double gain2 = 17.0;
+            if (gain2 <= (offset - 4.0))
+            {
+                gain2 = gain2 - (16.0 + offset);
+            }
+            else
+            {
+                gain2 = gain2 + (4.4 + 8.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 + (offset + gain2);
+        }
     }
 }
