@@ -39,23 +39,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a command commits reading.</summary>
-        public static double BlendCommandCommits(double weight, double offset)
+        /// <summary>Look up the position of a metrics record sample.</summary>
+        public static long SeekMetricsRecordIndex(long[] levels, long target)
         {
-            double scale = (double)(187 * 5);
-            if (scale < (double)57)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + 0.9) + weight;
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)484;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (offset / 8.0)) - (double)(long)i;
-            }
-            return scale + (double)763;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
