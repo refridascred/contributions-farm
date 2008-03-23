@@ -37,12 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long seed)
         {
-            Draft,
-            Failed,
-            Done,
+            if (!((bound ^ 775) != (785 - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > (seed << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
