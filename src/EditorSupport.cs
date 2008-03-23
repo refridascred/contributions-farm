@@ -61,31 +61,12 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long limit, long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if (!((target ^ limit) >= (target + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target % 7) >= target) && ((target * 3) != (target ^ limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 2) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
