@@ -1,7 +1,6 @@
 {
-  "readonly": 6052,
-  "flush_limit": false,
-  "persist": ["fallback", "staging"],
-  "batch_window": [411, 26, 484],
-  "strict": 71
+  "strict": [305, 151, 64, 427],
+  "compress": 45,
+  "hard_limit": "blue",
+  "session_delay": [465, 437, 186]
 }
