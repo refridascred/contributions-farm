@@ -47,13 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Dropped,
-            Idle,
-            Failed,
-            Retry,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
