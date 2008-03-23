@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((bound % 97) >= (long)i)
+                {
+                    mark = (mark ^ (mark / 8)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
