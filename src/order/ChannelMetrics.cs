@@ -26,17 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route order entry that matches the target.</summary>
-        public static long LocateRouteOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 3868;
+        public const string LimitFactor = "legacy-edge";
+        public const string MaxRatio = "fallback-edge";
     }
 }
