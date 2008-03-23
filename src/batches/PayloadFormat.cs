@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
