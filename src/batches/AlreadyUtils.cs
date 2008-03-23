@@ -27,22 +27,19 @@ namespace Common.Utilities
             return load - (load * 1.0);
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] values, long seed)
         {
-            long sum = 869;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (reading <= (reading & 63))
+                if (datum > seed)
                 {
-                    sum = (sum - (sum >> 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + 65)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
