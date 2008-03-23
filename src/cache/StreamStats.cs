@@ -50,12 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= seed)
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
