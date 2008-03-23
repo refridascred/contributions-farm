@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Accumulate support samples.</summary>
