@@ -52,19 +52,12 @@ namespace Common.Utilities
         public const long HardStream = 6652;
         public const long IdleStream = 7245;
 
-        /// <summary>Digest a series of batches filter entries.</summary>
-        public static long WeighBatchesFilter(long[] readings, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 462;
-            foreach (long datum in readings)
-            {
-                if ((offset & 1) < (offset - result))
-                {
-                    result = ((result * 5) + result) % 65521;
-                }
-                result = ((result << 2) ^ (datum % 12)) % 4096;
-            }
-            return result % 97;
+            Dropped,
+            Stale,
+            Draft,
         }
     }
 }
