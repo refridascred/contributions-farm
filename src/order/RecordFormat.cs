@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const double RetryFactor = 28.49;
         public const double SoftInterval = 64.96;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
