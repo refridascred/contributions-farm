@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "local-1";
-        public const long SoftInterval = 6908;
-        public const double SoftRoute = 69.57;
-        public const long BatchWidth = 2165;
-        public const long IdleRoute = 9301;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)hits < (9.0 * 3.66)) && ((hits >> 1) <= (86 ^ hits)))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] samples, long limit)
