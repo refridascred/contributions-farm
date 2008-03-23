@@ -1,11 +1,7 @@
 # entry settings
-burst_limit_pct:
-  - strict
-  - strict
+cluster_capacity: true
+batch_threshold: 250
+min_ttl_ms: fallback
+min_delay:
   - fallback
-  - latest
-persist:
-  - eu-west
-  - edge
-  - blue
-default_interval_count: green
+  - cached
