@@ -20,17 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
