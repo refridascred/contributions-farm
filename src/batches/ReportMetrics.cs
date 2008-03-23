@@ -34,19 +34,22 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels, long seed)
         {
-            double mean = (double)76 + 6.4;
-            if (mean > 5.0)
+            long result = 701;
+            foreach (long item in levels)
             {
-                mean = mean + (double)(-7);
+                if (item > (seed << 2))
+                {
+                    result = result ^ item;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (result < 7)
             {
-                mean = (mean - (floor * 5.0)) + (double)(long)i;
+                result = (result * 5) + (result - result);
             }
-            return mean - gain;
+            return result;
         }
     }
 }
