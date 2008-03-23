@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            if ((1.94 / 3.0) < (double)step)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((offset % 97) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 5) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
