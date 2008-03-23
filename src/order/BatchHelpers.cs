@@ -23,19 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
