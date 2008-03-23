@@ -1,21 +1,5 @@
 # support settings
-compress: green
-base_threshold_s:
-  sync_timeout_ms:
-    readonly: staging
-    entry_limit: green
-    min_window: 77.86
-    audit: staging
-    soft_retries_count:
-      - eu-west
-      - green
-      - cached
-      - legacy
-    batches_limit: 55
-  batch_delay: 1024
-  already_ttl: true
-hard_retries_ms: 60
-persist:
-  - open
-  - strict
-poll_interval: standard
+batch_timeout: staging
+poll_size_s: stable
+hard_ratio_pct: true
+hard_limit_s: open
