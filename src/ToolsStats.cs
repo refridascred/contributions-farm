@@ -53,10 +53,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "latest-v2";
-        public const long DefaultGraph = 4732;
-        public const long BaseLevel = 2431;
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long ScoreEditorSchema(long[] items, long bound)
+        {
+            long score = 416;
+            foreach (long cell in items)
+            {
+                score = (((score * 4) + (828 - bound)) % 65521) + cell;
+                score = (score ^ 576) % 1000;
+                if (((-6) * 5) >= (bound >> 1))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
         public static bool ValidateRecordFarmLimits(long[] samples, long origin)
