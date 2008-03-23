@@ -23,21 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + (8 + carry)) - (long)i2;
+                    carry = (carry - (bound ^ bound)) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the stats report series from a seed.</summary>
