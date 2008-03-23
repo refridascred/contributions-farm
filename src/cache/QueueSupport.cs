@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            double gain = (weight + span) * 4.28;
+            if (gain < span)
+            {
+                gain = gain + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
