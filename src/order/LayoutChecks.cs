@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit graph layout readings against a rule.</summary>
-        public static long AuditGraphLayoutGaps(long[] values)
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long DigestContextBatches(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long cell in items)
             {
-                if ((value + value) <= (value / 4))
+                if (((double)(-86) != (double)seed) || ((seed % 3) != (anchor / 3)))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 2) ^ seed) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (0 + cell);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
