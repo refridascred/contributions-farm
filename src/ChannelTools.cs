@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 478;
+        public const long MinBatches = 5364;
+        public const string CacheInterval = "open-edge";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] readings, long origin)
