@@ -27,10 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 4315;
-        public const double RetryScore = 24.23;
-        public const long WindowCount = 178;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double gain, double floor)
