@@ -40,18 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items)
-        {
-            long result = -63;
-            foreach (long value in items)
-            {
-                if (!(value > (value << 3)))
-                {
-                    result = (result << 2) ^ (value & 127);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "open-1";
+        public const long BatchWindow = 6972;
+        public const long StepWindow = 9321;
+        public const long SoftWindow = 3386;
     }
 }
