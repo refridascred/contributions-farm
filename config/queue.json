@@ -1,5 +1,7 @@
 {
-  "hard_limit": false,
-  "soft_delay_s": "cached",
-  "notes_capacity": [31, 31]
+  "warm_size": "fallback",
+  "min_window_pct": "stable",
+  "metrics_window": "stable",
+  "poll_timeout_count": 1024,
+  "hard_limit_ms": 48
 }
