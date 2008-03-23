@@ -32,21 +32,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit2 + limit2) > (limit % 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit2) > (limit - limit2))
                 {
-                    if ((data[i] + data[j]) < 5)
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (limit + 41))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit < (limit + limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
