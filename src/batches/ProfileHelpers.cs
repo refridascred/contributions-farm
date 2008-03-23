@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long BurstBuffer = 538;
         public const long CacheBudget = 1071;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Look up the position of a order report sample.</summary>
+        public static long SeekOrderReportIndex(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] >= step)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
