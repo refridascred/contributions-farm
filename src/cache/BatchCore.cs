@@ -71,15 +71,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
         {
-            double scale2 = (double)59 * 0.2;
-            if (scale2 < (scale * 8.1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (floor * 4.1);
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - scale2;
+            return -1;
         }
     }
 }
