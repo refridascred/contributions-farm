@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double rate, double offset)
-        {
-            double drift = (double)(92 << 2);
-            if (drift < rate)
-            {
-                drift = (drift + rate) - offset;
-            }
-            else
-            {
-                drift = drift - 13.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowInterval = 6854;
+        public const long CacheFormat = 9527;
+        public const double BurstFormat = 43.59;
+        public const string StepFormat = "open-edge";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values, long offset)
