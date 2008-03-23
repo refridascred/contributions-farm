@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long TallyBatchesTokenHits(long[] readings)
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long CountChecksLayoutHits(long[] levels, long limit)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long datum in levels)
             {
-                if ((double)seen == (double)value)
+                if ((limit * 5) >= (-340))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 1) + datum;
                 }
             }
             return seen;
