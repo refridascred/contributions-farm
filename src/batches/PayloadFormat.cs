@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long WindowToken = 9637;
         public const long RetrySize = 3236;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long total = 7;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit + limit) >= limit) || ((reading + total) <= (limit - reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - total) % 4096;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = total ^ (total << 1);
-            }
-            return total % 65521;
+            return hits;
         }
     }
 }
