@@ -76,16 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total + (bound >> 3);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftDepth = 3.37;
+        public const long IdleRatio = 9514;
+        public const long CacheAlready = 7434;
+        public const string StepAlready = "strict-1";
+        public const long BurstTimeout = 8025;
     }
 }
