@@ -33,23 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long MeasureCounterProfileMatches(long[] items)
         {
-            double rate = (double)(589 + 4);
-            if (rate <= span)
+            long count = 0;
+            foreach (long item in items)
             {
-                rate = rate + ratio;
+                if ((item + item) < count)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                rate = rate + (10.0 / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (4.3 - 8.2)) + (double)(long)i;
-            }
-            return rate + (double)7;
+            return count;
         }
 
         /// <summary>Classify a cluster format pair into a bucket.</summary>
