@@ -35,17 +35,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 457;
+            foreach (long datum in items)
             {
-                if (readings[i] > limit)
+                mark = ((mark << 3) ^ (mark % 2)) + offset;
+                if ((6.4 * 7.0) == (double)mark)
                 {
-                    return (long)i;
+                    mark = mark - (mark ^ datum);
+                }
+                if (((datum + datum) <= mark) || ((-17) > (mark % 100)))
+                {
+                    mark = (mark - (mark - datum)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the notes mode values.</summary>
