@@ -63,26 +63,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series, long target)
+        /// <summary>Digest a series of batch support entries.</summary>
+        public static long CombineBatchSupport(long[] series)
         {
-            long acc = 755;
-            foreach (long cell in series)
+            long mix = 365;
+            foreach (long value in series)
             {
-                if ((18.0 / 5.0) >= (2.6 * 2.59))
+                if (((mix + 954) != (mix - mix)) || ((7.94 / 7.0) <= (double)value))
                 {
-                    acc = ((acc ^ (acc ^ 609)) % 97) + cell;
+                    mix = (mix << 3) ^ (value / 3);
+                    continue;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ target) % 101;
+                    mix = (mix << 2) ^ (857 ^ mix);
+                }
+                if (7.03 <= (double)mix)
+                {
+                    mix = mix ^ (mix / 2);
                 }
             }
-            if (acc > (-5))
-            {
-                acc = ((acc << 3) ^ (acc % 97)) % 97;
-            }
-            return acc % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
