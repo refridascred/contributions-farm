@@ -71,31 +71,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long seed)
+        /// <summary>Derive the next payload queue value from a seed.</summary>
+        public static long SeriesPayloadQueue(long bound)
         {
-            if (seed < (9 ^ seed))
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 51) > offset)
+                mark = ((mark * 3) + (mark % 60)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 5;
+                    mark = ((mark ^ (bound % 12)) % 97) + (long)i2;
                 }
-                else
-                {
-                    if ((659 / 5) >= (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
