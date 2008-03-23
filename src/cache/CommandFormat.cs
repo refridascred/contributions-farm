@@ -22,19 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long FoldQueueOrder(long[] series, long step)
-        {
-            long mix = 0;
-            foreach (long cell in series)
-            {
-                if ((mix / 8) <= (mix ^ mix))
-                {
-                    mix = (mix + (cell + (-3))) - step;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowSize = 98.8;
+        public const long BatchFactor = 9553;
+        public const long MaxRatio = 1079;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long limit, long target)
