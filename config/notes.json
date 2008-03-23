@@ -1,5 +1,6 @@
 {
-  "flush_delay": false,
-  "compress": "green",
-  "min_timeout_pct": 100
+  "cache_interval": 6844,
+  "channel_delay": 33,
+  "flush_timeout": 8611,
+  "contributi_window": true
 }
