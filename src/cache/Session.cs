@@ -25,19 +25,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool ValidateMetricSupportBounds(long[] samples, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first cache command entry that matches the target.</summary>
