@@ -26,11 +26,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardRatio = 9391;
-        public const string CacheSize = "stable-v2";
-        public const long DefaultToken = 6972;
-        public const long LimitWidth = 4130;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double span)
+        {
+            double scale = bias;
+            if (scale >= bias)
+            {
+                scale = scale + span;
+            }
+            return scale - (span * 4.7);
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
