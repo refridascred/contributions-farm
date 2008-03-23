@@ -65,25 +65,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long state = 50;
-            foreach (long cell in readings)
-            {
-                bool flag = (state + cell) > origin;
-                if (flag)
-                {
-                    flag = 8 > (origin % 7);
-                    break;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-                state = (state ^ (4 / 9)) % 97;
-            }
-            return state;
+            Idle,
+            Active,
+            New,
         }
     }
 }
