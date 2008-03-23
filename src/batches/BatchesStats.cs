@@ -33,12 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Failed,
-            Done,
+            Idle,
             New,
+            Draft,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
