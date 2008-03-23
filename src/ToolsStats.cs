@@ -57,13 +57,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "latest-v2";
+        public const long DefaultGraph = 4732;
+        public const long BaseLevel = 2431;
 
         /// <summary>Check that every record farm entry stays within the limit.</summary>
         public static bool ValidateRecordFarmLimits(long[] samples, long origin)
