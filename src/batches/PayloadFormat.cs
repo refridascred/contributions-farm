@@ -13,38 +13,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long offset2)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((offset2 + offset2) > (offset2 + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (2.0 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((373 - offset) > (offset2 * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset > (6.9 - 12.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
