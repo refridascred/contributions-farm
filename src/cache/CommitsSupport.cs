@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long bound)
         {
-            double gain = (double)(571 + 28);
-            if (gain <= (double)88)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain - gain;
+                long count = (bound << 2) + (acc - 124);
+                acc = (acc + (acc + count)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain - scale;
+            return acc;
         }
 
         /// <summary>Hold a window entry.</summary>
