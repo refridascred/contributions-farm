@@ -16,20 +16,21 @@ namespace Common.Utilities
             return scale - 9.4;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 2) + (seed / 4)) - (long)i2;
-                    mark = ((mark << 3) ^ (seed & 7)) % 65521;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the schema account entries that pass the check.</summary>
