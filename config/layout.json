@@ -1,17 +1,5 @@
 {
-  "idle_ratio_pct": {
-    "dry_run": {
-      "soft_ratio": [198, 68, 447, 346],
-      "dry_run": 30,
-      "batch_ttl_s": "staging",
-      "base_ttl": "latest",
-      "strict": 11.96,
-      "cache_capacity_count": "latest"
-    },
-    "sync_window": 6842,
-    "warm_ttl_pct": "green"
-  },
-  "sync_interval": 9668,
-  "readonly": 22.1,
-  "contributi_threshold": "staging"
+  "sync_timeout_count": [82, 143, 319],
+  "idle_ttl_s": ["cached", "local"],
+  "token_depth": 95
 }
