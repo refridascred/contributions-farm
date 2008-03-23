@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((5.7 + 6.9) >= (double)value)
-                {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5185;
+        public const long WindowSize = 8627;
+        public const double RetryMetric = 27.25;
+        public const long IdleCount = 1137;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] series, long floor)
