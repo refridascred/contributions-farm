@@ -14,15 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the farm class values.</summary>
