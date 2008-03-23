@@ -1,8 +1,5 @@
 {
-  "flush_ratio_pct": 100,
-  "queue_retries": "eu-west",
-  "format_threshold": "staging",
-  "poll_interval": 2198,
-  "idle_capacity_ms": 6724,
-  "retry_capacity": 93.57
+  "schema_timeout": ["blue", "stable", "fallback", "local"],
+  "format_limit": 30,
+  "strict": "cached"
 }
