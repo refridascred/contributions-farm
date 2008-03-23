@@ -71,11 +71,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 5977;
+        public const long LimitDepth = 6850;
+        public const long WindowRatio = 5475;
+        public const long MaxEntry = 1210;
     }
 }
