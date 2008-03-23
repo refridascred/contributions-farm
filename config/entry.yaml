@@ -1,9 +1,6 @@
 # entry settings
-session_delay: 6696
-verbose: legacy
-soft_window:
-  - 482
-  - 407
-  - 320
-  - 296
-token_ttl: 7651
+strict: false
+dry_run: false
+base_retries_ms: 72.02
+metric_interval: 26
+payload_ttl: 39.16
