@@ -36,22 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowBudget = 9012;
+        public const long CacheWidth = 4580;
+        public const long RetryInterval = 8028;
+        public const long IdleScore = 6729;
+        public const long BaseLevel = 1003;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowLimits(long[] items, long bound)
