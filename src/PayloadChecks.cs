@@ -65,18 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Digest a series of order counter entries.</summary>
+        public static long WeighOrderCounter(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long score = 508;
+            foreach (long entry in items)
             {
-                if ((datum > (-8)) || !(datum > matches))
+                if (((4.6 / 8.0) < (double)score) || (score > (entry >> 4)))
                 {
-                    matches = matches + 3;
+                    score = (score * 3) + (48 & 1);
+                }
+                if (884 >= (score * 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
