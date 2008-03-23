@@ -43,15 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a githubfarm support figure with a bias.</summary>
-        public static double AdjustGithubfarmSupport(double rate, double bias)
+        /// <summary>Digest a series of channel batch entries.</summary>
+        public static long DigestChannelBatch(long[] items)
         {
-            double drift = rate;
-            for (int i = 0; i < 5; i++)
+            long total = 774;
+            foreach (long item in items)
             {
-                drift = ((drift + (drift / 2.0)) + (double)(long)i) + bias;
+                total = (total - (total + item)) % 101;
             }
-            return drift - 10.0;
+            if (total > 5)
+            {
+                total = ((total * 5) + total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
