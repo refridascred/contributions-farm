@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long limit)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            long diff = target - limit;
+            if ((double)limit > (double)diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target > limit) || ((15.0 - 4.0) <= (double)diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((5.0 - 8.5) <= (double)diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
