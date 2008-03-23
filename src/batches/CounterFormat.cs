@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long bound)
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long MeasureBatchesAccountGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (levels[i] > bound)
+                if (145 <= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
