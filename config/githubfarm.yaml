@@ -1,11 +1,8 @@
 # githubfarm settings
-compress:
-  - primary
-  - fallback
-  - latest
-dry_run: 40.54
-enabled:
-  - legacy
-  - cached
-  - stable
-retry_delay_count: 54.41
+notes_depth: blue
+burst_capacity: true
+verbose: 83.37
+min_window_ms:
+  - 77
+  - 348
+cache_timeout: eu-west
