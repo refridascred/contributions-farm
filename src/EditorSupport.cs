@@ -61,11 +61,18 @@ namespace Common.Utilities
             return scale + (double)763;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 62.35;
-        public const double WindowFilter = 89.74;
-        public const long CacheScore = 7554;
-        public const string MinWidth = "primary-edge";
-        public const long MinSpan = 9740;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - seen) != (seen << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
