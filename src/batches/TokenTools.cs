@@ -37,14 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            Done,
-            Idle,
-            Draft,
-            Failed,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
