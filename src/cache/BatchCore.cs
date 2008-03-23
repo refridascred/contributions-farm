@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
             public double Score { get; set; }
-            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
