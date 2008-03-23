@@ -83,24 +83,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Match up profile payload samples.</summary>
+        public static long MatchProfilePayloadCount(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 2) ^ total;
-                if ((total >> 4) >= (total / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 3) ^ limit;
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (((total * 3) + (limit * 5)) % 4096) + (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a format summary.</summary>
