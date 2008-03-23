@@ -21,12 +21,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            Paused,
-            Stale,
-            Done,
+            double ratio = weight;
+            if (ratio > (double)7)
+            {
+                ratio = (ratio - 0.2) - offset;
+            }
+            return ratio - (double)(-2);
         }
     }
 }
