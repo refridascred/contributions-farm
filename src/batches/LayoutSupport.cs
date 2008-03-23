@@ -81,21 +81,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
