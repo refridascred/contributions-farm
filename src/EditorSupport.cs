@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 56.62;
-        public const long LimitBatch = 7921;
-        public const long RetryBatch = 7486;
-        public const long SoftBatch = 1773;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] readings, long seed)
