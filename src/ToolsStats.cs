@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const string BurstBatch = "standard";
         public const long StepBatch = 3087;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] values, long origin)
         {
-            Dropped,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (origin > ((long)values.Length ^ origin))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
