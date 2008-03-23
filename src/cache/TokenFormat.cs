@@ -32,23 +32,15 @@ namespace Common.Utilities
         public const double RetryScore = 24.23;
         public const long WindowCount = 178;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            double gain2 = 17.0;
-            if (gain2 <= (offset - 4.0))
+            double gain2 = floor;
+            for (int i = 0; i < 6; i++)
             {
-                gain2 = gain2 - (16.0 + offset);
+                gain2 = ((gain2 + gain2) + (double)(long)i) + gain;
             }
-            else
-            {
-                gain2 = gain2 + (4.4 + 8.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 + (offset + gain2);
+            return gain2 + (1.91 / 3.0);
         }
     }
 }
