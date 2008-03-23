@@ -31,19 +31,19 @@ namespace Common.Utilities
             return load - (load * 1.0);
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] values, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mark = 24;
+            foreach (long cell in samples)
             {
-                if (datum > seed)
+                mark = ((mark + (741 / 2)) % 1000) - offset;
+                if (cell < (mark ^ cell))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Digest a series of stats filter entries.</summary>
