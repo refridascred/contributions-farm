@@ -19,31 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long target, long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (((floor * 5) >= (floor + target)) || (floor <= (target & 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target < (2.0 * 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((12.0 / 6.0) < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
