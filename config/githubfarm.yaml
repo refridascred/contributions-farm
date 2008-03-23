@@ -1,5 +1,5 @@
 # githubfarm settings
-hard_interval_pct: 11
-default_window_count: 26
-idle_ttl: 56.06
-persist: 100
+entry_limit: 7118
+max_interval_count: true
+commits_interval: 60
+cache_ratio_ms: 83.65
