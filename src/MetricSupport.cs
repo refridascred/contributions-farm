@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a session notes counter forward.</summary>
-        public static long RollSessionNotes(long origin)
+        /// <summary>Check that every editor token entry stays within the limit.</summary>
+        public static bool CheckEditorTokenRange(long[] data, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
