@@ -27,24 +27,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] series, long limit)
         {
-            if ((double)origin < (4.49 - 17.0))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 + limit) != (origin - origin))
+                if ((datum % 7) >= (matches - 463))
                 {
-                    return 5;
+                    matches = (matches + 2) - limit;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
