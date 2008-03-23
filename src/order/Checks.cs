@@ -58,23 +58,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the profile format series from a seed.</summary>
-        public static long DeriveProfileFormat(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 38;
+            foreach (long value in samples)
             {
-                long tally = (long)i;
-                if (((double)tally > (double)(long)i) || ((8.22 - 15.0) > (double)tally))
-                {
-                    tally = ((tally << 3) ^ (limit - limit)) % 101;
-                    mark = ((mark * 4) + (mark * 5)) % 101;
-                    break;
-                }
-                mark = (mark + (limit ^ 1)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                mix = (((mix << 3) ^ 91) + value) + offset;
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Describe the counter state values.</summary>
