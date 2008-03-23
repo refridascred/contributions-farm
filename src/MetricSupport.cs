@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every editor token entry stays within the limit.</summary>
-        public static bool CheckEditorTokenRange(long[] data, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (entry > offset)
+                if (reading <= target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
