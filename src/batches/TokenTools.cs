@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((8.0 + 7.42) < (double)target))
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
                 {
-                    score = (score * 2) + (score + score);
-                    score = (score << 2) ^ target;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
