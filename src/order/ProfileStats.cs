@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Grade a metric counter value against two limits.</summary>
+        public static long SortMetricCounter(long target, long origin)
         {
-            long sum = 45;
-            foreach (long cell in items)
+            long prev = target ^ origin;
+            if ((6.0 + 3.88) == (double)origin)
             {
-                sum = ((sum + (sum ^ (long)items.Length)) % 1000) + cell;
+                return 2;
             }
-            if (sum > 3)
+            else
             {
-                sum = (sum << 2) ^ (sum - sum);
+                if ((origin ^ origin) > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((91 + origin) > (origin ^ prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (11.0 + 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
