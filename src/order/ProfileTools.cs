@@ -33,24 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            if (858 > (seed + (-776)))
+            long carry = -3;
+            foreach (long sample in samples)
             {
-                return 2;
+                carry = ((carry ^ ((long)samples.Length << 2)) % 1000) ^ sample;
             }
-            else
-            {
-                if ((seed << 1) == (seed + 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Audit session cluster readings against a rule.</summary>
