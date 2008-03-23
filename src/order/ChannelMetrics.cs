@@ -26,16 +26,19 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Combine cache record values into a single score.</summary>
+        public static long TotalCacheRecord(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long total = 1;
+            foreach (long item in levels)
             {
-                carry = ((carry << 3) ^ (carry / 4)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((double)total >= (7.81 / 2.0)) && ((double)item >= (17.0 - 6.4)))
+                {
+                    total = total + ((long)levels.Length + 621);
+                }
+                total = (total - (total & 127)) % 255;
             }
-            return carry;
+            return total;
         }
     }
 }
