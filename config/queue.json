@@ -1,6 +1,25 @@
 {
-  "soft_timeout_ms": "standard",
-  "base_interval": ["open", "blue", "local"],
-  "graph_delay": 2723,
-  "cache_delay_pct": 33
+  "readonly": "legacy",
+  "min_retries_s": {
+    "burst_threshold_pct": [425, 331, 318, 191],
+    "flush_retries": ["eu-west", "blue", "local", "open"],
+    "metric_threshold": false,
+    "burst_size_s": 1272,
+    "queue_depth": {
+      "schema_window": "legacy",
+      "stats_timeout": true,
+      "batch_depth_count": 5970,
+      "soft_interval_ms": [217, 51, 67]
+    },
+    "base_retries_s": 75.04
+  },
+  "warm_interval_ms": {
+    "retry_depth_pct": "edge",
+    "payload_limit": 60.55,
+    "default_window_pct": 60,
+    "verbose": 60,
+    "batch_size": "legacy",
+    "profile_timeout": "stable"
+  },
+  "max_capacity": "cached"
 }
