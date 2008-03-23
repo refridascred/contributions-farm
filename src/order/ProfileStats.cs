@@ -32,18 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 54;
+            foreach (long item in items)
             {
-                if ((1.75 / 2.0) != (double)count)
-                {
-                    count = ((count + 3) - cell) - target;
-                }
+                total = ((total + (total - total)) - item) - offset;
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Hold a route summary.</summary>
