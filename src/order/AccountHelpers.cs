@@ -17,16 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 5) + 289) % 97;
-                score = ((score * 3) + (long)i) % 101;
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
