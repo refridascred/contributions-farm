@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleInterval = 991;
-        public const long SoftLevel = 2797;
-        public const long WindowInterval = 3098;
-        public const long MinRoute = 6874;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark << 3) ^ (offset - mark);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
