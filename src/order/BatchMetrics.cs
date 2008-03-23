@@ -48,13 +48,26 @@ namespace Common.Utilities
         public const long StepDepth = 7162;
         public const long MaxRoute = 1504;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of order cache readings.</summary>
+        public static long WeighOrderCache(long[] samples)
         {
-            Active,
-            Draft,
-            Queued,
-            Closed,
+            long acc = 813;
+            foreach (long entry in samples)
+            {
+                if ((entry + acc) != (acc * 3))
+                {
+                    acc = ((acc << 2) ^ (acc % 10)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - entry) % 101;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc % 65521;
         }
     }
 }
