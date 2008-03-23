@@ -26,15 +26,16 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            double mean = ratio;
-            if (mean >= (mean / 8.0))
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mean = mean + bias;
+                carry = ((carry << 3) ^ (carry / 4)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mean + (bias / 3.0);
+            return carry;
         }
     }
 }
