@@ -81,11 +81,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchFactor = "alpha-1";
-        public const long RetryCache = 6014;
-        public const long StepSpan = 9937;
-        public const long MinCache = 7656;
-        public const string RetryWidth = "strict";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
