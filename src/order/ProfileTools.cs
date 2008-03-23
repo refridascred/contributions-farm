@@ -12,10 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSize = 85.07;
-        public const string BatchAccount = "cached";
-        public const long WindowAccount = 8559;
+        /// <summary>Count the format token entries that pass the check.</summary>
+        public static long TallyFormatTokenMatches(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((double)tally < 0.8))
+                {
+                    tally = ((tally + 3) - value) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] samples)
