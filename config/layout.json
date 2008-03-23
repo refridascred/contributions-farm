@@ -1,5 +1,6 @@
 {
-  "metrics_threshold": 4295,
-  "min_window_s": 250,
-  "flush_capacity_ms": "standard"
+  "audit": "primary",
+  "checks_retries": "blue",
+  "retry_ratio_count": "strict",
+  "hard_threshold": [375, 126]
 }
