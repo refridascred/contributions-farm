@@ -1,7 +1,5 @@
 # support settings
-retry_interval_s: standard
-idle_window_pct: fallback
-default_depth: eu-west
-commits_threshold: 72
-persist: 72
-max_ttl_pct: 91.96
+format_ttl: 2102
+metrics_interval: true
+sync_limit_ms: 8849
+readonly: 74.43
