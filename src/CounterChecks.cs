@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long DigestSessionLayout(long[] samples, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long offset)
         {
-            long total = 34;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((855 + item) < ((long)samples.Length << 2))
+                if (!(seen > (value * 4)))
                 {
-                    total = (total ^ (offset - item)) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + (item << 1);
+                    seen = (seen + 2) + offset;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two format measurements.</summary>
