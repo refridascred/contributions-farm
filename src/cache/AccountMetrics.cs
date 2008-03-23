@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long RetryFactor = 6439;
         public const double LimitCount = 35.93;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            long score = -432;
-            foreach (long sample in samples)
+            double drift = (span - gain) + 6.38;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)score <= (5.0 - 7.0))
-                {
-                    score = (((score * 3) + (target - score)) % 101) ^ sample;
-                }
+                drift = (drift - 9.02) + (double)(long)i;
             }
-            if (score > 33)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score;
+            return drift - (span + drift);
         }
 
         /// <summary>Locate a already reading by value.</summary>
