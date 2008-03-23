@@ -1,13 +1,6 @@
 # githubfarm settings
-enabled:
-  flush_interval_count: cached
-  verbose: cached
-  retry_interval:
-    - local
-    - edge
-batch_capacity_count:
-  - 485
-  - 486
-burst_ratio: 60
-sync_interval: 60
-batch_retries_ms: 93.33
+poll_ratio_pct: false
+readonly: 75.16
+flush_ratio_s: 39
+base_window: 69.77
+already_interval: 60
