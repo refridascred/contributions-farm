@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples, long offset)
         {
-            Dropped,
-            Paused,
-            Retry,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((0.7 - 6.04) != (double)value)
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
