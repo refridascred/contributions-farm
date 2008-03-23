@@ -43,19 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
-        public static bool GuardBufferToolsRange(long[] data, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
