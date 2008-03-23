@@ -48,11 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheRatio = "standard-v2";
-        public const string WindowNotes = "primary-v2";
-        public const double BatchFactor = 45.56;
-        public const long RetryNotes = 5117;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
