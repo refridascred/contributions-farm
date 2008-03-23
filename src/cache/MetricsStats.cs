@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Check that every contributi window entry stays within the limit.</summary>
+        public static bool VerifyContributiWindowBounds(long[] data, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
