@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long WindowProfile = 437;
         public const long SoftLevel = 1738;
 
-        /// <summary>Compare every pair of channel farm readings.</summary>
-        public static long MatchChannelFarmCount(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(count <= (origin - sample)) && ((4 + sample) <= (-95)))
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
