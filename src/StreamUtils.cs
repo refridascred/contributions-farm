@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long LimitInterval = 1197;
         public const long StepCount = 4011;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double span)
         {
-            Queued,
-            Paused,
-            New,
-            Synced,
+            double gain2 = (span - 0.9) * 8.1;
+            return (gain2 + (span + span)) + gain;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
