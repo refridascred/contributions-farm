@@ -82,16 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state ^ (state * 2)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
