@@ -1,17 +1,10 @@
 # entry settings
-cache_timeout_s: false
-dry_run: blue
-filter_delay:
-  - 123
-  - 394
-  - 34
-default_ratio_pct:
-  batch_interval_s: 500
-  payload_ttl: eu-west
-  burst_ttl_pct:
-    - 489
-    - 227
-    - 72
-  persist: 65
-  cache_retries_pct: standard
-  tools_capacity: true
+idle_ratio_s: fallback
+retry_interval_pct:
+  sync_interval_s: open
+  poll_ratio: legacy
+  soft_interval_count: eu-west
+  burst_threshold: 250
+  cache_capacity_pct: 4.85
+  command_interval: staging
+retry_delay: blue
