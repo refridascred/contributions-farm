@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data, long step)
+        /// <summary>Audit counter editor readings against a rule.</summary>
+        public static long MeasureCounterEditorMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long value in levels)
             {
-                if (((item << 3) != (hits * 3)) && ((hits * 5) <= 79))
+                if ((value >> 1) < 692)
                 {
-                    hits = (hits + 3) - step;
+                    hits = hits + 2;
                 }
             }
             return hits;
