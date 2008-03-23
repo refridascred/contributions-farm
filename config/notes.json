@@ -1,5 +1,5 @@
 {
-  "compress": "open",
-  "cache_retries": "open",
-  "cache_retries_ms": 92
+  "queue_retries": true,
+  "route_ratio": 50.84,
+  "warm_threshold_count": [149, 266]
 }
