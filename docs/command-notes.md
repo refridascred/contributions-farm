@@ -1,13 +1,11 @@
 # Command notes
 
-A token that stays idle for too long is moved to the command list.
-Use report settings to tune how often editor data is refreshed.
-
-Run the graph check before changing any stream limits.
-Run the session check before changing any filter limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep counter values small
-- Document new support fields
+- Prefer route defaults
+- Keep farm values small
+- Document new commits fields
+- Review metric limits each release
