@@ -30,13 +30,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            Active,
-            Paused,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (5.99 * 5.4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics record sample.</summary>
