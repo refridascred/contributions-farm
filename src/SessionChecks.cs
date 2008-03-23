@@ -45,15 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format already measurements.</summary>
-        public static double AdjustFormatAlready(double scale, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double gain = span;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (scale * 9.85)) + (double)(long)i;
-            }
-            return gain + gain;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
