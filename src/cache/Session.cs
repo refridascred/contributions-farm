@@ -14,12 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstSpan = 9262;
-        public const string SoftReport = "fallback-v2";
-        public const long StepReport = 1154;
-        public const long MinLevel = 1049;
-        public const long StepLevel = 773;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Dropped,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
