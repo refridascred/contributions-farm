@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
