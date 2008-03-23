@@ -35,19 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] data, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Paused,
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
