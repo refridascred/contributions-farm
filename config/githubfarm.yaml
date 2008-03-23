@@ -1,14 +1,6 @@
 # githubfarm settings
-hard_retries_pct: 59.97
-soft_interval_ms:
-  flush_threshold_count: 14.97
-  notes_capacity: 250
-  format_size:
-    - 447
-    - 250
-    - 185
-    - 150
-  poll_threshold_ms: 38.19
-enabled: 7057
-base_threshold_s: primary
-default_size_pct: 250
+idle_capacity: eu-west
+batch_window_s: 29.97
+readonly: 43.56
+flush_timeout_ms: 54.38
+dry_run: 29
