@@ -13,22 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] data, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = 441;
+            foreach (long item in series)
             {
-                if ((((double)seen > 9.5) || (((long)data.Length << 1) == (step + 76))) && ((1.6 - 5.0) > (double)entry))
+                if ((item <= (mix & 255)) || ((item + mix) > (-40)))
                 {
-                    seen = seen + 1;
+                    mix = ((mix ^ (81 - (long)series.Length)) % 65521) - bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix ^ (mix << 1)) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
