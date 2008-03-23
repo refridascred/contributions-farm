@@ -18,18 +18,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long AuditFormatBatchMatches(long[] levels, long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double load = 9.7;
+            if (load > (double)65)
             {
-                if ((matches - entry) == (seed % 3))
-                {
-                    matches = matches + 2;
-                }
+                load = load + load;
             }
-            return matches;
+            else
+            {
+                load = load + (double)182;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (scale * 8.5)) - (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
