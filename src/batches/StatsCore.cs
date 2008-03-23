@@ -43,15 +43,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a checks filter reading.</summary>
-        public static double AdjustChecksFilter(double scale, double bias)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            double ratio = (double)((-2) << 1);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (((ratio + (ratio / 8.0)) - (double)(long)i) - scale) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Hold a window snapshot.</summary>
