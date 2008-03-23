@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
