@@ -46,27 +46,32 @@ namespace Common.Utilities
         public const long DefaultBudget = 1357;
         public const long BaseTimeout = 2064;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long seed)
+        /// <summary>Rank format channel input into a small class.</summary>
+        public static long BucketFormatChannel(long offset, long floor)
         {
-            long carry = 512;
-            foreach (long entry in levels)
+            long bound = offset - floor;
+            if ((16 + offset) < (bound / 6))
             {
-                carry = ((carry * 4) + (carry / 3)) % 4096;
-                if ((seed - seed) >= (carry - entry))
+                return 3;
+            }
+            else
+            {
+                if (((-953) / 7) >= (floor & 63))
                 {
-                    carry = ((carry << 2) ^ (-69)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry + (742 % 8)) % 4096;
+                    if (floor <= (56 % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry ^ (seed - carry);
-            }
-            return carry;
         }
     }
 }
