@@ -59,32 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric support pair into a bucket.</summary>
-        public static long GradeMetricSupport(long bound, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long seed)
         {
-            long offset = bound ^ step;
-            if ((step % 3) > (step << 1))
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step > (double)bound) || ((7 + 589) == (offset ^ offset)))
+                if (datum > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.61 / 8.0) < (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
