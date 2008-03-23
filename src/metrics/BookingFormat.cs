@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long offset)
         {
-            Failed,
-            Ready,
-            Paused,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
