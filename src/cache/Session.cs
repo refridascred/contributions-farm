@@ -32,16 +32,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a graph stream counter forward.</summary>
-        public static long RollGraphStream(long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long delta = offset ^ target;
+            if (((0.7 * 14.0) == (double)offset) || ((offset + offset) > offset))
             {
-                acc = ((acc << 3) ^ (target + acc)) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((delta + offset) >= (target + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the cluster status values.</summary>
