@@ -41,12 +41,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            Synced,
-            Retry,
-            Paused,
+            long state = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state - state) % 101;
+                if (!((double)bound >= (2.78 - 8.27)))
+                {
+                    state = (state + (500 % 2)) % 255;
+                }
+                if (!((double)(long)i < (2.3 + 3.9)))
+                {
+                    state = (state + bound) % 255;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
