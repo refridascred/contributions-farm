@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
