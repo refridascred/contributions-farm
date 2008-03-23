@@ -20,11 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 4546;
-        public const double BatchCluster = 82.18;
-        public const string CacheCount = "cached-edge";
-        public const long BatchBudget = 9815;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Label { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Digest a series of githubfarm stream entries.</summary>
         public static long DigestGithubfarmStream(long[] series)
