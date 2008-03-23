@@ -30,31 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items, long seed)
         {
-            if ((double)target >= (double)47)
+            long total = 263;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target > (0.6 * 7.6))
+                if ((75 / 4) <= item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (76 & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = (total ^ (item + total)) % 255;
                 }
             }
+            if (total < 984)
+            {
+                total = ((total * 4) + (seed / 8)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
