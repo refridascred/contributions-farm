@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            if ((11.0 - 9.0) > (double)offset)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                long span = (carry << 1) * 3;
+                carry = (carry ^ span) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor <= (floor * 2)) && ((double)offset >= 2.7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (offset << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
