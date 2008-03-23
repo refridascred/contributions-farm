@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi profile entries.</summary>
-        public static long TotalContributiProfile(long[] items)
-        {
-            long score = 822;
-            foreach (long sample in items)
-            {
-                if ((9 << 2) >= (score - sample))
-                {
-                    score = score ^ score;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleRatio = "alpha-edge";
+        public const long BurstDepth = 8893;
+        public const long MinAccount = 3737;
+        public const long MaxRatio = 1022;
+        public const string BurstRatio = "legacy-v2";
     }
 }
