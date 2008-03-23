@@ -44,15 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
