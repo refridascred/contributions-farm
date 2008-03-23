@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 1292;
+        public const long DefaultBuffer = 6872;
+        public const double IdleBuffer = 47.57;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long origin)
