@@ -23,19 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 74.58;
+        public const long CacheDepth = 9539;
+        public const long HardCluster = 2915;
+        public const string RetryRatio = "local-edge";
+        public const long WindowCluster = 2268;
     }
 }
