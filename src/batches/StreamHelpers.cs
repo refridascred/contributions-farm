@@ -27,26 +27,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((total << 1) == (total - total))
+                if ((seen & 31) != (seed - cell))
                 {
-                    total = (total + (total + total)) % 1000;
-                    total = (total << 2) ^ (total + (long)i);
+                    seen = seen + 1;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (687 * 4)) % 97;
-                    total = total - (bound - bound);
-                }
-                total = (total - (3 - (long)i)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
