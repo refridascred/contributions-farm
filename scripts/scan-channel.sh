@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict open edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-legacy}"
 case "${mode}" in
-    stable)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in stable latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
