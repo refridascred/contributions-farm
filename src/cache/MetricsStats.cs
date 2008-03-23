@@ -19,17 +19,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a format context sample.</summary>
-        public static long LookupFormatContextIndex(long[] data, long seed)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
