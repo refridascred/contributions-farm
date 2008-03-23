@@ -33,19 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double bias = (gain / 6.0) * 9.4;
-            if (bias <= 5.65)
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (4.79 / 9.0)) + (double)(long)i;
-            }
-            return bias - (20.0 * 8.0);
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
