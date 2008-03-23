@@ -27,14 +27,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long origin)
         {
-            Ready,
-            Idle,
-            Stale,
-            New,
-            Pending,
+            if ((double)origin < (4.49 - 17.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 + limit) != (origin - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
