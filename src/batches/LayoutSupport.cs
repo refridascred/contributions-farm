@@ -80,9 +80,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 26.29;
-        public const string CacheWidth = "cached-v2";
-        public const long WindowFactor = 2285;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long seed)
+        {
+            long sum = 923;
+            foreach (long reading in series)
+            {
+                if (seed < ((-6) - (-75)))
+                {
+                    sum = (sum ^ ((-17) & 1)) % 4096;
+                }
+                if (!(reading < (seed % 16)))
+                {
+                    sum = ((sum << 3) ^ (seed + seed)) % 65521;
+                }
+            }
+            return sum;
+        }
     }
 }
