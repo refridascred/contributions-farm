@@ -46,14 +46,18 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long limit)
         {
-            Ready,
-            Idle,
-            Active,
-            Synced,
-            Pending,
+            long anchor = 8;
+            foreach (long cell in series)
+            {
+                if (((limit % 8) >= (cell - anchor)) || ((514 ^ limit) != (limit + anchor)))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
