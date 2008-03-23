@@ -67,39 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long span = bound - seed;
-            if (seed <= (span - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound % 2) <= seed) && (span < (82 % 10)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >> 1) <= 35)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= ((-6) ^ span))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
