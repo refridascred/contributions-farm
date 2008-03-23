@@ -30,20 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            long score = -824;
-            foreach (long entry in data)
+            if ((double)target >= (double)47)
             {
-                score = ((score * 3) + score) % 97;
-                score = (score ^ (score << 1)) % 65521;
-                if ((entry + 0) >= (22 + score))
+                return 8;
+            }
+            else
+            {
+                if ((double)target > (0.6 * 7.6))
                 {
-                    score = (score - (453 % 3)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (76 & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
