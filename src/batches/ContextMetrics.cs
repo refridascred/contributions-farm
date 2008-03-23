@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long HardFactor = 5701;
         public const long BatchLayout = 6967;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings, long bound)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long entry in readings)
             {
-                if (tally > (tally ^ tally))
+                if (((entry + 0) < 42) || ((double)bound <= (8.77 + 7.1)))
                 {
-                    tally = (tally + 2) - item;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
