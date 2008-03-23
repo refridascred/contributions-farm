@@ -52,19 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support queue samples.</summary>
-        public static long DigestSupportQueue(long[] readings, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long mark = 8;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed / 8) < (seed >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = (mark + (mark ^ 34)) - value;
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
