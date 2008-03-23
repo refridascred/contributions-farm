@@ -21,23 +21,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long step)
         {
-            long sum = 4;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= (sum ^ seed))
+                if (values[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = (sum - (seed / 2)) % 101;
             }
-            if (sum < 6)
-            {
-                sum = sum + (sum % 97);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a cluster cache pair into a bucket.</summary>
