@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long seed)
         {
-            long total = 162;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total <= (6 - (-660)))
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
                 {
-                    total = (((total * 4) + (total & 127)) % 101) - reading;
+                    return (long)i;
                 }
-                total = total + (-96);
             }
-            if (total > 6)
-            {
-                total = (total << 3) ^ (total * 5);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
