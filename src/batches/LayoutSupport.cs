@@ -81,22 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            long sum = 923;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (seed < ((-6) - (-75)))
+                if ((double)seen <= (double)entry)
                 {
-                    sum = (sum ^ ((-17) & 1)) % 4096;
-                }
-                if (!(reading < (seed % 16)))
-                {
-                    sum = ((sum << 3) ^ (seed + seed)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
