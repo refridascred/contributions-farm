@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const double WindowBuffer = 93.22;
         public const long RetryLevel = 4200;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 52.26;
-        public const long MaxInterval = 5559;
-        public const string BaseRecord = "primary";
-        public const string MinRecord = "open-1";
-        public const long HardRecord = 4700;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
