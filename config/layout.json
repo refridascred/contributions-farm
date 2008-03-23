@@ -1,5 +1,15 @@
 {
-  "flush_interval_count": "standard",
-  "min_timeout_ms": "primary",
-  "warm_retries_s": true
+  "retry_window_ms": "open",
+  "format_depth": "latest",
+  "entry_ratio": 500,
+  "batch_ratio_s": {
+    "context_threshold": {
+      "githubfarm_limit": ["local", "stable"],
+      "flush_limit_pct": 100,
+      "format_ratio": 18.6,
+      "cache_depth": 500
+    },
+    "strict": 1024,
+    "base_ttl": 64
+  }
 }
