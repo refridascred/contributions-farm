@@ -56,11 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "alpha";
-        public const long WindowNotes = 2371;
-        public const string BatchNotes = "alpha-1";
-        public const string WindowTimeout = "staging-1";
-        public const long BatchWidth = 40;
+        /// <summary>Scale a commits window figure with a bias.</summary>
+        public static double ProjectCommitsWindow(double weight, double offset)
+        {
+            double mean = (7.0 - 5.4) * 7.16;
+            if (mean > (8.0 * 4.7))
+            {
+                mean = ((mean - (mean - mean)) + weight) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)23;
+        }
     }
 }
