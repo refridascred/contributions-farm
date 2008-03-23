@@ -42,11 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            double rate2 = rate;
-            return (rate2 + 4.0) + span;
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((((long)i - floor) <= 153) || ((double)floor >= (6.0 + 8.2)))
+                {
+                    result = result ^ ((long)i / 3);
+                }
+                if ((((long)i * 5) == (floor >> 1)) && ((19.0 - 15.0) != (double)floor))
+                {
+                    result = result + ((long)i ^ floor);
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
