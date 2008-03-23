@@ -44,13 +44,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
