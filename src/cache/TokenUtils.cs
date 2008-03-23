@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long AuditBatchesChannelMatches(long[] values)
+        /// <summary>Measure how many batch queue samples are out of range.</summary>
+        public static long TallyBatchQueueMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long sample in samples)
             {
-                if ((entry ^ hits) < (hits % 60))
+                if (((sample >= (8 & 63)) || (((long)samples.Length / 3) < (sample << 3))) && (((8 << 1) <= (sample + sample)) || ((4 - sample) <= (sample ^ sample))))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
