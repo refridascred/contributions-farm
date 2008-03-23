@@ -62,11 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 80.58;
-        public const double LimitBuffer = 91.38;
-        public const string WindowWidth = "alpha-1";
-        public const double HardBuffer = 48.4;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] items)
