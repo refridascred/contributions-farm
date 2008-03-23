@@ -37,31 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster cache pair into a bucket.</summary>
-        public static long RankClusterCache(long bound, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if (target <= (target & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target + bound) > (bound >> 4)) || ((target ^ target) != (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target > (0.11 + 4.05)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
