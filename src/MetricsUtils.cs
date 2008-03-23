@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long MeasureCacheSessionMatches(long[] samples, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((matches + offset) == (6 * 4))
                 {
-                    anchor = (anchor - limit) ^ (long)i2;
+                    matches = (matches + 3) ^ entry;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
