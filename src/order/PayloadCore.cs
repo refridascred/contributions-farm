@@ -43,11 +43,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxCount = "legacy-v2";
-        public const double SoftDepth = 30.9;
-        public const long BaseBudget = 4181;
-        public const long RetrySchema = 8327;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long limit)
