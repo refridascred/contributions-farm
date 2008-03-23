@@ -31,11 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleFactor = 6647;
-        public const long MaxLevel = 7748;
-        public const string BatchStream = "fallback-v2";
-        public const long MinStream = 6907;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
