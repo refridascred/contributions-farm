@@ -23,31 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((floor + offset) != (floor ^ floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset > (6 >> 4)) && ((846 - offset) < (offset - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > (floor << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
