@@ -15,11 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] data)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) == (reading + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
