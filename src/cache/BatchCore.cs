@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] values, long bound)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                acc = ((acc * 3) + (entry ^ origin)) % 101;
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc > 36)
-            {
-                acc = (acc - 5) % 4096;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the batches class values.</summary>
