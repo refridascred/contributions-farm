@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string MaxCount = "local";
         public const string BurstContributi = "stable";
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] samples, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= limit)
+                if (entry < (entry - seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two contributi metric measurements.</summary>
