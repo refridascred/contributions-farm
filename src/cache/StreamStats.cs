@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxLevel = 7897;
-        public const string WindowLevel = "staging";
-        public const long HardCluster = 1052;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!(((value << 3) < (value << 1)) || ((1.75 * 7.0) > (double)value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long offset)
