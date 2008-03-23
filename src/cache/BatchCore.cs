@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] values, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Closed,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
