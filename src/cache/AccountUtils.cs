@@ -33,18 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report counter readings against a rule.</summary>
-        public static long CountReportCounterMatches(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (96 + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
