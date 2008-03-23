@@ -38,10 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 4040;
-        public const double IdleBudget = 91.61;
-        public const string DefaultInterval = "staging-v2";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches < (8 ^ item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double rate, double floor)
