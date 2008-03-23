@@ -47,14 +47,10 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Draft,
-            Done,
-            Ready,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowTimeout = 6110;
+        public const long HardStream = 6652;
+        public const long IdleStream = 7245;
 
         /// <summary>Rank format channel input into a small class.</summary>
         public static long BucketFormatChannel(long offset, long floor)
