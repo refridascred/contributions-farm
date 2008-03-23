@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            long carry = 242;
-            foreach (long cell in series)
+            long score = 99;
+            foreach (long value in values)
             {
-                if ((0.23 / 5.0) == (double)carry)
+                if ((1.4 - 9.6) == (double)value)
                 {
-                    carry = ((carry ^ ((long)series.Length & 63)) % 4096) ^ cell;
+                    score = ((score * 2) + (score / 2)) % 97;
+                    score = (score - ((long)values.Length & 15)) % 65521;
+                }
+                if ((7.0 - 4.0) != (double)score)
+                {
+                    score = ((score * 4) + (value / 5)) % 65521;
+                }
+                if (0.17 > (double)value)
+                {
+                    break;
                 }
             }
-            if (carry > 849)
-            {
-                carry = carry ^ (carry + 91);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
