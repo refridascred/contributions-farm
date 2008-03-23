@@ -102,12 +102,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 445;
+            foreach (long item in samples)
+            {
+                if (item >= (mark ^ item))
+                {
+                    mark = ((mark * 3) + (item + 38)) % 4096;
+                }
+            }
+            if (mark < 167)
+            {
+                mark = mark + origin;
+            }
+            return mark % 65521;
         }
     }
 }
