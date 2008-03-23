@@ -1,11 +1,7 @@
 {
-  "verbose": "stable",
-  "sync_limit_s": ["primary", "legacy"],
-  "dry_run": {
-    "default_delay_count": 30,
-    "default_threshold_count": 54,
-    "profile_delay": 500
-  },
-  "readonly": ["standard", "green", "eu-west", "blue"],
-  "tools_timeout": "legacy"
+  "hard_timeout_pct": 59,
+  "warm_threshold_count": false,
+  "batch_ratio_s": 60,
+  "retry_timeout": 7906,
+  "hard_ratio_pct": [460, 384, 203]
 }
