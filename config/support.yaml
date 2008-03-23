@@ -1,42 +1,18 @@
 # support settings
-cache_delay_count:
-  - 111
-  - 494
-  - 332
-soft_limit_ms:
-  - green
-  - green
-command_size:
-  hard_retries_ms: 47
-  sync_threshold_ms: 1024
-  command_size: false
-  soft_ratio_count:
-    readonly:
-      - 224
-      - 390
-      - 161
-      - 266
-    payload_limit:
-      - 98
-      - 117
-      - 337
-      - 415
-    poll_threshold:
-      - 1
-      - 41
-      - 236
-      - 337
-    base_retries_count: false
-    default_retries: stable
-min_capacity: 2155
-batch_timeout:
-  burst_retries_pct: 7007
-  cache_threshold: false
-  burst_ratio_pct: 7670
-  max_size: 49
-  readonly: 34
-  default_retries_ms:
-    - 50
-    - 310
-    - 442
-notes_threshold: true
+warm_capacity_pct: local
+window_ttl:
+  hard_depth: 7223
+  idle_delay_pct:
+    - 68
+    - 175
+    - 218
+    - 374
+  report_capacity: true
+  idle_threshold: 98.17
+  flush_limit_ms: 92.44
+  min_window_ms:
+    - 103
+    - 386
+default_ratio: primary
+warm_delay_s: 1160
+flush_threshold: false
