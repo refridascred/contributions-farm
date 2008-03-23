@@ -36,11 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value >= (double)5)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
