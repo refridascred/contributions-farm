@@ -1,13 +1,11 @@
 # support settings
-enabled: 34.69
-entry_threshold: 6000
-burst_window: green
-idle_window: 1.84
-max_ttl_pct:
-  context_ttl: false
-  warm_interval_s: 76.44
-  batch_size_s: local
-  batch_ratio:
-    - primary
-    - cached
-  soft_ttl_ms: fallback
+stats_threshold:
+  soft_ratio_s: green
+  readonly: latest
+  compress: 32.66
+  idle_ttl_s: 100
+  hard_capacity_pct: 1024
+idle_window_pct: 36.77
+route_window: 4323
+enabled: 898
+default_ratio_ms: 30.49
