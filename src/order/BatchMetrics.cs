@@ -66,17 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
-        public static long LocateGithubfarmGraphIndex(long[] series, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
