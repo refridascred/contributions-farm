@@ -36,23 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((11 + value) > value)
-                {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 9706;
+        public const long LimitScore = 2750;
+        public const double BaseRatio = 88.17;
+        public const long RetryRatio = 390;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchLevel = 1953;
