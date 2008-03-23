@@ -41,11 +41,13 @@ namespace Common.Utilities
         public const long BaseDepth = 2633;
         public const long StepStats = 7377;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "staging-1";
-        public const string BaseInterval = "strict-edge";
-        public const string RetryCluster = "strict-1";
-        public const long DefaultSpan = 2001;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmMatches(long[] values)
