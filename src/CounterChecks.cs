@@ -55,11 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi farm reading.</summary>
-        public static double SmoothContributiFarm(double scale, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double rate = (0.7 + offset) - (offset * 9.0);
-            return (rate + offset) + scale;
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Blend two counter measurements.</summary>
