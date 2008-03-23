@@ -42,19 +42,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long floor)
-        {
-            long mark = 62;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 2) ^ (floor - item)) % 4096;
-            }
-            if (mark < 70)
-            {
-                mark = ((mark * 3) + 95) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRatio = 7201;
+        public const long BatchRatio = 3415;
+        public const double LimitRecord = 70.42;
     }
 }
