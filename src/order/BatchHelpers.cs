@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)matches != (double)8) && ((matches + (-22)) > (9 + 50))))
+                if (items[i] < origin)
                 {
-                    matches = ((matches + 1) + datum) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
