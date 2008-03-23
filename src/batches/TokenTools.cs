@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
-            long acc = 5;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)acc > (6.1 * 9.76))
+                if (((hits >> 1) > (sample - sample)) && ((hits - hits) <= (sample + sample)))
                 {
-                    acc = (acc * 4) + (8 + 552);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    acc = acc ^ cell;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a contributi notes pair into a bucket.</summary>
