@@ -1,5 +1,5 @@
 {
-  "compress": 24.86,
-  "checks_delay": "green",
-  "max_timeout_ms": "stable"
+  "metrics_threshold": 4295,
+  "min_window_s": 250,
+  "flush_capacity_ms": "standard"
 }
