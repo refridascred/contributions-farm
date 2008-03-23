@@ -56,13 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
