@@ -1,5 +1,10 @@
 {
-  "stats_size": [439, 249, 241, 180],
-  "compress": 33.07,
-  "cache_ratio": true
+  "retry_retries": ["open", "stable", "legacy"],
+  "schema_capacity": {
+    "sync_limit_s": 10,
+    "sync_capacity_pct": 84,
+    "poll_threshold": "open"
+  },
+  "notes_size": true,
+  "enabled": ["standard", "staging", "open"]
 }
