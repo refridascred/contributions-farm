@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
