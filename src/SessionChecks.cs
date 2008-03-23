@@ -45,19 +45,32 @@ namespace Common.Utilities
         public const string LimitFactor = "staging";
         public const double RetryCount = 48.65;
 
-        /// <summary>Validate queue command readings against a bound.</summary>
-        public static bool VerifyQueueCommandLimits(long[] samples, long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long origin, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long gap = origin - target;
+            if (((-247) - gap) < origin)
             {
-                if (sample > seed)
+                return 1;
+            }
+            else
+            {
+                if ((-830) >= target)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ 7) >= (gap + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
