@@ -50,9 +50,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1036;
-        public const long StepCount = 5010;
-        public const long BatchCount = 6487;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items)
+        {
+            long result = -63;
+            foreach (long value in items)
+            {
+                if (!(value > (value << 3)))
+                {
+                    result = (result << 2) ^ (value & 127);
+                }
+            }
+            return result % 65521;
+        }
     }
 }
