@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every contributi command entry stays within the limit.</summary>
-        public static bool VerifyContributiCommandBounds(long[] data, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] data, long step)
         {
-            bool flag = true;
+            bool ok = true;
             foreach (long entry in data)
             {
-                if (entry >= limit)
+                if (entry > step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Project the next batches value.</summary>
