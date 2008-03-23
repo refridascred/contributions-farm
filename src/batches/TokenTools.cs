@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepCount = "latest-v2";
+        public const long CacheSpan = 7878;
+        public const long BaseLevel = 2632;
+        public const long BaseBatches = 7523;
+        public const long SoftBatches = 9128;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
