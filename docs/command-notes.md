@@ -1,15 +1,11 @@
 # Command notes
 
-Keep schema and command names short and lowercase.
-Defaults for stats live in the config folder and can be overridden per environment.
-Run the stream check before changing any farm limits.
-
-Keep farm and queue names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often cache data is refreshed.
+Run the cluster check before changing any entry limits.
+The payload report groups every editor by stats.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep context values small
-- Validate metric input early
-- Review farm limits each release
+- Prefer cluster defaults
+- Review format limits each release
+- Document new buffer fields
