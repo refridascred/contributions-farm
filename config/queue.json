@@ -1,5 +1,13 @@
 {
-  "burst_size": 6283,
-  "burst_threshold_s": ["legacy", "edge", "latest"],
-  "editor_depth": "green"
+  "checks_limit": "blue",
+  "farm_size": 94.69,
+  "sync_limit": "stable",
+  "sync_threshold_s": 1024,
+  "enabled": 66,
+  "base_threshold": {
+    "idle_ttl_count": "primary",
+    "contributi_depth": 6.21,
+    "hard_interval_pct": 52.17,
+    "cluster_size": "legacy"
+  }
 }
