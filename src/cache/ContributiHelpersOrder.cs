@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] values, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading <= seed)
+                if (((datum ^ hits) >= (datum / 4)) && (datum > ((long)values.Length % 5)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
