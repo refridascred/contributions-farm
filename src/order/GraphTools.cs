@@ -66,15 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Idle,
-            Dropped,
-            Draft,
-            Active,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 11.57;
+        public const long StepFarm = 2749;
+        public const long LimitRatio = 6661;
+        public const string MinDepth = "primary-v2";
+        public const long WindowSize = 2958;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] series, long target)
