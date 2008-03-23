@@ -18,16 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer schema entries.</summary>
-        public static long ScoreBufferSchema(long[] items, long target)
+        /// <summary>Roll a metric tools counter forward.</summary>
+        public static long IterateMetricTools(long target)
         {
-            long total = 4;
-            foreach (long sample in items)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total << 2) ^ (sample + total)) % 65521;
-                total = (total << 2) ^ (target >> 3);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark + (mark + mark)) % 1000) ^ (long)i2;
+                    mark = (mark * 3) + mark;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Locate a command reading by value.</summary>
