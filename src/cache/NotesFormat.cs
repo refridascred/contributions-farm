@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((matches * 5) <= (26 ^ step)) || ((step % 64) < matches)) && ((entry + step) >= (613 + matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleTimeout = 1353;
+        public const string HardGraph = "stable-v2";
+        public const long HardFactor = 3356;
+        public const long IdleGraph = 3014;
+        public const long BatchFactor = 940;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
