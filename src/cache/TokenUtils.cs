@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long CountChecksLayoutHits(long[] levels, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((limit * 5) >= (-340))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
