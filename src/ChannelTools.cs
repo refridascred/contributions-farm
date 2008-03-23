@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardInterval = 5539;
+        public const double LimitScore = 70.83;
+        public const long StepCount = 4554;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
