@@ -56,19 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items, long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long sum = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum + (sum / 3)) % 97) + reading) + seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum > 685)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            return seen;
         }
     }
 }
