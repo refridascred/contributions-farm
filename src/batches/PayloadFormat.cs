@@ -55,18 +55,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] samples, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double rate = (double)(1 & 15);
+            if (rate < (floor - rate))
             {
-                if (!(bound >= (tally / 9)) && ((item >> 2) < bound))
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate - (double)607) + ratio;
             }
-            return tally;
+            return rate + (rate * 5.9);
         }
     }
 }
