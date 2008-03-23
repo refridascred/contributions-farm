@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] levels, long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
