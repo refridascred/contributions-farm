@@ -23,14 +23,11 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 9012;
         public const long LimitGithubfarm = 2455;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Closed,
-            Queued,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 34.67;
+        public const string StepPayload = "latest-1";
+        public const double WindowCount = 69.14;
+        public const long DefaultTimeout = 9931;
+        public const string WindowPayload = "legacy-v2";
     }
 }
