@@ -17,20 +17,12 @@ namespace Common.Utilities
         public const double HardRatio = 42.39;
         public const long SoftDepth = 8037;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "open-1";
+        public const double BatchInterval = 23.8;
+        public const long RetrySize = 3161;
+        public const long BurstSize = 9971;
+        public const long RetrySession = 4809;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
