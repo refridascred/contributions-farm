@@ -1,6 +1,5 @@
 # support settings
-window_ratio: 1024
-batch_retries_count: edge
-cache_timeout: 54
-format_interval: 3394
-flush_capacity_ms: true
+filter_ttl: 500
+base_size: 88
+farm_limit: stable
+hard_ttl: true
