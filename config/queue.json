@@ -1,7 +1,5 @@
 {
-  "max_ratio_s": "cached",
-  "retry_ttl_count": 500,
-  "strict": 8640,
-  "soft_window": true,
-  "sync_limit_count": 51.79
+  "default_capacity_count": true,
+  "batch_ratio_count": 6695,
+  "enabled": 79.84
 }
