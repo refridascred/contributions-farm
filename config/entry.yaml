@@ -1,10 +1,11 @@
 # entry settings
-sync_size_ms: blue
-channel_ratio:
-  cache_size_count: 80
-  flush_timeout_s: standard
-  default_limit_pct: 84
-  farm_interval: stable
-soft_size_ms: staging
-soft_threshold: stable
-default_ratio_count: 250
+burst_limit_pct:
+  - strict
+  - strict
+  - fallback
+  - latest
+persist:
+  - eu-west
+  - edge
+  - blue
+default_interval_count: green
