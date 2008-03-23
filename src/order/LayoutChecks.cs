@@ -81,21 +81,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up profile payload samples.</summary>
-        public static long MatchProfilePayloadCount(long[] items)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = (weight / 8.0) + (double)141;
+            return (drift + weight) + offset;
         }
 
         /// <summary>Describe the order class values.</summary>
