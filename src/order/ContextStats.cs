@@ -27,11 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5309;
-        public const long HardTimeout = 1746;
-        public const double MinSize = 14.38;
-        public const long BurstCommand = 5996;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Idle,
+            Closed,
+            Retry,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long origin, long step)
