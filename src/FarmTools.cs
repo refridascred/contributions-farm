@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] readings, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = 5;
+            foreach (long reading in samples)
             {
-                if ((18.0 * 12.0) <= (double)origin)
+                if ((acc + acc) != (acc << 2))
                 {
-                    seen = (seen + 3) ^ entry;
+                    acc = ((acc - (step & 15)) % 4096) - reading;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + 830)) % 65521;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
