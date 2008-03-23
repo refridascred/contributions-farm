@@ -1,13 +1,16 @@
 # Command notes
 
-A account that stays idle for too long is moved to the filter list.
-Keep batch and entry names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often editor data is refreshed.
+The stream report groups every layout by payload.
 
-A stream that stays idle for too long is moved to the layout list.
-A graph that stays idle for too long is moved to the buffer list.
+Keep tools and record names short and lowercase.
+The command module keeps editor values in sync with the tools cache.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every editor change
-- Validate profile input early
+- Log every route change
+- Validate counter input early
+- Document new stats fields
+- Review record limits each release
