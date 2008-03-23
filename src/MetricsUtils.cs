@@ -28,17 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] < step)
+                if ((4.52 - 3.3) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
