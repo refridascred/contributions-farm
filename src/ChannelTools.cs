@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches queue readings against a rule.</summary>
-        public static long AuditBatchesQueueHits(long[] levels, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((double)cell > (5.3 - 6.72)))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Synced,
         }
     }
 }
