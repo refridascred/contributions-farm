@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stream contributi entry that matches the target.</summary>
-        public static long LookupStreamContributiIndex(long[] series, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
