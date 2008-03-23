@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples, long origin)
         {
-            Done,
-            Paused,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits % 64) < origin)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
