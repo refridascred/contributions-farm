@@ -38,10 +38,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxWidth = 82.48;
-        public const long SoftSize = 2703;
-        public const long StepCommits = 3505;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long bound)
+        {
+            long step = target + bound;
+            if ((target + step) > (bound >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound > (target / 5)) || (((-73) ^ step) >= (883 ^ target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target <= (6.0 - 4.88)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step < ((-846) % 100))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 4040;
