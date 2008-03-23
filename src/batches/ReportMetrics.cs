@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
