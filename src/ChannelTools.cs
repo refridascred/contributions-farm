@@ -38,12 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples, long floor)
         {
-            Locked,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits << 3) >= (floor - cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
