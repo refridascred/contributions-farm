@@ -20,10 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "staging-1";
-        public const double IdleBatches = 20.53;
-        public const long DefaultBatches = 2222;
+        /// <summary>Audit already editor readings against a rule.</summary>
+        public static long TallyAlreadyEditorOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= (4 - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
