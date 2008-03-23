@@ -1,26 +1,17 @@
 # entry settings
-cache_window_count:
-  max_timeout_s:
-    githubfarm_delay:
-      - 434
-      - 452
-      - 345
-    readonly:
-      - cached
-      - legacy
-      - green
-    persist: 8.85
-    strict: open
-  compress:
-    - 407
-    - 270
-    - 378
-  sync_interval_pct: edge
-  tools_ratio: 100
-  cache_ttl_ms: 43
-  audit: 20.6
-default_depth_pct: 52
-sync_interval: 1492
-default_ttl: 5547
-enabled: false
-context_size: 8688
+cache_timeout_s: false
+dry_run: blue
+filter_delay:
+  - 123
+  - 394
+  - 34
+default_ratio_pct:
+  batch_interval_s: 500
+  payload_ttl: eu-west
+  burst_ttl_pct:
+    - 489
+    - 227
+    - 72
+  persist: 65
+  cache_retries_pct: standard
+  tools_capacity: true
