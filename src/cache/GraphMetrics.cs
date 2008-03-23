@@ -81,12 +81,19 @@ namespace Common.Utilities
         public const long IdleMetrics = 3872;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] samples, long offset)
         {
-            Locked,
-            Active,
-            Retry,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
