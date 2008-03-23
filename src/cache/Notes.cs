@@ -46,10 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 18.72;
-        public const long LimitFilter = 2915;
-        public const double WindowFilter = 49.96;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)value >= (3.83 + 4.0)) && ((4.74 * 6.2) == (double)tally)) || ((tally - value) == (value + value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
