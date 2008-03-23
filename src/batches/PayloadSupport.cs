@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            Pending,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
