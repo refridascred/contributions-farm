@@ -46,11 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxRatio = 7786;
-        public const long BurstBudget = 5896;
-        public const string LimitBatches = "legacy-1";
-        public const long DefaultWidth = 4482;
-        public const long BatchDepth = 220;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
