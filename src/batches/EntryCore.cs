@@ -56,21 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema batches samples.</summary>
-        public static long MatchSchemaBatchesCount(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum + (sum / 3)) % 97) + reading) + seed;
             }
-            return seen;
+            if (sum > 685)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
