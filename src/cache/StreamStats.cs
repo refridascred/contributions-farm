@@ -33,22 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchCount = 382;
+        public const long CacheBudget = 639;
+        public const double WindowBuffer = 93.22;
+        public const long RetryLevel = 4200;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double SoftRecord = 52.26;
