@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
