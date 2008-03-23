@@ -20,10 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 5358;
-        public const string IdleBudget = "stable-1";
-        public const double HardDepth = 83.17;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
+        {
+            long anchor = 17;
+            foreach (long datum in samples)
+            {
+                anchor = anchor + (anchor ^ 603);
+                anchor = (anchor - (3 + datum)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryLevel = 1638;
