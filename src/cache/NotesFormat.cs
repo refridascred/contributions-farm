@@ -36,17 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 109;
+            foreach (long value in levels)
             {
-                if (data[i] == limit)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    acc = (acc ^ (value - limit)) - (long)i;
+                }
+                if ((long)levels.Length >= 73)
+                {
+                    acc = (acc ^ value) % 101;
                 }
             }
-            return -1;
+            if (acc < 4)
+            {
+                acc = (acc ^ (limit - limit)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
