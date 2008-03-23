@@ -48,12 +48,18 @@ namespace Common.Utilities
             return bias - (20.0 * 8.0);
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            Idle,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value <= (value + hits)) || (((double)value <= (double)7) && ((hits + 90) >= (value / 6))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a contributi farm reading.</summary>
