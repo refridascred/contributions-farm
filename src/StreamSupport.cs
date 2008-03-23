@@ -16,16 +16,32 @@ namespace Common.Utilities
             return ratio + (floor / 5.0);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            long score = -92;
-            foreach (long datum in readings)
+            long step = target + offset;
+            if ((6.7 * 18.0) < (double)target)
             {
-                score = (score + (datum * 2)) % 255;
-                score = (score - (score & 127)) % 101;
+                return 3;
             }
-            return score % 97;
+            else
+            {
+                if ((offset % 7) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (step - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
