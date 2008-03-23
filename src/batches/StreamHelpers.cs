@@ -22,22 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up window counter samples.</summary>
-        public static long CompareWindowCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFactor = 20.46;
+        public const long StepFormat = 5360;
+        public const string HardFormat = "strict-1";
 
         /// <summary>Fold a list of metric entry readings.</summary>
         public static long TallyMetricEntry(long[] data, long bound)
