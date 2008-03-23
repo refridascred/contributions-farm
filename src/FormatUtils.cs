@@ -23,12 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            Draft,
-            Done,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mix * 4) >= (0 >> 5))
+                {
+                    mix = (mix - (61 + mix)) % 101;
+                }
+                if (bound > mix)
+                {
+                    mix = (mix ^ (6 ^ mix)) % 4096;
+                    mix = (mix * 3) + (mix + (long)i);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of report entries.</summary>
