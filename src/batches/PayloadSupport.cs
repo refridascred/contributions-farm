@@ -17,10 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleSize = 6606;
-        public const long HardCache = 5090;
-        public const long StepCache = 2204;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 4546;
+        public const double BatchCluster = 82.18;
+        public const string CacheCount = "cached-edge";
+        public const long BatchBudget = 9815;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] levels, long origin)
