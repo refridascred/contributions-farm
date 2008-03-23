@@ -41,32 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long seed)
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool ValidateReportLayoutRange(long[] items, long limit)
         {
-            long gap = limit - seed;
-            if (seed > (gap + seed))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > limit)
+                if (entry > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(gap > 56))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up support samples.</summary>
