@@ -50,22 +50,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading < (5.99 * 5.4))
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
