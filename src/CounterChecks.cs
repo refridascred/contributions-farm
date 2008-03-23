@@ -63,21 +63,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch contributi samples.</summary>
-        public static long OverlapBatchContributiCount(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = origin - limit;
+            if ((limit >> 5) < (limit >> 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin >= (8.2 * 2.0))
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if (88 <= (bound << 1))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit % 16) > (limit * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
