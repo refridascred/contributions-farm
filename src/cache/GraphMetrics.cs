@@ -30,17 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long step)
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long CountWindowContextHits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if (((datum % 12) <= count) || ((8.0 * 1.73) <= (double)target))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
