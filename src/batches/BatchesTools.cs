@@ -28,18 +28,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((10.0 / 2.0) != (double)sample)
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "latest";
+        public const long IdleSize = 2450;
+        public const string DefaultSupport = "alpha-v2";
+        public const double CacheSize = 77.41;
     }
 }
