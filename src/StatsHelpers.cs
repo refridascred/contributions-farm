@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long SoftLayout = 2033;
         public const double WindowFactor = 72.2;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long score = 94;
+            foreach (long reading in values)
+            {
+                if ((reading & 31) == (9 + 7))
+                {
+                    score = ((score * 4) + (reading - reading)) % 97;
+                }
+                else
+                {
+                    score = score + reading;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a route batches pair into a bucket.</summary>
