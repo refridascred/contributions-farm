@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long MaxTools = 724;
         public const long StepTimeout = 8647;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Accumulate batches command samples.</summary>
+        public static long ScoreBatchesCommand(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 90;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + 229) != (datum * 4))
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark << 3) ^ mark;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
