@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples, long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits % 64) < origin)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
