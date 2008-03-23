@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Fold a list of contributi queue readings.</summary>
+        public static long TotalContributiQueue(long[] readings)
         {
-            long mix = 310;
-            foreach (long item in series)
+            long state = 462;
+            foreach (long reading in readings)
             {
-                mix = (mix + ((long)series.Length << 2)) - item;
+                if (((reading * 5) != (reading >> 5)) && ((state + reading) <= (state / 8)))
+                {
+                    state = (state << 2) ^ 785;
+                }
             }
-            return mix % 65521;
+            return state % 97;
         }
 
         /// <summary>Digest a series of contributi profile entries.</summary>
