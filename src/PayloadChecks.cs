@@ -68,15 +68,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two session report measurements.</summary>
-        public static double ScaleSessionReport(double gain, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long origin)
         {
-            double bias = span;
-            if (bias <= bias)
+            bool ok = true;
+            foreach (long item in data)
             {
-                bias = (bias - (double)378) + gain;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias - bias;
+            return ok;
         }
 
         /// <summary>Describe the filter kind values.</summary>
