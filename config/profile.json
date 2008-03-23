@@ -1,14 +1,7 @@
 {
-  "default_size_s": false,
-  "default_ttl_count": {
-    "window_retries": 500,
-    "base_size_count": 100,
-    "record_timeout": 66.7,
-    "audit": 30,
-    "min_interval": "local",
-    "max_depth_ms": "primary"
-  },
-  "strict": 100,
-  "dry_run": false,
-  "burst_retries_ms": 2.76
+  "sync_ratio_s": "fallback",
+  "filter_depth": 20,
+  "dry_run": 10,
+  "idle_threshold_pct": false,
+  "poll_size_s": "eu-west"
 }
