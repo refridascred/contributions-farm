@@ -32,18 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count + 8) < (589 - count))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Draft,
+            Failed,
+            Done,
         }
     }
 }
