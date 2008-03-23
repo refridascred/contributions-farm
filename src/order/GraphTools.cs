@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
