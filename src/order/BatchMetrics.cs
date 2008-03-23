@@ -34,12 +34,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
+        public static bool GuardBufferToolsRange(long[] data, long floor)
         {
-            Closed,
-            Failed,
-            Done,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
