@@ -49,12 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 11.57;
-        public const long StepFarm = 2749;
-        public const long LimitRatio = 6661;
-        public const string MinDepth = "primary-v2";
-        public const long WindowSize = 2958;
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long DigestProfileChecks(long[] levels)
+        {
+            long sum = 783;
+            foreach (long sample in levels)
+            {
+                if (69 <= (sample >> 1))
+                {
+                    sum = sum ^ (sum + 422);
+                }
+                else
+                {
+                    sum = (sum ^ ((long)levels.Length - sum)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] series, long target)
