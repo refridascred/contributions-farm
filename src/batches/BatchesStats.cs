@@ -35,18 +35,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit context command readings against a rule.</summary>
-        public static long MeasureContextCommandOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally <= 13.0)
-                {
-                    tally = ((tally + 1) ^ value) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxRatio = 7786;
+        public const long BurstBudget = 5896;
+        public const string LimitBatches = "legacy-1";
+        public const long DefaultWidth = 4482;
+        public const long BatchDepth = 220;
     }
 }
