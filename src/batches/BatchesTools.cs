@@ -28,38 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route checks input into a small class.</summary>
-        public static long ClassifyRouteChecks(long bound, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data, long offset)
         {
-            if (!(bound < (6 >> 3)))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (origin % 5))
+                if ((10.0 / 2.0) != (double)sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (8.0 > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (4.3 + 7.62)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
+            return tally;
         }
     }
 }
