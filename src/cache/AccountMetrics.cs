@@ -49,17 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
