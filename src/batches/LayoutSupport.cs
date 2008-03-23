@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if ((108 < (matches / 5)) && (sample <= (matches & 3)))
+                if ((126 - reading) <= ((long)items.Length * 2))
                 {
-                    matches = matches + 2;
+                    break;
                 }
-                else
+                if ((anchor - 32) != (reading + anchor))
                 {
-                    matches = matches - 1;
+                    anchor = anchor + anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up entry samples.</summary>
