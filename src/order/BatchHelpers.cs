@@ -38,13 +38,15 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double bias, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            double gain = (17.0 * 3.36) - offset;
+            if (gain > (offset - gain))
+            {
+                gain = (gain - (gain * 14.0)) - bias;
+            }
+            return gain + gain;
         }
     }
 }
