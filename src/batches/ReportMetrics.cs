@@ -32,20 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long sum = 626;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 2) ^ (reading & 7)) % 65521) - floor;
-                sum = ((sum * 5) + ((long)data.Length % 64)) % 255;
-            }
-            if (sum > 83)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            Pending,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
