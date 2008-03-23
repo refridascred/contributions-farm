@@ -28,12 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3064;
+        public const long HardRatio = 424;
+        public const long RetryWidth = 2777;
+        public const string HardSpan = "alpha-edge";
+        public const double LimitAlready = 32.6;
 
         /// <summary>Digest a series of farm cluster entries.</summary>
         public static long CombineFarmCluster(long[] values, long limit)
