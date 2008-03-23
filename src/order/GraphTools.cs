@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSize = 803;
-        public const long SoftTimeout = 9259;
-        public const long HardMetric = 7372;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Ready,
+            Idle,
+            Closed,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] levels, long origin)
