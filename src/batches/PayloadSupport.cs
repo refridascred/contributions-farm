@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            Draft,
-            New,
-            Locked,
+            long mix = 10;
+            foreach (long datum in samples)
+            {
+                if ((double)mix == (double)datum)
+                {
+                    mix = (mix << 3) ^ (4 + 71);
+                }
+                else
+                {
+                    mix = (mix ^ ((-44) * 2)) % 97;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
