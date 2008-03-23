@@ -34,19 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long gap = limit - seed;
+            if (seed > (gap + seed))
             {
-                if (value <= floor)
+                return 3;
+            }
+            else
+            {
+                if (seed > limit)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(gap > 56))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a route options.</summary>
