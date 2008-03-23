@@ -49,14 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            Done,
-            Dropped,
-            Retry,
-            New,
-            Locked,
+            double rate = bias * 4.4;
+            return rate - (floor / 5.0);
         }
 
         /// <summary>Combine order values into a single score.</summary>
