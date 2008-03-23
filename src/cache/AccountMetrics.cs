@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first notes graph entry that matches the target.</summary>
-        public static long LookupNotesGraphIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8625;
+        public const long CacheInterval = 4066;
+        public const string DefaultBudget = "latest-v2";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchGaps(long[] samples)
