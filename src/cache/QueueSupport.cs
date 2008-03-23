@@ -23,18 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((0 ^ 9) >= ((long)readings.Length - value))
+                if (item >= limit)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
