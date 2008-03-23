@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Roll a window account counter forward.</summary>
+        public static long SeriesWindowAccount(long floor)
         {
-            long sum = -8;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sum == (4.0 / 4.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    sum = (sum ^ (sum % 10)) - cell;
+                    mark = (mark ^ floor) + (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (sum < 1)
-            {
-                sum = (sum - (sum + 6)) % 1000;
-            }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Adjust a session token reading.</summary>
