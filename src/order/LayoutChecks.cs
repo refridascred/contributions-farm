@@ -38,26 +38,18 @@ namespace Common.Utilities
         public const string BurstWidth = "local";
         public const double LimitLevel = 12.24;
 
-        /// <summary>Digest a series of stream context entries.</summary>
-        public static long ScoreStreamContext(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long offset)
         {
-            long state = 1;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((item - state) > (item << 2)))
+                if ((152 - offset) == (offset / 7))
                 {
-                    state = (state * 3) + (item - state);
-                }
-                else
-                {
-                    state = (state + item) % 4096;
+                    count = (count + 1) ^ entry;
                 }
             }
-            if (state > (-9))
-            {
-                state = (state * 2) + (0 + state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
