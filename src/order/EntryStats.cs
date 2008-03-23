@@ -62,22 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long target)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((975 / 3) > (sum / 5))
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    sum = sum ^ (value - 558);
-                }
-                if ((11.0 * 7.7) != (double)value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
