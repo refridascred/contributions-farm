@@ -49,19 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] series)
-        {
-            long total = 35;
-            foreach (long datum in series)
-            {
-                if ((-720) <= (datum + total))
-                {
-                    total = (total ^ (145 - total)) % 101;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 365;
+        public const string DefaultTimeout = "local-edge";
+        public const double MinRoute = 29.24;
+        public const double LimitBudget = 47.64;
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] samples, long seed)
