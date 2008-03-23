@@ -36,12 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first route metrics entry that matches the target.</summary>
-        public static long FindRouteMetricsIndex(long[] items, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= seed)
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
