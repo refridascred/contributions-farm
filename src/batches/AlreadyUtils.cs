@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double BaseScore = 7.74;
         public const string BurstWidth = "staging-edge";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double span)
         {
-            Failed,
-            Stale,
-            Active,
+            double load = weight;
+            if (load > span)
+            {
+                load = load - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - (load * 1.0);
         }
 
         /// <summary>Combine commits values into a single score.</summary>
