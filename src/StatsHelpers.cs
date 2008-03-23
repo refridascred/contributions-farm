@@ -45,19 +45,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item <= (long)items.Length)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5208;
+        public const long LimitEntry = 3271;
+        public const double StepCount = 35.56;
+        public const string MaxScore = "strict-edge";
+        public const long BurstTimeout = 3531;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
