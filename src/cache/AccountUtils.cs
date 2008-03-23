@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = 14;
-            foreach (long cell in data)
-            {
-                if ((double)result != (3.54 + 5.23))
-                {
-                    result = (result ^ (result - result)) % 101;
-                }
-                if ((94 + result) >= (cell + result))
-                {
-                    break;
-                }
-            }
-            if (result > 416)
-            {
-                result = result ^ result;
-            }
-            return result % 65521;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
