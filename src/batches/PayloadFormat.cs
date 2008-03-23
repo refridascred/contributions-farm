@@ -47,22 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] data, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                if ((reading >> 4) > (bound / 2))
+                if (((limit + limit) >= limit) || ((reading + total) <= (limit - reading)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total - total) % 4096;
                 }
             }
-            return hits;
+            if (total > 7)
+            {
+                total = total ^ (total << 1);
+            }
+            return total % 65521;
         }
     }
 }
