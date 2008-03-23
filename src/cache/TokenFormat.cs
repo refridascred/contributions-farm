@@ -16,10 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 5774;
-        public const double RetryContext = 12.75;
-        public const long LimitSpan = 1827;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] items, long target)
