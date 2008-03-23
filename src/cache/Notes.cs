@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((double)value >= (3.83 + 4.0)) && ((4.74 * 6.2) == (double)tally)) || ((tally - value) == (value + value)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = tally + 3;
+                    score = ((score + (83 + score)) % 101) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the context level values.</summary>
