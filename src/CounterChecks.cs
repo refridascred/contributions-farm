@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] samples, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length & 31) <= (hits - 806))
+                {
+                    hits = ((hits + 3) + reading) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of session layout entries.</summary>
