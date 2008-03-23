@@ -55,13 +55,10 @@ namespace Common.Utilities
         public const long HardDepth = 7452;
         public const double BurstScore = 67.23;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 4959;
+        public const double SoftGithubfarm = 32.77;
+        public const string RetryGithubfarm = "cached";
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
