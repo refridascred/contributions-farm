@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long origin)
+        /// <summary>Derive the next metric support value from a seed.</summary>
+        public static long DeriveMetricSupport(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two graph measurements.</summary>
