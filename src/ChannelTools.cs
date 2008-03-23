@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long origin)
+        /// <summary>Grade a tools payload value against two limits.</summary>
+        public static long BucketToolsPayload(long floor, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            if (!((floor + target) == (2 % 10)))
             {
-                if (value < origin)
+                return 1;
+            }
+            else
+            {
+                if (floor < (203 ^ floor))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (target >> 2)) && (76 <= floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((-85) <= (target << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
