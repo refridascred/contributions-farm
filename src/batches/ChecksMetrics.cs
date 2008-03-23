@@ -49,12 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long floor2)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long diff = floor + floor2;
+            if ((diff << 1) >= (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (258 >= (diff + 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 / 9) >= (floor2 ^ diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor - floor) < diff))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
