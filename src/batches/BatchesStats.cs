@@ -22,14 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Paused,
-            Done,
-            Draft,
-            Failed,
-            Active,
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
