@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleScore = 96.65;
-        public const long RetryFactor = 1737;
-        public const long MinEditor = 1208;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] values, long offset)
+        {
+            long total = -453;
+            foreach (long datum in values)
+            {
+                if (!((offset ^ datum) < offset))
+                {
+                    total = total ^ (total - (long)values.Length);
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Find the first route metrics entry that matches the target.</summary>
         public static long FindRouteMetricsIndex(long[] items, long seed)
