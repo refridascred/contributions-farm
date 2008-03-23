@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            double scale = gain / 8.0;
-            if (scale <= 7.3)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                scale = scale + (span * 7.68);
+                long cur = 26;
+                if (((origin & 1) > (cur & 127)) && (521 <= origin))
+                {
+                    result = ((result << 3) ^ 864) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return scale - 9.4;
+            return result;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
