@@ -60,13 +60,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long target, long origin)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long step = target - origin;
+            if ((0 + 4) >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (9.0 + 9.6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
