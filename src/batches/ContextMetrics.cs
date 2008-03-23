@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate entry format samples.</summary>
-        public static long FoldEntryFormat(long[] items, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] values)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((215 + target) >= 26)
+                if (count > (value << 3))
                 {
-                    mix = ((mix + ((long)items.Length + mix)) % 1000) ^ sample;
-                }
-                else
-                {
-                    mix = (mix ^ (target * 3)) % 1000;
+                    count = count + 1;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
