@@ -40,18 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long TallyMetricGraphHits(long[] levels)
+        /// <summary>Find the first format layout entry that matches the target.</summary>
+        public static long LocateFormatLayoutIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen < (1.33 * 1.0))
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 3) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
