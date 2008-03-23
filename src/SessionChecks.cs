@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double bias)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double rate = bias + (14.0 - gain);
+            for (int i = 0; i < 3; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (double)(long)i;
             }
-            return found;
+            return rate - (bias + rate);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
