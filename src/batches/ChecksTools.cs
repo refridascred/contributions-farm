@@ -20,14 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double span)
         {
-            Done,
-            Stale,
-            Draft,
-            Pending,
-            New,
+            double scale = span;
+            if (scale > span)
+            {
+                scale = scale + ratio;
+            }
+            return scale + scale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
