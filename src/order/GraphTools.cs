@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((target / 4) > (hits * 3)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
