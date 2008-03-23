@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine record stats values into a single score.</summary>
-        public static long WeighRecordStats(long[] levels, long step)
+        /// <summary>Accumulate session contributi samples.</summary>
+        public static long WeighSessionContributi(long[] series, long target)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            long result = 504;
+            foreach (long entry in series)
             {
-                if (((long)levels.Length * 5) <= (mix << 2))
-                {
-                    mix = (mix ^ step) + sample;
-                }
-                else
-                {
-                    mix = mix + (step + mix);
-                }
+                result = (((result * 5) + (target / 7)) % 1000) + entry;
+                result = (result - result) % 65521;
             }
-            if (mix < 8)
-            {
-                mix = mix + (mix >> 2);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
