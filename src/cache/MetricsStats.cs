@@ -29,17 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -497;
+            foreach (long cell in data)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                result = (result - (cell - cell)) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the tools kind values.</summary>
