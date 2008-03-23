@@ -14,21 +14,34 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of batches queue readings.</summary>
-        public static long MatchBatchesQueueCount(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 873;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)state >= 3.0)
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if ((state % 8) == (state * 3))
+                {
+                    state = ((state + (offset & 255)) % 1000) ^ item;
+                }
+                else
+                {
+                    state = (state + offset) % 4096;
+                }
+                if ((double)42 >= (double)offset)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 99)
+            {
+                state = (state ^ (state * 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
