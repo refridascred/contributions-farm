@@ -19,23 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            double mean = bias;
-            if (mean >= (bias - 19.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (bias / 2.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + gain;
+            return count;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
