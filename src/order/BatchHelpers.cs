@@ -23,22 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = rate;
+            if (mean < 5.6)
             {
-                if (((-188) - tally) != (tally << 2))
-                {
-                    tally = ((tally + 1) ^ value) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean - rate) + offset;
             }
-            return tally;
+            else
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean / 2.0)) + (double)(long)i;
+            }
+            return mean + (double)(-58);
         }
 
         /// <summary>Project the next batch value.</summary>
