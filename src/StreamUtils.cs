@@ -34,22 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum % 8) > datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score - (datum << 2);
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 5)
-            {
-                score = ((score * 5) + (score + score)) % 4096;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
