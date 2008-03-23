@@ -41,11 +41,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long TallyTokenGithubfarmHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) <= (item * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
