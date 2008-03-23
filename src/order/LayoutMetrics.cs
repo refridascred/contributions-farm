@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((reading ^ reading) == (reading + reading))
+                if (seen > (seen - seen))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
