@@ -40,18 +40,23 @@ namespace Common.Utilities
         public const double SoftEntry = 93.24;
         public const long MinTimeout = 6608;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels, long floor)
+        /// <summary>Iterate the profile format series from a seed.</summary>
+        public static long DeriveProfileFormat(long limit)
         {
-            long score = 1;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)reading > (9.51 / 4.0))
+                long tally = (long)i;
+                if (((double)tally > (double)(long)i) || ((8.22 - 15.0) > (double)tally))
                 {
-                    score = (((score * 4) + (score & 255)) % 101) - floor;
+                    tally = ((tally << 3) ^ (limit - limit)) % 101;
+                    mark = ((mark * 4) + (mark * 5)) % 101;
+                    break;
                 }
+                mark = (mark + (limit ^ 1)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the counter state values.</summary>
