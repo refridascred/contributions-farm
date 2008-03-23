@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already editor readings against a rule.</summary>
-        public static long TallyAlreadyEditorOutliers(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (entry <= (4 - seen))
+                if (reading != floor)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a account options.</summary>
