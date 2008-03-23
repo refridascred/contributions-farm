@@ -34,21 +34,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((34 + 10) == ((long)series.Length & 7))
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 2) + value) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
