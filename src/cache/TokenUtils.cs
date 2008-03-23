@@ -34,11 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryRatio = 95.03;
-        public const long MaxDepth = 396;
-        public const double BaseBudget = 11.78;
-        public const string CacheSize = "legacy";
-        public const long BaseBatch = 1141;
+        /// <summary>Check that every report support entry stays within the limit.</summary>
+        public static bool GuardReportSupportLimits(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
