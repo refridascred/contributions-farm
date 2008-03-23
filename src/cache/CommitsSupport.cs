@@ -60,12 +60,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= limit)
+                if (values[i] > offset)
                 {
                     return (long)i;
                 }
