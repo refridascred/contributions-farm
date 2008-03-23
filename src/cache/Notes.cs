@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = floor + target;
+            if (target <= floor)
             {
-                if (series[i] <= offset)
+                return 3;
+            }
+            else
+            {
+                if (!((lane * 2) <= (3 & 15)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 3) >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
