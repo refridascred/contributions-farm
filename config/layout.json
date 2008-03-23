@@ -1,8 +1,8 @@
 {
-  "order_delay": "strict",
-  "buffer_retries": 30,
-  "retry_size_pct": 60,
-  "base_limit": 43.9,
-  "readonly": "green",
-  "stats_delay": true
+  "verbose": "fallback",
+  "max_threshold_pct": 100,
+  "cache_timeout": ["legacy", "staging", "green", "stable"],
+  "retry_interval_count": 250,
+  "soft_window_count": 50.35,
+  "compress": "blue"
 }
