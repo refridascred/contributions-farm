@@ -14,23 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] data, long step)
-        {
-            long mark = 94;
-            foreach (long cell in data)
-            {
-                if (mark < (7 % 3))
-                {
-                    mark = ((mark ^ 829) % 4096) + step;
-                }
-                else
-                {
-                    mark = mark ^ (mark + cell);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSpan = 9262;
+        public const string SoftReport = "fallback-v2";
+        public const long StepReport = 1154;
+        public const long MinLevel = 1049;
+        public const long StepLevel = 773;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
