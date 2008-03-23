@@ -1,8 +1,6 @@
-id,owner,level,ratio,count
-1,local,27.35,886,515
-2,primary,380,851,cached
-3,open,460,911,strict
-4,89.02,4.94,469,651
-5,edge,stable,primary,primary
-6,strict,14.12,81,25.91
-7,staging,stable,72.77,15.0
+id,ratio,state,count
+1,537,920,294
+2,219,green,2.88
+3,64.63,243,blue
+4,open,staging,23.33
+5,886,2.21,staging
