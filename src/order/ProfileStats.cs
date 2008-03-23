@@ -52,14 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Retry,
-            Draft,
-            Stale,
-            Synced,
-            New,
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm value.</summary>
