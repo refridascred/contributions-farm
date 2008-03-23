@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const long IdleScore = 6729;
         public const long BaseLevel = 1003;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowTimeout = 6110;
-        public const long HardStream = 6652;
-        public const long IdleStream = 7245;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 127) < 421)
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
