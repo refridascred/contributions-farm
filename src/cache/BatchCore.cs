@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] levels, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = floor;
+            return gain + ratio;
         }
 
         /// <summary>Define order limits and defaults.</summary>
