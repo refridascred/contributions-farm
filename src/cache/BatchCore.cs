@@ -40,10 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "open-1";
-        public const long BatchWindow = 6972;
-        public const long StepWindow = 9321;
-        public const long SoftWindow = 3386;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
