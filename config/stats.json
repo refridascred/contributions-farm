@@ -1,8 +1,5 @@
 {
-  "support_limit": "open",
-  "base_interval": [266, 19, 454],
-  "support_threshold": "latest",
-  "account_delay": 31.25,
-  "retry_capacity": false,
-  "verbose": "staging"
+  "stats_threshold": ["staging", "edge"],
+  "batch_delay_s": 9610,
+  "retry_timeout_pct": 84.69
 }
