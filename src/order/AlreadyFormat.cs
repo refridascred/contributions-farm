@@ -14,18 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] samples, long seed)
         {
-            long result = 121;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!((target + (long)items.Length) >= target))
+                if (value <= seed)
                 {
-                    result = (result ^ (51 + 2)) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Match up buffer samples.</summary>
