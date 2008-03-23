@@ -25,31 +25,14 @@ namespace Common.Utilities
         public const long CacheBudget = 3423;
         public const double StepBuffer = 4.25;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if (seed > (408 & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target <= (target * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + 16) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
