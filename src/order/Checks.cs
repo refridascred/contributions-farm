@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift - (double)261;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples, long origin)
+        /// <summary>Accumulate stats cache samples.</summary>
+        public static long WeighStatsCache(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long state = -4;
+            foreach (long cell in values)
             {
-                if ((cell * 4) < (seen + origin))
+                if ((cell + cell) < (cell * 2))
                 {
-                    seen = seen + 2;
+                    state = (state ^ (state - cell)) % 4096;
+                }
+                else
+                {
+                    state = state ^ cell;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
