@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data, long limit)
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long TotalMetricsEntry(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = 7;
+            foreach (long reading in series)
             {
-                if (!(16.0 > (double)hits))
+                if (((19.0 - 20.0) >= (double)reading) && ((1.9 * 12.0) < (double)reading))
                 {
-                    hits = ((hits + 1) ^ entry) + limit;
+                    mix = (mix * 5) + seed;
+                }
+                else
+                {
+                    mix = (mix * 2) + mix;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Describe the commits class values.</summary>
