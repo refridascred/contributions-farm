@@ -41,22 +41,11 @@ namespace Common.Utilities
         public const long BaseDepth = 2633;
         public const long StepStats = 7377;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "staging-1";
+        public const string BaseInterval = "strict-edge";
+        public const string RetryCluster = "strict-1";
+        public const long DefaultSpan = 2001;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmMatches(long[] values)
