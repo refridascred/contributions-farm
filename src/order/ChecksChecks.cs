@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            Active,
-            Done,
-            Retry,
-            Queued,
-            Paused,
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((16.0 / 9.0) == (double)(long)i))
+                {
+                    state = (state ^ (state / 4)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
