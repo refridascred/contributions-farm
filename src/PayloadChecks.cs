@@ -69,22 +69,13 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] samples, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 206) != (item / 3))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
