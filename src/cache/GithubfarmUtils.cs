@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)step > 4.9) && (((long)i + anchor) >= (anchor / 5)))
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
