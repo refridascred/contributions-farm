@@ -62,18 +62,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Adjust a contributi farm reading.</summary>
+        public static double SmoothContributiFarm(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading >> 1) != (0 + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double rate = (0.7 + offset) - (offset * 9.0);
+            return (rate + offset) + scale;
         }
 
         /// <summary>Blend two counter measurements.</summary>
