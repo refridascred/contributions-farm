@@ -1,16 +1,4 @@
 # githubfarm settings
-layout_ratio: 7245
-default_interval_ms:
-  enabled: edge
-  poll_capacity_ms: 60
-  flush_window_s:
-    - 204
-    - 308
-    - 316
-  cache_interval: 5335
-base_delay_ms:
-  - latest
-  - primary
-  - local
-filter_size: 53.71
-metric_interval: 60
+batch_threshold_s: 90.26
+route_threshold: 11.64
+support_ttl: 40
