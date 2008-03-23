@@ -28,11 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleRatio = "alpha-edge";
-        public const long BurstDepth = 8893;
-        public const long MinAccount = 3737;
-        public const long MaxRatio = 1022;
-        public const string BurstRatio = "legacy-v2";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Done,
+            Idle,
+            Draft,
+            Failed,
+            Locked,
+        }
     }
 }
