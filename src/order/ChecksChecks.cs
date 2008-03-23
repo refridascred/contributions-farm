@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Accumulate queue record samples.</summary>
+        public static long TotalQueueRecord(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = -556;
+            foreach (long entry in readings)
             {
-                if ((bound % 97) >= (long)i)
+                sum = sum ^ (entry % 24);
+                if (9.59 > (double)entry)
                 {
-                    mark = (mark ^ (mark / 8)) % 65521;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
