@@ -64,27 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch support entries.</summary>
-        public static long CombineBatchSupport(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            long mix = 365;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((mix + 954) != (mix - mix)) || ((7.94 / 7.0) <= (double)value))
+                if ((double)matches >= (6.2 + 19.0))
                 {
-                    mix = (mix << 3) ^ (value / 3);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (857 ^ mix);
-                }
-                if (7.03 <= (double)mix)
-                {
-                    mix = mix ^ (mix / 2);
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
