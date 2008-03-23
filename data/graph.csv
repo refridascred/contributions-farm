@@ -1,6 +1,10 @@
-id,count,weight,token,active
-1,241,19.05,998,13.02
-2,694,primary,555,38.52
-3,300,16.7,77.39,cached
-4,6.38,84.41,66.34,edge
-5,staging,local,23,27.5
+id,weight,count
+1,812,861
+2,78.56,staging
+3,16,primary
+4,987,cached
+5,open,47.7
+6,local,stable
+7,672,925
+8,204,staging
+9,760,57.14
