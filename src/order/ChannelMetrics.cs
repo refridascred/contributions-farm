@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Combine cache record values into a single score.</summary>
-        public static long TotalCacheRecord(long[] levels)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long total = 1;
-            foreach (long item in levels)
-            {
-                if (((double)total >= (7.81 / 2.0)) && ((double)item >= (17.0 - 6.4)))
-                {
-                    total = total + ((long)levels.Length + 621);
-                }
-                total = (total - (total & 127)) % 255;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
