@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] data, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            bool found = true;
-            foreach (long item in data)
+            long carry = 1;
+            foreach (long reading in samples)
             {
-                if (item >= offset)
+                if (reading <= carry)
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (reading + carry)) % 1000;
                 }
             }
-            return found;
+            if (carry > 803)
+            {
+                carry = (carry + (carry % 10)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
