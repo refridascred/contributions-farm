@@ -18,28 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 69;
-            foreach (long value in values)
-            {
-                if ((total << 1) == (value + value))
-                {
-                    total = (total * 5) + (total ^ value);
-                    total = (total + (value << 2)) % 4096;
-                }
-                else
-                {
-                    total = (total * 5) + total;
-                }
-                total = total ^ value;
-            }
-            if (total < 850)
-            {
-                total = ((total * 5) + (total + (-766))) % 255;
-            }
-            return total;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
