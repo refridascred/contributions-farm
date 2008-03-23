@@ -1,11 +1,14 @@
 # Command notes
 
-Keep commits and support names short and lowercase.
-When a notes fails, the window handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep record and token names short and lowercase.
+Keep editor and tools names short and lowercase.
+
+The report report groups every batches by command.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new profile fields
-- Log every metric change
-- Prefer graph defaults
+- Prefer format defaults
+- Review channel limits each release
+- Validate cache input early
