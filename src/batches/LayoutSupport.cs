@@ -31,31 +31,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            if ((17.0 * 1.0) < (double)limit)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit < (6.0 - 0.6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((117 / 2) <= (limit ^ limit))
+                    if ((items[i] - items[j]) != 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
