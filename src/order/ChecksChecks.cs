@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            Synced,
-            New,
-            Active,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBudget = 59.44;
+        public const string HardBatches = "strict-v2";
+        public const long RetryTimeout = 8304;
+        public const string DefaultDepth = "staging-1";
+        public const double SoftInterval = 25.36;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionOutliers(long[] readings)
