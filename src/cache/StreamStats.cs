@@ -23,11 +23,11 @@ namespace Common.Utilities
         public const string WindowLevel = "staging";
         public const long HardCluster = 1052;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchCount = 382;
-        public const long CacheBudget = 639;
-        public const double WindowBuffer = 93.22;
-        public const long RetryLevel = 4200;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultTimeout = "latest-v2";
+        public const long BaseEditor = 6585;
+        public const double StepEditor = 79.76;
+        public const long BatchScore = 5344;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] series, long floor)
