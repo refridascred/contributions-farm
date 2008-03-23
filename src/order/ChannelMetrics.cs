@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)value < (double)count)
+                if (value < floor)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
