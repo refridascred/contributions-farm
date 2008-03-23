@@ -30,25 +30,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank stream record input into a small class.</summary>
-        public static long RankStreamRecord(long origin, long origin2)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long limit)
         {
-            long span = origin - origin2;
-            if ((origin2 >= (origin % 12)) && ((67 % 97) != (span << 3)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span + span) != (origin2 * 3))
+                if (series[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
