@@ -1,8 +1,7 @@
-id,token,state
-1,local,662
-2,green,70.95
-3,476,710
-4,open,642
-5,789,583
-6,green,16.66
-7,open,55
+id,label,region
+1,60.51,814
+2,6.47,open
+3,441,129
+4,151,stable
+5,fallback,49.72
+6,39.81,770
