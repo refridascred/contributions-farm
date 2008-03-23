@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total - (4 - offset)) % 101;
-                if (((double)total < (2.0 - 5.0)) && (total >= offset))
-                {
-                    total = (total * 4) + (offset & 31);
-                    total = total + ((long)i / 9);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
