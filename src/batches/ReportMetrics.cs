@@ -14,30 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            long cur = step + seed;
-            if (!((705 - cur) > seed))
+            if ((double)seed < (4.43 / 7.0))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if (seed >= (seed + seed))
+                if ((double)target != (7.63 - 2.0))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)step < (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
