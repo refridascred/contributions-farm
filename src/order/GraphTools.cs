@@ -46,22 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long DigestProfileChecks(long[] levels)
+        /// <summary>Classify a cluster format pair into a bucket.</summary>
+        public static long BucketClusterFormat(long seed, long seed2)
         {
-            long sum = 783;
-            foreach (long sample in levels)
+            if (((94 >> 1) > seed) && ((double)seed2 == (9.46 * 1.0)))
             {
-                if (69 <= (sample >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((seed2 ^ 779) > seed2)
                 {
-                    sum = sum ^ (sum + 422);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum ^ ((long)levels.Length - sum)) % 101;
+                    return 5;
                 }
             }
-            return sum;
         }
 
         /// <summary>Locate a order reading by value.</summary>
