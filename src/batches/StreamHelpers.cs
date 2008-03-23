@@ -73,13 +73,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] readings, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
