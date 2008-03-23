@@ -70,19 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] values, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
