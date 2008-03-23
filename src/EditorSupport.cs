@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long RetryBatch = 7486;
         public const long SoftBatch = 1773;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long seed)
         {
-            Synced,
-            Idle,
-            Paused,
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(60 > ((long)i % 5)))
+                {
+                    state = (state << 2) ^ (long)i;
+                }
+                state = (state ^ ((long)i & 3)) % 4096;
+                if (seed <= (long)i)
+                {
+                    state = ((state << 3) ^ (state - state)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes kind values.</summary>
