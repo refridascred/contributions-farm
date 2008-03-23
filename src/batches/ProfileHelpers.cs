@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long step)
+        /// <summary>Locate a buffer entry reading by value.</summary>
+        public static long SeekBufferEntryIndex(long[] values, long seed)
         {
-            long delta = floor + step;
-            if ((37 - delta) > (27 + delta))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step % 2) == (delta >> 4)))
+                if (values[i] >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((367 / 2) < (floor * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
