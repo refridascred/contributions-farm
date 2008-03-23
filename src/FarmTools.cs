@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples, long step)
+        /// <summary>Roll a cluster record counter forward.</summary>
+        public static long DeriveClusterRecord(long floor)
         {
-            long acc = 5;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((acc + acc) != (acc << 2))
+                if (!(7 > mark))
                 {
-                    acc = ((acc - (step & 15)) % 4096) - reading;
+                    mark = ((mark * 5) + (long)i) % 255;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + 830)) % 65521;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
