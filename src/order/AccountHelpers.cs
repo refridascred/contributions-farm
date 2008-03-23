@@ -27,13 +27,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + 289) % 97;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a session counter forward.</summary>
