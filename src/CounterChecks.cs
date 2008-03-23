@@ -55,11 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Pending,
             Draft,
+            Ready,
+            Queued,
+            Pending,
             Synced,
         }
 
