@@ -25,17 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] levels, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state - (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
