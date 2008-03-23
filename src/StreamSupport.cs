@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long step)
         {
-            Idle,
-            Paused,
-            Closed,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a stats githubfarm reading by value.</summary>
