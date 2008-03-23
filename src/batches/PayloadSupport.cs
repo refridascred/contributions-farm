@@ -22,25 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long floor2)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long prev = floor ^ floor2;
-            if (((-96) ^ floor2) < (prev ^ floor2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((907 + 658) > prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
