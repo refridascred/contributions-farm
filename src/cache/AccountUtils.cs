@@ -13,30 +13,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a route stats pair into a bucket.</summary>
-        public static long ClassifyRouteStats(long step, long target)
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long BucketTokenEditor(long bound, long floor)
         {
-            if ((double)step == (9.13 - 5.0))
+            long delta = bound + floor;
+            if ((delta + bound) <= (floor - floor))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((double)target >= (2.56 / 6.0))
+                if ((delta % 100) > bound)
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)step <= 6.4)
+                    if (delta <= floor)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (((double)step < (13.0 / 6.0)) || ((step ^ 5) > (step / 4)))
+                        if (((delta % 12) == (delta + floor)) && ((5.5 * 6.0) <= (double)floor))
                         {
-                            return 5;
+                            return 6;
                         }
                         else
                         {
