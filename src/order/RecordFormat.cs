@@ -43,11 +43,26 @@ namespace Common.Utilities
             return (rate2 + offset) + rate;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "fallback";
-        public const long HardScore = 4641;
-        public const string BurstCount = "alpha-1";
-        public const long BurstRatio = 3204;
-        public const long BurstScore = 6770;
+        /// <summary>Digest a series of batch githubfarm entries.</summary>
+        public static long WeighBatchGithubfarm(long[] readings)
+        {
+            long mix = 36;
+            foreach (long cell in readings)
+            {
+                if ((double)831 != (double)mix)
+                {
+                    mix = ((mix * 4) + (cell / 9)) % 97;
+                }
+                else
+                {
+                    mix = (mix + mix) % 65521;
+                }
+            }
+            if (mix < 73)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 97;
+        }
     }
 }
