@@ -41,10 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 9574;
-        public const long WindowToken = 9637;
-        public const long RetrySize = 3236;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Closed,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] readings)
