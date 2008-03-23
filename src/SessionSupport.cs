@@ -27,21 +27,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc - (acc & 3)) % 65521) - (long)i2;
+                    acc = (acc + acc) % 4096;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    acc = acc - (long)i3;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
