@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of format counter readings.</summary>
-        public static long CombineFormatCounter(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long acc = 906;
-            foreach (long entry in levels)
+            long result = 6;
+            foreach (long entry in items)
             {
-                if (((acc - 0) == (entry / 6)) && (entry <= (acc & 255)))
+                if (((4.6 * 7.81) < (double)entry) || (282 >= (result + 394)))
                 {
-                    acc = (acc - (854 + entry)) % 101;
+                    result = result + (9 ^ (-1));
+                    break;
                 }
+                result = (result - result) % 101;
             }
-            return acc;
+            if (result > (-579))
+            {
+                result = ((result * 4) + (result / 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
