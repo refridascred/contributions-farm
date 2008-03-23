@@ -1,5 +1,4 @@
 # support settings
-metric_limit: blue
-counter_limit: true
-enabled: true
-hard_ratio_pct: 6769
+cache_size: 24
+base_ttl: 66.48
+dry_run: eu-west
