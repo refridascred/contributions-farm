@@ -1,4 +1,4 @@
 # support settings
-cache_size: 24
-base_ttl: 66.48
-dry_run: eu-west
+flush_capacity: staging
+channel_depth: eu-west
+default_capacity_s: false
