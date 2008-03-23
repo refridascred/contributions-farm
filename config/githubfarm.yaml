@@ -1,11 +1,23 @@
 # githubfarm settings
-cache_depth: false
-session_retries:
-  hard_window_count: cached
-  stats_capacity: 65.33
-  metric_ttl: 4852
-  strict: 79.92
-  sync_ratio: 91.74
-burst_size_s: 42
-warm_size_s: 1024
-batches_size: strict
+persist: 1024
+warm_capacity_count: 4774
+default_timeout: local
+readonly:
+  audit:
+    - 186
+    - 335
+    - 456
+  burst_delay_pct: 9354
+  cache_delay: false
+  default_interval: 60
+  soft_interval_s:
+    default_limit_count: green
+    verbose: 30
+    notes_size: strict
+    route_threshold: 57.97
+    soft_retries_s: 37
+    record_capacity:
+      - 277
+      - 465
+sync_window: 23
+poll_capacity_pct: 79.58
