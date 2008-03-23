@@ -63,15 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
-        {
-            long result = 16;
-            foreach (long reading in readings)
-            {
-                result = (result ^ reading) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchInterval = 3564;
+        public const long DefaultBuffer = 674;
+        public const long SoftRatio = 5545;
+        public const long MinBuffer = 4681;
     }
 }
