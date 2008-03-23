@@ -37,11 +37,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 9680;
-        public const long BurstReport = 4805;
-        public const long IdleReport = 5183;
-        public const long RetryReport = 9049;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long acc = 76;
+            foreach (long value in levels)
+            {
+                acc = ((acc * 4) + (17 - value)) % 101;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRatio = 7201;
