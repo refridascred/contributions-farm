@@ -35,14 +35,14 @@ namespace Common.Utilities
         public const string BatchStream = "fallback-v2";
         public const long MinStream = 6907;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Retry,
-            Active,
-            Idle,
             Paused,
+            Stale,
             Failed,
+            Retry,
+            Done,
         }
     }
 }
