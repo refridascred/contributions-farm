@@ -37,18 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch queue samples are out of range.</summary>
-        public static long TallyBatchQueueMatches(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((sample >= (8 & 63)) || (((long)samples.Length / 3) < (sample << 3))) && (((8 << 1) <= (sample + sample)) || ((4 - sample) <= (sample ^ sample))))
+                if (!((double)cell >= (double)tally) && ((8.8 - 18.0) == (double)cell))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
