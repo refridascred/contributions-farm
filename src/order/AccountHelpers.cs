@@ -69,18 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long origin)
         {
-            long mark = 3;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset ^ mark) > (mark / 6))
+                if (readings[i] > origin)
                 {
-                    mark = (mark ^ (cell % 16)) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
