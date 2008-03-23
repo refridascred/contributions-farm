@@ -40,21 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 76;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset % 3) == (result + result))
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result + ((-71) + offset)) % 4096) + reading;
+                    result = (result - (offset - result)) % 4096;
                 }
+                result = ((result << 3) ^ (6 * 5)) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Match up order samples.</summary>
