@@ -72,22 +72,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = 282;
+            foreach (long datum in series)
             {
-                if (!(((count - value) < (value + value)) && (((long)samples.Length * 3) < (value + value))))
+                if ((double)datum >= (1.3 * 3.5))
                 {
-                    count = (count + 1) + seed;
+                    score = (score + (datum & 31)) % 255;
                 }
-                else
+                if ((datum * 4) < 226)
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (score < 3)
+            {
+                score = ((score * 5) + (415 >> 3)) % 65521;
+            }
+            return score;
         }
     }
 }
