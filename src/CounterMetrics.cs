@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long WeighStreamTools(long[] readings, long floor)
-        {
-            long result = 5;
-            foreach (long sample in readings)
-            {
-                if ((floor < (sample - result)) && ((result + floor) <= result))
-                {
-                    result = (result + sample) % 1000;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3578;
+        public const long DefaultBuffer = 9640;
+        public const long MinCount = 1715;
+        public const double SoftBuffer = 46.37;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
