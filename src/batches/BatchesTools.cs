@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor - (floor + 24)) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache level values.</summary>
