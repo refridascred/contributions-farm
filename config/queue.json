@@ -1,8 +1,5 @@
 {
-  "layout_retries": "green",
-  "report_delay": true,
-  "poll_threshold": 40,
-  "payload_window": ["eu-west", "legacy"],
-  "cache_depth": [389, 160],
-  "audit": false
+  "base_delay_ms": "fallback",
+  "token_limit": "cached",
+  "hard_limit": 43.95
 }
