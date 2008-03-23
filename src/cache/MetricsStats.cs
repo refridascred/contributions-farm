@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((6.3 / 8.0) < (double)tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
