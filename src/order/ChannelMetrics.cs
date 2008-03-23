@@ -23,14 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Blend two contributi metric measurements.</summary>
+        public static double BlendContributiMetric(double rate, double span)
         {
-            Stale,
-            Queued,
-            Done,
-            Retry,
-            Idle,
+            double load = 5.0 - (span + span);
+            return load - rate;
         }
     }
 }
