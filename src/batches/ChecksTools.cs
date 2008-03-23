@@ -28,13 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
