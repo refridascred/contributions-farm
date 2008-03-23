@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowInterval = 6854;
-        public const long CacheFormat = 9527;
-        public const double BurstFormat = 43.59;
-        public const string StepFormat = "open-edge";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((165 >> 5) == (seen * 5))
+                {
+                    seen = ((seen + 1) - datum) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] series, long bound)
