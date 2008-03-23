@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
             public long Flag { get; set; }
-            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of batches queue readings.</summary>
