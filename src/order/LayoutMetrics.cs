@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Locked,
-            Retry,
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheSpan = 70.85;
+        public const double IdleInterval = 30.24;
+        public const long IdleContext = 4429;
+        public const double BatchWidth = 95.16;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] data)
