@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long seed)
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long TallyMetricsBatchesOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] <= seed)
+                if (((hits & 3) == (reading >> 3)) && ((hits + hits) <= (reading - (long)samples.Length)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
