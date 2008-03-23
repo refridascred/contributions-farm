@@ -31,11 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCount = 5290;
-        public const long HardCluster = 185;
-        public const string BatchRatio = "stable-edge";
-        public const long BaseFactor = 3067;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] readings)
