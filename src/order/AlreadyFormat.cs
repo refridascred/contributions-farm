@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] data, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mark = 51;
+            foreach (long value in samples)
             {
-                if (item <= (count >> 3))
+                if (((value * 4) < (value & 7)) || ((mark >> 1) < mark))
                 {
-                    count = (count + 3) + offset;
+                    mark = (mark + (mark - 16)) % 65521;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
