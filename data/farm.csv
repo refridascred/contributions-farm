@@ -1,11 +1,6 @@
-id,owner,level
-1,18,66.3
-2,564,62.73
-3,53.51,primary
-4,762,cached
-5,822,edge
-6,latest,308
-7,54.62,762
-8,37.82,193
-9,stable,legacy
-10,legacy,29.31
+id,state
+1,green
+2,strict
+3,146
+4,642
+5,legacy
