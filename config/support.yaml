@@ -1,8 +1,9 @@
 # support settings
-strict:
-  default_ttl: 2.78
-  already_timeout: 3305
-  readonly: primary
-  dry_run: 6864
-burst_capacity_s: edge
-notes_capacity: stable
+retry_threshold_ms:
+  - 177
+  - 195
+min_size_count: 72.87
+strict: edge
+min_depth: standard
+support_threshold: local
+contributi_capacity: 14
