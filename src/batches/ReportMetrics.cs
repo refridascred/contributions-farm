@@ -34,11 +34,19 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            double mean = (double)76 + 6.4;
+            if (mean > 5.0)
+            {
+                mean = mean + (double)(-7);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (floor * 5.0)) + (double)(long)i;
+            }
+            return mean - gain;
         }
     }
 }
