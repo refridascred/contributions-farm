@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] values, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((81 - 2) <= seen)
-                {
-                    seen = ((seen + 1) ^ sample) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
