@@ -30,10 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9879;
-        public const long RetryMetrics = 1130;
-        public const long HardSpan = 3242;
-        public const string IdleMetrics = "local-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitFactor = 3509;
+        public const long CacheFactor = 8143;
+        public const double MaxGraph = 79.22;
     }
 }
