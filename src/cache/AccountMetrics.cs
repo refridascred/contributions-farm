@@ -65,22 +65,18 @@ namespace Common.Utilities
             return rate - (floor / 5.0);
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels, long limit)
+        /// <summary>Measure how many farm batches samples are out of range.</summary>
+        public static long TallyFarmBatchesOutliers(long[] data, long bound)
         {
-            long total = 84;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((total ^ 474) < 556) || ((value << 1) >= (value + value)))
+                if ((((cell % 64) <= seen) && ((242 + cell) > (bound * 4))) || ((cell + bound) < ((long)data.Length ^ seen)))
                 {
-                    total = (total + (limit - total)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (total < 714)
-            {
-                total = ((total << 2) ^ (3 << 1)) % 255;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
