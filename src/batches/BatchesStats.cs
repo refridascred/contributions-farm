@@ -15,20 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support contributi values into a single score.</summary>
-        public static long CombineSupportContributi(long[] items, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long mix = 1;
-            foreach (long reading in items)
+            long sum = 566;
+            foreach (long sample in readings)
             {
-                if ((mix + origin) > (long)items.Length)
+                if (((sum << 3) >= sample) && (((long)readings.Length + (-80)) < (-744)))
                 {
-                    mix = (mix - (mix * 3)) - reading;
-                    mix = (mix ^ (9 >> 2)) % 101;
+                    sum = (sum * 4) + sample;
                 }
-                mix = ((mix << 3) ^ (mix + origin)) % 97;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Derive the next batches buffer value from a seed.</summary>
