@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
             Ready,
-            Pending,
-            Paused,
+            Draft,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
