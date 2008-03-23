@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            Retry,
-            Pending,
-            New,
-            Locked,
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (state > (origin << 3))
+                {
+                    state = ((state * 3) + ((long)i + origin)) % 1000;
+                    break;
+                }
+                if ((state >= (state + origin)) || (((long)i << 3) > 4))
+                {
+                    state = (state + state) % 65521;
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
