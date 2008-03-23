@@ -48,10 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCount = "cached-1";
-        public const long IdleCounter = 7656;
-        public const long DefaultCounter = 1734;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 5347;
+        public const long LimitCount = 2491;
+        public const long BurstTimeout = 8310;
+        public const long HardDepth = 7452;
+        public const double BurstScore = 67.23;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] readings, long origin)
