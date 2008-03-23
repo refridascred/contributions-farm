@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long MeasureCacheSessionMatches(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + offset) == (6 * 4))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheBudget = "strict-v2";
+        public const string SoftStats = "strict";
+        public const long RetryStats = 7658;
+        public const long DefaultStats = 7082;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long CombineSupport(long[] samples)
