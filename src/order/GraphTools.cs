@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((2.5 * 13.0) == (double)(long)readings.Length) && ((942 + hits) < (866 << 2))))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 2) + entry) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
