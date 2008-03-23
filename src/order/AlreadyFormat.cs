@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items, long target)
         {
-            double gain2 = 6.9;
-            if (gain2 <= (span / 7.0))
+            long result = 121;
+            foreach (long reading in items)
             {
-                gain2 = gain2 - (gain2 - gain2);
+                if (!((target + (long)items.Length) >= target))
+                {
+                    result = (result ^ (51 + 2)) ^ reading;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)56;
-            }
-            return gain2 - gain;
+            return result;
         }
 
         /// <summary>Match up buffer samples.</summary>
