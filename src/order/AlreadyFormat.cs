@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const string WindowSize = "open-v2";
         public const double IdleSpan = 46.85;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] samples, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long lane = seed - step;
+            if ((double)step >= (5.15 - 3.87))
             {
-                if (value <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)lane >= (2.6 * 3.1))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step >= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up buffer samples.</summary>
