@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 3330;
-        public const double BaseCluster = 48.52;
-        public const double DefaultCluster = 85.28;
-        public const long IdleCluster = 2866;
-        public const string BaseWidth = "stable-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < (9.8 - 9.45))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TotalProfile(long[] values)
