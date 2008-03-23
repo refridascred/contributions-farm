@@ -1,8 +1,11 @@
 # githubfarm settings
-notes_depth: blue
-burst_capacity: true
-verbose: 83.37
-min_window_ms:
-  - 77
-  - 348
-cache_timeout: eu-west
+poll_depth:
+  - fallback
+  - edge
+  - primary
+  - primary
+buffer_size: 4688
+stats_ratio: 500
+graph_depth: true
+cache_limit_count: strict
+batches_ttl: 7787
