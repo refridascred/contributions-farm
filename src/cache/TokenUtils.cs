@@ -30,19 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] values, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Closed,
+            Retry,
+            Paused,
+            Pending,
         }
     }
 }
