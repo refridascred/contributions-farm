@@ -1,5 +1,14 @@
 {
-  "stats_threshold": ["staging", "edge"],
-  "batch_delay_s": 9610,
-  "retry_timeout_pct": 84.69
+  "persist": {
+    "soft_ratio_pct": 36,
+    "retry_size_s": {
+      "tools_capacity": 6539,
+      "format_limit": 65,
+      "stream_capacity": 9.06,
+      "warm_depth_s": "legacy"
+    },
+    "compress": false
+  },
+  "idle_limit_count": 8,
+  "flush_interval": 96
 }
