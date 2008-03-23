@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_threshold_s: 90.26
-route_threshold: 11.64
-support_ttl: 40
+stats_window:
+  - eu-west
+  - legacy
+  - primary
+batch_window: 1024
+poll_limit_ms: 98
+batch_delay_ms: staging
