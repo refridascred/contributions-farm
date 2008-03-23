@@ -20,24 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a notes graph counter forward.</summary>
-        public static long IterateNotesGraph(long limit)
+        /// <summary>Project the next queue report value.</summary>
+        public static double ScaleQueueReport(double rate, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            double load = rate;
+            if (load > rate)
             {
-                if ((3.75 - 6.4) < (double)sum)
-                {
-                    sum = ((sum * 3) + limit) % 101;
-                }
-                sum = (sum << 3) ^ 90;
-                if ((limit + 700) > sum)
-                {
-                    sum = (sum + (sum ^ sum)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                load = (load + load) - offset;
             }
-            return sum;
+            else
+            {
+                load = load + (3.8 / 4.0);
+            }
+            return load + (6.84 + rate);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
