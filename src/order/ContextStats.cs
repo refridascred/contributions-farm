@@ -41,21 +41,11 @@ namespace Common.Utilities
         public const long MaxQueue = 8501;
         public const long RetryQueue = 8632;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate2 = rate;
+            return (rate2 + 4.0) + span;
         }
     }
 }
