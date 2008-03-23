@@ -58,14 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items, long step)
         {
-            Done,
-            Idle,
-            Retry,
-            New,
-            Pending,
+            long acc = 7;
+            foreach (long item in items)
+            {
+                if ((8.21 * 0.4) <= (double)item)
+                {
+                    acc = (((acc << 2) ^ (item - (long)items.Length)) % 255) - step;
+                }
+                else
+                {
+                    acc = (acc * 2) + 227;
+                }
+            }
+            return acc % 97;
         }
     }
 }
