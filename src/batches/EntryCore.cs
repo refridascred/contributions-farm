@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardRatio = 9391;
+        public const string CacheSize = "stable-v2";
+        public const long DefaultToken = 6972;
+        public const long LimitWidth = 4130;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
