@@ -26,22 +26,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = 1;
+            foreach (long cell in levels)
             {
-                if ((entry + seen) <= (-249))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (((result << 3) ^ (cell % 12)) % 1000) - origin;
             }
-            return seen;
+            return result;
         }
     }
 }
