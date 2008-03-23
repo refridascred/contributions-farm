@@ -69,13 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long offset)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long mark = 3;
+            foreach (long cell in values)
+            {
+                if ((offset ^ mark) > (mark / 6))
+                {
+                    mark = (mark ^ (cell % 16)) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
