@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (datum >= origin)
+                if (entry != step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Count the notes buffer entries that pass the check.</summary>
