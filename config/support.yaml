@@ -1,4 +1,11 @@
 # support settings
-cache_limit_s: cached
-compress: eu-west
-stream_size: 100
+flush_delay: 100
+poll_limit_s: open
+command_limit:
+  - blue
+  - local
+  - strict
+  - local
+route_interval:
+  - 226
+  - 408
