@@ -25,25 +25,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long limit, long limit2)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double offset)
         {
-            long span = limit ^ limit2;
-            if (span <= (span % 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit2 < (8.2 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double rate = 5.0;
+            return (rate - (scale / 4.0)) + offset;
         }
     }
 }
