@@ -1,30 +1,16 @@
 # githubfarm settings
-default_ratio_pct: cached
-enabled: open
-min_retries:
-  flush_window_s: edge
-  idle_size_ms: 2961
-  enabled:
-    - 37
-    - 343
-    - 175
-    - 14
-  persist: 30
-  metric_interval: staging
-record_timeout:
-  batch_limit_pct: 60.83
-  idle_timeout_pct:
-    persist: 25.43
-    retry_threshold:
-      - edge
-      - latest
-      - cached
-    contributi_ratio:
-      - 115
-      - 230
-      - 42
-    base_timeout: 35.56
-  max_retries: false
-  retry_timeout_s: strict
-strict: eu-west
-max_delay_pct: true
+layout_ratio: 7245
+default_interval_ms:
+  enabled: edge
+  poll_capacity_ms: 60
+  flush_window_s:
+    - 204
+    - 308
+    - 316
+  cache_interval: 5335
+base_delay_ms:
+  - latest
+  - primary
+  - local
+filter_size: 53.71
+metric_interval: 60
