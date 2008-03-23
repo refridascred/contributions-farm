@@ -61,31 +61,17 @@ namespace Common.Utilities
         public const string StepRatio = "legacy-1";
         public const long BurstChannel = 8758;
 
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long ClassifyFilterQueue(long step, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            if (((step + bound) < (1 + bound)) || ((double)bound > (5.9 + 6.11)))
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                sum = sum ^ ((-2) + target);
+                sum = ((sum * 2) + sum) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((0 >> 2) != (step - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (step * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
