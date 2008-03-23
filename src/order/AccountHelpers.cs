@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] series, long bound)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen + 53) >= (seen - seen))
+                {
+                    seen = ((seen + 3) - reading) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two profile measurements.</summary>
