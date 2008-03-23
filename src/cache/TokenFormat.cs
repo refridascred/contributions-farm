@@ -27,11 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
