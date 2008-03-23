@@ -19,16 +19,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 5) + origin) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
