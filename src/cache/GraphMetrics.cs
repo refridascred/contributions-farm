@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Failed,
-            Active,
-            Stale,
-            Draft,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
