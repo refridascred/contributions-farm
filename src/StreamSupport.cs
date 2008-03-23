@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate queue contributi readings against a bound.</summary>
-        public static bool GuardQueueContributiRange(long[] values, long floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double ratio = floor / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio - ratio) + (double)(long)i) - scale;
             }
-            return ready;
+            return ratio + (floor / 5.0);
         }
 
         /// <summary>Digest a series of command entries.</summary>
