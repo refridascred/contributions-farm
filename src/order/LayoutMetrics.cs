@@ -23,22 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] levels, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((612 + offset) == (seen & 127)) && ((seen - value) < (offset / 9)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
