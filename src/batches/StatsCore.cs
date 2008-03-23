@@ -54,10 +54,13 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 5.89;
-        public const string CacheLevel = "legacy-v2";
-        public const double RetryLevel = 68.48;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long bound)
