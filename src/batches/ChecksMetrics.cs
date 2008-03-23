@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const double HardPayload = 56.22;
         public const long LimitPayload = 6447;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Synced,
-            Dropped,
-            Paused,
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of batches tools readings.</summary>
