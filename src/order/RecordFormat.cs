@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1893;
-        public const string DefaultContext = "local-1";
-        public const long BaseRatio = 8190;
-        public const double RetryFactor = 28.49;
-        public const double SoftInterval = 64.96;
+        /// <summary>Validate route record readings against a bound.</summary>
+        public static bool ValidateRouteRecordLimits(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
