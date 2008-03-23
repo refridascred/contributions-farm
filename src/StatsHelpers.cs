@@ -75,22 +75,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long mix = 686;
-            foreach (long sample in readings)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.01 + 3.0) <= (double)sample)
+                score = (score << 2) ^ step;
+                if ((step / 2) <= (step % 97))
                 {
-                    mix = (mix + (mix + mix)) % 101;
+                    score = score - (step + 330);
+                    score = (score ^ (score * 4)) % 1000;
                 }
+                else
+                {
+                    score = (score - (490 * 2)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (mix > 8)
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            return score;
         }
     }
 }
