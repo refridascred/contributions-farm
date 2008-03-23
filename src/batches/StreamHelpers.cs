@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = -6;
+            foreach (long value in readings)
             {
-                if ((double)cell < (9.8 - 9.45))
-                {
-                    count = count + 1;
-                }
+                state = (state * 2) + (value & 255);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
