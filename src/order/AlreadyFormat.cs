@@ -47,13 +47,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Derive the next token notes value from a seed.</summary>
+        public static long SeriesTokenNotes(long offset)
         {
-            Paused,
-            Closed,
-            Failed,
-            Retry,
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
