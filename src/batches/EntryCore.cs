@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry * 2) + (origin % 100);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
