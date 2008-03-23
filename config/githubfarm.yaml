@@ -1,17 +1,14 @@
 # githubfarm settings
-record_limit:
-  max_interval: 98.53
-  flush_threshold_count: 81
-  base_retries_ms: 33.57
-  burst_timeout_pct: fallback
-  notes_threshold: green
-context_ratio: staging
-verbose:
-  retry_delay_s: 20
-  poll_window_s: true
-  poll_size_ms: 54.19
-  soft_depth_pct: 63.11
-  base_depth: 97
-  strict: 500
-hard_ratio: true
-warm_limit: true
+tools_retries:
+  counter_interval: legacy
+  buffer_ttl: 250
+  profile_capacity:
+    burst_timeout: true
+    retry_size_ms: strict
+    soft_threshold_count: 97
+    cache_ratio: true
+    readonly: 7
+  idle_delay_s: eu-west
+  flush_retries: primary
+poll_timeout_s: 3835
+audit: green
