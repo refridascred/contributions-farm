@@ -58,22 +58,11 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Audit batch metrics readings against a rule.</summary>
-        public static long TallyBatchMetricsMatches(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.41 * 6.1) >= (double)matches)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
