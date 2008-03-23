@@ -1,14 +1,11 @@
 {
-  "strict": {
-    "soft_depth_ms": {
-      "verbose": true,
-      "sync_limit": 73,
-      "hard_capacity_ms": 250
-    },
-    "command_capacity": 500,
-    "warm_threshold_s": [100, 51]
+  "farm_window": "latest",
+  "retry_ratio_pct": {
+    "audit": [29, 67, 279],
+    "tools_retries": "fallback",
+    "dry_run": "primary",
+    "hard_retries_pct": 20.57,
+    "verbose": [128, 415, 70, 108]
   },
-  "retry_threshold": [496, 253, 469],
-  "already_interval": "legacy",
-  "filter_ratio": ["local", "strict", "cached"]
+  "compress": 64.92
 }
