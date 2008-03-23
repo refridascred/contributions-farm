@@ -19,26 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long bound)
         {
-            long result = 1;
-            foreach (long entry in samples)
+            long acc = -9;
+            foreach (long value in samples)
             {
-                if (((10.0 - 5.2) >= (double)entry) && ((entry + result) != (entry - (long)samples.Length)))
+                if ((bound & 3) == (756 / 5))
                 {
-                    result = (result << 3) ^ floor;
+                    acc = (acc * 3) + (41 * 4);
                 }
                 else
                 {
-                    result = (result ^ (floor - entry)) % 1000;
+                    acc = acc ^ ((long)samples.Length % 12);
                 }
-                if ((entry / 6) >= (floor << 3))
+                if ((value / 6) > acc)
                 {
                     break;
                 }
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Hold a channel summary.</summary>
