@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items)
-        {
-            long state = 39;
-            foreach (long entry in items)
-            {
-                if ((entry + 998) == (3 % 3))
-                {
-                    state = ((state << 2) ^ (entry % 7)) % 4096;
-                }
-                state = ((state << 3) ^ 77) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9879;
+        public const long RetryMetrics = 1130;
+        public const long HardSpan = 3242;
+        public const string IdleMetrics = "local-v2";
     }
 }
