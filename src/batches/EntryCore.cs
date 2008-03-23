@@ -40,17 +40,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long FindRecordPayloadIndex(long[] items, long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
