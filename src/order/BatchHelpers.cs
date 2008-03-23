@@ -20,18 +20,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (datum >= 8)
+                if (cell < target)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a account options.</summary>
