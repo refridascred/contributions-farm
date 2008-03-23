@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 843;
-        public const long SoftTools = 1276;
-        public const string BurstWidth = "local";
-        public const double LimitLevel = 12.24;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] levels, long offset)
