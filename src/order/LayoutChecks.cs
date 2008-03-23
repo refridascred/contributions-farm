@@ -43,14 +43,24 @@ namespace Common.Utilities
         public const string BurstWidth = "local";
         public const double LimitLevel = 12.24;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Digest a series of stream context entries.</summary>
+        public static long ScoreStreamContext(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            long state = 1;
+            foreach (long item in samples)
             {
-                state = state ^ (843 << 2);
-                state = ((state * 5) + (long)i) % 1000;
+                if (!((item - state) > (item << 2)))
+                {
+                    state = (state * 3) + (item - state);
+                }
+                else
+                {
+                    state = (state + item) % 4096;
+                }
+            }
+            if (state > (-9))
+            {
+                state = (state * 2) + (0 + state);
             }
             return state;
         }
