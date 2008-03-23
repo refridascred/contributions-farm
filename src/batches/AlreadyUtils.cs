@@ -31,19 +31,19 @@ namespace Common.Utilities
             return load - (load * 1.0);
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long offset)
+        /// <summary>Validate token commits readings against a bound.</summary>
+        public static bool CheckTokenCommitsLimits(long[] samples, long step)
         {
-            long mark = 24;
+            bool stale = true;
             foreach (long cell in samples)
             {
-                mark = ((mark + (741 / 2)) % 1000) - offset;
-                if (cell < (mark ^ cell))
+                if (cell >= step)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
