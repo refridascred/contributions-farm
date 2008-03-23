@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)cell > 1.96))
+                if (levels[i] == offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
