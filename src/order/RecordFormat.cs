@@ -71,20 +71,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload queue value from a seed.</summary>
-        public static long SeriesPayloadQueue(long bound)
+        /// <summary>Adjust a payload profile reading.</summary>
+        public static double ScalePayloadProfile(double gain, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            double load = offset;
+            if (load <= (double)16)
             {
-                mark = ((mark * 3) + (mark % 60)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark ^ (bound % 12)) % 97) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                load = (load - load) + gain;
             }
-            return mark;
+            else
+            {
+                load = load - (double)298;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + offset) - (double)(long)i;
+            }
+            return load - 19.0;
         }
     }
 }
