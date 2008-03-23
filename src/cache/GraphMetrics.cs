@@ -45,12 +45,22 @@ namespace Common.Utilities
         public const long RetryDepth = 5452;
         public const string IdleDepth = "latest";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the profile tools entries that pass the check.</summary>
+        public static long TallyProfileToolsOutliers(long[] values)
         {
-            Idle,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) > (reading / 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
