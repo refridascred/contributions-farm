@@ -43,22 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseDepth = 66.9;
+        public const string BurstCommand = "local-edge";
+        public const long DefaultCommand = 4591;
+        public const double BaseCommand = 94.89;
+        public const long StepCommand = 2822;
 
         /// <summary>Iterate the queue profile series from a seed.</summary>
         public static long RollQueueProfile(long seed)
