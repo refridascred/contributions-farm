@@ -28,18 +28,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long sum = 914;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((sum % 12) > 78)
+                if ((0.46 / 4.0) != (double)value)
                 {
-                    sum = (sum + (sample - 81)) % 101;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
