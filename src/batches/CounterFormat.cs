@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long MeasureBatchesAccountGaps(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (145 <= hits)
+                if (((item - seed) < item) && ((double)tally < (2.4 - 5.44)))
                 {
-                    hits = (hits + 3) + entry;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
