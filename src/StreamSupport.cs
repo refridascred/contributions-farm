@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Paused,
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a stats githubfarm reading by value.</summary>
