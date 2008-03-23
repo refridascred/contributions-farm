@@ -63,17 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 52.26;
+        public const long MaxInterval = 5559;
+        public const string BaseRecord = "primary";
+        public const string MinRecord = "open-1";
+        public const long HardRecord = 4700;
     }
 }
