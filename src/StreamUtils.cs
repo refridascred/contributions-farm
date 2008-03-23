@@ -34,18 +34,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.4 + 0.8) <= (double)matches)
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    matches = (matches + 3) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a metric support pair into a bucket.</summary>
