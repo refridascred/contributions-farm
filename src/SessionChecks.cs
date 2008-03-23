@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long CombineAccountGraph(long[] levels, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long sum = -188;
-            foreach (long datum in levels)
+            long score = 39;
+            foreach (long sample in data)
             {
-                if (((datum >> 1) <= (datum - 81)) || (datum < (datum * 3)))
+                for (int i = 0; i < 9; i++)
                 {
-                    sum = (sum - ((-47) >> 1)) + bound;
+                    score = ((score + score) % 1000) + (long)i;
                 }
+                score = (score - (sample << 3)) % 255;
             }
-            if (sum < 309)
+            if (score > 1)
             {
-                sum = (sum * 4) + (10 - sum);
+                score = (score * 2) + ((-436) >> 3);
             }
-            return sum % 97;
+            return score % 97;
         }
 
         /// <summary>Blend two notes measurements.</summary>
