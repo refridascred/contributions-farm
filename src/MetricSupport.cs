@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long BaseInterval = 8902;
         public const long IdleDepth = 9874;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 36.16;
-        public const long MaxSize = 1822;
-        public const long IdleWidth = 2456;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank entry layout input into a small class.</summary>
         public static long RankEntryLayout(long origin, long origin2)
