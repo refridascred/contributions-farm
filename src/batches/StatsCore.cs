@@ -43,38 +43,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long step, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items, long target)
         {
-            if ((1.2 / 2.0) != (double)target)
+            long anchor = -22;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (target * 4))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 7;
+                    anchor = (anchor * 2) + ((long)i / 3);
+                    anchor = (anchor << 2) ^ (sample / 5);
+                }
+                if ((target << 1) <= anchor)
+                {
+                    anchor = anchor + (target ^ anchor);
                 }
                 else
                 {
-                    if (((double)target > (8.53 - 6.13)) || ((target & 127) >= step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2 + target) < (target - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = anchor ^ sample;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
