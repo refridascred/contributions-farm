@@ -93,11 +93,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 8718;
-        public const string MinLevel = "alpha-v2";
-        public const long SoftSize = 2504;
-        public const long WindowLevel = 1834;
-        public const long RetryLayout = 2149;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples)
+        {
+            long mix = 5;
+            foreach (long value in samples)
+            {
+                mix = (mix * 4) + (8 + mix);
+                mix = mix - (value + (-32));
+                if (((double)3 == (double)value) && ((value + value) > (60 << 1)))
+                {
+                    break;
+                }
+            }
+            if (mix < 19)
+            {
+                mix = ((mix * 4) + mix) % 101;
+            }
+            return mix % 97;
+        }
     }
 }
