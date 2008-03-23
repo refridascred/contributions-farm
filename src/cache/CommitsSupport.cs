@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every graph batches entry stays within the limit.</summary>
-        public static bool GuardGraphBatchesLimits(long[] values, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
