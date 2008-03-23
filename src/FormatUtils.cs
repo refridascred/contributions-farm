@@ -61,26 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long seed, long origin)
-        {
-            long diff = seed + origin;
-            if (origin >= (seed << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff - (-799)) < (origin << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleInterval = 96.38;
+        public const long RetryWidth = 8968;
+        public const long HardBatches = 5655;
+        public const long BurstBatches = 8193;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
