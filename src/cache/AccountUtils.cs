@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] readings, long step)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 23;
+            foreach (long sample in readings)
+            {
+                if (step >= (state + state))
+                {
+                    state = ((state << 3) ^ sample) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a token editor pair into a bucket.</summary>
