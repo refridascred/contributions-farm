@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (83 >= cell)
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
