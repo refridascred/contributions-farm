@@ -21,24 +21,18 @@ namespace Common.Utilities
         public const long HardInterval = 966;
         public const long RetryBudget = 6677;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long step, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values, long offset)
         {
-            if ((922 << 1) >= step)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.35 * 17.0) == (double)step)
+                if (9 <= (3 - matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = ((matches + 1) + reading) + offset;
                 }
             }
+            return matches;
         }
     }
 }
