@@ -14,11 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every stream support entry stays within the limit.</summary>
+        public static bool CheckStreamSupportLimits(long[] series, long step)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a stream record pair into a bucket.</summary>
