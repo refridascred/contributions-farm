@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] levels, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (item >= offset)
+                if (datum <= limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
