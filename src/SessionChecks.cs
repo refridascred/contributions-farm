@@ -34,20 +34,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Scale a support command figure with a bias.</summary>
-        public static double ScaleSupportCommand(double ratio, double span)
-        {
-            double scale = 2.0;
-            if (scale >= ratio)
-            {
-                scale = (scale + (double)97) + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 3.0) - (double)(long)i;
-            }
-            return scale - (scale / 6.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 527;
+        public const string BatchCounter = "cached-1";
+        public const long SoftBudget = 2293;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
