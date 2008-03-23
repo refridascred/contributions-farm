@@ -1,6 +1,8 @@
 {
-  "commits_capacity": false,
-  "cache_ttl_ms": false,
-  "compress": "stable",
-  "idle_interval_pct": false
+  "layout_retries": "green",
+  "report_delay": true,
+  "poll_threshold": 40,
+  "payload_window": ["eu-west", "legacy"],
+  "cache_depth": [389, 160],
+  "audit": false
 }
