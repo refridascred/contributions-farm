@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix + (mix & 127)) % 65521;
+                mix = (mix + (floor & 1)) % 65521;
+                mix = (mix - (floor / 5)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
