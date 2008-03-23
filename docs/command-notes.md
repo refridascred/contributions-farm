@@ -1,10 +1,10 @@
 # Command notes
 
-Run the stream check before changing any cache limits.
-A batches that stays idle for too long is moved to the already list.
+Keep githubfarm and stream names short and lowercase.
+Keep batch and payload names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Validate report input early
-- Prefer tools defaults
+- Log every metric change
+- Keep filter values small
+- Validate cache input early
