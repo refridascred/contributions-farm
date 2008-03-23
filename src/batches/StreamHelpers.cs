@@ -27,27 +27,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long TallyMetricEntry(long[] data, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long total = 940;
-            foreach (long item in data)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((total << 1) == (total - total))
                 {
-                    total = ((total + (total << 3)) % 4096) - (long)i;
+                    total = (total + (total + total)) % 1000;
+                    total = (total << 2) ^ (total + (long)i);
                 }
-                if (!((bound / 4) == (item - bound)))
+                else
                 {
-                    total = (total + item) % 255;
+                    total = ((total << 2) ^ (687 * 4)) % 97;
+                    total = total - (bound - bound);
                 }
-                total = ((total * 4) + (5 / 3)) % 65521;
+                total = (total - (3 - (long)i)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (total > 6)
-            {
-                total = total + (bound * 2);
-            }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
