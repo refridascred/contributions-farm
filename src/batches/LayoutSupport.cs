@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long MaxTools = 724;
         public const long StepTimeout = 8647;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            Idle,
-            Locked,
-            Failed,
-            Dropped,
-            Active,
+            double gain = (double)(5 << 2);
+            if (gain < 6.6)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + (floor - rate);
         }
 
         /// <summary>Combine context values into a single score.</summary>
