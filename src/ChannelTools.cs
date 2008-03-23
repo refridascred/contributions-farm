@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up commits token samples.</summary>
-        public static long MatchCommitsTokenCount(long[] series)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = rate;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (double)823) + (double)(long)i;
             }
-            return count;
+            return load - (span / 6.0);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
