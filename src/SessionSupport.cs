@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
