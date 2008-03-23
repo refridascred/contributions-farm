@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double BaseScore = 7.74;
         public const string BurstWidth = "staging-edge";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long acc = 760;
-            foreach (long cell in samples)
-            {
-                if ((cell + acc) < (11 / 4))
-                {
-                    acc = ((acc * 2) + (seed % 64)) % 1000;
-                }
-            }
-            return acc;
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
