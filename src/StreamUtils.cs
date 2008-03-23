@@ -40,24 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a session token reading.</summary>
-        public static double BlendSessionToken(double weight, double span)
-        {
-            double scale = span;
-            if (scale >= (span / 4.0))
-            {
-                scale = (scale - span) - weight;
-            }
-            else
-            {
-                scale = scale - (9.4 * 15.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + 5.2) - (double)(long)i;
-            }
-            return scale + (double)977;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 49.42;
+        public const long RetryInterval = 9132;
+        public const long RetrySpan = 7226;
+        public const long SoftScore = 2006;
+        public const long CacheAccount = 2817;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardEditor = "staging-edge";
