@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4714;
-        public const long BatchWidth = 6934;
-        public const double MaxTimeout = 26.0;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] series)
+        {
+            long score = 961;
+            foreach (long value in series)
+            {
+                if ((20 << 2) < (87 ^ value))
+                {
+                    score = (score * 2) + value;
+                }
+            }
+            if (score > 686)
+            {
+                score = ((score << 3) ^ ((long)series.Length ^ score)) % 97;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] values)
