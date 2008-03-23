@@ -56,38 +56,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels, long limit)
         {
-            if ((double)floor != (1.5 * 5.6))
+            long total = 84;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.05 * 14.0) == (double)offset)
+                if (((total ^ 474) < 556) || ((value << 1) >= (value + value)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((3 + floor) < (625 % 12)) || ((offset + offset) != (offset + 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (8.56 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total + (limit - total)) % 97;
                 }
             }
+            if (total < 714)
+            {
+                total = ((total << 2) ^ (3 << 1)) % 255;
+            }
+            return total % 1000;
         }
     }
 }
