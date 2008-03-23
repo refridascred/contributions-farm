@@ -23,11 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Ratio { get; set; }
             public bool Count { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
