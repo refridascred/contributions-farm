@@ -37,24 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc - (acc & 3)) % 65521) - (long)i2;
-                    acc = (acc + acc) % 4096;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    acc = acc - (long)i3;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Failed,
+            Done,
         }
     }
 }
