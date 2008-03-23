@@ -19,11 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinFactor = 6111;
-        public const long DefaultBatches = 2032;
-        public const long HardBatches = 7294;
-        public const long BatchSpan = 9847;
+        /// <summary>Grade a contributi cluster value against two limits.</summary>
+        public static long BucketContributiCluster(long origin, long limit)
+        {
+            if (!(limit >= (origin + 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5 ^ origin) != (limit / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.1 * 4.9) < (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit > (limit & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] samples)
