@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long DigestContextBatches(long[] items, long seed)
-        {
-            long anchor = 9;
-            foreach (long cell in items)
-            {
-                if (((double)(-86) != (double)seed) || ((seed % 3) != (anchor / 3)))
-                {
-                    anchor = ((anchor << 2) ^ seed) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (0 + cell);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSpan = 4022;
+        public const long CacheWidth = 7414;
+        public const string WindowMetrics = "primary";
+        public const string MinLevel = "local-1";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long FindStreamIndex(long[] values, long step)
