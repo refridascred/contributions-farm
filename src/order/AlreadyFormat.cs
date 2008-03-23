@@ -56,18 +56,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long mark = 77;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry + origin) > (entry % 97))
-                {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
+                total = total + (bound >> 3);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
     }
 }
