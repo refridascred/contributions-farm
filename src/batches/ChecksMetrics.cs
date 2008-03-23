@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 7816;
+        public const string MaxSpan = "fallback";
+        public const string BaseBudget = "alpha";
 
         /// <summary>Audit tools route readings against a rule.</summary>
         public static long AuditToolsRouteHits(long[] levels)
