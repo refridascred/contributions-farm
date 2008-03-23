@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 9346;
-        public const long SoftNotes = 1789;
-        public const string DefaultNotes = "open";
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total ^ (floor / 5)) - (long)i2;
+                }
+                total = (total ^ ((long)i + (long)i)) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] levels)
