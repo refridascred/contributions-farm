@@ -42,20 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 43.65;
+        public const double MaxDepth = 61.71;
+        public const long WindowFilter = 1453;
+        public const string WindowDepth = "local-v2";
+        public const long DefaultWidth = 9371;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double gain, double bias)
