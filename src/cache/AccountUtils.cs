@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = 23;
-            foreach (long sample in readings)
-            {
-                if (step >= (state + state))
-                {
-                    state = ((state << 3) ^ sample) % 1000;
-                }
-            }
-            return state;
+            Failed,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
