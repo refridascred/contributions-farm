@@ -54,12 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            Synced,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
