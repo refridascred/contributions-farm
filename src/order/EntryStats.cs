@@ -31,23 +31,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long floor)
-        {
-            long carry = 9;
-            foreach (long cell in levels)
-            {
-                if ((double)carry <= (13.0 * 8.49))
-                {
-                    carry = ((carry + (carry + carry)) ^ cell) - floor;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry * 3) + (carry * 3)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleWidth = "open-1";
+        public const long BurstChannel = 5267;
+        public const string MinSize = "local-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] readings)
