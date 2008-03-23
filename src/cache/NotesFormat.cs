@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            double bias = (scale + offset) + offset;
+            if (bias >= (double)9)
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - 13.0;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (bias - offset)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Hold a checks stats.</summary>
