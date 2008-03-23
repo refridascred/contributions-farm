@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long TotalGithubfarmCommand(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels, long target)
         {
-            long mark = -3;
-            foreach (long item in levels)
+            long result = 6;
+            foreach (long datum in levels)
             {
-                mark = mark + (item ^ mark);
-                mark = ((mark * 5) + item) % 4096;
-                mark = (mark - ((long)levels.Length + mark)) % 4096;
+                result = (((result ^ (8 * 3)) % 65521) - datum) - target;
             }
-            if (mark > 46)
-            {
-                mark = (mark * 2) + (mark ^ mark);
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
