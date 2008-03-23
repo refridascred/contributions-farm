@@ -30,18 +30,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((152 - offset) == (offset / 7))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
