@@ -1,5 +1,9 @@
 # githubfarm settings
-soft_threshold_pct: primary
-channel_timeout: 2226
-report_window: open
-cache_size: eu-west
+batch_size: 60
+readonly: green
+base_size: open
+window_size:
+  - 422
+  - 448
+  - 335
+report_size: 54
