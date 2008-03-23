@@ -63,18 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] samples, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (0.47 >= (double)seed)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
