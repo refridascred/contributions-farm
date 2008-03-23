@@ -1,7 +1,6 @@
 # support settings
-retry_interval: true
-metrics_ratio: 47.18
-base_ttl: 8
-hard_delay_ms: 2856
-channel_ratio: 1024
-cache_ratio: 100
+max_threshold_ms: 100
+format_ttl: true
+compress: 30
+warm_timeout: 29
+batch_ttl_ms: primary
