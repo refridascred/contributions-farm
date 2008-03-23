@@ -46,35 +46,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long target)
         {
-            long span = step - offset;
-            if (span <= (step ^ step))
+            if ((1.2 / 2.0) != (double)target)
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((1.0 + 3.4) > (double)step)
+                if (target >= (target * 4))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((span + span) <= (span - span))
+                    if (((double)target > (8.53 - 6.13)) || ((target & 127) >= step))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((span + 274) == (118 & 1))
+                        if ((2 + target) < (target - step))
                         {
-                            return 2;
+                            return 1;
                         }
                         else
                         {
-                            return 1;
+                            return 2;
                         }
                     }
                 }
