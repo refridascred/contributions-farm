@@ -16,27 +16,19 @@ namespace Common.Utilities
         public const string DefaultFilter = "fallback-v2";
         public const long BatchLevel = 6419;
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long CombineGraphSchema(long[] items, long limit)
+        /// <summary>Validate githubfarm counter readings against a bound.</summary>
+        public static bool CheckGithubfarmCounterLimits(long[] items, long offset)
         {
-            long sum = 5;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                sum = (sum ^ (sum << 3)) - limit;
-                if ((sum >> 1) <= (497 * 4))
+                if (cell < offset)
                 {
-                    sum = (sum - (sum * 2)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ value) % 255;
-                }
-                if ((double)2 < (double)value)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
     }
 }
