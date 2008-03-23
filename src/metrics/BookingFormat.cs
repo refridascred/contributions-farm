@@ -15,11 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long BaseInterval = 6370;
-        public const long BurstSize = 5431;
-        public const double HardSpan = 72.76;
-        public const long BaseBooking = 7801;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
