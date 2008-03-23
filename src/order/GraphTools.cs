@@ -33,17 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(589 + 4);
+            if (rate <= span)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + ratio;
             }
-            return -1;
+            else
+            {
+                rate = rate + (10.0 / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (4.3 - 8.2)) + (double)(long)i;
+            }
+            return rate + (double)7;
         }
 
         /// <summary>Classify a cluster format pair into a bucket.</summary>
