@@ -36,13 +36,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmMetricsRange(long[] values, long limit)
         {
-            Queued,
-            Closed,
-            Failed,
-            Active,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
