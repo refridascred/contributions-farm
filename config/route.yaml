@@ -1,5 +1,13 @@
 # route settings
-hard_depth_s: open
-buffer_depth: 5153
-soft_limit_count: true
-compress: false
+warm_ttl:
+  - 14
+  - 273
+schema_threshold: fallback
+dry_run: edge
+soft_ttl: 82
+hard_threshold_ms: 65
+verbose:
+  - 46
+  - 101
+  - 157
+  - 320
