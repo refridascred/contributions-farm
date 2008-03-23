@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] items, long bound)
+        /// <summary>Check that every checks stats entry stays within the limit.</summary>
+        public static bool CheckChecksStatsRange(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (entry >= bound)
+                if (item > floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Combine queue record values into a single score.</summary>
