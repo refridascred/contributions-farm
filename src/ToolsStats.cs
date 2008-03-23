@@ -25,18 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long MeasureSessionGithubfarmMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((entry - hits) <= (entry >> 1))
+                if ((3.51 * 18.0) < (double)value)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
