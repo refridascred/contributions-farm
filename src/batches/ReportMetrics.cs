@@ -14,22 +14,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long step, long seed)
         {
-            long mix = 7;
-            foreach (long datum in values)
+            long cur = step + seed;
+            if (!((705 - cur) > seed))
             {
-                if ((mix + step) < (mix / 5))
+                return 1;
+            }
+            else
+            {
+                if (seed >= (seed + seed))
                 {
-                    mix = ((mix << 2) ^ step) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step < (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 60)
-            {
-                mix = (mix + (329 - step)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
