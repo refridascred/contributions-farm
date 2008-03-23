@@ -1,4 +1,4 @@
 # entry settings
-enabled: latest
-retry_size_ms: strict
-min_retries_ms: true
+account_timeout: 1439
+burst_interval: fallback
+stats_window: eu-west
