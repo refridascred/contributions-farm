@@ -37,13 +37,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = 60;
+            foreach (long cell in series)
+            {
+                long offset = (long)series.Length;
+                state = (state * 2) + (32 - offset);
+                if ((state << 2) >= (cell % 2))
+                {
+                    state = (state * 4) + state;
+                }
+            }
+            if (state < 9)
+            {
+                state = (state + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the batch phase values.</summary>
