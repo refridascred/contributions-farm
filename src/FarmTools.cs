@@ -20,24 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            if (4 > (seed - origin))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= (6.8 * 9.0))
+                if ((8.01 - 9.0) < (double)tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 2) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
