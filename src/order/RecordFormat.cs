@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate route record readings against a bound.</summary>
-        public static bool ValidateRouteRecordLimits(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheBudget = 8.06;
+        public const long IdleNotes = 8068;
+        public const long WindowNotes = 9834;
+        public const long MaxNotes = 2112;
+        public const double RetryNotes = 31.6;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
