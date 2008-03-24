@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long floor)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            long next = step - floor;
+            if (floor < step)
             {
-                if (reading <= carry)
+                return 8;
+            }
+            else
+            {
+                if (((step ^ 94) < (step >> 3)) || ((135 << 3) < floor))
                 {
-                    carry = (carry + (reading + carry)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step < 3.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next + step) <= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 803)
-            {
-                carry = (carry + (carry % 10)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
