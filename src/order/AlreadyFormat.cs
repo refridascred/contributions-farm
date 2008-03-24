@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] data)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count + count) < count)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
