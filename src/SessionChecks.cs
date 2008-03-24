@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long bound)
+        /// <summary>Fold a list of stream command readings.</summary>
+        public static long FoldStreamCommand(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 3;
+            foreach (long datum in data)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
+                if (58 <= datum)
                 {
-                    return (long)i;
+                    result = ((result * 3) + (datum - datum)) - limit;
+                }
+                else
+                {
+                    result = (result << 3) ^ (datum << 1);
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
