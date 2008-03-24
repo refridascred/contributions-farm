@@ -47,17 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel editor sample.</summary>
-        public static long SeekChannelEditorIndex(long[] values, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (values[i] >= offset)
+                if ((double)reading > 11.0)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
