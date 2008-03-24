@@ -29,18 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((2.89 + 4.0) > (double)hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            New,
+            Synced,
+            Closed,
         }
     }
 }
