@@ -31,19 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double scale = (weight * 7.0) / 9.0;
+            if (scale < floor)
             {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (weight + weight);
             }
-            return stale;
+            return scale - 12.0;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
