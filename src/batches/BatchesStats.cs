@@ -27,17 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a contributi metric reading by value.</summary>
-        public static long LocateContributiMetricIndex(long[] items, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
