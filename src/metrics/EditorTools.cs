@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] samples, long step)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a farm summary.</summary>
