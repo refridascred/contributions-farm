@@ -1,12 +1,15 @@
 # githubfarm settings
-token_window:
-  - open
-  - primary
-  - fallback
-  - blue
-max_retries_ms: 3090
 verbose:
-  - green
-  - eu-west
-  - primary
-  - primary
+  flush_capacity: false
+  idle_limit_ms: 2.75
+  verbose: legacy
+  idle_retries_pct: false
+  hard_capacity: cached
+  base_threshold:
+    - latest
+    - fallback
+    - latest
+hard_ttl_ms: 86.45
+soft_depth: open
+default_timeout: true
+retry_size_ms: standard
