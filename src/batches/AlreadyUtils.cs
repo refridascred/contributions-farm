@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long LimitBudget = 5413;
         public const long DefaultWidth = 1043;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the token status values.</summary>
