@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long mark = 36;
+            foreach (long value in levels)
+            {
+                mark = (mark + (value - mark)) % 101;
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
