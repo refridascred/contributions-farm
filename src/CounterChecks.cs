@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if (!((9.3 * 7.0) >= (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-24) + bound) > (bound ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
