@@ -19,32 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Roll a window farm counter forward.</summary>
+        public static long DeriveWindowFarm(long limit)
         {
-            long cur = bound + offset;
-            if (cur > 874)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                total = (total * 4) + (limit % 10);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((43 <= (cur & 3)) && ((double)6 != (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)76 <= (double)bound) || ((4.49 / 7.0) > 7.25))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
