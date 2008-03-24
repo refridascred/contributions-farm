@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm already entries that pass the check.</summary>
-        public static long TallyGithubfarmAlreadyMatches(long[] values, long seed)
+        /// <summary>Measure how many account cache samples are out of range.</summary>
+        public static long AuditAccountCacheOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!((item >> 4) == (item & 255)))
+                if (!((double)hits < (6.26 - 0.8)))
                 {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
