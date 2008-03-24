@@ -67,23 +67,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long limit, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long bound)
         {
-            long delta = limit + target;
-            if ((916 >= (delta * 3)) && ((double)limit != (double)551))
+            long delta = limit - bound;
+            if (limit <= (delta % 97))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (((double)target > 18.0) || ((double)delta < (3.0 / 9.0)))
+                if ((bound + bound) == (limit - limit))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    return 3;
                 }
             }
         }
