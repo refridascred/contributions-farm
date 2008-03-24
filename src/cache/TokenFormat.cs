@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitWidth = 7951;
-        public const long MinEditor = 1003;
-        public const long CacheCount = 8223;
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long RollOrderContext(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] levels, long bound)
