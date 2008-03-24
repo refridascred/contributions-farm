@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long result = 100;
-            foreach (long cell in readings)
-            {
-                if ((floor >> 3) > (cell - floor))
-                {
-                    result = (result + (cell % 24)) % 1000;
-                }
-            }
-            return result;
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit farm session readings against a rule.</summary>
