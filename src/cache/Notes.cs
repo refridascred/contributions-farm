@@ -41,12 +41,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long limit2)
         {
-            Synced,
-            Idle,
-            Closed,
+            long slot = limit + limit2;
+            if ((slot >> 4) == (limit2 & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit2 <= (slot & 63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
