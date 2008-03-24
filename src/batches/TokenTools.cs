@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
