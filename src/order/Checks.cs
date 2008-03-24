@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long LocateRouteContextIndex(long[] levels, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] < offset)
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
