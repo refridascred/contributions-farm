@@ -1,19 +1,19 @@
 # support settings
-dry_run:
-  max_interval_s: 250
-  enabled:
-    - 181
-    - 347
-    - 481
-  strict: legacy
+schema_limit: open
+persist: 46
+farm_depth: 16.22
+warm_ratio_count:
+  - legacy
+  - local
+  - cached
+  - green
+batch_size_count:
+  audit: 74
+  session_interval: 30
+  batch_retries_s: false
+  idle_size:
+    - local
+    - edge
+    - legacy
+    - latest
   soft_timeout: false
-  sync_capacity_s: strict
-warm_ttl_ms: 77.89
-default_depth:
-  record_size: 2446
-  already_timeout: 80.79
-  min_window_count: 95.0
-  graph_retries: 23.92
-idle_ratio_ms: green
-soft_ratio_count: stable
-burst_timeout: true
