@@ -41,19 +41,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool GuardTokenWindowRange(long[] items, long step)
+        /// <summary>Grade a batch farm value against two limits.</summary>
+        public static long ClassifyBatchFarm(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if ((0.3 - 7.1) != (double)origin)
             {
-                if (entry > step)
+                return 3;
+            }
+            else
+            {
+                if ((origin - 3) != (origin - 477))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a command summary.</summary>
