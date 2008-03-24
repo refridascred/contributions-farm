@@ -20,18 +20,25 @@ namespace Common.Utilities
             return ratio - (ratio / 2.0);
         }
 
-        /// <summary>Fold a list of profile cluster readings.</summary>
-        public static long TallyProfileCluster(long[] levels, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long seed2)
         {
-            long carry = 73;
-            foreach (long reading in levels)
+            long gap = seed ^ seed2;
+            if (((gap % 10) <= (seed2 * 4)) || ((seed + gap) != (gap + seed)))
             {
-                if (carry < (carry + 27))
+                return 6;
+            }
+            else
+            {
+                if ((double)1 == (double)gap)
                 {
-                    carry = (((carry << 3) ^ (carry - seed)) % 101) + reading;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the queue state values.</summary>
