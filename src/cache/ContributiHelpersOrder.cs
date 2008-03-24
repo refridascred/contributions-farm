@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepDepth = 5733;
+        public const double MaxSpan = 92.44;
+        public const string MinGraph = "cached";
+        public const double RetryGraph = 51.06;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] data, long offset)
