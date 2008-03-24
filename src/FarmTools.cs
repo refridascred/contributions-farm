@@ -19,21 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats context pairs that satisfy a relation.</summary>
-        public static long CompareStatsContextCount(long[] samples)
+        /// <summary>Combine format stream values into a single score.</summary>
+        public static long WeighFormatStream(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 832;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample >> 3) <= (sample - acc)) && ((double)acc > (double)sample))
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc << 3) ^ 787) ^ (long)i;
+                }
+                if ((sample + 551) <= ((long)items.Length ^ (-7)))
+                {
+                    acc = (acc - (sample / 4)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
