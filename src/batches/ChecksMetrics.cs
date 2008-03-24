@@ -74,39 +74,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long floor2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] readings)
         {
-            long diff = floor + floor2;
-            if ((diff << 1) >= (floor << 2))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (258 >= (diff + 4))
+                if (((double)sample <= (4.0 * 2.0)) && ((hits << 1) <= hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor2 / 9) >= (floor2 ^ diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor - floor) < diff))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
