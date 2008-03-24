@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double floor)
         {
-            Active,
-            Pending,
-            Draft,
+            double load = 3.75 - (floor - rate);
+            return load + (rate + 6.49);
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
