@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 6;
+            foreach (long value in levels)
             {
-                if (entry <= (6 + 6))
+                if ((double)value >= 2.43)
                 {
-                    hits = hits + 1;
+                    result = (result ^ (value + value)) % 101;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result ^ (result / 8)) % 101;
+                result = result - (result * 4);
             }
-            return hits;
+            if (result < 915)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate session cache readings against a bound.</summary>
