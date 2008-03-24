@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 6624;
-        public const long MaxBudget = 9251;
-        public const long WindowSpan = 9942;
-        public const string LimitAlready = "latest";
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] items, long limit)
