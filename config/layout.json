@@ -1,8 +1,11 @@
 {
-  "flush_ratio": 62.17,
-  "base_interval_ms": [114, 451],
-  "base_window": "fallback",
-  "poll_delay_pct": 60,
-  "idle_threshold_pct": true,
-  "batch_interval_pct": 500
+  "max_retries_pct": {
+    "dry_run": 51.77,
+    "warm_interval_count": "staging",
+    "idle_interval_ms": "blue",
+    "min_size_s": "open"
+  },
+  "profile_depth": false,
+  "readonly": 616,
+  "flush_limit_pct": false
 }
