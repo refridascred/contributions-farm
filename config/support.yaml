@@ -1,13 +1,7 @@
 # support settings
-retry_ratio: latest
-burst_size_s:
-  cluster_capacity:
-    - blue
-    - open
-    - fallback
-  metrics_limit: 76
-  enabled: 1138
-  readonly: true
-  compress: standard
-  base_timeout_s: local
-audit: true
+burst_ttl: 8897
+farm_ratio:
+  min_timeout_count: true
+  payload_delay: 93.79
+  filter_capacity: open
+hard_delay: 34
