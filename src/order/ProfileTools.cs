@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] items, long offset)
         {
-            long sum = -9;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((double)tally != (double)8) && ((((-658) + offset) <= (tally + entry)) || ((tally * 4) > (entry >> 3))))
                 {
-                    sum = ((((sum << 2) ^ datum) % 101) ^ (long)i) - seed;
-                }
-                if (sum > (datum - 8))
-                {
-                    sum = (sum - (11 + datum)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
