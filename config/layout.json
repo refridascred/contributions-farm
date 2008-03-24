@@ -1,8 +1,15 @@
 {
-  "warm_threshold_ms": "legacy",
-  "already_limit": ["primary", "local"],
-  "flush_interval_count": 97,
-  "compress": "local",
-  "notes_delay": 90.23,
-  "metric_depth": false
+  "poll_threshold_ms": {
+    "format_window": 89.67,
+    "dry_run": {
+      "audit": 46,
+      "already_ttl": "edge",
+      "strict": 49
+    },
+    "poll_size_s": 54.51,
+    "default_capacity_pct": 1024,
+    "soft_ratio": "edge"
+  },
+  "max_ttl_count": 66,
+  "sync_depth": 60.08
 }
