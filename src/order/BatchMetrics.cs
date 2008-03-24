@@ -41,14 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Idle,
-            Dropped,
-            Pending,
-            Failed,
-            Retry,
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
