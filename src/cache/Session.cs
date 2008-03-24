@@ -30,18 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardSpan = 11.7;
+        public const long IdleBudget = 8633;
+        public const long StepMetric = 1572;
+        public const double BatchMetric = 32.32;
+        public const long RetryScore = 1376;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchBounds(long[] samples, long floor)
