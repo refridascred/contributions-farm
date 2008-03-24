@@ -66,22 +66,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels, long limit)
-        {
-            long score = 580;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((((score + 211) % 65521) + (long)i) + reading) + limit;
-                }
-                if (!((long)levels.Length >= (score + score)))
-                {
-                    score = (score * 2) + (8 >> 2);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchFactor = 270;
+        public const long WindowFactor = 9640;
+        public const long IdleSession = 224;
+        public const long StepFactor = 2612;
     }
 }
