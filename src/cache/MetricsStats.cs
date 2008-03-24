@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
             Locked,
-            Synced,
-            Closed,
+            Queued,
             Paused,
-            Done,
+            Ready,
         }
 
         /// <summary>Match up already samples.</summary>
