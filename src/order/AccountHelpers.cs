@@ -44,20 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double bias2)
-        {
-            double bias3 = bias2;
-            if (bias3 < bias)
-            {
-                bias3 = bias3 - 0.3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias3 = (bias3 - (bias / 7.0)) + (double)(long)i;
-            }
-            return bias3 - bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 9827;
+        public const double BurstSize = 58.06;
+        public const long StepDepth = 6233;
+        public const long DefaultFactor = 7384;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] items)
