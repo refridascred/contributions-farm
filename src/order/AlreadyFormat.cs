@@ -22,33 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long step)
-        {
-            long lane = seed - step;
-            if ((double)step >= (5.15 - 3.87))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane >= (2.6 * 3.1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 6840;
+        public const long SoftSchema = 4732;
+        public const string MinRatio = "staging";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchSpan = 5169;
