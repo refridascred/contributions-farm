@@ -17,12 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
