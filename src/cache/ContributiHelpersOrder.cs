@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine record filter values into a single score.</summary>
-        public static long FoldRecordFilter(long[] samples)
+        /// <summary>Adjust a entry order reading.</summary>
+        public static double ProjectEntryOrder(double bias, double bias2)
         {
-            long mark = 6;
-            foreach (long entry in samples)
+            double rate = 9.45;
+            if (rate < (double)(-423))
             {
-                mark = (((mark * 2) + mark) % 255) ^ entry;
-                if (!((double)mark != (16.0 - 7.18)))
-                {
-                    break;
-                }
+                rate = rate + bias2;
             }
-            return mark;
+            return rate - bias;
         }
 
         /// <summary>Hold a batch entry.</summary>
