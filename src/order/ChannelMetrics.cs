@@ -25,38 +25,18 @@ namespace Common.Utilities
         public const long HardLayout = 7613;
         public const double MaxScore = 63.82;
 
-        /// <summary>Grade a batch order value against two limits.</summary>
-        public static long ClassifyBatchOrder(long offset, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] values)
         {
-            if (((double)seed != (9.16 + 6.2)) && ((seed ^ offset) <= offset))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (1.4 <= (double)seed)
+                if ((cell ^ cell) >= 6)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed > (double)offset) && (offset < (offset + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset * 3) < (seed % 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
