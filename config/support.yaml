@@ -1,15 +1,6 @@
 # support settings
-batch_window_s: 38
-warm_limit_ms:
-  - green
-  - primary
-  - stable
-  - stable
-sync_window_count: 52.3
-warm_window:
-  - 466
-  - 322
-  - 187
-  - 74
-batches_ttl: 93.51
-min_window_ms: 60
+min_ttl_s: 24
+dry_run: 500
+order_window: false
+tools_delay: 60
+default_timeout_pct: blue
