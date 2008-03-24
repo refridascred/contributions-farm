@@ -39,38 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((double)offset == (15.0 * 4.08))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 31) < (offset % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset > (offset % 8)) && ((floor & 127) < (offset * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - 8) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
