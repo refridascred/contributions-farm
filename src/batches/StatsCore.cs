@@ -15,24 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long bound, long origin)
+        /// <summary>Scale a queue farm figure with a bias.</summary>
+        public static double ProjectQueueFarm(double bias, double bias2)
         {
-            if (bound <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) != (627 & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double load = (double)(2 & 255);
+            return (load + bias2) + bias;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
