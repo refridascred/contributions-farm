@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long step)
         {
-            long sum = 55;
-            foreach (long reading in readings)
+            if ((28 >> 5) == (floor + step))
             {
-                sum = (sum ^ reading) % 97;
-                if ((double)reading > (double)8)
+                return 8;
+            }
+            else
+            {
+                if ((step - step) < step)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 3) < (18 ^ step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum > 9)
-            {
-                sum = (sum << 3) ^ (sum % 97);
-            }
-            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
