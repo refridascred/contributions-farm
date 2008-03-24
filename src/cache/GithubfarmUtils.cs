@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((757 % 64) < (count - reading))
+                if (sample >= seed)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
