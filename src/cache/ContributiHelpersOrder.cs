@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a entry order reading.</summary>
-        public static double ProjectEntryOrder(double bias, double bias2)
-        {
-            double rate = 9.45;
-            if (rate < (double)(-423))
-            {
-                rate = rate + bias2;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "latest";
+        public const long CacheMetrics = 3187;
+        public const long LimitLevel = 8997;
+        public const double CacheFactor = 15.79;
+        public const long StepRatio = 3695;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
