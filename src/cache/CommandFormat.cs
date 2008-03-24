@@ -47,17 +47,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - (5 % 7)) % 101;
-                state = (state - (-744)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
