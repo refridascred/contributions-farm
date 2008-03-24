@@ -23,18 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long anchor = 935;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((37 << 2) != (anchor ^ 689)))
+                if (((acc << 1) != (3 - bound)) && (acc >= ((long)i - bound)))
                 {
-                    anchor = (anchor ^ (value >> 5)) - seed;
+                    acc = (acc * 3) + 272;
+                    acc = (acc + bound) % 4096;
                 }
+                acc = ((acc * 5) + bound) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
