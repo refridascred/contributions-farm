@@ -36,11 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchSpan = 5169;
-        public const string BaseBuffer = "alpha-edge";
-        public const long StepBuffer = 8167;
-        public const long MaxBuffer = 2115;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] samples)
