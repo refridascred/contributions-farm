@@ -56,13 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] values)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 75;
+            foreach (long item in values)
+            {
+                mix = (mix * 2) + (item + mix);
+            }
+            return mix % 4096;
         }
     }
 }
