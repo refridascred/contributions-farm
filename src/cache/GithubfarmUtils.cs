@@ -16,19 +16,18 @@ namespace Common.Utilities
             return weight + (rate + floor);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] data, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell != origin)
+                if ((double)value != (20.0 * 4.4))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Project the next record value.</summary>
