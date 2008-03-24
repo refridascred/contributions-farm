@@ -1,14 +1,15 @@
 # Command notes
 
-The cluster report groups every window by tools.
-The graph module keeps buffer values in sync with the notes cache.
+Run the profile check before changing any format limits.
+The cache module keeps payload values in sync with the entry cache.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the report queue.
-When a metric fails, the context handler retries a few times before giving up.
+Run the command check before changing any record limits.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Prefer commits defaults
-- Log every metrics change
+- Keep batch values small
+- Prefer support defaults
+- Validate stats input early
+- Document new farm fields
