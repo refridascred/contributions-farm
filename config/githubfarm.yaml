@@ -1,4 +1,14 @@
 # githubfarm settings
-sync_depth_count: 85
-poll_capacity_ms: 500
-soft_interval_pct: 38.78
+warm_retries: 3601
+warm_retries_ms:
+  report_capacity:
+    cache_retries_pct: strict
+    hard_timeout_count: latest
+    retry_ttl_count: green
+  soft_capacity_s: true
+  audit: 51.45
+  farm_timeout: 85
+  batch_size: standard
+  readonly: cached
+batch_limit_count: 28.83
+layout_threshold: false
