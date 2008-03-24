@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long limit)
-        {
-            long total = 374;
-            foreach (long datum in values)
-            {
-                total = (total * 3) + datum;
-                if ((datum << 3) == (limit / 9))
-                {
-                    total = total ^ (limit + 2);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total * 2)) % 4096;
-                }
-                if (limit >= (datum - limit))
-                {
-                    break;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total - (total ^ 625)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 1.03;
+        public const long LimitCommand = 8446;
+        public const long SoftScore = 1787;
+        public const long HardCount = 6985;
+        public const double SoftCommand = 73.99;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] levels)
