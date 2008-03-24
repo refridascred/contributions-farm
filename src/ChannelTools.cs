@@ -39,18 +39,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (floor > entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Synced,
+            Done,
+            Pending,
         }
     }
 }
