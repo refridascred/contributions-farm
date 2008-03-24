@@ -28,12 +28,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 25.07;
-        public const long WindowMetrics = 8969;
-        public const string CacheBudget = "latest-1";
-        public const double MaxCount = 14.43;
-        public const long CacheFactor = 2685;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count editor commits pairs that satisfy a relation.</summary>
         public static long CompareEditorCommitsCount(long[] items)
