@@ -80,11 +80,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long step)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long total = 5;
+            foreach (long reading in items)
+            {
+                total = ((total ^ (reading - reading)) % 1000) - step;
+            }
+            return total;
         }
     }
 }
