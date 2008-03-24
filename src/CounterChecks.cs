@@ -61,13 +61,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long limit)
         {
-            Stale,
-            Retry,
-            Synced,
-            Locked,
+            if (!((limit ^ 30) > (limit >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ step) != (step ^ limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit & 63) < (step ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit % 10) != (limit - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
