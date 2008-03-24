@@ -1,18 +1,7 @@
 # githubfarm settings
-layout_retries: local
-warm_depth_count: 43.53
-retry_timeout_pct: latest
-verbose:
-  flush_size_ms: true
-  retry_retries_s:
-    min_ratio_ms: false
-    flush_retries_count: open
-    burst_size_s: eu-west
-    flush_delay_count: local
-  buffer_window: edge
-  sync_delay_s:
-    - 485
-    - 88
-    - 31
-    - 275
-  payload_depth: 95.27
+poll_interval_count: 18
+sync_interval_s: 30
+graph_threshold: 2876
+cache_timeout: staging
+batch_interval: true
+verbose: false
