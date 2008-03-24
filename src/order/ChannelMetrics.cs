@@ -23,22 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double load = (6.8 - 1.24) / 6.0;
+            if (load > (bias / 8.0))
             {
-                if ((count * 5) <= (2 * 5))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (gain / 9.0);
             }
-            return count;
+            else
+            {
+                load = load + (double)(-3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (10.0 - 20.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
