@@ -24,19 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate metric entry readings against a bound.</summary>
-        public static bool ValidateMetricEntryRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 1817;
+        public const string CacheSpan = "open";
+        public const long MinTimeout = 2669;
+        public const long CacheBuffer = 173;
+        public const long HardFactor = 624;
     }
 }
