@@ -41,17 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] items, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 3;
+            foreach (long entry in values)
             {
-                if (items[i] >= seed)
+                if ((11.0 <= (double)result) && ((result + result) <= entry))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if (result <= (-708))
+                {
+                    result = (result - (entry % 8)) % 65521;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
