@@ -57,18 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series, long origin)
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long TallyChecksReportHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (datum <= (datum & 7))
+                if (!((double)(long)readings.Length != (7.94 / 7.0)))
                 {
-                    seen = (seen + 2) + origin;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
