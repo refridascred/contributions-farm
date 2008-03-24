@@ -1,11 +1,10 @@
 # githubfarm settings
-batch_timeout: 30
-tools_retries: 84
-checks_interval: 70
-sync_window_s:
-  persist: 6946
-  commits_threshold: 3.5
-  stats_timeout: 500
-  window_ttl:
-    - standard
-    - fallback
+tools_ratio: 30
+verbose: eu-west
+soft_ttl_ms:
+  strict: 95.56
+  hard_timeout: primary
+  stats_size: 58
+context_timeout: 5257
+default_delay_s: true
+poll_interval_s: primary
