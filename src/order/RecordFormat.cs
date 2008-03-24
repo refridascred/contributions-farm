@@ -67,18 +67,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long TallyQueueGraphGaps(long[] readings)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= 6)
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
