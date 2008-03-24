@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardLevel = "latest-1";
-        public const long CacheWidth = 3349;
-        public const string DefaultFarm = "alpha-v2";
-        public const long MaxDepth = 5714;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 4379;
+        public const string MaxBuffer = "alpha";
+        public const double SoftBuffer = 56.89;
+        public const long WindowSpan = 1310;
+        public const long MinBuffer = 7997;
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
         public static long DigestGithubfarmPayload(long[] readings, long floor)
