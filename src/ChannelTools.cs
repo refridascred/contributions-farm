@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor - anchor) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
