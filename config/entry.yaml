@@ -1,22 +1,5 @@
 # entry settings
-flush_capacity: false
-min_limit_ms: cached
-poll_timeout_s: 48.57
-audit:
-  - edge
-  - primary
-  - cached
-base_delay:
-  enabled: false
-  audit: true
-  warm_window:
-    flush_window_count: true
-    warm_window: 94.12
-    max_ratio_s: 48
-    hard_depth_ms:
-      - standard
-      - blue
-      - legacy
-      - blue
-    githubfarm_window: false
-poll_window_s: 500
+enabled: fallback
+sync_ttl_s: 24.76
+warm_limit_s: green
+flush_timeout_pct: false
