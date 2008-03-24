@@ -23,17 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 9060;
+        public const long DefaultSize = 3362;
+        public const long LimitStream = 489;
+        public const long BurstCount = 1223;
+        public const double BaseStream = 50.67;
     }
 }
