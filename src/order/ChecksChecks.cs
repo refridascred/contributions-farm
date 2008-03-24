@@ -30,17 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
