@@ -1,5 +1,11 @@
 {
-  "burst_timeout_pct": "primary",
-  "burst_timeout": true,
-  "readonly": 41.35
+  "batch_ratio": false,
+  "commits_size": {
+    "soft_limit": 250,
+    "warm_delay_count": [410, 365, 107, 235],
+    "entry_retries": "staging"
+  },
+  "hard_limit_s": [183, 138, 338],
+  "max_delay_s": ["fallback", "green", "primary", "blue"],
+  "compress": "standard"
 }
