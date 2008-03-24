@@ -48,17 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if ((reading - reading) <= (anchor / 6))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (reading - (long)levels.Length);
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
