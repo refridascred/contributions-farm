@@ -30,18 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Check that every checks command entry stays within the limit.</summary>
+        public static bool GuardChecksCommandBounds(long[] levels, long target)
         {
-            long sum = 7;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!(47 < sum))
+                if (datum < target)
                 {
-                    sum = ((sum + 197) % 1000) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
