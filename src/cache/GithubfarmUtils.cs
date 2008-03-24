@@ -28,19 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long offset)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long CombineBatchAlready(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long acc = 575;
+            foreach (long datum in readings)
             {
-                if (cell < offset)
+                acc = (acc << 2) ^ (datum & 7);
+                if ((double)seed < (double)acc)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
