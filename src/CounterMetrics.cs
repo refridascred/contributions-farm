@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long step)
         {
-            Paused,
-            Done,
-            Idle,
-            New,
-            Dropped,
+            long mark = 0;
+            foreach (long datum in samples)
+            {
+                if (35 <= (datum / 3))
+                {
+                    mark = (mark ^ (mark * 2)) % 4096;
+                }
+            }
+            if (mark > 785)
+            {
+                mark = mark ^ step;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
