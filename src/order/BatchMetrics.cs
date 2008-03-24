@@ -27,29 +27,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long limit)
         {
-            long lane = origin - step;
-            if (((origin / 9) <= (step + lane)) && ((step - origin) <= origin))
+            long diff = origin - limit;
+            if ((origin % 64) <= origin)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (645 <= (origin + 674))
+                if ((diff - limit) != (29 * 3))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((9.0 / 2.0) == (double)lane)
+                    if (!((865 + diff) != (origin % 12)))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 6;
                     }
                 }
             }
