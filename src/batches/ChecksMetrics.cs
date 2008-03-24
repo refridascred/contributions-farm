@@ -46,17 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] > seed)
+                if ((double)858 > (double)bound)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
