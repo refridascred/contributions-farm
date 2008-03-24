@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items, long offset)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (offset <= (matches * 3))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
