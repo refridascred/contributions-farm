@@ -34,18 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] series, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double scale = bias;
+            if (scale >= gain)
             {
-                if (offset > (matches - matches))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                scale = scale + (bias - scale);
             }
-            return matches;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 6.0)) + (double)(long)i;
+            }
+            return scale - (bias - bias);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
