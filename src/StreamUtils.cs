@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            long total = 373;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum >= ((long)samples.Length + 887))
+                if ((7.12 + 0.7) > (double)tally)
                 {
-                    total = (total + datum) % 1000;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Roll a support notes counter forward.</summary>
