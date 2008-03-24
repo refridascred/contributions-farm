@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(tally < value))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            double scale2 = (6.0 * 1.8) - (scale * 6.0);
+            return (scale2 + scale) + span;
         }
 
         /// <summary>Find the first entry account entry that matches the target.</summary>
