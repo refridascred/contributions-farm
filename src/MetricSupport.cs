@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long reading in samples)
             {
-                if ((value >> 4) < value)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 2) + (429 ^ reading)) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
