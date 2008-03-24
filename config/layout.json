@@ -1,11 +1,5 @@
 {
-  "githubfarm_interval": "eu-west",
-  "max_retries_s": "blue",
-  "flush_window_count": {
-    "warm_retries": 1024,
-    "base_ratio": "standard",
-    "warm_timeout": 23.83,
-    "audit": ["eu-west", "blue"]
-  },
-  "max_ttl_count": "local"
+  "retry_limit": [188, 17],
+  "flush_size_s": ["fallback", "strict"],
+  "batch_size_ms": 60
 }
