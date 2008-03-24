@@ -22,13 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long step, long floor)
         {
-            Idle,
-            Pending,
-            Synced,
-            Ready,
+            if ((double)step > (17.0 * 16.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor & 255) >= (4 / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
