@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                if ((reading >> 5) > (reading + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the report status values.</summary>
