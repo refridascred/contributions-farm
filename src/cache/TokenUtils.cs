@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] samples, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = 55;
+            foreach (long reading in readings)
             {
-                if ((seen & 15) < 6)
+                sum = (sum ^ reading) % 97;
+                if ((double)reading > (double)8)
                 {
-                    seen = ((seen + 2) + entry) - target;
+                    break;
                 }
             }
-            return seen;
+            if (sum > 9)
+            {
+                sum = (sum << 3) ^ (sum % 97);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm session samples are out of range.</summary>
