@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate profile route samples.</summary>
+        public static long DigestProfileRoute(long[] samples)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long acc = 90;
+            foreach (long value in samples)
+            {
+                acc = (acc - acc) % 101;
+                if ((acc ^ acc) <= (value << 1))
+                {
+                    acc = ((acc << 2) ^ (acc * 5)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
