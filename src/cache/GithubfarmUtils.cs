@@ -23,12 +23,15 @@ namespace Common.Utilities
         public const long HardGithubfarm = 8707;
         public const long RetryCount = 1328;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double span)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            double gain2 = (double)(408 + 22);
+            if (gain2 > span)
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 + (gain2 + 7.9);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
