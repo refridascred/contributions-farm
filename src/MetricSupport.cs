@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            if ((target - seed) == (seed - seed))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ target) == (target - seed))
+                if ((value >> 4) < value)
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((seed + target) > (6 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a cache checks reading.</summary>
