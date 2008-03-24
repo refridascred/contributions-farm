@@ -61,21 +61,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)count >= (6.23 * 2.41)))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 1) - entry) - step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
