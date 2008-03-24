@@ -35,17 +35,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] samples, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin >> 2) == (limit / 5))
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= (origin >> 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
