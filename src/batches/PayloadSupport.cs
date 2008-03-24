@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (offset <= (matches * 3))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
