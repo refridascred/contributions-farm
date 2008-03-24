@@ -17,13 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Failed,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "stable";
+        public const long LimitFilter = 5910;
+        public const long WindowDepth = 3807;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long step)
