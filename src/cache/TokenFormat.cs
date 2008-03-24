@@ -35,19 +35,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long state = -652;
-            foreach (long datum in readings)
-            {
-                state = state + (datum + state);
-            }
-            if (state > 17)
-            {
-                state = ((state * 3) + (seed - seed)) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
