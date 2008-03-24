@@ -1,5 +1,7 @@
 # entry settings
-enabled: fallback
-sync_ttl_s: 24.76
-warm_limit_s: green
-flush_timeout_pct: false
+soft_retries:
+  - fallback
+  - local
+base_capacity_s: 1024
+verbose: false
+checks_delay: edge
