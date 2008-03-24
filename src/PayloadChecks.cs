@@ -27,17 +27,25 @@ namespace Common.Utilities
             return load + (rate + 6.49);
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor + seed;
+            if ((floor - lane) != (lane + floor))
             {
-                if (samples[i] <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((4.6 / 7.0) <= (double)lane)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
