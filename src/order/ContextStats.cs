@@ -14,20 +14,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long target)
+        /// <summary>Grade a payload notes value against two limits.</summary>
+        public static long BucketPayloadNotes(long origin, long floor)
         {
-            long mark = 251;
-            foreach (long reading in values)
+            long slot = origin - floor;
+            if (((702 % 2) <= floor) && ((slot + 7) <= (origin % 10)))
             {
-                long step = (target >> 5) - (reading ^ target);
-                mark = mark - (step << 2);
-                if (((double)mark == (double)reading) && ((reading + mark) != (target + mark)))
+                return 0;
+            }
+            else
+            {
+                if (floor <= (floor % 12))
                 {
-                    mark = (mark ^ 8) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor > (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((796 + origin) != (origin >> 5)) || ((origin * 4) < (82 ^ slot)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
