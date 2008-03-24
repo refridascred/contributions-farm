@@ -36,21 +36,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
-        public static long CompareEditorCommitsCount(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 47;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry > (3.41 * 6.0))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (((mark << 3) ^ (entry + 53)) % 4096) + target;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
