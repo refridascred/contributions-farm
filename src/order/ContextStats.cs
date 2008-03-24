@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] readings)
+        /// <summary>Measure how many metric commits samples are out of range.</summary>
+        public static long TallyMetricCommitsGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!(((reading & 255) == (count - reading)) && ((count / 2) != ((long)readings.Length - reading))))
+                if ((7 + matches) == (limit ^ limit))
                 {
-                    count = count + 2;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
