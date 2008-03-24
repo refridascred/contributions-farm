@@ -14,19 +14,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Digest a series of batch support entries.</summary>
+        public static long FoldBatchSupport(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long sum = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seed != (double)result)
+                if (!(sum >= reading))
                 {
-                    result = (result * 5) + (result % 7);
+                    sum = sum - (reading >> 4);
                 }
-                result = ((result * 2) + (long)i) % 65521;
+                if (reading <= 985)
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum < 1)
+            {
+                sum = sum ^ (sum & 7);
+            }
+            return sum;
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
