@@ -1,6 +1,13 @@
 # support settings
-min_ttl_s: 24
-dry_run: 500
-order_window: false
-tools_delay: 60
-default_timeout_pct: blue
+hard_depth: 5
+compress: true
+strict: 39
+buffer_retries:
+  soft_timeout_s: primary
+  counter_capacity: 9385
+  base_threshold_s: 1363
+  max_ratio_s: 60
+  flush_timeout: 70
+  sync_timeout_ms: true
+max_ratio_pct: 69
+cache_threshold_pct: strict
