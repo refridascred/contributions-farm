@@ -23,12 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 6897;
-        public const long StepChannel = 8646;
-        public const long StepScore = 1457;
-        public const long MinScore = 6454;
-        public const long SoftChannel = 618;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((double)limit >= 5.34) && ((0.1 * 8.49) != (double)state))
+                {
+                    state = ((state << 2) ^ (670 << 2)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderGaps(long[] levels, long origin)
