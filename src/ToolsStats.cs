@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] items, long seed)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (double)59)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
