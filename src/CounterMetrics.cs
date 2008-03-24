@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 3183;
-        public const string WindowRecord = "stable-edge";
-        public const double SoftRecord = 30.36;
-        public const long DefaultLevel = 4371;
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double gain, double bias)
+        {
+            double load = gain;
+            if (load < gain)
+            {
+                load = (load + (gain / 9.0)) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (load * 0.79)) + (double)(long)i;
+            }
+            return load - (double)1;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] readings)
