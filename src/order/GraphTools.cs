@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstScore = 19.18;
+        public const long WindowMetric = 2479;
+        public const long BurstSize = 9791;
+        public const long DefaultScore = 6178;
+        public const string IdleMetric = "standard";
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] items)
