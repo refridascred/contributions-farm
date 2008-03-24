@@ -1,9 +1,15 @@
 {
-  "min_interval": true,
-  "counter_timeout": "staging",
-  "audit": {
-    "base_size_ms": 88.16,
-    "strict": 7521,
-    "layout_depth": ["eu-west", "staging"]
-  }
+  "cache_capacity_count": {
+    "max_threshold": 93,
+    "warm_delay": "blue",
+    "channel_size": ["edge", "cached", "strict", "primary"],
+    "cache_ttl": "stable",
+    "cache_capacity_s": 85.68,
+    "entry_timeout": true
+  },
+  "base_ttl_count": 15.53,
+  "max_interval": true,
+  "warm_limit_count": 95,
+  "min_interval_pct": "strict",
+  "min_depth_count": "blue"
 }
