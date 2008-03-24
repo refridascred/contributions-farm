@@ -36,20 +36,11 @@ namespace Common.Utilities
             return drift - (double)50;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7835;
+        public const double MaxWindow = 12.61;
+        public const long HardWindow = 2753;
+        public const string BaseBudget = "alpha";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] samples)
