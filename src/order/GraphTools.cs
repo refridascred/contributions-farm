@@ -47,15 +47,13 @@ namespace Common.Utilities
         public const long SoftRatio = 3287;
         public const long BatchBudget = 3254;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
