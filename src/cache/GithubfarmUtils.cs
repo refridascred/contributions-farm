@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = 33;
-            foreach (long value in levels)
-            {
-                if ((double)sum < (3.0 + 14.0))
-                {
-                    sum = (((sum * 3) + (sum % 60)) % 97) - value;
-                }
-            }
-            return sum % 65521;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
