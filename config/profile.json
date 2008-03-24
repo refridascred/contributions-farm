@@ -1,7 +1,8 @@
 {
-  "warm_threshold_count": [169, 287],
-  "audit": ["staging", "primary", "latest", "cached"],
-  "cache_ratio_count": "standard",
-  "enabled": "blue",
-  "base_limit": [215, 425, 182, 191]
+  "metric_threshold": "primary",
+  "enabled": 0.79,
+  "flush_delay_pct": 3338,
+  "soft_ttl": [496, 483, 491, 211],
+  "sync_retries": 5071,
+  "contributi_window": "green"
 }
