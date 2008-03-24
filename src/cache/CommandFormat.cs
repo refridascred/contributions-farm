@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
-        public static bool CheckCommitsClusterRange(long[] readings, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (entry <= floor)
+                if (entry <= (6 + 6))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
