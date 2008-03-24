@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long carry = 417;
-            foreach (long entry in samples)
-            {
-                if ((0 >= carry) && ((70 - entry) > carry))
-                {
-                    carry = ((carry << 3) ^ (entry % 100)) % 1000;
-                }
-            }
-            return carry % 1000;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
