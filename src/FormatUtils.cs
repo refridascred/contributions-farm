@@ -69,14 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long seed)
         {
-            Idle,
-            Closed,
-            Active,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
