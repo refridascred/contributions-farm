@@ -37,18 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] items, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)item >= (double)59)
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    seen = (seen + 1) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
