@@ -1,4 +1,4 @@
 # githubfarm settings
-flush_timeout: false
-sync_limit: 58
-cache_delay: 30
+cache_retries_ms: 250
+dry_run: 76
+compress: open
