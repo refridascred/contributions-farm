@@ -15,15 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate tools editor samples.</summary>
-        public static long CombineToolsEditor(long[] readings, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long bound, long origin)
         {
-            long acc = 40;
-            foreach (long sample in readings)
+            if (bound <= origin)
             {
-                acc = ((acc + ((long)readings.Length - step)) % 101) ^ sample;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((origin ^ origin) != (627 & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
