@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 287;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (result <= offset)
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ entry) % 4096;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
