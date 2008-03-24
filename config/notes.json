@@ -1,9 +1,37 @@
 {
-  "soft_limit_s": {
-    "soft_interval": [101, 108, 9, 327],
-    "min_size_s": "fallback",
-    "entry_ttl": "staging"
+  "dry_run": {
+    "warm_ttl_s": 30,
+    "sync_ratio_pct": "latest",
+    "entry_retries": "legacy",
+    "max_delay_s": 60,
+    "readonly": "green"
   },
-  "persist": ["edge", "latest", "local", "stable"],
-  "soft_delay_s": 1024
+  "readonly": {
+    "context_ratio": 63.1,
+    "verbose": {
+      "dry_run": "eu-west",
+      "persist": "blue",
+      "order_timeout": ["eu-west", "eu-west", "staging", "local"],
+      "context_retries": 500,
+      "base_interval_s": ["standard", "legacy", "blue"],
+      "profile_retries": false
+    },
+    "profile_retries": [288, 86, 383, 464],
+    "batch_interval": true
+  },
+  "burst_window_pct": {
+    "warm_window_count": {
+      "metric_window": "eu-west",
+      "max_ratio": 48.48,
+      "command_threshold": true,
+      "burst_retries_pct": "edge",
+      "cache_retries_count": 65,
+      "sync_depth_count": "staging"
+    },
+    "metric_capacity": "primary",
+    "hard_capacity": 23,
+    "default_depth_s": true,
+    "warm_window_pct": "strict"
+  },
+  "farm_delay": 100
 }
