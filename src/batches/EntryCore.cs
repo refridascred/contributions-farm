@@ -30,18 +30,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long AuditPayloadBufferHits(long[] items, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell + offset) < (offset / 9))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = hits + 1;
+                    sum = (sum + (sum ^ floor)) ^ (long)i2;
+                    sum = (sum ^ (sum % 7)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up counter samples.</summary>
