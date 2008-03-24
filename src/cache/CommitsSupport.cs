@@ -21,24 +21,15 @@ namespace Common.Utilities
         public const long RetryTools = 3622;
         public const double LimitTools = 75.37;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            if ((bound >> 5) <= seed)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((seed & 127) >= (seed << 3)) || (bound <= 55))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
