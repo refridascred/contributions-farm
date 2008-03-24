@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two checks editor measurements.</summary>
-        public static double BlendChecksEditor(double ratio, double floor)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > 19.0)
-            {
-                ratio2 = ratio2 + (floor * 15.0);
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)39;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - ratio) - (double)(long)i;
-            }
-            return ratio2 + (floor - 4.4);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 477;
+        public const long RetryLayout = 5282;
+        public const double IdleDepth = 20.98;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] items, long floor)
