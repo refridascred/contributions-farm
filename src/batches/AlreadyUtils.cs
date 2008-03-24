@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double load = weight;
-            if (load > span)
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - (load * 1.0);
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
