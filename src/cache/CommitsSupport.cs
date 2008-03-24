@@ -42,18 +42,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many commits order samples are out of range.</summary>
-        public static long TallyCommitsOrderMatches(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 6;
+            foreach (long cell in samples)
             {
-                if ((14.0 + 3.0) == (double)tally)
+                if (((double)cell > (double)469) && ((cell % 2) >= (score + cell)))
                 {
-                    tally = (tally + 1) + datum;
+                    score = ((score << 3) ^ cell) % 101;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a record stats.</summary>
