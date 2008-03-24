@@ -38,23 +38,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((origin * 3) != (87 + origin))
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryFactor = 103;
+        public const string LimitBudget = "open-1";
+        public const long MaxCount = 6114;
+        public const long IdleOrder = 5424;
+        public const long LimitOrder = 8385;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] data)
