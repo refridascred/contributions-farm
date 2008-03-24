@@ -16,31 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if (!(step >= 448))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= 880)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.5 * 1.0) >= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
