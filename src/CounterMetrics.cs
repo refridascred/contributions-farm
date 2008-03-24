@@ -15,13 +15,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long floor2)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            if (!(floor2 >= (floor2 + floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((floor2 - 57) < (floor + floor)) || ((7.1 + 8.0) > (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (15.0 - 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor2 / 5) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a order reading by value.</summary>
