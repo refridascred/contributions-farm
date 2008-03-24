@@ -32,12 +32,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Closed,
-            Synced,
-            Failed,
+            Active,
+            Dropped,
+            Paused,
+            Locked,
+            New,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
