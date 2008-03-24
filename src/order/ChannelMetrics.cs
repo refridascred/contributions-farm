@@ -24,17 +24,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
