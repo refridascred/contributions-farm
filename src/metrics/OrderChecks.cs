@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
