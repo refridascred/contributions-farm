@@ -53,14 +53,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] samples, long step)
         {
-            Locked,
-            Retry,
-            Active,
-            Closed,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
