@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit channel stats readings against a rule.</summary>
+        public static long MeasureChannelStatsOutliers(long[] samples)
         {
-            Synced,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - matches) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
