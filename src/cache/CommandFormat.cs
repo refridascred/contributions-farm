@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4216;
-        public const double IdleWidth = 10.72;
-        public const long IdleScore = 5583;
-        public const double StepNotes = 26.47;
-        public const long WindowNotes = 1969;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (21 > (seed ^ sum))
+                {
+                    sum = (sum << 3) ^ (sum ^ sum);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
