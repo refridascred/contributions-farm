@@ -53,17 +53,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] series, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = bound - seed;
+            if ((540 * 4) <= (seed * 5))
             {
-                if (series[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((bound + 6) > (seed + 20))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ 60) > (bound & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((46 & 3) != (span * 5)) && ((bound - span) >= (bound + span)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
