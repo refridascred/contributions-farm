@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next tools already value.</summary>
-        public static double AdjustToolsAlready(double ratio, double offset)
+        /// <summary>Accumulate token entry samples.</summary>
+        public static long FoldTokenEntry(long[] levels)
         {
-            double rate = (offset / 6.0) + (1.96 - ratio);
-            if (rate > offset)
+            long state = 1;
+            foreach (long datum in levels)
             {
-                rate = rate + (double)17;
+                if (((double)state >= (double)60) && ((state & 255) < (5 << 1)))
+                {
+                    state = ((state << 2) ^ (datum & 1)) % 101;
+                }
+                if ((6.0 - 6.0) == (double)state)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - offset) - (double)(long)i;
-            }
-            return rate + (ratio + offset);
+            return state % 97;
         }
 
         /// <summary>Blend two notes measurements.</summary>
