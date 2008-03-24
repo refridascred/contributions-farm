@@ -13,38 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a format profile value against two limits.</summary>
-        public static long SortFormatProfile(long offset, long offset2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            if ((offset ^ offset) > (offset2 + offset))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 5) <= offset)
+                if ((reading + matches) >= matches)
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((offset + offset2) < 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset2 << 3) > (offset >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
