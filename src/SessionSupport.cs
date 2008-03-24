@@ -42,13 +42,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long state = 71;
+            foreach (long sample in series)
+            {
+                state = ((state - ((-6) + state)) % 1000) + sample;
+            }
+            return state;
         }
     }
 }
