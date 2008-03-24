@@ -45,18 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] values, long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (origin > ((long)values.Length ^ origin))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
