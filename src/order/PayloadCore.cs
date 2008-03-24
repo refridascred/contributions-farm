@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((floor >= (floor ^ seed)) && ((floor - floor) == (floor ^ 10)))
             {
-                if (sample <= (tally - sample))
+                return 6;
+            }
+            else
+            {
+                if (((floor << 3) <= (seed - seed)) && (seed > (floor ^ floor)))
                 {
-                    tally = (tally + 2) + origin;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 2) <= 399)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank session contributi input into a small class.</summary>
