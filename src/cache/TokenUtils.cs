@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] samples, long target)
         {
-            Synced,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen & 15) < 6)
+                {
+                    seen = ((seen + 2) + entry) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
