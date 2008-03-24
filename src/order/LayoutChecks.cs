@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "legacy-1";
-        public const long LimitLevel = 4052;
-        public const double LimitRatio = 24.5;
-        public const long BatchGraph = 8583;
+        /// <summary>Find the first schema notes entry that matches the target.</summary>
+        public static long FindSchemaNotesIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] data, long bound)
