@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 4313;
         public const long SoftCluster = 6101;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 34.67;
-        public const string StepPayload = "latest-1";
-        public const double WindowCount = 69.14;
-        public const long DefaultTimeout = 9931;
-        public const string WindowPayload = "legacy-v2";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Retry,
+            Closed,
+            New,
+            Done,
+        }
     }
 }
