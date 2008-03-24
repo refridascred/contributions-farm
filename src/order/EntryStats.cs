@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 11.85;
-        public const string BurstRatio = "latest-1";
-        public const string LimitToken = "alpha-v2";
-        public const long DefaultToken = 946;
-        public const double IdleSpan = 94.08;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
