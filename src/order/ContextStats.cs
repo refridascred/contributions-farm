@@ -47,11 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultSize = "cached-1";
-        public const string SoftEditor = "strict-v2";
-        public const long BatchEditor = 2078;
-        public const double WindowScore = 73.43;
-        public const long WindowDepth = 5485;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen >> 1) > sample)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
