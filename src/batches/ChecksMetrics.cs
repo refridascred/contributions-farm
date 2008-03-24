@@ -58,18 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((hits - sample) < hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
