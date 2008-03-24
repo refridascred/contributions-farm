@@ -23,16 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a window farm counter forward.</summary>
-        public static long DeriveWindowFarm(long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                total = (total * 4) + (limit % 10);
-                total = ((total * 3) + (long)i) % 4093;
+                if ((seed <= (-876)) || ((86 ^ seed) <= (matches + seed)))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
