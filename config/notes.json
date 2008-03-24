@@ -1,22 +1,8 @@
 {
-  "burst_timeout_s": "fallback",
-  "flush_window_pct": {
-    "base_limit": ["eu-west", "stable", "primary"],
-    "readonly": [213, 410, 95],
-    "payload_timeout": 72.6,
-    "sync_ratio_ms": "standard",
-    "sync_interval": 90
-  },
-  "persist": {
-    "verbose": false,
-    "layout_delay": "latest",
-    "farm_delay": {
-      "verbose": [62, 51],
-      "queue_retries": 6968,
-      "readonly": "stable",
-      "stats_threshold": 83.93,
-      "cluster_interval": "edge",
-      "payload_interval": false
-    }
-  }
+  "enabled": 500,
+  "readonly": "open",
+  "min_interval": "staging",
+  "session_ttl": "fallback",
+  "soft_timeout": "green",
+  "hard_delay": ["eu-west", "local"]
 }
