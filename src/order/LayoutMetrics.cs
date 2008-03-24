@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a session context figure with a bias.</summary>
-        public static double AdjustSessionContext(double scale, double bias)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (bias + ratio)) - (double)(long)i;
-            }
-            return ratio - (3.2 * 8.18);
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
