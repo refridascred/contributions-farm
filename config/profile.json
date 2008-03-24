@@ -1,6 +1,12 @@
 {
-  "sync_size": 30,
-  "channel_interval": false,
-  "channel_ttl": "blue",
-  "min_delay": false
+  "cache_size_count": {
+    "support_limit": "fallback",
+    "poll_ratio_pct": ["eu-west", "stable", "blue"],
+    "strict": false,
+    "channel_size": "standard"
+  },
+  "warm_retries_s": "green",
+  "command_capacity": false,
+  "contributi_retries": "eu-west",
+  "sync_depth_count": 26
 }
