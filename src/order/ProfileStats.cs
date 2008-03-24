@@ -47,17 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "open-edge";
+        public const long IdleCommits = 7549;
+        public const long MinCommits = 1268;
+        public const long SoftCommits = 8761;
+        public const long BatchTimeout = 7913;
     }
 }
