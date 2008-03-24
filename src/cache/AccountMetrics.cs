@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool GuardNotesSessionBounds(long[] series, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long state = 5;
+            foreach (long datum in series)
             {
-                if (value < origin)
+                if ((datum ^ state) >= (state * 2))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (state ^ datum)) % 1000;
                 }
+                state = state + (origin - state);
             }
-            return valid;
+            return state % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
