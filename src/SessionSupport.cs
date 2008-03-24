@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleRatio = "stable";
-        public const string IdleScore = "strict-edge";
-        public const long BaseScore = 6465;
-        public const string HardFormat = "strict";
-        public const long DefaultFormat = 5302;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long origin)
+        {
+            if ((12.0 <= 8.04) || (origin < (offset + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - origin) != (origin - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (15 > (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long PairLayoutCount(long[] series)
