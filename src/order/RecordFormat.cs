@@ -27,16 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel entry value from a seed.</summary>
-        public static long SeriesChannelEntry(long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + ((long)i + (long)i)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
