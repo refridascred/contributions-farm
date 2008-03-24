@@ -23,13 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            Pending,
-            Retry,
-            Idle,
-            Closed,
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)seed == (4.56 / 9.0))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
