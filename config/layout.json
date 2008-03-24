@@ -1,5 +1,8 @@
 {
-  "retry_limit": [188, 17],
-  "flush_size_s": ["fallback", "strict"],
-  "batch_size_ms": 60
+  "flush_ratio": 62.17,
+  "base_interval_ms": [114, 451],
+  "base_window": "fallback",
+  "poll_delay_pct": 60,
+  "idle_threshold_pct": true,
+  "batch_interval_pct": 500
 }
