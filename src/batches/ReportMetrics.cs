@@ -19,24 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long target)
         {
-            long sum = -305;
-            foreach (long cell in samples)
+            if ((target & 255) > target)
             {
-                sum = (sum << 2) ^ (sum + step);
-                sum = sum - (966 << 1);
-                if (((double)step < (0.49 - 3.4)) || ((cell & 63) <= (step >> 5)))
+                return 5;
+            }
+            else
+            {
+                if (!(target <= (target / 8)))
                 {
-                    sum = ((sum << 3) ^ (50 % 12)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((786 * 2) >= (target + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum < 65)
-            {
-                sum = sum - (20 ^ step);
-            }
-            return sum % 1000;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
