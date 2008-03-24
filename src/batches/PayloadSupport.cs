@@ -15,10 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7022;
-        public const double BurstChecks = 42.83;
-        public const long IdleSpan = 1826;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long seed)
