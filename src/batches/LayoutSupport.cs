@@ -41,15 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = -4;
-            foreach (long value in values)
-            {
-                carry = ((((carry << 2) ^ ((long)values.Length >> 2)) % 255) - value) - bound;
-            }
-            return carry;
+            Done,
+            Locked,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the stream class values.</summary>
