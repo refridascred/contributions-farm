@@ -16,31 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batches route value against two limits.</summary>
-        public static long BucketBatchesRoute(long offset, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if (!(origin < (origin * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin != (8.0 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset == (20.0 + 8.5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up layout filter samples.</summary>
