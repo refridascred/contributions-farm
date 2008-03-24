@@ -1,9 +1,4 @@
 # githubfarm settings
-readonly: true
-command_window:
-  - latest
-  - legacy
-  - local
-batch_threshold: 72.45
-graph_ttl: open
-account_capacity: 28
+format_threshold: local
+metric_limit: 500
+max_delay: standard
