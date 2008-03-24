@@ -1,5 +1,11 @@
 {
-  "max_limit_count": "primary",
-  "hard_timeout_ms": 90,
-  "flush_capacity": "strict"
+  "idle_timeout_pct": {
+    "max_capacity_count": [258, 409, 323, 235],
+    "cache_ttl": [111, 88, 215],
+    "cluster_retries": "cached",
+    "persist": "strict"
+  },
+  "persist": "fallback",
+  "idle_ratio_s": ["green", "standard"],
+  "default_ratio_count": false
 }
