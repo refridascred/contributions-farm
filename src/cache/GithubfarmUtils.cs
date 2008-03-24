@@ -20,19 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next queue report value.</summary>
-        public static double ScaleQueueReport(double rate, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long offset, long seed)
         {
-            double load = rate;
-            if (load > rate)
+            if ((5.6 / 6.0) < (double)offset)
             {
-                load = (load + load) - offset;
+                return 0;
             }
             else
             {
-                load = load + (3.8 / 4.0);
+                if (((offset + offset) != (offset ^ 745)) || (offset < ((-25) * 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= (offset - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed > (offset % 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return load + (6.84 + rate);
         }
 
         /// <summary>Hold a farm entry.</summary>
