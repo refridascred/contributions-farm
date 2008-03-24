@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in local edge standard; do
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable local; do
     log "checking ${item}"
 done
