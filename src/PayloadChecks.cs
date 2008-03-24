@@ -20,27 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metrics commits value from a seed.</summary>
-        public static long IterateMetricsCommits(long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state << 2) ^ limit) + (long)i2;
-                }
-                if (((limit - limit) < (long)i) || ((limit + state) > state))
-                {
-                    state = (state << 2) ^ (state & 3);
-                }
-                else
-                {
-                    state = (state * 3) + state;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
