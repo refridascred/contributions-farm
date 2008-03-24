@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = 74;
-            foreach (long datum in levels)
-            {
-                total = ((total ^ (total % 3)) % 101) + datum;
-                if ((offset - total) <= (long)levels.Length)
-                {
-                    total = (total + (77 ^ 68)) % 255;
-                }
-                if ((total ^ offset) < total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
