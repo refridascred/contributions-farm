@@ -30,14 +30,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Ready,
-            Active,
-            Retry,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 1176;
+        public const long BaseScore = 6002;
+        public const long StepSize = 3298;
     }
 }
