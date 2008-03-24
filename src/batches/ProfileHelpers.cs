@@ -34,19 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Classify a queue payload pair into a bucket.</summary>
+        public static long RankQueuePayload(long offset, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            if (!((offset * 3) < (offset * 5)))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry ^ carry) % 65521) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((offset + 1) <= (offset - target)) && (((-49) ^ offset) != (offset - offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
