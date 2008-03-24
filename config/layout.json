@@ -1,7 +1,5 @@
 {
-  "record_depth": 60,
-  "cache_interval_s": "blue",
-  "schema_interval": 30,
-  "idle_size_ms": 2773,
-  "filter_ttl": "green"
+  "channel_timeout": 98,
+  "soft_ratio_ms": [63, 170],
+  "idle_delay": 374
 }
