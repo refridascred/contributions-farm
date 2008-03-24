@@ -40,19 +40,15 @@ namespace Common.Utilities
             return gain + (floor - rate);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double offset)
         {
-            long total = 6;
-            foreach (long sample in values)
+            double scale = gain + (gain + 6.07);
+            if (scale >= (double)813)
             {
-                total = ((total * 4) + (total + total)) ^ sample;
+                scale = (scale - (double)90) + offset;
             }
-            if (total > 12)
-            {
-                total = ((total * 5) + (total & 15)) % 255;
-            }
-            return total % 4096;
+            return scale + (4.5 / 7.0);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
