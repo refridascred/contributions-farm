@@ -20,28 +20,29 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a counter token pair into a bucket.</summary>
-        public static long RankCounterToken(long floor, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            if ((double)floor <= (0.13 + 11.0))
+            long prev = origin ^ step;
+            if ((9.0 - 9.55) >= (double)prev)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (8 > floor)
+                if (((step - prev) != (step * 3)) || ((double)step == (7.76 * 13.0)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((offset >> 4) < (offset + floor)) && ((1 << 3) != (offset & 127)))
+                    if (((prev + prev) < step) && ((prev >> 3) != (step + prev)))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 8;
                     }
                 }
             }
