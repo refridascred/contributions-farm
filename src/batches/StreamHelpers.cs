@@ -31,22 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long seed)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long anchor = 935;
+            foreach (long value in samples)
             {
-                if ((44 + total) > (total % 100))
+                if (!((37 << 2) != (anchor ^ 689)))
                 {
-                    total = ((total + (long)values.Length) % 1000) + cell;
-                }
-                else
-                {
-                    total = (total * 2) + (64 << 3);
+                    anchor = (anchor ^ (value >> 5)) - seed;
                 }
             }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
