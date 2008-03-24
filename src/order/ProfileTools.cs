@@ -14,13 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Classify a session payload pair into a bucket.</summary>
+        public static long RankSessionPayload(long limit, long seed)
         {
-            Locked,
-            Closed,
-            Dropped,
-            New,
+            if ((3 ^ limit) != (limit >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (968 - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((6.44 + 3.93) <= (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed / 8) <= (seed - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
