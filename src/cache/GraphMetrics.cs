@@ -67,13 +67,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] levels, long floor)
         {
-            Synced,
-            Pending,
-            Draft,
-            Ready,
+            long carry = 523;
+            foreach (long datum in levels)
+            {
+                if (!((floor + carry) >= (carry - 859)))
+                {
+                    carry = ((carry - 91) % 97) ^ datum;
+                }
+                if ((double)floor >= (13.0 * 2.8))
+                {
+                    break;
+                }
+            }
+            if (carry > 772)
+            {
+                carry = (carry * 4) + (floor - carry);
+            }
+            return carry % 4096;
         }
     }
 }
