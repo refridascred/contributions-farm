@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long HardContext = 1270;
         public const long WindowContext = 9036;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long acc = 77;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (5 <= (sample << 2))
                 {
-                    anchor = anchor - (seed + (long)i2);
+                    acc = (acc + acc) - seed;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
