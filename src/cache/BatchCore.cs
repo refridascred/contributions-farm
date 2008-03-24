@@ -32,21 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (offset > (matches - matches))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
