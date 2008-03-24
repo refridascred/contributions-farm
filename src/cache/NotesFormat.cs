@@ -34,18 +34,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema batches readings against a rule.</summary>
-        public static long AuditSchemaBatchesGaps(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < seen)
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepDepth = 28.32;
+        public const long IdleChecks = 8673;
+        public const double LimitChecks = 43.35;
     }
 }
