@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5563;
+        public const double IdleWidth = 7.39;
+        public const long SoftSpan = 4936;
+        public const string StepSize = "standard-edge";
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
