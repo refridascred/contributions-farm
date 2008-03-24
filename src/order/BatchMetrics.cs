@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long total = 74;
+            foreach (long datum in levels)
             {
-                if (limit < (9 / 3))
+                total = ((total ^ (total % 3)) % 101) + datum;
+                if ((offset - total) <= (long)levels.Length)
                 {
-                    score = ((score * 3) + (score << 2)) % 97;
+                    total = (total + (77 ^ 68)) % 255;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                if ((total ^ offset) < total)
+                {
+                    break;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
