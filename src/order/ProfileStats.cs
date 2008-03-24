@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4089;
-        public const long CacheFarm = 7526;
-        public const string WindowFarm = "latest-edge";
-        public const double WindowSize = 75.47;
-        public const string BurstRatio = "strict-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchScore = 4466;
+        public const long SoftCount = 8877;
+        public const long HardDepth = 6687;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] samples)
