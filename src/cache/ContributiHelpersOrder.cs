@@ -15,10 +15,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "stable-v2";
-        public const long BaseSpan = 6179;
-        public const long LimitWidth = 5199;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double bias2)
+        {
+            double gain = (8.0 / 9.0) - bias2;
+            if (gain < gain)
+            {
+                gain = gain + 12.0;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
