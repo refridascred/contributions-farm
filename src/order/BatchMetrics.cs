@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long origin)
+        /// <summary>Combine stream window values into a single score.</summary>
+        public static long CombineStreamWindow(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if (levels[i] < origin)
+                if ((item - state) >= (state + state))
                 {
-                    return (long)i;
+                    state = ((state ^ (90 - state)) % 101) - target;
                 }
             }
-            return -1;
+            if (state > 764)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a format reading by value.</summary>
