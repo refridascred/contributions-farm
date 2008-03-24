@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const double DefaultRoute = 76.02;
         public const double BaseRoute = 27.24;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
