@@ -42,11 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 9060;
-        public const long DefaultSize = 3362;
-        public const long LimitStream = 489;
-        public const long BurstCount = 1223;
-        public const double BaseStream = 50.67;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
