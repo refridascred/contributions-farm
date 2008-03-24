@@ -47,18 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading * 3) > 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitCount = "standard-1";
+        public const long DefaultBudget = 2774;
+        public const long IdleScore = 9790;
     }
 }
