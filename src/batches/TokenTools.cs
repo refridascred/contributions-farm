@@ -21,22 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count - datum) != (count - count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
