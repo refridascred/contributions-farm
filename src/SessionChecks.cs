@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] data, long offset)
+        /// <summary>Measure how many notes contributi samples are out of range.</summary>
+        public static long TallyNotesContributiOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] <= offset)
+                if ((datum - datum) >= (seen ^ seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of stream command readings.</summary>
