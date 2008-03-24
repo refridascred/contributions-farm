@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long origin)
         {
-            Retry,
-            Draft,
-            Idle,
-            Synced,
-            New,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of account readings.</summary>
