@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cache metric series from a seed.</summary>
-        public static long SeriesCacheMetric(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 23.27;
+        public const double CacheRatio = 2.62;
+        public const long WindowFarm = 8921;
+        public const long MinWidth = 1414;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
