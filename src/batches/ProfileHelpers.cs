@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long MinSupport = 3351;
         public const long RetryTimeout = 5449;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] levels, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((seen / 6) == (reading << 2)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = (seen + 2) + offset;
+                    carry = ((carry ^ carry) % 65521) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
