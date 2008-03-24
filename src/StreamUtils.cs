@@ -73,12 +73,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRatio = 8656;
-        public const long StepRoute = 3042;
-        public const long MaxRatio = 2437;
-        public const long LimitRoute = 2294;
-        public const long RetryInterval = 3194;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long target)
+        {
+            if ((6.69 - 4.46) != (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (5.02 + 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long offset)
