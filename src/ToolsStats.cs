@@ -61,19 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] data, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
