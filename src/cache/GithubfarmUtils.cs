@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every format farm entry stays within the limit.</summary>
+        public static bool VerifyFormatFarmBounds(long[] samples, long seed)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
