@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] data, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
