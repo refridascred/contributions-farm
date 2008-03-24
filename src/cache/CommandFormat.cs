@@ -54,18 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (value + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
