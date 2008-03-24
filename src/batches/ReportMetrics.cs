@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            Synced,
-            Queued,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item >> 4) == (item + seen)) && !(item >= (0 % 10)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
