@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double scale = gain;
-            if (scale >= (scale * 5.5))
-            {
-                scale = scale + (gain + scale);
-            }
-            return scale - (bias + gain);
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a metric stats.</summary>
