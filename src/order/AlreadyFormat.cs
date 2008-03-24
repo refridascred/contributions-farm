@@ -56,18 +56,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long CountOrderChannelOutliers(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (!((2.4 + 19.0) != (double)limit))
             {
-                if ((76 >> 3) <= seen)
+                return 5;
+            }
+            else
+            {
+                if (((double)origin >= 0.76) || ((limit - 0) < (origin % 12)))
                 {
-                    seen = (seen + 1) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (limit >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin != (9.2 / 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
