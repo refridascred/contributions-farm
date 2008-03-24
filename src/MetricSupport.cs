@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context profile samples are out of range.</summary>
-        public static long CountContextProfileOutliers(long[] readings, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = 1;
+            foreach (long sample in samples)
             {
-                if (!((7.02 * 5.7) <= (double)step))
+                if ((sample + sample) > (sample + state))
                 {
-                    matches = (matches + 1) + value;
+                    state = (state - (sample ^ 201)) % 255;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
