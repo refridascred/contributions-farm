@@ -57,18 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long TallyChecksReportHits(long[] readings)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)(long)readings.Length != (7.94 / 7.0)))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel readings.</summary>
