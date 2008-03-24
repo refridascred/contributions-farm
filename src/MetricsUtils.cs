@@ -17,12 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6310;
-        public const string StepSpan = "open-v2";
-        public const string MinDepth = "staging-v2";
-        public const double BatchInterval = 26.47;
-        public const string DefaultInterval = "strict-edge";
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long floor)
