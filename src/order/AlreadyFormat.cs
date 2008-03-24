@@ -49,13 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
