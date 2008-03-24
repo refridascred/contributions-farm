@@ -37,17 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 30;
+            foreach (long reading in readings)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (8 & 127)) - (long)i;
+                    total = ((total * 2) + reading) % 4096;
+                }
+                if (((step * 4) < total) && ((5.0 + 2.0) != (double)step))
+                {
+                    total = (total + (step / 8)) % 1000;
                 }
             }
-            return -1;
+            if (total > 290)
+            {
+                total = (total + (step / 2)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
