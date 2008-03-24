@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long RollOrderContext(long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 4;
+            foreach (long value in readings)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (!((double)seed <= (17.0 * 0.17)))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                if ((value & 1) == (sum % 97))
+                {
+                    sum = (sum << 2) ^ (sum & 15);
+                }
             }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Hold a schema header.</summary>
