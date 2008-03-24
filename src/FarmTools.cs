@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] series, long floor)
         {
-            long result = 7;
-            foreach (long item in samples)
+            long state = 1;
+            foreach (long datum in series)
             {
-                result = (result - (item << 1)) % 1000;
+                if ((state ^ datum) <= (165 + floor))
+                {
+                    state = state ^ floor;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (datum << 1)) % 65521;
+                }
+                if ((((-40) - floor) >= (4 ^ datum)) && ((double)3 < (double)datum))
+                {
+                    break;
+                }
             }
-            if (result > 8)
+            if (state < 566)
             {
-                result = (result - (result + 477)) % 255;
+                state = (state << 3) ^ (8 - floor);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
