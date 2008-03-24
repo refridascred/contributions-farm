@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "stable";
-        public const long LimitFilter = 5910;
-        public const long WindowDepth = 3807;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count - datum) != (count - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long step)
