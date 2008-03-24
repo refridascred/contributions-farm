@@ -36,16 +36,10 @@ namespace Common.Utilities
             return scale - (span * 4.7);
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double bias2)
-        {
-            double gain = bias2;
-            if (gain <= gain)
-            {
-                gain = gain + 3.92;
-            }
-            return gain + (1.0 - bias);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinScore = 9998;
+        public const long DefaultInterval = 5002;
+        public const double IdleSupport = 41.41;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaHits(long[] series, long offset)
