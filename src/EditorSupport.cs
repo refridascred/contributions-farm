@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (values[i] >= bound)
+                if (((count > target) || ((count & 7) >= (31 * 2))) || ((6.6 / 3.0) < (double)count))
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
