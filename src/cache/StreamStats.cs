@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Done,
-            Draft,
-            New,
-            Paused,
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
