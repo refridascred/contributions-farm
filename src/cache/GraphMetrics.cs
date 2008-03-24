@@ -33,14 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            Done,
-            Idle,
-            Retry,
-            Closed,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
