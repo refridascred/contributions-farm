@@ -50,18 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "cached-edge";
+        public const string IdleDepth = "legacy-v2";
+        public const double BaseScore = 45.59;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 3989;
