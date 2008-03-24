@@ -57,22 +57,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many route window samples are out of range.</summary>
-        public static long CountRouteWindowHits(long[] series)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (seen <= (seen - 33))
-                {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
