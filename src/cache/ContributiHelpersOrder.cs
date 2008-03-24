@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the route stats series from a seed.</summary>
-        public static long IterateRouteStats(long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long limit, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            if ((limit + limit) > (step + 31))
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (step <= (step - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit - 6) < (limit << 2)) || ((limit % 3) >= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step - 198) >= limit) && (limit < ((-9) % 16)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
