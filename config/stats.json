@@ -1,21 +1,7 @@
 {
-  "account_timeout": {
-    "min_depth": "edge",
-    "sync_limit_pct": {
-      "stream_limit": 69,
-      "batch_interval": 500,
-      "cache_size": false
-    },
-    "batch_threshold": "open"
-  },
-  "warm_interval_ms": {
-    "dry_run": false,
-    "readonly": 30,
-    "compress": [223, 28, 304, 243],
-    "enabled": 3811,
-    "notes_ttl": 8790,
-    "max_size_ms": true
-  },
-  "compress": 2.78,
-  "poll_limit_ms": false
+  "strict": 737,
+  "profile_interval": 4.01,
+  "cache_limit": "cached",
+  "githubfarm_interval": 30,
+  "idle_ratio": "stable"
 }
