@@ -1,5 +1,12 @@
 {
-  "max_timeout": "local",
-  "batch_size_pct": "blue",
-  "batches_ratio": 92.81
+  "compress": {
+    "dry_run": 4136,
+    "record_retries": 60,
+    "base_limit_s": 65,
+    "already_limit": 75
+  },
+  "persist": "fallback",
+  "sync_retries_s": ["strict", "local"],
+  "default_capacity": true,
+  "editor_size": false
 }
