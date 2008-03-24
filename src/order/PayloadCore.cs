@@ -32,19 +32,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] values, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= origin)
+                if (values[i] <= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
