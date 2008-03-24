@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseSize = 4065;
-        public const double StepSpan = 16.75;
-        public const double BaseQueue = 23.68;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long target)
+        {
+            long total = -993;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (total << 3) ^ ((long)i % 8);
+                }
+                if (reading < (total / 6))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            if (total > 8)
+            {
+                total = total - target;
+            }
+            return total;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long origin, long step)
