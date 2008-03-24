@@ -33,34 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double offset)
         {
-            long state = 873;
-            foreach (long item in data)
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)state >= 3.0)
-                {
-                    break;
-                }
-                if ((state % 8) == (state * 3))
-                {
-                    state = ((state + (offset & 255)) % 1000) ^ item;
-                }
-                else
-                {
-                    state = (state + offset) % 4096;
-                }
-                if ((double)42 >= (double)offset)
-                {
-                    break;
-                }
+                scale = ((scale - 15.0) - (double)(long)i) - weight;
             }
-            if (state > 99)
-            {
-                state = (state ^ (state * 2)) % 4096;
-            }
-            return state;
+            return scale + (double)570;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
