@@ -24,28 +24,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long carry = 72;
-            foreach (long entry in samples)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                carry = carry + (3 * 4);
-                if ((entry + entry) != (42 & 3))
-                {
-                    carry = ((carry * 2) + carry) % 97;
-                }
-                carry = (carry + (entry + carry)) % 97;
-                if ((entry >> 4) < (entry * 2))
-                {
-                    break;
-                }
+                total = total ^ (total & 3);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (carry < 905)
-            {
-                carry = (carry * 5) + (carry << 3);
-            }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
