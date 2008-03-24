@@ -68,24 +68,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long target)
+        /// <summary>Audit order route readings against a rule.</summary>
+        public static long TallyOrderRouteMatches(long[] samples, long offset)
         {
-            if ((6.69 - 4.46) != (double)floor)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (5.02 + 2.0))
+                if ((9 & 7) != (matches + (-549)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 3) ^ datum) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next session schema value from a seed.</summary>
