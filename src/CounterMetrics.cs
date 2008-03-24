@@ -29,12 +29,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long limit)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            if (seed >= (limit % 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit >= (limit * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 4) > (limit + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + limit) < (seed % 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache phase values.</summary>
