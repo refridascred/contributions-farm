@@ -34,16 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + ((long)i - (long)i)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
