@@ -23,20 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((((long)i + (long)i) == (state + state)) || ((double)state <= (double)(long)i)))
-                {
-                    state = state ^ (long)i;
-                }
-                state = (state << 2) ^ (bound << 1);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
