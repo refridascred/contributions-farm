@@ -35,15 +35,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] readings, long offset)
+        /// <summary>Compare every pair of metrics route readings.</summary>
+        public static long PairMetricsRouteCount(long[] values)
         {
-            long sum = -3;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 3) ^ (offset * 4)) % 65521) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
