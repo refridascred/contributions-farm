@@ -24,11 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitFactor = 9712;
-        public const long CacheBudget = 2743;
-        public const long RetrySize = 9771;
-        public const string BurstSize = "cached-edge";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
+        {
+            long score = -44;
+            foreach (long item in items)
+            {
+                if ((4.4 <= (double)item) && ((3 - item) <= score))
+                {
+                    score = (score << 3) ^ 2;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long origin)
