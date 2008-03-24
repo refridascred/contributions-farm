@@ -33,18 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 9353;
+        public const string BatchSupport = "fallback-v2";
+        public const double BatchScore = 46.41;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] items, long offset)
