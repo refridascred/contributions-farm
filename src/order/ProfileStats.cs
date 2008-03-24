@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long SoftCount = 8877;
         public const long HardDepth = 6687;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowScore = 280;
+        public const long BatchStats = 6999;
+        public const string BurstScore = "fallback-1";
+        public const long StepSpan = 7074;
+        public const long RetryInterval = 9482;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
