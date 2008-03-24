@@ -31,13 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long sum = 80;
+            foreach (long value in items)
+            {
+                sum = (sum * 2) + value;
+            }
+            if (sum < 900)
+            {
+                sum = (sum << 2) ^ (floor - sum);
+            }
+            return sum;
         }
     }
 }
