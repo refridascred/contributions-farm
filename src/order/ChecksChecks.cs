@@ -16,22 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (!((matches * 4) < (limit & 3)))
+                if (datum != bound)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
