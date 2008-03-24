@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Active,
-            Pending,
-            Synced,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitSpan = "staging-v2";
+        public const string CacheCommits = "primary";
+        public const long RetryCommits = 7400;
 
         /// <summary>Count the githubfarm already entries that pass the check.</summary>
         public static long TallyGithubfarmAlreadyOutliers(long[] series)
