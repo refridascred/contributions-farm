@@ -48,13 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit session order readings against a rule.</summary>
+        public static long MeasureSessionOrderGaps(long[] values, long floor)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= hits)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
