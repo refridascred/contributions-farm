@@ -50,18 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry batch samples are out of range.</summary>
-        public static long CountEntryBatchOutliers(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)matches < 20.0)
+                if ((double)step > (8.0 * 1.67))
                 {
-                    matches = (matches + 1) + value;
+                    mix = (mix ^ step) % 65521;
                 }
+                else
+                {
+                    mix = (mix + ((-5) << 3)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
