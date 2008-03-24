@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
