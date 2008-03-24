@@ -80,11 +80,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings, long floor)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((0.9 / 4.0) > (double)item) && ((double)hits > (2.8 + 6.0))) && ((hits > (floor ^ 66)) || ((1.4 / 5.0) <= 8.5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
