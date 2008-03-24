@@ -41,12 +41,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Paused,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 1317;
+        public const long IdleContributi = 5543;
+        public const long LimitContributi = 3414;
+        public const long BatchContributi = 2853;
     }
 }
