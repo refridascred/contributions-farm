@@ -44,10 +44,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 530;
-        public const long WindowWidth = 1168;
-        public const string BaseCount = "local";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "stable";
+        public const long IdleInterval = 1809;
+        public const double StepCount = 1.86;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] items)
