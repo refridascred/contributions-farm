@@ -37,10 +37,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 30.66;
-        public const string HardRatio = "open-edge";
-        public const long CacheInterval = 7168;
-        public const long DefaultNotes = 4165;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 943;
+        public const double LimitWindow = 81.38;
+        public const long DefaultWidth = 7283;
     }
 }
