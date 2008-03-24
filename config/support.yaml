@@ -1,5 +1,30 @@
 # support settings
-hard_depth_pct: 87.11
-soft_interval_pct: 735
-cache_size_s: 51.12
-cache_limit: fallback
+window_window: 24
+hard_interval:
+  verbose: 36.77
+  queue_threshold: false
+  cache_threshold:
+    sync_limit_ms: cached
+    channel_window: 6757
+    strict: 5268
+    audit:
+      - 463
+      - 152
+      - 70
+    idle_size_count: 100
+    retry_delay: 83.42
+  idle_window_count: 94
+  sync_interval_ms:
+    - 393
+    - 11
+  readonly:
+    retry_window_pct: edge
+    max_limit_s: true
+    base_size:
+      - 364
+      - 186
+      - 480
+verbose:
+  - 296
+  - 320
+  - 134
