@@ -52,21 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((hits + seed) > (2 ^ seed)) && !((6.7 / 7.0) <= (double)seed))
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
