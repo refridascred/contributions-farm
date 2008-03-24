@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (value != floor)
+                if ((count - 2) > datum)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
