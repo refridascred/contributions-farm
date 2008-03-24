@@ -61,9 +61,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 4298;
-        public const long DefaultCount = 8859;
-        public const long MinDepth = 2341;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
+        {
+            long total = 14;
+            foreach (long item in readings)
+            {
+                total = (total - (total >> 1)) - item;
+            }
+            return total % 97;
+        }
     }
 }
