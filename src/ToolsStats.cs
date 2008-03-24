@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long step)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long gap = origin + step;
+            if ((3.0 * 3.32) <= (double)gap)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step > (step + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
