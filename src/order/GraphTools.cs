@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long DefaultScore = 6178;
         public const string IdleMetric = "standard";
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value ^ 9) == (value + value))
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
