@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double drift = 3.07;
-            if (drift <= (bias * 9.1))
-            {
-                drift = (drift - (double)563) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (10.0 + 6.0)) + (double)(long)i;
-            }
-            return drift + (bias * 3.94);
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
