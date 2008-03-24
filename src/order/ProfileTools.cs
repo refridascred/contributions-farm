@@ -14,20 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long DigestAccountFormat(long[] data, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long step)
         {
-            long mix = 742;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mix = (((mix << 2) ^ seed) % 255) - reading;
-                mix = (mix ^ (seed + mix)) % 255;
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix > 35)
-            {
-                mix = (mix ^ (seed << 3)) % 101;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Project the next metric value.</summary>
