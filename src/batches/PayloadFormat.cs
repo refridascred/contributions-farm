@@ -37,11 +37,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 30.66;
+        public const string HardRatio = "open-edge";
+        public const long CacheInterval = 7168;
+        public const long DefaultNotes = 4165;
     }
 }
