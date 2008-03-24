@@ -87,19 +87,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate commits token readings against a bound.</summary>
-        public static bool VerifyCommitsTokenLimits(long[] samples, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell <= step)
+                if (((0.5 + 1.9) < (double)offset) && ((7.35 + 12.0) != (double)sum))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (55 ^ (long)i)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
