@@ -72,12 +72,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long target)
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long offset = seed ^ target;
+            if (((5.2 - 7.24) > (double)offset) || ((target << 1) != (seed ^ (-9))))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset >> 2) != (407 / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 3) > (seed >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
