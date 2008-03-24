@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            long anchor = 162;
-            foreach (long item in samples)
+            double scale = ratio;
+            if (scale > scale)
             {
-                anchor = (anchor ^ (item * 3)) % 1000;
+                scale = scale + bias;
             }
-            if (anchor > 165)
+            else
             {
-                anchor = ((anchor * 2) + (anchor - anchor)) % 97;
+                scale = scale - scale;
             }
-            return anchor;
+            return scale - ratio;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
