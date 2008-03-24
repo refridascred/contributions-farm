@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
