@@ -1,6 +1,6 @@
 {
-  "base_depth": 500,
-  "idle_delay_s": 99,
-  "audit": "blue",
-  "batch_ttl_s": 100
+  "sync_size": 30,
+  "channel_interval": false,
+  "channel_ttl": "blue",
+  "min_delay": false
 }
