@@ -38,15 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                result = (result + ((long)i - (long)i)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Locate a account reading by value.</summary>
