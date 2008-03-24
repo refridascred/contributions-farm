@@ -42,12 +42,15 @@ namespace Common.Utilities
         public const long DefaultToken = 946;
         public const double IdleSpan = 94.08;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 1607;
-        public const long SoftCount = 1742;
-        public const string BaseLayout = "stable-v2";
-        public const double DefaultLayout = 31.82;
-        public const long IdleWidth = 4624;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Done,
+            Ready,
+            Closed,
+            New,
+            Synced,
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
