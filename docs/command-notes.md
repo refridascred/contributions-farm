@@ -1,11 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the cache list.
-Each route is validated before it reaches the command queue.
-Run the batches check before changing any stream limits.
+Keep window and order names short and lowercase.
+A filter that stays idle for too long is moved to the channel list.
+
+The token report groups every queue by entry.
+The checks report groups every entry by window.
+When a session fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer route defaults
-- Document new checks fields
+- Document new command fields
+- Review cluster limits each release
+- Keep entry values small
