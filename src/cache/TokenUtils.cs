@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value * 3) <= (count % 8))
+                if (values[i] >= origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
