@@ -35,21 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (7.0 <= (7.05 * 0.38))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) + reading) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
