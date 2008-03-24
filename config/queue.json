@@ -1,8 +1,14 @@
 {
-  "layout_ttl": ["legacy", "legacy", "cached"],
-  "base_depth": 30,
-  "flush_depth_ms": "edge",
-  "retry_ratio": 28.9,
-  "default_delay": 2415,
-  "batch_capacity": 78
+  "layout_limit": 27,
+  "base_ttl_count": {
+    "dry_run": 99,
+    "warm_timeout_count": {
+      "warm_delay_count": 250,
+      "flush_interval_s": 87,
+      "base_ttl_count": "blue"
+    },
+    "default_timeout": 3,
+    "poll_interval_count": 23
+  },
+  "batch_window_pct": 967
 }
