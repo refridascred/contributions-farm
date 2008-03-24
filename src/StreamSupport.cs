@@ -14,13 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count ^ count) > (item * 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue options.</summary>
