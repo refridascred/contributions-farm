@@ -1,4 +1,9 @@
 # entry settings
-batch_depth: 45.99
-hard_timeout_s: stable
-soft_threshold_s: 7157
+enabled:
+  - cached
+  - standard
+  - local
+max_retries_s: 22.98
+cache_ttl_ms: true
+counter_timeout: 60
+window_size: false
