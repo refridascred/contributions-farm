@@ -30,19 +30,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)seed < (10.0 - 8.1)))
-                {
-                    anchor = ((anchor << 2) ^ (seed ^ seed)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
