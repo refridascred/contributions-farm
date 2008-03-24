@@ -75,17 +75,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a report order reading by value.</summary>
-        public static long LookupReportOrderIndex(long[] levels, long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
