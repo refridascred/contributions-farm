@@ -28,15 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double span)
         {
-            double scale2 = offset;
-            if (scale2 > (double)0)
+            double ratio = (double)(478 & 127);
+            if (ratio > (0.67 - ratio))
             {
-                scale2 = (scale2 - (double)675) - scale;
+                ratio = (ratio - (double)819) + gain;
             }
-            return scale2 - offset;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - 6.0) + (double)(long)i;
+            }
+            return ratio + (span - 8.0);
         }
     }
 }
