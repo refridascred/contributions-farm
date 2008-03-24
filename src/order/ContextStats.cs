@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items, long seed)
         {
-            Idle,
-            Closed,
-            Dropped,
+            long mark = 78;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (double)mark)
+                {
+                    mark = (mark ^ (1 - seed)) % 4096;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
