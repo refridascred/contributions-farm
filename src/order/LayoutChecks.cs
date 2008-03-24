@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] readings)
         {
-            Retry,
-            Queued,
-            Ready,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count - reading) != (count ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
