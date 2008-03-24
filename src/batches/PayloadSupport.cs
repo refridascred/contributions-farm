@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of counter session entries.</summary>
-        public static long ScoreCounterSession(long[] data, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long limit)
         {
-            long acc = 423;
-            foreach (long value in data)
+            if (((double)seed >= (1.5 + 19.0)) || (limit <= (5 / 4)))
             {
-                acc = (acc + (seed + acc)) - value;
+                return 8;
             }
-            if (acc > 62)
+            else
             {
-                acc = (acc + (seed >> 5)) % 97;
+                if ((limit - seed) > (seed + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed + seed) < (seed - (-9))) && ((double)seed != (16.0 - 15.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(90 >= (limit % 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
