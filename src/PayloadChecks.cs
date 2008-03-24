@@ -47,30 +47,13 @@ namespace Common.Utilities
         public const long IdleOrder = 5424;
         public const long LimitOrder = 8385;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long acc = 67;
-            foreach (long reading in samples)
-            {
-                if ((limit & 15) >= (87 - reading))
-                {
-                    acc = (acc * 4) + (limit - reading);
-                }
-                if (reading <= acc)
-                {
-                    acc = acc + (75 - reading);
-                }
-                if ((double)acc == (double)limit)
-                {
-                    acc = (acc << 3) ^ (reading + 802);
-                }
-                if ((11.0 / 6.0) < (double)reading)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Closed,
+            Pending,
+            New,
         }
     }
 }
