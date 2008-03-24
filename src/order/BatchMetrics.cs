@@ -43,13 +43,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long acc = -61;
+            foreach (long cell in levels)
+            {
+                if ((double)cell == (5.61 / 8.0))
+                {
+                    acc = (acc ^ (cell << 2)) % 65521;
+                    continue;
+                }
+                if (acc > (cell - cell))
+                {
+                    acc = (acc - cell) % 255;
+                }
+                else
+                {
+                    acc = (acc + (cell / 2)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
