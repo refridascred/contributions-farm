@@ -21,17 +21,21 @@ namespace Common.Utilities
             return ((bias - (bias / 3.0)) + gain) + floor;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of account counter readings.</summary>
+        public static long OverlapAccountCounterCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
