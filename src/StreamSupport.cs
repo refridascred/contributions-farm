@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long score = -8;
-            foreach (long datum in items)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (8.0 < (double)score)
+                if (((mark / 2) <= (mark - 6)) || (mark < (mark + (long)i)))
                 {
-                    score = ((score << 3) ^ datum) % 97;
+                    mark = (mark + (floor + mark)) % 101;
                 }
-                if ((limit + (long)items.Length) <= limit)
+                if ((1 >> 4) == (mark + floor))
                 {
-                    score = score + (363 - (long)items.Length);
+                    mark = (mark + floor) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Fold a list of window editor readings.</summary>
