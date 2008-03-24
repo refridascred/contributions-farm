@@ -47,18 +47,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = -69;
+            foreach (long value in values)
             {
-                if ((double)reading > 11.0)
+                total = (total ^ total) % 65521;
+                if (((double)total != (8.5 - 2.0)) && ((offset - 717) == (offset + offset)))
                 {
-                    count = count + 1;
+                    total = ((total * 5) + (total - value)) % 97;
+                }
+                else
+                {
+                    total = total - offset;
                 }
             }
-            return count;
+            if (total < 5)
+            {
+                total = (total ^ (949 + total)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
