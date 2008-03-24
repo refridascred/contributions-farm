@@ -1,9 +1,32 @@
 # githubfarm settings
-audit: true
-hard_retries_pct: true
-contributi_ttl: edge
 burst_ttl:
-  - 122
-  - 414
-  - 335
-  - 499
+  readonly: latest
+  base_window: true
+  persist:
+    githubfarm_depth: 86.93
+    soft_depth_s: true
+    sync_ttl:
+      - 243
+      - 139
+  base_ttl_pct:
+    window_ratio: 250
+    soft_window_count:
+      - 244
+      - 56
+    default_retries_pct: 74.43
+  max_threshold: strict
+persist: 77.82
+order_ratio: blue
+report_ttl: 74.47
+base_interval_count: 1024
+min_depth_ms:
+  soft_ratio:
+    soft_ratio_pct: 84
+    persist: 34.39
+    dry_run: 62.72
+  soft_ratio_s: 100
+  poll_delay:
+    - primary
+    - standard
+  dry_run: local
+  hard_timeout: staging
