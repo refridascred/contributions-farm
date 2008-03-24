@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long bound)
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long GradeChecksGithubfarm(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed >= (step - 664)) || (64 <= (step - 263)))
             {
-                if (series[i] == bound)
+                return 0;
+            }
+            else
+            {
+                if (((seed % 7) <= (seed & 63)) && ((seed * 3) == (step ^ 67)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.0 - 1.0) <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
