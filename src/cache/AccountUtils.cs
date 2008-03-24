@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long TallyFormatCommitsHits(long[] values)
         {
-            long carry = 95;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = (carry << 3) ^ (carry % 5);
-                if ((70 >> 3) > value)
+                if (((reading < (seen - 8)) && ((48 % 10) != (seen + reading))) && !((reading ^ reading) != (seen - reading)))
                 {
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
