@@ -40,17 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias3 = bias;
+            if (bias3 <= bias)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 + bias3) - bias2;
             }
-            return -1;
+            return bias3 + bias;
         }
 
         /// <summary>Accumulate editor samples.</summary>
