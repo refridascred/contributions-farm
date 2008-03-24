@@ -43,13 +43,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            if (origin >= (origin2 << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((16.0 / 3.0) == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin * 2) < (origin2 >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
