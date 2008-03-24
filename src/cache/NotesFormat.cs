@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (datum > bound)
+                if (entry < floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Rank token input into a small class.</summary>
