@@ -91,18 +91,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((207 / 2) >= matches)
+                if (series[i] == floor)
                 {
-                    matches = (matches + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
