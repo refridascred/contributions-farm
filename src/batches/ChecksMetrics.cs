@@ -70,15 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long state = 4;
+            foreach (long item in items)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((21 - item) == (state + 69))
+                {
+                    state = state - limit;
+                }
             }
-            return mix;
+            return state % 4096;
         }
     }
 }
