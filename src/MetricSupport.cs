@@ -13,22 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up token stream samples.</summary>
-        public static long OverlapTokenStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepLevel = 14.07;
+        public const long BatchEntry = 4199;
+        public const long DefaultEntry = 825;
+        public const long RetryEntry = 9015;
+        public const string CacheRatio = "primary-edge";
 
         /// <summary>Measure how many context profile samples are out of range.</summary>
         public static long CountContextProfileOutliers(long[] readings, long step)
