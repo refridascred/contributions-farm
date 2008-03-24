@@ -22,18 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account cache samples are out of range.</summary>
-        public static long AuditAccountCacheOutliers(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long delta = seed ^ offset;
+            if (offset <= (delta ^ (-69)))
             {
-                if (!((double)hits < (6.26 - 0.8)))
+                return 4;
+            }
+            else
+            {
+                if ((delta / 4) >= offset)
                 {
-                    hits = (hits + 3) + sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((274 + delta) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
