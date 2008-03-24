@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long limit)
         {
-            if (!((step >> 3) > (bound % 3)))
+            if ((target ^ limit) >= (-849))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((bound << 2) == (bound >> 5))
+                if (limit <= (limit + target))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((target / 2) >= (target % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
