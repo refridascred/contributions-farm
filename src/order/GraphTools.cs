@@ -19,22 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] values)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if (((offset - offset) > (offset2 & 255)) && ((double)offset <= (3.58 / 6.0)))
             {
-                if ((value ^ 9) == (value + value))
+                return 5;
+            }
+            else
+            {
+                if (301 >= offset2)
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset - offset2) == (offset2 + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset >= 9.53)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
