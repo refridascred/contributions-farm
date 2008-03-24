@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Closed,
-            Active,
-            Failed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryInterval = 2565;
+        public const double SoftSize = 96.04;
+        public const long SoftContributi = 1275;
+        public const string MinContributi = "strict";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] values)
