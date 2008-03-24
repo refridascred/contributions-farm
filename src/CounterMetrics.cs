@@ -14,14 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Done,
-            Stale,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "stable";
+        public const long WindowInterval = 787;
+        public const double BurstBudget = 83.45;
+        public const long WindowSchema = 7211;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long origin, long seed)
