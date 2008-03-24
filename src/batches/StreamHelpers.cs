@@ -50,17 +50,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first graph entry entry that matches the target.</summary>
-        public static long LocateGraphEntryIndex(long[] series, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine layout cluster values into a single score.</summary>
