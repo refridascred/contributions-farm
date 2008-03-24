@@ -43,9 +43,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 6533;
-        public const long MinLevel = 5803;
-        public const long WindowTimeout = 1918;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((limit % 5) == (datum / 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
