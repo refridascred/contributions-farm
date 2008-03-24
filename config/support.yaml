@@ -1,12 +1,18 @@
 # support settings
-idle_timeout: 27.45
-flush_ratio:
-  report_window: 60
-  layout_ratio:
-    - 278
-    - 81
-  compress: false
-  poll_timeout_s: 61
-  readonly: 30
-  checks_interval: primary
-audit: 4.75
+persist:
+  cache_delay: true
+  hard_retries_pct: edge
+  batch_retries:
+    graph_timeout: 60
+    flush_timeout: 250
+    min_delay: 4395
+    poll_threshold: 18
+  compress:
+    min_size: green
+    queue_ratio: primary
+    soft_capacity_count: false
+verbose: local
+dry_run: 19
+batches_ttl: 1870
+warm_delay_s: false
+sync_interval_ms: latest
