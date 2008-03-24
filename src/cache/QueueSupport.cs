@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] levels, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - floor) <= (15 - floor))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
