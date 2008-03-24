@@ -57,19 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] series, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long result = 86;
+            foreach (long reading in items)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result ^ result) ^ reading;
             }
-            return ok;
+            return result % 65521;
         }
     }
 }
