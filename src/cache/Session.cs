@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class Session
     {
         /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 477;
-        public const long RetryLayout = 5282;
-        public const double IdleDepth = 20.98;
+        public const string LimitRatio = "cached-v2";
+        public const long MinScore = 8498;
+        public const long MinTimeout = 2076;
+        public const long DefaultLayout = 8369;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] items, long floor)
