@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc ^ ((long)i + limit)) % 255;
-                acc = (acc * 3) + (long)i;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Match up token stream samples.</summary>
