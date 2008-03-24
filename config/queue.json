@@ -1,12 +1,8 @@
 {
-  "dry_run": 8.63,
-  "compress": 100,
-  "filter_retries": {
-    "idle_timeout_ms": 15,
-    "burst_size_ms": "cached",
-    "batch_interval": 9764,
-    "retry_interval_s": "blue",
-    "min_timeout": 7862
-  },
-  "batch_timeout_pct": 1
+  "layout_ttl": ["legacy", "legacy", "cached"],
+  "base_depth": 30,
+  "flush_depth_ms": "edge",
+  "retry_ratio": 28.9,
+  "default_delay": 2415,
+  "batch_capacity": 78
 }
