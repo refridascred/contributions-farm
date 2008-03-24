@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=402
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in legacy open blue latest; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+RECORD_LIMIT=233
+log "limit is ${RECORD_LIMIT}"
