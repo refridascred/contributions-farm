@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
