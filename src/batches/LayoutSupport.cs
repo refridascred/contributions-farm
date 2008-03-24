@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long MeasureStatsCacheOutliers(long[] readings, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((3 * 5) >= tally)
-                {
-                    tally = ((tally + 2) ^ datum) + offset;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
