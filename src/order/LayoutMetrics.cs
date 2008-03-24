@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxWidth = 4648;
+        public const long BaseSpan = 7381;
+        public const long StepPayload = 9372;
+        public const double MinBudget = 6.53;
 
         /// <summary>Classify a graph editor pair into a bucket.</summary>
         public static long ClassifyGraphEditor(long limit, long step)
