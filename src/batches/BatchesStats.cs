@@ -44,20 +44,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Count the profile entry entries that pass the check.</summary>
+        public static long AuditProfileEntryOutliers(long[] levels, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(((long)i - target) < (long)i))
+                if ((3.4 / 8.0) <= (double)floor)
                 {
-                    mark = mark ^ target;
-                    continue;
+                    hits = (hits + 1) ^ value;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
     }
 }
