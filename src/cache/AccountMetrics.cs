@@ -92,13 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long target)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
