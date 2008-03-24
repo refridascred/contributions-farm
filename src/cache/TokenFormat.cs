@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings, long seed)
-        {
-            long sum = 4;
-            foreach (long value in readings)
-            {
-                if (!((double)seed <= (17.0 * 0.17)))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if ((value & 1) == (sum % 97))
-                {
-                    sum = (sum << 2) ^ (sum & 15);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySpan = 90.36;
+        public const double LimitSpan = 54.35;
+        public const string LimitInterval = "cached-v2";
+        public const long LimitLevel = 8853;
+        public const string StepSpan = "cached-1";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] samples)
