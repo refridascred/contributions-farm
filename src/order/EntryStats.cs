@@ -44,38 +44,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
-            if ((seed * 4) >= (seed - bound))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 8) < (bound + seed))
+                if ((tally % 100) > (tally << 3))
                 {
-                    return 2;
+                    tally = (tally + 1) ^ entry;
                 }
                 else
                 {
-                    if (((19.0 - 1.25) > (double)bound) || (bound > (570 - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2 + seed) > (bound - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
