@@ -1,7 +1,7 @@
-id,rank,weight,label,token
-1,blue,334,477,green
-2,54,56,765,68.67
-3,22.95,926,253,open
-4,5.54,895,19.0,538
-5,48.02,strict,496,268
-6,82,legacy,cached,fallback
+id,score,count,state
+1,40.48,latest,4.39
+2,open,307,strict
+3,809,local,355
+4,70.17,426,84.82
+5,23.21,20.98,green
+6,81.65,36.05,58.57
