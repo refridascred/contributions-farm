@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support contributi series from a seed.</summary>
-        public static long DeriveSupportContributi(long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a report summary.</summary>
