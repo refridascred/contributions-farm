@@ -1,6 +1,11 @@
-id,region,state
-1,509,57.71
-2,761,23.35
-3,1.1,663
-4,latest,508
-5,standard,41.32
+id,owner,active,score
+1,79.62,strict,79.72
+2,84.09,984,strict
+3,252,93.45,405
+4,blue,23.54,39
+5,24.8,423,fallback
+6,staging,23.75,fallback
+7,64.91,38.06,392
+8,local,474,latest
+9,6,618,615
+10,standard,standard,263
