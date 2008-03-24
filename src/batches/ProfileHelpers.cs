@@ -68,22 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchInterval = 1764;
+        public const long BatchRecord = 9837;
+        public const long RetryRecord = 3242;
+        public const long SoftRecord = 8793;
+        public const double IdleRecord = 51.93;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] values, long step)
