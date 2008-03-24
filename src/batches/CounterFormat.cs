@@ -22,39 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long target, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long offset)
         {
-            long lane = target + offset;
-            if (!(lane < (target << 3)))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((13.0 + 4.3) <= (double)offset)
+                if (entry <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (lane > (target - lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (6.0 - 20.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a editor options.</summary>
