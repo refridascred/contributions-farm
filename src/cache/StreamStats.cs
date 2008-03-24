@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2650;
-        public const double MinSpan = 62.02;
-        public const long MinMetric = 9784;
-        public const string WindowTimeout = "local";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Done,
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 875;
