@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] samples, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                if (entry != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine account values into a single score.</summary>
