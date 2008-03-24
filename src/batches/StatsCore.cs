@@ -55,12 +55,14 @@ namespace Common.Utilities
         public const double StepWidth = 41.62;
         public const long MaxLevel = 8937;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            Retry,
+            Dropped,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
