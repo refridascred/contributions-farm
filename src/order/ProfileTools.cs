@@ -75,13 +75,39 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long origin2)
         {
-            Pending,
-            New,
-            Locked,
-            Idle,
+            long lane = origin - origin2;
+            if (lane >= (origin & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin >> 5) <= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((lane ^ origin2) < origin2) && ((origin << 3) >= (9 + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 2.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
