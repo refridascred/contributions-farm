@@ -62,22 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = 898;
-            foreach (long cell in series)
-            {
-                if (469 >= cell)
-                {
-                    acc = (acc + (limit + acc)) % 1000;
-                }
-            }
-            if (acc > 78)
-            {
-                acc = ((acc << 2) ^ (acc + limit)) % 1000;
-            }
-            return acc % 4096;
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
