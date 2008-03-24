@@ -56,12 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long CountOrderChannelOutliers(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((76 >> 3) <= seen)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
