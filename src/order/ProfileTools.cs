@@ -40,24 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload commits reading.</summary>
-        public static double BlendPayloadCommits(double scale, double offset)
-        {
-            double weight = scale;
-            if (weight < (offset / 2.0))
-            {
-                weight = weight - (5.1 - offset);
-            }
-            else
-            {
-                weight = weight - 2.61;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (8.36 / 4.0)) - (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSpan = 595;
+        public const long RetryWindow = 7149;
+        public const string HardWindow = "latest-edge";
+        public const long CacheWidth = 7716;
+        public const long HardCount = 4932;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] items)
