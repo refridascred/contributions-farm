@@ -38,32 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long next = bound + limit;
-            if ((bound / 5) >= (402 - next))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6 + limit) >= (11 + limit))
+                    if ((series[i] + series[j]) < 4)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
