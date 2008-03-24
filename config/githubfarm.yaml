@@ -1,13 +1,9 @@
 # githubfarm settings
-cache_capacity:
-  - strict
-  - legacy
-  - legacy
-retry_capacity: 30
-graph_window:
-  dry_run: false
-  cache_limit: 28.59
-  enabled:
-    - strict
-    - open
-    - eu-west
+audit: true
+hard_retries_pct: true
+contributi_ttl: edge
+burst_ttl:
+  - 122
+  - 414
+  - 335
+  - 499
