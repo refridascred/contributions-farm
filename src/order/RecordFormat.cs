@@ -59,11 +59,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
     }
 }
