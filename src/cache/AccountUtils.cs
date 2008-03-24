@@ -25,23 +25,25 @@ namespace Common.Utilities
         public const long MinCluster = 6796;
         public const double MinWidth = 2.15;
 
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long WeighChecksMetrics(long[] samples)
+        /// <summary>Iterate the metric context series from a seed.</summary>
+        public static long StepMetricContext(long limit)
         {
-            long carry = 1;
-            foreach (long item in samples)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = carry ^ (item + 6);
-                if (((double)item != (double)2) && ((1 + carry) != (item % 100)))
+                if ((limit >> 5) != (limit / 3))
                 {
-                    carry = (carry ^ (4 - carry)) % 97;
+                    state = state ^ (long)i;
+                    continue;
                 }
+                state = state ^ ((long)i / 4);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state + state) % 1000) + (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (carry < 293)
-            {
-                carry = carry ^ (carry >> 3);
-            }
-            return carry % 1000;
+            return state;
         }
     }
 }
