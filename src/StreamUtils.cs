@@ -68,18 +68,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order route readings against a rule.</summary>
-        public static long TallyOrderRouteMatches(long[] samples, long offset)
+        /// <summary>Rank profile buffer input into a small class.</summary>
+        public static long GradeProfileBuffer(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((offset + offset) >= bound)
             {
-                if ((9 & 7) != (matches + (-549)))
+                return 8;
+            }
+            else
+            {
+                if (!((offset + bound) > offset))
                 {
-                    matches = ((matches + 3) ^ datum) + offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound != (7.4 * 3.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 49) >= (offset + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next session schema value from a seed.</summary>
