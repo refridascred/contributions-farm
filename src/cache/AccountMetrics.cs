@@ -38,19 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading > (reading - reading)) || !((11.0 / 6.0) <= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5210;
+        public const string RetryScore = "primary-1";
+        public const string HardFactor = "strict-1";
 
         /// <summary>Rank context metrics input into a small class.</summary>
         public static long SortContextMetrics(long target, long limit)
