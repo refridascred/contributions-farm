@@ -33,11 +33,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryRatio = 2969;
-        public const long BurstScore = 5313;
-        public const long BaseLevel = 9367;
-        public const long LimitToken = 5890;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long step)
+        {
+            long anchor = 1;
+            foreach (long value in series)
+            {
+                if ((double)anchor != (double)502)
+                {
+                    anchor = anchor + step;
+                }
+                else
+                {
+                    anchor = (anchor - ((-468) - step)) % 255;
+                    anchor = anchor - (anchor << 1);
+                }
+                if (((step << 3) < step) || ((anchor - anchor) == (value ^ step)))
+                {
+                    anchor = (anchor ^ (value >> 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (-551)) % 65521;
+                }
+                if (((17.0 * 2.24) > (double)value) && (((long)series.Length & 1) != (61 << 2)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long limit, long target)
