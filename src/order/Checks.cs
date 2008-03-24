@@ -60,14 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long limit)
         {
-            Pending,
-            Paused,
-            Draft,
-            Active,
-            Failed,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches summary.</summary>
