@@ -46,12 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a report order reading by value.</summary>
+        public static long LookupReportOrderIndex(long[] levels, long floor)
         {
-            New,
-            Stale,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
