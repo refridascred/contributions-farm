@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            double load = offset;
-            if (load > (offset + bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - offset;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 4.0)) + (double)(long)i;
-            }
-            return load - (3.15 + offset);
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
