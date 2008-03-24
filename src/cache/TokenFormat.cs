@@ -35,14 +35,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            New,
-            Failed,
-            Synced,
-            Ready,
-            Dropped,
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
