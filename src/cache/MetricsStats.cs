@@ -30,15 +30,21 @@ namespace Common.Utilities
         public const long RetrySize = 9771;
         public const string BurstSize = "cached-edge";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long result = -497;
-            foreach (long cell in data)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result - (cell - cell)) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (((score * 4) + score) % 255) ^ (long)i2;
+                }
+                score = (score * 3) + ((long)i + (long)i);
+                score = (score - origin) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
