@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double StepSpan = 16.75;
         public const double BaseQueue = 23.68;
 
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long CountCounterSessionGaps(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((25 * 2) >= (cell - seen))
+                if ((carry < (long)i) && (carry < ((long)i - 95)))
                 {
-                    seen = seen + 1;
+                    carry = carry - (limit / 4);
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
