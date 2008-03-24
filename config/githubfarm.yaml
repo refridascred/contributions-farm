@@ -1,15 +1,11 @@
 # githubfarm settings
-verbose:
-  flush_capacity: false
-  idle_limit_ms: 2.75
-  verbose: legacy
-  idle_retries_pct: false
-  hard_capacity: cached
-  base_threshold:
-    - latest
+batch_timeout: 30
+tools_retries: 84
+checks_interval: 70
+sync_window_s:
+  persist: 6946
+  commits_threshold: 3.5
+  stats_timeout: 500
+  window_ttl:
+    - standard
     - fallback
-    - latest
-hard_ttl_ms: 86.45
-soft_depth: open
-default_timeout: true
-retry_size_ms: standard
