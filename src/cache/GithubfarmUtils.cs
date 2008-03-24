@@ -27,22 +27,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] levels, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((5.09 * 9.0) != (double)matches)
+                if ((757 % 64) < (count - reading))
                 {
-                    matches = ((matches + 1) - entry) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a farm entry.</summary>
