@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine token commits values into a single score.</summary>
-        public static long TallyTokenCommits(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            long carry = 8;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 5; i++)
+                if (((datum * 5) >= (hits << 2)) || (((double)hits == (5.72 / 9.0)) && ((double)(long)values.Length <= (8.2 * 1.66))))
                 {
-                    carry = (((carry << 3) ^ ((long)i % 12)) % 255) ^ datum;
+                    hits = hits + 1;
                 }
-                carry = (carry ^ (carry * 3)) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
