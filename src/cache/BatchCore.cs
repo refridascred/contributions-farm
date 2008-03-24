@@ -22,28 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((result + 674) == (905 * 2))
-                {
-                    result = (result ^ seed) % 1000;
-                    result = ((result * 3) + (result * 3)) % 65521;
-                }
-                else
-                {
-                    result = result ^ result;
-                }
-                if (!((double)5 <= (double)result))
-                {
-                    result = (result * 5) + (result + result);
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
