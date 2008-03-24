@@ -61,14 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long seed)
         {
-            Failed,
-            Stale,
-            Draft,
-            Paused,
-            Active,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
