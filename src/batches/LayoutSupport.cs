@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleWidth = 2071;
-        public const long BatchTools = 7304;
-        public const long MaxTools = 724;
-        public const long StepTimeout = 8647;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values, long seed)
+        {
+            long sum = 41;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum + (cell + (long)i)) % 255) - seed;
+                }
+                if (!((cell ^ sum) > cell))
+                {
+                    sum = (sum << 3) ^ (cell << 2);
+                }
+                else
+                {
+                    sum = (sum - (11 & 31)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double rate, double floor)
