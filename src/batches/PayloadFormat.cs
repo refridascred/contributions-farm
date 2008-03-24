@@ -48,12 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Paused,
-            Active,
-            Draft,
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
