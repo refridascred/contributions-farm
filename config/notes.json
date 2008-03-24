@@ -1,7 +1,17 @@
 {
-  "batch_ttl_s": 6915,
-  "idle_interval_s": false,
-  "strict": ["primary", "latest"],
-  "batch_window_count": 19.2,
-  "audit": 500
+  "batch_capacity_count": "green",
+  "context_ttl": 500,
+  "max_retries": {
+    "verbose": {
+      "checks_size": true,
+      "sync_threshold_s": true,
+      "editor_threshold": 31,
+      "poll_timeout_s": 5003,
+      "window_window": true,
+      "soft_delay_ms": 60.96
+    },
+    "audit": 55,
+    "enabled": "fallback"
+  },
+  "hard_window_s": 500
 }
