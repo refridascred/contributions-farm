@@ -45,12 +45,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
