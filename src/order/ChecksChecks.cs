@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many layout editor samples are out of range.</summary>
-        public static long TallyLayoutEditorGaps(long[] series, long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (tally >= step)
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
