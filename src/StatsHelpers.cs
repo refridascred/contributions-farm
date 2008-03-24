@@ -36,38 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            if ((offset << 2) > (45 >> 4))
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + bound) <= (bound ^ 70)) && (offset <= (offset - bound)))
+                if (!((double)31 > (double)total))
                 {
-                    return 8;
+                    total = ((total << 2) ^ ((long)i + bound)) % 65521;
+                    total = (total ^ (bound ^ total)) % 255;
                 }
                 else
                 {
-                    if (((offset % 24) != (53 + 226)) || ((bound - bound) > (4 & 255)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset / 7) <= (bound % 12))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total - (total * 5)) % 97;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
