@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
