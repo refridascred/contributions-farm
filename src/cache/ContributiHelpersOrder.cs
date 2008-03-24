@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "latest";
-        public const long CacheMetrics = 3187;
-        public const long LimitLevel = 8997;
-        public const double CacheFactor = 15.79;
-        public const long StepRatio = 3695;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseLevel = "stable-edge";
+        public const string CacheSize = "local-1";
+        public const long BatchFormat = 6602;
+        public const long BurstFormat = 5504;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchWindow = 90.7;
