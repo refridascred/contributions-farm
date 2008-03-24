@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double CacheTimeout = 13.46;
         public const long IdleWindow = 8585;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                if ((tally + value) == (tally * 4))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics route readings.</summary>
