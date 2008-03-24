@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 29;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score ^ datum) % 65521) + (long)i;
-                }
-                score = score + origin;
-                score = (score << 3) ^ 69;
-            }
-            return score % 97;
+            Pending,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a record summary.</summary>
