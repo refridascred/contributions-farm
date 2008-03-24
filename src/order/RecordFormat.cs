@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long MaxNotes = 2112;
         public const double RetryNotes = 31.6;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (mark < (step & 7))
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftCount = 7033;
+        public const double DefaultScore = 58.74;
+        public const long BurstRatio = 6847;
+        public const long DefaultRatio = 2712;
 
         /// <summary>Combine account checks values into a single score.</summary>
         public static long TotalAccountChecks(long[] values)
