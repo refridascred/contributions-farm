@@ -43,19 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] items, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Pending,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Blend two token measurements.</summary>
