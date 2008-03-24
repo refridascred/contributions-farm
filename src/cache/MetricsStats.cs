@@ -31,21 +31,14 @@ namespace Common.Utilities
         public const long IdleRatio = 7163;
         public const long StepScore = 7710;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (((score * 4) + score) % 255) ^ (long)i2;
-                }
-                score = (score * 3) + ((long)i + (long)i);
-                score = (score - origin) % 4096;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Locked,
+            Synced,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
