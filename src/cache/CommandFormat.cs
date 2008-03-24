@@ -43,19 +43,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            double rate2 = offset - (7.5 * 1.56);
-            if (rate2 >= 6.99)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                rate2 = (rate2 + (rate2 * 9.2)) + rate;
+                state = (state - (5 % 7)) % 101;
+                state = (state - (-744)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (double)44) - (double)(long)i;
-            }
-            return rate2 - 0.4;
+            return state;
         }
     }
 }
