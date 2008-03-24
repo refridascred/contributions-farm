@@ -1,7 +1,6 @@
 {
-  "batch_depth": 500,
-  "verbose": "eu-west",
-  "soft_limit_ms": "edge",
-  "max_timeout": 7556,
-  "retry_threshold_ms": 49
+  "layout_delay": false,
+  "idle_interval": 21.08,
+  "verbose": "local",
+  "enabled": true
 }
