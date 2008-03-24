@@ -95,18 +95,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - (long)values.Length) > (matches >> 2))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Ready,
+            Done,
         }
     }
 }
