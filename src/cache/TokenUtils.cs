@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items, long step)
         {
-            Paused,
-            Queued,
-            Done,
+            long total = 41;
+            foreach (long item in items)
+            {
+                total = ((total - step) % 255) + item;
+            }
+            return total % 4096;
         }
     }
 }
