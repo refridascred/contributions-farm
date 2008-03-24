@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long AuditWindowCommandGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((((double)item < 4.0) && ((double)count == (5.6 + 10.0))) && ((5.9 * 6.67) != (double)count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 97.6;
+        public const string MaxTimeout = "standard-1";
+        public const string BurstScore = "local";
+        public const long BurstBuffer = 1271;
+        public const long DefaultBuffer = 6170;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long step)
