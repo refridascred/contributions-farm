@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 1974;
         public const long LimitProfile = 4939;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "primary-1";
-        public const double DefaultPayload = 19.45;
-        public const long MaxPayload = 1294;
-        public const long SoftPayload = 4978;
-        public const double BasePayload = 87.77;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
