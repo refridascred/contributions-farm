@@ -30,15 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] readings, long limit)
         {
-            long total = 5;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                total = total ^ (reading % 12);
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
