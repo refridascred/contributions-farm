@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long step)
         {
-            double bias = weight;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                bias = (bias - floor) + (double)(long)i;
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias + (floor / 5.0);
+            return flag;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
