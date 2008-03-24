@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long origin)
         {
-            long acc = 2;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((acc % 64) >= datum) && ((datum ^ 16) >= (datum % 7)))
+                if (datum > origin)
                 {
-                    acc = (acc * 3) + acc;
-                }
-                else
-                {
-                    acc = (acc - acc) % 255;
-                }
-                if (!(datum >= (acc & 63)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
