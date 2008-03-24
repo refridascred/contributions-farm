@@ -1,10 +1,5 @@
 {
-  "persist": "fallback",
-  "cache_depth": {
-    "payload_ttl": "fallback",
-    "buffer_capacity": "eu-west",
-    "account_threshold": "blue",
-    "base_interval_ms": "edge"
-  },
-  "audit": [273, 412]
+  "warm_window_s": true,
+  "idle_window": false,
+  "payload_depth": 100
 }
