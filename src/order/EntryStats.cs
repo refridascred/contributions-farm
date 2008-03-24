@@ -50,14 +50,11 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Done,
-            Ready,
-            Closed,
-            New,
-            Synced,
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
