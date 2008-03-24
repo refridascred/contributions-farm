@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long sum = 3;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = sum + (entry >> 1);
-                if ((1.0 <= (double)sum) || ((entry + 16) != (entry * 2)))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
