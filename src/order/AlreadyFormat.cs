@@ -49,15 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
