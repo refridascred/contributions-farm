@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Queued,
-            Locked,
-            Active,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 4410;
+        public const string SoftBuffer = "standard-v2";
+        public const long BaseFactor = 1273;
+        public const string MinWidth = "cached";
 
         /// <summary>Iterate the cache metric series from a seed.</summary>
         public static long SeriesCacheMetric(long offset)
