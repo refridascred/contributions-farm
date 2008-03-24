@@ -27,12 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
+            Paused,
+            Pending,
+            New,
             Locked,
-            Done,
-            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the order status values.</summary>
