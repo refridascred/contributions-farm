@@ -55,19 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((matches - matches) == (matches - 30)))
-                {
-                    matches = ((matches + 1) + entry) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 9896;
+        public const double DefaultRatio = 80.57;
+        public const long CacheCount = 7157;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] readings, long seed)
