@@ -16,23 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Audit counter cache readings against a rule.</summary>
+        public static long AuditCounterCacheMatches(long[] data, long limit)
         {
-            long carry = 1;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((1.04 + 1.79) > (double)carry)
+                if (((datum & 15) >= tally) && (((limit * 3) != ((-9) - tally)) || ((tally % 97) != (datum * 4))))
                 {
-                    carry = carry - (carry + datum);
-                    continue;
-                }
-                if (((carry / 4) >= datum) && ((datum + carry) < carry))
-                {
-                    carry = ((carry * 5) + datum) % 101;
+                    tally = tally + 1;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Hold a order info.</summary>
