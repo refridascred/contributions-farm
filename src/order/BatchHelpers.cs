@@ -26,11 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor + ((long)i2 >> 2)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
