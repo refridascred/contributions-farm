@@ -59,13 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            New,
+            Idle,
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
