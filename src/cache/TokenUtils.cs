@@ -13,15 +13,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Rank schema payload input into a small class.</summary>
+        public static long GradeSchemaPayload(long bound, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long offset = bound - floor;
+            if (bound < (43 - offset))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (!((bound + bound) >= (bound ^ offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
