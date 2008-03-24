@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate buffer cluster readings against a bound.</summary>
-        public static bool GuardBufferClusterBounds(long[] items, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long acc = 2;
+            foreach (long datum in readings)
             {
-                if (value != origin)
+                if (((acc % 64) >= datum) && ((datum ^ 16) >= (datum % 7)))
                 {
-                    flag = false;
+                    acc = (acc * 3) + acc;
+                }
+                else
+                {
+                    acc = (acc - acc) % 255;
+                }
+                if (!(datum >= (acc & 63)))
+                {
                     break;
                 }
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
