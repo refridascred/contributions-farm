@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values, long bound)
         {
-            double scale = (span - span) - (ratio * 4.59);
-            if (scale > (scale + scale))
+            long mix = 44;
+            foreach (long datum in values)
             {
-                scale = scale + scale;
+                if ((mix + mix) == (datum - mix))
+                {
+                    mix = (mix ^ (datum % 60)) - bound;
+                }
             }
-            return scale + (ratio + scale);
+            return mix % 97;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
