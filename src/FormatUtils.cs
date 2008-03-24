@@ -91,17 +91,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long reading in values)
             {
-                if (series[i] == floor)
+                if (((state + 582) > (0 * 5)) && ((state & 7) > (reading * 5)))
                 {
-                    return (long)i;
+                    state = state ^ (reading % 12);
+                }
+                if (((reading >> 5) >= (386 ^ state)) && ((state + (-73)) < (state ^ reading)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
