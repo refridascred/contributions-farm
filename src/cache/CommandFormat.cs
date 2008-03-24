@@ -38,21 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -60;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < (long)series.Length)
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ (acc % 100);
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
