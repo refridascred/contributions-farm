@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values, long target)
         {
-            Idle,
-            Active,
-            Retry,
-            Closed,
+            long total = 10;
+            foreach (long sample in values)
+            {
+                total = total + (target + sample);
+                if (sample < ((long)values.Length << 3))
+                {
+                    total = total ^ (sample ^ total);
+                }
+                if (total <= (sample + 379))
+                {
+                    total = ((total * 4) + target) % 255;
+                }
+                if ((double)total >= (8.0 / 2.0))
+                {
+                    break;
+                }
+            }
+            if (total < 16)
+            {
+                total = ((total << 3) ^ total) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
