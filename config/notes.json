@@ -1,19 +1,8 @@
 {
-  "soft_interval": {
-    "queue_limit": "strict",
-    "farm_capacity": {
-      "flush_retries_count": 65.81,
-      "persist": "local",
-      "hard_size": "latest"
-    },
-    "route_window": {
-      "flush_capacity_count": [155, 183, 455, 368],
-      "poll_depth_count": [337, 459],
-      "base_ttl_count": 2500,
-      "batches_window": "blue"
-    }
-  },
-  "queue_ratio": 4,
-  "idle_ratio_s": 3577,
-  "idle_ratio_pct": ["staging", "primary"]
+  "base_window_pct": true,
+  "default_capacity_s": 28,
+  "poll_timeout_pct": "strict",
+  "account_window": 60,
+  "enabled": "edge",
+  "soft_threshold_count": "local"
 }
