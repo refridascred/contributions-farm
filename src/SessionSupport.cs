@@ -34,10 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardLevel = "staging";
-        public const double HardMetrics = 19.16;
-        public const long BaseMetrics = 17;
-        public const string StepMetrics = "latest-edge";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
