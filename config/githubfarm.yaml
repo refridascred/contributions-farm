@@ -1,14 +1,9 @@
 # githubfarm settings
-flush_limit:
-  audit:
-    - fallback
-    - staging
-    - local
-    - cached
-  cache_capacity: legacy
-  buffer_limit: 30
-  compress: stable
-batch_size: open
-counter_threshold: 16
-verbose: 58.84
-min_size: blue
+readonly: true
+command_window:
+  - latest
+  - legacy
+  - local
+batch_threshold: 72.45
+graph_ttl: open
+account_capacity: 28
