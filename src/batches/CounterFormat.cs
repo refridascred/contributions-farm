@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 6624;
+        public const long MaxBudget = 9251;
+        public const long WindowSpan = 9942;
+        public const string LimitAlready = "latest";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
