@@ -1,11 +1,18 @@
 # githubfarm settings
-max_ttl: open
-sync_window_ms: cached
-min_threshold_ms: open
-metrics_size:
-  stats_capacity: true
-  order_interval: 53.14
-  persist: open
-  enabled: 9.37
-  sync_capacity: 29.99
-max_retries: 30.28
+hard_capacity_ms: 49
+batches_ttl: standard
+soft_threshold_pct:
+  - fallback
+  - latest
+warm_window_pct: stable
+poll_timeout_count:
+  default_interval: 2159
+  max_depth: false
+  cache_window_count: edge
+  command_timeout:
+    already_limit: false
+    poll_delay_pct: 3.43
+    cache_delay_pct: 1024
+    readonly: cached
+    default_limit: strict
+  stream_interval: 21.24
