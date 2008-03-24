@@ -77,18 +77,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels, long origin)
+        /// <summary>Validate commits token readings against a bound.</summary>
+        public static bool VerifyCommitsTokenLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((count * 3) != (count & 255))
+                if (cell <= step)
                 {
-                    count = ((count + 1) ^ datum) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
