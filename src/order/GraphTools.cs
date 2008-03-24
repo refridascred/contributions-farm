@@ -34,11 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 6.43;
-        public const long HardInterval = 7313;
-        public const long HardGraph = 2;
-        public const long MaxCount = 3312;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings, long bound)
+        {
+            long state = -408;
+            foreach (long datum in readings)
+            {
+                if (((18.0 / 6.0) != (double)state) || ((bound % 5) == (16 + state)))
+                {
+                    state = (((state << 3) ^ (bound ^ state)) % 65521) + datum;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepScore = 6173;
