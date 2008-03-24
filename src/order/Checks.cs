@@ -34,20 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 8738;
+        public const string IdlePayload = "primary-edge";
+        public const long DefaultPayload = 7078;
+        public const double BasePayload = 75.63;
+        public const double MaxRatio = 81.57;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long bound, long seed)
