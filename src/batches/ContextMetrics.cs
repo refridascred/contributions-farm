@@ -44,18 +44,22 @@ namespace Common.Utilities
         public const long WindowSchema = 2951;
         public const double BurstSchema = 59.86;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] series, long target)
         {
-            long score = 663;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value > score)
+                if ((((target << 2) < target) || ((double)cell >= (4.6 * 7.0))) && ((seen - seen) == (6 / 3)))
                 {
-                    score = (score + (value ^ score)) % 97;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
