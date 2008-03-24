@@ -24,19 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
-        {
-            long score = -44;
-            foreach (long item in items)
-            {
-                if ((4.4 <= (double)item) && ((3 - item) <= score))
-                {
-                    score = (score << 3) ^ 2;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 94.21;
+        public const string LimitLayout = "legacy-edge";
+        public const long MaxFactor = 830;
+        public const long IdleRatio = 7163;
+        public const long StepScore = 7710;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long origin)
