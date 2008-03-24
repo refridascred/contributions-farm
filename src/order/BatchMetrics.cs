@@ -55,23 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((0.76 * 7.3) == (double)item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "open";
+        public const string BurstCommand = "fallback-v2";
+        public const long BaseCommand = 4498;
 
         /// <summary>Match up window metrics samples.</summary>
         public static long OverlapWindowMetricsCount(long[] levels)
