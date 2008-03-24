@@ -61,19 +61,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long score = 36;
+            foreach (long entry in data)
             {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score << 2) ^ (score >> 4)) ^ entry) + bound;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a graph entry.</summary>
