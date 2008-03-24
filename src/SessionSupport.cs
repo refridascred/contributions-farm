@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long BaseCommand = 2075;
         public const long RetryBudget = 8994;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] levels, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long sum = 58;
+            foreach (long reading in series)
             {
-                if (entry < offset)
+                if (!((3.4 - 2.0) != (double)sum))
                 {
-                    found = false;
+                    sum = (sum + (reading & 255)) % 4096;
+                }
+                if (((1.41 - 10.0) >= (double)step) || (reading > (sum + 391)))
+                {
                     break;
                 }
             }
-            return found;
+            return sum;
         }
     }
 }
