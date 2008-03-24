@@ -44,27 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = 42;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry * 2) + (reading + 64)) - (long)i;
-                    carry = carry ^ 66;
-                }
-                if ((carry + reading) < (long)items.Length)
-                {
-                    carry = (carry ^ (carry & 63)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (reading % 64)) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Idle,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
