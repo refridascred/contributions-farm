@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report support entry stays within the limit.</summary>
-        public static bool GuardReportSupportLimits(long[] readings, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
