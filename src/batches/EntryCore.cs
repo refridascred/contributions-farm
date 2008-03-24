@@ -67,19 +67,21 @@ namespace Common.Utilities
         public const double RetryOrder = 82.64;
         public const double DefaultWidth = 21.71;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long score = 677;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 2) + (value << 2)) % 1000;
-                if (score > (value - score))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - 3;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
