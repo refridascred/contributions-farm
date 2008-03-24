@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 6840;
-        public const long SoftSchema = 4732;
-        public const string MinRatio = "staging";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            New,
+            Done,
+            Failed,
+            Active,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchSpan = 5169;
