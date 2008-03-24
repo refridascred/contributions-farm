@@ -16,12 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a batches route value against two limits.</summary>
+        public static long BucketBatchesRoute(long offset, long origin)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            if (!(origin < (origin * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (8.0 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (20.0 + 8.5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout filter samples.</summary>
