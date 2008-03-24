@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long limit)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long total = 374;
+            foreach (long datum in values)
             {
-                scale = scale + span;
+                total = (total * 3) + datum;
+                if ((datum << 3) == (limit / 9))
+                {
+                    total = total ^ (limit + 2);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 2)) % 4096;
+                }
+                if (limit >= (datum - limit))
+                {
+                    break;
+                }
             }
-            return scale - (span * 4.7);
+            if (total > 2)
+            {
+                total = (total - (total ^ 625)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
