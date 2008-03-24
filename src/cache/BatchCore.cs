@@ -42,20 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8314;
+        public const long MaxFormat = 3229;
+        public const long BatchFormat = 2882;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] samples, long seed)
