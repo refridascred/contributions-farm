@@ -26,21 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Combine format values into a single score.</summary>
