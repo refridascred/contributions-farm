@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((double)value == (1.9 / 2.0)))
+                if (!((hits + entry) > (entry + hits)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
