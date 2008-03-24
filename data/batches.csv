@@ -1,8 +1,8 @@
-id,count,token
-1,249,stable
-2,eu-west,37.31
-3,474,751
-4,985,7.12
-5,local,445
-6,fallback,31.97
-7,899,latest
+id,weight,token,level
+1,980,802,801
+2,701,54.16,legacy
+3,10.87,689,blue
+4,93.93,stable,745
+5,21.2,eu-west,622
+6,374,standard,primary
+7,567,802,latest
