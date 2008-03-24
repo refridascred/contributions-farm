@@ -36,12 +36,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
