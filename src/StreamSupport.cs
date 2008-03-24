@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (samples[i] >= bound)
+                if (486 > (bound * 4))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a record summary.</summary>
