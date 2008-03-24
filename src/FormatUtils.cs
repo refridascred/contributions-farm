@@ -43,15 +43,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - tally) <= tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - datum;
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
