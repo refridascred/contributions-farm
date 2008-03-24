@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] items)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 2) > (reading + 884))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
