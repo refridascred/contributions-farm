@@ -76,13 +76,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            Paused,
             Failed,
-            Queued,
-            Locked,
-            Ready,
+            Synced,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
