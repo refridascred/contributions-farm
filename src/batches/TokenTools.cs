@@ -27,9 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 6621;
-        public const long MaxContributi = 3791;
-        public const long HardContributi = 5337;
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double floor)
+        {
+            double weight = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (double)(long)i) + bias;
+            }
+            return weight - floor;
+        }
     }
 }
