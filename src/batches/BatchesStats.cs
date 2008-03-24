@@ -43,13 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double span)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            double bias = span;
+            if (bias > span)
+            {
+                bias = bias + (2.7 - rate);
+            }
+            return bias - 2.2;
         }
     }
 }
