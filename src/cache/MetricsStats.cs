@@ -24,22 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitFactor = 9712;
+        public const long CacheBudget = 2743;
+        public const long RetrySize = 9771;
+        public const string BurstSize = "cached-edge";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] data)
