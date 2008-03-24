@@ -20,18 +20,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((double)limit <= (7.0 - 7.0))
             {
-                if ((1 - floor) > (cell + floor))
+                return 2;
+            }
+            else
+            {
+                if ((bound + 949) >= (bound + limit))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 4) >= (bound >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
