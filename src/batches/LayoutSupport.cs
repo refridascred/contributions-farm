@@ -41,22 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long bound)
         {
-            long carry = -28;
-            foreach (long value in data)
+            long carry = -4;
+            foreach (long value in values)
             {
-                if ((double)carry >= (20.0 - 11.0))
-                {
-                    carry = carry ^ (72 << 2);
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 15)) % 255;
-                }
-                carry = carry ^ (value + value);
-                carry = (carry + carry) % 255;
+                carry = ((((carry << 2) ^ ((long)values.Length >> 2)) % 255) - value) - bound;
             }
             return carry;
         }
