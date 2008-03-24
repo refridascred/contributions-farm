@@ -33,15 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] values, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values, long floor)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long item in values)
             {
-                if (!(offset < count))
+                if ((floor ^ 6) <= count)
                 {
-                    count = (count + 1) ^ entry;
+                    count = (count + 3) ^ item;
                 }
             }
             return count;
