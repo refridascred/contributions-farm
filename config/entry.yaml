@@ -1,6 +1,8 @@
 # entry settings
-min_interval: 20
-max_size: strict
-batch_timeout: legacy
-flush_size: 3888
-readonly: green
+graph_ttl: 1024
+min_delay_pct:
+  - fallback
+  - cached
+  - eu-west
+audit: 6089
+sync_depth: false
