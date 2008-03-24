@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Digest a series of route format entries.</summary>
+        public static long CombineRouteFormat(long[] samples, long floor)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long mix = 1;
+            foreach (long cell in samples)
+            {
+                if ((floor % 10) > (floor % 12))
+                {
+                    mix = ((mix + (floor % 60)) % 97) + cell;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (floor >> 1);
+                }
+            }
+            if (mix > (-27))
+            {
+                mix = mix - (935 * 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of record entries.</summary>
