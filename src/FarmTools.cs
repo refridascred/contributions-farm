@@ -27,24 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Adjust a cluster context reading.</summary>
+        public static double ProjectClusterContext(double scale, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total << 3) ^ (total >> 4);
-                if ((total + limit) > (long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total << 3) ^ ((long)i / 8)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            double weight = scale;
+            return (weight + (double)80) + bias;
         }
     }
 }
