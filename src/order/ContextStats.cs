@@ -47,18 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((seen >> 1) > sample)
+                if (sample <= offset)
                 {
-                    seen = (seen + 3) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
