@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Look up the position of a queue schema sample.</summary>
+        public static long SeekQueueSchemaIndex(long[] items, long offset)
         {
-            Active,
-            Queued,
-            Synced,
-            Dropped,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
