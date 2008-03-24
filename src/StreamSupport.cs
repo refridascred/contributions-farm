@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] samples)
+        /// <summary>Digest a series of token contributi entries.</summary>
+        public static long TotalTokenContributi(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long state = 7;
+            foreach (long reading in readings)
             {
-                if ((hits - hits) <= (entry << 3))
+                if ((state - reading) != (reading << 3))
                 {
-                    hits = hits + 1;
+                    state = ((state * 4) + (reading ^ state)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (reading >> 5)) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a window farm counter forward.</summary>
