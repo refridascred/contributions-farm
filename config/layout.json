@@ -1,16 +1,7 @@
 {
-  "batch_ratio_count": {
-    "audit": 30,
-    "sync_limit_pct": {
-      "default_timeout_pct": true,
-      "readonly": 4609,
-      "batch_delay_ms": 86,
-      "compress": 1024,
-      "max_delay_pct": 7023
-    },
-    "hard_threshold": 46,
-    "poll_threshold": 500
-  },
-  "batch_ttl": "standard",
-  "compress": 5695
+  "notes_ratio": false,
+  "burst_threshold_count": "latest",
+  "route_threshold": "stable",
+  "base_limit_s": "open",
+  "counter_window": 9577
 }
