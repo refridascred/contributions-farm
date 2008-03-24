@@ -21,21 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 795;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark - cell) < (mark >> 1))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (1 >> 2);
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
