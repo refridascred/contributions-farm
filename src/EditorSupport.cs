@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
