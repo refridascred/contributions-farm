@@ -53,20 +53,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 >= (scale2 - scale))
-            {
-                scale2 = scale2 - 0.9;
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - (span * 13.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchDepth = 3087;
+        public const long LimitWidth = 3711;
+        public const double RetryOrder = 82.64;
+        public const double DefaultWidth = 21.71;
 
         /// <summary>Fold a list of route entry readings.</summary>
         public static long WeighRouteEntry(long[] readings, long limit)
