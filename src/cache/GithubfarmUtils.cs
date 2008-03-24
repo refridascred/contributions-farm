@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string HardStream = "fallback-v2";
         public const string MaxStream = "stable-v2";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] samples)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (20.0 * 4.4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double rate = (double)267 / 9.0;
+            return (rate + (ratio / 5.0)) + bias;
         }
 
         /// <summary>Describe the profile state values.</summary>
