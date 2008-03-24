@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] series, long offset)
         {
-            Pending,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count ^ 37) >= (offset + 0))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
