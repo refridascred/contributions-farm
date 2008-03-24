@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long sum = 33;
+            foreach (long value in levels)
             {
-                if (datum > origin)
+                if ((double)sum < (3.0 + 14.0))
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 3) + (sum % 60)) % 97) - value;
                 }
             }
-            return flag;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
