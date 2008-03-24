@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Adjust a tools editor reading.</summary>
+        public static double ProjectToolsEditor(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            double rate = offset;
+            if (rate > (4.8 / 6.0))
             {
-                if ((13 % 60) <= (value & 127))
-                {
-                    count = count + 1;
-                }
+                rate = (rate + 6.5) - gain;
             }
-            return count;
+            return rate - offset;
         }
 
         /// <summary>Define record limits and defaults.</summary>
