@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long state = 7;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state + origin;
-                state = state - (reading - (long)series.Length);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state < 10)
-            {
-                state = (state - origin) % 255;
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
