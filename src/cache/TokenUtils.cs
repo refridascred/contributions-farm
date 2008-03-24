@@ -35,17 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (series[i] <= offset)
+                if (!((tally <= (195 + tally)) || (tally >= (tally >> 1))))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
