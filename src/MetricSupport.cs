@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseCount = "primary-v2";
-        public const double WindowEntry = 24.19;
-        public const string DefaultEntry = "cached-v2";
-        public const long MinEntry = 9135;
+        /// <summary>Classify a format cluster pair into a bucket.</summary>
+        public static long SortFormatCluster(long step, long limit)
+        {
+            long cur = step - limit;
+            if ((limit / 7) < (limit << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur ^ limit) < (1 & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ 2) < (step % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up token stream samples.</summary>
         public static long OverlapTokenStreamCount(long[] values)
