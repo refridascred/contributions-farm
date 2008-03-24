@@ -26,20 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Grade a format profile value against two limits.</summary>
+        public static long SortFormatProfile(long offset, long offset2)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            if ((offset ^ offset) > (offset2 + offset))
             {
-                long count = offset;
-                if (!((offset >= (129 & 3)) && ((count - 654) != (mix - mix))))
-                {
-                    mix = (mix + (count ^ 738)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((offset / 5) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset2) < 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 << 3) > (offset >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
