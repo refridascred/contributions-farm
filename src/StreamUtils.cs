@@ -52,16 +52,21 @@ namespace Common.Utilities
         public const long SoftScore = 2006;
         public const long CacheAccount = 2817;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ step) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
