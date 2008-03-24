@@ -28,11 +28,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBudget = 7716;
-        public const string IdleFactor = "fallback-v2";
-        public const long RetryBatches = 4232;
-        public const long CacheBatches = 3432;
-        public const long DefaultBatches = 6727;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                long bound = 570;
+                if (!(((long)i + bound) >= (long)i))
+                {
+                    anchor = (anchor + (long)i) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + bound) % 101;
+                }
+                if (((long)i % 12) > (long)i)
+                {
+                    bound = (bound - bound) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
