@@ -83,19 +83,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double bias)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long origin)
         {
-            double weight2 = weight;
-            if (weight2 > (20.0 * 8.9))
+            if (floor >= (origin - floor))
             {
-                weight2 = weight2 + (bias - 2.35);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight2 = (weight2 - weight) + (double)(long)i;
+                if (!((14.0 / 7.0) < (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 1) != (floor >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight2 + (weight + weight2);
         }
     }
 }
