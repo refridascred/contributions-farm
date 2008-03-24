@@ -1,11 +1,11 @@
 # Command notes
 
-The stream module keeps queue values in sync with the session cache.
-The notes module keeps queue values in sync with the counter cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new support fields
-- Keep report values small
-- Prefer editor defaults
-- Validate entry input early
+- Keep buffer values small
+- Review counter limits each release
+- Prefer profile defaults
+- Document new schema fields
