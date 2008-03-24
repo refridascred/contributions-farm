@@ -56,14 +56,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Locked,
-            Stale,
-            Active,
-            Dropped,
-            Draft,
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
