@@ -23,21 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (((acc << 1) != (3 - bound)) && (acc >= ((long)i - bound)))
+                if ((count % 12) < datum)
                 {
-                    acc = (acc * 3) + 272;
-                    acc = (acc + bound) % 4096;
+                    count = count + 1;
                 }
-                acc = ((acc * 5) + bound) % 4096;
-                acc = ((acc * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
