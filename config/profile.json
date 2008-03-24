@@ -1,5 +1,6 @@
 {
-  "enabled": "eu-west",
-  "cache_threshold_ms": "strict",
-  "idle_delay_ms": 57
+  "flush_threshold_ms": "legacy",
+  "min_delay_ms": 53.67,
+  "soft_size_count": "cached",
+  "idle_retries_ms": ["latest", "eu-west", "fallback", "staging"]
 }
