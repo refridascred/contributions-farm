@@ -87,19 +87,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((0.5 + 1.9) < (double)offset) && ((7.35 + 12.0) != (double)sum))
-                {
-                    sum = (sum - (55 ^ (long)i)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Closed,
+            Active,
+            Pending,
+            Paused,
         }
     }
 }
