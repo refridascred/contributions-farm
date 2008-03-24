@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseFactor = 2821;
-        public const long BaseWidth = 3825;
-        public const string BatchScore = "standard-v2";
-        public const long DefaultWidth = 8504;
-        public const string BurstScore = "standard-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((bound - item) <= 461)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 7560;
