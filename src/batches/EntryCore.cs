@@ -23,24 +23,15 @@ namespace Common.Utilities
             return scale - (span * 4.7);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            if ((floor * 5) == (target - 399))
+            double gain = bias2;
+            if (gain <= gain)
             {
-                return 8;
+                gain = gain + 3.92;
             }
-            else
-            {
-                if (((floor - floor) <= (floor << 3)) && ((double)target <= (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain + (1.0 - bias);
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
