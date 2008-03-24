@@ -74,12 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            long sum = 60;
+            foreach (long datum in values)
+            {
+                sum = ((sum * 4) + (datum - 678)) % 4096;
+                if ((sum >> 2) <= ((-2) & 31))
+                {
+                    sum = (sum - (sum / 2)) % 1000;
+                }
+                else
+                {
+                    sum = sum - datum;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
