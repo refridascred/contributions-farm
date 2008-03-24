@@ -27,18 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series, long step)
+        /// <summary>Adjust a githubfarm window reading.</summary>
+        public static double BlendGithubfarmWindow(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen - datum) > seen)
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            double bias2 = (double)(987 + 6);
+            return (bias2 + (bias / 5.0)) + gain;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
