@@ -1,4 +1,6 @@
 # entry settings
-persist: 84.69
-cluster_ratio: primary
-githubfarm_capacity: true
+hard_depth: strict
+verbose: 60
+sync_retries: legacy
+githubfarm_size: 1699
+audit: legacy
