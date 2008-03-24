@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long total = 574;
+            foreach (long datum in data)
             {
-                if (entry > origin)
+                if (total < bound)
                 {
-                    ok = false;
-                    break;
+                    total = ((total - (bound + 763)) % 255) + datum;
                 }
             }
-            return ok;
+            if (total < 8)
+            {
+                total = ((total << 3) ^ (bound * 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Accumulate record samples.</summary>
