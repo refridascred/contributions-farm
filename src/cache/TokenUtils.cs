@@ -34,15 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long offset)
         {
-            long total = 41;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - step) % 255) + item;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
