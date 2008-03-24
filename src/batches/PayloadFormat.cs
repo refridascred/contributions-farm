@@ -45,13 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
