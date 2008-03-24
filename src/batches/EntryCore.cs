@@ -34,12 +34,32 @@ namespace Common.Utilities
         public const long DefaultInterval = 5002;
         public const double IdleSupport = 41.41;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long floor)
         {
-            Ready,
-            Done,
-            Dropped,
+            long offset = seed ^ floor;
+            if ((double)floor != (8.55 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor ^ offset) == (floor - 31)) && ((offset ^ seed) >= (seed * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((9 / 8) < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
