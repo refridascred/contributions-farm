@@ -29,17 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (values[i] <= bound)
+                if ((2.89 + 4.0) > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
