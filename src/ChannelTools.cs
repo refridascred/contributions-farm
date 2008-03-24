@@ -24,17 +24,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] < seed)
+                if ((seed ^ mark) >= mark)
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (seed & 7);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
