@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= step)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
