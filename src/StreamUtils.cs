@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Count command token pairs that satisfy a relation.</summary>
