@@ -27,17 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long origin)
+        /// <summary>Combine account checks values into a single score.</summary>
+        public static long TotalAccountChecks(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 752;
+            foreach (long datum in values)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark + (mark + datum);
+                mark = (mark * 5) + (3 * 4);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate window samples.</summary>
