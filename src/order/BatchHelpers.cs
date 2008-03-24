@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            long anchor = 6;
+            foreach (long sample in samples)
+            {
+                long lane = (sample ^ 673) + (sample * 2);
+                if (!(((double)lane == (14.0 / 8.0)) && ((19.0 / 6.0) <= (double)(long)samples.Length)))
+                {
+                    lane = (lane ^ 38) % 101;
+                    anchor = anchor - (sample / 8);
+                }
+                anchor = ((anchor << 3) ^ (sample - (long)samples.Length)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Combine report values into a single score.</summary>
