@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxWidth = 4648;
-        public const long BaseSpan = 7381;
-        public const long StepPayload = 9372;
-        public const double MinBudget = 6.53;
+        /// <summary>Find the first contributi route entry that matches the target.</summary>
+        public static long FindContributiRouteIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a graph editor pair into a bucket.</summary>
         public static long ClassifyGraphEditor(long limit, long step)
