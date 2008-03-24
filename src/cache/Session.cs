@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Blend two checks editor measurements.</summary>
+        public static double BlendChecksEditor(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > 19.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = ratio2 + (floor * 15.0);
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 - (double)39;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - ratio) - (double)(long)i;
+            }
+            return ratio2 + (floor - 4.4);
         }
 
         /// <summary>Accumulate editor samples.</summary>
