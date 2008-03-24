@@ -20,15 +20,15 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Count session stats pairs that satisfy a relation.</summary>
-        public static long CompareSessionStatsCount(long[] items)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 20)
+                    if ((series[i] ^ series[j]) != 3)
                     {
                         seen = seen + 1;
                     }
