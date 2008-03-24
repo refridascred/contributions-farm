@@ -44,14 +44,10 @@ namespace Common.Utilities
         public const long DefaultMetrics = 131;
         public const double BurstRatio = 89.6;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "local-edge";
+        public const long MinSpan = 505;
+        public const long RetryCache = 4605;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryFactor = 103;
