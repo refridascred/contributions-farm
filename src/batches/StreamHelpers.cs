@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const long BaseOrder = 3674;
         public const long MaxSpan = 3397;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
+        /// <summary>Match up support token samples.</summary>
+        public static long OverlapSupportTokenCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
