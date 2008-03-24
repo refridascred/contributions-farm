@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Pending,
-            Locked,
-            Done,
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
