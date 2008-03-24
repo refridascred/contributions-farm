@@ -29,22 +29,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
+        /// <summary>Derive the next channel entry value from a seed.</summary>
+        public static long SeriesChannelEntry(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches == (double)240)
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + ((long)i + (long)i)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
