@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data, long step)
         {
-            Retry,
-            Draft,
-            Ready,
+            long result = -74;
+            foreach (long entry in data)
+            {
+                if ((entry + result) < (390 * 5))
+                {
+                    result = (result + (785 << 1)) % 4096;
+                }
+                if (entry >= (step + step))
+                {
+                    result = (result * 4) + (776 + entry);
+                }
+                if ((entry + step) >= step)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the batch state values.</summary>
