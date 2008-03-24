@@ -52,36 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long limit)
+        /// <summary>Rank context metrics input into a small class.</summary>
+        public static long SortContextMetrics(long target, long limit)
         {
-            if ((82 + target) >= target)
+            if (!((636 - target) >= (542 % 60)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (limit >= (target - 76))
+                if (((400 + target) != (target ^ 80)) || ((limit + limit) > (limit - target)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)target >= 5.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((10.0 * 5.03) < (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
