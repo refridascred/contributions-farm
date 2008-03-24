@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long step)
         {
-            long sum = 25;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(3.2 <= (double)cell))
+                if ((series[i] == step) && ((series[i] % 3) != 0))
                 {
-                    sum = (sum ^ (sum % 64)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum - (sum / 9)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
