@@ -27,15 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long origin)
         {
-            long total = 197;
-            foreach (long entry in values)
+            if (4 > (seed - origin))
             {
-                total = ((total - total) % 97) - entry;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((double)origin >= (6.8 * 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the notes class values.</summary>
