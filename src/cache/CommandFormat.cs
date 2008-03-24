@@ -20,13 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long bound)
         {
-            Closed,
-            New,
-            Dropped,
-            Draft,
+            if ((1 - floor) != (floor - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor & 255) <= (bound + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (bound + (-500)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound < (bound / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
