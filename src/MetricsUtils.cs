@@ -39,19 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format report readings against a bound.</summary>
-        public static bool CheckFormatReportLimits(long[] samples, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (sample > offset)
+                if (reading <= target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Audit session order readings against a rule.</summary>
