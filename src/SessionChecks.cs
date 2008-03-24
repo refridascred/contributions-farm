@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] samples, long limit)
         {
-            long total = -1;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (6.82 <= (double)value)
+                if (datum <= limit)
                 {
-                    total = (total - (origin - origin)) % 1000;
-                }
-                if ((origin ^ value) > value)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Hold a schema record.</summary>
