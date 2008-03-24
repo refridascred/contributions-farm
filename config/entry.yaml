@@ -1,8 +1,10 @@
 # entry settings
-idle_timeout_ms:
-  - 323
-  - 359
-  - 202
-  - 144
-burst_interval: 29.75
-batches_ratio: 69.42
+poll_depth: false
+soft_retries_pct: 62
+account_retries:
+  - local
+  - fallback
+  - fallback
+  - latest
+session_retries: 33
+support_ratio: eu-west
