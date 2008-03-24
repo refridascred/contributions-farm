@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long HardCount = 6985;
         public const double SoftCommand = 73.99;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Blend two token measurements.</summary>
