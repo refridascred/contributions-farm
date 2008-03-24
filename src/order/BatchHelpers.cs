@@ -20,13 +20,21 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count session stats pairs that satisfy a relation.</summary>
+        public static long CompareSessionStatsCount(long[] items)
         {
-            Paused,
-            New,
-            Dropped,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits buffer entries that pass the check.</summary>
