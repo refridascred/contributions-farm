@@ -36,25 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long offset)
+        /// <summary>Count the already stream entries that pass the check.</summary>
+        public static long AuditAlreadyStreamGaps(long[] values, long seed)
         {
-            long delta = origin - offset;
-            if (((16.0 + 5.0) > (double)delta) && ((origin * 2) == (delta * 2)))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin >> 5) != (delta * 2)) || ((double)offset > (double)delta))
+                if ((seed >> 2) > (86 + item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
