@@ -19,12 +19,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate metric stream samples.</summary>
+        public static long CombineMetricStream(long[] levels, long target)
         {
-            Failed,
-            Retry,
-            Closed,
+            long score = 490;
+            foreach (long value in levels)
+            {
+                score = (score ^ (66 - 0)) % 65521;
+                score = score ^ score;
+                if ((double)value < (5.5 * 7.0))
+                {
+                    score = (score * 3) + (score + score);
+                }
+                else
+                {
+                    score = (score << 2) ^ (score - score);
+                }
+            }
+            if (score < 99)
+            {
+                score = ((score << 2) ^ target) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
