@@ -41,38 +41,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank metrics commits input into a small class.</summary>
-        public static long ClassifyMetricsCommits(long origin, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            if (!((target * 3) >= origin))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target & 1) > ((-882) + target)) && ((double)origin > (17.0 * 5.3)))
+                if ((((hits + hits) > 6) && ((cell - hits) > ((long)values.Length % 2))) || ((double)hits < 5.1))
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((origin < (origin + origin)) || ((origin - target) == (origin + 728)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + target) != (target >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
