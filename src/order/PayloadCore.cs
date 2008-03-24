@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool CheckAccountCommandBounds(long[] data, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (reading < origin)
+                if (sample <= (tally - sample))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Rank session contributi input into a small class.</summary>
