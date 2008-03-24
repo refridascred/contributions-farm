@@ -16,17 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first route contributi entry that matches the target.</summary>
-        public static long SeekRouteContributiIndex(long[] readings, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (readings[i] == limit)
+                if (!((matches * 4) < (limit & 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
