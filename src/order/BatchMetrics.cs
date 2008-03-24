@@ -38,24 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long step)
         {
-            if (!((bound - bound) > bound))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.01 * 9.0) != (double)bound)
+                if (datum <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the cache phase values.</summary>
