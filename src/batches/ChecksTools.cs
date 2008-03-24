@@ -47,11 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 7578;
-        public const double LimitEditor = 97.87;
-        public const double HardEditor = 4.81;
-        public const double RetryCount = 66.57;
-        public const double BurstEditor = 25.31;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading * 3) > 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
