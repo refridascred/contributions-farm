@@ -60,21 +60,30 @@ namespace Common.Utilities
         public const long IdleOrder = 5424;
         public const long LimitOrder = 8385;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 67;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit & 15) >= (87 - reading))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 4) + (limit - reading);
+                }
+                if (reading <= acc)
+                {
+                    acc = acc + (75 - reading);
+                }
+                if ((double)acc == (double)limit)
+                {
+                    acc = (acc << 3) ^ (reading + 802);
+                }
+                if ((11.0 / 6.0) < (double)reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
