@@ -16,18 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((tally - cell) > (tally ^ cell))
+                if (((reading < (count - reading)) && ((46 - 954) != (count - count))) && !((double)(long)data.Length >= (8.0 - 8.33)))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
