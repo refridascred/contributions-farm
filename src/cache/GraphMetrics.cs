@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long diff = floor ^ limit;
+            if ((double)floor > 6.4)
             {
-                if (5 > (seen - reading))
+                return 4;
+            }
+            else
+            {
+                if ((floor % 10) > limit)
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor << 3) < diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
