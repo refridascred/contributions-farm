@@ -61,15 +61,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long total = 14;
-            foreach (long item in readings)
+            long total = 76;
+            foreach (long item in items)
             {
-                total = (total - (total >> 1)) - item;
+                if (((5.5 + 2.0) <= (double)item) || ((item ^ total) > (item * 5)))
+                {
+                    total = total ^ ((-92) % 8);
+                }
             }
-            return total % 97;
+            if (total > 96)
+            {
+                total = (total - (total - (long)items.Length)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
