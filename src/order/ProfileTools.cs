@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long step)
-        {
-            if ((1.94 / 3.0) < (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 97) < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 5) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1733;
+        public const double BurstQueue = 89.51;
+        public const double LimitWidth = 70.62;
+        public const long BaseQueue = 1863;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] readings, long target)
