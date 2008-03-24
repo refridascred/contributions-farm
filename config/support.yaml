@@ -1,4 +1,19 @@
 # support settings
-queue_timeout: true
-persist: 56.46
-base_depth_pct: staging
+dry_run:
+  max_interval_s: 250
+  enabled:
+    - 181
+    - 347
+    - 481
+  strict: legacy
+  soft_timeout: false
+  sync_capacity_s: strict
+warm_ttl_ms: 77.89
+default_depth:
+  record_size: 2446
+  already_timeout: 80.79
+  min_window_count: 95.0
+  graph_retries: 23.92
+idle_ratio_ms: green
+soft_ratio_count: stable
+burst_timeout: true
