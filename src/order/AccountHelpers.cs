@@ -59,13 +59,18 @@ namespace Common.Utilities
             return bias3 - bias;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen / 9) < ((long)items.Length - 47))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes stats.</summary>
