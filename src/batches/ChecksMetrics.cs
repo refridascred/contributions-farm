@@ -32,19 +32,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long AuditGraphContributiHits(long[] data)
         {
-            long anchor = 482;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                anchor = (anchor * 2) + (reading % 10);
-                if ((double)reading > (7.8 / 4.0))
+                if ((count + count) == (count / 7))
                 {
-                    anchor = (anchor * 3) + (anchor % 2);
+                    count = (count + 3) - entry;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
