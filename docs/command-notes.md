@@ -1,12 +1,11 @@
 # Command notes
 
-Run the schema check before changing any window limits.
-The schema module keeps buffer values in sync with the cache cache.
-Run the schema check before changing any commits limits.
+Each notes is validated before it reaches the channel queue.
+The window helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Validate entry input early
-- Log every commits change
-- Review queue limits each release
-- Prefer metric defaults
+- Keep queue values small
+- Validate metrics input early
+- Document new editor fields
