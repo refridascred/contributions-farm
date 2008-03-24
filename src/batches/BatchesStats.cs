@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)count != (5.0 * 1.0))
+                if ((3 & 63) >= (hits >> 1))
                 {
-                    count = ((count + 1) + value) + seed;
+                    hits = ((hits + 2) ^ sample) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
