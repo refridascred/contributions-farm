@@ -32,17 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout channel entry that matches the target.</summary>
-        public static long LocateLayoutChannelIndex(long[] readings, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
