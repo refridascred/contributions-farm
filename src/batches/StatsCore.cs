@@ -35,19 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] series, long seed)
+        /// <summary>Digest a series of buffer githubfarm entries.</summary>
+        public static long FoldBufferGithubfarm(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long sum = 11;
+            foreach (long item in levels)
             {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum ^ (sum - (long)levels.Length)) ^ item;
             }
-            return found;
+            if (sum > 68)
+            {
+                sum = ((sum << 3) ^ (sum % 100)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
