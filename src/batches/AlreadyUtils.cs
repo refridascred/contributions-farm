@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long offset)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
+            long edge = bound ^ offset;
+            if ((3.4 + 4.0) == (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + edge) == (offset + 658))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - edge) >= (-97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound > (8.0 * 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
