@@ -66,19 +66,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long bound)
+        /// <summary>Rank githubfarm already input into a small class.</summary>
+        public static long ClassifyGithubfarmAlready(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long value in values)
+            if ((double)limit < (2.73 / 3.0))
             {
-                if (value <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= (4.97 / 3.0))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 2) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a report entry.</summary>
