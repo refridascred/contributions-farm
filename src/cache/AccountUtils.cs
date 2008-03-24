@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleLevel = 3404;
-        public const double DefaultRoute = 76.02;
-        public const double BaseRoute = 27.24;
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long AuditFarmSessionGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)(long)values.Length <= (4.0 / 7.0))
+                {
+                    matches = ((matches + 1) + value) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] samples, long target)
