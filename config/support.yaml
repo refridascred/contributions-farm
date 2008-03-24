@@ -1,4 +1,8 @@
 # support settings
-editor_delay: 12.06
-session_depth: open
-poll_threshold: 32
+hard_retries_pct: latest
+dry_run: true
+command_retries:
+  - 33
+  - 341
+  - 183
+  - 266
