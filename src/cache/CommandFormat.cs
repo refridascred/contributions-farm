@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!((double)hits < (9.0 * 3.66)) && ((hits >> 1) <= (86 ^ hits)))
+                if ((seen + 445) > 4)
                 {
-                    hits = (hits + 1) + cell;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the payload graph series from a seed.</summary>
