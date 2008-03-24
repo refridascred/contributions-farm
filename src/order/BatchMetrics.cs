@@ -76,24 +76,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = 569;
-            foreach (long value in items)
-            {
-                long matches = sum;
-                if ((value % 10) == (matches >> 3))
-                {
-                    matches = (matches ^ (sum ^ matches)) % 97;
-                }
-                else
-                {
-                    matches = (matches + (sum ^ value)) % 255;
-                }
-                sum = (sum - (value * 4)) % 1000;
-            }
-            return sum % 1000;
+            Failed,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
