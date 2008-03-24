@@ -1,25 +1,4 @@
 # githubfarm settings
-hard_timeout_count:
-  poll_ttl_count: edge
-  retry_ttl_s:
-    - 389
-    - 423
-    - 375
-  verbose: false
-  account_capacity:
-    - 120
-    - 380
-    - 366
-    - 357
-  default_window:
-    - open
-    - strict
-record_interval: stable
-persist:
-  - cached
-  - primary
-  - green
-flush_ratio:
-  - blue
-  - eu-west
-  - fallback
+dry_run: 32.72
+report_ratio: fallback
+batch_size_ms: legacy
