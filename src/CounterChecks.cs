@@ -53,18 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm window samples are out of range.</summary>
-        public static long CountFarmWindowHits(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((offset + 0) <= 181)
             {
-                if ((double)value == (double)seen)
+                return 3;
+            }
+            else
+            {
+                if (!((offset ^ offset2) != (offset2 ^ offset)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
