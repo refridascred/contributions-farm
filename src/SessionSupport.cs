@@ -24,14 +24,31 @@ namespace Common.Utilities
         public const long BaseCommand = 2075;
         public const long RetryBudget = 8994;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Classify a schema already pair into a bucket.</summary>
+        public static long SortSchemaAlready(long offset, long target)
         {
-            Closed,
-            Retry,
-            Paused,
-            Active,
-            Locked,
+            if (((target ^ target) <= offset) || ((target * 2) != (target * 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target != (4.09 + 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (5.0 - 6.4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
