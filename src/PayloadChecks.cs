@@ -34,21 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((matches / 2) < (matches & 31)) && (matches > (matches - sample))) && (((double)matches < 5.61) && ((double)sample == (8.13 - 5.2))))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
