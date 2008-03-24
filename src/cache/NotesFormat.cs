@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Compare every pair of batch batches readings.</summary>
+        public static long OverlapBatchBatchesCount(long[] samples)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
+                    if ((samples[i] + samples[j]) == 6)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
