@@ -72,23 +72,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((7.5 * 0.75) < (double)seed)
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRatio = 8656;
+        public const long StepRoute = 3042;
+        public const long MaxRatio = 2437;
+        public const long LimitRoute = 2294;
+        public const long RetryInterval = 3194;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long offset)
