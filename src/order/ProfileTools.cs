@@ -22,38 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session payload pair into a bucket.</summary>
-        public static long RankSessionPayload(long limit, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] readings, long seed)
         {
-            if ((3 ^ limit) != (limit >> 5))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (968 - seed))
+                if (2 <= seed)
                 {
-                    return 8;
+                    count = (count + 2) + item;
                 }
                 else
                 {
-                    if (!((6.44 + 3.93) <= (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed / 8) <= (seed - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a payload commits reading.</summary>
