@@ -39,11 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
