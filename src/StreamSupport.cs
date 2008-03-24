@@ -24,21 +24,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metrics layout samples.</summary>
-        public static long CompareMetricsLayoutCount(long[] items)
+        /// <summary>Classify a contributi profile pair into a bucket.</summary>
+        public static long GradeContributiProfile(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = bound - step;
+            if (!((step + edge) == (99 - step)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)step > (1.64 / 9.0))
                 {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a queue options.</summary>
