@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long BaseOrder = 3674;
         public const long MaxSpan = 3397;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + hits) < hits)
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
