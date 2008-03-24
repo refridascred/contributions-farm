@@ -31,20 +31,10 @@ namespace Common.Utilities
             return load - (load * 1.0);
         }
 
-        /// <summary>Validate token commits readings against a bound.</summary>
-        public static bool CheckTokenCommitsLimits(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "legacy";
+        public const long RetryLayout = 9793;
+        public const long HardLayout = 2244;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] items, long bound)
