@@ -1,6 +1,11 @@
 {
-  "batch_threshold": "staging",
-  "audit": [197, 157, 3, 476],
-  "burst_timeout": ["primary", "local"],
-  "flush_threshold_s": true
+  "githubfarm_interval": "eu-west",
+  "max_retries_s": "blue",
+  "flush_window_count": {
+    "warm_retries": 1024,
+    "base_ratio": "standard",
+    "warm_timeout": 23.83,
+    "audit": ["eu-west", "blue"]
+  },
+  "max_ttl_count": "local"
 }
