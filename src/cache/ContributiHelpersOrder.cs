@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] series, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count * 3) <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + cell;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
