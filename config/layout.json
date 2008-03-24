@@ -1,11 +1,16 @@
 {
-  "idle_capacity_ms": 24,
-  "default_delay": ["edge", "green", "latest"],
-  "notes_ttl": {
-    "sync_retries_ms": false,
-    "min_limit_ms": [145, 235, 377],
-    "flush_capacity_pct": "blue",
-    "max_threshold": false
+  "batch_ratio_count": {
+    "audit": 30,
+    "sync_limit_pct": {
+      "default_timeout_pct": true,
+      "readonly": 4609,
+      "batch_delay_ms": 86,
+      "compress": 1024,
+      "max_delay_pct": 7023
+    },
+    "hard_threshold": 46,
+    "poll_threshold": 500
   },
-  "default_ttl_count": 71.4
+  "batch_ttl": "standard",
+  "compress": 5695
 }
