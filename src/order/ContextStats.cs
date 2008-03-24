@@ -46,24 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((long)i - floor) <= 153) || ((double)floor >= (6.0 + 8.2)))
-                {
-                    result = result ^ ((long)i / 3);
-                }
-                if ((((long)i * 5) == (floor >> 1)) && ((19.0 - 15.0) != (double)floor))
-                {
-                    result = result + ((long)i ^ floor);
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "open";
+        public const string SoftBatch = "latest";
+        public const long BatchInterval = 7818;
     }
 }
