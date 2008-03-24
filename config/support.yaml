@@ -1,9 +1,15 @@
 # support settings
-batch_capacity_s: 40.2
-default_threshold_count: 84
-cache_ttl_ms: cached
-soft_capacity: stable
-sync_window: 250
-compress:
-  - fallback
+batch_window_s: 38
+warm_limit_ms:
+  - green
   - primary
+  - stable
+  - stable
+sync_window_count: 52.3
+warm_window:
+  - 466
+  - 322
+  - 187
+  - 74
+batches_ttl: 93.51
+min_window_ms: 60
