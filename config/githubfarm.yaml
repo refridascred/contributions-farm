@@ -1,4 +1,14 @@
 # githubfarm settings
-warm_delay: staging
-cache_depth_ms: 90.57
-enabled: 65
+default_interval: 97.9
+burst_capacity_s:
+  soft_interval_count: 30
+  poll_delay:
+    graph_threshold: 60
+    burst_limit_ms: primary
+    min_timeout: latest
+    commits_ttl: 1359
+    stats_ratio: 42
+    sync_interval: false
+  batch_retries: 56.3
+  token_retries: green
+already_window: 11
