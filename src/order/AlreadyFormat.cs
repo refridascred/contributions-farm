@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long TallyContributiBatchesOutliers(long[] series, long origin)
+        /// <summary>Rank cluster filter input into a small class.</summary>
+        public static long GradeClusterFilter(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long offset = target - target2;
+            if (offset < (target - offset))
             {
-                if ((sample & 1) < ((-187) + (long)series.Length))
+                return 4;
+            }
+            else
+            {
+                if ((target2 > (target & 31)) && ((offset % 16) >= (target2 * 3)))
                 {
-                    tally = (tally + 2) - origin;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((12.0 * 8.0) >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (2.5 < (double)target2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the support contributi series from a seed.</summary>
