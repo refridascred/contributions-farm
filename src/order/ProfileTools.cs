@@ -35,18 +35,18 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (691 < (hits - hits))
+                if ((item ^ item) >= item)
                 {
-                    hits = (hits + 3) + cell;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
