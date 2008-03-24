@@ -23,22 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster command pairs that satisfy a relation.</summary>
-        public static long CompareClusterCommandCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleLevel = 3404;
+        public const double DefaultRoute = 76.02;
+        public const double BaseRoute = 27.24;
 
         /// <summary>Iterate the metric context series from a seed.</summary>
         public static long StepMetricContext(long limit)
