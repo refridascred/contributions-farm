@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit > (double)bound)
             {
-                if ((values[i] > step) && ((values[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((limit / 3) >= (limit ^ limit)) || ((double)limit > (double)4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
