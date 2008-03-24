@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item >> 4) == (item + seen)) && !(item >= (0 % 10)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
