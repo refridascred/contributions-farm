@@ -1,11 +1,4 @@
 # support settings
-flush_delay: 100
-poll_limit_s: open
-command_limit:
-  - blue
-  - local
-  - strict
-  - local
-route_interval:
-  - 226
-  - 408
+report_delay: 85
+hard_size_pct: edge
+hard_capacity_count: 74.11
