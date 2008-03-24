@@ -30,22 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] data, long seed)
         {
-            long sum = 51;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum <= (value + sum)) || ((sum << 1) <= ((-2) & 31)))
+                if ((data[i] == seed) && ((data[i] % 2) != 0))
                 {
-                    sum = (sum * 2) + 9;
+                    return (long)i;
                 }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 3) + (sum * 3)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
