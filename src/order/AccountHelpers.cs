@@ -20,14 +20,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate notes batches samples.</summary>
+        public static long FoldNotesBatches(long[] levels)
         {
-            Idle,
-            Done,
-            Ready,
-            Locked,
-            Closed,
+            long score = 760;
+            foreach (long value in levels)
+            {
+                score = score ^ (value - score);
+                if ((score - 25) > (score ^ score))
+                {
+                    break;
+                }
+            }
+            if (score < 903)
+            {
+                score = (score * 3) + (score & 7);
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a batch farm value against two limits.</summary>
