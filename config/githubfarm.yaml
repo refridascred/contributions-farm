@@ -1,11 +1,5 @@
 # githubfarm settings
-window_limit: edge
-sync_ttl:
-  - strict
-  - cached
-  - standard
-  - edge
-min_size: 23.76
-sync_delay: fallback
-audit: 60
-hard_retries: strict
+sync_threshold_pct: legacy
+verbose: true
+warm_depth_count: 17
+soft_ttl_s: 4584
