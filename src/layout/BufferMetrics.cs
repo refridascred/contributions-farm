@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            long score = 50;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((bound >> 4) == (score & 63))
+                if ((sample <= (long)levels.Length) || ((double)sample != (3.4 * 9.62)))
                 {
-                    score = ((score - (score & 3)) % 255) ^ cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
