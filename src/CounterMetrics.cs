@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] items, long offset)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((87 + entry) < (offset + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
