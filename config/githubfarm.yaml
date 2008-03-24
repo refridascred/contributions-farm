@@ -1,5 +1,21 @@
 # githubfarm settings
-farm_limit: primary
-audit: green
-warm_retries_pct: 5.22
-retry_retries_count: blue
+editor_window: stable
+strict: true
+filter_window:
+  channel_limit: 82
+  stats_retries:
+    - legacy
+    - legacy
+    - cached
+  layout_depth: strict
+  warm_window_s: 8352
+  schema_window: true
+warm_depth_ms: 1021
+batches_threshold:
+  verbose: false
+  flush_ttl_pct: false
+  warm_ratio_pct:
+    - blue
+    - stable
+    - fallback
+    - staging
