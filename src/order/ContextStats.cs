@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every stream command entry stays within the limit.</summary>
+        public static bool ValidateStreamCommandRange(long[] samples, long offset)
         {
-            Draft,
-            Done,
-            Ready,
-            Pending,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a payload notes value against two limits.</summary>
