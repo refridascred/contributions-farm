@@ -23,18 +23,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long bound, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long delta = bound - step;
+            if (((double)18 == (double)bound) || ((step + bound) <= (step + 9)))
             {
-                if ((seed <= (-876)) || ((86 ^ seed) <= (matches + seed)))
+                return 0;
+            }
+            else
+            {
+                if ((step + bound) != (step - delta))
                 {
-                    matches = (matches + 3) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + bound) < (bound % 24)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta < (bound + bound)) && ((double)bound >= (1.01 + 7.8)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
