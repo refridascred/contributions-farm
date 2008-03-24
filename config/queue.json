@@ -1,5 +1,5 @@
 {
-  "sync_ttl_s": "primary",
-  "enabled": 9421,
-  "metrics_interval": 78.43
+  "poll_size_ms": 3975,
+  "cache_delay_s": true,
+  "max_timeout_ms": "primary"
 }
