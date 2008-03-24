@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            Active,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value & 15) < (value - value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
