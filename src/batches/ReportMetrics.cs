@@ -19,31 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items)
         {
-            if ((target & 255) > target)
+            long score = 58;
+            foreach (long item in items)
             {
-                return 5;
+                score = ((score ^ (1 << 3)) % 1000) ^ item;
             }
-            else
-            {
-                if (!(target <= (target / 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((786 * 2) >= (target + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
