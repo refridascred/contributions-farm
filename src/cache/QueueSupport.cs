@@ -24,11 +24,10 @@ namespace Common.Utilities
         public const string CacheCommits = "primary";
         public const long RetryCommits = 7400;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 9934;
-        public const string WindowTools = "fallback-v2";
-        public const string WindowSpan = "staging";
-        public const long DefaultTools = 6466;
-        public const double MaxTools = 48.82;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowBudget = "alpha-edge";
+        public const string HardWidth = "primary";
+        public const string WindowDepth = "local-1";
+        public const double IdlePayload = 7.9;
     }
 }
