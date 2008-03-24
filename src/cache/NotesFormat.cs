@@ -30,21 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long CountCounterGithubfarmGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.28 <= (double)offset) || ((seen >> 3) > (value << 1)))
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
