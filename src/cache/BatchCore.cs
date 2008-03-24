@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two entry counter measurements.</summary>
+        public static double AdjustEntryCounter(double rate, double bias)
         {
-            Locked,
-            Ready,
-            Active,
+            double scale = rate;
+            if (scale > bias)
+            {
+                scale = scale - (bias * 9.0);
+            }
+            else
+            {
+                scale = scale - (scale / 9.0);
+            }
+            return scale + (bias * 2.84);
         }
     }
 }
