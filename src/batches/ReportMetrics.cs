@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit channel stats readings against a rule.</summary>
-        public static long MeasureChannelStatsOutliers(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long cell in readings)
             {
-                if ((entry - matches) > matches)
+                if ((matches % 3) < (cell / 2))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
