@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Adjust a batches checks reading.</summary>
+        public static double ScaleBatchesChecks(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double drift = 0.12;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!((9.06 + 20.0) != (double)item))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (((drift + 17.0) + (double)(long)i) + scale) + bias;
             }
-            return hits;
+            return drift - (double)5;
         }
 
         /// <summary>Define context limits and defaults.</summary>
