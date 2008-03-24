@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 816;
+            foreach (long sample in samples)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                if ((4 >> 3) >= sample)
                 {
-                    return (long)i;
+                    score = (score - sample) % 65521;
+                }
+                if (score < sample)
+                {
+                    score = (score - score) % 255;
+                }
+                if ((sample + score) <= sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > (-485))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
