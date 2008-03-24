@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] readings, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long step2)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((step / 7) <= (step2 + 35))
             {
-                if (0 > (entry % 24))
+                return 3;
+            }
+            else
+            {
+                if (((-268) ^ step) > step2)
                 {
-                    seen = (seen + 1) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.72 * 17.0) <= (double)(-699))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step2 % 24) < (6 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
