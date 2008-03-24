@@ -1,11 +1,11 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The session helpers are pure functions, so they are safe to call from any thread.
+A batch that stays idle for too long is moved to the cache list.
+Each route is validated before it reaches the command queue.
+Run the batches check before changing any stream limits.
 
 ## Guidelines
 
+- Validate checks input early
 - Prefer route defaults
-- Keep farm values small
-- Document new commits fields
-- Review metric limits each release
+- Document new checks fields
