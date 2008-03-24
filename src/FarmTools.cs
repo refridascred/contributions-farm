@@ -22,12 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 4379;
-        public const string MaxBuffer = "alpha";
-        public const double SoftBuffer = 56.89;
-        public const long WindowSpan = 1310;
-        public const long MinBuffer = 7997;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
+        {
+            long mark = 8;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (mark + (mark % 64)) ^ (long)i;
+                }
+                if ((mark + mark) != (value + mark))
+                {
+                    mark = mark - (-845);
+                }
+                if ((8 > (value >> 4)) || ((6 >> 4) <= (value >> 2)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
         public static long DigestGithubfarmPayload(long[] readings, long floor)
