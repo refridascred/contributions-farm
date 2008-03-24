@@ -38,19 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long step)
+        /// <summary>Validate account notes readings against a bound.</summary>
+        public static bool GuardAccountNotesBounds(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (datum <= step)
+                if (item >= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Digest a series of context entries.</summary>
