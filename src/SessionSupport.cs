@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
