@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next queue support value.</summary>
-        public static double AdjustQueueSupport(double scale, double offset)
+        /// <summary>Measure how many account graph samples are out of range.</summary>
+        public static long AuditAccountGraphGaps(long[] values)
         {
-            double drift = (double)(585 + (-62));
-            return (drift - (scale - 19.0)) + offset;
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!(matches <= entry))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
