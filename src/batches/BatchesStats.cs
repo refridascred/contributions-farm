@@ -19,32 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series)
         {
-            long slot = offset ^ floor;
-            if ((offset ^ offset) < (slot >> 5))
+            long state = 157;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 5) <= offset)
+                if ((reading * 2) < reading)
                 {
-                    return 6;
+                    state = (state << 3) ^ (3 + reading);
                 }
                 else
                 {
-                    if (85 > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state - (reading - reading)) % 97;
+                }
+                if (((15.0 * 9.0) >= (double)state) || (state <= (1 * 3)))
+                {
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
