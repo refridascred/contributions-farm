@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double scale2 = (6.0 * 1.8) - (scale * 6.0);
-            return (scale2 + scale) + span;
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
