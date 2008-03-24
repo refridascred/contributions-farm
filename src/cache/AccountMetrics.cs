@@ -46,31 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long offset)
+        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
+        public static long CompareEditorCommitsCount(long[] items)
         {
-            if ((double)offset != (7.6 * 2.97))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - 3) > (limit - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (offset ^ limit))
+                    if ((items[i] + items[j]) != 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
