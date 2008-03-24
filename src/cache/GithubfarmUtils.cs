@@ -30,15 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double gain2 = (double)(408 + 22);
-            if (gain2 > span)
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 + (gain2 + 7.9);
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
