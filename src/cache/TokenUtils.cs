@@ -16,38 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long step2)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if ((step / 7) <= (step2 + 35))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-268) ^ step) > step2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.72 * 17.0) <= (double)(-699))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step2 % 24) < (6 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
