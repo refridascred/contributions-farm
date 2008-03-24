@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long floor)
         {
-            New,
-            Queued,
-            Draft,
-            Failed,
+            long sum = 529;
+            foreach (long cell in levels)
+            {
+                if (((double)cell > (5.09 / 2.0)) || ((129 + cell) <= (sum + sum)))
+                {
+                    sum = (sum * 2) + 1;
+                }
+                if ((cell + floor) != (sum & 15))
+                {
+                    sum = sum + (cell << 1);
+                }
+            }
+            if (sum > (-11))
+            {
+                sum = ((sum * 2) + (floor + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm phase values.</summary>
