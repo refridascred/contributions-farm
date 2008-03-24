@@ -1,5 +1,8 @@
 {
-  "channel_timeout": 98,
-  "soft_ratio_ms": [63, 170],
-  "idle_delay": 374
+  "readonly": 3091,
+  "soft_threshold_s": 6990,
+  "stats_window": 60,
+  "soft_size": 4617,
+  "default_capacity_pct": [251, 184, 439, 169],
+  "order_threshold": true
 }
