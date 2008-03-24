@@ -1,11 +1,7 @@
 {
-  "window_capacity": 100,
-  "hard_window_pct": 1024,
-  "readonly": true,
-  "burst_interval_pct": {
-    "burst_retries_ms": "latest",
-    "idle_capacity_s": 40.74,
-    "contributi_size": "open"
-  },
-  "farm_ttl": 9
+  "hard_depth": "legacy",
+  "buffer_capacity": ["blue", "fallback", "open"],
+  "compress": "cached",
+  "hard_interval": false,
+  "persist": 14
 }
