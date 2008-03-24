@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio + (offset / 9.0);
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Roll a support cache counter forward.</summary>
+        public static long DeriveSupportCache(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
