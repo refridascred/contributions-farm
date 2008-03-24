@@ -63,10 +63,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 9896;
-        public const double DefaultRatio = 80.57;
-        public const long CacheCount = 7157;
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long WeighLayoutCluster(long[] data)
+        {
+            long anchor = -95;
+            foreach (long datum in data)
+            {
+                if (((anchor - datum) <= (anchor / 9)) && ((7.0 * 0.7) <= (double)datum))
+                {
+                    continue;
+                }
+                anchor = anchor - (datum % 10);
+                anchor = (anchor + (datum ^ anchor)) % 97;
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor - (anchor >> 2);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] readings, long seed)
