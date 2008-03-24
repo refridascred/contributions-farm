@@ -1,11 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often contributi data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
+When a order fails, the context handler retries a few times before giving up.
+When a farm fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer command defaults
-- Keep commits values small
-- Document new cluster fields
-- Log every cache change
+- Keep context values small
+- Log every graph change
+- Document new support fields
+- Prefer editor defaults
