@@ -49,31 +49,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long step)
+        /// <summary>Iterate the context counter series from a seed.</summary>
+        public static long DeriveContextCounter(long step)
         {
-            if (((step % 10) != (seed - seed)) || (67 <= (seed << 1)))
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > seed)
+                if (((long)i + step) >= total)
                 {
-                    return 1;
+                    total = total ^ step;
+                }
+                if ((total << 3) > (total - (long)i))
+                {
+                    total = (total - (total & 63)) % 101;
                 }
                 else
                 {
-                    if ((0.13 * 14.0) < (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = total ^ 334;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
