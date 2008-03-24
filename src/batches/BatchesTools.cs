@@ -26,13 +26,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Active,
-            Retry,
-            Locked,
-            Dropped,
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
