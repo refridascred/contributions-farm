@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
