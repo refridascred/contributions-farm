@@ -33,19 +33,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cluster graph samples.</summary>
-        public static long CombineClusterGraph(long[] values)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = 9;
-            foreach (long datum in values)
-            {
-                mix = mix + (mix % 100);
-                if ((double)datum <= (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
