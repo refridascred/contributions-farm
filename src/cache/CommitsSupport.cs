@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Validate payload report readings against a bound.</summary>
+        public static bool GuardPayloadReportRange(long[] levels, long floor)
         {
-            long carry = 58;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!((cell - cell) >= (34 + cell)))
+                if (sample <= floor)
                 {
-                    carry = carry - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
