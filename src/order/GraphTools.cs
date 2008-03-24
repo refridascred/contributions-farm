@@ -37,23 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (step < (step - step))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 6.43;
+        public const long HardInterval = 7313;
+        public const long HardGraph = 2;
+        public const long MaxCount = 3312;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepScore = 6173;
