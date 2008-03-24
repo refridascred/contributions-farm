@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Find the first support report entry that matches the target.</summary>
+        public static long SeekSupportReportIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell > (0.6 + 16.0))
+                if (data[i] < seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the githubfarm already entries that pass the check.</summary>
