@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
