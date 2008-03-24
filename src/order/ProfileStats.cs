@@ -54,17 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 830;
+            foreach (long value in levels)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
+                if ((value + 838) <= (95 - state))
                 {
-                    return (long)i;
+                    state = state ^ (floor >> 3);
                 }
             }
-            return -1;
+            if (state > 4)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
