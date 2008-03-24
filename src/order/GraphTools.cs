@@ -39,13 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
+            Done,
             Retry,
-            Active,
-            Paused,
-            Queued,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
