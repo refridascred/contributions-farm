@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 71.81;
-        public const string SoftWindow = "primary-v2";
-        public const double CacheTimeout = 13.46;
-        public const long IdleWindow = 8585;
+        /// <summary>Derive the next cluster order value from a seed.</summary>
+        public static long StepClusterOrder(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score ^ (4 - target);
+                if (score >= (long)i)
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] data, long seed)
