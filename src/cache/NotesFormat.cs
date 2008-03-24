@@ -37,24 +37,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long floor)
+        /// <summary>Roll a route schema counter forward.</summary>
+        public static long SeriesRouteSchema(long seed)
         {
-            if ((double)offset == (3.75 / 7.0))
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(173 >= (floor ^ offset)))
+                if (((long)i & 1) < (seed << 3))
                 {
-                    return 8;
+                    mix = (mix + ((long)i * 4)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
     }
 }
