@@ -56,27 +56,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long limit2)
         {
-            long acc = -61;
-            foreach (long cell in levels)
+            if (((limit & 255) >= limit) && ((limit + limit) <= (limit2 & 3)))
             {
-                if ((double)cell == (5.61 / 8.0))
+                return 5;
+            }
+            else
+            {
+                if (limit2 > (limit + limit2))
                 {
-                    acc = (acc ^ (cell << 2)) % 65521;
-                    continue;
-                }
-                if (acc > (cell - cell))
-                {
-                    acc = (acc - cell) % 255;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc + (cell / 2)) % 1000;
+                    return 3;
                 }
             }
-            return acc;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
