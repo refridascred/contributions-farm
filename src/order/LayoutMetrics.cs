@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target * 2) < (337 / 8))
             {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!(origin <= (target << 1)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (10.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
