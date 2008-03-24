@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            Stale,
-            Synced,
-            Failed,
+            long score = 56;
+            foreach (long datum in series)
+            {
+                if (!((double)datum <= 11.0))
+                {
+                    score = (score - (datum << 1)) % 1000;
+                }
+            }
+            if (score > 0)
+            {
+                score = score + (6 + 610);
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate session cache readings against a bound.</summary>
