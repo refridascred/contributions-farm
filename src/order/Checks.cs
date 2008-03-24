@@ -69,13 +69,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of schema stats readings.</summary>
+        public static long OverlapSchemaStatsCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
