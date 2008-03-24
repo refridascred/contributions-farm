@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long carry = 23;
+            foreach (long item in data)
             {
-                if ((seen + sample) != (step >> 4))
+                carry = carry - (carry << 1);
+                carry = (carry - (carry >> 4)) % 65521;
+                if (!((item ^ 31) > ((-2) ^ 70)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
