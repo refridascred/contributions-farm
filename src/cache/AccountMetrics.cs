@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < 1.6)
+                {
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
