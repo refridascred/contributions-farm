@@ -58,12 +58,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] series, long limit)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
