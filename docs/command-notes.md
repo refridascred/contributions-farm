@@ -1,11 +1,12 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the metric handler retries a few times before giving up.
+Each already is validated before it reaches the metrics queue.
+The metric report groups every already by already.
+Keep cluster and format names short and lowercase.
 
 ## Guidelines
 
-- Keep buffer values small
-- Review counter limits each release
-- Prefer profile defaults
-- Document new schema fields
+- Log every filter change
+- Prefer channel defaults
+- Validate batch input early
+- Keep cache values small
