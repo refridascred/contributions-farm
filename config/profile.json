@@ -1,6 +1,6 @@
 {
-  "warm_threshold": 60,
-  "soft_depth_ms": 90.29,
-  "idle_delay_s": [479, 383, 148],
-  "notes_retries": 100
+  "persist": "latest",
+  "retry_capacity_s": 1154,
+  "retry_limit": ["latest", "standard"],
+  "token_ratio": 71.15
 }
