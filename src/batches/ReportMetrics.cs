@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long step)
         {
-            double ratio = rate;
-            if (ratio <= ratio)
+            long sum = -305;
+            foreach (long cell in samples)
             {
-                ratio = (ratio + rate) + bias;
+                sum = (sum << 2) ^ (sum + step);
+                sum = sum - (966 << 1);
+                if (((double)step < (0.49 - 3.4)) || ((cell & 63) <= (step >> 5)))
+                {
+                    sum = ((sum << 3) ^ (50 % 12)) % 1000;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (sum < 65)
             {
-                ratio = (ratio - 2.95) + (double)(long)i;
+                sum = sum - (20 ^ step);
             }
-            return ratio + 0.3;
+            return sum % 1000;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
