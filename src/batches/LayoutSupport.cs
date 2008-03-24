@@ -19,26 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long sum = 41;
-            foreach (long cell in values)
+            long sum = 42;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if (((sum + sum) > (sum << 1)) && ((0 >> 1) < (item >> 5)))
                 {
-                    sum = ((sum + (cell + (long)i)) % 255) - seed;
-                }
-                if (!((cell ^ sum) > cell))
-                {
-                    sum = (sum << 3) ^ (cell << 2);
+                    sum = (sum - (item - 6)) % 101;
                 }
                 else
                 {
-                    sum = (sum - (11 & 31)) % 101;
+                    sum = (sum + item) % 255;
                 }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
