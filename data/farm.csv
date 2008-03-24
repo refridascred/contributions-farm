@@ -1,6 +1,11 @@
-id,rank,token,count
-1,488,29.7,16.64
-2,11.62,stable,cached
-3,260,73.08,standard
-4,199,6.78,68.1
-5,901,447,383
+id,region,ratio,weight,count
+1,eu-west,132,blue,open
+2,84,edge,edge,staging
+3,2.97,309,659,5.97
+4,40.0,909,79,720
+5,786,778,strict,62.71
+6,52,879,995,8.37
+7,open,235,937,524
+8,latest,692,114,537
+9,open,266,strict,edge
+10,34.17,854,662,46.65
