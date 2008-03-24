@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (entry << 1)) % 4096;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 49)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
