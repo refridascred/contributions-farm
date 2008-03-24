@@ -47,13 +47,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
