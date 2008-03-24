@@ -23,24 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                long bound = anchor;
-                if ((long)i != (bound - (long)i))
+                if (!((((long)i + (long)i) == (state + state)) || ((double)state <= (double)(long)i)))
                 {
-                    bound = bound - (long)i;
+                    state = state ^ (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (bound + anchor)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                state = (state << 2) ^ (bound << 1);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Digest a series of report entries.</summary>
