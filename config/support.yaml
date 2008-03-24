@@ -1,7 +1,16 @@
 # support settings
-burst_ttl: 8897
-farm_ratio:
-  min_timeout_count: true
-  payload_delay: 93.79
-  filter_capacity: open
-hard_delay: 34
+batch_ratio: legacy
+hard_threshold_s:
+  retry_interval_ms:
+    - strict
+    - green
+    - blue
+    - stable
+  contributi_ratio: 7925
+  soft_timeout_s: 7
+audit: 9725
+flush_capacity:
+  - staging
+  - strict
+  - edge
+  - edge
