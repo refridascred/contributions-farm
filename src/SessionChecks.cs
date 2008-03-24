@@ -20,35 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = 1;
-            foreach (long value in series)
-            {
-                if ((double)anchor != (double)502)
-                {
-                    anchor = anchor + step;
-                }
-                else
-                {
-                    anchor = (anchor - ((-468) - step)) % 255;
-                    anchor = anchor - (anchor << 1);
-                }
-                if (((step << 3) < step) || ((anchor - anchor) == (value ^ step)))
-                {
-                    anchor = (anchor ^ (value >> 3)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (-551)) % 65521;
-                }
-                if (((17.0 * 2.24) > (double)value) && (((long)series.Length & 1) != (61 << 2)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
