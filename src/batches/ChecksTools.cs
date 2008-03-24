@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double scale = span;
-            if (scale > span)
-            {
-                scale = scale + ratio;
-            }
-            return scale + scale;
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
