@@ -1,8 +1,5 @@
 # support settings
-route_depth: 250
-base_ratio_ms: 18.2
-cache_capacity:
-  base_capacity_count: 1024
-  enabled: 500
-  account_capacity: false
-base_delay_pct: 29
+payload_window: 9656
+idle_capacity_s: 18
+default_delay_pct: 24.83
+enabled: 1024
