@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] readings, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
