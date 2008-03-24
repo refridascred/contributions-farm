@@ -28,18 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 5) > (matches - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 7941;
+        public const long BatchSession = 7793;
+        public const string StepLevel = "primary-v2";
+        public const long StepSession = 346;
     }
 }
