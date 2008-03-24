@@ -36,11 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 3015;
-        public const long MaxCount = 8622;
-        public const long LimitContributi = 2071;
-        public const string CacheLevel = "cached-v2";
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long RankRoute(long seed, long bound)
