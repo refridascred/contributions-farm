@@ -1,8 +1,8 @@
-id,score,state,level,owner
-1,49.51,391,blue,fallback
-2,green,53.46,edge,edge
-3,748,green,79.7,45.35
-4,254,17,strict,965
-5,17.1,37.52,46.08,845
-6,999,264,976,126
-7,932,806,legacy,698
+id,active,token,rank
+1,16.75,standard,422
+2,948,edge,762
+3,open,603,green
+4,stable,13.05,46.08
+5,7.61,fallback,57.58
+6,fallback,open,666
+7,latest,14.87,148
