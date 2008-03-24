@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 8701;
-        public const string MinSize = "legacy-1";
-        public const long HardLayout = 7613;
-        public const double MaxScore = 63.82;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count * 5) <= (2 * 5))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] values)
