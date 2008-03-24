@@ -1,12 +1,5 @@
 {
-  "compress": {
-    "dry_run": 4136,
-    "record_retries": 60,
-    "base_limit_s": 65,
-    "already_limit": 75
-  },
-  "persist": "fallback",
-  "sync_retries_s": ["strict", "local"],
-  "default_capacity": true,
-  "editor_size": false
+  "hard_capacity_count": ["cached", "cached"],
+  "command_size": 30,
+  "token_limit": 1024
 }
