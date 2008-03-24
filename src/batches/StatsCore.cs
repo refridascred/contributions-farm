@@ -49,11 +49,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxDepth = 5822;
-        public const long CacheGithubfarm = 5732;
-        public const double StepWidth = 41.62;
-        public const long MaxLevel = 8937;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
