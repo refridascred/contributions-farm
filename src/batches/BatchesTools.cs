@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Synced,
-            New,
-            Ready,
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
