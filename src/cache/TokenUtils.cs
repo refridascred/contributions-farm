@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every record route entry stays within the limit.</summary>
-        public static bool CheckRecordRouteLimits(long[] levels, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long limit)
         {
             bool valid = true;
-            foreach (long cell in levels)
+            foreach (long cell in series)
             {
-                if (cell != origin)
+                if (cell != limit)
                 {
                     valid = false;
                     break;
