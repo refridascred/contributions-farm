@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values, long target)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long CompareLayoutFarmCount(long[] series)
         {
-            long total = 10;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (target + sample);
-                if (sample < ((long)values.Length << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (sample ^ total);
-                }
-                if (total <= (sample + 379))
-                {
-                    total = ((total * 4) + target) % 255;
-                }
-                if ((double)total >= (8.0 / 2.0))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 16)
-            {
-                total = ((total << 3) ^ total) % 1000;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
