@@ -1,8 +1,7 @@
 {
-  "command_limit": "edge",
-  "batch_delay": 8310,
-  "flush_size_pct": ["standard", "open", "edge", "edge"],
-  "warm_threshold_s": "legacy",
-  "sync_timeout_pct": 69.25,
-  "warm_window_pct": true
+  "base_limit_count": true,
+  "cache_ttl": "edge",
+  "report_capacity": ["legacy", "standard", "standard", "staging"],
+  "strict": "latest",
+  "buffer_delay": "stable"
 }
