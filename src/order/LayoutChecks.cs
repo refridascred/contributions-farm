@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                if (!((long)series.Length > (cell * 3)) || !(88 <= (cell + count)))
                 {
-                    return (long)i;
+                    count = (count + 1) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
