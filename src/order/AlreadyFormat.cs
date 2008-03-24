@@ -68,12 +68,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long MeasureGithubfarmLayoutOutliers(long[] readings, long limit)
         {
-            Ready,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 1) < (hits + hits))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
