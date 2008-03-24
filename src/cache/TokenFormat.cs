@@ -32,22 +32,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] readings, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((matches % 10) != (item + matches)) && ((4.96 >= (double)item) && ((double)item <= (9.1 + 15.0))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
