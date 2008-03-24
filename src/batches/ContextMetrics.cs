@@ -50,22 +50,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] series, long target)
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long DigestContextRoute(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 1;
+            foreach (long value in items)
             {
-                if ((((target << 2) < target) || ((double)cell >= (4.6 * 7.0))) && ((seen - seen) == (6 / 3)))
+                if ((double)seed == (3.1 / 9.0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total * 5) + (905 ^ total)) + value;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Match up buffer samples.</summary>
