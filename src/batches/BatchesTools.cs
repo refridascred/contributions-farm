@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseSize = 85.09;
+        public const long MinCluster = 5031;
+        public const double BaseCluster = 14.09;
+        public const long WindowSize = 6668;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] items, long offset)
