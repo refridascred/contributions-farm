@@ -19,28 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric stream samples.</summary>
-        public static long CombineMetricStream(long[] levels, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long score = 490;
-            foreach (long value in levels)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score ^ (66 - 0)) % 65521;
-                score = score ^ score;
-                if ((double)value < (5.5 * 7.0))
+                score = score - (84 >> 3);
+                if ((double)seed > (1.72 + 3.3))
                 {
-                    score = (score * 3) + (score + score);
+                    score = (score ^ (score - seed)) % 97;
+                    score = score - 23;
                 }
-                else
-                {
-                    score = (score << 2) ^ (score - score);
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (score < 99)
-            {
-                score = ((score << 2) ^ target) % 65521;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
