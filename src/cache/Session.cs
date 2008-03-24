@@ -57,11 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer queue figure with a bias.</summary>
-        public static double BlendBufferQueue(double weight, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double weight2 = floor;
-            return (weight2 - (floor + floor)) + weight;
+            Locked,
+            Retry,
+            Active,
+            Closed,
+            Dropped,
         }
     }
 }
