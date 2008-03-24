@@ -32,15 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double floor)
-        {
-            double weight = floor / 9.0;
-            if (weight < 6.0)
-            {
-                weight = weight - (rate * 9.18);
-            }
-            return weight + rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitFactor = 2539;
+        public const long SoftToken = 4258;
+        public const long DefaultToken = 4368;
+        public const double BurstToken = 46.58;
+        public const long MaxToken = 7057;
     }
 }
