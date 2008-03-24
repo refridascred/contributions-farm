@@ -44,21 +44,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -822;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (((carry * 5) + (659 % 3)) - value) - step;
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
