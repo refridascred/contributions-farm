@@ -48,19 +48,13 @@ namespace Common.Utilities
         public const long StepEditor = 5818;
         public const double MaxLevel = 60.24;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mix = 41;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 5) + (mix / 5)) % 101) + cell;
-            }
-            if (mix > (-636))
-            {
-                mix = mix - (mix % 3);
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
