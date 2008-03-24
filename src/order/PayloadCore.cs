@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session contributi input into a small class.</summary>
-        public static long RankSessionContributi(long bound, long bound2)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long bound3 = bound ^ bound2;
-            if ((double)bound2 <= (8.5 + 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((86 > (bound3 >> 2)) || ((double)bound <= (8.8 / 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound2 == (double)bound3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound & 63) >= (bound2 + (-5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up account queue samples.</summary>
