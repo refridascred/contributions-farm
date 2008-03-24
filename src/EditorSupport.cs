@@ -27,11 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double BlendGithubfarmWindow(double gain, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long floor)
         {
-            double bias2 = (double)(987 + 6);
-            return (bias2 + (bias / 5.0)) + gain;
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading != (9.3 * 17.0))
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
