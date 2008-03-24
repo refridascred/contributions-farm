@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            Draft,
+            Synced,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a schema info.</summary>
