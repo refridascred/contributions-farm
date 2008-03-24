@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile tools entries that pass the check.</summary>
-        public static long TallyProfileToolsOutliers(long[] values)
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long MeasureRouteMetricGaps(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long entry in values)
             {
-                if ((reading << 1) > (reading / 3))
+                if ((705 ^ floor) > (entry - hits))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
