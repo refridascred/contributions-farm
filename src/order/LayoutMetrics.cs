@@ -19,26 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context stream entries.</summary>
-        public static long WeighContextStream(long[] readings, long step)
+        /// <summary>Validate entry githubfarm readings against a bound.</summary>
+        public static bool GuardEntryGithubfarmRange(long[] data, long bound)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (((step - item) < ((-7) >> 3)) || (27 <= item))
+                if (sample < bound)
                 {
-                    acc = (acc ^ (item ^ step)) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (acc - step)) % 1000;
-                }
-                if ((double)step <= (double)item)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
