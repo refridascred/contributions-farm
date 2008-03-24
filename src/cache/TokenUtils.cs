@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Project the next stats order value.</summary>
+        public static double SmoothStatsOrder(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = 7.0 + (span / 9.0);
+            if (bias < (weight * 14.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - 3.5;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)28) - (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
     }
 }
