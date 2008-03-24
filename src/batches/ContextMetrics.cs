@@ -64,17 +64,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] > bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    sum = (sum - (long)i) % 255;
+                    sum = (sum ^ ((long)i2 / 9)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
