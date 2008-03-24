@@ -1,5 +1,17 @@
 {
-  "dry_run": 1616,
-  "cache_limit_count": ["green", "blue", "cached"],
-  "enabled": [60, 401, 148, 243]
+  "metric_ratio": 57.53,
+  "window_depth": {
+    "idle_timeout_count": false,
+    "base_interval_pct": {
+      "strict": true,
+      "flush_size": 49.44,
+      "idle_window_ms": "legacy",
+      "entry_size": "staging",
+      "max_window_pct": 34.68
+    },
+    "record_depth": 31,
+    "flush_ratio": [151, 257, 50, 315],
+    "editor_capacity": 8.31
+  },
+  "record_ttl": 90.05
 }
