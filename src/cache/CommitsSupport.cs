@@ -36,15 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long prev = target + limit;
+            if (((prev + target) <= (target * 3)) || ((double)target <= (16.0 * 9.0)))
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((limit > prev) && ((double)target != (5.3 * 4.73)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
