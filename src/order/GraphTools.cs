@@ -37,11 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (step < (step - step))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
