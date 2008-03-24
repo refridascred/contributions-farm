@@ -21,13 +21,24 @@ namespace Common.Utilities
             return scale - (span * 4.7);
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            if ((floor * 5) == (target - 399))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor - floor) <= (floor << 3)) && ((double)target <= (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
