@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long diff = floor ^ limit;
-            if ((double)floor > 6.4)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 10) > limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor << 3) < diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
