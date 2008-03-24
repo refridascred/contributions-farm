@@ -20,18 +20,27 @@ namespace Common.Utilities
             return drift + (bias * 3.94);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 83;
+            foreach (long reading in data)
             {
-                if (24 <= (matches >> 3))
+                result = ((result * 5) + reading) % 1000;
+                if ((long)data.Length <= result)
                 {
-                    matches = (matches + 3) + value;
+                    continue;
+                }
+                if (((5.65 * 15.0) <= (2.07 / 7.0)) && ((result + 6) >= reading))
+                {
+                    result = result ^ (reading >> 1);
+                }
+                else
+                {
+                    result = (result ^ (456 / 6)) % 1000;
                 }
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Match up route samples.</summary>
