@@ -32,19 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long offset)
+        /// <summary>Find the first layout channel entry that matches the target.</summary>
+        public static long LocateLayoutChannelIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != offset)
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
