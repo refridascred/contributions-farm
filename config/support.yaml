@@ -1,23 +1,41 @@
 # support settings
-soft_ratio_count:
-  metric_delay: green
+soft_retries_s:
+  base_capacity_ms:
+    hard_ttl_ms: strict
+    record_interval: 66.24
+    strict:
+      - green
+      - cached
+      - standard
+    cache_size_pct: 60
+    farm_interval: 1718
+    flush_depth_count: local
+  counter_interval: edge
+  counter_threshold: 94.29
+  audit:
+    - 304
+    - 279
+sync_limit_s: open
+cluster_retries:
+  burst_depth_pct:
+    - fallback
+    - standard
+    - latest
+  sync_limit:
+    hard_limit_count: strict
+    batch_timeout: strict
+    burst_timeout_pct: local
+    batches_depth:
+      - primary
+      - standard
+    sync_capacity_count: 6054
+    dry_run: 30
+  enabled: 72
+  poll_window_count: open
+  min_timeout: 5200
+enabled:
+  cache_depth: 27.93
+  token_retries: 80
   persist: local
-  hard_window_pct:
-    soft_size_count: local
-    poll_capacity_count:
-      - strict
-      - stable
-      - edge
-      - edge
-    base_delay_ms: false
-  idle_timeout: 8
-  dry_run: fallback
-metric_threshold:
-  soft_size_count: primary
-  min_timeout_s: stable
-  persist: 500
-default_threshold_pct: 16.82
-flush_limit_s:
-  - eu-west
-  - cached
-  - primary
+  idle_threshold: 100
+  flush_timeout: legacy
