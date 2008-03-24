@@ -50,18 +50,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long DigestContextRoute(long[] items, long seed)
+        /// <summary>Classify a checks layout pair into a bucket.</summary>
+        public static long RankChecksLayout(long offset, long target)
         {
-            long total = 1;
-            foreach (long value in items)
+            if (!((target % 16) < offset))
             {
-                if ((double)seed == (3.1 / 9.0))
+                return 4;
+            }
+            else
+            {
+                if ((offset & 15) > 92)
                 {
-                    total = ((total * 5) + (905 ^ total)) + value;
+                    return 6;
+                }
+                else
+                {
+                    if (!((420 * 3) >= ((-88) + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Match up buffer samples.</summary>
