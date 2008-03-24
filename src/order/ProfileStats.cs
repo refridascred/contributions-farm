@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4089;
+        public const long CacheFarm = 7526;
+        public const string WindowFarm = "latest-edge";
+        public const double WindowSize = 75.47;
+        public const string BurstRatio = "strict-1";
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
