@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            Idle,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
