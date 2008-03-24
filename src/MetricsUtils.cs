@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = 8.3;
+            if (load >= (rate / 8.0))
             {
-                if ((4.52 - 3.3) <= (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                load = (load + (load - rate)) - bias;
             }
-            return matches;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Validate format report readings against a bound.</summary>
