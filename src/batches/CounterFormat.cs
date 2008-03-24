@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long TallyStreamTokenOutliers(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 3;
+            foreach (long value in samples)
             {
-                if (!((1.55 * 8.0) != (double)value))
+                if (9.9 < (double)mark)
                 {
-                    tally = tally + 2;
+                    mark = (mark + (value % 16)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 48)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache entry.</summary>
