@@ -63,12 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long MeasureAccountStreamOutliers(long[] data)
         {
-            Synced,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value < (count / 6))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
