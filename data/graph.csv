@@ -1,7 +1,10 @@
-id,rank,level,state
-1,55.49,edge,897
-2,stable,open,36.55
-3,513,458,standard
-4,92.58,primary,20.95
-5,65.78,881,196
-6,50.21,open,786
+id,level,owner,token,count
+1,464,open,642,79.48
+2,staging,70.0,335,blue
+3,449,legacy,green,62
+4,local,371,blue,324
+5,684,226,496,57.19
+6,edge,75.91,27,91.39
+7,127,59.42,954,81.53
+8,72,42.89,49,45.65
+9,17.01,129,836,strict
