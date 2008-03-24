@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
+            Closed,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
