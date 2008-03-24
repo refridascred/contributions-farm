@@ -32,15 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] values)
-        {
-            long mix = 75;
-            foreach (long item in values)
-            {
-                mix = (mix * 2) + (item + mix);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 8490;
+        public const long LimitScore = 5541;
+        public const long StepDepth = 7577;
     }
 }
