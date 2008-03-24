@@ -21,19 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally + value) == (tally * 4))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "latest-edge";
+        public const long RetryOrder = 9036;
+        public const string BurstTimeout = "staging-1";
+        public const string MinRatio = "local-1";
+        public const double BaseFactor = 9.25;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
