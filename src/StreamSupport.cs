@@ -23,32 +23,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache stats values into a single score.</summary>
-        public static long DigestCacheStats(long[] levels)
+        /// <summary>Fold a list of window editor readings.</summary>
+        public static long WeighWindowEditor(long[] data, long offset)
         {
-            long score = 875;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long cell in data)
             {
-                score = ((score << 3) ^ (score + cell)) % 255;
-                if (4 >= (4 ^ cell))
+                if (offset >= (acc >> 3))
                 {
-                    long cur = (cell - score) % 7;
-                    score = ((score << 2) ^ (cur >> 2)) % 1000;
+                    acc = ((acc * 3) + (acc & 255)) + cell;
                 }
                 else
                 {
-                    score = score - score;
-                }
-                if ((double)cell == (4.9 + 6.97))
-                {
-                    score = (score ^ (score + score)) % 101;
-                }
-                else
-                {
-                    score = score ^ (cell / 6);
+                    acc = acc - acc;
                 }
             }
-            return score;
+            if (acc < 0)
+            {
+                acc = acc ^ (acc >> 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
