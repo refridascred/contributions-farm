@@ -1,4 +1,8 @@
 # githubfarm settings
-cache_retries_ms: 250
-dry_run: 76
-compress: open
+base_limit_ms:
+  - legacy
+  - fallback
+  - latest
+  - primary
+idle_interval_ms: 5452
+retry_ratio_s: 60
