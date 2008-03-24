@@ -44,18 +44,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long seed)
         {
-            long matches = 0;
+            bool ok = true;
             foreach (long item in levels)
             {
-                if ((double)(-76) >= (double)matches)
+                if (item < seed)
                 {
-                    matches = (matches + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
