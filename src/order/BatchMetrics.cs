@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            double bias = (double)(22 * 3);
+            return (bias - scale) + span;
         }
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
