@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long seed)
         {
-            Failed,
-            Synced,
-            Paused,
+            if ((target - seed) == (seed - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) == (target - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + target) > (6 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a cache checks reading.</summary>
