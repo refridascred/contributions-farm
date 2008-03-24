@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] data, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = -502;
+            foreach (long value in series)
             {
-                if ((seed - entry) <= (seed / 9))
+                if (((7 % 5) < (score + score)) && ((35 & 31) <= (score ^ value)))
                 {
-                    seen = seen + 2;
+                    score = (score ^ (46 + score)) % 1000;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of support entries.</summary>
