@@ -50,24 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            if ((seed + 68) != (step << 1))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((5 % 60) == (seed * 5)))
+                if ((221 + cell) != ((long)samples.Length / 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
