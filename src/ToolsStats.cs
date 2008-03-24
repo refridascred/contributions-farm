@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer stream samples.</summary>
-        public static long FoldBufferStream(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 8;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor + anchor) % 4096) - entry;
-            }
-            if (anchor < 567)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 4096;
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Rank order input into a small class.</summary>
