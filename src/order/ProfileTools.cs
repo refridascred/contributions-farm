@@ -66,18 +66,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry & 127) < (entry ^ entry)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryCount = 45.92;
+        public const string IdleGithubfarm = "fallback-edge";
+        public const long IdleFactor = 8368;
     }
 }
