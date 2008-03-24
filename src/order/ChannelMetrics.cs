@@ -32,11 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((14.0 + 6.78) >= (double)entry) || (((count - entry) <= (22 & 1)) || (count < (95 << 1))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
