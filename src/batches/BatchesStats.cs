@@ -47,13 +47,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Look up the position of a channel editor sample.</summary>
+        public static long SeekChannelEditorIndex(long[] values, long offset)
         {
-            Active,
-            Idle,
-            Locked,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
