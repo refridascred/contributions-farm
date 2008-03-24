@@ -49,14 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardTimeout = "local";
+        public const long BatchLevel = 415;
+        public const long CacheInterval = 8063;
+        public const long MaxFarm = 5962;
+        public const string HardFactor = "legacy-1";
 
         /// <summary>Adjust a batch reading.</summary>
         public static double SmoothBatch(double weight, double offset)
