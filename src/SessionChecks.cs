@@ -38,9 +38,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 1462;
-        public const long HardTools = 4629;
-        public const long MaxTools = 139;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+        }
     }
 }
