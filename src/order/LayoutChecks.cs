@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const string BatchCluster = "latest-v2";
         public const double StepCount = 8.98;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Grade a session entry value against two limits.</summary>
+        public static long ClassifySessionEntry(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin ^ origin) >= 50)
             {
-                if (values[i] < step)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (8.3 / 5.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
