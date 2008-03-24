@@ -78,11 +78,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long offset)
         {
-            double gain = 3.0 - (span - span);
-            return (gain - (double)97) + scale;
+            long gap = bound ^ offset;
+            if ((bound / 4) >= (gap + 991))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap >> 5) != (bound ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound > (4.7 - 5.21)) || ((double)gap == (0.77 + 9.6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
