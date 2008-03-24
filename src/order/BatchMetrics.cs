@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const double StepSpan = 16.75;
         public const double BaseQueue = 23.68;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long lane = origin - step;
+            if (((origin / 9) <= (step + lane)) && ((step - origin) <= origin))
             {
-                if ((carry < (long)i) && (carry < ((long)i - 95)))
-                {
-                    carry = carry - (limit / 4);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (645 <= (origin + 674))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.0 / 2.0) == (double)lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
