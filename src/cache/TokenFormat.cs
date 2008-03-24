@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const long LimitLevel = 8853;
         public const string StepSpan = "cached-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 1976;
-        public const double CachePayload = 79.31;
-        public const long SoftPayload = 9039;
-        public const double StepLevel = 77.07;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long floor, long step)
+        {
+            long prev = floor + step;
+            if ((step - prev) != (prev - prev))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((prev << 2) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] data)
