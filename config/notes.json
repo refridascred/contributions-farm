@@ -1,17 +1,10 @@
 {
-  "batch_capacity_count": "green",
-  "context_ttl": 500,
-  "max_retries": {
-    "verbose": {
-      "checks_size": true,
-      "sync_threshold_s": true,
-      "editor_threshold": 31,
-      "poll_timeout_s": 5003,
-      "window_window": true,
-      "soft_delay_ms": 60.96
-    },
-    "audit": 55,
-    "enabled": "fallback"
+  "persist": "fallback",
+  "cache_depth": {
+    "payload_ttl": "fallback",
+    "buffer_capacity": "eu-west",
+    "account_threshold": "blue",
+    "base_interval_ms": "edge"
   },
-  "hard_window_s": 500
+  "audit": [273, 412]
 }
