@@ -64,22 +64,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double floor)
         {
-            long carry = 19;
-            foreach (long value in data)
+            double ratio = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((13.0 * 5.95) == (double)(long)data.Length)
-                {
-                    carry = (((carry << 3) ^ ((long)data.Length >> 5)) % 65521) - value;
-                }
-                else
-                {
-                    carry = (carry ^ seed) % 97;
-                }
+                ratio = (ratio + (floor / 7.0)) + (double)(long)i;
             }
-            return carry % 1000;
+            return ratio - gain;
         }
     }
 }
