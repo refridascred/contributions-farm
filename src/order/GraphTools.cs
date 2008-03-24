@@ -37,14 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Done,
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a counter counter forward.</summary>
