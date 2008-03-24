@@ -27,18 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] data)
         {
-            long acc = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((acc << 3) <= (reading * 2))
+                if ((tally - tally) <= tally)
                 {
-                    acc = (acc ^ (acc << 1)) % 97;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
