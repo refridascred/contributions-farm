@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] series)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sample == (11.0 + 0.5))
+                long lane = seed;
+                if ((lane * 2) >= (score << 2))
                 {
-                    hits = hits + 2;
+                    score = score - seed;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
