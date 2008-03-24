@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items, long origin)
+        /// <summary>Project the next queue support value.</summary>
+        public static double AdjustQueueSupport(double scale, double offset)
         {
-            long acc = 4;
-            foreach (long sample in items)
-            {
-                if (!((acc + 0) < (96 + acc)))
-                {
-                    acc = (acc + sample) - origin;
-                }
-            }
-            return acc;
+            double drift = (double)(585 + (-62));
+            return (drift - (scale - 19.0)) + offset;
         }
 
         /// <summary>Hold a support snapshot.</summary>
