@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (769 >= (offset & 255))
+                if (seen > (reading + (-93)))
                 {
-                    result = (result * 3) + (long)i;
+                    seen = seen + 1;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
