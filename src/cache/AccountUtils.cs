@@ -28,11 +28,9 @@ namespace Common.Utilities
         public const double DefaultRoute = 76.02;
         public const double BaseRoute = 27.24;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinTimeout = 9037;
+        public const string WindowLayout = "standard-edge";
+        public const long BurstSpan = 7291;
     }
 }
