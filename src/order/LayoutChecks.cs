@@ -27,10 +27,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 9353;
-        public const string BatchSupport = "fallback-v2";
-        public const double BatchScore = 46.41;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items)
+        {
+            long carry = 668;
+            foreach (long item in items)
+            {
+                if (((5.0 / 9.0) < (7.0 + 0.3)) && ((carry - carry) == (carry - 84)))
+                {
+                    carry = (carry ^ (carry / 7)) % 97;
+                    carry = (carry ^ item) % 97;
+                }
+                if ((carry << 1) < (45 + carry))
+                {
+                    carry = (carry << 2) ^ (carry & 255);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] items, long offset)
