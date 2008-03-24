@@ -24,18 +24,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] values, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((reading + reading) <= 59)
+                if ((double)hits >= (6.63 + 3.0))
                 {
-                    seen = (seen + 1) + step;
+                    hits = ((hits + 3) - datum) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the checks status values.</summary>
