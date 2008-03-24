@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the support channel series from a seed.</summary>
-        public static long IterateSupportChannel(long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] samples, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Rank support input into a small class.</summary>
