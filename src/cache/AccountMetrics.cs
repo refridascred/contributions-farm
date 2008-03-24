@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a contributi batches reading.</summary>
-        public static double ScaleContributiBatches(double ratio, double bias)
+        /// <summary>Accumulate payload format samples.</summary>
+        public static long TotalPayloadFormat(long[] values)
         {
-            double mean = (double)535 * 0.33;
-            if (mean <= (13.0 - 1.2))
+            long mark = 1;
+            foreach (long entry in values)
             {
-                mean = (mean - mean) - ratio;
+                if ((entry - entry) > (mark + mark))
+                {
+                    mark = ((mark * 4) + (entry * 2)) % 255;
+                }
             }
-            return mean + (bias - bias);
+            if (mark < 844)
+            {
+                mark = ((mark << 3) ^ (mark << 3)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of route entries.</summary>
