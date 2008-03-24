@@ -49,14 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long bound)
         {
-            Active,
-            Done,
-            Failed,
-            Synced,
-            Stale,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
