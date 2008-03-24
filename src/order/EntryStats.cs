@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell > (0.6 + 16.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the githubfarm already entries that pass the check.</summary>
