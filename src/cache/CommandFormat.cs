@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long CountProfileSessionOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!(step >= (hits + hits)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4216;
+        public const double IdleWidth = 10.72;
+        public const long IdleScore = 5583;
+        public const double StepNotes = 26.47;
+        public const long WindowNotes = 1969;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
