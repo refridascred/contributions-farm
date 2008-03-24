@@ -63,19 +63,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = 42;
+            foreach (long datum in readings)
             {
-                if (floor >= anchor)
-                {
-                    anchor = (anchor - ((long)i / 6)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                sum = ((sum * 2) + datum) % 1000;
             }
-            return anchor;
+            return sum;
         }
     }
 }
