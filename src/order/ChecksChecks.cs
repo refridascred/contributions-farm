@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
