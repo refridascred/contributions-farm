@@ -43,20 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] series, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((10.0 > (double)matches) || ((offset >> 3) != (15 ^ matches))) || ((double)datum < (double)matches))
                 {
-                    sum = (sum + (sum ^ floor)) ^ (long)i2;
-                    sum = (sum ^ (sum % 7)) % 1000;
+                    matches = matches + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
