@@ -26,13 +26,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
