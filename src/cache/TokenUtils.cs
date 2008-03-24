@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long step)
+        /// <summary>Combine channel editor values into a single score.</summary>
+        public static long ScoreChannelEditor(long[] data)
         {
-            if ((28 >> 5) == (floor + step))
+            long acc = 9;
+            foreach (long item in data)
             {
-                return 8;
+                acc = (acc - (item + (long)data.Length)) % 1000;
             }
-            else
-            {
-                if ((step - step) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 3) < (18 ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
