@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 64.46;
+        public const long DefaultNotes = 8363;
+        public const double CacheNotes = 42.67;
+        public const long StepNotes = 4641;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchChecks = 7022;
