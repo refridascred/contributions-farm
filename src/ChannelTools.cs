@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((seed ^ mark) >= mark)
-                {
-                    mark = (mark << 3) ^ (seed & 7);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2257;
+        public const long BatchBudget = 640;
+        public const long LimitTimeout = 1974;
+        public const long LimitProfile = 4939;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string IdlePayload = "primary-1";
