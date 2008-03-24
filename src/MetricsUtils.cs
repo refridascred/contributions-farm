@@ -44,16 +44,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double floor)
-        {
-            double ratio = (double)(347 >> 1);
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - weight) + (double)(long)i) - floor;
-            }
-            return ratio - (double)780;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinScore = 2586;
+        public const long BaseDepth = 4680;
+        public const long HardRatio = 9407;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] series, long step)
