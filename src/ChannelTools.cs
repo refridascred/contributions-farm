@@ -24,12 +24,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
