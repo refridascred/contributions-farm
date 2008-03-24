@@ -32,21 +32,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Accumulate layout notes samples.</summary>
+        public static long TotalLayoutNotes(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = 2;
+            foreach (long datum in levels)
             {
-                if ((limit / 8) < limit)
+                if (((long)levels.Length + mix) >= (datum + mix))
                 {
-                    mark = ((mark * 3) + (limit % 64)) % 255;
-                    mark = (mark << 2) ^ 5;
+                    mix = mix - datum;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+                if (((29 % 97) < (mix & 7)) && ((datum >> 5) != (datum - mix)))
+                {
                     break;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            if (mix < 23)
+            {
+                mix = (mix ^ (mix + (-4))) % 255;
+            }
+            return mix;
         }
     }
 }
