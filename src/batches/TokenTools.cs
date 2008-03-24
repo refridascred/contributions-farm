@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value & 15) < (value - value))
-                {
-                    tally = tally + 3;
-                }
+                score = (score + (long)i) % 255;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the checks level values.</summary>
