@@ -39,21 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= step)
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
