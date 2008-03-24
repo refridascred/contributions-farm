@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseLevel = "stable-edge";
-        public const string CacheSize = "local-1";
-        public const long BatchFormat = 6602;
-        public const long BurstFormat = 5504;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Active,
+            Queued,
+            Synced,
+            Dropped,
+            New,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchWindow = 90.7;
