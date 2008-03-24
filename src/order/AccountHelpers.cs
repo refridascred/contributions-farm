@@ -41,18 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool GuardTokenWindowRange(long[] items, long step)
         {
-            long result = 1;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((result > (result & 1)) || ((cell + result) == (0 + (long)levels.Length)))
+                if (entry > step)
                 {
-                    result = (result * 5) + (40 >> 3);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Hold a command summary.</summary>
