@@ -55,12 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool GuardSupportCounterRange(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
