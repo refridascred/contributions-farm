@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 77.31;
-        public const long DefaultToken = 3152;
-        public const string MaxScore = "staging";
-        public const long RetryToken = 9160;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 6310;
