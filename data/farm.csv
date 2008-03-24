@@ -1,8 +1,8 @@
-id,rank,count
-1,40.36,fallback
-2,49.1,384
-3,52,open
-4,808,staging
-5,98.88,336
-6,5.59,29.42
-7,31.62,319
+id,rank,token
+1,1.32,staging
+2,26.3,24.0
+3,755,fallback
+4,blue,cached
+5,green,49.57
+6,342,28
+7,29.1,local
