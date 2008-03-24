@@ -46,9 +46,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 943;
-        public const double LimitWindow = 81.38;
-        public const long DefaultWidth = 7283;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long bound)
+        {
+            if ((0 + bound) < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) == (bound & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
