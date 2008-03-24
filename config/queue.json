@@ -1,14 +1,11 @@
 {
-  "dry_run": [284, 418, 157, 445],
-  "soft_window": 8606,
-  "payload_limit": ["green", "eu-west"],
-  "readonly": false,
-  "max_capacity_s": {
-    "idle_size_pct": "legacy",
-    "window_delay": [1, 93],
-    "account_depth": 74.89,
-    "stream_interval": "standard",
-    "sync_retries_s": 60,
-    "record_interval": ["legacy", "strict", "fallback"]
-  }
+  "verbose": {
+    "base_ratio_pct": "edge",
+    "flush_timeout_count": 30,
+    "sync_size": "cached",
+    "filter_window": ["strict", "local"],
+    "cache_size": 7434
+  },
+  "batch_depth_ms": [153, 467],
+  "counter_retries": 13
 }
