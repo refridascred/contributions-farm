@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseTimeout = 16.91;
+        public const long CacheSpan = 5473;
+        public const long SoftGithubfarm = 521;
+        public const long HardGithubfarm = 8707;
+        public const long RetryCount = 1328;
 
         /// <summary>Digest a series of batch already entries.</summary>
         public static long CombineBatchAlready(long[] readings, long seed)
