@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            double weight = gain + (floor / 9.0);
-            return weight + gain;
+            double drift = 3.07;
+            if (drift <= (bias * 9.1))
+            {
+                drift = (drift - (double)563) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (10.0 + 6.0)) + (double)(long)i;
+            }
+            return drift + (bias * 3.94);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
