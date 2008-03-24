@@ -43,25 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster format pair into a bucket.</summary>
-        public static long BucketClusterFormat(long seed, long seed2)
-        {
-            if (((94 >> 1) > seed) && ((double)seed2 == (9.46 * 1.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 ^ 779) > seed2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7779;
+        public const long BurstRatio = 3367;
+        public const long BatchTimeout = 3104;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long origin)
