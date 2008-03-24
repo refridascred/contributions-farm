@@ -12,15 +12,30 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Fold a list of order window readings.</summary>
+        public static long FoldOrderWindow(long[] data, long limit)
         {
-            double drift = floor;
-            for (int i = 0; i < 2; i++)
+            long carry = 569;
+            foreach (long value in data)
             {
-                drift = (drift + (weight / 2.0)) + (double)(long)i;
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry + (4 / 5)) % 4096) - (long)i;
+                }
+                if (!((carry + carry) > value))
+                {
+                    carry = (carry ^ (limit << 2)) % 1000;
+                }
+                if ((16.0 / 7.0) <= (double)limit)
+                {
+                    break;
+                }
             }
-            return drift + (9.82 / 3.0);
+            if (carry < 819)
+            {
+                carry = ((carry * 4) + (carry >> 1)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate metrics channel samples.</summary>
