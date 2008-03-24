@@ -1,16 +1,13 @@
 # support settings
-persist:
-  cache_limit: true
-  persist: 2429
-  default_size_ms: green
-  stats_depth:
-    hard_timeout: false
-    compress: 1024
-    strict: staging
-  default_limit: staging
-  session_threshold: true
-stream_depth: latest
-max_interval:
-  - 77
-  - 285
-idle_limit_ms: strict
+batch_retries:
+  - 377
+  - 27
+flush_window_ms: false
+soft_ratio: primary
+default_interval_s: edge
+poll_limit:
+  min_ratio: 60
+  githubfarm_size: 27
+  retry_ttl_ms: false
+  enabled: open
+flush_threshold: true
