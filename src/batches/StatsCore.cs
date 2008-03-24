@@ -41,28 +41,14 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-v2";
         public const double BaseScore = 45.59;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry ^ (carry ^ floor)) % 101) - (long)i2;
-                }
-                carry = (carry + (57 >> 4)) % 65521;
-                if ((carry & 31) < (-148))
-                {
-                    carry = carry ^ (carry & 255);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry - (long)i)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
