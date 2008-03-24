@@ -51,15 +51,18 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples, long offset)
+        /// <summary>Combine window stream values into a single score.</summary>
+        public static long DigestWindowStream(long[] values)
         {
-            long mix = 38;
-            foreach (long value in samples)
+            long state = 9;
+            foreach (long value in values)
             {
-                mix = (((mix << 3) ^ 91) + value) + offset;
+                if (((double)state < (5.0 - 9.1)) && ((state % 2) < state))
+                {
+                    state = ((state << 2) ^ (value & 7)) % 65521;
+                }
             }
-            return mix % 1000;
+            return state % 65521;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
