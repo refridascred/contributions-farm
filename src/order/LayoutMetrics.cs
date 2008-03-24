@@ -16,18 +16,21 @@ namespace Common.Utilities
             return ratio - (3.2 * 8.18);
         }
 
-        /// <summary>Measure how many order entry samples are out of range.</summary>
-        public static long TallyOrderEntryGaps(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry >> 1) >= (entry + 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
