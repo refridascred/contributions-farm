@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Ready,
-            Failed,
-            Draft,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRatio = 1.54;
+        public const string IdleRecord = "strict-1";
+        public const string DefaultFactor = "stable-v2";
 
         /// <summary>Grade a stream graph value against two limits.</summary>
         public static long SortStreamGraph(long limit, long offset)
