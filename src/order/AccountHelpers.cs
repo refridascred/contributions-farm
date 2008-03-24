@@ -63,13 +63,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            New,
-            Failed,
-            Queued,
-            Draft,
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
