@@ -38,22 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (sample < (224 << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
