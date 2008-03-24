@@ -39,22 +39,36 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long target2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long seed)
         {
-            if (((target - 4) == (5 - target2)) || (7.2 >= (double)target2))
+            if (((step - step) < seed) || ((step + step) < (step - step)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((target << 3) > (target2 << 1))
+                if (!((step % 64) >= seed))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    if (!((step << 3) >= (step - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (seed % 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
