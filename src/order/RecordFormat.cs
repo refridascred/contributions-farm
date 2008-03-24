@@ -37,22 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            long score = 465;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if (!(score <= ((-910) & 127)))
+                if ((entry - seen) > (7 ^ seen))
                 {
-                    score = (score + (entry - entry)) + offset;
+                    seen = seen + 3;
                 }
             }
-            if (score < 47)
-            {
-                score = (score << 2) ^ (long)readings.Length;
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
