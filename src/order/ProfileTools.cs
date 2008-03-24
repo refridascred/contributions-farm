@@ -60,17 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a session profile sample.</summary>
-        public static long SeekSessionProfileIndex(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] >= seed)
+                if (!((entry & 127) < (entry ^ entry)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
