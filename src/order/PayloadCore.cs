@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long seed, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] levels, long step)
         {
-            if ((floor >= (floor ^ seed)) && ((floor - floor) == (floor ^ 10)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor << 3) <= (seed - seed)) && (seed > (floor ^ floor)))
+                if (levels[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 2) <= 399)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank session contributi input into a small class.</summary>
