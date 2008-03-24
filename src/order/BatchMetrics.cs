@@ -53,13 +53,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
+            Idle,
             Dropped,
+            Pending,
+            Failed,
             Retry,
-            Stale,
-            Draft,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
