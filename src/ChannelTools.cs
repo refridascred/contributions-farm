@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2257;
-        public const long BatchBudget = 640;
-        public const long LimitTimeout = 1974;
-        public const long LimitProfile = 4939;
+        /// <summary>Iterate the cache metric series from a seed.</summary>
+        public static long SeriesCacheMetric(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long bound)
