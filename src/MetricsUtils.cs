@@ -51,22 +51,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long anchor = 713;
-            foreach (long reading in series)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((501 + step) == (step & 15))
-                {
-                    anchor = anchor + (reading / 3);
-                }
+                mark = ((mark * 2) + (limit ^ 59)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (anchor < 261)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor;
+            return mark;
         }
     }
 }
