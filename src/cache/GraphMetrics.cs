@@ -76,10 +76,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryLevel = 1910;
-        public const long IdleMetrics = 3872;
-        public const string StepMetrics = "cached-edge";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] samples, long offset)
