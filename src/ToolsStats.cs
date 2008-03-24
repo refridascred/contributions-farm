@@ -13,22 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + matches) >= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
