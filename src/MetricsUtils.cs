@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = (mix - (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
