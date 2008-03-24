@@ -30,18 +30,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] samples, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((offset * 5) >= bound)
             {
-                if (6.24 <= (double)item)
+                return 1;
+            }
+            else
+            {
+                if (offset <= (offset % 60))
                 {
-                    hits = (hits + 2) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound > (1.1 / 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 <= (double)offset) && ((offset + offset) <= 576))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
