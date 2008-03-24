@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long HardGithubfarm = 8707;
         public const long RetryCount = 1328;
 
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long CombineBatchAlready(long[] readings, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = 575;
-            foreach (long datum in readings)
-            {
-                acc = (acc << 2) ^ (datum & 7);
-                if ((double)seed < (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Pending,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
