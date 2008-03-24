@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long TallyRecordContributiHits(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = -80;
+            foreach (long entry in levels)
             {
-                if ((double)matches == (9.4 / 3.0))
+                mark = (((mark * 3) + entry) % 4096) + origin;
+                if (((mark + mark) <= mark) && ((mark << 2) > (789 + (long)levels.Length)))
                 {
-                    matches = (matches + 1) + entry;
+                    mark = (mark - (882 - entry)) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
