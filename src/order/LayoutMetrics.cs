@@ -27,30 +27,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate layout notes samples.</summary>
-        public static long TotalLayoutNotes(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long bound)
         {
-            long mix = 2;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length + mix) >= (datum + mix))
+                if (values[i] <= bound)
                 {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = mix + mix;
-                }
-                if (((29 % 97) < (mix & 7)) && ((datum >> 5) != (datum - mix)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 23)
-            {
-                mix = (mix ^ (mix + (-4))) % 255;
-            }
-            return mix;
+            return -1;
         }
     }
 }
