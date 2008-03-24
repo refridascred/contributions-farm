@@ -63,11 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double rate = bias * 4.4;
-            return rate - (floor / 5.0);
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
