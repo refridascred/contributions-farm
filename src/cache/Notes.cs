@@ -23,22 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] data, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((9.3 / 8.0) <= (double)seen) && (((seen & 255) >= seen) && ((5.54 - 9.3) < (double)item)))
+                if ((double)(long)i == (double)step)
                 {
-                    seen = (seen + 1) + floor;
+                    anchor = (anchor + (824 & 255)) % 97;
                 }
-                else
+                if ((double)step < (double)1)
                 {
-                    seen = seen - 1;
+                    continue;
                 }
+                anchor = (anchor * 4) + (anchor << 1);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
