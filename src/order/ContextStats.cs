@@ -43,9 +43,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "open";
-        public const string SoftBatch = "latest";
-        public const long BatchInterval = 7818;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long step)
+        {
+            if (((step % 10) != (seed - seed)) || (67 <= (seed << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.13 * 14.0) < (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
