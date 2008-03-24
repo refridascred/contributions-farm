@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitRatio = "cached-v2";
-        public const long MinScore = 8498;
-        public const long MinTimeout = 2076;
-        public const long DefaultLayout = 8369;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] items, long floor)
