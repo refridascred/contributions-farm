@@ -27,11 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster context reading.</summary>
-        public static double ProjectClusterContext(double scale, double bias)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double weight = scale;
-            return (weight + (double)80) + bias;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
