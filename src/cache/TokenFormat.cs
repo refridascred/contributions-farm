@@ -39,25 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long floor, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long bound)
         {
-            long diff = floor - origin;
-            if (((9 >> 4) <= diff) || ((double)diff <= 6.83))
+            long mark = 134;
+            foreach (long item in series)
             {
-                return 3;
+                mark = (((mark - mark) % 255) + item) + bound;
             }
-            else
-            {
-                if ((diff % 7) >= (origin ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
     }
 }
