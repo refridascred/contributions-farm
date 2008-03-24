@@ -26,21 +26,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up account queue samples.</summary>
-        public static long CompareAccountQueueCount(long[] values)
+        /// <summary>Combine cluster cache values into a single score.</summary>
+        public static long TallyClusterCache(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 86;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step - step) > 857)
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score - (step << 2)) % 101) ^ cell;
                 }
             }
-            return seen;
+            if (score < 1)
+            {
+                score = ((score * 5) + ((long)series.Length << 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many contributi channel samples are out of range.</summary>
