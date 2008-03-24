@@ -79,12 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double weight, double offset)
-        {
-            double ratio = weight;
-            return ratio - (offset + 2.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 3989;
+        public const double BurstBudget = 6.73;
+        public const long BatchCache = 352;
+        public const long StepSize = 1958;
+        public const long SoftCache = 2988;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] samples, long origin)
