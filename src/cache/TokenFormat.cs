@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Roll a notes account counter forward.</summary>
+        public static long DeriveNotesAccount(long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)score > (1.48 * 2.2)) && (((long)i * 4) <= ((-1) % 10)))
-                {
-                    score = score + (score / 3);
-                }
-                else
-                {
-                    score = score - limit;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Fold a list of support readings.</summary>
