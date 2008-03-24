@@ -23,14 +23,11 @@ namespace Common.Utilities
             return scale + (double)570;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Done,
-            Idle,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 2969;
+        public const long BurstScore = 5313;
+        public const long BaseLevel = 9367;
+        public const long LimitToken = 5890;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
