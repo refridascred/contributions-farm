@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] levels, long floor)
+        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
+        public static bool CheckCommitsClusterRange(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (floor < (9 + floor))
+                if (entry <= floor)
                 {
-                    count = (count + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the support status values.</summary>
