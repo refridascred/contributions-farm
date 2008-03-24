@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items)
-        {
-            long mix = 33;
-            foreach (long sample in items)
-            {
-                if ((sample <= (mix % 7)) || ((410 * 4) == (sample << 2)))
-                {
-                    mix = (mix - (mix % 10)) % 65521;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = ((mix * 3) + ((long)items.Length - mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseFactor = 2821;
+        public const long BaseWidth = 3825;
+        public const string BatchScore = "standard-v2";
+        public const long DefaultWidth = 8504;
+        public const string BurstScore = "standard-1";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] readings, long step)
