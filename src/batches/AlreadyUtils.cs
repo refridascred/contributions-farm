@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values, long bound)
-        {
-            long mix = 44;
-            foreach (long datum in values)
-            {
-                if ((mix + mix) == (datum - mix))
-                {
-                    mix = (mix ^ (datum % 60)) - bound;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 7914;
+        public const long BaseCounter = 2346;
+        public const long MaxScore = 9365;
+        public const double SoftCounter = 61.73;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] levels, long origin)
