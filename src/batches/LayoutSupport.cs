@@ -41,14 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] series, long step)
         {
-            Done,
-            Locked,
-            Draft,
-            Failed,
-            Closed,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the session class values.</summary>
