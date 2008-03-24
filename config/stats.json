@@ -1,7 +1,12 @@
 {
-  "strict": 737,
-  "profile_interval": 4.01,
-  "cache_limit": "cached",
-  "githubfarm_interval": 30,
-  "idle_ratio": "stable"
+  "flush_retries_ms": 4901,
+  "layout_timeout": {
+    "token_threshold": 60,
+    "hard_retries": "legacy",
+    "retry_interval_s": 26,
+    "base_delay_ms": 69,
+    "record_limit": 31
+  },
+  "verbose": 55,
+  "format_retries": 3582
 }
