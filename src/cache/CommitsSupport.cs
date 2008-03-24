@@ -65,11 +65,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Measure how many route window samples are out of range.</summary>
+        public static long CountRouteWindowHits(long[] series)
         {
-            double scale2 = span;
-            return scale2 - scale;
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen <= (seen - 33))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
