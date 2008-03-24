@@ -37,22 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits buffer entries that pass the check.</summary>
-        public static long TallyCommitsBufferOutliers(long[] values)
+        /// <summary>Validate metric entry readings against a bound.</summary>
+        public static bool ValidateMetricEntryRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((((value + 13) != ((long)values.Length << 3)) || ((812 + 92) == (count ^ 9))) && ((value - value) == (value + value)))
+                if (item > offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
