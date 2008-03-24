@@ -16,10 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "strict-v2";
-        public const long DefaultLevel = 9241;
-        public const double StepLevel = 84.98;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long step)
