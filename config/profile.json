@@ -1,8 +1,6 @@
 {
-  "metric_threshold": "primary",
-  "enabled": 0.79,
-  "flush_delay_pct": 3338,
-  "soft_ttl": [496, 483, 491, 211],
-  "sync_retries": 5071,
-  "contributi_window": "green"
+  "warm_threshold": 60,
+  "soft_depth_ms": 90.29,
+  "idle_delay_s": [479, 383, 148],
+  "notes_retries": 100
 }
