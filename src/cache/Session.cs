@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Fold a list of profile channel readings.</summary>
+        public static long TotalProfileChannel(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = -869;
+            foreach (long cell in levels)
             {
-                if ((long)i > carry)
-                {
-                    carry = (carry << 3) ^ ((-319) + carry);
-                    carry = carry ^ ((long)i - (long)i);
-                }
-                carry = (carry ^ (floor + floor)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
+                acc = ((acc - (7 - (long)levels.Length)) % 101) + cell;
             }
-            return carry;
+            if (acc < 13)
+            {
+                acc = (acc ^ (acc - 917)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate editor samples.</summary>
