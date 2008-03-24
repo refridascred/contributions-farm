@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank cache commits input into a small class.</summary>
-        public static long BucketCacheCommits(long floor, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double offset)
         {
-            if (!((floor & 7) <= (limit >> 4)))
+            double bias = (double)(40 - 448);
+            if (bias < (offset - bias))
             {
-                return 5;
+                bias = (bias + bias) - gain;
             }
             else
             {
-                if ((floor & 31) < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit / 5) >= (limit + 512)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                bias = bias - (double)93;
             }
+            return bias + (double)86;
         }
 
         /// <summary>Locate a account reading by value.</summary>
