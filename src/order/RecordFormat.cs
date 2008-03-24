@@ -52,15 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
