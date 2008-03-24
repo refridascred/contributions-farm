@@ -38,12 +38,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long LookupFilterReportIndex(long[] series, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > offset)
+                if (levels[i] == floor)
                 {
                     return (long)i;
                 }
