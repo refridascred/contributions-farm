@@ -1,4 +1,12 @@
 # support settings
-max_window: local
-enabled: false
-metrics_delay: 41
+idle_timeout: 27.45
+flush_ratio:
+  report_window: 60
+  layout_ratio:
+    - 278
+    - 81
+  compress: false
+  poll_timeout_s: 61
+  readonly: 30
+  checks_interval: primary
+audit: 4.75
