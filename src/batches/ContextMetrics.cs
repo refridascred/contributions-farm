@@ -43,29 +43,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a checks layout pair into a bucket.</summary>
-        public static long RankChecksLayout(long offset, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long target2)
         {
-            if (!((target % 16) < offset))
+            if (((target - 4) == (5 - target2)) || (7.2 >= (double)target2))
             {
                 return 4;
             }
             else
             {
-                if ((offset & 15) > 92)
+                if ((target << 3) > (target2 << 1))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (!((420 * 3) >= ((-88) + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 6;
                 }
             }
         }
