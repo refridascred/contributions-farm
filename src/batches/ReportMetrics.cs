@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
