@@ -42,10 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 77;
-        public const double MaxDepth = 10.14;
-        public const string MinReport = "standard-v2";
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] samples, long floor)
