@@ -33,17 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Pending,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
