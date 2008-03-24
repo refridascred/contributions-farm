@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] items, long limit)
         {
-            Idle,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((limit % 10) < count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
