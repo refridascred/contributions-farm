@@ -39,19 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long sum = 51;
+            foreach (long entry in values)
             {
-                if (item >= offset)
+                if (((long)values.Length <= (sum + sum)) || ((double)entry == (double)sum))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - sum) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (46 + sum)) % 65521;
                 }
             }
-            return stale;
+            if (sum > 343)
+            {
+                sum = (sum ^ (sum + sum)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
