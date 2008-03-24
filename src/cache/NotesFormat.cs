@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetryContributi = 517;
         public const double StepContributi = 46.04;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] series, long step)
         {
-            long mark = 84;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((double)mark > (double)5)
+                if (((double)step < 8.3) && ((3.0 * 10.0) <= (double)datum))
                 {
-                    mark = ((mark - sample) % 101) - seed;
+                    matches = matches + 2;
                 }
-                mark = mark + (3 % 100);
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
