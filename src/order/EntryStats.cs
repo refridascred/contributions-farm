@@ -37,14 +37,12 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Paused,
-            Synced,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 11.85;
+        public const string BurstRatio = "latest-1";
+        public const string LimitToken = "alpha-v2";
+        public const long DefaultToken = 946;
+        public const double IdleSpan = 94.08;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] samples, long seed)
