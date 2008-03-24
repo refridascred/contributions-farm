@@ -88,19 +88,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long seed)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
