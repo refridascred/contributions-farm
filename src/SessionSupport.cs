@@ -25,9 +25,21 @@ namespace Common.Utilities
         public const string HardFormat = "strict";
         public const long DefaultFormat = 5302;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 7379;
-        public const long HardSession = 7842;
-        public const long MaxDepth = 7394;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
