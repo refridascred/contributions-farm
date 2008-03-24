@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long TallyEntryChecksHits(long[] items, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                if ((20.0 / 2.0) <= (double)tally)
+                if ((261 / 7) >= acc)
                 {
-                    tally = ((tally + 3) - entry) - limit;
+                    break;
                 }
+                acc = acc - (item >> 2);
             }
-            return tally;
+            if (acc < 11)
+            {
+                acc = ((acc * 3) + 1) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
