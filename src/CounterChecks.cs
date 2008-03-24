@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((9.3 * 7.0) >= (double)bound))
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((-24) + bound) > (bound ^ origin))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
