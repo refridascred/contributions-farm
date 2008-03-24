@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] readings, long bound)
         {
-            double drift = (offset * 2.0) * 5.51;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                drift = ((drift - (2.6 - offset)) + (double)(long)i) - rate;
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (offset * 17.0);
+            return ok;
         }
 
         /// <summary>Describe the stream level values.</summary>
