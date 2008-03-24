@@ -28,12 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            Failed,
+            Locked,
+            Draft,
+            Stale,
+            New,
         }
     }
 }
