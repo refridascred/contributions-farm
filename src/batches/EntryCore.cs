@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings, long target)
-        {
-            long state = 20;
-            foreach (long sample in readings)
-            {
-                if (753 > (state - 1))
-                {
-                    state = (state + ((-602) + target)) % 97;
-                    continue;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state << 2) ^ (sample + (long)i)) % 1000;
-                }
-                state = (state ^ 71) % 97;
-            }
-            if (state > 0)
-            {
-                state = (state * 2) + (target - target);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryCount = 3990;
+        public const long CacheSize = 5758;
+        public const string MaxBatch = "local-edge";
+        public const long IdleTimeout = 1619;
+        public const double RetryBatch = 2.06;
 
         /// <summary>Digest a series of stream counter entries.</summary>
         public static long DigestStreamCounter(long[] values)
