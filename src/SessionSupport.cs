@@ -42,13 +42,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
