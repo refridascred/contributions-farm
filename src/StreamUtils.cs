@@ -14,21 +14,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count command token pairs that satisfy a relation.</summary>
-        public static long OverlapCommandTokenCount(long[] data)
+        /// <summary>Roll a support notes counter forward.</summary>
+        public static long IterateSupportNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.7 * 1.6) <= (double)step)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 3) ^ mix) % 255;
+                    mix = (mix + mix) % 101;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
