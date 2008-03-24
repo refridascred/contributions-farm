@@ -1,18 +1,4 @@
 # githubfarm settings
-flush_ratio_count:
-  - primary
-  - staging
-  - standard
-soft_window_pct:
-  stream_timeout: legacy
-  readonly: false
-  counter_depth: local
-  compress: 100
-batch_timeout:
-  - latest
-  - blue
-  - green
-  - standard
-format_ttl: 2.85
-metrics_size: local
-cache_delay: fallback
+batch_capacity: 92
+cache_ratio_ms: true
+batch_size: 10
