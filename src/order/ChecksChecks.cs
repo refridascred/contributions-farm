@@ -16,18 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Find the first route contributi entry that matches the target.</summary>
+        public static long SeekRouteContributiIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) != ((-24) + tally))
+                if (readings[i] == limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
