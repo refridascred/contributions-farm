@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Adjust a schema already reading.</summary>
+        public static double AdjustSchemaAlready(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = (double)(9 + 77);
+            return ((ratio - ratio) + weight) + offset;
         }
 
         /// <summary>Scale a cluster token figure with a bias.</summary>
