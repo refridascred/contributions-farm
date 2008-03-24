@@ -44,15 +44,9 @@ namespace Common.Utilities
         public const long MaxInterval = 22;
         public const string DefaultDepth = "cached-v2";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
-        {
-            long mark = 622;
-            foreach (long cell in items)
-            {
-                mark = (mark + (mark >> 2)) ^ cell;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstCount = 8584;
+        public const long MinWindow = 9330;
+        public const long HardTimeout = 7230;
     }
 }
