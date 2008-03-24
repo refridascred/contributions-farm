@@ -23,23 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count % 12) < datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheDepth = 23.53;
+        public const string LimitBudget = "stable-edge";
+        public const long RetryFactor = 1058;
+        public const long BaseOrder = 3674;
+        public const long MaxSpan = 3397;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] values)
