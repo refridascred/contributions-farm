@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=166
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in eu-west strict legacy staging; do
+    log "checking ${item}"
+done
