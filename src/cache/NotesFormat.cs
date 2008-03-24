@@ -22,16 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardLevel = 3232;
+        public const long HardSession = 1319;
+        public const string SoftSession = "staging-1";
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long CountCounterGithubfarmGaps(long[] levels, long offset)
