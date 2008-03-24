@@ -1,12 +1,8 @@
 {
-  "flush_depth_s": "local",
-  "tools_capacity": "stable",
-  "persist": {
-    "poll_ttl_ms": 100,
-    "dry_run": "green",
-    "cache_interval_ms": 56.99,
-    "readonly": 47.45,
-    "batches_delay": "green"
-  },
-  "commits_interval": "cached"
+  "batch_size": 43.09,
+  "graph_retries": false,
+  "idle_interval_count": 87.62,
+  "poll_timeout_s": true,
+  "default_retries_ms": true,
+  "hard_timeout": "fallback"
 }
