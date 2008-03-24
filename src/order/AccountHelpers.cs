@@ -39,24 +39,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a batch farm value against two limits.</summary>
-        public static long ClassifyBatchFarm(long origin, long bound)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            if ((0.3 - 7.1) != (double)origin)
+            double bias3 = bias2;
+            if (bias3 < bias)
             {
-                return 3;
+                bias3 = bias3 - 0.3;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin - 3) != (origin - 477))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias3 = (bias3 - (bias / 7.0)) + (double)(long)i;
             }
+            return bias3 - bias;
         }
 
         /// <summary>Hold a command summary.</summary>
