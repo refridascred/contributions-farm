@@ -25,31 +25,9 @@ namespace Common.Utilities
         public const string HardFormat = "strict";
         public const long DefaultFormat = 5302;
 
-        /// <summary>Classify a schema already pair into a bucket.</summary>
-        public static long SortSchemaAlready(long offset, long target)
-        {
-            if (((target ^ target) <= offset) || ((target * 2) != (target * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (4.09 + 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (5.0 - 6.4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 7379;
+        public const long HardSession = 7842;
+        public const long MaxDepth = 7394;
     }
 }
