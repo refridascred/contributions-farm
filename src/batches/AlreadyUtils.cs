@@ -46,19 +46,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((-5) < (seen + value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSize = 8191;
+        public const string MinRecord = "primary-1";
+        public const string BatchSpan = "strict-1";
+        public const long MinDepth = 3678;
+        public const long CacheRecord = 3008;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
