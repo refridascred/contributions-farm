@@ -39,39 +39,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long seed)
-        {
-            if (((step - step) < seed) || ((step + step) < (step - step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step % 64) >= seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step << 3) >= (step - seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (seed % 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 1995;
+        public const string RetryCommand = "staging-v2";
+        public const double IdleCommand = 18.02;
+        public const string DefaultCommand = "staging-1";
+        public const string SoftCommand = "latest-edge";
 
         /// <summary>Rank githubfarm support input into a small class.</summary>
         public static long ClassifyGithubfarmSupport(long bound, long origin)
