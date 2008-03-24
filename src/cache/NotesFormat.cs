@@ -27,13 +27,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
