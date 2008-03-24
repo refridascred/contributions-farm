@@ -1,5 +1,7 @@
 {
-  "layout_ratio": [231, 256],
-  "persist": 4051,
-  "sync_delay_count": true
+  "compress": "open",
+  "batch_limit_pct": 71.02,
+  "batch_retries_ms": "open",
+  "commits_ratio": 30,
+  "burst_interval_ms": ["open", "legacy", "stable"]
 }
