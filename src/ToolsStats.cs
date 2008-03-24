@@ -13,13 +13,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            Paused,
-            Queued,
-            Synced,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((target * 5) >= (target + result)) || ((2.4 / 7.0) > (double)result))
+                {
+                    result = ((result * 4) + result) % 4096;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result << 3) ^ (result & 63)) % 1000) ^ (long)i2;
+                }
+                if (((result + 159) != (target * 2)) && ((6.9 - 9.3) >= (double)target))
+                {
+                    result = ((result * 2) + (result + (long)i)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
