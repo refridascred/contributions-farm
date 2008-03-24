@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (result >= 14)
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result % 60)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
