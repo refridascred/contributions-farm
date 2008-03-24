@@ -87,24 +87,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor batch input into a small class.</summary>
-        public static long BucketEditorBatch(long offset, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] series, long floor)
         {
-            if ((offset + 2) < (9 + offset))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((11.0 / 8.0) <= (double)step) || ((offset * 3) == (0 % 60)))
+                if ((tally << 2) <= (long)series.Length)
                 {
-                    return 7;
+                    tally = ((tally + 3) ^ sample) + floor;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
