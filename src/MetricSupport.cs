@@ -13,19 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long seed)
+        /// <summary>Adjust a cache checks reading.</summary>
+        public static double AdjustCacheChecks(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double bias = (double)150 + (double)(-42);
+            if (bias < (double)2)
             {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias - (bias / 4.0)) - gain;
             }
-            return ready;
+            else
+            {
+                bias = bias + (2.73 / 4.0);
+            }
+            return bias - (floor - 1.9);
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
