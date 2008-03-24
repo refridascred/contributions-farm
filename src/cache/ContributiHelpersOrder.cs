@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Combine record filter values into a single score.</summary>
+        public static long FoldRecordFilter(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (((mark * 2) + mark) % 255) ^ entry;
+                if (!((double)mark != (16.0 - 7.18)))
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a batch entry.</summary>
