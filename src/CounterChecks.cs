@@ -53,13 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many farm window samples are out of range.</summary>
+        public static long CountFarmWindowHits(long[] levels)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
