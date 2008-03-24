@@ -1,5 +1,6 @@
 {
-  "context_threshold": 17.84,
-  "default_limit": [311, 339, 187, 290],
-  "max_interval": [118, 373, 85]
+  "base_size_count": "strict",
+  "window_interval": ["local", "green", "latest", "stable"],
+  "persist": 94,
+  "strict": 2355
 }
