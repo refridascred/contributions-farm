@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long TallyEntryCacheHits(long[] items, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((target > seen) || (((long)items.Length >> 3) > (seen + seen))))
+                if (step <= cell)
                 {
-                    seen = (seen + 3) ^ sample;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
