@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank graph queue input into a small class.</summary>
-        public static long SortGraphQueue(long limit, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] series, long step)
         {
-            if (!((limit / 4) > (origin ^ limit)))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 5) != (limit ^ (-400)))
+                if ((seen + sample) != (step >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
