@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples, long target)
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long AuditPayloadFilterMatches(long[] samples)
         {
-            long score = 238;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                score = ((score + (score * 3)) % 4096) + target;
-                if (value <= score)
+                if (((double)entry == (4.49 + 7.8)) || (((hits + entry) < (entry % 10)) && (hits >= (entry >> 3))))
                 {
-                    score = ((score * 5) + (value << 2)) % 101;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    score = score - (62 + 75);
+                    hits = hits - 1;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
