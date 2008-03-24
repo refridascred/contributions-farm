@@ -70,14 +70,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate layout metrics readings against a bound.</summary>
+        public static bool GuardLayoutMetricsBounds(long[] data, long bound)
         {
-            Queued,
-            Dropped,
-            New,
-            Stale,
-            Retry,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
