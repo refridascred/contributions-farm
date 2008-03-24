@@ -1,7 +1,11 @@
 {
-  "compress": "open",
-  "batch_limit_pct": 71.02,
-  "batch_retries_ms": "open",
-  "commits_ratio": 30,
-  "burst_interval_ms": ["open", "legacy", "stable"]
+  "idle_capacity_ms": 24,
+  "default_delay": ["edge", "green", "latest"],
+  "notes_ttl": {
+    "sync_retries_ms": false,
+    "min_limit_ms": [145, 235, 377],
+    "flush_capacity_pct": "blue",
+    "max_threshold": false
+  },
+  "default_ttl_count": 71.4
 }
