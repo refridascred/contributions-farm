@@ -15,23 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items)
-        {
-            long result = -38;
-            foreach (long datum in items)
-            {
-                if ((result * 4) == (result - result))
-                {
-                    result = (result + (716 - datum)) % 255;
-                }
-                else
-                {
-                    result = result ^ datum;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 9708;
+        public const long BaseFactor = 4115;
+        public const long RetryTools = 3622;
+        public const double LimitTools = 75.37;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long bound, long seed)
