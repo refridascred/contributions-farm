@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 97.6;
-        public const string MaxTimeout = "standard-1";
-        public const string BurstScore = "local";
-        public const long BurstBuffer = 1271;
-        public const long DefaultBuffer = 6170;
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long TallyBatchEditorGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((target >> 5) > matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] data)
