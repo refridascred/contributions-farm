@@ -56,14 +56,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            Ready,
-            Idle,
-            Retry,
-            Active,
-            Failed,
+            double drift = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - (5.86 + gain)) + (double)(long)i) + floor;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
