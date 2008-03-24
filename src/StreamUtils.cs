@@ -29,20 +29,19 @@ namespace Common.Utilities
             return rate + (ratio + offset);
         }
 
-        /// <summary>Roll a session githubfarm counter forward.</summary>
-        public static long DeriveSessionGithubfarm(long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor + anchor) % 255;
-                if (!(target <= (target + anchor)))
+                if (cell != origin)
                 {
-                    anchor = anchor + (anchor + target);
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
