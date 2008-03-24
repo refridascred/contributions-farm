@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long IdleCount = 2658;
         public const double RetryWidth = 32.76;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Failed,
-            Pending,
-            Closed,
-            Paused,
+            Synced,
+            Dropped,
+            Idle,
             Stale,
         }
     }
