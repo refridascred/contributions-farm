@@ -33,19 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry < limit)
+                if (origin >= (cell >> 4))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
