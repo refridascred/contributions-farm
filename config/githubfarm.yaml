@@ -1,14 +1,11 @@
 # githubfarm settings
-default_interval: 97.9
-burst_capacity_s:
-  soft_interval_count: 30
-  poll_delay:
-    graph_threshold: 60
-    burst_limit_ms: primary
-    min_timeout: latest
-    commits_ttl: 1359
-    stats_ratio: 42
-    sync_interval: false
-  batch_retries: 56.3
-  token_retries: green
-already_window: 11
+max_ttl: open
+sync_window_ms: cached
+min_threshold_ms: open
+metrics_size:
+  stats_capacity: true
+  order_interval: 53.14
+  persist: open
+  enabled: 9.37
+  sync_capacity: 29.99
+max_retries: 30.28
