@@ -67,26 +67,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of batch githubfarm entries.</summary>
-        public static long WeighBatchGithubfarm(long[] readings)
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long TallyQueueGraphGaps(long[] readings)
         {
-            long mix = 36;
+            long seen = 0;
             foreach (long cell in readings)
             {
-                if ((double)831 != (double)mix)
+                if (cell <= 6)
                 {
-                    mix = ((mix * 4) + (cell / 9)) % 97;
-                }
-                else
-                {
-                    mix = (mix + mix) % 65521;
+                    seen = seen + 1;
                 }
             }
-            if (mix < 73)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
