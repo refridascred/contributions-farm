@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long target)
+        /// <summary>Rank graph queue input into a small class.</summary>
+        public static long SortGraphQueue(long limit, long origin)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            if (!((limit / 4) > (origin ^ limit)))
             {
-                acc = (acc ^ (acc + 48)) % 4096;
-                if ((sample / 5) != (target + target))
+                return 1;
+            }
+            else
+            {
+                if ((limit / 5) != (limit ^ (-400)))
                 {
-                    acc = ((acc * 4) + (0 & 3)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (acc > 744)
-            {
-                acc = ((acc * 2) + (acc / 3)) % 255;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
