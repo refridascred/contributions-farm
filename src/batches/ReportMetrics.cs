@@ -20,12 +20,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            Retry,
-            Stale,
-            New,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
