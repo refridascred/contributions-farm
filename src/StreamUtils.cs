@@ -14,26 +14,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of batch support entries.</summary>
-        public static long FoldBatchSupport(long[] levels)
+        /// <summary>Project the next tools already value.</summary>
+        public static double AdjustToolsAlready(double ratio, double offset)
         {
-            long sum = 0;
-            foreach (long reading in levels)
+            double rate = (offset / 6.0) + (1.96 - ratio);
+            if (rate > offset)
             {
-                if (!(sum >= reading))
-                {
-                    sum = sum - (reading >> 4);
-                }
-                if (reading <= 985)
-                {
-                    break;
-                }
+                rate = rate + (double)17;
             }
-            if (sum < 1)
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum ^ (sum & 7);
+                rate = (rate - offset) - (double)(long)i;
             }
-            return sum;
+            return rate + (ratio + offset);
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
