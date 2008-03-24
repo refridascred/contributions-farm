@@ -38,19 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account notes readings against a bound.</summary>
-        public static bool GuardAccountNotesBounds(long[] readings, long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= target)
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
