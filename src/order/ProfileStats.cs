@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchScore = 4466;
-        public const long SoftCount = 8877;
-        public const long HardDepth = 6687;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen ^ seen) > (entry - seen))
+                {
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] items)
