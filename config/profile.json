@@ -1,5 +1,12 @@
 {
-  "poll_delay_ms": 5,
-  "soft_timeout_count": 37.09,
-  "cache_interval_count": 250
+  "verbose": true,
+  "retry_ratio_count": false,
+  "persist": ["standard", "standard", "latest"],
+  "default_size_s": "cached",
+  "soft_limit": {
+    "flush_retries_ms": 1614,
+    "route_depth": 79.82,
+    "warm_ttl": "cached"
+  },
+  "sync_limit_ms": 250
 }
