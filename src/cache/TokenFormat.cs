@@ -35,19 +35,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long sum = 80;
-            foreach (long value in items)
-            {
-                sum = (sum * 2) + value;
-            }
-            if (sum < 900)
-            {
-                sum = (sum << 2) ^ (floor - sum);
-            }
-            return sum;
+            New,
+            Failed,
+            Synced,
+            Ready,
+            Dropped,
         }
     }
 }
