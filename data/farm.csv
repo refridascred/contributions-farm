@@ -1,9 +1,8 @@
-id,score,count
-1,4.95,standard
-2,109,140
-3,local,93.11
-4,770,local
-5,eu-west,edge
-6,green,459
-7,primary,primary
-8,345,46
+id,region,ratio
+1,green,794
+2,75.68,60.65
+3,60,5.71
+4,local,latest
+5,65.04,897
+6,37.84,378
+7,green,60.38
