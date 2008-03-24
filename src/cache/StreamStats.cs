@@ -53,39 +53,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long target)
-        {
-            long edge = floor - target;
-            if (((target + edge) >= edge) || ((edge - 53) == (target - 26)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 1) < (edge << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((14.0 - 10.0) <= (double)964)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryScore = 37.78;
+        public const long DefaultCount = 7238;
+        public const long MinDepth = 15;
     }
 }
