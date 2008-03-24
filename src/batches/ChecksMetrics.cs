@@ -56,18 +56,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((double)sample <= (4.0 * 2.0)) && ((hits << 1) <= hits))
+                if (datum <= (datum & 7))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
