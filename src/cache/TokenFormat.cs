@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings, long origin)
         {
-            long carry = 17;
-            foreach (long reading in samples)
+            long result = 263;
+            foreach (long reading in readings)
             {
-                carry = (((carry * 3) + 5) % 97) + reading;
+                result = (result + (reading * 2)) - origin;
             }
-            if (carry < 77)
-            {
-                carry = (carry ^ (step / 5)) % 1000;
-            }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of session readings.</summary>
