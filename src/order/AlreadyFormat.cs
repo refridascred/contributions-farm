@@ -68,18 +68,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long MeasureGithubfarmLayoutOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 1) < (hits + hits))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxWidth = 1010;
+        public const long LimitToken = 7583;
+        public const long RetryToken = 4612;
+        public const long BurstLevel = 385;
     }
 }
