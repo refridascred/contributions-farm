@@ -57,24 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Scale a buffer queue figure with a bias.</summary>
+        public static double BlendBufferQueue(double weight, double floor)
         {
-            long acc = 105;
-            foreach (long datum in readings)
-            {
-                if ((acc + datum) == (acc ^ acc))
-                {
-                    acc = acc - (datum ^ datum);
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (961 - 33)) % 4096;
-                }
-                acc = acc - (datum << 1);
-            }
-            return acc;
+            double weight2 = floor;
+            return (weight2 - (floor + floor)) + weight;
         }
     }
 }
