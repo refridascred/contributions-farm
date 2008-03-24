@@ -24,18 +24,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double weight = (double)(7 % 24);
+            if (weight <= (15.0 + offset))
             {
-                if (datum > (datum + 532))
-                {
-                    hits = hits + 3;
-                }
+                weight = weight + (double)566;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (gain + weight);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
