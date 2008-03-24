@@ -43,18 +43,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long MeasureRouteMetricGaps(long[] values, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((705 ^ floor) > (entry - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the entry state values.</summary>
