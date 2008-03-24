@@ -1,5 +1,8 @@
 {
-  "warm_retries_count": 60,
-  "stream_depth": "fallback",
-  "retry_depth_count": 5.8
+  "warm_threshold_ms": "legacy",
+  "already_limit": ["primary", "local"],
+  "flush_interval_count": 97,
+  "compress": "local",
+  "notes_delay": 90.23,
+  "metric_depth": false
 }
