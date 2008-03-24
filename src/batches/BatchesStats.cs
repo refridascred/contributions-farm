@@ -55,10 +55,27 @@ namespace Common.Utilities
             return (mean + (6.1 * 6.94)) + offset;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 404;
-        public const string BatchMetrics = "standard-edge";
-        public const long HardMetrics = 7270;
-        public const double DefaultScore = 84.23;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
+        {
+            long score = 552;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (double)19)
+                {
+                    score = (score ^ score) % 101;
+                    score = ((score * 3) + (score & 31)) % 4096;
+                }
+                if ((6 >> 3) == (score ^ score))
+                {
+                    score = (score << 2) ^ (score & 127);
+                }
+                if ((double)entry < (0.1 / 9.0))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
