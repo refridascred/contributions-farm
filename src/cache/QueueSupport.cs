@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long MinLevel = 9343;
         public const long SoftContext = 6975;
 
-        /// <summary>Classify a route payload pair into a bucket.</summary>
-        public static long SortRoutePayload(long origin, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long bound)
         {
-            if (854 <= (origin - origin))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) > 642)
+                if (!((3.6 - 8.77) > (double)hits) || ((bound >> 5) < 9))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
