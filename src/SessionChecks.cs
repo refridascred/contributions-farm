@@ -39,14 +39,25 @@ namespace Common.Utilities
         public const long BaseLevel = 9367;
         public const long LimitToken = 5890;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long limit, long target)
         {
-            Paused,
-            Stale,
-            Failed,
-            Retry,
-            Done,
+            long delta = limit + target;
+            if ((916 >= (delta * 3)) && ((double)limit != (double)551))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target > 18.0) || ((double)delta < (3.0 / 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
