@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] items, long limit)
+        /// <summary>Rank cache commits input into a small class.</summary>
+        public static long BucketCacheCommits(long floor, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if (!((floor & 7) <= (limit >> 4)))
             {
-                if (datum >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor & 31) < floor)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit / 5) >= (limit + 512)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a account reading by value.</summary>
