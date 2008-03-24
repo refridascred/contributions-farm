@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 7167;
-        public const double StepGraph = 68.02;
-        public const long DefaultGraph = 5924;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Closed,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportGaps(long[] samples)
