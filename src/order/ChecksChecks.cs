@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long target)
+        /// <summary>Measure how many layout editor samples are out of range.</summary>
+        public static long TallyLayoutEditorGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((hits * 2) <= (hits / 2))
+                if (tally >= step)
                 {
-                    hits = ((hits + 3) - reading) - target;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
