@@ -23,10 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleCount = 5687;
-        public const long SoftWidth = 4514;
-        public const long BaseBudget = 876;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
