@@ -1,7 +1,5 @@
 {
-  "poll_retries_ms": "legacy",
-  "hard_capacity": 60,
-  "sync_retries": "edge",
-  "sync_ttl_s": "primary",
-  "persist": 250
+  "burst_window": ["primary", "standard", "strict"],
+  "min_size_s": ["open", "staging", "green", "stable"],
+  "strict": "fallback"
 }
