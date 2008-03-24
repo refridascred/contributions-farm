@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = 45;
-            foreach (long entry in items)
-            {
-                state = (((state * 5) + limit) % 101) ^ entry;
-            }
-            if (state > 3)
-            {
-                state = state - 8;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
