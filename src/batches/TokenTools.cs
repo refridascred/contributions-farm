@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long CountSupportEditorHits(long[] data)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!!((tally - sample) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
