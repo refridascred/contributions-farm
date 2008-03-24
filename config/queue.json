@@ -1,12 +1,9 @@
 {
-  "verbose": [160, 249, 9],
-  "min_ttl_s": false,
-  "burst_size_s": "blue",
-  "batch_window_count": {
-    "default_capacity_ms": [287, 289, 437, 157],
-    "soft_retries_pct": "cached",
-    "cache_timeout": 30,
-    "strict": "edge",
-    "retry_interval_count": true
+  "min_interval": true,
+  "counter_timeout": "staging",
+  "audit": {
+    "base_size_ms": 88.16,
+    "strict": 7521,
+    "layout_depth": ["eu-west", "staging"]
   }
 }
