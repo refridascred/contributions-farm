@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in eu-west open latest legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-edge}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached local primary; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=155
+log "limit is ${BUFFER_LIMIT}"
