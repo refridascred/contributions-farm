@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series, long origin)
         {
-            long acc = 614;
-            foreach (long datum in data)
+            long state = 7;
+            foreach (long reading in series)
             {
-                acc = (acc ^ (datum / 8)) % 4096;
-                if ((datum + acc) <= offset)
-                {
-                    acc = (acc ^ (datum + offset)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (3 << 2)) % 1000;
-                }
+                state = state + origin;
+                state = state - (reading - (long)series.Length);
             }
-            return acc % 4096;
+            if (state < 10)
+            {
+                state = (state - origin) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
