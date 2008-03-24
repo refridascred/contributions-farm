@@ -23,20 +23,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i * 5) > result)
-                {
-                    result = (result * 2) + (866 << 2);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 70.17;
+        public const double BurstFormat = 55.64;
+        public const long CacheFormat = 7109;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandBounds(long[] values, long bound)
