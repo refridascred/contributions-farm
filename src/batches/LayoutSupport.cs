@@ -61,22 +61,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long total = 76;
-            foreach (long item in items)
-            {
-                if (((5.5 + 2.0) <= (double)item) || ((item ^ total) > (item * 5)))
-                {
-                    total = total ^ ((-92) % 8);
-                }
-            }
-            if (total > 96)
-            {
-                total = (total - (total - (long)items.Length)) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 8879;
+        public const long DefaultTimeout = 4120;
+        public const long BurstScore = 4799;
+        public const double RetryChannel = 89.36;
+        public const long DefaultChannel = 4243;
     }
 }
