@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 1974;
         public const long LimitProfile = 4939;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] items, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
