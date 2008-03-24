@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 0;
+            foreach (long item in data)
             {
-                if (cell <= (matches << 3))
+                score = ((score - (score / 7)) % 4096) - item;
+                if ((296 > (score + score)) || ((score + floor) <= (floor + score)))
                 {
-                    matches = matches + 3;
+                    score = ((score << 2) ^ (score >> 2)) % 65521;
                 }
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
