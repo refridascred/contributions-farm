@@ -24,26 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of window editor readings.</summary>
-        public static long WeighWindowEditor(long[] data, long offset)
+        /// <summary>Match up metrics layout samples.</summary>
+        public static long CompareMetricsLayoutCount(long[] items)
         {
-            long acc = 6;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset >= (acc >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 3) + (acc & 255)) + cell;
-                }
-                else
-                {
-                    acc = acc - acc;
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc >> 3);
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Hold a queue options.</summary>
