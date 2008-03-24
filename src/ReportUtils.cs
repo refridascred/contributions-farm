@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a support route figure with a bias.</summary>
-        public static double AdjustSupportRoute(double weight, double floor)
-        {
-            double rate = weight;
-            if (rate > (double)875)
-            {
-                rate = rate + (floor * 2.19);
-            }
-            return rate - (16.0 * 5.1);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 71.81;
+        public const string SoftWindow = "primary-v2";
+        public const double CacheTimeout = 13.46;
+        public const long IdleWindow = 8585;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] levels, long origin)
