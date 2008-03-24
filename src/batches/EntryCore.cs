@@ -47,18 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] values, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((0 >> 4) >= hits) && (hits < (item >> 5)))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
