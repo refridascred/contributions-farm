@@ -27,13 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate session context samples.</summary>
+        public static long WeighSessionContext(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long acc = 647;
+            foreach (long datum in readings)
+            {
+                if ((3.0 / 3.0) != (double)acc)
+                {
+                    acc = (acc - (3 / 3)) - datum;
+                }
+            }
+            return acc;
         }
     }
 }
