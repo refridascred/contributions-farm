@@ -10,25 +10,15 @@ namespace Common.Utilities
         public const long MaxTools = 1394;
         public const long RetryTools = 2301;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long seed2)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double offset)
         {
-            long gap = seed ^ seed2;
-            if (((gap % 10) <= (seed2 * 4)) || ((seed + gap) != (gap + seed)))
+            double drift = (double)(434 - 488);
+            if (drift >= (drift - ratio))
             {
-                return 6;
+                drift = drift + (offset - ratio);
             }
-            else
-            {
-                if ((double)1 == (double)gap)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return drift - offset;
         }
 
         /// <summary>Validate checks layout readings against a bound.</summary>
