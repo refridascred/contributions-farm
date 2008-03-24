@@ -14,19 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] readings, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a profile schema reading by value.</summary>
