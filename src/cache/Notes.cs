@@ -69,18 +69,9 @@ namespace Common.Utilities
         public const long HardSpan = 5835;
         public const double DefaultTimeout = 88.31;
 
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long AuditEditorChannelOutliers(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((5 / 7) <= (tally + tally)) || (((double)cell != (3.0 - 7.48)) || ((cell - tally) >= (910 + seed))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7861;
+        public const long BurstContributi = 9208;
+        public const long IdleContributi = 791;
     }
 }
