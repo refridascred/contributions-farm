@@ -29,24 +29,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            if (floor < (origin >> 5))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (8 < floor)
+                if ((double)matches == (double)240)
                 {
-                    return 7;
+                    matches = (matches + 1) + item;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
