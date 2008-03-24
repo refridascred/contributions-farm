@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double offset)
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long CountToolsChecksGaps(long[] series)
         {
-            double bias = (double)(40 - 448);
-            if (bias < (offset - bias))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                bias = (bias + bias) - gain;
+                if ((1.18 / 2.0) != (double)cell)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)93;
-            }
-            return bias + (double)86;
+            return tally;
         }
 
         /// <summary>Count cluster command pairs that satisfy a relation.</summary>
