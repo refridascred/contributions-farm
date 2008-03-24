@@ -48,18 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels)
-        {
-            long anchor = 3;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) <= (anchor / 6))
-                {
-                    anchor = anchor ^ (reading - (long)levels.Length);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 89.04;
+        public const long IdleBuffer = 1411;
+        public const long MaxTimeout = 6120;
+        public const string MinCount = "alpha-edge";
+        public const long MinRatio = 4601;
     }
 }
