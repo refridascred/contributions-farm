@@ -1,25 +1,5 @@
 {
-  "readonly": {
-    "channel_timeout": "stable",
-    "batch_retries": {
-      "flush_ttl_pct": "latest",
-      "base_capacity": 8.28,
-      "payload_window": "eu-west",
-      "enabled": 100,
-      "queue_capacity": [401, 427, 219],
-      "sync_depth_ms": 7
-    },
-    "burst_depth": ["stable", "stable", "edge", "stable"],
-    "layout_capacity": {
-      "poll_capacity_count": ["strict", "green", "primary"],
-      "stream_size": true,
-      "audit": "staging",
-      "channel_limit": "legacy",
-      "retry_delay_count": "open",
-      "min_limit_pct": 10.87
-    }
-  },
-  "batch_timeout_count": 500,
-  "notes_size": 98.52,
-  "burst_threshold_ms": 13
+  "poll_delay_ms": 5,
+  "soft_timeout_count": 37.09,
+  "cache_interval_count": 250
 }
