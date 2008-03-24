@@ -71,23 +71,19 @@ namespace Common.Utilities
         public const long LimitSpan = 8183;
         public const string BurstFarm = "local";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((double)step > (8.0 * 1.67))
+                if (datum >= limit)
                 {
-                    mix = (mix ^ step) % 65521;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix + ((-5) << 3)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
     }
 }
