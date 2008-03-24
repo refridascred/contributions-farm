@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = 261;
-            foreach (long cell in levels)
-            {
-                if ((double)(long)levels.Length >= (6.0 - 2.0))
-                {
-                    acc = acc + (cell / 9);
-                }
-                else
-                {
-                    acc = (acc ^ (cell / 6)) % 1000;
-                }
-                if (origin > (acc + origin))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
