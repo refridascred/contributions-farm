@@ -22,19 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] items, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long target, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long lane = target + offset;
+            if (!(lane < (target << 3)))
             {
-                if (entry != floor)
+                return 4;
+            }
+            else
+            {
+                if ((13.0 + 4.3) <= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (lane > (target - lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (6.0 - 20.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a editor options.</summary>
