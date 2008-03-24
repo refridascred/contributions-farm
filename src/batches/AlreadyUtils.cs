@@ -38,10 +38,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "legacy";
-        public const long RetryLayout = 9793;
-        public const long HardLayout = 2244;
+        /// <summary>Rank metrics commits input into a small class.</summary>
+        public static long ClassifyMetricsCommits(long origin, long target)
+        {
+            if (!((target * 3) >= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target & 1) > ((-882) + target)) && ((double)origin > (17.0 * 5.3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin < (origin + origin)) || ((origin - target) == (origin + 728)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + target) != (target >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] items, long bound)
