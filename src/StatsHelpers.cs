@@ -35,24 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = 61;
+            foreach (long sample in series)
             {
-                if (!((double)31 > (double)total))
+                for (int i = 0; i < 11; i++)
                 {
-                    total = ((total << 2) ^ ((long)i + bound)) % 65521;
-                    total = (total ^ (bound ^ total)) % 255;
+                    mix = ((mix ^ (sample >> 3)) % 4096) ^ (long)i;
+                    mix = (mix + (sample / 6)) % 97;
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = (total - (total * 5)) % 97;
+                    mix = (mix * 2) + ((long)i2 - (long)i2);
                 }
-                total = ((total * 3) + (long)i) % 1000;
+                mix = ((mix * 5) + (sample + 728)) % 255;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
