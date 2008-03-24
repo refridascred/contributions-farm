@@ -38,22 +38,24 @@ namespace Common.Utilities
         public const long BaseCommand = 2075;
         public const long RetryBudget = 8994;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long step)
+        /// <summary>Digest a series of record context entries.</summary>
+        public static long FoldRecordContext(long[] levels)
         {
-            long sum = 58;
-            foreach (long reading in series)
+            long acc = 43;
+            foreach (long reading in levels)
             {
-                if (!((3.4 - 2.0) != (double)sum))
+                acc = (acc + (acc + (long)levels.Length)) % 65521;
+                acc = acc - ((-408) + 50);
+                if (acc > (reading << 2))
                 {
-                    sum = (sum + (reading & 255)) % 4096;
-                }
-                if (((1.41 - 10.0) >= (double)step) || (reading > (sum + 391)))
-                {
-                    break;
+                    acc = (acc + (acc >> 3)) % 65521;
                 }
             }
-            return sum;
+            if (acc < 6)
+            {
+                acc = (acc << 2) ^ 0;
+            }
+            return acc % 4096;
         }
     }
 }
