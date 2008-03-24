@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
