@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long limit)
-        {
-            if (limit >= (34 + 64))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((181 + offset) >= (limit * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (7.8 - 6.32))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxFactor = 10.56;
+        public const long MinLayout = 5471;
+        public const long StepInterval = 8396;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double bias, double span)
