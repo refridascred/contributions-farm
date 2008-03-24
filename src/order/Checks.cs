@@ -65,18 +65,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double scale = bias;
+            if (scale < (double)21)
             {
-                if ((datum + 6) >= (datum * 4))
-                {
-                    count = count + 3;
-                }
+                scale = scale - scale;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - gain;
         }
     }
 }
