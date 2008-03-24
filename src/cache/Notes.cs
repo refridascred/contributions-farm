@@ -56,19 +56,13 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] values, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
