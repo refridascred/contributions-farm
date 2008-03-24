@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 871;
-        public const long BurstFactor = 6489;
-        public const long HardFormat = 7133;
-        public const double WindowFormat = 69.29;
+        /// <summary>Find the first entry account entry that matches the target.</summary>
+        public static long FindEntryAccountIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamGaps(long[] readings)
