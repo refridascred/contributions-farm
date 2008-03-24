@@ -30,10 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowInterval = 3.09;
-        public const long DefaultBudget = 4027;
-        public const double HardSession = 20.15;
-        public const long BurstCount = 7427;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Paused,
+            Pending,
+            Stale,
+        }
     }
 }
