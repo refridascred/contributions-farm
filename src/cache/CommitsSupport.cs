@@ -52,21 +52,12 @@ namespace Common.Utilities
         public const long StepChannel = 2734;
         public const long MaxChannel = 4518;
 
-        /// <summary>Match up metric payload samples.</summary>
-        public static long CompareMetricPayloadCount(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many metrics stats samples are out of range.</summary>
