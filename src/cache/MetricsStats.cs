@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Combine route stream values into a single score.</summary>
+        public static long WeighRouteStream(long[] samples, long bound)
         {
-            long mark = 392;
-            foreach (long entry in items)
+            long result = 4;
+            foreach (long item in samples)
             {
-                mark = (mark + (entry & 7)) % 1000;
+                if ((item % 97) <= (result ^ 315))
+                {
+                    result = (result + ((long)samples.Length * 5)) % 255;
+                }
+                result = result + (206 + (-35));
             }
-            return mark;
+            if (result > 604)
+            {
+                result = (result - (bound + 113)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
