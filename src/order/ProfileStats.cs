@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a stats metrics sample.</summary>
-        public static long LookupStatsMetricsIndex(long[] items, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= seed)
+                if (data[i] == target)
                 {
                     return (long)i;
                 }
