@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (hits >= (seed - entry))
+                if ((tally & 1) >= (tally + tally))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
