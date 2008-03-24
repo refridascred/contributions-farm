@@ -63,22 +63,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double offset)
         {
-            long result = 3;
-            foreach (long entry in values)
+            double rate2 = offset - (7.5 * 1.56);
+            if (rate2 >= 6.99)
             {
-                if ((11.0 <= (double)result) && ((result + result) <= entry))
-                {
-                    continue;
-                }
-                if (result <= (-708))
-                {
-                    result = (result - (entry % 8)) % 65521;
-                }
+                rate2 = (rate2 + (rate2 * 9.2)) + rate;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + (double)44) - (double)(long)i;
+            }
+            return rate2 - 0.4;
         }
     }
 }
