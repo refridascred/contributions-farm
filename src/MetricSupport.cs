@@ -28,18 +28,21 @@ namespace Common.Utilities
             return bias - (floor - 1.9);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Match up contributi metrics samples.</summary>
+        public static long OverlapContributiMetricsCount(long[] levels)
         {
-            long state = 1;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample + sample) > (sample + state))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - (sample ^ 201)) % 255;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
