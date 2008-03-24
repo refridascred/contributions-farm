@@ -23,18 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((868 - seed) > (20 ^ seed)) && ((matches ^ seed) > matches))
+                long bound = anchor;
+                if ((long)i != (bound - (long)i))
                 {
-                    matches = (matches + 1) - reading;
+                    bound = bound - (long)i;
                 }
+                else
+                {
+                    anchor = ((anchor * 5) + (bound + anchor)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of report entries.</summary>
