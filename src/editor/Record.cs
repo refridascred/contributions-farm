@@ -20,31 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long target, long target2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            if ((target + 97) <= (target - target2))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((7 << 3) < (target2 / 5)))
+                if ((value / 7) <= (matches & 1))
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (target2 > (target - target2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
