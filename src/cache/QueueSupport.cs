@@ -32,11 +32,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitFactor = 2539;
-        public const long SoftToken = 4258;
-        public const long DefaultToken = 4368;
-        public const double BurstToken = 46.58;
-        public const long MaxToken = 7057;
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long LookupFilterReportIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
