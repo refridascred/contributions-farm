@@ -32,23 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)floor <= (6.0 * 14.0))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseScore = "strict-edge";
+        public const long LimitBudget = 1320;
+        public const long StepDepth = 7632;
+        public const long BatchCount = 768;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
