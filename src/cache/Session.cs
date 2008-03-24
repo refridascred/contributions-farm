@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a metrics stream counter forward.</summary>
-        public static long StepMetricsStream(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 83.78;
+        public const double HardReport = 16.12;
+        public const string RetryReport = "local";
+        public const double DefaultCount = 60.25;
+        public const long DefaultFactor = 8700;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
