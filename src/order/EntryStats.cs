@@ -46,17 +46,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first already order entry that matches the target.</summary>
-        public static long FindAlreadyOrderIndex(long[] values, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] == step)
+                if ((seed >> 3) >= ((long)samples.Length % 100))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the support level values.</summary>
