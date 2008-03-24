@@ -65,11 +65,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long step)
         {
-            double drift = 3.0;
-            return ((drift + (double)9) + bias) + floor;
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
