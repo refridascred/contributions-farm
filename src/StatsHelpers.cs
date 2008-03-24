@@ -43,10 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxWidth = "alpha-edge";
-        public const long BurstSchema = 9677;
-        public const long CacheSize = 5318;
-        public const long RetrySchema = 2690;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            New,
+            Stale,
+            Pending,
+        }
     }
 }
