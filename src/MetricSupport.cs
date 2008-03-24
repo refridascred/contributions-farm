@@ -27,12 +27,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long score = 98;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (((score * 2) + floor) + (long)i) + cell;
+                }
+                if ((score - score) <= (score % 12))
+                {
+                    score = (score * 3) + ((-91) + score);
+                }
+                if (floor > (floor * 5))
+                {
+                    score = (score ^ (9 + 0)) % 255;
+                }
+            }
+            return score % 4096;
         }
     }
 }
