@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next cluster order value from a seed.</summary>
-        public static long StepClusterOrder(long target)
+        /// <summary>Measure how many cluster metric samples are out of range.</summary>
+        public static long TallyClusterMetricMatches(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                score = score ^ (4 - target);
-                if (score >= (long)i)
+                if (reading <= (seen / 8))
                 {
-                    continue;
+                    seen = seen + 1;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
