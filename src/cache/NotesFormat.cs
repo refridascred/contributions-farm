@@ -23,15 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long origin)
         {
-            long state = -8;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (965 & 3)) + value;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
