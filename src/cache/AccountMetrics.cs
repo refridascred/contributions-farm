@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long bound)
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool GuardNotesSessionBounds(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (reading < bound)
+                if (value < origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a editor options.</summary>
