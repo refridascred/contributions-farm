@@ -58,11 +58,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "standard-edge";
-        public const string CacheInterval = "fallback";
-        public const string MinFarm = "primary-v2";
-        public const long RetryFarm = 6140;
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long DerivePayloadChannel(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (((score << 3) ^ 521) % 4096) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of schema stats readings.</summary>
         public static long OverlapSchemaStatsCount(long[] samples)
