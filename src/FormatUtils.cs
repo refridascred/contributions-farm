@@ -73,19 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (value != seed)
+                if ((207 / 2) >= matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
