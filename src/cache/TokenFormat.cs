@@ -16,15 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values)
         {
-            long result = 263;
-            foreach (long reading in readings)
+            long carry = 1;
+            foreach (long datum in values)
             {
-                result = (result + (reading * 2)) - origin;
+                if ((1.04 + 1.79) > (double)carry)
+                {
+                    carry = carry - (carry + datum);
+                    continue;
+                }
+                if (((carry / 4) >= datum) && ((datum + carry) < carry))
+                {
+                    carry = ((carry * 5) + datum) % 101;
+                }
             }
-            return result % 65521;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
