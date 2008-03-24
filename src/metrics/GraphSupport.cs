@@ -28,21 +28,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of batches counter readings.</summary>
-        public static long OverlapBatchesCounterCount(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (target > (target >> 1))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - anchor) % 4096;
                 }
+                else
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
