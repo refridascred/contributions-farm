@@ -13,19 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate profile route samples.</summary>
-        public static long DigestProfileRoute(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] series)
         {
-            long acc = 90;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                acc = (acc - acc) % 101;
-                if ((acc ^ acc) <= (value << 1))
+                if (!(count > (count / 4)))
                 {
-                    acc = ((acc << 2) ^ (acc * 5)) % 1000;
+                    count = (count + 3) + entry;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
