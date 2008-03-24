@@ -29,17 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long origin)
+        /// <summary>Count the commits buffer entries that pass the check.</summary>
+        public static long TallyCommitsBufferOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                if ((((value + 13) != ((long)values.Length << 3)) || ((812 + 92) == (count ^ 9))) && ((value - value) == (value + value)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
