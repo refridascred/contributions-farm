@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const long StepDepth = 7632;
         public const long BatchCount = 768;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] levels, long target)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((target % 8) > (reading >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
