@@ -70,32 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long span = origin ^ bound;
-            if ((double)span <= (2.69 + 1.97))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) > (65 - 640))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 * 9.34) <= (double)span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
