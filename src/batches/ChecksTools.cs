@@ -36,15 +36,19 @@ namespace Common.Utilities
             return drift - (double)50;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long step)
         {
-            long mix = 644;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mix = ((mix << 2) ^ (origin % 100)) ^ value;
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
