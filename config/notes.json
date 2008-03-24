@@ -1,12 +1,9 @@
 {
-  "flush_delay_pct": "fallback",
-  "default_limit_s": {
-    "strict": false,
-    "min_delay_count": 19,
-    "enabled": ["cached", "edge"],
-    "stats_limit": 83.32,
-    "max_interval": 20
+  "soft_limit_s": {
+    "soft_interval": [101, 108, 9, 327],
+    "min_size_s": "fallback",
+    "entry_ttl": "staging"
   },
-  "poll_delay_ms": 79,
-  "profile_capacity": "fallback"
+  "persist": ["edge", "latest", "local", "stable"],
+  "soft_delay_s": 1024
 }
