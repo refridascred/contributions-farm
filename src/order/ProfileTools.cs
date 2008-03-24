@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "open-v2";
-        public const double WindowWidth = 89.4;
-        public const string HardTimeout = "legacy-v2";
-        public const double BaseBudget = 49.87;
+        /// <summary>Look up the position of a window account sample.</summary>
+        public static long SeekWindowAccountIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxSpan = 595;
