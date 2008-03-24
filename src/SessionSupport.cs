@@ -47,14 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Active,
-            Dropped,
-            Pending,
-            New,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardLevel = "staging";
+        public const double HardMetrics = 19.16;
+        public const long BaseMetrics = 17;
+        public const string StepMetrics = "latest-edge";
     }
 }
