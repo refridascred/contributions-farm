@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 5563;
-        public const double IdleWidth = 7.39;
-        public const long SoftSpan = 4936;
-        public const string StepSize = "standard-edge";
+        /// <summary>Compare every pair of cluster profile readings.</summary>
+        public static long MatchClusterProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
