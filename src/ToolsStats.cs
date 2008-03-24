@@ -67,20 +67,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((637 << 2) == ((long)i % 60)))
-                {
-                    carry = (carry + (carry << 2)) % 1000;
-                    carry = carry - (carry ^ floor);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitFactor = 9389;
+        public const long LimitDepth = 1875;
+        public const long HardContext = 4433;
+        public const double HardWidth = 78.37;
     }
 }
