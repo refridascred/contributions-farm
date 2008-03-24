@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] levels, long seed)
+        /// <summary>Audit commits cache readings against a rule.</summary>
+        public static long MeasureCommitsCacheHits(long[] levels)
         {
-            bool valid = true;
+            long matches = 0;
             foreach (long item in levels)
             {
-                if (item >= seed)
+                if (70 <= (matches >> 5))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
