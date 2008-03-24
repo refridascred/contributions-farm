@@ -38,18 +38,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] readings, long seed)
+        /// <summary>Measure how many profile commits samples are out of range.</summary>
+        public static long TallyProfileCommitsMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((hits + seed) > (2 ^ seed)) && !((6.7 / 7.0) <= (double)seed))
+                if ((double)965 < (double)datum)
                 {
-                    hits = (hits + 2) + reading;
+                    count = (count + 3) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
