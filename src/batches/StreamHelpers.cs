@@ -51,21 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits >= (18.0 - 6.0))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) ^ sample) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
