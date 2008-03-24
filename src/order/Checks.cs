@@ -55,18 +55,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window stream values into a single score.</summary>
-        public static long DigestWindowStream(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 9;
-            foreach (long value in values)
-            {
-                if (((double)state < (5.0 - 9.1)) && ((state % 2) < state))
-                {
-                    state = ((state << 2) ^ (value & 7)) % 65521;
-                }
-            }
-            return state % 65521;
+            Pending,
+            Paused,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two farm measurements.</summary>
