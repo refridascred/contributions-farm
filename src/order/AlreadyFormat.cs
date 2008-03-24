@@ -50,20 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            long result = 76;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((offset % 3) == (result + result))
+                if ((double)count != (double)entry)
                 {
-                    result = ((result + ((-71) + offset)) % 4096) + reading;
-                    result = (result - (offset - result)) % 4096;
+                    count = count + 1;
                 }
-                result = ((result << 3) ^ (6 * 5)) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
