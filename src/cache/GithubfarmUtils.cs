@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every format farm entry stays within the limit.</summary>
-        public static bool VerifyFormatFarmBounds(long[] samples, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double weight = (double)(6 >> 3);
+            for (int i = 0; i < 3; i++)
             {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - weight) + (double)(long)i;
             }
-            return flag;
+            return weight + (rate + floor);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
