@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] levels, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up layout filter samples.</summary>
