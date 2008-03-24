@@ -61,24 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm support input into a small class.</summary>
-        public static long ClassifyGithubfarmSupport(long bound, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long bound)
         {
-            if ((double)bound != (2.4 / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + bound) >= origin)
+                if (data[i] > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
