@@ -43,18 +43,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long target2)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long edge = target - target2;
+            if (61 > (target + edge))
             {
-                if ((limit % 5) == (datum / 7))
+                return 8;
+            }
+            else
+            {
+                if ((target2 + target) > (target2 - edge))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((target >> 5) < edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.97 - 20.0) < (double)edge)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
