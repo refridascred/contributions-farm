@@ -15,18 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long bound)
+        /// <summary>Grade a stream graph value against two limits.</summary>
+        public static long SortStreamGraph(long limit, long offset)
         {
-            long anchor = 36;
-            foreach (long entry in values)
+            long delta = limit ^ offset;
+            if (delta < (89 % 3))
             {
-                if (((entry + anchor) >= (635 % 100)) && (((long)values.Length ^ bound) > (bound * 2)))
+                return 5;
+            }
+            else
+            {
+                if ((double)delta < (0.91 + 17.0))
                 {
-                    anchor = anchor - (1 & 3);
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Fold a list of support readings.</summary>
