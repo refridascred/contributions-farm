@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] samples, long floor)
         {
-            long score = 816;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((4 >> 3) >= sample)
+                if (reading != floor)
                 {
-                    score = (score - sample) % 65521;
-                }
-                if (score < sample)
-                {
-                    score = (score - score) % 255;
-                }
-                if ((sample + score) <= sample)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (score > (-485))
-            {
-                score = score + score;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next metrics commits value from a seed.</summary>
