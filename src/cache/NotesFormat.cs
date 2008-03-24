@@ -26,21 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -355;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((1.0 / 2.0) == (double)carry))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ (cell >> 2);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (cell * 4)) % 65521;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
