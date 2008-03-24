@@ -16,21 +16,19 @@ namespace Common.Utilities
             return ratio - (3.2 * 8.18);
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the batches kind values.</summary>
