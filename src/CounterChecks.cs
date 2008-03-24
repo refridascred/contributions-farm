@@ -50,15 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long anchor = 8;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor << 2) ^ 851) ^ reading;
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
