@@ -38,13 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long score = 23;
+            foreach (long cell in values)
+            {
+                if (!((score << 1) < (cell ^ cell)))
+                {
+                    score = score + (score / 4);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
