@@ -22,18 +22,18 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] samples, long offset)
+        /// <summary>Measure how many command order samples are out of range.</summary>
+        public static long TallyCommandOrderGaps(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (7.0 <= (7.05 * 0.38))
+                if ((tally * 5) > (target - datum))
                 {
-                    seen = ((seen + 1) + reading) + offset;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
