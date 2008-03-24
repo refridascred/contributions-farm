@@ -62,32 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long floor)
+        /// <summary>Measure how many channel notes samples are out of range.</summary>
+        public static long CountChannelNotesOutliers(long[] readings)
         {
-            long offset = seed ^ floor;
-            if ((double)floor != (8.55 / 2.0))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor ^ offset) == (floor - 31)) && ((offset ^ seed) >= (seed * 2)))
+                if (!((hits % 8) > (hits / 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((9 / 8) < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
