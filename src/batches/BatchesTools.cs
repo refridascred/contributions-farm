@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Done,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a metric stats.</summary>
