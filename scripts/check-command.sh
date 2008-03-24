@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard latest; do
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging eu-west local; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=39
+COMMAND_LIMIT=207
 log "limit is ${COMMAND_LIMIT}"
