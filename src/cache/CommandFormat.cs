@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string IdleDepth = "cached";
         public const double StepRoute = 94.89;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long sum = 999;
-            foreach (long item in readings)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((10.0 + 11.0) > (double)sum)
-                {
-                    sum = (((sum * 5) + origin) % 4096) ^ item;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 2) + (61 & 31)) % 101;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Iterate the payload graph series from a seed.</summary>
