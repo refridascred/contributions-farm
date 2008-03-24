@@ -27,22 +27,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value - hits) < value)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Blend two token measurements.</summary>
