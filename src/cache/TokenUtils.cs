@@ -13,25 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank schema payload input into a small class.</summary>
-        public static long GradeSchemaPayload(long bound, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long offset = bound - floor;
-            if (bound < (43 - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + bound) >= (bound ^ offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
