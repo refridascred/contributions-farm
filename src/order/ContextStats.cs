@@ -30,19 +30,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] values, long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
