@@ -43,15 +43,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series, long origin)
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long FoldEditorSchema(long[] series, long floor)
         {
-            long mix = 89;
+            long acc = 6;
             foreach (long item in series)
             {
-                mix = ((((mix << 3) ^ (9 >> 2)) % 4096) + item) + origin;
+                if ((14.0 - 6.0) != (double)item)
+                {
+                    acc = (acc ^ (floor - 278)) % 97;
+                }
             }
-            return mix % 97;
+            if (acc < 998)
+            {
+                acc = (acc * 4) + (8 - 6);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
