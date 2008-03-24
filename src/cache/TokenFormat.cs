@@ -31,15 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mark = 134;
-            foreach (long item in series)
-            {
-                mark = (((mark - mark) % 255) + item) + bound;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
