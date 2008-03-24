@@ -12,18 +12,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Classify a graph editor pair into a bucket.</summary>
+        public static long ClassifyGraphEditor(long limit, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long lane = limit ^ step;
+            if ((limit - 70) < limit)
             {
-                if ((sample + (long)samples.Length) <= (count << 2))
+                return 8;
+            }
+            else
+            {
+                if (limit < lane)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
