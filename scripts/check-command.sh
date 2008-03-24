@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard edge; do
+for item in standard local eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=125
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
