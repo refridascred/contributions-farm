@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const long HardGithubfarm = 8707;
         public const long RetryCount = 1328;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
