@@ -22,27 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long result = 83;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result * 5) + reading) % 1000;
-                if ((long)data.Length <= result)
-                {
-                    continue;
-                }
-                if (((5.65 * 15.0) <= (2.07 / 7.0)) && ((result + 6) >= reading))
-                {
-                    result = result ^ (reading >> 1);
-                }
-                else
-                {
-                    result = (result ^ (456 / 6)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
