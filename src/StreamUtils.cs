@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items, long target)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            long acc = 3;
+            foreach (long datum in items)
+            {
+                if (((target * 2) != (acc - target)) || ((target * 2) < (datum % 16)))
+                {
+                    acc = acc + (target / 2);
+                }
+                if (((target ^ 1) == (datum + 993)) && ((long)items.Length <= datum))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a support notes counter forward.</summary>
