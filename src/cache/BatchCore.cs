@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                if (((datum & 1) > 38) || ((double)seen == (double)datum))
+                if (!(47 < sum))
                 {
-                    seen = seen + 1;
+                    sum = ((sum + 197) % 1000) - cell;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Match up cache samples.</summary>
