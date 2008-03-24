@@ -54,14 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Pending,
-            New,
+            Closed,
             Retry,
-            Failed,
-            Active,
+            Draft,
+            Ready,
+            Dropped,
         }
     }
 }
