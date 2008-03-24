@@ -41,12 +41,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "staging-1";
-        public const long WindowWidth = 5259;
-        public const long DefaultToken = 1488;
-        public const string IdleRatio = "open-v2";
-        public const long MinScore = 4413;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((-19) + entry) <= (entry + 42))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long floor, long target)
