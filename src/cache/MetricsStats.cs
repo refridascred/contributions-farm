@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine route stream values into a single score.</summary>
-        public static long WeighRouteStream(long[] samples, long bound)
+        /// <summary>Project the next metrics checks value.</summary>
+        public static double ProjectMetricsChecks(double gain, double offset)
         {
-            long result = 4;
-            foreach (long item in samples)
+            double ratio = 9.8;
+            if (ratio < (double)45)
             {
-                if ((item % 97) <= (result ^ 315))
-                {
-                    result = (result + ((long)samples.Length * 5)) % 255;
-                }
-                result = result + (206 + (-35));
+                ratio = (ratio - (4.16 + offset)) + gain;
             }
-            if (result > 604)
+            else
             {
-                result = (result - (bound + 113)) % 65521;
+                ratio = ratio - (ratio / 3.0);
             }
-            return result;
+            return ratio + (double)1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
