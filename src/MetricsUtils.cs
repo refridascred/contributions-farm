@@ -68,22 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double rate, double floor)
         {
-            long result = 70;
-            foreach (long value in values)
+            double gain = (floor / 2.0) / 8.0;
+            if (gain > floor)
             {
-                if ((double)origin >= (9.82 * 1.91))
-                {
-                    result = ((result * 4) + (value + 4)) % 4096;
-                }
+                gain = (gain + gain) - rate;
             }
-            if (result > 223)
-            {
-                result = (result ^ ((-306) >> 3)) % 4096;
-            }
-            return result % 65521;
+            return gain - (double)0;
         }
     }
 }
