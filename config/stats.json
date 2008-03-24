@@ -1,5 +1,16 @@
 {
-  "soft_window": 9997,
-  "verbose": true,
-  "persist": 15.85
+  "retry_capacity": "standard",
+  "base_capacity_s": false,
+  "readonly": {
+    "default_ratio_pct": {
+      "min_interval_pct": 61.58,
+      "stats_delay": "edge",
+      "cache_depth_count": "legacy"
+    },
+    "poll_ratio": 14,
+    "sync_size_ms": "latest"
+  },
+  "dry_run": [387, 446],
+  "contributi_depth": ["stable", "cached", "legacy", "open"],
+  "retry_depth": "primary"
 }
