@@ -26,16 +26,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Classify a counter token pair into a bucket.</summary>
+        public static long RankCounterToken(long floor, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            if ((double)floor <= (0.13 + 11.0))
             {
-                acc = acc + (seed + acc);
-                acc = ((acc * 3) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (8 > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset >> 4) < (offset + floor)) && ((1 << 3) != (offset & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
