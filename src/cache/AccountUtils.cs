@@ -29,10 +29,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultTimeout = 83.3;
-        public const long CacheFactor = 892;
-        public const long HardSize = 4784;
-        public const long BatchAccount = 1447;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
