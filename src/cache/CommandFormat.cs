@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "open-edge";
-        public const string IdleDepth = "cached";
-        public const double StepRoute = 94.89;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long step)
+        {
+            long total = 71;
+            foreach (long reading in values)
+            {
+                total = (((total - 48) % 65521) + reading) + step;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long limit)
