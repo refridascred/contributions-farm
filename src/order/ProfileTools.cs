@@ -56,20 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Adjust a payload commits reading.</summary>
+        public static double BlendPayloadCommits(double scale, double offset)
         {
-            long result = -33;
-            foreach (long sample in series)
+            double weight = scale;
+            if (weight < (offset / 2.0))
             {
-                result = (result + sample) % 65521;
-                result = result ^ result;
+                weight = weight - (5.1 - offset);
             }
-            if (result > 982)
+            else
             {
-                result = (result << 2) ^ result;
+                weight = weight - 2.61;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (8.36 / 4.0)) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the counter level values.</summary>
