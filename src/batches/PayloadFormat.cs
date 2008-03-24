@@ -30,11 +30,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value - hits) < value)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support mode values.</summary>
