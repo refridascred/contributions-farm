@@ -50,26 +50,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long carry = -810;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((82 * 2) <= (entry ^ entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (8 + entry)) % 65521;
-                }
-                else
-                {
-                    carry = carry - (entry % 12);
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Blend two format measurements.</summary>
