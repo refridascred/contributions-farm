@@ -40,10 +40,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 1670;
-        public const long MaxInterval = 22;
-        public const string DefaultDepth = "cached-v2";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Failed,
+            Pending,
+            Done,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ProjectGraph(double ratio, double floor)
