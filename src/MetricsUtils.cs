@@ -65,16 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long result = 70;
+            foreach (long value in values)
             {
-                mark = ((mark * 3) + ((long)i + (long)i)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((double)origin >= (9.82 * 1.91))
+                {
+                    result = ((result * 4) + (value + 4)) % 4096;
+                }
             }
-            return mark;
+            if (result > 223)
+            {
+                result = (result ^ ((-306) >> 3)) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
