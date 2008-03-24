@@ -93,13 +93,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Active,
-            Draft,
-            Ready,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowRatio = 825;
+        public const double DefaultLevel = 56.57;
+        public const long BatchStream = 1197;
     }
 }
