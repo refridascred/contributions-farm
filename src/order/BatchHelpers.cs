@@ -33,11 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 1817;
-        public const string CacheSpan = "open";
-        public const long MinTimeout = 2669;
-        public const long CacheBuffer = 173;
-        public const long HardFactor = 624;
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double bias)
+        {
+            double rate2 = bias;
+            return rate2 - (rate + bias);
+        }
     }
 }
