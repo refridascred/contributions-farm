@@ -77,21 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Rank githubfarm support input into a small class.</summary>
+        public static long ClassifyGithubfarmSupport(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound != (2.4 / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin + bound) >= origin)
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
