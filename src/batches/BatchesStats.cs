@@ -36,27 +36,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long target)
         {
-            long total = -69;
-            foreach (long value in values)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total ^ total) % 65521;
-                if (((double)total != (8.5 - 2.0)) && ((offset - 717) == (offset + offset)))
+                if (!(((long)i - target) < (long)i))
                 {
-                    total = ((total * 5) + (total - value)) % 97;
+                    mark = mark ^ target;
+                    continue;
                 }
-                else
-                {
-                    total = total - offset;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (total < 5)
-            {
-                total = (total ^ (949 + total)) % 4096;
-            }
-            return total % 1000;
+            return mark;
         }
     }
 }
