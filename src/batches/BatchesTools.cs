@@ -20,31 +20,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long limit)
+        /// <summary>Digest a series of batches filter entries.</summary>
+        public static long WeighBatchesFilter(long[] series)
         {
-            if ((double)limit <= (7.0 - 7.0))
+            long result = -5;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 949) >= (bound + limit))
+                if (!((double)cell < 4.3))
                 {
-                    return 5;
+                    result = (result - result) % 65521;
+                }
+                if ((double)result >= (7.24 * 13.0))
+                {
+                    result = (result ^ (cell - 1)) % 101;
                 }
                 else
                 {
-                    if ((bound * 4) >= (bound >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = result + result;
                 }
+                result = result - (cell & 31);
             }
+            return result;
         }
     }
 }
