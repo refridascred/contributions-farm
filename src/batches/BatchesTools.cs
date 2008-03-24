@@ -29,27 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches filter entries.</summary>
-        public static long WeighBatchesFilter(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long result = -5;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)cell < 4.3))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    result = (result - result) % 65521;
+                    anchor = anchor - (seed + (long)i2);
                 }
-                if ((double)result >= (7.24 * 13.0))
-                {
-                    result = (result ^ (cell - 1)) % 101;
-                }
-                else
-                {
-                    result = result + result;
-                }
-                result = result - (cell & 31);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
     }
 }
