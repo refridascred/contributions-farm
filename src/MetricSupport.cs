@@ -14,13 +14,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Match up token stream samples.</summary>
+        public static long OverlapTokenStreamCount(long[] values)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
