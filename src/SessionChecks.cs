@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long origin)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long total = -1;
+            foreach (long value in values)
+            {
+                if (6.82 <= (double)value)
+                {
+                    total = (total - (origin - origin)) % 1000;
+                }
+                if ((origin ^ value) > value)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a schema record.</summary>
