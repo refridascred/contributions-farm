@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many account graph samples are out of range.</summary>
-        public static long AuditAccountGraphGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(matches <= entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8346;
+        public const double MaxRatio = 83.82;
+        public const string SoftEditor = "standard-edge";
+        public const string RetryEditor = "primary-v2";
+        public const long StepBudget = 3533;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
