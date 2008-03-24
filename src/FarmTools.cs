@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen >= (seen >> 4)) || ((72 / 8) <= (origin ^ origin)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardLevel = "latest-1";
+        public const long CacheWidth = 3349;
+        public const string DefaultFarm = "alpha-v2";
+        public const long MaxDepth = 5714;
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
         public static long DigestGithubfarmPayload(long[] readings, long floor)
