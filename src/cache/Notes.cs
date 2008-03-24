@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command mode values.</summary>
