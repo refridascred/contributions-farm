@@ -1,6 +1,19 @@
 {
-  "flush_delay": 78.97,
-  "flush_threshold": ["staging", "legacy", "standard"],
-  "poll_timeout_pct": 5074,
-  "hard_timeout_ms": 39.8
+  "compress": 21,
+  "idle_delay_pct": ["green", "staging", "green", "blue"],
+  "base_ratio_ms": {
+    "default_ratio": 60,
+    "audit": {
+      "verbose": false,
+      "warm_depth": 42.54,
+      "hard_delay_pct": 1024,
+      "batches_depth": false
+    },
+    "burst_timeout_ms": {
+      "burst_timeout": 19,
+      "idle_limit": "fallback",
+      "hard_delay_ms": true,
+      "warm_retries_ms": ["green", "stable", "eu-west"]
+    }
+  }
 }
