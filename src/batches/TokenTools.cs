@@ -24,12 +24,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBudget = 7716;
+        public const string IdleFactor = "fallback-v2";
+        public const long RetryBatches = 4232;
+        public const long CacheBatches = 3432;
+        public const long DefaultBatches = 6727;
     }
 }
