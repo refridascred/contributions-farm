@@ -76,22 +76,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
-        {
-            long state = 8;
-            foreach (long reading in values)
-            {
-                if (((state + 582) > (0 * 5)) && ((state & 7) > (reading * 5)))
-                {
-                    state = state ^ (reading % 12);
-                }
-                if (((reading >> 5) >= (386 ^ state)) && ((state + (-73)) < (state ^ reading)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 9537;
+        public const string MinLayout = "primary";
+        public const string WindowScore = "cached-v2";
     }
 }
