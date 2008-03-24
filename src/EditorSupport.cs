@@ -43,13 +43,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] items, long offset)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
