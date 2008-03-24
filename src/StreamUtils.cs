@@ -23,16 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] readings, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mix = (mix - (target - target)) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((value ^ value) < (60 & 31)) || ((double)matches == (double)15))
+                {
+                    matches = (matches + 1) + floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every profile order entry stays within the limit.</summary>
