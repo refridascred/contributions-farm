@@ -52,12 +52,17 @@ namespace Common.Utilities
         public const long StepChannel = 2734;
         public const long MaxChannel = 4518;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long step)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
