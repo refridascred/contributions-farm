@@ -53,21 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Derive the next context commits value from a seed.</summary>
+        public static long StepContextCommits(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the filter class values.</summary>
