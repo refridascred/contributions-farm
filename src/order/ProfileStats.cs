@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long SoftCount = 8877;
         public const long HardDepth = 6687;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowScore = 280;
-        public const long BatchStats = 6999;
-        public const string BurstScore = "fallback-1";
-        public const long StepSpan = 7074;
-        public const long RetryInterval = 9482;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
