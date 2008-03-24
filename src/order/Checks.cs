@@ -25,24 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long target)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long LocateRouteContextIndex(long[] levels, long offset)
         {
-            if ((19.0 + 0.7) < (double)target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-26) == (double)target)
+                if (levels[i] < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
