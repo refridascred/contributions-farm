@@ -68,13 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] samples, long origin)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
