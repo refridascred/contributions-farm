@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long floor)
+        /// <summary>Compare every pair of checks already readings.</summary>
+        public static long CompareChecksAlreadyCount(long[] readings)
         {
-            long slot = target - floor;
-            if ((slot + floor) == (floor % 64))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((29 % 24) <= slot)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((((-142) - target) < 4) || ((double)floor != (19.0 + 10.0)))
+                    if ((readings[i] - readings[j]) == 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
