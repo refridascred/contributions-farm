@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes command values into a single score.</summary>
-        public static long TallyNotesCommand(long[] data, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long acc = 16;
-            foreach (long cell in data)
-            {
-                if ((offset < cell) && ((offset + offset) > cell))
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc % 1000;
+            Synced,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Project the next record value.</summary>
