@@ -27,19 +27,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((origin + 645) < origin))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
