@@ -24,13 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples, long step)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Closed,
+            long carry = 17;
+            foreach (long reading in samples)
+            {
+                carry = (((carry * 3) + 5) % 97) + reading;
+            }
+            if (carry < 77)
+            {
+                carry = (carry ^ (step / 5)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
