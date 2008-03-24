@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 20;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if (753 > (state - 1))
                 {
-                    return (long)i;
+                    state = (state + ((-602) + target)) % 97;
+                    continue;
                 }
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state << 2) ^ (sample + (long)i)) % 1000;
+                }
+                state = (state ^ 71) % 97;
             }
-            return -1;
+            if (state > 0)
+            {
+                state = (state * 2) + (target - target);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
