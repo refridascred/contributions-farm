@@ -44,22 +44,18 @@ namespace Common.Utilities
         public const long DefaultToken = 946;
         public const double IdleSpan = 94.08;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples, long seed)
+        /// <summary>Audit commits cluster readings against a rule.</summary>
+        public static long AuditCommitsClusterGaps(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((seed >> 3) >= ((long)samples.Length % 100))
+                if ((9.7 * 2.19) <= (double)seen)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 1) ^ value) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
