@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long target)
         {
-            Paused,
-            Retry,
-            Ready,
-            Failed,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the context kind values.</summary>
