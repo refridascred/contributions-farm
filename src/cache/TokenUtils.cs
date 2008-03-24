@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 3;
+            foreach (long entry in series)
             {
-                if ((double)limit != (8.0 + 6.0))
+                sum = sum + (entry >> 1);
+                if ((1.0 <= (double)sum) || ((entry + 16) != (entry * 2)))
                 {
-                    tally = (tally + 2) - sample;
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
