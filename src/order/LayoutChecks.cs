@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((long)series.Length > (cell * 3)) || !(88 <= (cell + count)))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Adjust a filter reading.</summary>
