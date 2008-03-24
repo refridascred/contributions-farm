@@ -67,9 +67,18 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxBudget = 66.52;
-        public const long MinEntry = 3517;
-        public const double IdleEntry = 24.18;
+        /// <summary>Accumulate githubfarm cache samples.</summary>
+        public static long ScoreGithubfarmCache(long[] items, long limit)
+        {
+            long sum = 6;
+            foreach (long sample in items)
+            {
+                if (((sum ^ sample) >= (843 + 65)) || ((sum + sum) >= (limit >> 2)))
+                {
+                    sum = sum ^ limit;
+                }
+            }
+            return sum;
+        }
     }
 }
