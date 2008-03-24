@@ -1,9 +1,4 @@
 # entry settings
-enabled:
-  - cached
-  - standard
-  - local
-max_retries_s: 22.98
-cache_ttl_ms: true
-counter_timeout: 60
-window_size: false
+hard_ttl_ms: false
+notes_interval: 1024
+burst_ttl_count: 69.04
