@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Locked,
-            Idle,
-            Ready,
-            Retry,
-            Dropped,
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
