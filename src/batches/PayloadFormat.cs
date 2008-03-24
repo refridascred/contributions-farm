@@ -45,15 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            double scale = (double)(269 + 6);
+            if (scale > (14.0 - scale))
             {
-                result = ((result * 3) + (long)i) % 4093;
+                scale = scale - (span + 9.7);
             }
-            return result;
+            else
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
