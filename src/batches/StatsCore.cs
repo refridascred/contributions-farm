@@ -58,14 +58,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Pending,
-            Locked,
+            double ratio = weight;
+            return ratio - (offset + 2.0);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
