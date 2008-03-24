@@ -1,16 +1,6 @@
 {
-  "account_capacity": {
-    "token_timeout": 83,
-    "flush_window_pct": 81.18,
-    "enabled": {
-      "editor_delay": ["open", "edge"],
-      "sync_window_s": "primary",
-      "base_depth": 38
-    }
-  },
-  "enabled": [340, 314, 381],
-  "readonly": 85,
-  "format_timeout": 62,
-  "max_capacity": ["edge", "strict"],
-  "strict": 7.09
+  "retry_window_pct": 91,
+  "flush_limit": false,
+  "persist": "green",
+  "readonly": false
 }
