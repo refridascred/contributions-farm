@@ -16,12 +16,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long limit)
         {
-            Stale,
-            Ready,
-            Retry,
+            long prev = step ^ limit;
+            if ((prev <= (prev / 3)) || ((3.3 * 1.5) == (double)prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-933) >= (step + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
