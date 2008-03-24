@@ -60,14 +60,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            New,
-            Idle,
-            Paused,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseSize = 5998;
+        public const long LimitInterval = 6269;
+        public const string BatchStats = "open-1";
+        public const long SoftScore = 2135;
     }
 }
