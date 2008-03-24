@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const double BatchInterval = 26.47;
         public const string DefaultInterval = "strict-edge";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (reading <= target)
+                if ((bound % 5) < count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
