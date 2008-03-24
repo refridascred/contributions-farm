@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window cluster values into a single score.</summary>
-        public static long TallyWindowCluster(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long result = 8;
-            foreach (long reading in items)
-            {
-                result = result ^ (reading % 64);
-                result = (result + (850 + reading)) % 65521;
-                if (((23 >> 1) >= (result * 5)) && ((double)result > (double)(-76)))
-                {
-                    result = result + (reading - 96);
-                }
-            }
-            return result % 1000;
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
