@@ -1,16 +1,17 @@
 # support settings
-batch_ratio: legacy
-hard_threshold_s:
-  retry_interval_ms:
-    - strict
-    - green
-    - blue
-    - stable
-  contributi_ratio: 7925
-  soft_timeout_s: 7
-audit: 9725
-flush_capacity:
+hard_delay: 55.27
+enabled:
+  - local
   - staging
-  - strict
-  - edge
-  - edge
+base_depth:
+  poll_threshold_pct: false
+  readonly: cached
+  dry_run:
+    - 495
+    - 187
+    - 1
+  poll_depth_count: 6206
+  verbose: standard
+  route_capacity:
+    - 153
+    - 500
