@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            double load = gain;
-            if (load < gain)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                load = (load + (gain / 9.0)) + bias;
+                if (!((hits >> 5) >= (hits >> 1)))
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (load * 0.79)) + (double)(long)i;
-            }
-            return load - (double)1;
+            return hits;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
