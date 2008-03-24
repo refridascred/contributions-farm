@@ -19,24 +19,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long step, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            if ((double)step > (17.0 * 16.0))
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                sum = sum ^ ((long)i + sum);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor & 255) >= (4 / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
