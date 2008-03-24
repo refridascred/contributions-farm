@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] samples, long seed)
+        /// <summary>Combine token commits values into a single score.</summary>
+        public static long TallyTokenCommits(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long carry = 8;
+            foreach (long datum in series)
             {
-                if (reading != seed)
+                for (int i = 0; i < 5; i++)
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry << 3) ^ ((long)i % 12)) % 255) ^ datum;
                 }
+                carry = (carry ^ (carry * 3)) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Rank support input into a small class.</summary>
