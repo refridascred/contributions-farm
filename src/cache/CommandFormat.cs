@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Grade a entry report value against two limits.</summary>
+        public static long RankEntryReport(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = step + offset;
+            if (((double)offset2 < (15.0 / 8.0)) && ((step >> 3) <= 574))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset >= (offset2 / 2))
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
