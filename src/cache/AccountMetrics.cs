@@ -28,23 +28,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < 3)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 25.07;
+        public const long WindowMetrics = 8969;
+        public const string CacheBudget = "latest-1";
+        public const double MaxCount = 14.43;
+        public const long CacheFactor = 2685;
 
         /// <summary>Count editor commits pairs that satisfy a relation.</summary>
         public static long CompareEditorCommitsCount(long[] items)
