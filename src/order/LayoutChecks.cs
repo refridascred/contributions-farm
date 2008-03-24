@@ -23,20 +23,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double ratio, double bias)
-        {
-            double scale = ratio;
-            if (scale > scale)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "legacy-1";
+        public const long LimitLevel = 4052;
+        public const double LimitRatio = 24.5;
+        public const long BatchGraph = 8583;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] data, long bound)
