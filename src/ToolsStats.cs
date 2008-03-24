@@ -41,15 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long target)
         {
-            double rate = 15.0;
-            if (rate >= (double)251)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                rate = (rate + (rate + offset)) + bias;
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + (offset + 7.3);
+            return ready;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
