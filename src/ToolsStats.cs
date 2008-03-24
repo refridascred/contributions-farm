@@ -34,24 +34,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((8.4 / 8.0) < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset != (7.0 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
