@@ -1,11 +1,29 @@
 {
-  "batch_ratio": false,
-  "commits_size": {
-    "soft_limit": 250,
-    "warm_delay_count": [410, 365, 107, 235],
-    "entry_retries": "staging"
+  "batch_interval_s": 21.71,
+  "base_interval_count": 6019,
+  "cache_interval_pct": ["green", "cached", "strict"],
+  "compress": 98.15,
+  "readonly": {
+    "burst_capacity_s": 6846,
+    "buffer_ratio": {
+      "verbose": "open",
+      "default_ttl_pct": 33.74,
+      "warm_capacity_count": false,
+      "retry_depth_count": 30.87
+    },
+    "sync_ratio_s": 30,
+    "base_capacity_count": 250,
+    "queue_ratio": "standard"
   },
-  "hard_limit_s": [183, 138, 338],
-  "max_delay_s": ["fallback", "green", "primary", "blue"],
-  "compress": "standard"
+  "default_ttl": {
+    "warm_ttl_pct": {
+      "farm_limit": ["stable", "green", "blue", "eu-west"],
+      "hard_threshold_count": "primary",
+      "buffer_limit": true
+    },
+    "layout_retries": "blue",
+    "batches_timeout": [398, 320],
+    "min_depth_pct": 30,
+    "strict": true
+  }
 }
