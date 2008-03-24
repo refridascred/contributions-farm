@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const long BatchInterval = 9230;
         public const long SoftBudget = 9660;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            long state = 46;
-            foreach (long cell in series)
+            double ratio = rate;
+            if (ratio <= ratio)
             {
-                state = (state ^ cell) % 1000;
-                state = ((state << 3) ^ (cell + seed)) % 97;
-                if ((cell >= (seed + state)) && ((seed - seed) < (80 + seed)))
-                {
-                    state = state + (-98);
-                }
+                ratio = (ratio + rate) + bias;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 2.95) + (double)(long)i;
+            }
+            return ratio + 0.3;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
