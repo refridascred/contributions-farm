@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long result = 6;
-            foreach (long value in levels)
-            {
-                if ((double)value >= 2.43)
-                {
-                    result = (result ^ (value + value)) % 101;
-                }
-                result = (result ^ (result / 8)) % 101;
-                result = result - (result * 4);
-            }
-            if (result < 915)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 65521;
+            Stale,
+            Synced,
+            Failed,
         }
 
         /// <summary>Validate session cache readings against a bound.</summary>
