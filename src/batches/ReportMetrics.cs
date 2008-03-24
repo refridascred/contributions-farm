@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long result = 0;
+            foreach (long cell in samples)
             {
-                if ((entry - hits) < (2 / 4))
+                if ((((long)samples.Length + result) != ((-89) + cell)) && (result < 361))
                 {
-                    hits = hits + 3;
+                    result = result ^ cell;
                 }
             }
-            return hits;
+            if (result > (-561))
+            {
+                result = ((result << 3) ^ (12 + result)) % 65521;
+            }
+            return result;
         }
     }
 }
