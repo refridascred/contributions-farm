@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
