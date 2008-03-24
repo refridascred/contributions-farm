@@ -57,15 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            double weight = rate;
-            for (int i = 0; i < 5; i++)
+            long acc = 105;
+            foreach (long datum in readings)
             {
-                weight = ((weight - (rate - rate)) + (double)(long)i) - offset;
+                if ((acc + datum) == (acc ^ acc))
+                {
+                    acc = acc - (datum ^ datum);
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (961 - 33)) % 4096;
+                }
+                acc = acc - (datum << 1);
             }
-            return weight + rate;
+            return acc;
         }
     }
 }
