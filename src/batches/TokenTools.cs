@@ -37,31 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((bound + bound) == (bound & 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 9) != (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound > (bound % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
