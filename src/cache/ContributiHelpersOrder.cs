@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepDepth = 5733;
-        public const double MaxSpan = 92.44;
-        public const string MinGraph = "cached";
-        public const double RetryGraph = 51.06;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] data, long offset)
