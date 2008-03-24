@@ -10,32 +10,17 @@ namespace Common.Utilities
         public const double BurstAccount = 60.5;
         public const long RetryInterval = 7989;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            long diff = step + bound;
-            if ((253 * 4) > (step >> 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)diff != (4.7 / 3.0)) && ((diff * 5) <= (777 + 4)))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step > (0.2 - 2.95))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
