@@ -55,22 +55,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items, long offset)
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long CombineContributiNotes(long[] series)
         {
-            long mix = 0;
-            foreach (long reading in items)
+            long result = -268;
+            foreach (long item in series)
             {
-                if (((double)mix > (double)(long)items.Length) || ((offset << 3) >= (44 + offset)))
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = mix - (offset / 2);
+                    result = ((result * 2) + (result - item)) - (long)i;
                 }
-                else
+                if (((14 * 4) > (72 - item)) || ((item % 97) <= (item + item)))
                 {
-                    mix = (mix << 2) ^ (mix - reading);
+                    result = (result << 2) ^ (result / 8);
                 }
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
