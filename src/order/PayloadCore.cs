@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
