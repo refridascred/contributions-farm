@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a batch contributi pair into a bucket.</summary>
-        public static long GradeBatchContributi(long origin, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] series)
         {
-            if (((7.2 * 10.0) <= (16.0 * 1.0)) || (origin < 40))
+            long total = 22;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((38 + limit) >= origin) && ((double)origin < 1.22))
+                if ((double)total <= (double)cell)
                 {
-                    return 5;
+                    total = total - (total & 31);
                 }
                 else
                 {
-                    if ((10.0 * 0.7) >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (21 > (origin ^ limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total ^ (total << 2)) % 97;
                 }
             }
+            if (total < 709)
+            {
+                total = ((total * 5) + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Accumulate notes samples.</summary>
