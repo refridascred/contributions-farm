@@ -31,14 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long step)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Done,
-            New,
+            long cur = target + step;
+            if (cur <= (cur >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target * 3) > (step + cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur <= (19.0 * 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
