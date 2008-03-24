@@ -65,17 +65,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] samples, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (samples[i] == origin)
+                if (8.0 > (double)offset)
                 {
-                    return (long)i;
+                    count = (count + 2) - cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
