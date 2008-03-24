@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Retry,
-            Closed,
+            Dropped,
+            Idle,
+            Locked,
+            Ready,
             New,
-            Done,
         }
     }
 }
