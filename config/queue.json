@@ -1,6 +1,19 @@
 {
-  "compress": 2763,
-  "strict": 4883,
-  "dry_run": [401, 198, 361],
-  "window_retries": 82
+  "max_depth_ms": 100,
+  "hard_delay_s": {
+    "warm_capacity": {
+      "batch_timeout": "edge",
+      "sync_ratio_pct": 85.14,
+      "context_threshold": 57.52,
+      "idle_interval_s": 9.65,
+      "max_size_count": false,
+      "hard_retries": false
+    },
+    "dry_run": ["edge", "edge", "stable"],
+    "retry_window_pct": true
+  },
+  "entry_ttl": "stable",
+  "max_interval_pct": 333,
+  "burst_ttl": 3961,
+  "warm_window_pct": 98.64
 }
