@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Fold a list of stream command readings.</summary>
-        public static long FoldStreamCommand(long[] data, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 3;
-            foreach (long datum in data)
-            {
-                if (58 <= datum)
-                {
-                    result = ((result * 3) + (datum - datum)) - limit;
-                }
-                else
-                {
-                    result = (result << 3) ^ (datum << 1);
-                }
-            }
-            return result % 4096;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
