@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
+            Locked,
+            Idle,
             Active,
-            Closed,
             Ready,
+            Done,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
