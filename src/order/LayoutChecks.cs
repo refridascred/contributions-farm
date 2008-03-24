@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryLevel = 3441;
-        public const string BatchCluster = "latest-v2";
-        public const double StepCount = 8.98;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a session entry value against two limits.</summary>
         public static long ClassifySessionEntry(long origin, long limit)
