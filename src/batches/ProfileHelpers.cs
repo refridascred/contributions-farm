@@ -67,12 +67,23 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchInterval = 1764;
-        public const long BatchRecord = 9837;
-        public const long RetryRecord = 3242;
-        public const long SoftRecord = 8793;
-        public const double IdleRecord = 51.93;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels)
+        {
+            long result = 74;
+            foreach (long item in levels)
+            {
+                if ((item & 255) <= item)
+                {
+                    result = result - (127 / 2);
+                }
+            }
+            if (result < 5)
+            {
+                result = ((result * 4) + (25 + result)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] values, long step)
