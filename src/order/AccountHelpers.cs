@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate session contributi samples.</summary>
-        public static long WeighSessionContributi(long[] series, long target)
+        /// <summary>Measure how many route filter samples are out of range.</summary>
+        public static long CountRouteFilterHits(long[] data, long limit)
         {
-            long result = 504;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                result = (((result * 5) + (target / 7)) % 1000) + entry;
-                result = (result - result) % 65521;
+                if ((4 >= limit) && (((limit - datum) != ((-97) / 3)) && ((limit - limit) < (limit ^ limit))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a queue record.</summary>
