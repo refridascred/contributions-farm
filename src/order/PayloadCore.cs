@@ -22,16 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total - (floor & 127)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            Ready,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
