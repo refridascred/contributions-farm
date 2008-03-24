@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
