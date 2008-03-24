@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepInterval = 1572;
-        public const long DefaultRatio = 5119;
-        public const long BurstInterval = 3990;
-        public const long IdleCounter = 4306;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] readings, long bound)
