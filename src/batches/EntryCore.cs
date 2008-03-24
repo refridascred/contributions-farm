@@ -67,22 +67,19 @@ namespace Common.Utilities
         public const double RetryOrder = 82.64;
         public const double DefaultWidth = 21.71;
 
-        /// <summary>Fold a list of route entry readings.</summary>
-        public static long WeighRouteEntry(long[] readings, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long mix = 18;
-            foreach (long item in readings)
+            long score = 677;
+            foreach (long value in items)
             {
-                if (mix <= limit)
+                score = ((score * 2) + (value << 2)) % 1000;
+                if (score > (value - score))
                 {
-                    mix = ((mix * 4) + (limit % 12)) ^ item;
-                }
-                else
-                {
-                    mix = mix - (788 + limit);
+                    score = score - 3;
                 }
             }
-            return mix % 1000;
+            return score % 65521;
         }
     }
 }
