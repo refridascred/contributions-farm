@@ -64,11 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleInterval = 96.38;
-        public const long RetryWidth = 8968;
-        public const long HardBatches = 5655;
-        public const long BurstBatches = 8193;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark << 2) ^ 0) % 97;
+                if ((double)(long)i == (4.0 - 17.0))
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
