@@ -51,14 +51,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long seed)
         {
-            Failed,
-            Pending,
-            Done,
-            Stale,
-            Paused,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
