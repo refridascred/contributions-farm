@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long sum = 529;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell > (5.09 / 2.0)) || ((129 + cell) <= (sum + sum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum * 2) + 1;
-                }
-                if ((cell + floor) != (sum & 15))
-                {
-                    sum = sum + (cell << 1);
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > (-11))
-            {
-                sum = ((sum * 2) + (floor + sum)) % 1000;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
