@@ -47,11 +47,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "open-edge";
-        public const string LimitLevel = "strict-edge";
-        public const long BatchContext = 2029;
-        public const double BurstLevel = 29.08;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) < 3)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many commits editor samples are out of range.</summary>
         public static long MeasureCommitsEditorGaps(long[] items, long offset)
