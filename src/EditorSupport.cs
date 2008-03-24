@@ -63,15 +63,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long sum = 42;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + datum) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
