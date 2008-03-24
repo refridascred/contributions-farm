@@ -59,13 +59,35 @@ namespace Common.Utilities
         public const long BatchContext = 2029;
         public const double BurstLevel = 29.08;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long total = 5;
+            foreach (long value in data)
+            {
+                if ((total + total) != ((long)data.Length + seed))
+                {
+                    total = (total ^ (total * 2)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ seed) % 4096;
+                    total = total + (seed + total);
+                }
+                if (737 >= (seed + 95))
+                {
+                    total = (total + (97 + 5)) % 65521;
+                }
+                if ((value >> 1) != (value + value))
+                {
+                    break;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total << 2) ^ (seed - seed);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the profile class values.</summary>
