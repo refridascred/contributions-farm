@@ -1,24 +1,6 @@
 {
-  "min_ratio_s": 1024,
-  "sync_delay_pct": {
-    "layout_ratio": false,
-    "record_ratio": 5056,
-    "poll_retries": {
-      "warm_size_pct": [459, 7],
-      "soft_interval": 1024,
-      "default_timeout": [439, 32]
-    },
-    "hard_size_ms": 62.96,
-    "strict": {
-      "commits_retries": [241, 95, 262],
-      "idle_timeout": "local",
-      "warm_interval_pct": 72,
-      "base_ttl_s": ["stable", "edge", "green"]
-    },
-    "warm_window": 1
-  },
-  "dry_run": 250,
-  "strict": false,
-  "counter_ratio": 58.05,
-  "payload_retries": false
+  "flush_delay": 78.97,
+  "flush_threshold": ["staging", "legacy", "standard"],
+  "poll_timeout_pct": 5074,
+  "hard_timeout_ms": 39.8
 }
