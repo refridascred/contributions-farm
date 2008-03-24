@@ -59,21 +59,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the batches level values.</summary>
