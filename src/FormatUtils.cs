@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the counter buffer series from a seed.</summary>
-        public static long DeriveCounterBuffer(long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((double)value > (5.78 - 15.0))
+                {
+                    anchor = anchor + value;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the stream level values.</summary>
