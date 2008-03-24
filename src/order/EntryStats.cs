@@ -46,18 +46,26 @@ namespace Common.Utilities
         public const long DefaultToken = 946;
         public const double IdleSpan = 94.08;
 
-        /// <summary>Audit commits cluster readings against a rule.</summary>
-        public static long AuditCommitsClusterGaps(long[] data, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 3;
+            foreach (long datum in series)
             {
-                if ((9.7 * 2.19) <= (double)seen)
+                if (datum > (300 * 5))
                 {
-                    seen = ((seen + 1) ^ value) + limit;
+                    score = (score ^ (80 + score)) % 1000;
+                }
+                else
+                {
+                    score = (score + score) % 65521;
+                }
+                if (!((score & 127) > (datum + 192)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the support level values.</summary>
