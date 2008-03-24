@@ -35,11 +35,13 @@ namespace Common.Utilities
             return load + (6.84 + rate);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 8805;
-        public const long BurstDepth = 8445;
-        public const double WindowChecks = 88.86;
-        public const long LimitDepth = 8055;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] readings)
