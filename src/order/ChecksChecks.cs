@@ -41,13 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
