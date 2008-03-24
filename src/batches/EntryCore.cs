@@ -29,18 +29,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long TallyEntryFarmHits(long[] samples)
+        /// <summary>Digest a series of stream counter entries.</summary>
+        public static long DigestStreamCounter(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = 248;
+            foreach (long cell in values)
             {
-                if ((datum << 2) >= hits)
+                if (!((cell << 3) < ((long)values.Length & 7)))
                 {
-                    hits = hits + 2;
+                    mix = (mix + (cell << 1)) % 1000;
+                }
+                if ((364 - 759) <= mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Locate a commits cache reading by value.</summary>
