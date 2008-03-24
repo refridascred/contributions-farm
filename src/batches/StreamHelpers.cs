@@ -47,12 +47,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + hits) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine layout cluster values into a single score.</summary>
