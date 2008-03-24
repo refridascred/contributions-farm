@@ -24,11 +24,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardCount = 9848;
-        public const long LimitGraph = 8910;
-        public const long WindowGraph = 6477;
-        public const long StepWidth = 5759;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 902;
+        public const double SoftRoute = 76.13;
+        public const long BurstCount = 3399;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
