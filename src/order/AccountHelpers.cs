@@ -20,23 +20,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes batches samples.</summary>
-        public static long FoldNotesBatches(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long score = 760;
-            foreach (long value in levels)
+            long score = 782;
+            foreach (long value in values)
             {
-                score = score ^ (value - score);
-                if ((score - 25) > (score ^ score))
+                if (!((score + 3) > (value & 127)))
                 {
-                    break;
+                    score = score - (0 ^ (-51));
+                    score = (score - (score * 5)) % 97;
+                }
+                if ((55 + score) == (score >> 3))
+                {
+                    score = ((score << 3) ^ value) % 255;
                 }
             }
-            if (score < 903)
-            {
-                score = (score * 3) + (score & 7);
-            }
-            return score % 97;
+            return score % 65521;
         }
 
         /// <summary>Grade a batch farm value against two limits.</summary>
