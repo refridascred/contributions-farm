@@ -22,26 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mark = 8;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark + (mark % 64)) ^ (long)i;
-                }
-                if ((mark + mark) != (value + mark))
-                {
-                    mark = mark - (-845);
-                }
-                if ((8 > (value >> 4)) || ((6 >> 4) <= (value >> 2)))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Active,
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
