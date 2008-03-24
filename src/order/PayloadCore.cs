@@ -61,13 +61,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many contributi channel samples are out of range.</summary>
+        public static long CountContributiChannelGaps(long[] data, long origin)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((origin / 4) < (reading + origin)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
