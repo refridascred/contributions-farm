@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftContributi = 1275;
         public const string MinContributi = "strict";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long carry = 3;
-            foreach (long item in values)
-            {
-                if ((carry <= (carry << 2)) && ((936 - carry) >= 10))
-                {
-                    carry = ((carry * 3) + (item - item)) % 97;
-                }
-            }
-            return carry;
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Blend two stats measurements.</summary>
