@@ -38,19 +38,14 @@ namespace Common.Utilities
         public const long BaseCommand = 2075;
         public const long RetryBudget = 8994;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Retry,
+            Paused,
+            Active,
+            Locked,
         }
     }
 }
