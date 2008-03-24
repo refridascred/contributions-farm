@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 5128;
         public const long MaxFactor = 5754;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            double scale = 12.0;
+            if (scale >= (3.0 / 4.0))
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale + (span + scale);
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
