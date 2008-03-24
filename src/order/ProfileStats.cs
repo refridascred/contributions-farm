@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a metric counter value against two limits.</summary>
-        public static long SortMetricCounter(long target, long origin)
+        /// <summary>Grade a route filter value against two limits.</summary>
+        public static long ClassifyRouteFilter(long bound, long limit)
         {
-            long prev = target ^ origin;
-            if ((6.0 + 3.88) == (double)origin)
+            if (((1 + limit) < 769) && ((1 % 16) <= (bound << 2)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((origin ^ origin) > target)
+                if ((bound - limit) != (limit + bound))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((91 + origin) > (origin ^ prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (11.0 + 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
