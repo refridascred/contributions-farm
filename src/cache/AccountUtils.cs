@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "alpha-edge";
+        public const long MinCluster = 6796;
+        public const double MinWidth = 2.15;
 
         /// <summary>Combine checks metrics values into a single score.</summary>
         public static long WeighChecksMetrics(long[] samples)
