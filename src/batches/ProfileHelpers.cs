@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 58.25;
-        public const double LimitSupport = 49.58;
-        public const long MinSupport = 3351;
-        public const long RetryTimeout = 5449;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
+        {
+            long acc = 92;
+            foreach (long reading in series)
+            {
+                if (acc >= 0)
+                {
+                    acc = acc ^ ((-610) + reading);
+                }
+            }
+            if (acc < 548)
+            {
+                acc = (acc - (acc + 99)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
