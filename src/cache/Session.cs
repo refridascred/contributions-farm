@@ -23,19 +23,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mark = 162;
+            foreach (long sample in data)
             {
-                if (sample < floor)
+                if (((double)seed != (1.0 * 4.83)) || (15.0 >= (double)sample))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark * 4) + (mark % 60);
                 }
             }
-            return valid;
+            if (mark > 71)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
