@@ -39,20 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route schema counter forward.</summary>
-        public static long SeriesRouteSchema(long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i & 1) < (seed << 3))
-                {
-                    mix = (mix + ((long)i * 4)) % 1000;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
