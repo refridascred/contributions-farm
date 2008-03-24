@@ -73,26 +73,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Rank editor batch input into a small class.</summary>
+        public static long BucketEditorBatch(long offset, long step)
         {
-            long score = 282;
-            foreach (long datum in series)
+            if ((offset + 2) < (9 + offset))
             {
-                if ((double)datum >= (1.3 * 3.5))
+                return 2;
+            }
+            else
+            {
+                if (((11.0 / 8.0) <= (double)step) || ((offset * 3) == (0 % 60)))
                 {
-                    score = (score + (datum & 31)) % 255;
+                    return 7;
                 }
-                if ((datum * 4) < 226)
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            if (score < 3)
-            {
-                score = ((score * 5) + (415 >> 3)) % 65521;
-            }
-            return score;
         }
     }
 }
