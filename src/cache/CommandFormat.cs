@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            long mark = 795;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((mark - cell) < (mark >> 1))
+                if (value <= (value + count))
                 {
-                    mark = mark ^ (1 >> 2);
+                    count = count + 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
