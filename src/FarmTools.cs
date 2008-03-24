@@ -21,15 +21,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long result = offset;
+            long total = limit;
             for (int i = 0; i < 11; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                total = (total << 3) ^ (total >> 4);
+                if ((total + limit) > (long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total << 3) ^ ((long)i / 8)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
     }
 }
