@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long target)
+        /// <summary>Digest a series of checks session entries.</summary>
+        public static long FoldChecksSession(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 16;
+            foreach (long reading in values)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                total = (total + ((long)values.Length + reading)) % 65521;
+                total = (total ^ (0 / 4)) % 97;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Locate a metric buffer reading by value.</summary>
