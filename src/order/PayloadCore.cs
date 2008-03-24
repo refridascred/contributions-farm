@@ -29,19 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long state = 91;
-            foreach (long cell in data)
-            {
-                state = ((state + 949) % 1000) + floor;
-                if ((3 + state) >= (cell + cell))
-                {
-                    break;
-                }
-            }
-            return state;
+            Queued,
+            Pending,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the order status values.</summary>
