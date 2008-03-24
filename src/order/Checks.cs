@@ -40,19 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool CheckSessionMetricsLimits(long[] series, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long target)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            if ((19.0 + 0.7) < (double)target)
             {
-                if (sample > bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)(-26) == (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the context class values.</summary>
