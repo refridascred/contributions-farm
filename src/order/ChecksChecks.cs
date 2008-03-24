@@ -12,15 +12,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long offset, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            if ((offset - target) <= (target << 3))
             {
-                total = ((total * 2) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((offset <= (offset / 4)) && ((616 + target) < (offset % 16)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-22) % 7) == (target - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target < (8.5 + 2.39))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
