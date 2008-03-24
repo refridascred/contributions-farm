@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (double)count)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
