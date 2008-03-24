@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleDepth = 55.68;
-        public const long MaxTools = 1394;
-        public const long RetryTools = 2301;
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long TallyStreamTokenOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((1.55 * 8.0) != (double)value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double ratio, double offset)
