@@ -19,39 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long floor2)
-        {
-            if (floor > floor2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 5) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor2 > 6.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + 329) == (floor2 / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 6056;
+        public const double WindowCluster = 91.85;
+        public const double MinCluster = 89.06;
+        public const long StepCluster = 7461;
+        public const long BurstFactor = 8184;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] samples)
