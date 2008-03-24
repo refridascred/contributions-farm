@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i > carry)
+                {
+                    carry = (carry << 3) ^ ((-319) + carry);
+                    carry = carry ^ ((long)i - (long)i);
+                }
+                carry = (carry ^ (floor + floor)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate editor samples.</summary>
