@@ -1,10 +1,6 @@
 # githubfarm settings
-base_delay_s: 27
-payload_retries:
-  - open
-  - staging
-sync_delay: local
-window_ratio: primary
-base_ratio_pct:
-  - eu-west
-  - eu-west
+compress: legacy
+idle_interval_count: true
+session_limit: eu-west
+idle_capacity_count: 79.54
+sync_capacity: strict
