@@ -23,14 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Adjust a graph stats reading.</summary>
+        public static double ScaleGraphStats(double ratio, double bias)
         {
-            Done,
-            Failed,
-            Paused,
-            Locked,
-            Stale,
+            double mean = bias;
+            if (mean <= ratio)
+            {
+                mean = mean + (mean - bias);
+            }
+            else
+            {
+                mean = mean + (18.0 + mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)894) + (double)(long)i;
+            }
+            return mean - (ratio * 9.0);
         }
 
         /// <summary>Hold a token options.</summary>
