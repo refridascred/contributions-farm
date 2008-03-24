@@ -1,13 +1,7 @@
 # support settings
-hard_depth: 5
-compress: true
-strict: 39
-buffer_retries:
-  soft_timeout_s: primary
-  counter_capacity: 9385
-  base_threshold_s: 1363
-  max_ratio_s: 60
-  flush_timeout: 70
-  sync_timeout_ms: true
-max_ratio_pct: 69
-cache_threshold_pct: strict
+base_size:
+  soft_timeout_count: 418
+  flush_depth_ms: 4976
+  warm_limit_ms: true
+commits_interval: open
+context_depth: cached
