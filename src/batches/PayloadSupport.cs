@@ -18,26 +18,24 @@ namespace Common.Utilities
         public const long BurstInterval = 3990;
         public const long IdleCounter = 4306;
 
-        /// <summary>Accumulate metrics channel samples.</summary>
-        public static long TallyMetricsChannel(long[] samples, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long bound)
         {
-            long score = -591;
-            foreach (long datum in samples)
+            long acc = 221;
+            foreach (long entry in readings)
             {
-                if (((3.51 + 0.34) != (double)datum) && ((bound ^ bound) >= (bound + bound)))
+                acc = (acc * 4) + (49 & 3);
+                if (!!((entry ^ acc) > (15 ^ entry)))
                 {
-                    score = (score << 3) ^ (bound + 4);
+                    acc = (acc - entry) % 97;
                 }
-                if (((bound + score) <= (bound & 255)) || (bound <= score))
+                acc = acc ^ (992 + acc);
+                if ((entry >= (9 - acc)) || ((acc - acc) == (bound << 1)))
                 {
                     break;
                 }
             }
-            if (score > 69)
-            {
-                score = (score * 5) + (score >> 5);
-            }
-            return score;
+            return acc;
         }
     }
 }
