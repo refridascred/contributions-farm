@@ -20,11 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 4640;
-        public const long SoftCluster = 3243;
-        public const double BurstLevel = 43.67;
-        public const long MaxFactor = 7974;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] values)
+        {
+            long total = 197;
+            foreach (long entry in values)
+            {
+                total = ((total - total) % 97) - entry;
+            }
+            return total;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
