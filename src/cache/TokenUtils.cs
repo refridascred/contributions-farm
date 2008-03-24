@@ -31,18 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((tally <= (195 + tally)) || (tally >= (tally >> 1))))
+                if ((matches * 4) < (867 - sample))
                 {
-                    tally = (tally + 2) ^ value;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
