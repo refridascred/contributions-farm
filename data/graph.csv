@@ -1,7 +1,10 @@
-id,region,token,ratio,state
-1,22.47,455,356,0.29
-2,latest,edge,326,28.34
-3,open,633,935,559
-4,337,5.01,9.13,53.33
-5,42,16.03,local,blue
-6,56.87,981,45.48,917
+id,level,state,active
+1,primary,latest,67.65
+2,10.29,strict,12.15
+3,934,31.63,470
+4,147,local,standard
+5,240,286,653
+6,912,542,primary
+7,354,local,50.68
+8,20.33,stable,63.38
+9,63.07,859,575
