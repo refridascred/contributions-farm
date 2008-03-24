@@ -30,13 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Active,
+            Retry,
+            Pending,
+            Done,
         }
     }
 }
