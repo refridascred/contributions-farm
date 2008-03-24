@@ -23,23 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            double load = (6.8 - 1.24) / 6.0;
-            if (load > (bias / 8.0))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                load = load + (gain / 9.0);
+                if (datum > (datum + 532))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                load = load + (double)(-3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (10.0 - 20.0)) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
