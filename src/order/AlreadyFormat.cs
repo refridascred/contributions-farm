@@ -75,10 +75,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxWidth = 1010;
-        public const long LimitToken = 7583;
-        public const long RetryToken = 4612;
-        public const long BurstLevel = 385;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
+        {
+            long acc = 3;
+            foreach (long cell in items)
+            {
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 3) + (-878)) % 101;
+                if ((826 * 5) == (cell / 2))
+                {
+                    break;
+                }
+            }
+            if (acc > 11)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
+        }
     }
 }
