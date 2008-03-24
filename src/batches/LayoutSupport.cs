@@ -51,18 +51,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload filter entries that pass the check.</summary>
-        public static long TallyPayloadFilterGaps(long[] series)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length + datum) > datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
