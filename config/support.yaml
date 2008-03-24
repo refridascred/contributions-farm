@@ -1,30 +1,27 @@
 # support settings
-window_window: 24
-hard_interval:
-  verbose: 36.77
-  queue_threshold: false
-  cache_threshold:
-    sync_limit_ms: cached
-    channel_window: 6757
-    strict: 5268
-    audit:
-      - 463
-      - 152
-      - 70
-    idle_size_count: 100
-    retry_delay: 83.42
-  idle_window_count: 94
-  sync_interval_ms:
-    - 393
-    - 11
-  readonly:
-    retry_window_pct: edge
-    max_limit_s: true
-    base_size:
-      - 364
-      - 186
-      - 480
-verbose:
-  - 296
-  - 320
-  - 134
+audit:
+  hard_threshold: 6109
+  hard_ttl_ms: 68
+  audit: 80.72
+  max_interval_s:
+    support_depth: false
+    sync_threshold_ms:
+      - stable
+      - fallback
+      - latest
+      - cached
+    cache_window: 3121
+    report_capacity: true
+    warm_ttl_ms: stable
+    max_timeout: 6867
+  contributi_interval:
+    - standard
+    - legacy
+  command_timeout: eu-west
+default_delay_s: 60
+min_threshold: false
+profile_threshold: false
+batch_threshold_ms:
+  - eu-west
+  - blue
+hard_ratio_ms: blue
