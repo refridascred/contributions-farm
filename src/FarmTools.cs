@@ -36,9 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitLevel = 6356;
-        public const double WindowTools = 87.61;
-        public const long DefaultTools = 6311;
+        /// <summary>Combine githubfarm payload values into a single score.</summary>
+        public static long DigestGithubfarmPayload(long[] readings, long floor)
+        {
+            long carry = 228;
+            foreach (long datum in readings)
+            {
+                carry = (carry + (floor / 9)) % 4096;
+                if ((carry + datum) < (datum - carry))
+                {
+                    continue;
+                }
+                carry = (carry * 3) + floor;
+            }
+            return carry;
+        }
     }
 }
