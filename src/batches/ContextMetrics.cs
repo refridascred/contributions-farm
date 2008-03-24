@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 614;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc ^ (datum / 8)) % 4096;
+                if ((datum + acc) <= offset)
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (datum + offset)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (3 << 2)) % 1000;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Describe the batches phase values.</summary>
