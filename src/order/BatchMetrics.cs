@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine stream window values into a single score.</summary>
-        public static long CombineStreamWindow(long[] samples, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            long state = 1;
-            foreach (long item in samples)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item - state) >= (state + state))
+                if (limit < (9 / 3))
                 {
-                    state = ((state ^ (90 - state)) % 101) - target;
+                    score = ((score * 3) + (score << 2)) % 97;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (state > 764)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
