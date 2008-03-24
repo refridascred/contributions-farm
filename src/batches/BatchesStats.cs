@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 9444;
-        public const long BaseSpan = 5128;
-        public const long MaxFactor = 5754;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double BlendNotes(double bias, double span)
