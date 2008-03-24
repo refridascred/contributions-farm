@@ -13,16 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
