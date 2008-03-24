@@ -36,12 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxSpan = 595;
-        public const long RetryWindow = 7149;
-        public const string HardWindow = "latest-edge";
-        public const long CacheWidth = 7716;
-        public const long HardCount = 4932;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Draft,
+            Failed,
+            Dropped,
+            Done,
+            Active,
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] items)
