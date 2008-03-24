@@ -59,35 +59,18 @@ namespace Common.Utilities
         public const long BatchContext = 2029;
         public const double BurstLevel = 29.08;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data, long seed)
+        /// <summary>Measure how many commits editor samples are out of range.</summary>
+        public static long MeasureCommitsEditorGaps(long[] items, long offset)
         {
-            long total = 5;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((total + total) != ((long)data.Length + seed))
+                if (((double)matches == (double)9) || ((double)offset > (12.0 - 4.9)))
                 {
-                    total = (total ^ (total * 2)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ seed) % 4096;
-                    total = total + (seed + total);
-                }
-                if (737 >= (seed + 95))
-                {
-                    total = (total + (97 + 5)) % 65521;
-                }
-                if ((value >> 1) != (value + value))
-                {
-                    break;
+                    matches = (matches + 3) - datum;
                 }
             }
-            if (total > 2)
-            {
-                total = (total << 2) ^ (seed - seed);
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Describe the profile class values.</summary>
