@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long GradeChecksGithubfarm(long step, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long limit)
         {
-            if ((seed >= (step - 664)) || (64 <= (step - 263)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 7) <= (seed & 63)) && ((seed * 3) == (step ^ 67)))
+                if (readings[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.0 - 1.0) <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
