@@ -23,39 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long bound, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long delta = bound - step;
-            if (((double)18 == (double)bound) || ((step + bound) <= (step + 9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + bound) != (step - delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + bound) < (bound % 24)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((delta < (bound + bound)) && ((double)bound >= (1.01 + 7.8)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
