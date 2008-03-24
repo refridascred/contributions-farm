@@ -70,19 +70,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] values, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (acc > ((-3) % 24))
+                if ((cell - (long)values.Length) > (matches >> 2))
                 {
-                    acc = (acc ^ (floor ^ 965)) % 97;
+                    matches = (matches + 3) - offset;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
     }
 }
