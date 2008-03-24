@@ -49,17 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
+        /// <summary>Audit route session readings against a rule.</summary>
+        public static long CountRouteSessionGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] >= step)
+                if ((14.0 + 8.0) < (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
