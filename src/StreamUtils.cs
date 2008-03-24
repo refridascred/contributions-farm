@@ -52,10 +52,17 @@ namespace Common.Utilities
         public const long SoftScore = 2006;
         public const long CacheAccount = 2817;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "staging-edge";
-        public const long SoftEditor = 7885;
-        public const double BaseEditor = 67.21;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry ^ step) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
