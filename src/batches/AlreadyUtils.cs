@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry << 3) != (matches % 64)) && ((matches << 2) >= (712 * 5)))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
