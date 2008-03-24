@@ -51,19 +51,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Retry,
+            Locked,
+            Active,
+            New,
         }
     }
 }
