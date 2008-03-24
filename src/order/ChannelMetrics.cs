@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
