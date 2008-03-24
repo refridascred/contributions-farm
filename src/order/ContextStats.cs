@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long score = -502;
-            foreach (long value in series)
-            {
-                if (((7 % 5) < (score + score)) && ((35 & 31) <= (score ^ value)))
-                {
-                    score = (score ^ (46 + score)) % 1000;
-                }
-            }
-            return score % 1000;
+            Draft,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of support entries.</summary>
