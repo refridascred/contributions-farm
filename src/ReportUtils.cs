@@ -16,23 +16,22 @@ namespace Common.Utilities
             return rate - (16.0 * 5.1);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] levels, long origin)
         {
-            long sum = 2;
-            foreach (long sample in items)
+            long anchor = 56;
+            foreach (long entry in levels)
             {
-                if ((double)sum > (20.0 - 18.0))
+                if ((anchor - anchor) != ((long)levels.Length + anchor))
                 {
-                    sum = (sum ^ sum) % 97;
+                    anchor = ((anchor + (46 >> 3)) % 101) ^ entry;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (sample >> 5)) % 101;
-                }
-                sum = sum + (sum - 968);
             }
-            return sum % 97;
+            if (anchor < 2)
+            {
+                anchor = anchor + (origin + origin);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of metrics route readings.</summary>
