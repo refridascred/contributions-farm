@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "stable";
-        public const long WindowInterval = 787;
-        public const double BurstBudget = 83.45;
-        public const long WindowSchema = 7211;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Closed,
+            Draft,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long origin, long seed)
