@@ -35,13 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Retry,
-            Queued,
-            Synced,
-            New,
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
