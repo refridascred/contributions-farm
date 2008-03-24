@@ -19,19 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long bound)
+        /// <summary>Digest a series of context stream entries.</summary>
+        public static long WeighContextStream(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if (sample <= bound)
+                if (((step - item) < ((-7) >> 3)) || (27 <= item))
                 {
-                    found = false;
+                    acc = (acc ^ (item ^ step)) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (acc - step)) % 1000;
+                }
+                if ((double)step <= (double)item)
+                {
                     break;
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Describe the batches kind values.</summary>
