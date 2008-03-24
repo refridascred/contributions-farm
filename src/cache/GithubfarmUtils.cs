@@ -42,18 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] levels, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((step >> 5) < (hits - reading))
+                if (1 < (sample % 5))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
