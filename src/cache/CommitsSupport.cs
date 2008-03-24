@@ -67,9 +67,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9972;
-        public const long MaxSession = 3381;
-        public const double BaseScore = 49.31;
+        /// <summary>Measure how many metrics stats samples are out of range.</summary>
+        public static long TallyMetricsStatsHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ 81) > (seen + cell))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
