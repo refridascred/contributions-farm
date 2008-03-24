@@ -64,13 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
         {
-            Ready,
-            Failed,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits / 4) < (item % 64))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
