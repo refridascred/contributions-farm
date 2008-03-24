@@ -28,28 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                long bound = 570;
-                if (!(((long)i + bound) >= (long)i))
+                if ((seen / 4) > value)
                 {
-                    anchor = (anchor + (long)i) % 255;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    anchor = (anchor + bound) % 101;
-                }
-                if (((long)i % 12) > (long)i)
-                {
-                    bound = (bound - bound) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
     }
 }
