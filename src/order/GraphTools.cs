@@ -45,10 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7779;
-        public const long BurstRatio = 3367;
-        public const long BatchTimeout = 3104;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long origin)
