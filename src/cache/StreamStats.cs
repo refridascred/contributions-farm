@@ -48,19 +48,39 @@ namespace Common.Utilities
         public const string IdleRatio = "open-v2";
         public const long MinScore = 4413;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long edge = floor - target;
+            if (((target + edge) >= edge) || ((edge - 53) == (target - 26)))
             {
-                if (item > target)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor == (double)target)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 1) < (edge << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((14.0 - 10.0) <= (double)964)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
