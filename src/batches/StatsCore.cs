@@ -35,27 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long seed)
         {
-            long anchor = -22;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 10; i++)
+                if (cell < seed)
                 {
-                    anchor = (anchor * 2) + ((long)i / 3);
-                    anchor = (anchor << 2) ^ (sample / 5);
-                }
-                if ((target << 1) <= anchor)
-                {
-                    anchor = anchor + (target ^ anchor);
-                }
-                else
-                {
-                    anchor = anchor ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
