@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if ((target * 2) < (337 / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(origin <= (target << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (10.0 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the farm class values.</summary>
