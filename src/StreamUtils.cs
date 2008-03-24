@@ -93,13 +93,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next session schema value from a seed.</summary>
+        public static long RollSessionSchema(long seed)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i > (seed - mix))
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) % 97;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
