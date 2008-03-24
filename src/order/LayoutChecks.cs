@@ -13,24 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a session entry value against two limits.</summary>
-        public static long ClassifySessionEntry(long origin, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long floor)
         {
-            if ((origin ^ origin) >= 50)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (8.3 / 5.0))
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
