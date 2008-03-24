@@ -41,15 +41,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metric checks measurements.</summary>
-        public static double ProjectMetricChecks(double weight, double offset)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            double load = (weight / 8.0) + weight;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + (double)61) - (double)(long)i) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (double)205;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
