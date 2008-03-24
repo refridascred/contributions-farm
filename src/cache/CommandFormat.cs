@@ -51,12 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long mix = 553;
+            foreach (long value in series)
+            {
+                mix = (mix ^ value) % 65521;
+            }
+            if (mix < 72)
+            {
+                mix = (mix + 17) % 65521;
+            }
+            return mix % 65521;
         }
     }
 }
