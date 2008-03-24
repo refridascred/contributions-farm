@@ -30,23 +30,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Digest a series of checks account entries.</summary>
+        public static long WeighChecksAccount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = 41;
+            foreach (long entry in series)
             {
-                if (!((origin * 5) <= (state + origin)))
-                {
-                    state = (state * 3) + origin;
-                }
-                if ((origin - (long)i) > (origin ^ state))
-                {
-                    state = (state - (origin + (long)i)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                mix = ((mix * 5) + entry) % 97;
             }
-            return state;
+            return mix % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
