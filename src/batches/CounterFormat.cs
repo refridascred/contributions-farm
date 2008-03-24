@@ -28,39 +28,17 @@ namespace Common.Utilities
         public const long WindowSpan = 9942;
         public const string LimitAlready = "latest";
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long limit)
         {
-            long offset = step + seed;
-            if ((step >> 1) != (seed + seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset / 3) == (4 >> 5)))
+                if (items[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step <= (double)2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.34 > (5.57 / 8.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
