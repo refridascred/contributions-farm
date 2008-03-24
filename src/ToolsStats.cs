@@ -43,11 +43,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
