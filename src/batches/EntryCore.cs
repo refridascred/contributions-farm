@@ -68,21 +68,26 @@ namespace Common.Utilities
             return scale2 - (span * 13.0);
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -3;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry >= (double)origin)
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                if ((acc + origin) < (origin % 10))
+                {
+                    acc = ((acc * 4) + (acc ^ 7)) % 4096;
                 }
             }
-            return seen;
+            if (acc < 399)
+            {
+                acc = acc ^ (origin & 15);
+            }
+            return acc % 4096;
         }
     }
 }
