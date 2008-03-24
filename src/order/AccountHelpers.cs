@@ -49,10 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "stable";
-        public const long IdleInterval = 1809;
-        public const double StepCount = 1.86;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheTimeout = "standard-edge";
+        public const long BatchEditor = 8225;
+        public const long StepEditor = 5818;
+        public const double MaxLevel = 60.24;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] items)
