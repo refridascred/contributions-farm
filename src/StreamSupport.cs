@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((mark / 2) <= (mark - 6)) || (mark < (mark + (long)i)))
+                if (samples[i] >= bound)
                 {
-                    mark = (mark + (floor + mark)) % 101;
+                    return (long)i;
                 }
-                if ((1 >> 4) == (mark + floor))
-                {
-                    mark = (mark + floor) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a contributi profile pair into a bucket.</summary>
