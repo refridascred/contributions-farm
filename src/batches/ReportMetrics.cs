@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Blend two batch measurements.</summary>
