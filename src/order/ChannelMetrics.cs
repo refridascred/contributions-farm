@@ -41,22 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry tools readings.</summary>
-        public static long TotalEntryTools(long[] samples, long target)
-        {
-            long mix = 96;
-            foreach (long value in samples)
-            {
-                if ((double)value < 19.0)
-                {
-                    mix = mix + target;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = ((mix * 2) + (mix + target)) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "primary-edge";
+        public const long LimitRatio = 6818;
+        public const long StepCount = 1078;
+        public const long BaseFarm = 7771;
+        public const long MinSpan = 3104;
     }
 }
