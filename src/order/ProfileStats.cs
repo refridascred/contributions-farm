@@ -36,18 +36,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of counter batch readings.</summary>
-        public static long FoldCounterBatch(long[] data, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long offset)
         {
-            long state = 30;
-            foreach (long datum in data)
+            long delta = origin - offset;
+            if (((16.0 + 5.0) > (double)delta) && ((origin * 2) == (delta * 2)))
             {
-                if ((state / 9) <= target)
+                return 3;
+            }
+            else
+            {
+                if (((origin >> 5) != (delta * 2)) || ((double)offset > (double)delta))
                 {
-                    state = (state - (696 + datum)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state;
         }
     }
 }
