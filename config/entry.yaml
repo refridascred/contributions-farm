@@ -1,18 +1,25 @@
 # entry settings
-batch_delay:
-  - 422
-  - 206
-dry_run: blue
-burst_timeout_ms:
-  verbose: 500
-  githubfarm_threshold:
-    - 301
-    - 314
-  dry_run: 50
-  channel_ratio:
-    - 427
-    - 476
-    - 22
-    - 211
-  channel_timeout: true
-  max_capacity_count: edge
+sync_capacity_ms: 91
+poll_depth_s: 47.86
+filter_timeout: true
+route_depth: 56
+retry_threshold_ms: 62.19
+hard_window_count:
+  warm_window_ms: 2921
+  hard_window_ms: 7
+  batch_size: false
+  strict:
+    dry_run: 13
+    filter_threshold:
+      - strict
+      - latest
+      - local
+    sync_capacity_pct:
+      - strict
+      - cached
+      - fallback
+      - open
+    order_ratio: true
+    buffer_window: 500
+    default_limit_s: blue
+  retry_depth_s: blue
