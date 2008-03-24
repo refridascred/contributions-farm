@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const string MinRatio = "local-1";
         public const double BaseFactor = 9.25;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] samples, long floor)
         {
-            Pending,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (6.24 <= (double)item)
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many profile commits samples are out of range.</summary>
