@@ -51,15 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels, long offset)
         {
-            double rate = floor;
-            if (rate >= (floor - floor))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                rate = rate + (weight * 0.65);
+                if ((7.89 / 5.0) <= (double)item)
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - 3.02;
+            return tally;
         }
 
         /// <summary>Locate a order reading by value.</summary>
