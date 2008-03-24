@@ -27,13 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Idle,
-            Retry,
             Locked,
-            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the order status values.</summary>
