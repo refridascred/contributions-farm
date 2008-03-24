@@ -20,15 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            double rate = (double)(16 - 0);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                rate = ((rate - offset) + (double)(long)i) + bias;
+                if ((((1 >> 5) <= (entry + entry)) || ((731 & 15) >= hits)) && (((hits + hits) < (hits << 2)) && ((entry >> 5) >= (hits & 63))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + offset;
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
