@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 1974;
         public const long LimitProfile = 4939;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
