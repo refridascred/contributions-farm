@@ -53,25 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((mix - (long)i) < mix)
-                {
-                    mix = ((mix * 4) + (mix * 2)) % 97;
-                    mix = ((mix * 3) + ((long)i & 31)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 2) + mix) % 65521;
-                    mix = mix + (limit + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
