@@ -35,9 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryScore = 37.78;
-        public const long DefaultCount = 7238;
-        public const long MinDepth = 15;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
