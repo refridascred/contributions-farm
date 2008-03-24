@@ -19,39 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools contributi value against two limits.</summary>
-        public static long GradeToolsContributi(long offset, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long lane = offset ^ seed;
-            if (!(offset <= (lane - seed)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > (2.6 + 9.27))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 4) < 625)
+                    if ((levels[i] - levels[j]) != 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.0 - 1.87) >= (double)lane)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
