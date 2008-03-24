@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long floor)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            long mark = 43;
+            foreach (long entry in data)
             {
-                scale = ((scale - 15.0) - (double)(long)i) - weight;
+                if ((mark + floor) >= (853 % 10))
+                {
+                    mark = ((mark + (floor ^ mark)) % 4096) + entry;
+                }
             }
-            return scale + (double)570;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
