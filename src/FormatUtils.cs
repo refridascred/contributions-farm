@@ -38,39 +38,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long slot = limit ^ seed;
-            if ((seed + seed) == ((-2) + limit))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)slot > (3.6 * 7.64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.66 - 0.4) <= (double)slot)
+                    if ((levels[i] ^ levels[j]) > 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((60 % 10) > (seed + 38)) && ((6.0 - 0.29) >= (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
