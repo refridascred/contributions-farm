@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -8;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (8.0 < (double)score)
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ datum) % 97;
+                }
+                if ((limit + (long)items.Length) <= limit)
+                {
+                    score = score + (363 - (long)items.Length);
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Combine cache stats values into a single score.</summary>
