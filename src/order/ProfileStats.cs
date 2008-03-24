@@ -36,18 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the already stream entries that pass the check.</summary>
-        public static long AuditAlreadyStreamGaps(long[] values, long seed)
+        /// <summary>Check that every profile stream entry stays within the limit.</summary>
+        public static bool CheckProfileStreamLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((seed >> 2) > (86 + item))
+                if (item > limit)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
