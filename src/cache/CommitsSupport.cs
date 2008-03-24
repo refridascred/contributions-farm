@@ -47,10 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 358;
-        public const long StepChannel = 2734;
-        public const long MaxChannel = 4518;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] data, long step)
