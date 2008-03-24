@@ -49,18 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route session readings against a rule.</summary>
-        public static long CountRouteSessionGaps(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((14.0 + 8.0) < (double)count)
+                if ((series[i] > target) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
