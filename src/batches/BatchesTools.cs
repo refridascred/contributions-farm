@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph filter values into a single score.</summary>
-        public static long CombineGraphFilter(long[] samples, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long sum = 46;
-            foreach (long datum in samples)
-            {
-                sum = (sum + (datum / 2)) + seed;
-            }
-            if (sum > 6)
-            {
-                sum = (sum + (sum << 3)) % 1000;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
