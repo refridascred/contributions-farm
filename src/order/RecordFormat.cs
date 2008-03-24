@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheBudget = 8.06;
-        public const long IdleNotes = 8068;
-        public const long WindowNotes = 9834;
-        public const long MaxNotes = 2112;
-        public const double RetryNotes = 31.6;
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftCount = 7033;
