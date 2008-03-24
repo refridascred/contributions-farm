@@ -47,15 +47,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
-        {
-            long state = 71;
-            foreach (long sample in series)
-            {
-                state = ((state - ((-6) + state)) % 1000) + sample;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 400;
+        public const double StepTimeout = 75.85;
+        public const long HardDepth = 4158;
     }
 }
