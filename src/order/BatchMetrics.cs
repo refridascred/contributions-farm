@@ -52,11 +52,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 569;
+            foreach (long value in items)
+            {
+                long matches = sum;
+                if ((value % 10) == (matches >> 3))
+                {
+                    matches = (matches ^ (sum ^ matches)) % 97;
+                }
+                else
+                {
+                    matches = (matches + (sum ^ value)) % 255;
+                }
+                sum = (sum - (value * 4)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
