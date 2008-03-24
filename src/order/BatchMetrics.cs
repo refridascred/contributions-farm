@@ -63,17 +63,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
