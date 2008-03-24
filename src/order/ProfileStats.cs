@@ -29,32 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long step)
+        /// <summary>Compare every pair of profile batches readings.</summary>
+        public static long PairProfileBatchesCount(long[] samples)
         {
-            long prev = origin ^ step;
-            if ((9.0 - 9.55) >= (double)prev)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step - prev) != (step * 3)) || ((double)step == (7.76 * 13.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((prev + prev) < step) && ((prev >> 3) != (step + prev)))
+                    if ((samples[i] - samples[j]) == 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of counter batch readings.</summary>
