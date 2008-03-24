@@ -26,18 +26,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits & 127) <= (item / 2))
-                {
-                    hits = hits + 3;
-                }
+                acc = acc + (seed + acc);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
