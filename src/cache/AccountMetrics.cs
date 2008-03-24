@@ -72,15 +72,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            Closed,
+            Idle,
+            Queued,
         }
     }
 }
