@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const string MaxScore = "staging";
         public const long RetryToken = 9160;
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long AuditMetricStreamOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count / 3) >= (count / 7))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 6310;
+        public const string StepSpan = "open-v2";
+        public const string MinDepth = "staging-v2";
+        public const double BatchInterval = 26.47;
+        public const string DefaultInterval = "strict-edge";
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsLimits(long[] readings, long target)
