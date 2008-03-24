@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3578;
-        public const long DefaultBuffer = 9640;
-        public const long MinCount = 1715;
-        public const double SoftBuffer = 46.37;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Paused,
+            Done,
+            Idle,
+            New,
+            Dropped,
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
