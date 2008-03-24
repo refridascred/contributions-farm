@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((87 + entry) < (offset + entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 3183;
+        public const string WindowRecord = "stable-edge";
+        public const double SoftRecord = 30.36;
+        public const long DefaultLevel = 4371;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] readings)
