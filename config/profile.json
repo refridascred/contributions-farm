@@ -1,6 +1,21 @@
 {
-  "min_ttl": 100,
-  "hard_size": false,
-  "layout_capacity": 38.23,
-  "cache_depth_pct": 22
+  "audit": true,
+  "compress": {
+    "checks_interval": {
+      "warm_depth_pct": 36,
+      "cache_delay": ["legacy", "stable"],
+      "verbose": 64.21
+    },
+    "checks_threshold": 4089,
+    "enabled": {
+      "min_delay": 250,
+      "base_delay_pct": 85,
+      "base_timeout_s": "green",
+      "max_capacity": 28.91
+    },
+    "idle_interval_pct": "local",
+    "sync_ratio": 9307
+  },
+  "default_depth_ms": "green",
+  "enabled": "eu-west"
 }
