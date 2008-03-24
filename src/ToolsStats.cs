@@ -62,10 +62,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitFactor = 9389;
-        public const long LimitDepth = 1875;
-        public const long HardContext = 4433;
-        public const double HardWidth = 78.37;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
