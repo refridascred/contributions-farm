@@ -65,18 +65,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits editor samples are out of range.</summary>
-        public static long MeasureCommitsEditorGaps(long[] items, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((double)offset != (7.6 * 2.97))
             {
-                if (((double)matches == (double)9) || ((double)offset > (12.0 - 4.9)))
+                return 1;
+            }
+            else
+            {
+                if ((offset - 3) > (limit - limit))
                 {
-                    matches = (matches + 3) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (offset ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format snapshot.</summary>
