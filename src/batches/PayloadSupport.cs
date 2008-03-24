@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
