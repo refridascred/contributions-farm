@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const long MinSpan = 505;
         public const long RetryCache = 4605;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long limit)
         {
-            double ratio2 = span;
-            if (ratio2 < (10.0 + ratio))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                ratio2 = ratio2 - span;
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio2 + span;
+            return stale;
         }
 
         /// <summary>Match up farm samples.</summary>
