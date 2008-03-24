@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] items, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)value <= (2.0 * 4.9)))
+                if ((double)(long)i >= (5.0 * 9.49))
                 {
-                    hits = (hits + 3) + bound;
+                    total = (total + (floor % 5)) % 4096;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 4) + ((long)i * 3)) % 97;
+                total = (total + (692 - total)) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
