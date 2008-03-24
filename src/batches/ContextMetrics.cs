@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            Ready,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a checks info.</summary>
