@@ -28,10 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 7941;
-        public const long BatchSession = 7793;
-        public const string StepLevel = "primary-v2";
-        public const long StepSession = 346;
+        /// <summary>Count the githubfarm already entries that pass the check.</summary>
+        public static long TallyGithubfarmAlreadyOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
