@@ -22,15 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double bias)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double load = 8.9;
-            if (load <= 19.0)
-            {
-                load = (load - (double)(-800)) + bias;
-            }
-            return load - gain;
+            Retry,
+            Stale,
+            New,
         }
     }
 }
