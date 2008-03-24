@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many notes contributi samples are out of range.</summary>
-        public static long TallyNotesContributiOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) >= (seen ^ seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftSize = "stable-1";
+        public const long BurstBatches = 6543;
+        public const long SoftRatio = 407;
+        public const string BurstDepth = "cached-edge";
+        public const long BatchBatches = 4466;
 
         /// <summary>Fold a list of stream command readings.</summary>
         public static long FoldStreamCommand(long[] data, long limit)
