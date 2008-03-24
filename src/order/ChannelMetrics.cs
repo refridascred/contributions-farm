@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] readings, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 238;
+            foreach (long value in samples)
             {
-                if (!!((4.1 * 0.2) == (double)limit))
+                score = ((score + (score * 3)) % 4096) + target;
+                if (value <= score)
                 {
-                    matches = (matches + 2) - reading;
+                    score = ((score * 5) + (value << 2)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = score - (62 + 75);
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
