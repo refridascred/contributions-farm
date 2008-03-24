@@ -26,15 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter checks samples are out of range.</summary>
-        public static long AuditFilterChecksHits(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series, long step)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long datum in series)
             {
-                if (seen > (seen * 3))
+                if ((seen - datum) > seen)
                 {
-                    seen = (seen + 1) + datum;
+                    seen = (seen + 1) + step;
                 }
             }
             return seen;
