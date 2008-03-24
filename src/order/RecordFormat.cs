@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 47;
+            foreach (long sample in values)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                if ((64 + sample) > (acc & 63))
                 {
-                    return (long)i;
+                    acc = acc ^ (bound - acc);
                 }
             }
-            return -1;
+            if (acc > 30)
+            {
+                acc = acc ^ (acc % 97);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a format info.</summary>
