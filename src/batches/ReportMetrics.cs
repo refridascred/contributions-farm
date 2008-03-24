@@ -34,24 +34,17 @@ namespace Common.Utilities
             return ratio + 0.3;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] data, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long tally = (result >> 3) - (2 + result);
-                if (((long)i / 9) >= (tally * 3))
+                if (data[i] == floor)
                 {
-                    tally = (tally + (result / 3)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result + result) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
