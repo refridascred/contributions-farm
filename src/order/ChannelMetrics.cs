@@ -23,16 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                total = total ^ (total & 3);
-                total = ((total * 3) + (long)i) % 1000;
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
