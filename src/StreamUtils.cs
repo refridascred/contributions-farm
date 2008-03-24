@@ -14,22 +14,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate token entry samples.</summary>
-        public static long FoldTokenEntry(long[] levels)
+        /// <summary>Count command token pairs that satisfy a relation.</summary>
+        public static long OverlapCommandTokenCount(long[] data)
         {
-            long state = 1;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)state >= (double)60) && ((state & 255) < (5 << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 2) ^ (datum & 1)) % 101;
-                }
-                if ((6.0 - 6.0) == (double)state)
-                {
-                    break;
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
