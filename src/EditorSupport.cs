@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - hits) >= hits)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
