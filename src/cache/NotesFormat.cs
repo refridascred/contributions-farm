@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (result >= 14)
+                if (3 <= (reading - reading))
                 {
-                    result = (result + (result % 60)) % 4096;
+                    tally = tally + 1;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
