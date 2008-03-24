@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleInterval = "cached-v2";
-        public const long MinProfile = 1269;
-        public const double WindowCount = 24.24;
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long CountPayloadToolsOutliers(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((3.6 + 4.2) >= (double)value) && ((value & 1) <= value))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] levels, long origin)
