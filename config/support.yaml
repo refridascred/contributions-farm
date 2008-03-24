@@ -1,17 +1,23 @@
 # support settings
-hard_delay: 55.27
-enabled:
-  - local
-  - staging
-base_depth:
-  poll_threshold_pct: false
-  readonly: cached
-  dry_run:
-    - 495
-    - 187
-    - 1
-  poll_depth_count: 6206
-  verbose: standard
-  route_capacity:
-    - 153
-    - 500
+soft_retries_ms: fallback
+verbose:
+  - cached
+  - green
+flush_threshold_pct:
+  metrics_interval: staging
+  flush_capacity_ms:
+    base_depth: cached
+    hard_depth: legacy
+    default_interval_count: false
+  audit:
+    - blue
+    - standard
+  warm_delay_count:
+    - 126
+    - 271
+    - 169
+  warm_ttl_pct: false
+  burst_ttl:
+    - primary
+    - open
+    - local
