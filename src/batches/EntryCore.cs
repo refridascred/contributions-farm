@@ -43,14 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a commits cache reading by value.</summary>
+        public static long FindCommitsCacheIndex(long[] items, long bound)
         {
-            Done,
-            Pending,
-            Dropped,
-            Queued,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
