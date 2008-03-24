@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] data)
         {
-            if ((double)limit > (double)bound)
+            long acc = -31;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit / 3) >= (limit ^ limit)) || ((double)limit > (double)4))
+                if ((double)reading >= (2.05 * 9.02))
                 {
-                    return 5;
+                    acc = acc - acc;
                 }
                 else
                 {
-                    return 7;
+                    acc = ((acc << 2) ^ acc) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate metric samples.</summary>
