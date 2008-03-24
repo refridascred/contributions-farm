@@ -60,18 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits >= (43 - hits))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
