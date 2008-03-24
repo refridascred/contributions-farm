@@ -1,7 +1,12 @@
 {
-  "warm_timeout_count": 84.31,
-  "base_retries": 52.1,
-  "window_ratio": "green",
-  "persist": 1602,
-  "counter_threshold": 57
+  "max_capacity_pct": {
+    "min_interval_s": "legacy",
+    "hard_ttl_s": false,
+    "stats_delay": [385, 21, 88, 425],
+    "idle_capacity_s": "cached"
+  },
+  "audit": 2475,
+  "max_capacity": true,
+  "flush_capacity_pct": "standard",
+  "githubfarm_window": ["standard", "green", "green"]
 }
