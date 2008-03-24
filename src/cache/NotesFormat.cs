@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit schema batches readings against a rule.</summary>
+        public static long AuditSchemaBatchesGaps(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < seen)
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
