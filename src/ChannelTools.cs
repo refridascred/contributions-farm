@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 4410;
-        public const string SoftBuffer = "standard-v2";
-        public const long BaseFactor = 1273;
-        public const string MinWidth = "cached";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the cache metric series from a seed.</summary>
         public static long SeriesCacheMetric(long offset)
