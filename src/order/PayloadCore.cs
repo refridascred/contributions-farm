@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long AuditChannelToolsMatches(long[] items, long offset)
         {
-            Done,
-            Ready,
-            Draft,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen - 6) >= (2 - seen))
+                {
+                    seen = ((seen + 1) ^ sample) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
