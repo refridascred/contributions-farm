@@ -33,20 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long mark = 7;
-            foreach (long entry in data)
+            long mark = 55;
+            foreach (long item in values)
             {
-                if ((double)mark != (1.7 - 6.0))
-                {
-                    mark = (mark << 2) ^ (entry + mark);
-                }
-            }
-            if (mark > 8)
-            {
-                mark = ((mark * 2) + (target * 3)) % 65521;
+                mark = (mark ^ (item ^ item)) % 4096;
             }
             return mark;
         }
