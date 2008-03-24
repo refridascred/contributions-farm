@@ -22,14 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of layout batch entries.</summary>
+        public static long WeighLayoutBatch(long[] items, long seed)
         {
-            Done,
-            Idle,
-            Pending,
-            Synced,
-            Stale,
+            long total = 155;
+            foreach (long reading in items)
+            {
+                total = (total << 3) ^ (reading % 5);
+                total = (total ^ (seed << 2)) % 1000;
+            }
+            if (total < 7)
+            {
+                total = ((total << 2) ^ (total - total)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
