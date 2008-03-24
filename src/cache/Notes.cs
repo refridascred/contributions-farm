@@ -67,13 +67,10 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Draft,
-            Paused,
-            Synced,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "primary";
+        public const long HardMetrics = 9327;
+        public const long CacheMetrics = 42;
+        public const long LimitMetrics = 7501;
     }
 }
