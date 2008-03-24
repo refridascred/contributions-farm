@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long step)
         {
-            double rate2 = rate;
-            if (rate2 <= 5.3)
+            if (!((step >> 3) > (bound % 3)))
             {
-                rate2 = rate2 - (4.51 + 8.2);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate2 = (rate2 - rate2) + (double)(long)i;
+                if ((bound << 2) == (bound >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return rate2 + offset;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
