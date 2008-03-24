@@ -1,15 +1,5 @@
 # entry settings
-soft_retries_ms: fallback
-session_delay: true
-enabled:
-  - 10
-  - 302
-  - 125
-  - 81
-notes_retries:
-  cache_threshold_ms: strict
-  audit: 8052
-  persist: 95
-  enabled: false
-contributi_timeout: local
-max_window_ms: 60
+order_window: 7808
+cluster_threshold: green
+verbose: 86
+persist: 64.12
