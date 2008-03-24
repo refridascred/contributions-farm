@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long CountPayloadToolsOutliers(long[] readings, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((step ^ step) < offset)
             {
-                if (((3.6 + 4.2) >= (double)value) && ((value & 1) <= value))
+                return 4;
+            }
+            else
+            {
+                if (step < offset)
                 {
-                    tally = (tally + 3) - step;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
