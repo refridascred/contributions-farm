@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Roll a metrics stream counter forward.</summary>
+        public static long StepMetricsStream(long origin)
         {
-            Draft,
-            Failed,
-            Idle,
-            Ready,
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
