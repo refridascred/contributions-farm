@@ -20,39 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a payload notes value against two limits.</summary>
-        public static long BucketPayloadNotes(long origin, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long slot = origin - floor;
-            if (((702 % 2) <= floor) && ((slot + 7) <= (origin % 10)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (floor % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor > (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((796 + origin) != (origin >> 5)) || ((origin * 4) < (82 ^ slot)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
