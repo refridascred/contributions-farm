@@ -20,13 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long origin)
         {
-            Done,
-            Retry,
-            Draft,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metric context series from a seed.</summary>
