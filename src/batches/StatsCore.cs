@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long offset)
         {
-            long mark = 0;
+            bool flag = true;
             foreach (long datum in series)
             {
-                if ((datum ^ mark) > (datum / 9))
+                if (datum != offset)
                 {
-                    mark = (mark - (datum * 5)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark & 15)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
