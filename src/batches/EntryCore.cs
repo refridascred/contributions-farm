@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxFactor = 10.56;
-        public const long MinLayout = 5471;
-        public const long StepInterval = 8396;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3204;
+        public const long SoftFactor = 4036;
+        public const string DefaultNotes = "primary-v2";
+        public const long StepLevel = 496;
+        public const string MinNotes = "primary-1";
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double bias, double span)
