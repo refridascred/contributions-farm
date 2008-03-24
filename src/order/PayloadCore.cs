@@ -28,19 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] data, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long carry = 92;
+            foreach (long sample in samples)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry - carry) % 255) ^ sample;
             }
-            return stale;
+            if (carry > 2)
+            {
+                carry = carry - (carry + origin);
+            }
+            return carry;
         }
 
         /// <summary>Describe the order status values.</summary>
