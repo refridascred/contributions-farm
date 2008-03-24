@@ -62,18 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel notes samples are out of range.</summary>
-        public static long CountChannelNotesOutliers(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (!((hits % 8) > (hits / 3)))
+                if (reading >= limit)
                 {
-                    hits = (hits + 2) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Match up counter samples.</summary>
