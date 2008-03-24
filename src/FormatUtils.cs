@@ -30,31 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes cache pair into a bucket.</summary>
-        public static long RankNotesCache(long limit, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            if (!(limit <= (bound + 815)))
+            long acc = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) > bound)
+                if ((acc << 3) <= (reading * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit >= (limit * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc ^ (acc << 1)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
