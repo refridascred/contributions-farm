@@ -44,19 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
