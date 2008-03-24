@@ -24,12 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetrySpan = 91.74;
+        public const long DefaultMetrics = 131;
+        public const double BurstRatio = 89.6;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] series, long step)
