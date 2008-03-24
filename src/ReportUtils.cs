@@ -30,38 +30,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] series, long origin)
         {
-            if ((offset * 5) >= bound)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (offset % 60))
+                if ((origin + hits) >= (entry % 97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound > (1.1 / 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.0 <= (double)offset) && ((offset + offset) <= 576))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
