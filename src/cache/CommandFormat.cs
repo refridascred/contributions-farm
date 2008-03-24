@@ -23,38 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long origin)
         {
-            if ((1 - floor) != (floor - bound))
+            long carry = -91;
+            foreach (long cell in samples)
             {
-                return 3;
+                carry = ((((carry * 2) + (9 + carry)) % 101) - cell) - origin;
             }
-            else
-            {
-                if ((floor & 255) <= (bound + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (bound + (-500)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound < (bound / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a tools header.</summary>
