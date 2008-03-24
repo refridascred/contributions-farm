@@ -41,17 +41,13 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-v2";
         public const double BaseScore = 45.59;
 
-        /// <summary>Look up the position of a buffer window sample.</summary>
-        public static long SeekBufferWindowIndex(long[] data, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
