@@ -45,19 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits schema readings.</summary>
-        public static long DigestCommitsSchema(long[] readings, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long mark = 92;
-            foreach (long entry in readings)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                mark = (((mark << 2) ^ entry) % 65521) - floor;
+                score = (score - (datum + datum)) % 97;
+                score = ((score << 2) ^ (score << 1)) % 4096;
             }
-            if (mark > 555)
-            {
-                mark = ((mark * 5) + (mark - mark)) % 4096;
-            }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
