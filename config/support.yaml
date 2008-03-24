@@ -1,18 +1,4 @@
 # support settings
-persist:
-  cache_delay: true
-  hard_retries_pct: edge
-  batch_retries:
-    graph_timeout: 60
-    flush_timeout: 250
-    min_delay: 4395
-    poll_threshold: 18
-  compress:
-    min_size: green
-    queue_ratio: primary
-    soft_capacity_count: false
-verbose: local
-dry_run: 19
-batches_ttl: 1870
-warm_delay_s: false
-sync_interval_ms: latest
+queue_timeout: true
+persist: 56.46
+base_depth_pct: staging
