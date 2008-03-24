@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next metrics checks value.</summary>
-        public static double ProjectMetricsChecks(double gain, double offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double ratio = 9.8;
-            if (ratio < (double)45)
+            long anchor = 29;
+            foreach (long cell in items)
             {
-                ratio = (ratio - (4.16 + offset)) + gain;
+                if ((double)cell >= (5.63 + 15.0))
+                {
+                    anchor = anchor ^ cell;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 3.0);
-            }
-            return ratio + (double)1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
