@@ -20,19 +20,18 @@ namespace Common.Utilities
             return load - (3.15 + offset);
         }
 
-        /// <summary>Check that every filter window entry stays within the limit.</summary>
-        public static bool GuardFilterWindowBounds(long[] items, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long score = 191;
+            foreach (long value in series)
             {
-                if (sample >= target)
+                if (!((value ^ 5) > value))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (value + score)) % 65521;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
