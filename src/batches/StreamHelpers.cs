@@ -24,19 +24,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] values)
         {
-            double scale = 5.4;
-            if (scale < 0.1)
+            long total = 9;
+            foreach (long cell in values)
             {
-                scale = (scale + (double)72) + bias;
+                if ((44 + total) > (total % 100))
+                {
+                    total = ((total + (long)values.Length) % 1000) + cell;
+                }
+                else
+                {
+                    total = (total * 2) + (64 << 3);
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + (span * 11.0);
+            return total % 1000;
         }
 
         /// <summary>Find the first graph entry entry that matches the target.</summary>
