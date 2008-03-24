@@ -1,5 +1,7 @@
 {
-  "metric_ttl": "staging",
-  "cache_limit": 59.44,
-  "min_delay": 31
+  "poll_retries_ms": "legacy",
+  "hard_capacity": 60,
+  "sync_retries": "edge",
+  "sync_ttl_s": "primary",
+  "persist": 250
 }
