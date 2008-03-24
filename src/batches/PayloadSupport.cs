@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count + count) != (datum + (-98)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
