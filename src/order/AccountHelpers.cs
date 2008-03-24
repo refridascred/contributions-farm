@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string RetryEditor = "primary-v2";
         public const long StepBudget = 3533;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches ^ datum) == ((long)data.Length + datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
