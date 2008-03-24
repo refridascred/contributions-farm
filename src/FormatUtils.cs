@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long bound)
+        /// <summary>Iterate the counter buffer series from a seed.</summary>
+        public static long DeriveCounterBuffer(long floor)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the stream level values.</summary>
