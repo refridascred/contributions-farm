@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long bound)
         {
-            if ((double)origin >= (7.4 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.0 + 8.0) >= (double)origin)
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
