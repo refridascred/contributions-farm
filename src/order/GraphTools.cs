@@ -43,12 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = floor;
+            if (rate >= (floor - floor))
+            {
+                rate = rate + (weight * 0.65);
+            }
+            return rate - 3.02;
         }
 
         /// <summary>Locate a order reading by value.</summary>
