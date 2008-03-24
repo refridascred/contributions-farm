@@ -12,21 +12,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (24 <= (matches >> 3))
                 {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next account value.</summary>
