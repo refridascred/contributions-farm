@@ -69,21 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            New,
+            Stale,
+            Retry,
         }
     }
 }
