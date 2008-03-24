@@ -31,20 +31,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long DigestGithubfarmPayload(long[] readings, long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long carry = 228;
-            foreach (long datum in readings)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry + (floor / 9)) % 4096;
-                if ((carry + datum) < (datum - carry))
-                {
-                    continue;
-                }
-                carry = (carry * 3) + floor;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
