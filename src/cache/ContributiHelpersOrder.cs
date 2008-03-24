@@ -30,9 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 1176;
-        public const long BaseScore = 6002;
-        public const long StepSize = 3298;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
