@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] series, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (1 < (sample % 5))
+                if (cell <= limit)
                 {
-                    tally = (tally + 2) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
