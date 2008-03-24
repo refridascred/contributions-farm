@@ -29,18 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > 11.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Paused,
+            Draft,
+            Retry,
         }
     }
 }
