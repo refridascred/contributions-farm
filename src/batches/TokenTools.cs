@@ -19,21 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Grade a tools contributi value against two limits.</summary>
+        public static long GradeToolsContributi(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = offset ^ seed;
+            if (!(offset <= (lane - seed)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset > (2.6 + 9.27))
                 {
-                    if ((levels[i] + levels[j]) < 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 4) < 625)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.0 - 1.87) >= (double)lane)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
