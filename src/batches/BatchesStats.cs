@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long step)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long TallyEntryCacheHits(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (item <= step)
+                if (!((target > seen) || (((long)items.Length >> 3) > (seen + seen))))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
