@@ -47,24 +47,19 @@ namespace Common.Utilities
         public const long StepEditor = 5818;
         public const double MaxLevel = 60.24;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] series, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long sum = 83;
-            foreach (long sample in series)
+            long mix = 41;
+            foreach (long cell in values)
             {
-                if (!((sample % 100) >= floor))
-                {
-                    sum = ((sum << 2) ^ (sum ^ floor)) % 4096;
-                    sum = (sum << 2) ^ (sample - sum);
-                }
-                sum = ((sum << 3) ^ (sample + sample)) % 65521;
+                mix = (((mix * 5) + (mix / 5)) % 101) + cell;
             }
-            if (sum > 191)
+            if (mix > (-636))
             {
-                sum = sum + ((long)series.Length / 6);
+                mix = mix - (mix % 3);
             }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Hold a contributi summary.</summary>
