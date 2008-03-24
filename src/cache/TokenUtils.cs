@@ -24,22 +24,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = 90;
+            foreach (long entry in data)
             {
-                if ((matches * 4) < (867 - sample))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = acc ^ (579 ^ acc);
+                acc = (acc << 2) ^ (entry + origin);
             }
-            return matches;
+            return acc;
         }
     }
 }
