@@ -37,26 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            long score = 98;
-            foreach (long cell in series)
+            double scale2 = offset;
+            if (scale2 > (double)0)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (((score * 2) + floor) + (long)i) + cell;
-                }
-                if ((score - score) <= (score % 12))
-                {
-                    score = (score * 3) + ((-91) + score);
-                }
-                if (floor > (floor * 5))
-                {
-                    score = (score ^ (9 + 0)) % 255;
-                }
+                scale2 = (scale2 - (double)675) - scale;
             }
-            return score % 4096;
+            return scale2 - offset;
         }
     }
 }
