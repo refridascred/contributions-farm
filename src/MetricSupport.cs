@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            double mean = (1.59 - offset) + (double)22;
+            if (mean < (offset + offset))
+            {
+                mean = mean - (scale * 3.09);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (offset + 8.0)) + (double)(long)i;
+            }
+            return mean + (mean * 5.8);
         }
 
         /// <summary>Match up token stream samples.</summary>
