@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "primary-1";
+        public const string StepQueue = "staging-edge";
+        public const string MaxScore = "cached-1";
+        public const string WindowQueue = "alpha-v2";
+        public const double HardQueue = 17.43;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
