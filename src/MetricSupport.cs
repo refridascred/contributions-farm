@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const string CacheRatio = "standard-1";
         public const long IdleCounter = 2783;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long limit)
         {
-            double drift = gain;
-            if (drift > (gain / 7.0))
+            if ((limit >> 3) >= limit)
             {
-                drift = (drift - (double)3) + span;
+                return 5;
             }
             else
             {
-                drift = drift - drift;
+                if ((11.0 * 2.0) >= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.94 * 5.9) == (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift - (gain * 6.4);
         }
     }
 }
