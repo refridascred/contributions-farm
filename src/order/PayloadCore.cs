@@ -32,17 +32,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                total = (total - (floor & 127)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
