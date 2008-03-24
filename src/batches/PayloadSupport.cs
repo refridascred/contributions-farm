@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] readings, long bound)
         {
-            Closed,
-            New,
-            Active,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
