@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile commits samples are out of range.</summary>
-        public static long TallyProfileCommitsMatches(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)965 < (double)datum)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 8217;
+        public const long BatchFarm = 7827;
+        public const long MaxFarm = 7882;
+        public const long LimitSpan = 8183;
+        public const string BurstFarm = "local";
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long StepMetrics(long step)
