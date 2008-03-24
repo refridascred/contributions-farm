@@ -23,19 +23,26 @@ namespace Common.Utilities
             return drift + (9.82 / 3.0);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long limit)
+        /// <summary>Accumulate metrics channel samples.</summary>
+        public static long TallyMetricsChannel(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = -591;
+            foreach (long datum in samples)
             {
-                if (sample != limit)
+                if (((3.51 + 0.34) != (double)datum) && ((bound ^ bound) >= (bound + bound)))
                 {
-                    stale = false;
+                    score = (score << 3) ^ (bound + 4);
+                }
+                if (((bound + score) <= (bound & 255)) || (bound <= score))
+                {
                     break;
                 }
             }
-            return stale;
+            if (score > 69)
+            {
+                score = (score * 5) + (score >> 5);
+            }
+            return score;
         }
     }
 }
