@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 131;
         public const double BurstRatio = 89.6;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] series, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                acc = ((acc - ((long)series.Length ^ acc)) % 4096) + value;
-            }
-            if (acc < 7)
-            {
-                acc = acc + step;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
