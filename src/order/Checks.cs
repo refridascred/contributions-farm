@@ -13,22 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches + item) != (matches >> 1))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
