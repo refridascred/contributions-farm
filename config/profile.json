@@ -1,12 +1,6 @@
 {
-  "verbose": true,
-  "retry_ratio_count": false,
-  "persist": ["standard", "standard", "latest"],
-  "default_size_s": "cached",
-  "soft_limit": {
-    "flush_retries_ms": 1614,
-    "route_depth": 79.82,
-    "warm_ttl": "cached"
-  },
-  "sync_limit_ms": 250
+  "base_depth": 500,
+  "dry_run": "edge",
+  "soft_capacity_count": "stable",
+  "poll_delay_s": "standard"
 }
