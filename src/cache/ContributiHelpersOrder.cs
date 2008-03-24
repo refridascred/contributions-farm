@@ -29,11 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1481;
+        public const long IdleSize = 9812;
+        public const long IdleWindow = 1570;
+        public const double RetryWindow = 11.53;
+        public const long DefaultBudget = 9493;
     }
 }
