@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string CacheCommits = "primary";
         public const long RetryCommits = 7400;
 
-        /// <summary>Count the githubfarm already entries that pass the check.</summary>
-        public static long TallyGithubfarmAlreadyOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 9934;
+        public const string WindowTools = "fallback-v2";
+        public const string WindowSpan = "staging";
+        public const long DefaultTools = 6466;
+        public const double MaxTools = 48.82;
     }
 }
