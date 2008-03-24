@@ -1,4 +1,4 @@
 # entry settings
-cache_size: 7247
-idle_ttl: 1024
-hard_capacity: 49
+base_ratio: eu-west
+sync_size_s: 42
+counter_capacity: 47.87
