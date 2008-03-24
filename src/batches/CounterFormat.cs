@@ -41,13 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long TallyRecordContributiHits(long[] samples)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Stale,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)matches == (9.4 / 3.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
