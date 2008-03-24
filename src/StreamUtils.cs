@@ -84,18 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (8.0 > (double)offset)
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitScore = 6.68;
+        public const long IdleSupport = 1893;
+        public const string RetrySize = "cached-v2";
+        public const long HardSupport = 6491;
+        public const double BatchSupport = 26.06;
     }
 }
