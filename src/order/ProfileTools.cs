@@ -29,15 +29,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series)
         {
-            double mean = ratio;
-            if (mean > (ratio - mean))
+            long result = -33;
+            foreach (long sample in series)
             {
-                mean = mean + mean;
+                result = (result + sample) % 65521;
+                result = result ^ result;
             }
-            return mean + (bias / 9.0);
+            if (result > 982)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
