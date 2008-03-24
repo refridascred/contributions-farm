@@ -1,7 +1,10 @@
 # entry settings
-min_size_count: false
-context_depth: cached
-soft_ttl_s: open
-retry_ttl_pct: latest
-poll_threshold_s: local
-idle_depth_s: standard
+audit:
+  - 431
+  - 272
+  - 20
+  - 45
+base_depth_ms:
+  - strict
+  - cached
+order_threshold: primary
