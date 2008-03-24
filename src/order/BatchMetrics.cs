@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSize = 4065;
+        public const double StepSpan = 16.75;
+        public const double BaseQueue = 23.68;
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
         public static long CountCounterSessionGaps(long[] series)
