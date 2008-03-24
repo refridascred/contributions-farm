@@ -1,7 +1,13 @@
 {
-  "hard_depth": "legacy",
-  "buffer_capacity": ["blue", "fallback", "open"],
-  "compress": "cached",
-  "hard_interval": false,
-  "persist": 14
+  "base_size_ms": {
+    "retry_depth": 7306,
+    "warm_size": "stable",
+    "dry_run": 28.25,
+    "warm_limit": "primary",
+    "verbose": 13.59
+  },
+  "audit": 30,
+  "dry_run": false,
+  "burst_depth_pct": "cached",
+  "sync_ttl_s": true
 }
