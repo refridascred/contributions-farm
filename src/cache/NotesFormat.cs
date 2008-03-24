@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long RetryContributi = 517;
         public const double StepContributi = 46.04;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long mark = 84;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((double)mark > (double)5)
+                {
+                    mark = ((mark - sample) % 101) - seed;
+                }
+                mark = mark + (3 % 100);
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Hold a batches options.</summary>
