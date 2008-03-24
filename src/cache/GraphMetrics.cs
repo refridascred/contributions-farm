@@ -43,13 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] items, long floor)
         {
-            Active,
-            Idle,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)floor <= (6.0 * 14.0))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
