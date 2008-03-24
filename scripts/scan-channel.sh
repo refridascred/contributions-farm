@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest strict standard open; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=422
+log "limit is ${CHANNEL_LIMIT}"
+
 count=0
 while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in cached edge; do
-    log "checking ${item}"
-done
