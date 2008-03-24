@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = 29;
+            foreach (long datum in samples)
             {
-                if (486 > (bound * 4))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = (count + 3) ^ item;
+                    score = ((score ^ datum) % 65521) + (long)i;
                 }
+                score = score + origin;
+                score = (score << 3) ^ 69;
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Hold a record summary.</summary>
