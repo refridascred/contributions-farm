@@ -47,9 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 400;
-        public const double StepTimeout = 75.85;
-        public const long HardDepth = 4158;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
