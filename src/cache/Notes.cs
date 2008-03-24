@@ -62,12 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 7636;
-        public const long DefaultEditor = 1966;
-        public const long BurstEditor = 3656;
-        public const long HardSpan = 5835;
-        public const double DefaultTimeout = 88.31;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "primary";
+        public const double IdleMetric = 78.84;
+        public const long BaseMetric = 6158;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 7861;
