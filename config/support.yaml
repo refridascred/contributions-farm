@@ -1,19 +1,4 @@
 # support settings
-persist:
-  persist:
-    - 123
-    - 406
-    - 449
-    - 92
-  dry_run: open
-  batch_timeout: 100
-  retry_window_count:
-    editor_interval: 616
-    retry_timeout: strict
-    base_limit: false
-    retry_capacity_pct: open
-compress: 653
-warm_delay_ms: 38.25
-channel_timeout: 2206
-batch_timeout_ms: eu-west
-min_retries_pct: latest
+editor_delay: 12.06
+session_depth: open
+poll_threshold: 32
