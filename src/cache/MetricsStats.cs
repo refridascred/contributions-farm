@@ -62,13 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double gain = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (weight * 4.83)) - (double)(long)i;
+            }
+            return gain - (weight - offset);
         }
     }
 }
