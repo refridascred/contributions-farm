@@ -74,21 +74,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
