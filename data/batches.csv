@@ -1,6 +1,10 @@
-id,region,owner,token,level
-1,local,staging,open,714
-2,564,strict,fallback,72.12
-3,local,71,342,212
-4,local,edge,6.07,legacy
-5,52.48,924,12.24,latest
+id,region,level,weight
+1,primary,blue,292
+2,79.48,green,blue
+3,91,570,198
+4,28.56,681,933
+5,178,34.86,401
+6,79.0,850,263
+7,eu-west,980,fallback
+8,7.77,42.69,standard
+9,32.47,160,strict
