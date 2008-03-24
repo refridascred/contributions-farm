@@ -1,4 +1,14 @@
 # githubfarm settings
-batch_capacity: 92
-cache_ratio_ms: true
-batch_size: 10
+flush_limit:
+  audit:
+    - fallback
+    - staging
+    - local
+    - cached
+  cache_capacity: legacy
+  buffer_limit: 30
+  compress: stable
+batch_size: open
+counter_threshold: 16
+verbose: 58.84
+min_size: blue
