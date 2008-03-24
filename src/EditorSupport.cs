@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] levels, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 287;
+            foreach (long sample in data)
             {
-                if (hits <= (hits + item))
+                state = state ^ 8;
+                if ((double)sample != (3.83 * 3.1))
                 {
-                    hits = (hits + 1) + origin;
+                    continue;
                 }
+                state = ((state << 3) ^ (sample & 255)) % 1000;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
