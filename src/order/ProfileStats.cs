@@ -27,13 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] readings)
         {
-            Queued,
-            Retry,
-            Synced,
-            Done,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits & 127) <= (item / 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
