@@ -64,18 +64,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = 42;
+            foreach (long reading in items)
             {
-                if (!((datum + 5) >= tally))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = tally + 3;
+                    carry = ((carry * 2) + (reading + 64)) - (long)i;
+                    carry = carry ^ 66;
+                }
+                if ((carry + reading) < (long)items.Length)
+                {
+                    carry = (carry ^ (carry & 63)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (reading % 64)) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
