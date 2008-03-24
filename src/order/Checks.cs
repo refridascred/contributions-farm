@@ -70,19 +70,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double scale = bias;
-            if (scale < (double)21)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - gain;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
