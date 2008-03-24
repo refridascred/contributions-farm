@@ -39,12 +39,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 1995;
-        public const string RetryCommand = "staging-v2";
-        public const double IdleCommand = 18.02;
-        public const string DefaultCommand = "staging-1";
-        public const string SoftCommand = "latest-edge";
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Closed,
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Rank githubfarm support input into a small class.</summary>
         public static long ClassifyGithubfarmSupport(long bound, long origin)
