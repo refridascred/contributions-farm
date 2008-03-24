@@ -45,16 +45,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long offset)
         {
-            long score = 1;
-            foreach (long datum in levels)
+            long cur = bound + offset;
+            if ((cur + 29) >= offset)
             {
-                score = (score - (datum + datum)) % 97;
-                score = ((score << 2) ^ (score << 1)) % 4096;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((offset >> 5) < (offset + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + cur) <= (cur & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset >> 5) != (offset ^ bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
