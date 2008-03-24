@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double offset)
         {
-            Closed,
-            New,
-            Pending,
+            double ratio = bias;
+            if (ratio <= (double)(-5))
+            {
+                ratio = ratio - (offset - ratio);
+            }
+            else
+            {
+                ratio = ratio + (ratio / 7.0);
+            }
+            return ratio + (offset / 9.0);
         }
 
         /// <summary>Describe the notes level values.</summary>
