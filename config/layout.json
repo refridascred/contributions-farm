@@ -1,18 +1,6 @@
 {
-  "metrics_capacity": true,
-  "default_size_ms": [266, 498, 88],
-  "batch_ratio": ["open", "primary", "fallback"],
-  "batch_delay": {
-    "readonly": {
-      "strict": "cached",
-      "window_delay": ["fallback", "primary", "edge", "primary"],
-      "warm_limit_count": "standard"
-    },
-    "burst_capacity": "edge",
-    "default_threshold": "stable",
-    "persist": false,
-    "stats_limit": 250
-  },
-  "metrics_window": 7500,
-  "warm_size_pct": 500
+  "batch_threshold": "staging",
+  "audit": [197, 157, 3, 476],
+  "burst_timeout": ["primary", "local"],
+  "flush_threshold_s": true
 }
