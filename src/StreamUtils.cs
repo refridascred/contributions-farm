@@ -23,19 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support notes counter forward.</summary>
-        public static long IterateSupportNotes(long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.7 * 1.6) <= (double)step)
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                    mix = (mix + mix) % 101;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                mix = (mix - (target - target)) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
