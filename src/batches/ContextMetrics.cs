@@ -40,14 +40,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long offset)
         {
-            Failed,
-            Active,
-            Idle,
-            Stale,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
