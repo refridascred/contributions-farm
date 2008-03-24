@@ -51,19 +51,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] items, long bound)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long sample in items)
             {
-                if (sample >= seed)
+                if (bound < (998 + 86))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
