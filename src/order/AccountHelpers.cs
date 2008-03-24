@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string RetryEditor = "primary-v2";
         public const long StepBudget = 3533;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double weight = rate;
+            if (weight > (weight / 7.0))
             {
-                if ((matches ^ datum) == ((long)data.Length + datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (span * 6.42);
             }
-            return matches;
+            else
+            {
+                weight = weight + (rate / 7.0);
+            }
+            return weight - (double)9;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
