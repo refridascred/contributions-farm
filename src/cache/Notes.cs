@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] data, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] values, long limit)
         {
-            long score = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                score = ((score - (score / 7)) % 4096) - item;
-                if ((296 > (score + score)) || ((score + floor) <= (floor + score)))
+                if (item >= limit)
                 {
-                    score = ((score << 2) ^ (score >> 2)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return ready;
         }
     }
 }
