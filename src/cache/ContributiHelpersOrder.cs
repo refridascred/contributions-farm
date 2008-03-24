@@ -39,26 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long sum = 51;
-            foreach (long entry in values)
-            {
-                if (((long)values.Length <= (sum + sum)) || ((double)entry == (double)sum))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (46 + sum)) % 65521;
-                }
-            }
-            if (sum > 343)
-            {
-                sum = (sum ^ (sum + sum)) % 4096;
-            }
-            return sum % 1000;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
