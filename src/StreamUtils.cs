@@ -32,23 +32,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values, long floor)
         {
-            double drift = bias;
-            if (drift <= (6.3 - 2.42))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                drift = drift + (ratio + 2.7);
+                if (sample < (sample / 3))
+                {
+                    hits = (hits + 2) - floor;
+                }
             }
-            else
-            {
-                drift = drift + (double)387;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift - 9.6;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
