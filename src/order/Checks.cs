@@ -75,38 +75,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long target)
         {
-            if ((step % 12) <= (step * 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (double)floor)
+                if (levels[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step % 16) > (45 & 63)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1 + floor) < (floor + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
