@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
-        public static long OverlapProfileContributiCount(long[] items)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long TotalSessionProfile(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 71;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total + (entry % 24);
             }
-            return seen;
+            if (total < 10)
+            {
+                total = (total + (total + total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
