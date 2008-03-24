@@ -76,13 +76,21 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            Synced,
-            Closed,
-            Pending,
-            New,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
