@@ -67,9 +67,13 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7861;
-        public const long BurstContributi = 9208;
-        public const long IdleContributi = 791;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Draft,
+            Paused,
+            Synced,
+            New,
+        }
     }
 }
