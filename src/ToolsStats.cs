@@ -65,15 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] items, long origin)
         {
-            long score = 36;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in items)
             {
-                score = (((score << 2) ^ (score >> 4)) ^ entry) + bound;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
