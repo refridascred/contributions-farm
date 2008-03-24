@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Locked,
-            Idle,
-            Active,
-            Ready,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 333;
+        public const long BaseLevel = 8683;
+        public const long IdleSpan = 4891;
+        public const long RetryFactor = 3039;
+        public const long WindowBatch = 3267;
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double weight, double floor)
