@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double span)
         {
-            if ((step ^ step) < offset)
+            double scale = (span - span) - (ratio * 4.59);
+            if (scale > (scale + scale))
             {
-                return 4;
+                scale = scale + scale;
             }
-            else
-            {
-                if (step < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return scale + (ratio + scale);
         }
 
         /// <summary>Digest a series of cache entries.</summary>
