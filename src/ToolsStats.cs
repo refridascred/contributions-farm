@@ -77,32 +77,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long seed, long target)
-        {
-            long offset = seed ^ target;
-            if (((5.2 - 7.24) > (double)offset) || ((target << 1) != (seed ^ (-9))))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 2) != (407 / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 3) > (seed >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchSpan = 4566;
+        public const double WindowNotes = 32.55;
+        public const long BatchSize = 9816;
+        public const string MaxNotes = "cached";
     }
 }
