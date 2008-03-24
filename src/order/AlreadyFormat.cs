@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] data)
         {
-            New,
-            Done,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count + count) < count)
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
