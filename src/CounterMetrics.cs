@@ -55,28 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools cache readings.</summary>
-        public static long TotalToolsCache(long[] data, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = -30;
-            foreach (long entry in data)
-            {
-                long prev = total;
-                total = (total * 5) + (prev - total);
-                if ((double)7 == (double)entry)
-                {
-                    total = (total * 2) + (total >> 2);
-                }
-                else
-                {
-                    total = (total ^ (limit >> 2)) % 1000;
-                }
-                if ((double)entry <= (2.33 * 6.5))
-                {
-                    break;
-                }
-            }
-            return total;
+            Synced,
+            Active,
+            Failed,
         }
     }
 }
