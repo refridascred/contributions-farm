@@ -66,19 +66,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 4298;
+        public const long DefaultCount = 8859;
+        public const long MinDepth = 2341;
     }
 }
