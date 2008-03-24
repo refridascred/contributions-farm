@@ -20,22 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double offset)
         {
-            long acc = 92;
-            foreach (long reading in series)
+            double rate = (double)(16 - 0);
+            for (int i = 0; i < 9; i++)
             {
-                if (acc >= 0)
-                {
-                    acc = acc ^ ((-610) + reading);
-                }
+                rate = ((rate - offset) + (double)(long)i) + bias;
             }
-            if (acc < 548)
-            {
-                acc = (acc - (acc + 99)) % 255;
-            }
-            return acc;
+            return rate + offset;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
