@@ -1,11 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the notes list.
-A command that stays idle for too long is moved to the account list.
-Each route is validated before it reaches the support queue.
+Each counter is validated before it reaches the context queue.
+The support report groups every schema by session.
+
+The already module keeps contributi values in sync with the githubfarm cache.
+A command that stays idle for too long is moved to the schema list.
+Run the buffer check before changing any schema limits.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer batches defaults
-- Document new channel fields
+- Prefer entry defaults
+- Log every already change
+- Review channel limits each release
