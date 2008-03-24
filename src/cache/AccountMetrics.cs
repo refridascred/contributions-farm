@@ -93,18 +93,15 @@ namespace Common.Utilities
             return rate - (floor / 5.0);
         }
 
-        /// <summary>Measure how many farm batches samples are out of range.</summary>
-        public static long TallyFarmBatchesOutliers(long[] data, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((cell % 64) <= seen) && ((242 + cell) > (bound * 4))) || ((cell + bound) < ((long)data.Length ^ seen)))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
