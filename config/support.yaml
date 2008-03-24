@@ -1,13 +1,23 @@
 # support settings
-batch_retries:
-  - 377
-  - 27
-flush_window_ms: false
-soft_ratio: primary
-default_interval_s: edge
-poll_limit:
-  min_ratio: 60
-  githubfarm_size: 27
-  retry_ttl_ms: false
-  enabled: open
-flush_threshold: true
+soft_ratio_count:
+  metric_delay: green
+  persist: local
+  hard_window_pct:
+    soft_size_count: local
+    poll_capacity_count:
+      - strict
+      - stable
+      - edge
+      - edge
+    base_delay_ms: false
+  idle_timeout: 8
+  dry_run: fallback
+metric_threshold:
+  soft_size_count: primary
+  min_timeout_s: stable
+  persist: 500
+default_threshold_pct: 16.82
+flush_limit_s:
+  - eu-west
+  - cached
+  - primary
