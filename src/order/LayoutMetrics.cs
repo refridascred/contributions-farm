@@ -41,10 +41,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1317;
-        public const long IdleContributi = 5543;
-        public const long LimitContributi = 3414;
-        public const long BatchContributi = 2853;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
