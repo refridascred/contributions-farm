@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!((3.6 - 8.77) > (double)hits) || ((bound >> 5) < 9))
+                if ((reading - floor) <= (15 - floor))
                 {
-                    hits = (hits + 2) - entry;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
