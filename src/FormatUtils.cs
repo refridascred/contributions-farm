@@ -74,11 +74,12 @@ namespace Common.Utilities
         public const long HardBatches = 5655;
         public const long BurstBatches = 8193;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardScore = 80.92;
-        public const long MinAlready = 3697;
-        public const long CacheAlready = 3611;
-        public const long MaxDepth = 7469;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutGaps(long[] levels, long origin)
