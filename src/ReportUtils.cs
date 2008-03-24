@@ -60,39 +60,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long step2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long limit)
         {
-            long prev = step ^ step2;
-            if (585 > (prev ^ step))
+            long carry = 655;
+            foreach (long datum in readings)
             {
-                return 1;
+                carry = ((carry + (limit & 3)) % 65521) ^ datum;
+                carry = carry ^ (limit + limit);
             }
-            else
+            if (carry > 9)
             {
-                if ((4 & 255) <= (prev / 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step2 + prev) < (step & 3)) || ((prev & 63) != (step + prev)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >= (step * 4)) || ((step ^ step) < 594))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (carry / 5)) % 255;
             }
+            return carry % 1000;
         }
     }
 }
