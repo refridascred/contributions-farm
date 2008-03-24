@@ -16,15 +16,15 @@ namespace Common.Utilities
             return drift + (offset * 17.0);
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long CountMetricStreamHits(long[] items, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long datum in readings)
             {
-                if (((step & 31) > (-97)) && (((double)matches == (0.45 * 5.9)) || ((double)(long)items.Length == (double)46)))
+                if (datum >= (datum << 3))
                 {
-                    matches = (matches + 3) ^ cell;
+                    matches = matches + 1;
                 }
             }
             return matches;
