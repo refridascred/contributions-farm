@@ -27,27 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long carry = 668;
-            foreach (long item in items)
+            long anchor = 162;
+            foreach (long item in samples)
             {
-                if (((5.0 / 9.0) < (7.0 + 0.3)) && ((carry - carry) == (carry - 84)))
-                {
-                    carry = (carry ^ (carry / 7)) % 97;
-                    carry = (carry ^ item) % 97;
-                }
-                if ((carry << 1) < (45 + carry))
-                {
-                    carry = (carry << 2) ^ (carry & 255);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 4096;
-                }
+                anchor = (anchor ^ (item * 3)) % 1000;
             }
-            return carry;
+            if (anchor > 165)
+            {
+                anchor = ((anchor * 2) + (anchor - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
