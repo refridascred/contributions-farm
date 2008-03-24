@@ -37,18 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] items, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double mean = ratio;
+            if (mean > (ratio - mean))
             {
-                if ((15.0 - 2.0) >= (double)reading)
-                {
-                    matches = (matches + 1) + step;
-                }
+                mean = mean + mean;
             }
-            return matches;
+            return mean + (bias / 9.0);
         }
 
         /// <summary>Combine format values into a single score.</summary>
