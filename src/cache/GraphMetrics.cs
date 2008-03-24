@@ -33,18 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long score = 191;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((value ^ 5) > value))
-                {
-                    score = (score ^ (value + score)) % 65521;
-                }
+                anchor = (anchor ^ bound) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
