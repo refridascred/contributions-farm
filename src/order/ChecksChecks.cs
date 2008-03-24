@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 293;
+            foreach (long cell in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - anchor) + cell) + offset;
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = (anchor * 2) + (59 / 8);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
