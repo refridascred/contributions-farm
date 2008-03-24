@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseSize = 85.09;
-        public const long MinCluster = 5031;
-        public const double BaseCluster = 14.09;
-        public const long WindowSize = 6668;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!!((9.06 + 20.0) != (double)item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] items, long offset)
