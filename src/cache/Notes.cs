@@ -23,24 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long state = 313;
+            foreach (long entry in levels)
             {
-                if ((double)(long)i == (double)step)
+                if ((entry >> 5) == (12 >> 2))
                 {
-                    anchor = (anchor + (824 & 255)) % 97;
+                    state = (state - (state >> 3)) % 1000;
                 }
-                if ((double)step < (double)1)
-                {
-                    continue;
-                }
-                anchor = (anchor * 4) + (anchor << 1);
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            if (state < 591)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
