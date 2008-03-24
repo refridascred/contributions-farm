@@ -45,12 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 49.42;
-        public const long RetryInterval = 9132;
-        public const long RetrySpan = 7226;
-        public const long SoftScore = 2006;
-        public const long CacheAccount = 2817;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items, long offset)
+        {
+            long mix = 0;
+            foreach (long reading in items)
+            {
+                if (((double)mix > (double)(long)items.Length) || ((offset << 3) >= (44 + offset)))
+                {
+                    mix = mix - (offset / 2);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix - reading);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long origin, long offset)
