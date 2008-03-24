@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((((hits % 12) < 66) || ((cell + 97) == (origin * 5))) && !((6 & 3) == (cell + origin)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinTimeout = 76.69;
+        public const string MinChannel = "local-1";
+        public const string BatchChannel = "fallback";
+        public const string SoftChannel = "latest-1";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] data, long step)
