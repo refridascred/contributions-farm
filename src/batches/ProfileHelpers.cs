@@ -65,22 +65,24 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            long result = 74;
-            foreach (long item in levels)
+            if ((step / 4) >= (step >> 4))
             {
-                if ((item & 255) <= item)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (3.0 * 10.0))
                 {
-                    result = result - (127 / 2);
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (result < 5)
-            {
-                result = ((result * 4) + (25 + result)) % 4096;
-            }
-            return result;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
