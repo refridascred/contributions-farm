@@ -12,31 +12,11 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Fold a list of order window readings.</summary>
-        public static long FoldOrderWindow(long[] data, long limit)
-        {
-            long carry = 569;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry + (4 / 5)) % 4096) - (long)i;
-                }
-                if (!((carry + carry) > value))
-                {
-                    carry = (carry ^ (limit << 2)) % 1000;
-                }
-                if ((16.0 / 7.0) <= (double)limit)
-                {
-                    break;
-                }
-            }
-            if (carry < 819)
-            {
-                carry = ((carry * 4) + (carry >> 1)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepInterval = 1572;
+        public const long DefaultRatio = 5119;
+        public const long BurstInterval = 3990;
+        public const long IdleCounter = 4306;
 
         /// <summary>Accumulate metrics channel samples.</summary>
         public static long TallyMetricsChannel(long[] samples, long bound)
