@@ -51,24 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long WeighLayoutCluster(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long anchor = -95;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((anchor - datum) <= (anchor / 9)) && ((7.0 * 0.7) <= (double)datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = anchor - (datum % 10);
-                anchor = (anchor + (datum ^ anchor)) % 97;
             }
-            if (anchor < 0)
-            {
-                anchor = anchor - (anchor >> 2);
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
