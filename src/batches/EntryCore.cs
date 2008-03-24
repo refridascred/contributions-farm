@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 1.03;
-        public const long LimitCommand = 8446;
-        public const long SoftScore = 1787;
-        public const long HardCount = 6985;
-        public const double SoftCommand = 73.99;
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long TallyEntryFarmHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum << 2) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] items, long limit)
