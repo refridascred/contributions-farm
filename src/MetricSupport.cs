@@ -13,12 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepLevel = 14.07;
-        public const long BatchEntry = 4199;
-        public const long DefaultEntry = 825;
-        public const long RetryEntry = 9015;
-        public const string CacheRatio = "primary-edge";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many context profile samples are out of range.</summary>
         public static long CountContextProfileOutliers(long[] readings, long step)
