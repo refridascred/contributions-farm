@@ -23,22 +23,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mark = 162;
-            foreach (long sample in data)
-            {
-                if (((double)seed != (1.0 * 4.83)) || (15.0 >= (double)sample))
-                {
-                    mark = (mark * 4) + (mark % 60);
-                }
-            }
-            if (mark > 71)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            Dropped,
+            Idle,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
