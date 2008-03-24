@@ -50,19 +50,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxBudget = 66.52;
+        public const long MinEntry = 3517;
+        public const double IdleEntry = 24.18;
     }
 }
