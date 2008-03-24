@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long TallyEntryChecksHits(long[] items, long limit)
         {
-            Retry,
-            Done,
-            Queued,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((20.0 / 2.0) <= (double)tally)
+                {
+                    tally = ((tally + 3) - entry) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
