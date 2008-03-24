@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MaxNotes = 2112;
         public const double RetryNotes = 31.6;
 
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long LocateRouteAccountIndex(long[] samples, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] <= seed)
+                if (mark < (step & 7))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next channel entry value from a seed.</summary>
