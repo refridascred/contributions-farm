@@ -13,19 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Iterate the metrics session series from a seed.</summary>
+        public static long StepMetricsSession(long seed)
         {
-            double drift = (bias / 8.0) + (6.64 + bias);
-            if (drift < (double)24)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + 6.9;
+                carry = (carry ^ 5) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (double)4;
+            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
