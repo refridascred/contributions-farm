@@ -28,11 +28,39 @@ namespace Common.Utilities
         public const long WindowSpan = 9942;
         public const string LimitAlready = "latest";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long seed)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            long offset = step + seed;
+            if ((step >> 1) != (seed + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset / 3) == (4 >> 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (double)2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9.34 > (5.57 / 8.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
