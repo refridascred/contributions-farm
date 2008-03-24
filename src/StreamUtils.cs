@@ -72,39 +72,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long seed)
         {
-            long cur = origin - offset;
-            if ((907 % 7) >= (cur / 3))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((8.0 - 9.19) <= (double)cur))
+                if ((7.5 * 0.75) < (double)seed)
                 {
-                    return 0;
+                    tally = (tally + 3) + cell;
                 }
                 else
                 {
-                    if ((offset + origin) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((0 << 2) < offset) || ((origin / 6) < (offset & 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
