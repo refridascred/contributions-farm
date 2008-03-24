@@ -39,14 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Retry,
-            Synced,
-            Done,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "primary-1";
+        public const double DefaultPayload = 19.45;
+        public const long MaxPayload = 1294;
+        public const long SoftPayload = 4978;
+        public const double BasePayload = 87.77;
     }
 }
