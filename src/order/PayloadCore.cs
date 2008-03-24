@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of layout farm readings.</summary>
-        public static long CompareLayoutFarmCount(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > (hits + reading))
                 {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
