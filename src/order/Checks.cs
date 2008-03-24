@@ -75,29 +75,35 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long floor)
         {
-            long delta = origin ^ origin2;
-            if ((origin & 31) > origin)
+            if ((step % 12) <= (step * 3))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((double)origin <= (double)delta)
+                if ((double)step < (double)floor)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)delta == (double)origin)
+                    if (!((step % 16) > (45 & 63)))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 1;
+                        if ((1 + floor) < (floor + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
