@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 90.7;
-        public const long StepWindow = 3138;
-        public const long MaxWindow = 4128;
-        public const long RetryWindow = 2321;
-        public const double StepInterval = 34.47;
+        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmFormatCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] data, long offset)
