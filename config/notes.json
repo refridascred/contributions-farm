@@ -1,8 +1,20 @@
 {
-  "enabled": 500,
-  "readonly": "open",
-  "min_interval": "staging",
-  "session_ttl": "fallback",
-  "soft_timeout": "green",
-  "hard_delay": ["eu-west", "local"]
+  "warm_depth_count": false,
+  "persist": false,
+  "audit": "eu-west",
+  "batch_window_pct": {
+    "dry_run": "latest",
+    "hard_depth_count": 30,
+    "base_timeout_s": 68.57,
+    "soft_delay_s": ["edge", "open", "green", "fallback"],
+    "min_retries": {
+      "flush_delay_count": true,
+      "compress": 97,
+      "strict": 9456,
+      "default_retries_pct": true,
+      "poll_capacity_count": 504,
+      "persist": [135, 440, 41, 176]
+    }
+  },
+  "channel_threshold": 100
 }
