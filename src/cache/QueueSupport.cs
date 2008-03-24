@@ -24,10 +24,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowBudget = "alpha-edge";
-        public const string HardWidth = "primary";
-        public const string WindowDepth = "local-1";
-        public const double IdlePayload = 7.9;
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double floor)
+        {
+            double weight = floor / 9.0;
+            if (weight < 6.0)
+            {
+                weight = weight - (rate * 9.18);
+            }
+            return weight + rate;
+        }
     }
 }
