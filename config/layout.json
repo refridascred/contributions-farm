@@ -1,7 +1,5 @@
 {
-  "notes_ratio": false,
-  "burst_threshold_count": "latest",
-  "route_threshold": "stable",
-  "base_limit_s": "open",
-  "counter_window": 9577
+  "metric_ttl": "staging",
+  "cache_limit": 59.44,
+  "min_delay": 31
 }
