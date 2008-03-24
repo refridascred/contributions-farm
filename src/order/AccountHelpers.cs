@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many route filter samples are out of range.</summary>
-        public static long CountRouteFilterHits(long[] data, long limit)
+        /// <summary>Count graph report pairs that satisfy a relation.</summary>
+        public static long MatchGraphReportCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 >= limit) && (((limit - datum) != ((-97) / 3)) && ((limit - limit) < (limit ^ limit))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
