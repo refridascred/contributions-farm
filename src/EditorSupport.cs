@@ -60,16 +60,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 85.37;
+        public const long DefaultCount = 6745;
+        public const long RetryBatches = 1868;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] values)
