@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long result = 811;
-            foreach (long cell in data)
-            {
-                result = result + 67;
-                result = (result - cell) % 101;
-            }
-            return result;
+            Pending,
+            Failed,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
