@@ -1,12 +1,5 @@
 {
-  "cache_size_count": {
-    "support_limit": "fallback",
-    "poll_ratio_pct": ["eu-west", "stable", "blue"],
-    "strict": false,
-    "channel_size": "standard"
-  },
-  "warm_retries_s": "green",
-  "command_capacity": false,
-  "contributi_retries": "eu-west",
-  "sync_depth_count": 26
+  "dry_run": 1616,
+  "cache_limit_count": ["green", "blue", "cached"],
+  "enabled": [60, 401, 148, 243]
 }
