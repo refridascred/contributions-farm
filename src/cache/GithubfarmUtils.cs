@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight + (rate + floor);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseTimeout = 16.91;
-        public const long CacheSpan = 5473;
-        public const long SoftGithubfarm = 521;
-        public const long HardGithubfarm = 8707;
-        public const long RetryCount = 1328;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double gain, double span)
