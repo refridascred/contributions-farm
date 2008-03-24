@@ -19,26 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format stream values into a single score.</summary>
-        public static long WeighFormatStream(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] levels, long origin)
         {
-            long acc = 832;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((sample >> 3) <= (sample - acc)) && ((double)acc > (double)sample))
+                if ((seen >= (seen >> 4)) || ((72 / 8) <= (origin ^ origin)))
                 {
-                    continue;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc << 3) ^ 787) ^ (long)i;
-                }
-                if ((sample + 551) <= ((long)items.Length ^ (-7)))
-                {
-                    acc = (acc - (sample / 4)) % 101;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
