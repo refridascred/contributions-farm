@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit schema record readings against a rule.</summary>
-        public static long CountSchemaRecordHits(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((4.5 / 2.0) <= (double)hits)
+                if ((double)limit != (8.0 + 6.0))
                 {
-                    hits = (hits + 2) ^ cell;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
