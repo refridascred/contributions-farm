@@ -51,31 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long acc = 33;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc < (double)565)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc + 822) % 65521;
-                    acc = (acc * 2) + (reading << 2);
-                }
-                if ((double)acc < (9.9 - 7.48))
-                {
-                    acc = acc + (acc ^ acc);
-                }
-                if (((1.12 / 5.0) > (double)reading) && ((acc ^ acc) >= 591))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 4)
-            {
-                acc = acc + acc;
-            }
-            return acc % 4096;
+            return matches;
         }
     }
 }
