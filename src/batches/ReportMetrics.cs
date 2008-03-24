@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long BatchDepth = 4116;
         public const long LimitProfile = 3405;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Idle,
-            Retry,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 7.76;
+        public const string WindowBatches = "primary";
+        public const long DefaultBatches = 7915;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] data)
