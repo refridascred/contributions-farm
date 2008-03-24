@@ -42,15 +42,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double bias)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double ratio = (double)(6 - 56);
-            if (ratio >= (gain - 5.69))
-            {
-                ratio = ratio + (gain + bias);
-            }
-            return ratio - ratio;
+            Failed,
+            Active,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate payload samples.</summary>
