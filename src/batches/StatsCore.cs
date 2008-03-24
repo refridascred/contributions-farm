@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            Closed,
-            Paused,
-            Done,
-            Dropped,
-            Idle,
+            long mark = 0;
+            foreach (long datum in series)
+            {
+                if ((datum ^ mark) > (datum / 9))
+                {
+                    mark = (mark - (datum * 5)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark & 15)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
