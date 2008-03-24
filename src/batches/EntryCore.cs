@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double span)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double scale2 = scale;
+            if (scale2 >= (scale2 - scale))
             {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - 0.9;
             }
-            return found;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - (span * 13.0);
         }
 
         /// <summary>Match up counter samples.</summary>
