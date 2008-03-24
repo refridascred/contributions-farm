@@ -49,12 +49,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
