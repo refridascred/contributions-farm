@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "staging";
+        public const long RetryReport = 2784;
+        public const long MaxReport = 2545;
+        public const string MinSpan = "alpha";
+        public const double MinCount = 48.45;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepFarm = 23.27;
