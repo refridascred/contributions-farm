@@ -27,14 +27,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Locate a channel window reading by value.</summary>
+        public static long LocateChannelWindowIndex(long[] readings, long target)
         {
-            Locked,
-            Queued,
-            Synced,
-            Closed,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
