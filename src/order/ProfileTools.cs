@@ -22,17 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window account sample.</summary>
-        public static long SeekWindowAccountIndex(long[] items, long seed)
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long IterateCommandEntry(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ limit;
+                carry = carry ^ (carry + limit);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
