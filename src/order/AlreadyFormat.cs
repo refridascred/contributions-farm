@@ -64,19 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] levels, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= seed)
+                if (hits >= (43 - hits))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
