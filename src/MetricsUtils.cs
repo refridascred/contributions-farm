@@ -65,13 +65,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long floor)
         {
-            Paused,
-            Locked,
-            Closed,
-            Dropped,
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 3) + ((long)i + (long)i)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
