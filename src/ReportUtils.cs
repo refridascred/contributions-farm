@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many cluster metric samples are out of range.</summary>
-        public static long TallyClusterMetricMatches(long[] data)
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long CountChecksSessionMatches(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (reading <= (seen / 8))
+                if ((hits + 0) < reading)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
