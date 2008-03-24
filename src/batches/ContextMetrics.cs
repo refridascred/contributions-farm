@@ -24,13 +24,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples)
         {
-            Ready,
-            Locked,
-            Synced,
-            Failed,
+            long sum = 25;
+            foreach (long cell in samples)
+            {
+                if (!(3.2 <= (double)cell))
+                {
+                    sum = (sum ^ (sum % 64)) % 255;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (sum / 9)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
