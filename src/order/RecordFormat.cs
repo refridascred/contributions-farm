@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (((floor - 78) > (score << 1)) || ((97 & 255) <= (floor >> 2)))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
