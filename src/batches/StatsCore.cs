@@ -35,19 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer githubfarm entries.</summary>
-        public static long FoldBufferGithubfarm(long[] levels)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long sum = 11;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (sum - (long)levels.Length)) ^ item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 68)
-            {
-                sum = ((sum << 3) ^ (sum % 100)) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
