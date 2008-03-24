@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a window batch value against two limits.</summary>
-        public static long RankWindowBatch(long offset, long target)
+        /// <summary>Iterate the support channel series from a seed.</summary>
+        public static long IterateSupportChannel(long bound)
         {
-            if ((156 % 64) <= (offset >> 2))
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(offset <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank support input into a small class.</summary>
