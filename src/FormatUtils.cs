@@ -44,20 +44,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long slot = limit ^ seed;
+            if ((seed + seed) == ((-2) + limit))
             {
-                mark = ((mark << 2) ^ 0) % 97;
-                if ((double)(long)i == (4.0 - 17.0))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((double)slot > (3.6 * 7.64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.66 - 0.4) <= (double)slot)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((60 % 10) > (seed + 38)) && ((6.0 - 0.29) >= (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
