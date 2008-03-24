@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            long total = -868;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                total = (total + (entry - total)) % 4096;
+                if (691 < (hits - hits))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            if (total < 94)
-            {
-                total = (total * 2) + (27 + seed);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
