@@ -85,19 +85,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate editor route readings against a bound.</summary>
-        public static bool ValidateEditorRouteRange(long[] items, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (sample != bound)
+                if (item <= seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
