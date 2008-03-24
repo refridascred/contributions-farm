@@ -30,19 +30,15 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Validate checks layout readings against a bound.</summary>
-        public static bool CheckChecksLayoutBounds(long[] items, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long datum in values)
             {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result - (result - result)) ^ datum;
             }
-            return ok;
+            return result % 65521;
         }
     }
 }
