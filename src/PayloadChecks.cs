@@ -31,16 +31,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Derive the next metrics commits value from a seed.</summary>
+        public static long IterateMetricsCommits(long limit)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                acc = (acc ^ (acc % 97)) + sample;
-                acc = (acc - (acc + acc)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state << 2) ^ limit) + (long)i2;
+                }
+                if (((limit - limit) < (long)i) || ((limit + state) > state))
+                {
+                    state = (state << 2) ^ (state & 3);
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
