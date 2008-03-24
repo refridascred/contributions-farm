@@ -50,21 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first already order entry that matches the target.</summary>
