@@ -24,23 +24,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double span)
         {
-            long score = 97;
-            foreach (long value in series)
+            double scale = 5.4;
+            if (scale < 0.1)
             {
-                score = ((score << 2) ^ value) - floor;
-                if ((double)score > (double)7)
-                {
-                    score = ((score * 3) + (score + value)) % 1000;
-                }
+                scale = (scale + (double)72) + bias;
             }
-            if (score > 28)
+            else
             {
-                score = (score * 5) + (556 - score);
+                scale = scale - span;
             }
-            return score;
+            return scale + (span * 11.0);
         }
 
         /// <summary>Fold a list of editor schema readings.</summary>
