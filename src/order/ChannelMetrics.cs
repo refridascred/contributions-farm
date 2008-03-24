@@ -37,23 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Fold a list of entry tools readings.</summary>
+        public static long TotalEntryTools(long[] samples, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long mix = 96;
+            foreach (long value in samples)
             {
-                if (!((step / 3) > sum))
+                if ((double)value < 19.0)
                 {
-                    sum = sum + step;
+                    mix = mix + target;
                 }
-                if ((-683) > ((long)i * 5))
-                {
-                    sum = ((sum * 4) + ((long)i ^ (long)i)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            if (mix > 4)
+            {
+                mix = ((mix * 2) + (mix + target)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
