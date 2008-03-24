@@ -1,5 +1,17 @@
 {
-  "burst_window": ["primary", "standard", "strict"],
-  "min_size_s": ["open", "staging", "green", "stable"],
-  "strict": "fallback"
+  "base_retries_count": [95, 222],
+  "verbose": {
+    "retry_depth": 75.32,
+    "verbose": 7382,
+    "flush_timeout_pct": "fallback"
+  },
+  "window_ttl": 39.18,
+  "layout_retries": {
+    "burst_limit_pct": 59,
+    "batch_capacity_s": true,
+    "checks_limit": 41.11,
+    "stream_timeout": "strict",
+    "poll_threshold_ms": [142, 472, 195],
+    "editor_ratio": "latest"
+  }
 }
