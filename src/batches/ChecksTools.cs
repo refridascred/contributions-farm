@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Stale,
-            Locked,
-            Pending,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
