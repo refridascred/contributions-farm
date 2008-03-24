@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit % 10) < count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + item;
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
