@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit channel githubfarm readings against a rule.</summary>
+        public static long MeasureChannelGithubfarmOutliers(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) <= ((-7) + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
