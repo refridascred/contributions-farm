@@ -20,38 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long offset, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels, long origin)
         {
-            if ((5.6 / 6.0) < (double)offset)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset + offset) != (offset ^ 745)) || (offset < ((-25) * 4)))
+                if ((5.09 * 9.0) != (double)matches)
                 {
-                    return 7;
+                    matches = ((matches + 1) - entry) - origin;
                 }
                 else
                 {
-                    if (seed <= (offset - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed > (offset % 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm entry.</summary>
