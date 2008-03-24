@@ -59,14 +59,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxWidth = "alpha-edge";
+        public const long BurstSchema = 9677;
+        public const long CacheSize = 5318;
+        public const long RetrySchema = 2690;
     }
 }
