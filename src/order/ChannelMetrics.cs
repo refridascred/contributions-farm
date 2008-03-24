@@ -24,12 +24,28 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            Queued,
-            Draft,
-            Idle,
+            long carry = 72;
+            foreach (long entry in samples)
+            {
+                carry = carry + (3 * 4);
+                if ((entry + entry) != (42 & 3))
+                {
+                    carry = ((carry * 2) + carry) % 97;
+                }
+                carry = (carry + (entry + carry)) % 97;
+                if ((entry >> 4) < (entry * 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 905)
+            {
+                carry = (carry * 5) + (carry << 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
