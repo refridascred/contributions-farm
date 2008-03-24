@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] data, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((entry < (entry + 368)) && ((seen % 97) != (target + entry))) || !((long)data.Length < seen))
+                if (((reading / 2) >= (reading + reading)) || (matches < reading))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
