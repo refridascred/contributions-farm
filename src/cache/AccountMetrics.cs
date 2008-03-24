@@ -38,10 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5210;
-        public const string RetryScore = "primary-1";
-        public const string HardFactor = "strict-1";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank context metrics input into a small class.</summary>
         public static long SortContextMetrics(long target, long limit)
