@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseSpan = 5.49;
-        public const long IdleSize = 661;
-        public const long HardDepth = 5532;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] series)
