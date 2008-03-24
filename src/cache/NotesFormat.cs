@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 3232;
-        public const long HardSession = 1319;
-        public const string SoftSession = "staging-1";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long CountCounterGithubfarmGaps(long[] levels, long offset)
