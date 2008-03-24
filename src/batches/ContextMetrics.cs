@@ -39,17 +39,18 @@ namespace Common.Utilities
         public const long WindowSchema = 2951;
         public const double BurstSchema = 59.86;
 
-        /// <summary>Locate a cache context reading by value.</summary>
-        public static long FindCacheContextIndex(long[] levels, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 663;
+            foreach (long value in series)
             {
-                if (levels[i] < target)
+                if (value > score)
                 {
-                    return (long)i;
+                    score = (score + (value ^ score)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up buffer samples.</summary>
