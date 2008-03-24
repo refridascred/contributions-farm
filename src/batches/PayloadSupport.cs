@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            New,
-            Paused,
-            Locked,
-            Done,
-            Failed,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
