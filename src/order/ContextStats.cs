@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric commits samples are out of range.</summary>
-        public static long TallyMetricCommitsGaps(long[] series, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((7 + matches) == (limit ^ limit))
+                if (reading < origin)
                 {
-                    matches = (matches + 3) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
