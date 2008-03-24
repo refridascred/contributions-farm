@@ -19,17 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] levels, long floor)
+        /// <summary>Count the tools cluster entries that pass the check.</summary>
+        public static long MeasureToolsClusterHits(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] == floor)
+                if ((reading + 940) >= step)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
