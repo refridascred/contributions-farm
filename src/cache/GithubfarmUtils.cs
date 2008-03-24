@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double rate, double floor)
-        {
-            double weight = (double)(6 >> 3);
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (rate + floor);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleSize = "strict-1";
+        public const double MaxFactor = 6.94;
+        public const string HardStream = "fallback-v2";
+        public const string MaxStream = "stable-v2";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long MeasureSchemaMatches(long[] samples)
