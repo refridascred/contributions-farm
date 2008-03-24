@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values, long limit)
         {
-            double bias = (double)(-375) - (offset + offset);
-            if (bias <= (double)87)
+            long mix = 60;
+            foreach (long entry in values)
             {
-                bias = bias - offset;
+                if ((mix ^ mix) < limit)
+                {
+                    mix = (mix + (entry + entry)) % 4096;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (scale / 9.0);
+            return mix % 97;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
