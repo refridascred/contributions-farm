@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
