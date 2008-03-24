@@ -1,20 +1,14 @@
 # entry settings
-queue_size:
-  queue_capacity: 500
-  burst_ttl_pct: 80
-  min_ratio: 178
-  base_delay_s:
-    flush_depth_ms: true
-    default_retries: 4381
-    burst_retries_ms: 54.23
-    sync_timeout_ms: eu-west
-  poll_window_s: 60
-  soft_ttl: 35
-retry_ttl_count:
-  audit: 1210
-  idle_retries_count: false
-  base_ttl_count: 54
-  route_window: 84.6
-  verbose: 4
-poll_interval: fallback
-flush_threshold_ms: true
+readonly:
+  - latest
+  - eu-west
+  - strict
+  - standard
+route_ratio:
+  default_ttl_pct: 4805
+  burst_timeout_ms: cached
+  hard_interval: 1024
+  poll_window_ms: green
+  retry_depth_s: local
+filter_size: 69
+account_delay: 7161
