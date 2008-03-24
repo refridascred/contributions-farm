@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Scale a session context figure with a bias.</summary>
+        public static double AdjustSessionContext(double scale, double bias)
         {
-            Dropped,
-            New,
-            Failed,
-            Synced,
-            Retry,
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (bias + ratio)) - (double)(long)i;
+            }
+            return ratio - (3.2 * 8.18);
         }
 
         /// <summary>Measure how many order entry samples are out of range.</summary>
