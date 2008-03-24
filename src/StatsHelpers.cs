@@ -47,31 +47,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm already input into a small class.</summary>
-        public static long ClassifyGithubfarmAlready(long limit, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            if ((double)limit < (2.73 / 3.0))
+            long carry = -810;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= (4.97 / 3.0))
+                if ((82 * 2) <= (entry ^ entry))
                 {
-                    return 4;
+                    carry = ((carry << 2) ^ (8 + entry)) % 65521;
                 }
                 else
                 {
-                    if ((bound << 2) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = carry - (entry % 12);
                 }
             }
+            if (carry > 7)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
