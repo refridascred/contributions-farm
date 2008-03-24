@@ -49,11 +49,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Stale,
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
