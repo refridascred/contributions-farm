@@ -22,38 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long offset, long offset2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (((offset - offset) > (offset2 & 255)) && ((double)offset <= (3.58 / 6.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (301 >= offset2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - offset2) == (offset2 + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 9.53)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the context kind values.</summary>
