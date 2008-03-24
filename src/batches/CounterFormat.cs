@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double offset)
+        /// <summary>Iterate the contributi graph series from a seed.</summary>
+        public static long IterateContributiGraph(long origin)
         {
-            double drift = (double)(434 - 488);
-            if (drift >= (drift - ratio))
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + (offset - ratio);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result - ((long)i ^ result)) % 97) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return drift - offset;
+            return result;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
