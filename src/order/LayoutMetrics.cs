@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double StepGraph = 68.02;
         public const long DefaultGraph = 5924;
 
-        /// <summary>Validate entry githubfarm readings against a bound.</summary>
-        public static bool GuardEntryGithubfarmRange(long[] data, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (sample < bound)
+                if ((sample + (long)samples.Length) <= (count << 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
