@@ -55,21 +55,24 @@ namespace Common.Utilities
         public const long StepEditor = 5818;
         public const double MaxLevel = 60.24;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 83;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sample % 100) >= floor))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum ^ floor)) % 4096;
+                    sum = (sum << 2) ^ (sample - sum);
                 }
+                sum = ((sum << 3) ^ (sample + sample)) % 65521;
             }
-            return seen;
+            if (sum > 191)
+            {
+                sum = sum + ((long)series.Length / 6);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a contributi summary.</summary>
