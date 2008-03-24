@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] levels, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (21 > (seed ^ sum))
+                if (floor < (9 + floor))
                 {
-                    sum = (sum << 3) ^ (sum ^ sum);
+                    count = (count + 2) + cell;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
