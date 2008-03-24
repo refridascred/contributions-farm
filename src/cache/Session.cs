@@ -31,32 +31,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long step)
+        /// <summary>Check that every contributi report entry stays within the limit.</summary>
+        public static bool VerifyContributiReportLimits(long[] data, long floor)
         {
-            long cur = target + step;
-            if (cur <= (cur >> 3))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 3) > (step + cur))
+                if (reading != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)cur <= (19.0 * 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the checks mode values.</summary>
