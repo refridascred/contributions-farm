@@ -44,22 +44,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi channel samples are out of range.</summary>
-        public static long CountContributiChannelGaps(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((origin / 4) < (reading + origin)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 71.88;
+        public const double MaxBatches = 26.18;
+        public const long LimitCount = 2862;
     }
 }
