@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long DefaultWidth = 8504;
         public const string BurstScore = "standard-1";
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
         {
-            long score = 335;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ (entry << 3)) % 4096;
-                if ((step - score) >= 306)
+                if (data[i] == limit)
                 {
-                    score = score + (entry << 2);
-                }
-                else
-                {
-                    score = (score - 384) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the profile tools entries that pass the check.</summary>
