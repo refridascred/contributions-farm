@@ -1,10 +1,11 @@
 # Command notes
 
-Use tools settings to tune how often report data is refreshed.
-Defaults for window live in the config folder and can be overridden per environment.
+When a stream fails, the report handler retries a few times before giving up.
+When a already fails, the notes handler retries a few times before giving up.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep command values small
-- Validate editor input early
-- Log every filter change
+- Review profile limits each release
+- Document new checks fields
+- Keep window values small
