@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter cache readings against a rule.</summary>
-        public static long AuditCounterCacheMatches(long[] data, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (((datum & 15) >= tally) && (((limit * 3) != ((-9) - tally)) || ((tally % 97) != (datum * 4))))
+                if (cell > bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a order info.</summary>
