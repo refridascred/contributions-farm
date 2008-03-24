@@ -14,18 +14,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] series, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double mean = (double)(114 + (-2));
+            if (mean <= offset)
             {
-                if (((double)step < 8.3) && ((3.0 * 10.0) <= (double)datum))
-                {
-                    matches = matches + 2;
-                }
+                mean = (mean - (offset * 1.98)) + bias;
             }
-            return matches;
+            else
+            {
+                mean = mean - (mean - 15.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean * 8.0)) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Audit schema batches readings against a rule.</summary>
