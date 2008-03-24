@@ -36,10 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "cached-edge";
-        public const string IdleDepth = "legacy-v2";
-        public const double BaseScore = 45.59;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
