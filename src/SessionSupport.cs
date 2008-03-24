@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long SortCommitsFilter(long step, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] levels, long floor)
         {
-            if (((540 + target) >= (target + target)) || ((double)target <= (double)step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (6 < (step - target))
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target >= (target % 100)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
