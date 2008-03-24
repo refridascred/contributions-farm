@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every contributi window entry stays within the limit.</summary>
-        public static bool VerifyContributiWindowBounds(long[] data, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = 392;
+            foreach (long entry in items)
             {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark + (entry & 7)) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
