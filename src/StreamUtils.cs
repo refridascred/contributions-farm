@@ -29,19 +29,23 @@ namespace Common.Utilities
             return rate + (ratio + offset);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double drift = bias;
+            if (drift <= (6.3 - 2.42))
             {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (ratio + 2.7);
             }
-            return flag;
+            else
+            {
+                drift = drift + (double)387;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - 9.6;
         }
 
         /// <summary>Define account limits and defaults.</summary>
