@@ -55,17 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (series[i] == floor)
+                if (item > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
