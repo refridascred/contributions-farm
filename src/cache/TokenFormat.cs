@@ -31,10 +31,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxWidth = "stable";
-        public const long CacheSchema = 8513;
-        public const long IdleSchema = 794;
-        public const long BurstSchema = 9513;
+        /// <summary>Match up layout filter samples.</summary>
+        public static long CompareLayoutFilterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
