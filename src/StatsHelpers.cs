@@ -18,32 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes entry pair into a bucket.</summary>
-        public static long GradeNotesEntry(long floor, long target)
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long FindMetricBufferIndex(long[] data, long step)
         {
-            long delta = floor + target;
-            if ((target + delta) <= (floor & 31))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor + delta) >= (750 * 3)) || ((target / 8) >= (floor ^ 46)))
+                if (data[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + delta) <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
