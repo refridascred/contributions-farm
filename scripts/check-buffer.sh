@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-BUFFER_LIMIT=308
+BUFFER_LIMIT=375
 log "limit is ${BUFFER_LIMIT}"
+
+for item in blue eu-west; do
+    log "checking ${item}"
+done
