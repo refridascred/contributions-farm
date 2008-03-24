@@ -1,17 +1,18 @@
 # githubfarm settings
-cluster_threshold:
-  - local
-  - stable
-stream_window:
-  - edge
-  - cached
-  - strict
-  - open
-readonly:
-  - 499
-  - 21
-batch_retries_s:
-  - 203
-  - 3
-  - 97
-enabled: 62.62
+flush_ratio_count:
+  - primary
+  - staging
+  - standard
+soft_window_pct:
+  stream_timeout: legacy
+  readonly: false
+  counter_depth: local
+  compress: 100
+batch_timeout:
+  - latest
+  - blue
+  - green
+  - standard
+format_ttl: 2.85
+metrics_size: local
+cache_delay: fallback
