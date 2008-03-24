@@ -53,17 +53,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (series[i] >= bound)
+                if (value > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
