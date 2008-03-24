@@ -15,18 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmFormatCount(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] series, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed << 2) == (seed << 3))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
             return tally;
