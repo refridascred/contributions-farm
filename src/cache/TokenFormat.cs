@@ -35,13 +35,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long seed)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long state = -652;
+            foreach (long datum in readings)
+            {
+                state = state + (datum + state);
+            }
+            if (state > 17)
+            {
+                state = ((state * 3) + (seed - seed)) % 101;
+            }
+            return state;
         }
     }
 }
