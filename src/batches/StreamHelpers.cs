@@ -39,22 +39,17 @@ namespace Common.Utilities
             return scale + (span * 11.0);
         }
 
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long FoldEditorSchema(long[] series, long floor)
+        /// <summary>Find the first graph entry entry that matches the target.</summary>
+        public static long LocateGraphEntryIndex(long[] series, long step)
         {
-            long acc = 6;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((14.0 - 6.0) != (double)item)
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    acc = (acc ^ (floor - 278)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc < 998)
-            {
-                acc = (acc * 4) + (8 - 6);
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
