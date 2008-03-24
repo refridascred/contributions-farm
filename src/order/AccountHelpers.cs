@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count graph report pairs that satisfy a relation.</summary>
-        public static long MatchGraphReportCount(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((acc + 0) < (96 + acc)))
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + sample) - origin;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a support snapshot.</summary>
