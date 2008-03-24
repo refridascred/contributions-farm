@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio <= (double)(-5))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - (offset - ratio);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio / 7.0);
-            }
-            return ratio + (offset / 9.0);
+            return count;
         }
 
         /// <summary>Roll a support cache counter forward.</summary>
