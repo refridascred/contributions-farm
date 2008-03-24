@@ -46,14 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long offset)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Failed,
-            Active,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
