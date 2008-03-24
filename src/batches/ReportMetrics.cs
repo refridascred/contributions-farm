@@ -12,10 +12,15 @@ namespace Common.Utilities
         public const long BatchInterval = 9230;
         public const long SoftBudget = 9660;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 7.76;
-        public const string WindowBatches = "primary";
-        public const long DefaultBatches = 7915;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Stale,
+            Idle,
+            Synced,
+            New,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] data)
