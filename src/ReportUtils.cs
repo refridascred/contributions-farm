@@ -66,15 +66,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double bias2)
+        /// <summary>Grade a githubfarm cache value against two limits.</summary>
+        public static long ClassifyGithubfarmCache(long limit, long bound)
         {
-            double gain = 9.76;
-            if (gain < gain)
+            long next = limit - bound;
+            if (11.0 <= (double)limit)
             {
-                gain = (gain + (bias / 9.0)) - bias2;
+                return 2;
             }
-            return gain + (2.78 / 9.0);
+            else
+            {
+                if (!((next / 2) > (5 - 573)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
