@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = 6;
+            foreach (long sample in readings)
             {
-                if (!((hits + entry) > (entry + hits)))
+                acc = (acc ^ (acc + 48)) % 4096;
+                if ((sample / 5) != (target + target))
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 4) + (0 & 3)) % 65521;
                 }
             }
-            return hits;
+            if (acc > 744)
+            {
+                acc = ((acc * 2) + (acc / 3)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
