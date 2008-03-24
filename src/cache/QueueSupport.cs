@@ -10,10 +10,25 @@ namespace Common.Utilities
         public const long MinLevel = 9343;
         public const long SoftContext = 6975;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitSpan = "staging-v2";
-        public const string CacheCommits = "primary";
-        public const long RetryCommits = 7400;
+        /// <summary>Classify a route payload pair into a bucket.</summary>
+        public static long SortRoutePayload(long origin, long bound)
+        {
+            if (854 <= (origin - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) > 642)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowBudget = "alpha-edge";
