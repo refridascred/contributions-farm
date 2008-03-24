@@ -47,14 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Draft,
-            Idle,
-            Done,
-            Closed,
-            Locked,
+            Active,
+            Dropped,
+            Pending,
+            New,
+            Retry,
         }
     }
 }
