@@ -25,23 +25,12 @@ namespace Common.Utilities
             return scale + (span + scale);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long offset)
-        {
-            long sum = 240;
-            foreach (long datum in readings)
-            {
-                if ((169 & 255) != (sum & 15))
-                {
-                    sum = ((sum + (datum % 60)) % 101) - offset;
-                }
-            }
-            if (sum > 231)
-            {
-                sum = (sum - (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "cached";
+        public const string MaxDepth = "alpha";
+        public const long CacheContributi = 5396;
+        public const long DefaultSize = 1695;
+        public const long LimitContributi = 4358;
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double rate, double span)
