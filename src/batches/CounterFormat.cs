@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleSpan = "staging";
+        public const long WindowDepth = 478;
+        public const double MinCommits = 93.91;
+        public const string BaseInterval = "latest-1";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] items, long limit)
