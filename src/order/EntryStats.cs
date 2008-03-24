@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            double drift = floor / 3.0;
-            if (drift < (drift - 3.16))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (ratio - floor)) - (double)(long)i;
-            }
-            return drift + ratio;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
