@@ -1,6 +1,11 @@
-id,state,score,weight
-1,latest,55.0,36.9
-2,47.62,stable,blue
-3,4.61,54.21,cached
-4,strict,688,cached
-5,730,95.43,edge
+id,rank,owner
+1,blue,89.46
+2,81.82,stable
+3,385,992
+4,156,138
+5,strict,cached
+6,staging,74.07
+7,open,449
+8,legacy,728
+9,980,standard
+10,89.33,746
