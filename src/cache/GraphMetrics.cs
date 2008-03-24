@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a channel window pair into a bucket.</summary>
-        public static long SortChannelWindow(long floor, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            if ((seed + 267) >= seed)
+            long mix = 33;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + 3) > (seed + floor))
+                if ((sample <= (mix % 7)) || ((410 * 4) == (sample << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor < (3.0 + 0.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (2.13 * 5.21))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = (mix - (mix % 10)) % 65521;
                 }
             }
+            if (mix < 4)
+            {
+                mix = ((mix * 3) + ((long)items.Length - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of context readings.</summary>
