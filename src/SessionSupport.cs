@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long limit)
+        /// <summary>Adjust a command token reading.</summary>
+        public static double ProjectCommandToken(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = ratio - offset;
+            if (load > offset)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = load - ratio;
             }
-            return -1;
+            else
+            {
+                load = load + load;
+            }
+            return load + (load - offset);
         }
 
         /// <summary>Rank token input into a small class.</summary>
