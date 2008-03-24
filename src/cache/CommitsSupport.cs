@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 58;
+            foreach (long cell in series)
             {
-                if (samples[i] >= seed)
+                if (!((cell - cell) >= (34 + cell)))
                 {
-                    return (long)i;
+                    carry = carry - cell;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a profile entry.</summary>
