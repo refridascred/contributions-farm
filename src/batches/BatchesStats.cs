@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Stale,
-            Queued,
-            Failed,
-            Draft,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 9444;
+        public const long BaseSpan = 5128;
+        public const long MaxFactor = 5754;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
