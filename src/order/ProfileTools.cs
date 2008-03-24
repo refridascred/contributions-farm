@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long IterateCommandEntry(long limit)
+        /// <summary>Count the cluster layout entries that pass the check.</summary>
+        public static long CountClusterLayoutMatches(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = carry ^ limit;
-                carry = carry ^ (carry + limit);
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((count >> 2) != (sample << 1))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
