@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            Retry,
-            Active,
-            Stale,
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (769 >= (offset & 255))
+                {
+                    result = (result * 3) + (long)i;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
