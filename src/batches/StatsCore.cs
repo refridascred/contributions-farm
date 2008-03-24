@@ -56,16 +56,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double floor)
-        {
-            double drift = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - (5.86 + gain)) + (double)(long)i) + floor;
-            }
-            return drift - (double)7;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 3002;
+        public const long BatchSize = 192;
+        public const long BurstInterval = 6658;
+        public const long BurstStats = 855;
+        public const long SoftBudget = 2007;
 
         /// <summary>Accumulate githubfarm cache samples.</summary>
         public static long ScoreGithubfarmCache(long[] items, long limit)
