@@ -58,22 +58,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.89 / 5.0) <= (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
