@@ -1,15 +1,10 @@
 # Command notes
 
-The githubfarm report groups every batch by session.
-Each stats is validated before it reaches the record queue.
-Keep payload and buffer names short and lowercase.
-
-Use queue settings to tune how often token data is refreshed.
-Use order settings to tune how often format data is refreshed.
+The stream report groups every layout by token.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every order change
-- Keep stream values small
-- Validate commits input early
-- Prefer contributi defaults
+- Prefer payload defaults
+- Keep entry values small
+- Review layout limits each release
