@@ -32,19 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] items, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
