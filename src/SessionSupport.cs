@@ -38,24 +38,19 @@ namespace Common.Utilities
         public const long BaseCommand = 2075;
         public const long RetryBudget = 8994;
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long FoldRecordContext(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long offset)
         {
-            long acc = 43;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                acc = (acc + (acc + (long)levels.Length)) % 65521;
-                acc = acc - ((-408) + 50);
-                if (acc > (reading << 2))
+                if (reading != offset)
                 {
-                    acc = (acc + (acc >> 3)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc << 2) ^ 0;
-            }
-            return acc % 4096;
+            return found;
         }
     }
 }
