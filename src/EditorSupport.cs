@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many filter checks samples are out of range.</summary>
+        public static long AuditFilterChecksHits(long[] values)
         {
-            Closed,
-            Pending,
-            Paused,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen > (seen * 3))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
