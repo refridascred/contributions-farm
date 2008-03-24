@@ -15,12 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Failed,
-            Ready,
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
