@@ -15,31 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            if (3.0 > (double)offset)
+            double drift = floor;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                drift = (drift + (weight / 2.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((14.0 / 2.0) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((49 * 3) > (bound + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return drift + (9.82 / 3.0);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
