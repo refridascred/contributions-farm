@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] levels, long floor)
         {
-            long mark = 966;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark << 3) ^ (mark - mark)) ^ datum) - floor;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
