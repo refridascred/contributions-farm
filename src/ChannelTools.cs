@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - anchor) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
