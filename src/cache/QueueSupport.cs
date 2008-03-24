@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftWidth = "fallback";
-        public const long MinLevel = 9343;
-        public const long SoftContext = 6975;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen - sample) <= seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] levels, long bound)
