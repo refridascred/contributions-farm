@@ -16,19 +16,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long seed, long target)
         {
-            long anchor = 293;
-            foreach (long cell in readings)
+            long bound = seed + target;
+            if (target >= (bound << 2))
             {
-                anchor = ((anchor - anchor) + cell) + offset;
+                return 5;
             }
-            if (anchor > 0)
+            else
             {
-                anchor = (anchor * 2) + (59 / 8);
+                if (((6.42 * 5.3) < (double)target) && ((double)seed >= (18.0 + 19.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 3) <= (32 >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target + bound) > seed) || ((7.85 / 8.0) > (double)seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
