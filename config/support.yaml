@@ -1,23 +1,8 @@
 # support settings
-soft_retries_ms: fallback
-verbose:
-  - cached
-  - green
-flush_threshold_pct:
-  metrics_interval: staging
-  flush_capacity_ms:
-    base_depth: cached
-    hard_depth: legacy
-    default_interval_count: false
-  audit:
-    - blue
-    - standard
-  warm_delay_count:
-    - 126
-    - 271
-    - 169
-  warm_ttl_pct: false
-  burst_ttl:
-    - primary
-    - open
-    - local
+route_depth: 250
+base_ratio_ms: 18.2
+cache_capacity:
+  base_capacity_count: 1024
+  enabled: 500
+  account_capacity: false
+base_delay_pct: 29
