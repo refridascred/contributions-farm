@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cache checks reading.</summary>
-        public static double AdjustCacheChecks(double gain, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] items, long target)
         {
-            double bias = (double)150 + (double)(-42);
-            if (bias < (double)2)
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias = (bias - (bias / 4.0)) - gain;
+                if ((seen - target) < (seen >> 1))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            else
-            {
-                bias = bias + (2.73 / 4.0);
-            }
-            return bias - (floor - 1.9);
+            return seen;
         }
 
         /// <summary>Adjust a editor reading.</summary>
