@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Queued,
-            Paused,
-            Idle,
+            Active,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
