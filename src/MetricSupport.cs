@@ -16,19 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - target) < (seen >> 1))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardRatio = 8262;
+        public const string MinCounter = "local-1";
+        public const string CacheRatio = "standard-1";
+        public const long IdleCounter = 2783;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double span)
