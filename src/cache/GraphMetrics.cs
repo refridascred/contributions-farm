@@ -33,16 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor ^ bound) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Done,
+            Idle,
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
