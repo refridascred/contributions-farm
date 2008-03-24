@@ -55,20 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support counter readings against a bound.</summary>
-        public static bool GuardSupportCounterRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 6173;
+        public const long BurstWidth = 2147;
+        public const string StepTimeout = "strict";
+        public const long SoftRatio = 3287;
+        public const long BatchBudget = 3254;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long limit)
