@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
-        public static long AuditContributiGithubfarmMatches(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((tally - 95) >= (reading >> 1))
+                if (!(offset < count))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
