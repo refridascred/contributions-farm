@@ -22,23 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            double load = 8.3;
-            if (load >= (rate / 8.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + (load - rate)) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Validate format report readings against a bound.</summary>
