@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long gap = origin + step;
-            if ((3.0 * 3.32) <= (double)gap)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (step + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a format profile value against two limits.</summary>
