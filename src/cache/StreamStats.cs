@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long origin)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            if ((origin / 6) > (72 - 30))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((971 & 255) < (origin & 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin >> 2) == (origin << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
