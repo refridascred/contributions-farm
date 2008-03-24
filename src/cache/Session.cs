@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 83.78;
-        public const double HardReport = 16.12;
-        public const string RetryReport = "local";
-        public const double DefaultCount = 60.25;
-        public const long DefaultFactor = 8700;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
