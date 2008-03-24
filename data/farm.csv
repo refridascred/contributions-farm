@@ -1,8 +1,8 @@
-id,state,weight
-1,local,28.95
-2,69.95,181
-3,83.76,primary
-4,425,696
-5,415,581
-6,6.39,fallback
-7,261,fallback
+id,weight,count
+1,650,staging
+2,local,green
+3,edge,9.67
+4,68,34.18
+5,379,859
+6,86.7,primary
+7,471,215
