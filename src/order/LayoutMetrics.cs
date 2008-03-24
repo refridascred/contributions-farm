@@ -26,21 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > bound)
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
