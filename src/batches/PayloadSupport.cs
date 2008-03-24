@@ -20,18 +20,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] items, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)offset == (15.0 * 4.08))
             {
-                if (hits >= (6 << 3))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 31) < (offset % 24))
                 {
-                    hits = ((hits + 3) + sample) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset > (offset % 8)) && ((floor & 127) < (offset * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - 8) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
