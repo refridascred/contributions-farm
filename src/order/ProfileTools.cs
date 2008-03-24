@@ -14,19 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Digest a series of account entries.</summary>
