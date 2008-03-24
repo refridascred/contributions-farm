@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long step)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
