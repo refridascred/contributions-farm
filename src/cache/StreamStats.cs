@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long TallyBatchEditorGaps(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((target >> 5) > matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2650;
+        public const double MinSpan = 62.02;
+        public const long MinMetric = 9784;
+        public const string WindowTimeout = "local";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 875;
