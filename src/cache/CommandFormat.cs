@@ -21,17 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
