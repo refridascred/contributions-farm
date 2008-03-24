@@ -19,23 +19,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double scale = bias;
-            if (scale >= gain)
-            {
-                scale = scale + (bias - scale);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale / 6.0)) + (double)(long)i;
-            }
-            return scale - (bias - bias);
+            Synced,
+            Paused,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
