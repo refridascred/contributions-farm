@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series, long floor)
+        /// <summary>Rank githubfarm report input into a small class.</summary>
+        public static long ClassifyGithubfarmReport(long target, long seed)
         {
-            long state = 1;
-            foreach (long datum in series)
+            if (((seed ^ target) == (target + 889)) && ((target / 7) < (122 << 1)))
             {
-                if ((state ^ datum) <= (165 + floor))
+                return 8;
+            }
+            else
+            {
+                if ((1.5 + 7.62) != (double)target)
                 {
-                    state = state ^ floor;
+                    return 3;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (datum << 1)) % 65521;
-                }
-                if ((((-40) - floor) >= (4 ^ datum)) && ((double)3 < (double)datum))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (state < 566)
-            {
-                state = (state << 3) ^ (8 - floor);
-            }
-            return state;
         }
 
         /// <summary>Count stats context pairs that satisfy a relation.</summary>
