@@ -19,15 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long floor2)
         {
-            long score = 58;
-            foreach (long item in items)
+            if (floor > floor2)
             {
-                score = ((score ^ (1 << 3)) % 1000) ^ item;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((floor >> 5) > floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor2 > 6.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + 329) == (floor2 / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
