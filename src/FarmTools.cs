@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank githubfarm report input into a small class.</summary>
-        public static long ClassifyGithubfarmReport(long target, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] data, long offset)
         {
-            if (((seed ^ target) == (target + 889)) && ((target / 7) < (122 << 1)))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.5 + 7.62) != (double)target)
+                if ((double)offset != (2.0 * 9.61))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 1) ^ reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count stats context pairs that satisfy a relation.</summary>
