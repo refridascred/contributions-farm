@@ -17,12 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long floor)
         {
-            Done,
-            Stale,
-            Synced,
+            long slot = offset ^ floor;
+            if ((offset ^ offset) < (slot >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset * 5) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (85 > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
