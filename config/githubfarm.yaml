@@ -1,4 +1,17 @@
 # githubfarm settings
-dry_run: 32.72
-report_ratio: fallback
-batch_size_ms: legacy
+compress: 76
+token_capacity:
+  - latest
+  - open
+  - green
+already_size:
+  - blue
+  - latest
+  - cached
+  - open
+audit: 9.27
+default_ratio_count:
+  hard_depth_count: 72
+  idle_retries_s: local
+  format_ratio: cached
+  enabled: primary
