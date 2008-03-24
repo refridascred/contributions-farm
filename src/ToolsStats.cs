@@ -87,10 +87,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchSpan = 4566;
-        public const double WindowNotes = 32.55;
-        public const long BatchSize = 9816;
-        public const string MaxNotes = "cached";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Ready,
+            Failed,
+            Done,
+            Draft,
+        }
     }
 }
