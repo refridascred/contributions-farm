@@ -45,25 +45,18 @@ namespace Common.Utilities
         public const long HardSpan = 5835;
         public const double DefaultTimeout = 88.31;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long bound, long origin)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long AuditEditorChannelOutliers(long[] levels, long seed)
         {
-            long step = bound ^ origin;
-            if ((bound * 2) == ((-72) + bound))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + bound) >= (step + origin)))
+                if (((5 / 7) <= (tally + tally)) || (((double)cell != (3.0 - 7.48)) || ((cell - tally) >= (910 + seed))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
