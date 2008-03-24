@@ -83,35 +83,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] levels, long offset)
         {
-            long mark = 32;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((sample + step) > (133 ^ step))
+                if (((item << 3) != (offset ^ 495)) && ((count % 97) <= offset))
                 {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (sample - step)) % 65521;
-                }
-                mark = (mark << 3) ^ (sample << 1);
-                if ((step - sample) < (115 + mark))
-                {
-                    mark = mark ^ ((long)values.Length - 8);
-                }
-                if ((step >> 3) >= (8 - step))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark ^ (374 ^ step)) % 1000;
-            }
-            return mark;
+            return count;
         }
     }
 }
