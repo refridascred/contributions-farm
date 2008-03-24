@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cluster counter readings against a bound.</summary>
-        public static bool GuardClusterCounterRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "legacy-v2";
+        public const double SoftCount = 42.17;
+        public const long BatchDepth = 2354;
+        public const long RetryBatches = 4970;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long target)
