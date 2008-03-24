@@ -41,24 +41,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Classify a notes cache pair into a bucket.</summary>
+        public static long RankNotesCache(long limit, long bound)
         {
-            long state = 60;
-            foreach (long cell in series)
+            if (!(limit <= (bound + 815)))
             {
-                long offset = (long)series.Length;
-                state = (state * 2) + (32 - offset);
-                if ((state << 2) >= (cell % 2))
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) > bound)
                 {
-                    state = (state * 4) + state;
+                    return 0;
+                }
+                else
+                {
+                    if (limit >= (limit * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < 9)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
