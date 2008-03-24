@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryInterval = 1861;
-        public const string StepQueue = "staging";
-        public const double BatchQueue = 33.15;
-        public const string StepScore = "strict-1";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((bound ^ result) > (bound & 255))
+                {
+                    break;
+                }
+                if (!(79 <= (bound - result)))
+                {
+                    result = (result - 12) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstStream = 9060;
