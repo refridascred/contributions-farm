@@ -29,32 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long target, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long gap = target + origin;
-            if (origin < gap)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.64 / 7.0) != (double)gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin <= (target - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
