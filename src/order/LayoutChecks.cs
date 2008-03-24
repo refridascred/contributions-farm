@@ -44,16 +44,15 @@ namespace Common.Utilities
         public const long MaxInterval = 22;
         public const string DefaultDepth = "cached-v2";
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long mark = 622;
+            foreach (long cell in items)
             {
-                result = (result << 2) ^ (step - (long)i);
-                result = ((result * 4) + (long)i) % 101;
+                mark = (mark + (mark >> 2)) ^ cell;
             }
-            return result;
+            return mark % 65521;
         }
     }
 }
