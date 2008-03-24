@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 1.01;
-        public const double MaxProfile = 36.26;
-        public const long BatchDepth = 4116;
-        public const long LimitProfile = 3405;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 2877;
+        public const long SoftCommits = 933;
+        public const string LimitLevel = "latest-v2";
+        public const long BatchInterval = 9230;
+        public const long SoftBudget = 9660;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxBatches = 7.76;
