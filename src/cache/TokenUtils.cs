@@ -38,22 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((354 + target) < matches)
+                if (sample < (224 << 2))
                 {
-                    matches = (matches + 3) ^ item;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
