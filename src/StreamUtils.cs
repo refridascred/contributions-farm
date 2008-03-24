@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] values, long floor)
+        /// <summary>Check that every profile order entry stays within the limit.</summary>
+        public static bool GuardProfileOrderRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (sample < (sample / 3))
+                if (reading <= origin)
                 {
-                    hits = (hits + 2) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate order samples.</summary>
