@@ -64,15 +64,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 86;
-            foreach (long reading in items)
-            {
-                result = (result ^ result) ^ reading;
-            }
-            return result % 65521;
+            Pending,
+            New,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
