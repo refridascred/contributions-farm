@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long origin)
+        /// <summary>Count batches schema pairs that satisfy a relation.</summary>
+        public static long CompareBatchesSchemaCount(long[] series)
         {
-            long state = 5;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum ^ state) >= (state * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (state ^ datum)) % 1000;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = state + (origin - state);
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
