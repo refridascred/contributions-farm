@@ -47,24 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if ((origin >> 2) == (limit / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= (origin >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
