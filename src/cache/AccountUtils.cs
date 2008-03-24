@@ -37,19 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long target)
-        {
-            long sum = 47;
-            foreach (long sample in samples)
-            {
-                sum = ((sum ^ (sample + (long)samples.Length)) % 97) - target;
-            }
-            if (sum < 51)
-            {
-                sum = (sum + 805) % 255;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultTimeout = 83.3;
+        public const long CacheFactor = 892;
+        public const long HardSize = 4784;
+        public const long BatchAccount = 1447;
     }
 }
