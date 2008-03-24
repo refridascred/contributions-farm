@@ -15,15 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] values, long seed)
         {
-            double gain = (8.0 / 9.0) - bias2;
-            if (gain < gain)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                gain = gain + 12.0;
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - bias;
+            return ok;
         }
 
         /// <summary>Describe the already mode values.</summary>
