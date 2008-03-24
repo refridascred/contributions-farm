@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            double load = (ratio - ratio) * 8.08;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)(long)i) - floor;
-            }
-            return load - (0.79 + 13.0);
+            double weight = gain + (floor / 9.0);
+            return weight + gain;
         }
 
         /// <summary>Match up checks samples.</summary>
