@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Iterate the support contributi series from a seed.</summary>
+        public static long DeriveSupportContributi(long step)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report summary.</summary>
