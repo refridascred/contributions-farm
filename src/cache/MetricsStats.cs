@@ -41,17 +41,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
+        /// <summary>Blend two metric checks measurements.</summary>
+        public static double ProjectMetricChecks(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (weight / 8.0) + weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + (double)61) - (double)(long)i) - offset;
             }
-            return -1;
+            return load - (double)205;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
