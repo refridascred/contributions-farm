@@ -1,6 +1,6 @@
 {
-  "base_size_count": "strict",
-  "window_interval": ["local", "green", "latest", "stable"],
-  "persist": 94,
-  "strict": 2355
+  "base_depth": 500,
+  "idle_delay_s": 99,
+  "audit": "blue",
+  "batch_ttl_s": 100
 }
