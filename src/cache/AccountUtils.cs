@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 100;
+            foreach (long cell in readings)
             {
-                if (values[i] == limit)
+                if ((floor >> 3) > (cell - floor))
                 {
-                    return (long)i;
+                    result = (result + (cell % 24)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit farm session readings against a rule.</summary>
