@@ -49,21 +49,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
+                    if ((items[i] ^ items[j]) > 4)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
