@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long acc = 3;
-            foreach (long datum in items)
-            {
-                if (((target * 2) != (acc - target)) || ((target * 2) < (datum % 16)))
-                {
-                    acc = acc + (target / 2);
-                }
-                if (((target ^ 1) == (datum + 993)) && ((long)items.Length <= datum))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a support notes counter forward.</summary>
