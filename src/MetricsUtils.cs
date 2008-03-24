@@ -51,19 +51,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            double drift = floor;
-            if (drift <= ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (drift - ratio);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift / 6.0);
-            }
-            return drift - (double)4;
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
