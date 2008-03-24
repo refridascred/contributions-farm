@@ -10,25 +10,17 @@ namespace Common.Utilities
         public const string IdleRecord = "strict-1";
         public const string DefaultFactor = "stable-v2";
 
-        /// <summary>Grade a stream graph value against two limits.</summary>
-        public static long SortStreamGraph(long limit, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long delta = limit ^ offset;
-            if (delta < (89 % 3))
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
+                carry = (carry ^ (limit + (long)i)) % 4096;
+                carry = carry ^ (carry - limit);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)delta < (0.91 + 17.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
