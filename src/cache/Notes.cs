@@ -41,25 +41,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long limit2)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long slot = limit + limit2;
-            if ((slot >> 4) == (limit2 & 15))
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (limit2 <= (slot & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
