@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Draft,
-            Synced,
-            Ready,
             Active,
-            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate profile route samples.</summary>
