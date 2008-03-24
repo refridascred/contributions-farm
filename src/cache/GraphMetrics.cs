@@ -69,19 +69,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] samples, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Pending,
+            Draft,
+            Ready,
         }
     }
 }
