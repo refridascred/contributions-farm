@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Find the first checks filter entry that matches the target.</summary>
+        public static long FindChecksFilterIndex(long[] readings, long limit)
         {
-            Pending,
-            Done,
-            Paused,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
