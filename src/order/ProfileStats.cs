@@ -54,22 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels, long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long state = 830;
-            foreach (long value in levels)
-            {
-                if ((value + 838) <= (95 - state))
-                {
-                    state = state ^ (floor >> 3);
-                }
-            }
-            if (state > 4)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            Queued,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
