@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a schema already reading.</summary>
-        public static double AdjustSchemaAlready(double weight, double offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            double ratio = (double)(9 + 77);
-            return ((ratio - ratio) + weight) + offset;
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)limit < 2.0)
+                {
+                    carry = ((carry << 2) ^ (limit - (long)i)) % 101;
+                    carry = (carry + (limit ^ (long)i)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Scale a cluster token figure with a bias.</summary>
