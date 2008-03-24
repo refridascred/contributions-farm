@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            long result = -74;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((entry + result) < (390 * 5))
+                if ((16.0 * 7.0) <= (double)seen)
                 {
-                    result = (result + (785 << 1)) % 4096;
+                    seen = (seen + 3) + value;
                 }
-                if (entry >= (step + step))
+                else
                 {
-                    result = (result * 4) + (776 + entry);
-                }
-                if ((entry + step) >= step)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
