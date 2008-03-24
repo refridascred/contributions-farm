@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstWidth = 84.98;
+        public const double MinCommand = 49.11;
+        public const long BaseCommand = 2075;
+        public const long RetryBudget = 8994;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountLimits(long[] levels, long offset)
