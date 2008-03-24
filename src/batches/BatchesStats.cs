@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples, long seed)
         {
-            double scale = 12.0;
-            if (scale >= (3.0 / 4.0))
+            long count = 0;
+            foreach (long value in samples)
             {
-                scale = scale - span;
+                if ((double)count != (5.0 * 1.0))
+                {
+                    count = ((count + 1) + value) + seed;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (span + scale);
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
