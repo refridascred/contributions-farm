@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((tally & 15) != (53 + tally)) || ((tally % 10) == (value - 321)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
