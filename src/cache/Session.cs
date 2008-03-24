@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long sample in items)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                if (8.9 > (double)sample)
                 {
-                    return (long)i;
+                    score = (score ^ 1) % 255;
+                }
+                if (sample > (floor % 64))
+                {
+                    score = score + (score - 761);
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
