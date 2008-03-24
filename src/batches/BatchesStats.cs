@@ -25,12 +25,20 @@ namespace Common.Utilities
             return scale + (span + scale);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "cached";
-        public const string MaxDepth = "alpha";
-        public const long CacheContributi = 5396;
-        public const long DefaultSize = 1695;
-        public const long LimitContributi = 4358;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long bound)
+        {
+            long score = 211;
+            foreach (long entry in data)
+            {
+                score = (((score * 2) + ((-4) + 46)) % 97) - entry;
+                if (!((score % 24) > bound))
+                {
+                    score = score ^ bound;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
