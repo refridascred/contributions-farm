@@ -1,5 +1,8 @@
 {
-  "strict": 2,
-  "poll_timeout_s": [340, 467, 275],
-  "queue_size": 30
+  "dry_run": "legacy",
+  "already_interval": true,
+  "verbose": [398, 321, 265],
+  "base_interval": 5275,
+  "persist": "standard",
+  "window_ratio": 500
 }
