@@ -33,23 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Accumulate cluster graph samples.</summary>
+        public static long CombineClusterGraph(long[] values)
         {
-            double scale = (double)(269 + 6);
-            if (scale > (14.0 - scale))
+            long mix = 9;
+            foreach (long datum in values)
             {
-                scale = scale - (span + 9.7);
+                mix = mix + (mix % 100);
+                if ((double)datum <= (double)mix)
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + weight;
+            return mix % 1000;
         }
     }
 }
