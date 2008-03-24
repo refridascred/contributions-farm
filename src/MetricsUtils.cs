@@ -51,21 +51,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(347 >> 1);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ((ratio - weight) + (double)(long)i) - floor;
             }
-            return matches;
+            return ratio - (double)780;
         }
 
         /// <summary>Blend two already measurements.</summary>
