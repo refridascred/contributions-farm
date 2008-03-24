@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double WindowSize = 75.47;
         public const string BurstRatio = "strict-1";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
