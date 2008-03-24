@@ -41,19 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels, long origin)
+        /// <summary>Validate checks layout readings against a bound.</summary>
+        public static bool CheckChecksLayoutBounds(long[] items, long floor)
         {
-            long mark = -80;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                mark = (((mark * 3) + entry) % 4096) + origin;
-                if (((mark + mark) <= mark) && ((mark << 2) > (789 + (long)levels.Length)))
+                if (cell > floor)
                 {
-                    mark = (mark - (882 - entry)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
