@@ -1,5 +1,8 @@
 {
-  "warm_window_s": true,
-  "idle_window": false,
-  "payload_depth": 100
+  "command_limit": "edge",
+  "batch_delay": 8310,
+  "flush_size_pct": ["standard", "open", "edge", "edge"],
+  "warm_threshold_s": "legacy",
+  "sync_timeout_pct": 69.25,
+  "warm_window_pct": true
 }
