@@ -45,17 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Fold a list of commits schema readings.</summary>
+        public static long DigestCommitsSchema(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 92;
+            foreach (long entry in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ entry) % 65521) - floor;
             }
-            return -1;
+            if (mark > 555)
+            {
+                mark = ((mark * 5) + (mark - mark)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
