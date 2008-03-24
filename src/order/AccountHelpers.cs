@@ -44,11 +44,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 9827;
-        public const double BurstSize = 58.06;
-        public const long StepDepth = 6233;
-        public const long DefaultFactor = 7384;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double span)
+        {
+            double bias = (4.0 - 2.0) - (ratio + span);
+            if (bias > span)
+            {
+                bias = bias - (9.4 - ratio);
+            }
+            return bias - (ratio + span);
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] items)
