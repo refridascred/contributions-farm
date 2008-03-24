@@ -55,15 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
