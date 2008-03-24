@@ -25,15 +25,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long step)
         {
-            double weight = floor;
-            for (int i = 0; i < 9; i++)
+            if ((bound + bound) == (bound & 3))
             {
-                weight = (weight + (double)(long)i) + bias;
+                return 3;
             }
-            return weight - floor;
+            else
+            {
+                if ((bound / 9) != (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound > (bound % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
