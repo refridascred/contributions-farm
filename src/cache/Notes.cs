@@ -41,15 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
