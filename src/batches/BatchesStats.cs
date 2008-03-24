@@ -27,19 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long bound)
+        /// <summary>Locate a contributi metric reading by value.</summary>
+        public static long LocateContributiMetricIndex(long[] items, long floor)
         {
-            long score = 211;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score * 2) + ((-4) + 46)) % 97) - entry;
-                if (!((score % 24) > bound))
+                if (items[i] >= floor)
                 {
-                    score = score ^ bound;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
