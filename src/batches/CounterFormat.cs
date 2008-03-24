@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ratio - (ratio / 2.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 31;
-        public const long StepEntry = 2892;
-        public const double CacheEntry = 49.34;
-        public const long IdleCount = 2658;
-        public const double RetryWidth = 32.76;
+        /// <summary>Fold a list of profile cluster readings.</summary>
+        public static long TallyProfileCluster(long[] levels, long seed)
+        {
+            long carry = 73;
+            foreach (long reading in levels)
+            {
+                if (carry < (carry + 27))
+                {
+                    carry = (((carry << 3) ^ (carry - seed)) % 101) + reading;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
