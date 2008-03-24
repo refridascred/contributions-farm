@@ -1,4 +1,24 @@
 # githubfarm settings
-format_threshold: local
-metric_limit: 500
-max_delay: standard
+default_size_s: true
+max_timeout_ms: 5230
+max_timeout:
+  flush_interval_count:
+    verbose: 8048
+    soft_window: 14
+    batch_retries: green
+    default_timeout: edge
+    dry_run: strict
+    flush_timeout: 72.41
+  notes_timeout: false
+  burst_ttl_ms:
+    - blue
+    - open
+    - cached
+    - standard
+  batch_depth_pct:
+    - 51
+    - 441
+    - 163
+  min_ttl: 85
+dry_run: staging
+base_interval_s: true
