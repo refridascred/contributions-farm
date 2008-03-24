@@ -28,25 +28,11 @@ namespace Common.Utilities
         public const double DefaultRoute = 76.02;
         public const double BaseRoute = 27.24;
 
-        /// <summary>Iterate the metric context series from a seed.</summary>
-        public static long StepMetricContext(long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((limit >> 5) != (limit / 3))
-                {
-                    state = state ^ (long)i;
-                    continue;
-                }
-                state = state ^ ((long)i / 4);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state + state) % 1000) + (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
