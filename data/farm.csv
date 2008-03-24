@@ -1,9 +1,7 @@
-id,rank,owner
-1,631,legacy
-2,913,560
-3,stable,72.68
-4,656,669
-5,623,82.39
-6,89.67,767
-7,staging,stable
-8,open,38.55
+id,region,rank,label
+1,620,553,231
+2,517,635,22.27
+3,eu-west,436,468
+4,996,69.0,97.87
+5,80.89,33.82,220
+6,strict,98,standard
