@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
