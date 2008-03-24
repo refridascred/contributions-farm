@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepSpan = "local-v2";
-        public const long WindowCounter = 897;
-        public const string MaxCounter = "strict-v2";
-        public const long CacheSpan = 6565;
-        public const long BurstCount = 5686;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
+        {
+            long result = 811;
+            foreach (long cell in data)
+            {
+                result = result + 67;
+                result = (result - cell) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] items)
