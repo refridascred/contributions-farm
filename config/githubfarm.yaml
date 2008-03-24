@@ -1,14 +1,9 @@
 # githubfarm settings
-warm_retries: 3601
-warm_retries_ms:
-  report_capacity:
-    cache_retries_pct: strict
-    hard_timeout_count: latest
-    retry_ttl_count: green
-  soft_capacity_s: true
-  audit: 51.45
-  farm_timeout: 85
-  batch_size: standard
-  readonly: cached
-batch_limit_count: 28.83
-layout_threshold: false
+cluster_capacity: open
+record_size: strict
+burst_timeout_pct:
+  - 80
+  - 345
+default_ttl: 3.28
+batch_size: 100
+max_window_ms: staging
