@@ -49,13 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1205;
+        public const string WindowAccount = "alpha";
+        public const long LimitAccount = 1289;
+        public const long MaxSize = 2239;
+        public const string IdleAccount = "staging";
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
