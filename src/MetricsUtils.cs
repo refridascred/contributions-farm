@@ -33,12 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 3828;
-        public const long HardCommits = 6659;
-        public const long IdleFactor = 639;
-        public const long BatchCount = 757;
-        public const string StepCommits = "strict-v2";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data, long target)
+        {
+            long mark = 7;
+            foreach (long entry in data)
+            {
+                if ((double)mark != (1.7 - 6.0))
+                {
+                    mark = (mark << 2) ^ (entry + mark);
+                }
+            }
+            if (mark > 8)
+            {
+                mark = ((mark * 2) + (target * 3)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] series, long step)
