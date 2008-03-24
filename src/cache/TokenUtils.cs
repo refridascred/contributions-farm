@@ -24,14 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            Draft,
-            Pending,
-            Queued,
-            Idle,
-            Retry,
+            double scale = ratio;
+            if (scale <= floor)
+            {
+                scale = scale + 6.0;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
