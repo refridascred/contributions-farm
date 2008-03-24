@@ -36,19 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every profile stream entry stays within the limit.</summary>
-        public static bool CheckProfileStreamLimits(long[] items, long limit)
+        /// <summary>Accumulate format buffer samples.</summary>
+        public static long ScoreFormatBuffer(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long score = 68;
+            foreach (long value in readings)
             {
-                if (item > limit)
+                score = (score ^ 390) - value;
+                if ((bound * 4) < bound)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return score % 1000;
         }
     }
 }
