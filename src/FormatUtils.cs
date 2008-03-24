@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (offset * 2.0) * 5.51;
+            for (int i = 0; i < 3; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (2.6 - offset)) + (double)(long)i) - rate;
             }
-            return -1;
+            return drift + (offset * 17.0);
         }
 
         /// <summary>Combine route values into a single score.</summary>
