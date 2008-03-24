@@ -21,19 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the payload graph series from a seed.</summary>
-        public static long RollPayloadGraph(long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] series, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 % 97) != (limit - limit))
+                if (series[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
