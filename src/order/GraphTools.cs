@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of graph entry readings.</summary>
-        public static long MatchGraphEntryCount(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 667;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - datum) <= (3 % 100))
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (total & 31)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
