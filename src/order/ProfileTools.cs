@@ -81,9 +81,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryCount = 45.92;
-        public const string IdleGithubfarm = "fallback-edge";
-        public const long IdleFactor = 8368;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series)
+        {
+            long anchor = 90;
+            foreach (long value in series)
+            {
+                anchor = anchor - (value >> 1);
+                if (!((value + 164) < anchor))
+                {
+                    anchor = (anchor << 3) ^ 7;
+                }
+                if (((5.9 * 7.0) >= (double)value) || ((value + value) == (value * 4)))
+                {
+                    anchor = (anchor - 25) % 1000;
+                }
+                if ((anchor << 3) == (value << 2))
+                {
+                    break;
+                }
+            }
+            if (anchor > 44)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
+        }
     }
 }
