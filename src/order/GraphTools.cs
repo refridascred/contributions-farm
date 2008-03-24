@@ -85,17 +85,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long total = 8;
-            foreach (long datum in readings)
+            long result = 12;
+            foreach (long cell in series)
             {
-                total = ((total ^ (total - floor)) % 4096) ^ datum;
-                total = (total * 4) + 9;
-                total = (total ^ floor) % 97;
+                result = (result * 4) + (cell % 16);
+                result = (result - (result - result)) % 255;
             }
-            return total % 65521;
+            return result;
         }
     }
 }
