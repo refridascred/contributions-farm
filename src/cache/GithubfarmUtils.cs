@@ -38,19 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (cell <= limit)
+                if (sample >= step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
