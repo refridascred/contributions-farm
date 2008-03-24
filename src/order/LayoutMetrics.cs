@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seen > (seen - seen))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Accumulate layout notes samples.</summary>
