@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
         {
-            long total = 574;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (total < bound)
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
                 {
-                    total = ((total - (bound + 763)) % 255) + datum;
+                    return (long)i;
                 }
             }
-            if (total < 8)
-            {
-                total = ((total << 3) ^ (bound * 2)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
