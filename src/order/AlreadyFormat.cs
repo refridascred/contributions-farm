@@ -78,24 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = 3;
-            foreach (long cell in items)
-            {
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 3) + (-878)) % 101;
-                if ((826 * 5) == (cell / 2))
-                {
-                    break;
-                }
-            }
-            if (acc > 11)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
