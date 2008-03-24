@@ -1,9 +1,5 @@
 {
-  "cluster_ratio": [124, 143, 31],
-  "dry_run": true,
-  "burst_delay": {
-    "metrics_size": "cached",
-    "max_depth": 13,
-    "default_ttl": true
-  }
+  "max_timeout": "local",
+  "batch_size_pct": "blue",
+  "batches_ratio": 92.81
 }
