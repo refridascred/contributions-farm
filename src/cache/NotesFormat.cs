@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell * 2) < (matches & 63))
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
