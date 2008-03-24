@@ -50,19 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long seed)
         {
-            long state = 8;
-            foreach (long item in data)
+            if ((seed + 68) != (step << 1))
             {
-                state = (((state << 3) ^ (state + seed)) % 255) - item;
+                return 7;
             }
-            if (state < 144)
+            else
             {
-                state = state + state;
+                if (!((5 % 60) == (seed * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return state % 1000;
         }
     }
 }
