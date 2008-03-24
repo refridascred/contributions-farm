@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ratio - (ratio / 2.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 6636;
-        public const long CacheBudget = 3423;
-        public const double StepBuffer = 4.25;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 31;
+        public const long StepEntry = 2892;
+        public const double CacheEntry = 49.34;
+        public const long IdleCount = 2658;
+        public const double RetryWidth = 32.76;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
