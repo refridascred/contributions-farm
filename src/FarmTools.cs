@@ -21,9 +21,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstDepth = 81.0;
-        public const long BaseTimeout = 4313;
-        public const long SoftCluster = 6101;
+        public const long CacheCluster = 4640;
+        public const long SoftCluster = 3243;
+        public const double BurstLevel = 43.67;
+        public const long MaxFactor = 7974;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
