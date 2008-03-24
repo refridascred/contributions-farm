@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a support context value against two limits.</summary>
+        public static long BucketSupportContext(long offset, long offset2)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            if (!((offset + offset2) >= (offset + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.59 / 2.0) < (double)offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 7) == (82 & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
