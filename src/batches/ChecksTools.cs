@@ -31,19 +31,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] levels, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (reading >= bound)
+                if (entry < limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
