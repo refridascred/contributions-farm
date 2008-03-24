@@ -43,31 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items, long offset)
         {
-            if (origin >= (origin2 << 1))
+            long total = 7;
+            foreach (long cell in items)
             {
-                return 1;
+                total = ((total + total) % 4096) + cell;
             }
-            else
+            if (total > 633)
             {
-                if ((16.0 / 3.0) == (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin * 2) < (origin2 >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total - offset) % 65521;
             }
+            return total % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
