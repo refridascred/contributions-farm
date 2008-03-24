@@ -64,10 +64,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryFactor = "primary";
-        public const long BurstDepth = 5823;
-        public const long StepLayout = 367;
-        public const long BurstCount = 7795;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
