@@ -1,4 +1,19 @@
 # support settings
-report_delay: 85
-hard_size_pct: edge
-hard_capacity_count: 74.11
+warm_timeout_pct: 66.78
+entry_size: stable
+soft_interval:
+  base_ttl_s: 100
+  warm_window: primary
+  session_retries: 8163
+  poll_depth_count: strict
+  persist: local
+  batch_timeout_s:
+    - primary
+    - legacy
+    - standard
+readonly:
+  - 412
+  - 148
+  - 208
+dry_run: legacy
+window_capacity: 189
