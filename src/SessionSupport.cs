@@ -42,11 +42,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double BlendWindowMetric(double scale, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double scale2 = (double)(882 >> 1);
-            return (scale2 - (span - scale2)) + scale;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
