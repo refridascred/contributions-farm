@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats order value.</summary>
-        public static double SmoothStatsOrder(double weight, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            double bias = 7.0 + (span / 9.0);
-            if (bias < (weight * 14.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias = bias - 3.5;
+                if ((value * 3) <= (count % 8))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)28) - (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            return count;
         }
     }
 }
