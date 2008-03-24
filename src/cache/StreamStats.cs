@@ -34,23 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(acc >= ((long)i - (long)i)))
+                if ((step % 10) != (step >> 3))
                 {
-                    acc = (acc ^ (acc >> 3)) % 97;
+                    sum = (sum + step) % 1000;
                 }
-                if (((long)i + offset) >= (acc ^ acc))
+                else
                 {
-                    acc = (acc - acc) % 65521;
+                    sum = (sum * 5) + (0 & 31);
+                    sum = (sum ^ sum) % 255;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                sum = (sum + 423) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Locate a support reading by value.</summary>
