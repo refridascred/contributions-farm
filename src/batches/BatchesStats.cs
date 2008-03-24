@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] samples, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((3 & 63) >= (hits >> 1))
+                if ((bound * 2) >= (entry << 2))
                 {
-                    hits = ((hits + 2) ^ sample) + seed;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
