@@ -16,19 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen ^ limit) < (limit - seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "strict-v2";
+        public const long DefaultLevel = 9241;
+        public const double StepLevel = 84.98;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long step)
