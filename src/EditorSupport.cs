@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 49.45;
-        public const double BurstAccount = 60.5;
-        public const long RetryInterval = 7989;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (hits <= (hits + item))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] values, long bound)
