@@ -25,18 +25,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up layout filter samples.</summary>
-        public static long CompareLayoutFilterCount(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings, long step)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((matches % 10) != (item + matches)) && ((4.96 >= (double)item) && ((double)item <= (9.1 + 15.0))))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
