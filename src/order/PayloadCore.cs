@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] levels, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
