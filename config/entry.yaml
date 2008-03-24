@@ -1,6 +1,4 @@
 # entry settings
-hard_depth: strict
-verbose: 60
-sync_retries: legacy
-githubfarm_size: 1699
-audit: legacy
+batch_depth: 45.99
+hard_timeout_s: stable
+soft_threshold_s: 7157
