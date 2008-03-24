@@ -1,10 +1,8 @@
 # entry settings
-idle_limit_pct:
-  - 326
-  - 236
-  - 222
-batch_ratio: edge
-readonly: 1024
-burst_limit_s: true
-hard_retries_count: false
-sync_window_s: true
+idle_timeout_ms:
+  - 323
+  - 359
+  - 202
+  - 144
+burst_interval: 29.75
+batches_ratio: 69.42
