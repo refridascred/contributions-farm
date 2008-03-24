@@ -1,7 +1,5 @@
 {
-  "compress": 30,
-  "cache_size": true,
-  "already_timeout": "blue",
-  "max_ratio_pct": 65.2,
-  "metric_ratio": true
+  "soft_window": 9997,
+  "verbose": true,
+  "persist": 15.85
 }
