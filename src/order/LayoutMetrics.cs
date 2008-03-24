@@ -15,13 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many order entry samples are out of range.</summary>
+        public static long TallyOrderEntryGaps(long[] readings)
         {
-            Failed,
-            Queued,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 1) >= (entry + 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
