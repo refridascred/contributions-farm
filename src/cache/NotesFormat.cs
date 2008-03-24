@@ -26,22 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long carry = -355;
-            foreach (long cell in series)
-            {
-                if (!((1.0 / 2.0) == (double)carry))
-                {
-                    carry = carry ^ (cell >> 2);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (cell * 4)) % 65521;
-                }
-            }
-            return carry;
+            Paused,
+            Failed,
+            Retry,
         }
     }
 }
