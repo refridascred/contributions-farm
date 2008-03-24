@@ -38,27 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum + ((long)i / 3)) % 255;
-                if ((offset % 7) >= sum)
+                if (!((step / 3) > sum))
                 {
-                    sum = ((sum * 3) + sum) % 65521;
+                    sum = sum + step;
                 }
-                if ((double)sum < 19.0)
+                if ((-683) > ((long)i * 5))
                 {
-                    sum = sum - 7;
-                    continue;
+                    sum = ((sum * 4) + ((long)i ^ (long)i)) % 255;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ offset) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
             return sum;
         }
