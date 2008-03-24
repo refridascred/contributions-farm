@@ -15,19 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (3.0 > (double)offset)
             {
-                if (item <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((14.0 / 2.0) != (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((49 * 3) > (bound + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
