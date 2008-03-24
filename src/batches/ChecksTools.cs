@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] series, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the notes level values.</summary>
