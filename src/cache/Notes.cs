@@ -23,23 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
-        {
-            long state = 313;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 5) == (12 >> 2))
-                {
-                    state = (state - (state >> 3)) % 1000;
-                }
-            }
-            if (state < 591)
-            {
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleCount = 5687;
+        public const long SoftWidth = 4514;
+        public const long BaseBudget = 876;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
