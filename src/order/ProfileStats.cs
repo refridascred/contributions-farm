@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((seen + seen) != (seen % 16)) && ((entry + (long)data.Length) > 352))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
