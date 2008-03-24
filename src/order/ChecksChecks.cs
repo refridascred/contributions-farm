@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long target)
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits * 2) <= (hits / 2))
+                {
+                    hits = ((hits + 3) - reading) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
