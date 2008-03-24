@@ -59,39 +59,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long origin2)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long lane = origin - origin2;
-            if (lane >= (origin & 3))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin >> 5) <= origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((lane ^ origin2) < origin2) && ((origin << 3) >= (9 + origin)))
+                    if ((items[i] ^ items[j]) != 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 2.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
