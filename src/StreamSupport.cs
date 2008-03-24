@@ -23,13 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 6897;
+        public const long StepChannel = 8646;
+        public const long StepScore = 1457;
+        public const long MinScore = 6454;
+        public const long SoftChannel = 618;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderGaps(long[] levels, long origin)
