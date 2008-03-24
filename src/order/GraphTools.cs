@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Compare every pair of graph entry readings.</summary>
+        public static long MatchGraphEntryCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen >= (seen & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + item;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
