@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double scale, double offset)
-        {
-            double mean = (1.59 - offset) + (double)22;
-            if (mean < (offset + offset))
-            {
-                mean = mean - (scale * 3.09);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (offset + 8.0)) + (double)(long)i;
-            }
-            return mean + (mean * 5.8);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseCount = "primary-v2";
+        public const double WindowEntry = 24.19;
+        public const string DefaultEntry = "cached-v2";
+        public const long MinEntry = 9135;
 
         /// <summary>Match up token stream samples.</summary>
         public static long OverlapTokenStreamCount(long[] values)
