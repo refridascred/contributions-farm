@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long CountToolsChecksGaps(long[] series)
+        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
+        public static long AuditGithubfarmSchemaGaps(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((1.18 / 2.0) != (double)cell)
+                if ((double)reading > (4.3 / 8.0))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count cluster command pairs that satisfy a relation.</summary>
