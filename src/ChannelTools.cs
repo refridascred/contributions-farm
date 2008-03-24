@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a tools payload value against two limits.</summary>
-        public static long BucketToolsPayload(long floor, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] readings)
         {
-            if (!((floor + target) == (2 % 10)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (203 ^ floor))
+                if (!((double)value == (1.9 / 2.0)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((floor <= (target >> 2)) && (76 <= floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((-85) <= (target << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
