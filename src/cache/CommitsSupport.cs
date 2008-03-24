@@ -19,13 +19,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
