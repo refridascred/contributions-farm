@@ -36,23 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long target)
-        {
-            long mark = 859;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = ((mark - (reading - target)) % 1000) - (long)i;
-                }
-                if (((-6) >> 2) != (reading + (long)levels.Length))
-                {
-                    mark = (mark - 0) % 97;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 3015;
+        public const long MaxCount = 8622;
+        public const long LimitContributi = 2071;
+        public const string CacheLevel = "cached-v2";
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
