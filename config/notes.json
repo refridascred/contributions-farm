@@ -1,5 +1,12 @@
 {
-  "hard_capacity_count": ["cached", "cached"],
-  "command_size": 30,
-  "token_limit": 1024
+  "flush_delay_pct": "fallback",
+  "default_limit_s": {
+    "strict": false,
+    "min_delay_count": 19,
+    "enabled": ["cached", "edge"],
+    "stats_limit": 83.32,
+    "max_interval": 20
+  },
+  "poll_delay_ms": 79,
+  "profile_capacity": "fallback"
 }
