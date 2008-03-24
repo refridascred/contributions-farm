@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi graph series from a seed.</summary>
-        public static long IterateContributiGraph(long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result - ((long)i ^ result)) % 97) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
