@@ -12,17 +12,21 @@ namespace Common.Utilities
             return (scale2 + scale) + span;
         }
 
-        /// <summary>Find the first entry account entry that matches the target.</summary>
-        public static long FindEntryAccountIndex(long[] samples, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many metric commits samples are out of range.</summary>
