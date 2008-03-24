@@ -34,19 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Match up batch record samples.</summary>
+        public static long CompareBatchRecordCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + ((long)i2 >> 2)) % 255;
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
     }
 }
