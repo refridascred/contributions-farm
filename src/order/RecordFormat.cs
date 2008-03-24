@@ -54,14 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items, long seed)
         {
-            Closed,
-            Retry,
-            Draft,
-            Ready,
-            Dropped,
+            long mix = 8;
+            foreach (long item in items)
+            {
+                mix = mix ^ (seed & 1);
+                if (((item / 5) <= (mix >> 1)) || ((seed / 3) < mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix - (seed << 1)) % 4096;
+            }
+            return mix;
         }
     }
 }
