@@ -31,15 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Count stats context pairs that satisfy a relation.</summary>
+        public static long CompareStatsContextCount(long[] samples)
         {
-            double scale = (weight * 7.0) / 9.0;
-            if (scale < floor)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (weight + weight);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - 12.0;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
