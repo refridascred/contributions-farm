@@ -69,39 +69,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long span = bound - seed;
-            if ((540 * 4) <= (seed * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + 6) > (seed + 20))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ 60) > (bound & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((46 & 3) != (span * 5)) && ((bound - span) >= (bound + span)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
