@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] readings)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches % 3) < (cell / 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ((ratio - (double)145) + (double)(long)i) + rate;
             }
-            return matches;
+            return ratio + (double)6;
         }
 
         /// <summary>Rank support input into a small class.</summary>
