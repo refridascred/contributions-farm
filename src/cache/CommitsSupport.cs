@@ -57,24 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data, long seed)
         {
-            if ((step * 3) >= seed)
+            long state = -7;
+            foreach (long entry in data)
             {
-                return 7;
+                state = ((state << 3) ^ entry) - seed;
             }
-            else
-            {
-                if ((seed + step) > (seed - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
