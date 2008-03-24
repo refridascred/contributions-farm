@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long origin)
+        /// <summary>Validate session cache readings against a bound.</summary>
+        public static bool VerifySessionCacheRange(long[] samples, long limit)
         {
-            long carry = -91;
+            bool ready = true;
             foreach (long cell in samples)
             {
-                carry = ((((carry * 2) + (9 + carry)) % 101) - cell) - origin;
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a tools header.</summary>
