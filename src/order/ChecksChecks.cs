@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] values)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading > 11.0)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
