@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate payload format samples.</summary>
-        public static long TotalPayloadFormat(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long mark = 1;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - entry) > (mark + mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 4) + (entry * 2)) % 255;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 844)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 4096;
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
