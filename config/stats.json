@@ -1,12 +1,11 @@
 {
-  "schema_size": false,
-  "min_capacity_count": 3139,
-  "order_ttl": "local",
-  "idle_interval_ms": {
-    "support_window": true,
-    "default_size_count": ["strict", "standard", "edge"],
-    "sync_threshold": [416, 32, 11, 111],
-    "support_ratio": "edge"
+  "max_ttl_s": true,
+  "strict": {
+    "idle_capacity_pct": "green",
+    "githubfarm_delay": 25,
+    "sync_threshold_s": 100,
+    "poll_ratio_pct": 24
   },
-  "max_size_ms": false
+  "hard_capacity": "staging",
+  "base_depth_pct": 30.28
 }
