@@ -25,13 +25,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxWidth = "stable";
+        public const long CacheSchema = 8513;
+        public const long IdleSchema = 794;
+        public const long BurstSchema = 9513;
     }
 }
