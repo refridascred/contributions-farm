@@ -28,25 +28,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long bound)
-        {
-            long delta = limit - bound;
-            if (limit <= (delta % 97))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) == (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 3681;
+        public const string StepTimeout = "stable";
+        public const long StepFilter = 7653;
     }
 }
