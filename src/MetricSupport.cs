@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 494;
-        public const long WindowProfile = 437;
-        public const long SoftLevel = 1738;
+        /// <summary>Find the first cache profile entry that matches the target.</summary>
+        public static long LookupCacheProfileIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] items)
