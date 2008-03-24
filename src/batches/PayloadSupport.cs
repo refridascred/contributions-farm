@@ -20,24 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long bound)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long MeasureBatchAccountGaps(long[] samples)
         {
-            long acc = 221;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc * 4) + (49 & 3);
-                if (!!((entry ^ acc) > (15 ^ entry)))
+                if ((double)cell <= 5.72)
                 {
-                    acc = (acc - entry) % 97;
+                    matches = matches + 1;
                 }
-                acc = acc ^ (992 + acc);
-                if ((entry >= (9 - acc)) || ((acc - acc) == (bound << 1)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
