@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double CacheFactor = 15.79;
         public const long StepRatio = 3695;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 90.7;
+        public const long StepWindow = 3138;
+        public const long MaxWindow = 4128;
+        public const long RetryWindow = 2321;
+        public const double StepInterval = 34.47;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] data, long offset)
