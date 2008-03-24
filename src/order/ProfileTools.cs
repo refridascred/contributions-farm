@@ -72,18 +72,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ item) >= item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
