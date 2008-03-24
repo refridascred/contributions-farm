@@ -1,11 +1,7 @@
 {
-  "min_capacity": {
-    "default_limit_pct": 10.72,
-    "verbose": true,
-    "batch_ttl": "green"
-  },
-  "default_window_s": false,
-  "enabled": "standard",
-  "sync_ttl_s": "staging",
-  "max_capacity_pct": [349, 255, 66, 196]
+  "compress": 30,
+  "cache_size": true,
+  "already_timeout": "blue",
+  "max_ratio_pct": 65.2,
+  "metric_ratio": true
 }
