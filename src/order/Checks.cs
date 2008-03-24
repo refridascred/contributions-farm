@@ -58,14 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Queued,
-            Locked,
-            Stale,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "standard-edge";
+        public const string CacheInterval = "fallback";
+        public const string MinFarm = "primary-v2";
+        public const long RetryFarm = 6140;
 
         /// <summary>Compare every pair of schema stats readings.</summary>
         public static long OverlapSchemaStatsCount(long[] samples)
