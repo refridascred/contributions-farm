@@ -14,23 +14,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            double mean = (double)(114 + (-2));
-            if (mean <= offset)
+            long state = -8;
+            foreach (long value in levels)
             {
-                mean = (mean - (offset * 1.98)) + bias;
+                state = ((state * 2) + (965 & 3)) + value;
             }
-            else
-            {
-                mean = mean - (mean - 15.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean * 8.0)) + (double)(long)i;
-            }
-            return mean + offset;
+            return state;
         }
 
         /// <summary>Audit schema batches readings against a rule.</summary>
