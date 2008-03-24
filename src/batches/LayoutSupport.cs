@@ -37,19 +37,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] series, long step)
+        /// <summary>Project the next metric payload value.</summary>
+        public static double AdjustMetricPayload(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double weight = (double)(7 / 9);
+            if (weight > rate)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight + weight) + offset;
             }
-            return ready;
+            return weight - (double)22;
         }
 
         /// <summary>Locate a route reading by value.</summary>
