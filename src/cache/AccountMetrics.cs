@@ -53,25 +53,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank context metrics input into a small class.</summary>
-        public static long SortContextMetrics(long target, long limit)
-        {
-            if (!((636 - target) >= (542 % 60)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((400 + target) != (target ^ 80)) || ((limit + limit) > (limit - target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "open-edge";
+        public const string LimitLevel = "strict-edge";
+        public const long BatchContext = 2029;
+        public const double BurstLevel = 29.08;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
