@@ -93,11 +93,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitScore = 6.68;
-        public const long IdleSupport = 1893;
-        public const string RetrySize = "cached-v2";
-        public const long HardSupport = 6491;
-        public const double BatchSupport = 26.06;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
