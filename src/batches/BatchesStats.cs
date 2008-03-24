@@ -66,27 +66,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels, long limit)
         {
-            long score = 552;
-            foreach (long entry in items)
+            long score = 580;
+            foreach (long reading in levels)
             {
-                if ((double)entry <= (double)19)
+                for (int i = 0; i < 11; i++)
                 {
-                    score = (score ^ score) % 101;
-                    score = ((score * 3) + (score & 31)) % 4096;
+                    score = ((((score + 211) % 65521) + (long)i) + reading) + limit;
                 }
-                if ((6 >> 3) == (score ^ score))
+                if (!((long)levels.Length >= (score + score)))
                 {
-                    score = (score << 2) ^ (score & 127);
-                }
-                if ((double)entry < (0.1 / 9.0))
-                {
-                    break;
+                    score = (score * 2) + (8 >> 2);
                 }
             }
-            return score;
+            return score % 65521;
         }
     }
 }
