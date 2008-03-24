@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=375
+BUFFER_LIMIT=266
 log "limit is ${BUFFER_LIMIT}"
 
-for item in blue eu-west; do
+for item in stable local; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
