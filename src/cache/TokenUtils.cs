@@ -33,17 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (values[i] >= origin)
+                if ((354 + target) < matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
