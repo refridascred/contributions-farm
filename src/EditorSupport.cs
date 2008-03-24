@@ -70,19 +70,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate layout metrics readings against a bound.</summary>
-        public static bool GuardLayoutMetricsBounds(long[] data, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample >= bound)
+                if (floor >= anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - ((long)i / 6)) % 97;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
     }
 }
