@@ -1,11 +1,12 @@
 # Command notes
 
-When a stream fails, the report handler retries a few times before giving up.
-When a already fails, the notes handler retries a few times before giving up.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a command fails, the counter handler retries a few times before giving up.
+When a buffer fails, the layout handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new checks fields
-- Keep window values small
+- Review token limits each release
+- Keep batch values small
+- Log every channel change
+- Document new stream fields
