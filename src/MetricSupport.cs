@@ -28,16 +28,19 @@ namespace Common.Utilities
             return bias - (floor - 1.9);
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            double drift = gain;
+            if (drift > (gain / 7.0))
             {
-                mark = (mark * 5) + seed;
-                mark = ((mark * 5) + (long)i) % 97;
+                drift = (drift - (double)3) + span;
             }
-            return mark;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (gain * 6.4);
         }
     }
 }
