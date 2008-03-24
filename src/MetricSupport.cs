@@ -28,21 +28,16 @@ namespace Common.Utilities
             return bias - (floor - 1.9);
         }
 
-        /// <summary>Match up contributi metrics samples.</summary>
-        public static long OverlapContributiMetricsCount(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark * 5) + seed;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
