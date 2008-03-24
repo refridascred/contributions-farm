@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowBudget = 4876;
-        public const string CacheSchema = "local-edge";
-        public const long MinSize = 2624;
-        public const long HardTimeout = 3673;
-        public const double BurstSchema = 2.51;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) != ((-24) + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long step)
