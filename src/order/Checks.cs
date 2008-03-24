@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of checks already readings.</summary>
-        public static long CompareChecksAlreadyCount(long[] readings)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 19)
+                    if ((samples[i] ^ samples[j]) > 11)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
