@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 49.45;
+        public const double BurstAccount = 60.5;
+        public const long RetryInterval = 7989;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long step, long bound)
