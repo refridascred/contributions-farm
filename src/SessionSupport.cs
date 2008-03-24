@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a command token reading.</summary>
-        public static double ProjectCommandToken(double ratio, double offset)
-        {
-            double load = ratio - offset;
-            if (load > offset)
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + (load - offset);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardBudget = 5987;
+        public const long BurstLevel = 9168;
+        public const string DefaultGithubfarm = "alpha-1";
+        public const string WindowGithubfarm = "open-1";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueOutliers(long[] values)
