@@ -1,6 +1,12 @@
 {
-  "retry_window_pct": 91,
-  "flush_limit": false,
-  "persist": "green",
-  "readonly": false
+  "cache_retries": 51,
+  "order_ratio": 25.48,
+  "layout_ratio": {
+    "context_interval": ["blue", "strict", "edge", "standard"],
+    "sync_limit_s": false,
+    "min_delay_ms": 96,
+    "sync_delay": false,
+    "retry_window_s": 39
+  },
+  "buffer_ttl": 64
 }
