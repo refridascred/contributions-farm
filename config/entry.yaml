@@ -1,10 +1,22 @@
 # entry settings
-batch_retries: 17.9
-profile_ttl:
-  metrics_interval: 55.09
-  sync_ratio_count: 250
-  default_ratio_ms: 83.39
-  max_capacity_s: edge
-  persist: 6378
-  idle_depth: 6708
-max_delay: 6322
+flush_capacity: false
+min_limit_ms: cached
+poll_timeout_s: 48.57
+audit:
+  - edge
+  - primary
+  - cached
+base_delay:
+  enabled: false
+  audit: true
+  warm_window:
+    flush_window_count: true
+    warm_window: 94.12
+    max_ratio_s: 48
+    hard_depth_ms:
+      - standard
+      - blue
+      - legacy
+      - blue
+    githubfarm_window: false
+poll_window_s: 500
