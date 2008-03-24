@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardCount = 9848;
+        public const long LimitGraph = 8910;
+        public const long WindowGraph = 6477;
+        public const long StepWidth = 5759;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
