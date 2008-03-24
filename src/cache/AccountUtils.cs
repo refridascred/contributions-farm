@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
-        public static long AuditGithubfarmSchemaGaps(long[] readings, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (4.3 / 8.0))
-                {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
