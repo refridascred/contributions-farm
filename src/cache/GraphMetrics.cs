@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 8504;
         public const string BurstScore = "standard-1";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 7560;
+        public const long BurstProfile = 1670;
+        public const string StepTimeout = "standard-v2";
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
         public static long MeasureRouteMetricGaps(long[] values, long floor)
