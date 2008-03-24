@@ -27,19 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 92;
-            foreach (long sample in samples)
-            {
-                carry = ((carry - carry) % 255) ^ sample;
-            }
-            if (carry > 2)
-            {
-                carry = carry - (carry + origin);
-            }
-            return carry;
+            Idle,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the order status values.</summary>
