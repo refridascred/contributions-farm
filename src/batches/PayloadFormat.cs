@@ -24,10 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 902;
-        public const double SoftRoute = 76.13;
-        public const long BurstCount = 3399;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) <= 59)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
