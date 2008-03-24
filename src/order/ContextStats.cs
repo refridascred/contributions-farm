@@ -19,21 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 251;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long step = (target >> 5) - (reading ^ target);
+                mark = mark - (step << 2);
+                if (((double)mark == (double)reading) && ((reading + mark) != (target + mark)))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ 8) % 97;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
