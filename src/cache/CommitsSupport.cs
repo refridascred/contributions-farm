@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                long count = (bound << 2) + (acc - 124);
-                acc = (acc + (acc + count)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepSpan = "local-v2";
+        public const long WindowCounter = 897;
+        public const string MaxCounter = "strict-v2";
+        public const long CacheSpan = 6565;
+        public const long BurstCount = 5686;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] items)
