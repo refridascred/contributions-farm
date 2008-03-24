@@ -36,11 +36,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "primary-edge";
-        public const long LimitRatio = 6818;
-        public const long StepCount = 1078;
-        public const long BaseFarm = 7771;
-        public const long MinSpan = 3104;
+        /// <summary>Grade a checks metric value against two limits.</summary>
+        public static long ClassifyChecksMetric(long seed, long limit)
+        {
+            if ((limit % 60) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ seed) == (seed / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
