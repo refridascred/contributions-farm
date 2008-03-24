@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Grade a window batch value against two limits.</summary>
+        public static long RankWindowBatch(long offset, long target)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            if ((156 % 64) <= (offset >> 2))
             {
-                ratio = ((ratio - (double)145) + (double)(long)i) + rate;
+                return 4;
             }
-            return ratio + (double)6;
+            else
+            {
+                if (!(offset <= target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank support input into a small class.</summary>
