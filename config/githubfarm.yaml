@@ -1,7 +1,11 @@
 # githubfarm settings
-poll_interval_count: 18
-sync_interval_s: 30
-graph_threshold: 2876
-cache_timeout: staging
-batch_interval: true
-verbose: false
+order_threshold: staging
+audit:
+  editor_capacity: edge
+  hard_depth: false
+  command_timeout: false
+batches_delay:
+  - 303
+  - 178
+cache_ttl_pct: 1024
+flush_ttl_ms: 79.35
