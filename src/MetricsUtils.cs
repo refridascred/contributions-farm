@@ -54,18 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit session order readings against a rule.</summary>
-        public static long MeasureSessionOrderGaps(long[] values, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double drift = floor;
+            if (drift <= ratio)
             {
-                if (entry >= hits)
-                {
-                    hits = (hits + 1) - floor;
-                }
+                drift = drift + (drift - ratio);
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift / 6.0);
+            }
+            return drift - (double)4;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
