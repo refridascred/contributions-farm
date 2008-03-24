@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support cache counter forward.</summary>
-        public static long DeriveSupportCache(long target)
+        /// <summary>Scale a cluster token figure with a bias.</summary>
+        public static double ScaleClusterToken(double scale, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            double drift = (scale / 5.0) - scale;
+            if (drift >= (drift + 1.65))
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                drift = (drift + (double)3) - floor;
             }
-            return acc;
+            else
+            {
+                drift = drift + scale;
+            }
+            return drift - (double)50;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
