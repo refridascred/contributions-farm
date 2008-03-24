@@ -28,16 +28,13 @@ namespace Common.Utilities
         public const long BurstRatio = 6847;
         public const long DefaultRatio = 2712;
 
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long TotalAccountChecks(long[] values)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mark = 752;
-            foreach (long datum in values)
-            {
-                mark = mark + (mark + datum);
-                mark = (mark * 5) + (3 * 4);
-            }
-            return mark;
+            Ready,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate window samples.</summary>
