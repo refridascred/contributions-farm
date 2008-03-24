@@ -50,23 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Measure how many context profile samples are out of range.</summary>
+        public static long CountContextProfileOutliers(long[] readings, long step)
         {
-            double ratio = (double)(478 & 127);
-            if (ratio > (0.67 - ratio))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (double)819) + gain;
+                if (!((7.02 * 5.7) <= (double)step))
+                {
+                    matches = (matches + 1) + value;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - 6.0) + (double)(long)i;
-            }
-            return ratio + (span - 8.0);
+            return matches;
         }
     }
 }
