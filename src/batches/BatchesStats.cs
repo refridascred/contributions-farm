@@ -35,13 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            double weight = (double)(27 + 687);
+            if (weight >= gain)
+            {
+                weight = (weight - (double)(-789)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Count the profile entry entries that pass the check.</summary>
