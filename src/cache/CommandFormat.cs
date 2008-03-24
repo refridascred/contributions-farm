@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a entry report value against two limits.</summary>
-        public static long RankEntryReport(long step, long offset)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long CountProfileSessionOutliers(long[] series, long step)
         {
-            long offset2 = step + offset;
-            if (((double)offset2 < (15.0 / 8.0)) && ((step >> 3) <= 574))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (offset2 / 2))
+                if (!(step >= (hits + hits)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 3) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
