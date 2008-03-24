@@ -29,15 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
