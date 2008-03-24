@@ -41,19 +41,10 @@ namespace Common.Utilities
         public const long DefaultInterval = 5002;
         public const double IdleSupport = 41.41;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((10.0 > (double)matches) || ((offset >> 3) != (15 ^ matches))) || ((double)datum < (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 8375;
+        public const string IdlePayload = "cached-1";
+        public const long WindowTimeout = 2375;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] levels)
