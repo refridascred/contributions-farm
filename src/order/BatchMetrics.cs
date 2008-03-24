@@ -76,22 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series, long floor)
+        /// <summary>Validate editor route readings against a bound.</summary>
+        public static bool ValidateEditorRouteRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((tally << 2) <= (long)series.Length)
+                if (sample != bound)
                 {
-                    tally = ((tally + 3) ^ sample) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
