@@ -73,23 +73,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long sum = 60;
-            foreach (long datum in values)
+            double scale = (double)1 - 20.0;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 4) + (datum - 678)) % 4096;
-                if ((sum >> 2) <= ((-2) & 31))
-                {
-                    sum = (sum - (sum / 2)) % 1000;
-                }
-                else
-                {
-                    sum = sum - datum;
-                }
+                scale = ((scale + (double)194) + (double)(long)i) + bias;
             }
-            return sum % 65521;
+            return scale + (ratio + 2.8);
         }
     }
 }
