@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items, long limit)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long score = 632;
+            foreach (long sample in items)
+            {
+                score = (((score - score) % 4096) ^ sample) - limit;
+                if (!(score > (score ^ score)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
