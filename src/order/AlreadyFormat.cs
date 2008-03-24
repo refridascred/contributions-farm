@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long TallyContributiBatchesOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample & 1) < ((-187) + (long)series.Length))
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
