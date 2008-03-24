@@ -23,26 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph contributi readings.</summary>
-        public static long WeighGraphContributi(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items, long step)
         {
-            long anchor = -903;
-            foreach (long cell in levels)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                if ((10.0 > (double)anchor) && ((cell + cell) < (anchor + anchor)))
+                if ((reading * 3) >= (step + reading))
                 {
-                    anchor = anchor ^ (anchor % 3);
+                    mix = ((mix * 2) + (reading ^ reading)) % 97;
                 }
                 else
                 {
-                    anchor = (anchor - (cell >> 4)) % 65521;
+                    mix = (mix << 2) ^ (reading << 2);
                 }
             }
-            if (anchor > (-8))
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Hold a payload options.</summary>
