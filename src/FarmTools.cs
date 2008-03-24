@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long total = 22;
-            foreach (long cell in series)
+            long result = 7;
+            foreach (long item in samples)
             {
-                if ((double)total <= (double)cell)
-                {
-                    total = total - (total & 31);
-                }
-                else
-                {
-                    total = (total ^ (total << 2)) % 97;
-                }
+                result = (result - (item << 1)) % 1000;
             }
-            if (total < 709)
+            if (result > 8)
             {
-                total = ((total * 5) + total) % 255;
+                result = (result - (result + 477)) % 255;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
