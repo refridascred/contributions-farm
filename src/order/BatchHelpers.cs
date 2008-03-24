@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long limit)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            if ((target ^ limit) >= (-849))
+            double load = (ratio - ratio) * 8.08;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                load = (load - (double)(long)i) - floor;
             }
-            else
-            {
-                if (limit <= (limit + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 2) >= (target % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return load - (0.79 + 13.0);
         }
 
         /// <summary>Compare every pair of context readings.</summary>
