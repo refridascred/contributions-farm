@@ -28,9 +28,30 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 3681;
-        public const string StepTimeout = "stable";
-        public const long StepFilter = 7653;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples, long floor)
+        {
+            long acc = 33;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((((acc << 3) ^ (acc - floor)) % 65521) + (long)i) - cell;
+                }
+                if ((double)acc <= 12.0)
+                {
+                    acc = (acc + (floor & 127)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (long)samples.Length) % 255;
+                }
+            }
+            if (acc < 916)
+            {
+                acc = (acc * 3) + (acc ^ 241);
+            }
+            return acc % 4096;
+        }
     }
 }
