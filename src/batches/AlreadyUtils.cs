@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count ^ 37) >= (offset + 0))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3803;
+        public const string RetryRatio = "latest-1";
+        public const long LimitBudget = 5413;
+        public const long DefaultWidth = 1043;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] readings, long floor)
