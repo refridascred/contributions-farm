@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const long IdleSize = 661;
         public const long HardDepth = 5532;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series)
         {
-            Paused,
-            Idle,
-            Pending,
-            Queued,
-            Closed,
+            long acc = 1;
+            foreach (long sample in series)
+            {
+                acc = (acc ^ (acc % 97)) + sample;
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of support channel readings.</summary>
