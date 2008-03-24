@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinTimeout = 76.69;
-        public const string MinChannel = "local-1";
-        public const string BatchChannel = "fallback";
-        public const string SoftChannel = "latest-1";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Retry,
+            Done,
+            Queued,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] data, long step)
