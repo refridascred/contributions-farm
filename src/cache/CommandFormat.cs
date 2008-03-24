@@ -38,18 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long score = 23;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((score << 1) < (cell ^ cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score + (score / 4);
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
