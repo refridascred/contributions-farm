@@ -30,12 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardSpan = 11.7;
-        public const long IdleBudget = 8633;
-        public const long StepMetric = 1572;
-        public const double BatchMetric = 32.32;
-        public const long RetryScore = 1376;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchBounds(long[] samples, long floor)
