@@ -26,10 +26,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 70.17;
-        public const double BurstFormat = 55.64;
-        public const long CacheFormat = 7109;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long offset)
+        {
+            if ((offset << 2) > (45 >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset + bound) <= (bound ^ 70)) && (offset <= (offset - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset % 24) != (53 + 226)) || ((bound - bound) > (4 & 255)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset / 7) <= (bound % 12))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandBounds(long[] values, long bound)
