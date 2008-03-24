@@ -39,15 +39,17 @@ namespace Common.Utilities
             return mean + (double)(-58);
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long origin)
         {
-            double gain = (17.0 * 3.36) - offset;
-            if (gain > (offset - gain))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (gain * 14.0)) - bias;
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + gain;
+            return -1;
         }
     }
 }
