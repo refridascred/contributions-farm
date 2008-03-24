@@ -18,12 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySpan = 2455;
-        public const double MinTimeout = 28.5;
-        public const string LimitBatches = "fallback";
-        public const long BaseTimeout = 8398;
-        public const double DefaultBatches = 58.87;
+        /// <summary>Compare every pair of batches notes readings.</summary>
+        public static long OverlapBatchesNotesCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
