@@ -23,11 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((9.3 / 8.0) <= (double)seen) && (((seen & 255) >= seen) && ((5.54 - 9.3) < (double)item)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm level values.</summary>
