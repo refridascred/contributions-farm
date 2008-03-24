@@ -1,18 +1,4 @@
 # support settings
-verbose:
-  - 255
-  - 460
-  - 333
-  - 84
-layout_capacity:
-  - legacy
-  - fallback
-  - local
-  - standard
-batch_retries:
-  - 385
-  - 111
-audit: false
-retry_ratio_count:
-  - 351
-  - 360
+max_window: local
+enabled: false
+metrics_delay: 41
