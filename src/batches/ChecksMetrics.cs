@@ -86,18 +86,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value % 64) >= ((long)readings.Length - seen))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
