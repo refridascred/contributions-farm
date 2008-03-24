@@ -15,13 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Paused,
-            Locked,
-            Synced,
-            Retry,
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
