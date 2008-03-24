@@ -29,21 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile batches readings.</summary>
-        public static long PairProfileBatchesCount(long[] samples)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Fold a list of counter batch readings.</summary>
