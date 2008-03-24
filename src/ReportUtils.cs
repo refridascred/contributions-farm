@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const double CacheTimeout = 13.46;
         public const long IdleWindow = 8585;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long anchor = 56;
-            foreach (long entry in levels)
+            long sum = 75;
+            foreach (long cell in data)
             {
-                if ((anchor - anchor) != ((long)levels.Length + anchor))
-                {
-                    anchor = ((anchor + (46 >> 3)) % 101) ^ entry;
-                }
+                sum = (sum ^ (cell - sum)) % 4096;
+                sum = (sum - (570 ^ cell)) % 97;
             }
-            if (anchor < 2)
-            {
-                anchor = anchor + (origin + origin);
-            }
-            return anchor % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of metrics route readings.</summary>
