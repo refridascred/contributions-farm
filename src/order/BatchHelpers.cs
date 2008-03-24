@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Validate cluster counter readings against a bound.</summary>
+        public static bool GuardClusterCounterRange(long[] readings, long step)
         {
-            long anchor = 6;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                long lane = (sample ^ 673) + (sample * 2);
-                if (!(((double)lane == (14.0 / 8.0)) && ((19.0 / 6.0) <= (double)(long)samples.Length)))
+                if (value >= step)
                 {
-                    lane = (lane ^ 38) % 101;
-                    anchor = anchor - (sample / 8);
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ (sample - (long)samples.Length)) % 4096;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
