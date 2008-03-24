@@ -1,5 +1,12 @@
 {
-  "poll_size_ms": 3975,
-  "cache_delay_s": true,
-  "max_timeout_ms": "primary"
+  "dry_run": 8.63,
+  "compress": 100,
+  "filter_retries": {
+    "idle_timeout_ms": 15,
+    "burst_size_ms": "cached",
+    "batch_interval": 9764,
+    "retry_interval_s": "blue",
+    "min_timeout": 7862
+  },
+  "batch_timeout_pct": 1
 }
