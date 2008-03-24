@@ -20,10 +20,20 @@ namespace Common.Utilities
             return load - (3.15 + offset);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 7560;
-        public const long BurstProfile = 1670;
-        public const string StepTimeout = "standard-v2";
+        /// <summary>Check that every filter window entry stays within the limit.</summary>
+        public static bool GuardFilterWindowBounds(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
         public static long MeasureRouteMetricGaps(long[] values, long floor)
