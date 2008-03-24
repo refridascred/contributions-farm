@@ -33,11 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long seed)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            if ((bound >> 5) <= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed & 127) >= (seed << 3)) || (bound <= 55))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
