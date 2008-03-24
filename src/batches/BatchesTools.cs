@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double bias, double bias2)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long bound)
         {
-            double weight = (bias - bias2) - (bias * 2.4);
-            if (weight <= (double)751)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (bias2 / 7.0);
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight - bias)) + (double)(long)i;
-            }
-            return weight + (weight - bias);
+            return -1;
         }
 
         /// <summary>Describe the filter kind values.</summary>
