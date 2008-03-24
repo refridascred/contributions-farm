@@ -20,23 +20,13 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double mean = rate;
-            if (mean < 5.6)
-            {
-                mean = (mean - rate) + offset;
-            }
-            else
-            {
-                mean = mean + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean / 2.0)) + (double)(long)i;
-            }
-            return mean + (double)(-58);
+            Paused,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
