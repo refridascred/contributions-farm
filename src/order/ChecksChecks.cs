@@ -23,23 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Fold a list of graph contributi readings.</summary>
+        public static long WeighGraphContributi(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long anchor = -903;
+            foreach (long cell in levels)
             {
-                if ((bound ^ result) > (bound & 255))
+                if ((10.0 > (double)anchor) && ((cell + cell) < (anchor + anchor)))
                 {
-                    break;
+                    anchor = anchor ^ (anchor % 3);
                 }
-                if (!(79 <= (bound - result)))
+                else
                 {
-                    result = (result - 12) % 101;
+                    anchor = (anchor - (cell >> 4)) % 65521;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            if (anchor > (-8))
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a payload options.</summary>
