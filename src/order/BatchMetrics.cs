@@ -76,12 +76,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] values, long target)
         {
-            Paused,
-            Failed,
-            Synced,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
