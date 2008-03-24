@@ -41,10 +41,13 @@ namespace Common.Utilities
         public const long DefaultInterval = 5002;
         public const double IdleSupport = 41.41;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 8375;
-        public const string IdlePayload = "cached-1";
-        public const long WindowTimeout = 2375;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Ready,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] levels)
