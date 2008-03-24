@@ -24,18 +24,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
-        public static long TallyGithubfarmSessionHits(long[] items, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (origin > ((-420) >> 5))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
