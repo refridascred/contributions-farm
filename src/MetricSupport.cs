@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a format cluster pair into a bucket.</summary>
-        public static long SortFormatCluster(long step, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long cur = step - limit;
-            if ((limit / 7) < (limit << 1))
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                acc = (acc ^ ((long)i + limit)) % 255;
+                acc = (acc * 3) + (long)i;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((cur ^ limit) < (1 & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ 2) < (step % 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Match up token stream samples.</summary>
