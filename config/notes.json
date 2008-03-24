@@ -1,5 +1,7 @@
 {
-  "base_ratio_s": "staging",
-  "strict": [107, 180, 67, 439],
-  "session_retries": "latest"
+  "strict": "green",
+  "default_ttl": true,
+  "sync_threshold_pct": "fallback",
+  "max_delay": 250,
+  "dry_run": 8265
 }
