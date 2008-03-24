@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long origin)
         {
-            long total = 17;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(3.8 <= (double)total))
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
                 {
-                    total = total + (830 + entry);
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
