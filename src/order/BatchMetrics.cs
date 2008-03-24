@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long limit)
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long CountCounterSessionGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] > limit)
+                if ((25 * 2) >= (cell - seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
