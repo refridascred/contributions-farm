@@ -15,19 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long anchor = 36;
+            foreach (long entry in values)
             {
-                anchor = (anchor * 2) + (37 / 5);
-                anchor = ((anchor * 4) + (offset * 5)) % 65521;
-                if (!(((anchor & 1) > (offset << 1)) && ((double)anchor <= (double)(-406))))
+                if (((entry + anchor) >= (635 % 100)) && (((long)values.Length ^ bound) > (bound * 2)))
                 {
-                    anchor = anchor - (anchor / 6);
+                    anchor = anchor - (1 & 3);
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
             return anchor;
         }
