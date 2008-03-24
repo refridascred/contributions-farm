@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the channel queue.
-Each queue is validated before it reaches the record queue.
+When a stream fails, the counter handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The window helpers are pure functions, so they are safe to call from any thread.
-The metric module keeps counter values in sync with the order cache.
-Each farm is validated before it reaches the editor queue.
+When a batch fails, the window handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer command defaults
-- Log every layout change
+- Log every farm change
+- Prefer checks defaults
+- Keep window values small
