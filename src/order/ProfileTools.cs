@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxWidth = 3457;
-        public const long StepSpan = 6332;
-        public const long RetryRatio = 7289;
-        public const string SoftChannel = "staging-v2";
-        public const long LimitChannel = 6033;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Idle,
+            Closed,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] readings, long target)
