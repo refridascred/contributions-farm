@@ -44,17 +44,13 @@ namespace Common.Utilities
             return scale + (double)570;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the checks level values.</summary>
