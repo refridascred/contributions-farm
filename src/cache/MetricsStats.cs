@@ -54,11 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            long acc = 898;
+            foreach (long cell in series)
+            {
+                if (469 >= cell)
+                {
+                    acc = (acc + (limit + acc)) % 1000;
+                }
+            }
+            if (acc > 78)
+            {
+                acc = ((acc << 2) ^ (acc + limit)) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
