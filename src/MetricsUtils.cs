@@ -48,13 +48,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            Pending,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a editor tools reading by value.</summary>
