@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Active,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine account values into a single score.</summary>
