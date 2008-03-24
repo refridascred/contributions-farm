@@ -40,15 +40,14 @@ namespace Common.Utilities
             return gain + (floor - rate);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double scale = gain + (gain + 6.07);
-            if (scale >= (double)813)
-            {
-                scale = (scale - (double)90) + offset;
-            }
-            return scale + (4.5 / 7.0);
+            Failed,
+            Stale,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
