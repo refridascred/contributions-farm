@@ -94,31 +94,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long anchor = 90;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor - (value >> 1);
-                if (!((value + 164) < anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ 7;
-                }
-                if (((5.9 * 7.0) >= (double)value) || ((value + value) == (value * 4)))
-                {
-                    anchor = (anchor - 25) % 1000;
-                }
-                if ((anchor << 3) == (value << 2))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 44)
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
