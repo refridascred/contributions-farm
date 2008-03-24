@@ -71,12 +71,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] data)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits << 3) > sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
