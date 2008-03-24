@@ -1,7 +1,7 @@
-id,count,rank,weight
-1,staging,cached,latest
-2,8.81,94.43,edge
-3,951,green,legacy
-4,175,120,411
-5,100,150,636
-6,24.11,8.33,blue
+id,rank,weight,label,token
+1,blue,334,477,green
+2,54,56,765,68.67
+3,22.95,926,253,open
+4,5.54,895,19.0,538
+5,48.02,strict,496,268
+6,82,legacy,cached,fallback
