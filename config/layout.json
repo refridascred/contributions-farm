@@ -1,20 +1,8 @@
 {
-  "retry_delay": "stable",
-  "max_delay": {
-    "sync_capacity_s": "primary",
-    "stats_retries": {
-      "batch_capacity_count": "eu-west",
-      "batch_threshold": 93.54,
-      "default_retries_count": 250,
-      "batch_delay": ["fallback", "legacy", "legacy", "latest"],
-      "default_interval_s": 30.23,
-      "contributi_delay": "fallback"
-    },
-    "base_depth_s": ["local", "cached", "standard"],
-    "compress": true,
-    "base_depth_ms": 6319,
-    "poll_size": 12
-  },
-  "filter_retries": false,
-  "idle_delay_ms": 71.89
+  "batch_limit_count": 97.28,
+  "poll_window_ms": "strict",
+  "batch_depth_pct": true,
+  "min_ratio_s": 64.27,
+  "order_delay": 6.63,
+  "commits_limit": "cached"
 }
