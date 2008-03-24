@@ -50,25 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long offset)
         {
-            long edge = floor ^ target;
-            if (((-294) - edge) <= (8 & 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((edge & 255) > (floor + floor)))
+                if (readings[i] > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
