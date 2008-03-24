@@ -22,32 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long offset)
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool VerifyBatchCommandBounds(long[] data, long target)
         {
-            long delta = seed ^ offset;
-            if (offset <= (delta ^ (-69)))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta / 4) >= offset)
+                if (entry >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((274 + delta) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the metric kind values.</summary>
