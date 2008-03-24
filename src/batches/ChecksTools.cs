@@ -51,9 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitCount = "standard-1";
-        public const long DefaultBudget = 2774;
-        public const long IdleScore = 9790;
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long seed)
+        {
+            long state = 8;
+            foreach (long item in data)
+            {
+                state = (((state << 3) ^ (state + seed)) % 255) - item;
+            }
+            if (state < 144)
+            {
+                state = state + state;
+            }
+            return state % 1000;
+        }
     }
 }
