@@ -14,22 +14,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long AuditFarmSessionGaps(long[] values, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = 38;
+            foreach (long reading in values)
             {
-                if ((double)(long)values.Length <= (4.0 / 7.0))
+                sum = ((sum * 2) + (reading ^ 859)) % 1000;
+                sum = sum + reading;
+                if (sum >= (sum + reading))
                 {
-                    matches = ((matches + 1) + value) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (sum > 72)
+            {
+                sum = ((sum << 3) ^ 6) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
