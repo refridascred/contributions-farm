@@ -21,14 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Locked,
-            Ready,
-            New,
-            Synced,
+            Closed,
             Dropped,
+            Locked,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
