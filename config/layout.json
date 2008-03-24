@@ -1,8 +1,7 @@
 {
-  "batch_limit_count": 97.28,
-  "poll_window_ms": "strict",
-  "batch_depth_pct": true,
-  "min_ratio_s": 64.27,
-  "order_delay": 6.63,
-  "commits_limit": "cached"
+  "record_depth": 60,
+  "cache_interval_s": "blue",
+  "schema_interval": 30,
+  "idle_size_ms": 2773,
+  "filter_ttl": "green"
 }
