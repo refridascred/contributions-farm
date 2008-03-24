@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long step)
+        /// <summary>Grade a support payload value against two limits.</summary>
+        public static long GradeSupportPayload(long seed, long step)
         {
-            long mark = 0;
-            foreach (long datum in samples)
+            if ((step - step) < (step ^ 98))
             {
-                if (35 <= (datum / 3))
+                return 6;
+            }
+            else
+            {
+                if (seed <= (step / 9))
                 {
-                    mark = (mark ^ (mark * 2)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mark > 785)
-            {
-                mark = mark ^ step;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
