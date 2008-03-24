@@ -1,29 +1,18 @@
 # entry settings
-enabled:
-  strict:
-    default_retries: standard
-    min_limit_pct: true
-    retry_size_s: 69.41
-    soft_timeout_count: 16.4
-    poll_size: 3
-  checks_timeout: 8534
-  idle_depth_s: 97
-  readonly:
-    account_depth:
-      - 264
-      - 179
-      - 410
-    record_capacity:
-      - staging
-      - eu-west
-    compress: 59
-    stats_interval: primary
-  commits_limit: local
-  graph_depth:
-    - latest
-    - blue
-readonly:
-  - strict
-  - strict
-format_capacity: 60
-dry_run: 1860
+batch_delay:
+  - 422
+  - 206
+dry_run: blue
+burst_timeout_ms:
+  verbose: 500
+  githubfarm_threshold:
+    - 301
+    - 314
+  dry_run: 50
+  channel_ratio:
+    - 427
+    - 476
+    - 22
+    - 211
+  channel_timeout: true
+  max_capacity_count: edge
