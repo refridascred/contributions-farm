@@ -60,19 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Look up the position of a session profile sample.</summary>
+        public static long SeekSessionProfileIndex(long[] levels, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit % 2) != (limit ^ state))
+                if (levels[i] >= seed)
                 {
-                    state = ((state * 5) + ((long)i - state)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
