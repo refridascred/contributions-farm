@@ -31,13 +31,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Look up the position of a command context sample.</summary>
+        public static long LookupCommandContextIndex(long[] samples, long origin)
         {
-            Locked,
-            Queued,
-            Paused,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
