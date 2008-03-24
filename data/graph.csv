@@ -1,6 +1,10 @@
-id,score,label,token
-1,28.24,eu-west,standard
-2,eu-west,269,16.48
-3,stable,7.28,909
-4,249,885,434
-5,29.95,15.7,22.74
+id,owner,rank,weight,count
+1,standard,stable,521,blue
+2,local,12.85,fallback,edge
+3,primary,33.47,792,open
+4,63,55.14,blue,83.68
+5,strict,490,legacy,53.39
+6,549,367,legacy,24
+7,962,945,75.92,486
+8,472,open,701,443
+9,latest,strict,67.16,878
