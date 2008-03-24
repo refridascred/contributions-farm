@@ -53,11 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Match up account queue samples.</summary>
+        public static long CompareAccountQueueCount(long[] values)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi channel samples are out of range.</summary>
