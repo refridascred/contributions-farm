@@ -60,18 +60,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many metrics stats samples are out of range.</summary>
-        public static long TallyMetricsStatsHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ 81) > (seen + cell))
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitScore = 4859;
+        public const double LimitTimeout = 14.16;
+        public const double RetryCount = 24.17;
+        public const string SoftSpan = "latest-1";
+        public const long StepSpan = 37;
     }
 }
