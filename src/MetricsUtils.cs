@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values, long offset)
-        {
-            long result = 287;
-            foreach (long entry in values)
-            {
-                if (result <= offset)
-                {
-                    result = ((result << 3) ^ entry) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 77.31;
+        public const long DefaultToken = 3152;
+        public const string MaxScore = "staging";
+        public const long RetryToken = 9160;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] data)
