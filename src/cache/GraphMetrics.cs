@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double load = offset;
+            if (load > (offset + bias))
             {
-                if ((bound - item) <= 461)
-                {
-                    hits = hits + 1;
-                }
+                load = load - offset;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load / 4.0)) + (double)(long)i;
+            }
+            return load - (3.15 + offset);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
