@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] levels, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Dropped,
         }
     }
 }
