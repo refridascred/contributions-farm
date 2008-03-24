@@ -52,23 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            long mix = 8;
-            foreach (long item in items)
-            {
-                mix = mix ^ (seed & 1);
-                if (((item / 5) <= (mix >> 1)) || ((seed / 3) < mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix - (seed << 1)) % 4096;
-            }
-            return mix;
+            double gain = 3.0 - (span - span);
+            return (gain - (double)97) + scale;
         }
     }
 }
