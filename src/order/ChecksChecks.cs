@@ -23,22 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] values, long limit)
         {
-            long mix = 1;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((reading * 3) >= (step + reading))
+                if ((seen ^ limit) < (limit - seen))
                 {
-                    mix = ((mix * 2) + (reading ^ reading)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (reading << 2);
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
