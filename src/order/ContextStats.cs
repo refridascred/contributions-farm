@@ -50,9 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8555;
-        public const long MaxRecord = 3142;
-        public const long DefaultDepth = 1999;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Failed,
+            Queued,
+            Draft,
+            Ready,
+        }
     }
 }
