@@ -36,31 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if ((double)origin <= 0.36)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(origin <= 64))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + origin) <= 515)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
