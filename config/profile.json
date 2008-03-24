@@ -1,11 +1,7 @@
 {
-  "idle_timeout_pct": {
-    "max_capacity_count": [258, 409, 323, 235],
-    "cache_ttl": [111, 88, 215],
-    "cluster_retries": "cached",
-    "persist": "strict"
-  },
-  "persist": "fallback",
-  "idle_ratio_s": ["green", "standard"],
-  "default_ratio_count": false
+  "route_window": 78,
+  "persist": 60.66,
+  "verbose": "cached",
+  "counter_limit": [469, 39, 27],
+  "min_limit_ms": 62.23
 }
