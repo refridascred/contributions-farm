@@ -1,9 +1,8 @@
-id,weight,active,state,region
-1,primary,220,465,primary
-2,green,primary,133,29.47
-3,20.75,68.54,36.01,48.64
-4,953,939,legacy,88.17
-5,32.04,12.69,standard,21.4
-6,latest,681,53.56,12.77
-7,624,open,blue,654
-8,135,83.25,345,117
+id,state,weight
+1,local,28.95
+2,69.95,181
+3,83.76,primary
+4,425,696
+5,415,581
+6,6.39,fallback
+7,261,fallback
