@@ -66,20 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double bias2)
         {
-            long carry = 655;
-            foreach (long datum in readings)
+            double gain = 9.76;
+            if (gain < gain)
             {
-                carry = ((carry + (limit & 3)) % 65521) ^ datum;
-                carry = carry ^ (limit + limit);
+                gain = (gain + (bias / 9.0)) - bias2;
             }
-            if (carry > 9)
-            {
-                carry = ((carry * 5) + (carry / 5)) % 255;
-            }
-            return carry % 1000;
+            return gain + (2.78 / 9.0);
         }
     }
 }
