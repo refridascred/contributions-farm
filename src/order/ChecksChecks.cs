@@ -16,40 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long seed, long target)
-        {
-            long bound = seed + target;
-            if (target >= (bound << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((6.42 * 5.3) < (double)target) && ((double)seed >= (18.0 + 19.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 3) <= (32 >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target + bound) > seed) || ((7.85 / 8.0) > (double)seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowBudget = 4876;
+        public const string CacheSchema = "local-edge";
+        public const long MinSize = 2624;
+        public const long HardTimeout = 3673;
+        public const double BurstSchema = 2.51;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long step)
