@@ -29,11 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 89.04;
-        public const long IdleBuffer = 1411;
-        public const long MaxTimeout = 6120;
-        public const string MinCount = "alpha-edge";
-        public const long MinRatio = 4601;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
