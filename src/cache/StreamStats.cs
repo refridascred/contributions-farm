@@ -41,11 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 875;
-        public const long BaseFilter = 5639;
-        public const long WindowBudget = 7399;
-        public const string StepTimeout = "local-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "staging-1";
+        public const long WindowWidth = 5259;
+        public const long DefaultToken = 1488;
+        public const string IdleRatio = "open-v2";
+        public const long MinScore = 4413;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] levels, long target)
