@@ -75,14 +75,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Failed,
-            Idle,
+            long delta = origin ^ origin2;
+            if ((origin & 31) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (double)delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)delta == (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
