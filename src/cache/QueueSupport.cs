@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if ((step * 5) == (origin * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin & 127) != (origin + 7)) && (228 >= (step + 36)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step / 6) <= (origin % 8)) && (4.0 <= (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin % 97) <= (step * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the farm phase values.</summary>
