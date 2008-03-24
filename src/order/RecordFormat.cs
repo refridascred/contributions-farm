@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Classify a context buffer pair into a bucket.</summary>
+        public static long ClassifyContextBuffer(long floor, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (!((floor + floor) > 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor < (floor * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target <= ((-9) + 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2 >> 5) <= target) && ((target * 2) == (floor % 7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
