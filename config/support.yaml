@@ -1,27 +1,9 @@
 # support settings
-filter_retries:
-  - local
-  - cached
-  - standard
-enabled:
-  cluster_timeout: legacy
-  payload_delay: local
-  warm_limit_ms: 6386
-  counter_delay:
-    poll_interval: 41.27
-    min_timeout_pct: staging
-    poll_size_s:
-      - 432
-      - 125
-      - 466
-    readonly: 17.92
-    max_depth_s: 6
-    soft_interval_ms: 6959
-  hard_limit_s: false
-  batch_size: 2692
-soft_retries: true
-default_size_s: true
-retry_limit:
-  batches_capacity: 63.77
-  enabled: false
-  flush_delay_ms: latest
+batch_capacity_s: 40.2
+default_threshold_count: 84
+cache_ttl_ms: cached
+soft_capacity: stable
+sync_window: 250
+compress:
+  - fallback
+  - primary
