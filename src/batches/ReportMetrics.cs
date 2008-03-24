@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long BatchInterval = 9230;
         public const long SoftBudget = 9660;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long floor)
         {
-            Stale,
-            Idle,
-            Synced,
-            New,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
