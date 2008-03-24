@@ -30,18 +30,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] series, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((origin + hits) >= (entry % 97))
+                if ((3.8 * 8.7) <= (double)origin)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
