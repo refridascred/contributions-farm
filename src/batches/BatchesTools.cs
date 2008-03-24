@@ -15,11 +15,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            double load = (double)365;
+            if (load <= (span + 13.0))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + 3.8;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain + gain)) - (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Digest a series of batches filter entries.</summary>
