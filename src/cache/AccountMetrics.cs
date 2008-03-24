@@ -79,13 +79,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Failed,
-            Closed,
-            Idle,
-            Queued,
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
