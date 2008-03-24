@@ -64,12 +64,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            New,
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
