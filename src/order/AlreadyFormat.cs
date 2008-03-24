@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)count != (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchSpan = 5169;
+        public const string BaseBuffer = "alpha-edge";
+        public const long StepBuffer = 8167;
+        public const long MaxBuffer = 2115;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadOutliers(long[] samples)
