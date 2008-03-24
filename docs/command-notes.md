@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The batch module keeps metrics values in sync with the payload cache.
-
-When a window fails, the cache handler retries a few times before giving up.
-Run the githubfarm check before changing any farm limits.
+The context module keeps report values in sync with the window cache.
+When a notes fails, the record handler retries a few times before giving up.
+Run the queue check before changing any record limits.
 
 ## Guidelines
 
-- Log every route change
-- Document new layout fields
-- Prefer record defaults
-- Validate checks input early
+- Validate metrics input early
+- Review tools limits each release
+- Keep checks values small
