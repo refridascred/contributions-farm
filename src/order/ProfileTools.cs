@@ -37,12 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] items, long step)
         {
-            Closed,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((15.0 - 2.0) >= (double)reading)
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
