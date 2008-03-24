@@ -1,12 +1,11 @@
 # Command notes
 
-The metrics module keeps metrics values in sync with the payload cache.
-A farm that stays idle for too long is moved to the tools list.
-Each channel is validated before it reaches the payload queue.
+Use editor settings to tune how often contributi data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new queue fields
-- Review checks limits each release
-- Prefer notes defaults
-- Keep already values small
+- Prefer command defaults
+- Keep commits values small
+- Document new cluster fields
+- Log every cache change
