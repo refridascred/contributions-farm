@@ -28,14 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Retry,
-            Idle,
             Active,
-            Draft,
-            Closed,
+            Retry,
+            Locked,
+            Dropped,
         }
     }
 }
