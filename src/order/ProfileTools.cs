@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string SoftChannel = "staging-v2";
         public const long LimitChannel = 6033;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long target)
         {
             bool ready = true;
-            foreach (long sample in readings)
+            foreach (long entry in readings)
             {
-                if (sample <= target)
+                if (entry != target)
                 {
                     ready = false;
                     break;
