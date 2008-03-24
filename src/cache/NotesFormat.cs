@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (3 <= (reading - reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
