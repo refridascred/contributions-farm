@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a support payload value against two limits.</summary>
-        public static long GradeSupportPayload(long seed, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if ((step - step) < (step ^ 98))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (step / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
