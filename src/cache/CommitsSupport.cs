@@ -55,12 +55,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == step)
+                if (levels[i] < origin)
                 {
                     return (long)i;
                 }
