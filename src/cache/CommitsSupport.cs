@@ -65,17 +65,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = span;
+            return scale2 - scale;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
