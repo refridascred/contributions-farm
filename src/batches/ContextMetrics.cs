@@ -64,20 +64,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = 19;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((13.0 * 5.95) == (double)(long)data.Length)
                 {
-                    sum = (sum - (long)i) % 255;
-                    sum = (sum ^ ((long)i2 / 9)) % 1000;
+                    carry = (((carry << 3) ^ ((long)data.Length >> 5)) % 65521) - value;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    carry = (carry ^ seed) % 97;
+                }
             }
-            return sum;
+            return carry % 1000;
         }
     }
 }
