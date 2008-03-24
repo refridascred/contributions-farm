@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Classify a notes entry pair into a bucket.</summary>
+        public static long GradeNotesEntry(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = floor + target;
+            if ((target + delta) <= (floor & 31))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((floor + delta) >= (750 * 3)) || ((target / 8) >= (floor ^ 46)))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((target + delta) <= target)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
