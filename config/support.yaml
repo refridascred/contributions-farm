@@ -1,27 +1,16 @@
 # support settings
-audit:
-  hard_threshold: 6109
-  hard_ttl_ms: 68
-  audit: 80.72
-  max_interval_s:
-    support_depth: false
-    sync_threshold_ms:
-      - stable
-      - fallback
-      - latest
-      - cached
-    cache_window: 3121
-    report_capacity: true
-    warm_ttl_ms: stable
-    max_timeout: 6867
-  contributi_interval:
-    - standard
-    - legacy
-  command_timeout: eu-west
-default_delay_s: 60
-min_threshold: false
-profile_threshold: false
-batch_threshold_ms:
-  - eu-west
-  - blue
-hard_ratio_ms: blue
+persist:
+  cache_limit: true
+  persist: 2429
+  default_size_ms: green
+  stats_depth:
+    hard_timeout: false
+    compress: 1024
+    strict: staging
+  default_limit: staging
+  session_threshold: true
+stream_depth: latest
+max_interval:
+  - 77
+  - 285
+idle_limit_ms: strict
