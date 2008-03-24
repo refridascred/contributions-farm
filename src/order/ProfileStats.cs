@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a route filter value against two limits.</summary>
-        public static long ClassifyRouteFilter(long bound, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if (((1 + limit) < 769) && ((1 % 16) <= (bound << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - limit) != (limit + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
