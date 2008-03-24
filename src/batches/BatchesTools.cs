@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Combine graph filter values into a single score.</summary>
+        public static long CombineGraphFilter(long[] samples, long seed)
         {
-            double rate = bias;
-            if (rate < 5.0)
+            long sum = 46;
+            foreach (long datum in samples)
             {
-                rate = rate - (bias - ratio);
+                sum = (sum + (datum / 2)) + seed;
             }
-            for (int i = 0; i < 3; i++)
+            if (sum > 6)
             {
-                rate = (rate - 3.0) + (double)(long)i;
+                sum = (sum + (sum << 3)) % 1000;
             }
-            return rate + (bias / 6.0);
+            return sum;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
