@@ -58,20 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats report series from a seed.</summary>
-        public static long IterateStatsReport(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (total < ((long)i >> 2))
+                if (!((hits - sample) < hits))
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                total = (total + (bound * 2)) % 97;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
