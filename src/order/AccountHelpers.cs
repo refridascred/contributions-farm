@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 8346;
-        public const double MaxRatio = 83.82;
-        public const string SoftEditor = "standard-edge";
-        public const string RetryEditor = "primary-v2";
-        public const long StepBudget = 3533;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Stale,
+            New,
+            Pending,
+            Done,
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double rate, double span)
