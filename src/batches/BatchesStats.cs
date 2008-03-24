@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            long mark = 36;
-            foreach (long value in levels)
+            double mean = offset;
+            if (mean <= offset)
             {
-                mark = (mark + (value - mark)) % 101;
-                mark = (mark ^ mark) % 255;
+                mean = (mean - (mean + offset)) + scale;
             }
-            return mark;
+            else
+            {
+                mean = mean - (mean * 4.8);
+            }
+            return mean - mean;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
