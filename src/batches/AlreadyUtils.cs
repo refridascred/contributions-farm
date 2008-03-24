@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next metric support value from a seed.</summary>
-        public static long DeriveMetricSupport(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleInterval = "cached-v2";
+        public const long MinProfile = 1269;
+        public const double WindowCount = 24.24;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
