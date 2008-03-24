@@ -33,21 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count route farm pairs that satisfy a relation.</summary>
-        public static long MatchRouteFarmCount(long[] series)
+        /// <summary>Locate a profile schema reading by value.</summary>
+        public static long FindProfileSchemaIndex(long[] series, long target)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
