@@ -28,22 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine cluster cache values into a single score.</summary>
-        public static long TallyClusterCache(long[] series, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] data, long offset)
         {
-            long score = 86;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((step - step) > 857)
+                if (cell != offset)
                 {
-                    score = ((score - (step << 2)) % 101) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 1)
-            {
-                score = ((score * 5) + ((long)series.Length << 1)) % 4096;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Match up window samples.</summary>
