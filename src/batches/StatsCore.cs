@@ -54,12 +54,18 @@ namespace Common.Utilities
         public const string IdleDepth = "legacy-v2";
         public const double BaseScore = 45.59;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 3989;
-        public const double BurstBudget = 6.73;
-        public const long BatchCache = 352;
-        public const long StepSize = 1958;
-        public const long SoftCache = 2988;
+        /// <summary>Look up the position of a buffer window sample.</summary>
+        public static long SeekBufferWindowIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] samples, long origin)
