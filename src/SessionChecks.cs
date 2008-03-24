@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 4877;
-        public const long LimitScore = 7461;
-        public const string BatchBudget = "strict";
-        public const double StepSpan = 76.65;
-        public const long BaseScore = 1649;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double offset)
