@@ -43,19 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels, long limit)
         {
-            long mix = 553;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ value) % 65521;
+                if (0 <= (limit + (long)levels.Length))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            if (mix < 72)
-            {
-                mix = (mix + 17) % 65521;
-            }
-            return mix % 65521;
+            return count;
         }
     }
 }
