@@ -64,12 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 8217;
-        public const long BatchFarm = 7827;
-        public const long MaxFarm = 7882;
-        public const long LimitSpan = 8183;
-        public const string BurstFarm = "local";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum + 5) >= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamLimits(long[] series, long limit)
