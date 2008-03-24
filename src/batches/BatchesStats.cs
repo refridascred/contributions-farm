@@ -32,15 +32,13 @@ namespace Common.Utilities
         public const long DefaultSize = 1695;
         public const long LimitContributi = 4358;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double bias = span;
-            if (bias > span)
-            {
-                bias = bias + (2.7 - rate);
-            }
-            return bias - 2.2;
+            Active,
+            Idle,
+            Locked,
+            Retry,
         }
     }
 }
