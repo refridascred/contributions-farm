@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 58.25;
+        public const double LimitSupport = 49.58;
+        public const long MinSupport = 3351;
+        public const long RetryTimeout = 5449;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsHits(long[] levels, long offset)
