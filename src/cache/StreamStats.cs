@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
