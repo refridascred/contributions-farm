@@ -1,21 +1,5 @@
 {
-  "batch_interval_s": {
-    "verbose": {
-      "filter_ttl": 60,
-      "cache_capacity_count": 29.47,
-      "min_depth_pct": 30,
-      "persist": "primary",
-      "warm_delay_ms": 42.11,
-      "max_retries": "standard"
-    },
-    "strict": 30,
-    "min_retries": 12,
-    "sync_ratio": 60,
-    "batch_retries": ["cached", "blue", "staging", "staging"],
-    "enabled": ["stable", "legacy", "green"]
-  },
-  "tools_capacity": 500,
-  "cache_size_ms": 8.38,
-  "channel_delay": 78.98,
-  "cache_size_pct": 60
+  "base_ratio_s": "staging",
+  "strict": [107, 180, 67, 439],
+  "session_retries": "latest"
 }
