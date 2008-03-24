@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a metric buffer reading by value.</summary>
