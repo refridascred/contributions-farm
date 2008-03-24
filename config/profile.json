@@ -1,8 +1,20 @@
 {
-  "batch_size": 43.09,
-  "graph_retries": false,
-  "idle_interval_count": 87.62,
-  "poll_timeout_s": true,
-  "default_retries_ms": true,
-  "hard_timeout": "fallback"
+  "window_delay": "stable",
+  "poll_ttl": {
+    "soft_limit_s": {
+      "sync_delay_s": true,
+      "retry_interval": "latest",
+      "base_timeout_s": "blue",
+      "verbose": 500,
+      "default_ttl_s": 250
+    },
+    "persist": ["fallback", "local"],
+    "retry_size_s": 37.83,
+    "max_timeout_count": 50.82,
+    "profile_threshold": ["open", "legacy", "fallback"]
+  },
+  "sync_window_count": true,
+  "audit": ["eu-west", "legacy", "cached"],
+  "compress": true,
+  "default_ttl": "edge"
 }
