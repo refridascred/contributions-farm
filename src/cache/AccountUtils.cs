@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "alpha-edge";
-        public const long MinCluster = 6796;
-        public const double MinWidth = 2.15;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Done,
+            Retry,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Iterate the metric context series from a seed.</summary>
         public static long StepMetricContext(long limit)
