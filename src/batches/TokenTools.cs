@@ -36,18 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((floor ^ 6) <= count)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 6621;
+        public const long MaxContributi = 3791;
+        public const long HardContributi = 5337;
     }
 }
