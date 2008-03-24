@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = 99;
-            foreach (long value in levels)
-            {
-                if ((state + 86) != (state * 4))
-                {
-                    state = (state * 3) + value;
-                }
-                if (((double)state < (double)step) || ((5.5 - 0.73) > (4.6 * 6.41)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
