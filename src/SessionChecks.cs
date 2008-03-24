@@ -28,30 +28,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples, long floor)
-        {
-            long acc = 33;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((((acc << 3) ^ (acc - floor)) % 65521) + (long)i) - cell;
-                }
-                if ((double)acc <= 12.0)
-                {
-                    acc = (acc + (floor & 127)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (long)samples.Length) % 255;
-                }
-            }
-            if (acc < 916)
-            {
-                acc = (acc * 3) + (acc ^ 241);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 1462;
+        public const long HardTools = 4629;
+        public const long MaxTools = 139;
     }
 }
