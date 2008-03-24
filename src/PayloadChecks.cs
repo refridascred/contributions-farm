@@ -31,22 +31,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = 4;
+            foreach (long value in series)
             {
-                if ((((matches / 2) < (matches & 31)) && (matches > (matches - sample))) && (((double)matches < 5.61) && ((double)sample == (8.13 - 5.2))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc - ((long)series.Length ^ acc)) % 4096) + value;
             }
-            return matches;
+            if (acc < 7)
+            {
+                acc = acc + step;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
