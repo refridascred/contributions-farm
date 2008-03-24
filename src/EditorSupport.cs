@@ -53,14 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            Done,
-            Failed,
-            Active,
-            Paused,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
