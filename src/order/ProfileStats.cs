@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] readings, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen ^ seen) > (entry - seen))
+                if (values[i] <= seed)
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
