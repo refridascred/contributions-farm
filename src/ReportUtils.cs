@@ -50,25 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm cache value against two limits.</summary>
-        public static long ClassifyGithubfarmCache(long limit, long bound)
+        /// <summary>Measure how many entry batch samples are out of range.</summary>
+        public static long CountEntryBatchOutliers(long[] data)
         {
-            long next = limit - bound;
-            if (11.0 <= (double)limit)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((next / 2) > (5 - 573)))
+                if ((double)matches < 20.0)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
     }
 }
