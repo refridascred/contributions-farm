@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long offset = limit - origin;
-            if ((1.6 / 9.0) == (double)offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin ^ 84) == (origin >> 4)) || ((origin + origin) > limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin % 100) < (limit * 4)) || (offset >= (origin - offset)))
+                    if ((values[i] ^ values[j]) == 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
