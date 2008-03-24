@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] items, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double bias = (double)(-375) - (offset + offset);
+            if (bias <= (double)87)
             {
-                if ((offset & 63) > tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = bias - offset;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (scale / 9.0);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
