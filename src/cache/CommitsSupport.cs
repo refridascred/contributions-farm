@@ -40,19 +40,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples)
-        {
-            long score = 6;
-            foreach (long cell in samples)
-            {
-                if (((double)cell > (double)469) && ((cell % 2) >= (score + cell)))
-                {
-                    score = ((score << 3) ^ cell) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 358;
+        public const long StepChannel = 2734;
+        public const long MaxChannel = 4518;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
