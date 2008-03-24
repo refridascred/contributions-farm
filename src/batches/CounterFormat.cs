@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 317;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix - (25 % 7)) + sample;
             }
-            return seen;
+            if (mix > 36)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
