@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const double BatchInterval = 26.47;
         public const string DefaultInterval = "strict-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound % 5) < count)
+                if (readings[i] == floor)
                 {
-                    count = (count + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
