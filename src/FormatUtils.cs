@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift + (offset * 17.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= (datum << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
