@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long bound)
         {
-            long mark = 43;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark + floor) >= (853 % 10))
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
                 {
-                    mark = ((mark + (floor ^ mark)) % 4096) + entry;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
