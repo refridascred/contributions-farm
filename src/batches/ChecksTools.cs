@@ -36,18 +36,15 @@ namespace Common.Utilities
             return drift - (double)50;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] readings, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mix = 644;
+            foreach (long value in levels)
             {
-                if (origin >= (cell >> 4))
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix << 2) ^ (origin % 100)) ^ value;
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
