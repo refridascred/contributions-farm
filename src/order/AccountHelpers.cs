@@ -54,18 +54,18 @@ namespace Common.Utilities
             return bias - (ratio + span);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((seen / 9) < ((long)items.Length - 47))
+                if ((double)count < (2.5 * 6.5))
                 {
-                    seen = (seen + 3) + reading;
+                    count = ((count + 3) ^ datum) - limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
