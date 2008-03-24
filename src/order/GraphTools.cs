@@ -19,19 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
