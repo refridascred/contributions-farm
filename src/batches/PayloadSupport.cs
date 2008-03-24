@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long RetryFactor = 3039;
         public const long WindowBatch = 3267;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] readings, long bound)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
