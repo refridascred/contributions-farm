@@ -1,6 +1,6 @@
 {
-  "flush_threshold_ms": "legacy",
-  "min_delay_ms": 53.67,
-  "soft_size_count": "cached",
-  "idle_retries_ms": ["latest", "eu-west", "fallback", "staging"]
+  "min_ttl": 100,
+  "hard_size": false,
+  "layout_capacity": 38.23,
+  "cache_depth_pct": 22
 }
