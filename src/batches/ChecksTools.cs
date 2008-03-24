@@ -21,19 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cluster token figure with a bias.</summary>
-        public static double ScaleClusterToken(double scale, double floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double drift = (scale / 5.0) - scale;
-            if (drift >= (drift + 1.65))
-            {
-                drift = (drift + (double)3) - floor;
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            return drift - (double)50;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
