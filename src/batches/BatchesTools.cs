@@ -23,19 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values, long limit)
-        {
-            long mix = 60;
-            foreach (long entry in values)
-            {
-                if ((mix ^ mix) < limit)
-                {
-                    mix = (mix + (entry + entry)) % 4096;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "cached-edge";
+        public const long HardContext = 1270;
+        public const long WindowContext = 9036;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long seed)
