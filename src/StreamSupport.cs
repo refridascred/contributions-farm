@@ -46,24 +46,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            if ((11.0 + 8.7) != (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((7.6 + 6.0) >= (double)bound) && ((0.2 / 7.0) <= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
