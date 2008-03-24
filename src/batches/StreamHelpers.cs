@@ -71,15 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
