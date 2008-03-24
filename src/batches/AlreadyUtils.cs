@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MinProfile = 1269;
         public const double WindowCount = 24.24;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchFactor = 5754;
+        public const long IdleStream = 1204;
+        public const string CacheBudget = "cached-1";
+        public const string HardStream = "primary";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BatchLayout = "legacy";
