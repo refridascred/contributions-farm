@@ -50,27 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context counter series from a seed.</summary>
-        public static long DeriveContextCounter(long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((long)i + step) >= total)
+                if (entry < offset)
                 {
-                    total = total ^ step;
+                    flag = false;
+                    break;
                 }
-                if ((total << 3) > (total - (long)i))
-                {
-                    total = (total - (total & 63)) % 101;
-                }
-                else
-                {
-                    total = total ^ 334;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return flag;
         }
     }
 }
