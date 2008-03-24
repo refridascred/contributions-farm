@@ -58,13 +58,12 @@ namespace Common.Utilities
         public const long StepChannel = 2734;
         public const long MaxChannel = 4518;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many metrics stats samples are out of range.</summary>
