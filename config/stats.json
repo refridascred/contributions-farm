@@ -1,6 +1,5 @@
 {
-  "batch_ratio": "edge",
-  "base_ratio": false,
-  "min_retries": "legacy",
-  "max_window_count": 73.5
+  "command_timeout": 30,
+  "strict": "open",
+  "flush_retries": "cached"
 }
