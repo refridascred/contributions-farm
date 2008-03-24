@@ -43,17 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 89;
+            foreach (long item in series)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = ((((mix << 3) ^ (9 >> 2)) % 4096) + item) + origin;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
