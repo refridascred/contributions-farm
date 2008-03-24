@@ -1,8 +1,7 @@
-id,token,label
-1,682,169
-2,687,open
-3,blue,585
-4,legacy,53.68
-5,210,360
-6,17.17,919
-7,601,742
+id,token,ratio,region
+1,81.35,560,455
+2,local,edge,edge
+3,38.71,745,50.41
+4,511,40.39,916
+5,65.29,strict,staging
+6,492,local,693
