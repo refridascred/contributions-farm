@@ -28,13 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            Locked,
-            Pending,
-            Synced,
-            Failed,
+            long state = target;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - target) % 255;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
