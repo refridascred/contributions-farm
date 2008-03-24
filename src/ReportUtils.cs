@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "latest-edge";
-        public const long RetryOrder = 9036;
-        public const string BurstTimeout = "staging-1";
-        public const string MinRatio = "local-1";
-        public const double BaseFactor = 9.25;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] samples, long floor)
