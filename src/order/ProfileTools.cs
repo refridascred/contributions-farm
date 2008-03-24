@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (2 <= seed)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "open-v2";
+        public const double WindowWidth = 89.4;
+        public const string HardTimeout = "legacy-v2";
+        public const double BaseBudget = 49.87;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxSpan = 595;
