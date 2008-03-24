@@ -50,13 +50,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Failed,
-            Queued,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultSize = "cached-1";
+        public const string SoftEditor = "strict-v2";
+        public const long BatchEditor = 2078;
+        public const double WindowScore = 73.43;
+        public const long WindowDepth = 5485;
     }
 }
