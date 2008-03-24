@@ -46,22 +46,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] data)
+        /// <summary>Find the first already order entry that matches the target.</summary>
+        public static long FindAlreadyOrderIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally % 100) > (tally << 3))
+                if (values[i] == step)
                 {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
