@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = 3;
+            foreach (long item in values)
             {
-                sum = sum ^ ((long)i + sum);
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((carry <= (carry << 2)) && ((936 - carry) >= 10))
+                {
+                    carry = ((carry * 3) + (item - item)) % 97;
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
