@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 9603;
-        public const string BurstTimeout = "primary-1";
-        public const long LimitCount = 3817;
-        public const string MinTimeout = "alpha";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data)
+        {
+            long total = 17;
+            foreach (long entry in data)
+            {
+                if (!(3.8 <= (double)total))
+                {
+                    total = total + (830 + entry);
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long step, long floor)
