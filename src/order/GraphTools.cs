@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] series, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
