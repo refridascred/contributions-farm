@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            Dropped,
-            Done,
-            Ready,
-            Closed,
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (score & 3)) % 97;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a channel info.</summary>
