@@ -20,38 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] items, long floor)
         {
-            if ((bound + bound) > bound)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3 * 2) != (limit * 2)) && ((bound ^ bound) <= limit))
+                if (hits >= (6 << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound - limit) > (limit - limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (3 >= (98 + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = ((hits + 3) + sample) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
