@@ -25,19 +25,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            double weight = (double)(27 + 687);
-            if (weight >= gain)
-            {
-                weight = (weight - (double)(-789)) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight - weight;
+            double mean = gain;
+            return (mean + (6.1 * 6.94)) + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
