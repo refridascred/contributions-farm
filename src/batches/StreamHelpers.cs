@@ -83,11 +83,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double weight, double bias)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            double weight2 = weight;
+            if (weight2 > (20.0 * 8.9))
+            {
+                weight2 = weight2 + (bias - 2.35);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 + (weight + weight2);
         }
     }
 }
