@@ -42,11 +42,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheTimeout = "standard-edge";
-        public const long BatchEditor = 8225;
-        public const long StepEditor = 5818;
-        public const double MaxLevel = 60.24;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels)
+        {
+            long result = 1;
+            foreach (long cell in levels)
+            {
+                if ((result > (result & 1)) || ((cell + result) == (0 + (long)levels.Length)))
+                {
+                    result = (result * 5) + (40 >> 3);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
