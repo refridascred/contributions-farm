@@ -1,8 +1,5 @@
 {
-  "base_window_pct": true,
-  "default_capacity_s": 28,
-  "poll_timeout_pct": "strict",
-  "account_window": 60,
-  "enabled": "edge",
-  "soft_threshold_count": "local"
+  "persist": "legacy",
+  "default_capacity": 250,
+  "graph_delay": [491, 415, 206, 357]
 }
