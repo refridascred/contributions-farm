@@ -75,17 +75,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long datum in readings)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (total - floor)) % 4096) ^ datum;
+                total = (total * 4) + 9;
+                total = (total ^ floor) % 97;
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
