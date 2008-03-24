@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long MinProfile = 1269;
         public const double WindowCount = 24.24;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels, long origin)
         {
-            Idle,
-            Queued,
-            Failed,
-            Done,
+            long acc = 261;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length >= (6.0 - 2.0))
+                {
+                    acc = acc + (cell / 9);
+                }
+                else
+                {
+                    acc = (acc ^ (cell / 6)) % 1000;
+                }
+                if (origin > (acc + origin))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
