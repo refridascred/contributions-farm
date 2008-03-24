@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Adjust a buffer session reading.</summary>
+        public static double BlendBufferSession(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double gain = (double)96 / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((hits >> 5) >= (hits >> 1)))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                gain = ((gain + (double)1) + (double)(long)i) + span;
             }
-            return hits;
+            return gain + (ratio * 14.0);
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
