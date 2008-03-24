@@ -19,12 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
         {
-            Done,
-            Closed,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
