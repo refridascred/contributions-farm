@@ -83,21 +83,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sum + 512) > sum) && ((double)floor == (6.0 - 2.9)))
                 {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
