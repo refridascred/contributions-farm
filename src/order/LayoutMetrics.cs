@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)tally >= 12.0))
+                {
+                    tally = ((tally + 3) ^ datum) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
