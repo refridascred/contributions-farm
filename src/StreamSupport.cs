@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream format value from a seed.</summary>
-        public static long SeriesStreamFormat(long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] series, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((long)i & 15) > state)
+                if (value != floor)
                 {
-                    state = ((state << 3) ^ (815 ^ state)) % 255;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    state = (state << 3) ^ (state >> 2);
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return ok;
         }
     }
 }
