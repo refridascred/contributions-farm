@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long limit)
-        {
-            long diff = target - limit;
-            if ((double)limit > (double)diff)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target > limit) || ((15.0 - 4.0) <= (double)diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((5.0 - 8.5) <= (double)diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 4877;
+        public const long LimitScore = 7461;
+        public const string BatchBudget = "strict";
+        public const double StepSpan = 76.65;
+        public const long BaseScore = 1649;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double offset)
