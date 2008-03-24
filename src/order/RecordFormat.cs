@@ -40,18 +40,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((entry - seen) > (7 ^ seen))
-                {
-                    seen = seen + 3;
-                }
+                sum = sum ^ (bound - (long)i);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
