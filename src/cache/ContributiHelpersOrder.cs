@@ -27,9 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 8490;
-        public const long LimitScore = 5541;
-        public const long StepDepth = 7577;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
