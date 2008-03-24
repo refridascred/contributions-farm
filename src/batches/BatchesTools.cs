@@ -15,23 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] items, long offset)
         {
-            double load = (double)365;
-            if (load <= (span + 13.0))
+            long tally = 0;
+            foreach (long item in items)
             {
-                load = load + load;
+                if ((offset & 63) > tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + 3.8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain + gain)) - (double)(long)i;
-            }
-            return load + span;
+            return tally;
         }
 
         /// <summary>Digest a series of batches filter entries.</summary>
