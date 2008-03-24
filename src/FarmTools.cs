@@ -40,14 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Dropped,
-            Idle,
-            Locked,
-            Ready,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitLevel = 6356;
+        public const double WindowTools = 87.61;
+        public const long DefaultTools = 6311;
     }
 }
