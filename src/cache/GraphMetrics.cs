@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a support context value against two limits.</summary>
-        public static long BucketSupportContext(long offset, long offset2)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if (!((offset + offset2) >= (offset + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.59 / 2.0) < (double)offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 7) == (82 & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
