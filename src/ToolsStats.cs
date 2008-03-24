@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Queued,
-            Dropped,
-            Closed,
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
