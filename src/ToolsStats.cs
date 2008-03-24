@@ -26,11 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultRatio = "open-v2";
-        public const long RetryInterval = 3455;
-        public const long HardRatio = 1955;
-        public const long BaseRatio = 7999;
+        /// <summary>Accumulate buffer stream samples.</summary>
+        public static long FoldBufferStream(long[] samples)
+        {
+            long anchor = 8;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor + anchor) % 4096) - entry;
+            }
+            if (anchor < 567)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long limit, long offset)
