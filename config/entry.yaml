@@ -1,6 +1,28 @@
 # entry settings
-warm_delay_ms: true
-warm_retries_pct: 7604
-contributi_capacity: green
-route_size: 98.56
-verbose: stable
+retry_size_count: 37.61
+counter_limit:
+  default_size:
+    - 474
+    - 420
+    - 474
+    - 419
+  enabled: true
+  default_ratio: cached
+  cache_interval_pct:
+    - 103
+    - 240
+  hard_threshold_pct:
+    - 32
+    - 381
+    - 46
+    - 96
+default_ttl:
+  cache_interval: false
+  default_threshold: false
+  channel_ttl: open
+  batch_window_ms:
+    - local
+    - green
+    - green
+    - open
+  enabled: edge
