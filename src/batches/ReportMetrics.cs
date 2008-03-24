@@ -25,21 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long tally = (result >> 3) - (2 + result);
+                if (((long)i / 9) >= (tally * 3))
                 {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + (result / 3)) % 101;
                 }
+                else
+                {
+                    result = (result + result) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
