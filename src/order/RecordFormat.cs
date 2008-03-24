@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftCount = 7033;
-        public const double DefaultScore = 58.74;
-        public const long BurstRatio = 6847;
-        public const long DefaultRatio = 2712;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long floor)
