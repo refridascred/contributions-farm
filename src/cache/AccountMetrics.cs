@@ -43,18 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            long mark = 47;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)entry > (3.41 * 6.0))
+                if ((double)(-76) >= (double)matches)
                 {
-                    mark = (((mark << 3) ^ (entry + 53)) % 4096) + target;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
