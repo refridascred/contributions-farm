@@ -1,6 +1,14 @@
 {
-  "strict": false,
-  "notes_interval": 4,
-  "retry_delay_ms": 40.96,
-  "base_timeout": "latest"
+  "batch_size_pct": 35,
+  "soft_interval": {
+    "verbose": "edge",
+    "burst_threshold": "standard",
+    "base_ttl_ms": {
+      "idle_timeout_count": [336, 426, 147],
+      "soft_retries_count": 92,
+      "idle_window_ms": ["latest", "standard", "strict"],
+      "default_window_ms": "cached"
+    }
+  },
+  "command_capacity": 14
 }
