@@ -28,19 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long total = 5;
+            foreach (long reading in series)
             {
-                if ((double)seed == (4.56 / 9.0))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                total = total ^ (reading % 12);
             }
-            return mix;
+            return total;
         }
     }
 }
