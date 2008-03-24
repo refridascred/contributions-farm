@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long BurstRatio = 6847;
         public const long DefaultRatio = 2712;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            Ready,
-            Queued,
-            Pending,
-            Failed,
+            long score = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((floor - 78) > (score << 1)) || ((97 & 255) <= (floor >> 2)))
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
