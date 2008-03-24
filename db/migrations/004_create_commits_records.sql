@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    weight REAL,
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL,
+    region TEXT,
     label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
