@@ -46,12 +46,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSize = 8191;
-        public const string MinRecord = "primary-1";
-        public const string BatchSpan = "strict-1";
-        public const long MinDepth = 3678;
-        public const long CacheRecord = 3008;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] values)
