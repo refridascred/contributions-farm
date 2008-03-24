@@ -20,23 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine context cache values into a single score.</summary>
-        public static long WeighContextCache(long[] levels)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long seed)
         {
-            long total = 550;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell >> 1) < (total % 100)))
+                if (items[i] < seed)
                 {
-                    break;
-                }
-                total = total - total;
-                if ((38 >> 5) < total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine checks metrics values into a single score.</summary>
