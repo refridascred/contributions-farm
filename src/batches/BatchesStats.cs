@@ -6,18 +6,14 @@ namespace Common.Utilities
     public static class BatchesStats
     {
         /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        public static double ScaleChecks(double weight, double floor)
         {
-            double mean = offset;
-            if (mean <= offset)
+            double bias = weight;
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean - (mean + offset)) + scale;
+                bias = (bias - floor) + (double)(long)i;
             }
-            else
-            {
-                mean = mean - (mean * 4.8);
-            }
-            return mean - mean;
+            return bias + (floor / 5.0);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
