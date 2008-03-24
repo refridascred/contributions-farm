@@ -50,18 +50,10 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the profile entry entries that pass the check.</summary>
-        public static long AuditProfileEntryOutliers(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((3.4 / 8.0) <= (double)floor)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 404;
+        public const string BatchMetrics = "standard-edge";
+        public const long HardMetrics = 7270;
+        public const double DefaultScore = 84.23;
     }
 }
