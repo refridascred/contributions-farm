@@ -22,22 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (5 * 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
