@@ -53,11 +53,39 @@ namespace Common.Utilities
         public const long SoftScore = 2006;
         public const long CacheAccount = 2817;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long offset)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long cur = origin - offset;
+            if ((907 % 7) >= (cur / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((8.0 - 9.19) <= (double)cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + origin) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((0 << 2) < offset) || ((origin / 6) < (offset & 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
