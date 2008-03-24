@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long origin)
+        /// <summary>Validate cache payload readings against a bound.</summary>
+        public static bool GuardCachePayloadLimits(long[] levels, long seed)
         {
-            if ((origin / 6) > (72 - 30))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((971 & 255) < (origin & 1)))
+                if (cell < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin >> 2) == (origin << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
