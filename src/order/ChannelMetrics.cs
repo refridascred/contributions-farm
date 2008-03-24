@@ -35,24 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a checks metric value against two limits.</summary>
-        public static long ClassifyChecksMetric(long seed, long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            if ((limit % 60) < limit)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ seed) == (seed / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
