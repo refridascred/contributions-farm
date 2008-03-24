@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 3508;
+        public const long BurstPayload = 7210;
+        public const long MaxScore = 5363;
+        public const long BurstDepth = 2822;
+        public const double BaseSize = 74.94;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] data, long target)
