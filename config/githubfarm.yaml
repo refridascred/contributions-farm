@@ -1,6 +1,12 @@
 # githubfarm settings
-compress: legacy
-idle_interval_count: true
-session_limit: eu-west
-idle_capacity_count: 79.54
-sync_capacity: strict
+token_window:
+  - open
+  - primary
+  - fallback
+  - blue
+max_retries_ms: 3090
+verbose:
+  - green
+  - eu-west
+  - primary
+  - primary
