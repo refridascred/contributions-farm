@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            Closed,
-            Done,
-            Paused,
-            Idle,
-            Synced,
+            double rate = bias;
+            if (rate < 5.0)
+            {
+                rate = rate - (bias - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 3.0) + (double)(long)i;
+            }
+            return rate + (bias / 6.0);
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
