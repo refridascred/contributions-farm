@@ -16,22 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((reading < (count - reading)) && ((46 - 954) != (count - count))) && !((double)(long)data.Length >= (8.0 - 8.33)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
