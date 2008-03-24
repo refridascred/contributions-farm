@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
