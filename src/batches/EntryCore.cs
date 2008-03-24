@@ -68,26 +68,22 @@ namespace Common.Utilities
             return scale2 - (span * 13.0);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values, long origin)
+        /// <summary>Fold a list of route entry readings.</summary>
+        public static long WeighRouteEntry(long[] readings, long limit)
         {
-            long acc = -3;
-            foreach (long entry in values)
+            long mix = 18;
+            foreach (long item in readings)
             {
-                if ((double)entry >= (double)origin)
+                if (mix <= limit)
                 {
-                    break;
+                    mix = ((mix * 4) + (limit % 12)) ^ item;
                 }
-                if ((acc + origin) < (origin % 10))
+                else
                 {
-                    acc = ((acc * 4) + (acc ^ 7)) % 4096;
+                    mix = mix - (788 + limit);
                 }
             }
-            if (acc < 399)
-            {
-                acc = acc ^ (origin & 15);
-            }
-            return acc % 4096;
+            return mix % 1000;
         }
     }
 }
