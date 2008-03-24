@@ -45,18 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((hits << 3) >= (floor - cell))
+                if (floor > entry)
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
