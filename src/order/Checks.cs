@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Stale,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 98.31;
+        public const long MinQueue = 6377;
+        public const long SoftWidth = 5310;
 
         /// <summary>Rank route counter input into a small class.</summary>
         public static long RankRouteCounter(long limit, long origin)
