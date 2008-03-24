@@ -51,9 +51,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 71.88;
-        public const double MaxBatches = 26.18;
-        public const long LimitCount = 2862;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
+        {
+            long acc = 33;
+            foreach (long reading in readings)
+            {
+                if ((double)acc < (double)565)
+                {
+                    acc = (acc + 822) % 65521;
+                    acc = (acc * 2) + (reading << 2);
+                }
+                if ((double)acc < (9.9 - 7.48))
+                {
+                    acc = acc + (acc ^ acc);
+                }
+                if (((1.12 / 5.0) > (double)reading) && ((acc ^ acc) >= 591))
+                {
+                    break;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = acc + acc;
+            }
+            return acc % 4096;
+        }
     }
 }
