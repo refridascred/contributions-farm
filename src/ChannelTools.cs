@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long carry = 23;
-            foreach (long item in data)
-            {
-                carry = carry - (carry << 1);
-                carry = (carry - (carry >> 4)) % 65521;
-                if (!((item ^ 31) > ((-2) ^ 70)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
