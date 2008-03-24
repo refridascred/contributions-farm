@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (limit <= ((long)samples.Length - limit))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftWidth = "fallback";
+        public const long MinLevel = 9343;
+        public const long SoftContext = 6975;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string LimitSpan = "staging-v2";
