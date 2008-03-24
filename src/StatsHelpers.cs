@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long delta = bound - seed;
-            if ((bound - seed) > (delta - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) <= (bound - delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Locked,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
