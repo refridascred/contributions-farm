@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)tally >= 12.0))
-                {
-                    tally = ((tally + 3) ^ datum) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 7167;
+        public const double StepGraph = 68.02;
+        public const long DefaultGraph = 5924;
 
         /// <summary>Validate entry githubfarm readings against a bound.</summary>
         public static bool GuardEntryGithubfarmRange(long[] data, long bound)
