@@ -28,11 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a graph info.</summary>
