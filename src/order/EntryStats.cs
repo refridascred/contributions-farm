@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)5 + (double)8;
+            if (scale < (weight / 3.0))
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + weight) - span;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + weight) - (double)(long)i;
+            }
+            return scale + (scale / 6.0);
         }
 
         /// <summary>Describe the layout kind values.</summary>
