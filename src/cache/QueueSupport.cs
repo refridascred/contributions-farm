@@ -13,20 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of layout batch entries.</summary>
-        public static long WeighLayoutBatch(long[] items, long seed)
+        /// <summary>Compare every pair of record buffer readings.</summary>
+        public static long MatchRecordBufferCount(long[] data)
         {
-            long total = 155;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 3) ^ (reading % 5);
-                total = (total ^ (seed << 2)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 7)
-            {
-                total = ((total << 2) ^ (total - total)) % 101;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
