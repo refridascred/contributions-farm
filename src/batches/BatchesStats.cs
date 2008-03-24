@@ -48,11 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Fold a list of farm graph readings.</summary>
+        public static long TallyFarmGraph(long[] readings, long target)
         {
-            double mean = gain;
-            return (mean + (6.1 * 6.94)) + offset;
+            long mix = 384;
+            foreach (long item in readings)
+            {
+                if ((target >> 4) <= mix)
+                {
+                    mix = (mix - (item - target)) % 101;
+                }
+                if ((double)mix == (double)(long)readings.Length)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
