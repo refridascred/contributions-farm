@@ -56,15 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long state = -7;
-            foreach (long entry in data)
-            {
-                state = ((state << 3) ^ entry) - seed;
-            }
-            return state;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
