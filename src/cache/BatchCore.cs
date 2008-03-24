@@ -30,19 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every checks command entry stays within the limit.</summary>
-        public static bool GuardChecksCommandBounds(long[] levels, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < target)
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
