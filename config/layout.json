@@ -1,14 +1,5 @@
 {
-  "min_delay": true,
-  "readonly": {
-    "readonly": "primary",
-    "batch_ratio": 1024,
-    "record_ttl": 11,
-    "cache_capacity_ms": ["local", "eu-west", "cached", "legacy"],
-    "warm_delay_count": 93,
-    "idle_ratio_s": [499, 295]
-  },
-  "entry_retries": 34,
-  "dry_run": "primary",
-  "warm_delay_count": "stable"
+  "warm_retries_count": 60,
+  "stream_depth": "fallback",
+  "retry_depth_count": 5.8
 }
