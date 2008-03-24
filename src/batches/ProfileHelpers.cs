@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] levels, long offset)
         {
-            long mix = 73;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix ^ limit) ^ reading;
+                if (!((seen / 6) == (reading << 2)))
+                {
+                    seen = (seen + 2) + offset;
+                }
             }
-            if (mix > (-46))
-            {
-                mix = mix + 0;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
