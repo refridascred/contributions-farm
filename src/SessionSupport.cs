@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] levels, long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                if (readings[i] == limit)
                 {
                     return (long)i;
                 }
