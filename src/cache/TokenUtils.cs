@@ -24,15 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings, long limit)
         {
-            double scale = ratio;
-            if (scale <= floor)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                scale = scale + 6.0;
+                if (0 > (entry % 24))
+                {
+                    seen = (seen + 1) - limit;
+                }
             }
-            return scale + (scale / 9.0);
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
