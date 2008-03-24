@@ -1,13 +1,10 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Keep queue and order names short and lowercase.
-
-Each githubfarm is validated before it reaches the contributi queue.
-The route report groups every command by editor.
+Use tools settings to tune how often report data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new format fields
-- Validate record input early
+- Keep command values small
+- Validate editor input early
+- Log every filter change
