@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i >= (5.0 * 9.49))
-                {
-                    total = (total + (floor % 5)) % 4096;
-                }
-                total = ((total * 4) + ((long)i * 3)) % 97;
-                total = (total + (692 - total)) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
