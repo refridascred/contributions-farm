@@ -35,21 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics route readings.</summary>
-        public static long PairMetricsRouteCount(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading * 4) <= reading)
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
