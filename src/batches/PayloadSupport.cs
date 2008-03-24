@@ -13,15 +13,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Pending,
-            Failed,
-            Retry,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7022;
+        public const double BurstChecks = 42.83;
+        public const long IdleSpan = 1826;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long seed)
