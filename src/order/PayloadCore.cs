@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] values, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine cluster cache values into a single score.</summary>
