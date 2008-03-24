@@ -1,10 +1,6 @@
-id,label,owner,active,count
-1,72.39,985,32.84,413
-2,865,stable,83.23,299
-3,standard,652,793,36.23
-4,open,green,44.42,790
-5,792,24,849,fallback
-6,staging,local,green,staging
-7,66.63,942,442,803
-8,29.26,817,edge,legacy
-9,482,780,828,431
+id,region,owner,token,level
+1,local,staging,open,714
+2,564,strict,fallback,72.12
+3,local,71,342,212
+4,local,edge,6.07,legacy
+5,52.48,924,12.24,latest
