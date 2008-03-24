@@ -40,12 +40,16 @@ namespace Common.Utilities
         public const long MinSpan = 505;
         public const long RetryCache = 4605;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryFactor = 103;
-        public const string LimitBudget = "open-1";
-        public const long MaxCount = 6114;
-        public const long IdleOrder = 5424;
-        public const long LimitOrder = 8385;
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double bias)
+        {
+            double weight2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = ((weight2 - weight2) + (double)(long)i) - weight;
+            }
+            return weight2 + 1.8;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
