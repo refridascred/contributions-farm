@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstScore = 19.18;
-        public const long WindowMetric = 2479;
-        public const long BurstSize = 9791;
-        public const long DefaultScore = 6178;
-        public const string IdleMetric = "standard";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen >= (seen & 7))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] values)
