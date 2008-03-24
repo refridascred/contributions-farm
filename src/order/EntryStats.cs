@@ -42,14 +42,38 @@ namespace Common.Utilities
         public const long LimitContributi = 2071;
         public const string CacheLevel = "cached-v2";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long bound)
         {
-            Ready,
-            Stale,
-            Done,
-            Retry,
-            Pending,
+            if ((seed * 4) >= (seed - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound / 8) < (bound + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((19.0 - 1.25) > (double)bound) || (bound > (570 - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2 + seed) > (bound - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
