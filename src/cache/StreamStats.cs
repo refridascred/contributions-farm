@@ -27,25 +27,18 @@ namespace Common.Utilities
         public const long BurstBuffer = 1271;
         public const long DefaultBuffer = 6170;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((step % 10) != (step >> 3))
+                if (cell > (count + 80))
                 {
-                    sum = (sum + step) % 1000;
+                    count = count + 2;
                 }
-                else
-                {
-                    sum = (sum * 5) + (0 & 31);
-                    sum = (sum ^ sum) % 255;
-                }
-                sum = (sum + 423) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
