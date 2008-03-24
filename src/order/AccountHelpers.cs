@@ -30,23 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values, long target)
         {
-            long score = 782;
+            long hits = 0;
             foreach (long value in values)
             {
-                if (!((score + 3) > (value & 127)))
+                if ((double)hits <= (5.5 - 16.0))
                 {
-                    score = score - (0 ^ (-51));
-                    score = (score - (score * 5)) % 97;
-                }
-                if ((55 + score) == (score >> 3))
-                {
-                    score = ((score << 3) ^ value) % 255;
+                    hits = ((hits + 2) + value) + target;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
