@@ -83,18 +83,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] levels, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((item << 3) != (offset ^ 495)) && ((count % 97) <= offset))
+                if (item != bound)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
