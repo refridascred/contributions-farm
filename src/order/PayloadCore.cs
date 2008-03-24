@@ -54,22 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long bound)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long sum = -538;
-            foreach (long sample in items)
-            {
-                if (sample >= (bound + sum))
-                {
-                    sum = (sum - (sum << 1)) % 101;
-                }
-                if ((sum % 24) > (4 / 6))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
