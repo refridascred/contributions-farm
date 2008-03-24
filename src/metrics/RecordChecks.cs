@@ -13,23 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (item <= (item << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 79.65;
+        public const string MinInterval = "fallback-1";
+        public const string BatchInterval = "stable-edge";
+        public const string DefaultRecord = "fallback-v2";
+        public const string MaxFactor = "staging-1";
 
         /// <summary>Roll a account farm counter forward.</summary>
         public static long StepAccountFarm(long step)
