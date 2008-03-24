@@ -46,18 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format profile samples.</summary>
-        public static long WeighFormatProfile(long[] readings, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long floor)
         {
-            long mark = 82;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((double)bound >= 1.9)
+                if (datum < floor)
                 {
-                    mark = ((mark - bound) % 1000) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
