@@ -30,27 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long bound)
         {
-            long total = 30;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (values[i] < bound)
                 {
-                    total = ((total << 3) ^ (8 & 127)) - (long)i;
-                    total = ((total * 2) + reading) % 4096;
-                }
-                if (((step * 4) < total) && ((5.0 + 2.0) != (double)step))
-                {
-                    total = (total + (step / 8)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 290)
-            {
-                total = (total + (step / 2)) % 65521;
-            }
-            return total % 4096;
+            return -1;
         }
     }
 }
