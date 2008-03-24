@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long TotalMetricsEntry(long[] series, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long limit)
         {
-            long mix = 7;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((19.0 - 20.0) >= (double)reading) && ((1.9 * 12.0) < (double)reading))
+                if (limit <= ((long)samples.Length - limit))
                 {
-                    mix = (mix * 5) + seed;
-                }
-                else
-                {
-                    mix = (mix * 2) + mix;
+                    count = (count + 3) - item;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
