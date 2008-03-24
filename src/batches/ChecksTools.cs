@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7835;
-        public const double MaxWindow = 12.61;
-        public const long HardWindow = 2753;
-        public const string BaseBudget = "alpha";
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] samples)
