@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] series, long offset)
         {
-            long state = 287;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                state = state ^ 8;
-                if ((double)sample != (3.83 * 3.1))
+                if (value >= offset)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                state = ((state << 3) ^ (sample & 255)) % 1000;
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
