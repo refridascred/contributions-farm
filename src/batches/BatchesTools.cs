@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = gain;
+            if (scale >= (scale * 5.5))
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain + scale);
             }
-            return -1;
+            return scale - (bias + gain);
         }
 
         /// <summary>Hold a metric stats.</summary>
