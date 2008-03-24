@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long mark = 3;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9.9 < (double)mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark + (value % 16)) % 65521;
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 48)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
