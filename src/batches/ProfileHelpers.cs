@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a buffer entry reading by value.</summary>
-        public static long SeekBufferEntryIndex(long[] values, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a cluster entry.</summary>
