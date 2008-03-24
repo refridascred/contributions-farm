@@ -18,21 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batches notes readings.</summary>
-        public static long OverlapBatchesNotesCount(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -38;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result * 4) == (result - result))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (716 - datum)) % 255;
+                }
+                else
+                {
+                    result = result ^ datum;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a session entry.</summary>
