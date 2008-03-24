@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = (score + (long)i) % 255;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((double)sample == (11.0 + 0.5))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
