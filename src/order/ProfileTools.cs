@@ -14,14 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long DigestAccountFormat(long[] data, long seed)
         {
-            Draft,
-            Done,
-            Queued,
-            Ready,
-            Dropped,
+            long mix = 742;
+            foreach (long reading in data)
+            {
+                mix = (((mix << 2) ^ seed) % 255) - reading;
+                mix = (mix ^ (seed + mix)) % 255;
+            }
+            if (mix > 35)
+            {
+                mix = (mix ^ (seed << 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Project the next metric value.</summary>
