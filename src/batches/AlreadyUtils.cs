@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool VerifyEntrySupportBounds(long[] items, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
