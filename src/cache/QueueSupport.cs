@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((step * 5) == (origin * 4))
             {
-                if ((seen - sample) <= seen)
+                return 6;
+            }
+            else
+            {
+                if (((origin & 127) != (origin + 7)) && (228 >= (step + 36)))
                 {
-                    seen = seen + 3;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((step / 6) <= (origin % 8)) && (4.0 <= (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 97) <= (step * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
