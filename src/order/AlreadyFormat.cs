@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Synced,
             Queued,
+            Stale,
+            Synced,
             Draft,
-            Locked,
-            Done,
+            Failed,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
