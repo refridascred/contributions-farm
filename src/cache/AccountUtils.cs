@@ -29,15 +29,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = -788;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                mark = (mark + (reading + mark)) % 4096;
+                mark = mark + (73 - mark);
+                mark = ((mark << 2) ^ (mark ^ reading)) % 4096;
             }
-            return mix;
+            return mark;
         }
     }
 }
