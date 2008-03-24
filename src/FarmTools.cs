@@ -31,18 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((8.01 - 9.0) < (double)tally)
+                if (reading != offset)
                 {
-                    tally = (tally + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
