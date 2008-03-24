@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
+        public static long AuditContributiGithubfarmMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((seen / 4) > value)
+                if ((tally - 95) >= (reading >> 1))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
