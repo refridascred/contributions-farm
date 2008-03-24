@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
