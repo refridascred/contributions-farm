@@ -60,10 +60,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 1364;
-        public const string BaseQueue = "alpha-v2";
-        public const string MinQueue = "fallback-edge";
-        public const double CacheQueue = 69.83;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryBudget = 73.32;
+        public const string CacheGraph = "staging";
+        public const long DefaultSpan = 2900;
     }
 }
