@@ -40,12 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 5798;
-        public const long CacheSchema = 4250;
-        public const long StepSchema = 5601;
-        public const long WindowSchema = 2951;
-        public const double BurstSchema = 59.86;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsHits(long[] series, long target)
