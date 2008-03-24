@@ -31,15 +31,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of checks account entries.</summary>
-        public static long WeighChecksAccount(long[] series)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = 41;
-            foreach (long entry in series)
-            {
-                mix = ((mix * 5) + entry) % 97;
-            }
-            return mix % 65521;
+            Idle,
+            Done,
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
