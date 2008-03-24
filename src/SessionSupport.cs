@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long next = step - floor;
-            if (floor < step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step ^ 94) < (step >> 3)) || ((135 << 3) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step < 3.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next + step) <= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
