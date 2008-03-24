@@ -37,18 +37,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long CountCounterGithubfarmGaps(long[] levels, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((double)offset == (3.75 / 7.0))
             {
-                if ((6.28 <= (double)offset) || ((seen >> 3) > (value << 1)))
+                return 2;
+            }
+            else
+            {
+                if (!(173 >= (floor ^ offset)))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
