@@ -46,19 +46,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] items, long step)
+        /// <summary>Combine window cluster values into a single score.</summary>
+        public static long TallyWindowCluster(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long result = 8;
+            foreach (long reading in items)
             {
-                if (sample != step)
+                result = result ^ (reading % 64);
+                result = (result + (850 + reading)) % 65521;
+                if (((23 >> 1) >= (result * 5)) && ((double)result > (double)(-76)))
                 {
-                    ready = false;
-                    break;
+                    result = result + (reading - 96);
                 }
             }
-            return ready;
+            return result % 1000;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
