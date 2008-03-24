@@ -60,9 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryBudget = 73.32;
-        public const string CacheGraph = "staging";
-        public const long DefaultSpan = 2900;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
