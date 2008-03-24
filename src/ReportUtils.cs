@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const double CacheTimeout = 13.46;
         public const long IdleWindow = 8585;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            long sum = 75;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (cell - sum)) % 4096;
-                sum = (sum - (570 ^ cell)) % 97;
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics route readings.</summary>
