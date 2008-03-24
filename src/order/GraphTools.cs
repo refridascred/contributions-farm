@@ -37,18 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long MeasureCounterProfileMatches(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item + item) < count)
+                if ((mix - (long)i) < mix)
                 {
-                    count = count + 3;
+                    mix = ((mix * 4) + (mix * 2)) % 97;
+                    mix = ((mix * 3) + ((long)i & 31)) % 255;
                 }
+                else
+                {
+                    mix = ((mix * 2) + mix) % 65521;
+                    mix = mix + (limit + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
