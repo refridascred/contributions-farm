@@ -64,19 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double weight = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = ((weight - (rate - rate)) + (double)(long)i) - offset;
             }
-            return ok;
+            return weight + rate;
         }
     }
 }
