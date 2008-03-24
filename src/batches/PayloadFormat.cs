@@ -30,12 +30,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
