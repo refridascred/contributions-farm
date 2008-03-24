@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double load = (scale / 2.0) + (floor / 8.0);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - floor;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a schema snapshot.</summary>
