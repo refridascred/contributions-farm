@@ -26,16 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long origin)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long AuditCounterGithubfarmHits(long[] samples, long bound)
         {
-            long acc = 90;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                acc = acc ^ (579 ^ acc);
-                acc = (acc << 2) ^ (entry + origin);
+                if ((double)cell >= 1.1)
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
