@@ -34,23 +34,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            long mark = 457;
-            foreach (long datum in items)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark << 3) ^ (mark % 2)) + offset;
-                if ((6.4 * 7.0) == (double)mark)
+                if (((long)i * 5) > result)
                 {
-                    mark = mark - (mark ^ datum);
+                    result = (result * 2) + (866 << 2);
                 }
-                if (((datum + datum) <= mark) || ((-17) > (mark % 100)))
-                {
-                    mark = (mark - (mark - datum)) % 97;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the notes mode values.</summary>
