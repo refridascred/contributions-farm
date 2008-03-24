@@ -24,38 +24,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long offset)
         {
-            if (6.0 > (double)seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 7) < seed)
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed == (2.2 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)seed >= (7.8 * 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
