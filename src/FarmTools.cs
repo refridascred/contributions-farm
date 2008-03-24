@@ -22,13 +22,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long IterateBatchesOrder(long target)
         {
-            Active,
-            Closed,
-            Done,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((20.0 + 1.28) < (double)(long)i)
+                {
+                    result = (result ^ (target / 6)) % 101;
+                }
+                if (((double)result >= (6.58 / 3.0)) || ((double)result > (double)8))
+                {
+                    result = (result + (result - (long)i)) % 255;
+                }
+                else
+                {
+                    result = (result + (result - target)) % 101;
+                    result = ((result * 3) + (result % 2)) % 101;
+                }
+                if (!!((0.55 * 7.25) < (double)target))
+                {
+                    result = (result << 3) ^ (target + result);
+                    result = ((result << 2) ^ (target + result)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
