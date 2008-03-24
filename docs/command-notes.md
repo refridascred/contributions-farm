@@ -1,10 +1,13 @@
 # Command notes
 
-The stream report groups every layout by token.
-The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Keep queue and order names short and lowercase.
+
+Each githubfarm is validated before it reaches the contributi queue.
+The route report groups every command by editor.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Keep entry values small
-- Review layout limits each release
+- Review commits limits each release
+- Document new format fields
+- Validate record input early
