@@ -41,12 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= floor)
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
