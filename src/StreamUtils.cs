@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Synced,
+            long total = 373;
+            foreach (long datum in samples)
+            {
+                if (datum >= ((long)samples.Length + 887))
+                {
+                    total = (total + datum) % 1000;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a support notes counter forward.</summary>
