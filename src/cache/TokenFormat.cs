@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a notes account counter forward.</summary>
-        public static long DeriveNotesAccount(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitWidth = 7951;
+        public const long MinEditor = 1003;
+        public const long CacheCount = 8223;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] levels, long bound)
