@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 94.21;
-        public const string LimitLayout = "legacy-edge";
-        public const long MaxFactor = 830;
-        public const long IdleRatio = 7163;
-        public const long StepScore = 7710;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long floor)
+        {
+            long mark = 966;
+            foreach (long datum in readings)
+            {
+                mark = (((mark << 3) ^ (mark - mark)) ^ datum) - floor;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
