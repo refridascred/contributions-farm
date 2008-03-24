@@ -24,19 +24,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long limit)
         {
-            double weight = (double)(7 % 24);
-            if (weight <= (15.0 + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (double)566;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (gain + weight);
+            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
