@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of route format entries.</summary>
-        public static long CombineRouteFormat(long[] samples, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long origin)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor % 10) > (floor % 12))
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
                 {
-                    mix = ((mix + (floor % 60)) % 97) + cell;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (floor >> 1);
+                    return (long)i;
                 }
             }
-            if (mix > (-27))
-            {
-                mix = mix - (935 * 2);
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
