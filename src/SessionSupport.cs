@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstWidth = 84.98;
-        public const double MinCommand = 49.11;
-        public const long BaseCommand = 2075;
-        public const long RetryBudget = 8994;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleRatio = "stable";
+        public const string IdleScore = "strict-edge";
+        public const long BaseScore = 6465;
+        public const string HardFormat = "strict";
+        public const long DefaultFormat = 5302;
 
         /// <summary>Classify a schema already pair into a bucket.</summary>
         public static long SortSchemaAlready(long offset, long target)
