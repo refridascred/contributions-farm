@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            Idle,
-            Queued,
-            Active,
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                long count = offset;
+                if (!((offset >= (129 & 3)) && ((count - 654) != (mix - mix))))
+                {
+                    mix = (mix + (count ^ 738)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record options.</summary>
