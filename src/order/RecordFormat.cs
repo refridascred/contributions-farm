@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long MaxNotes = 2112;
         public const double RetryNotes = 31.6;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long LocateRouteAccountIndex(long[] samples, long seed)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next channel entry value from a seed.</summary>
