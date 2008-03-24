@@ -1,5 +1,6 @@
 {
-  "command_timeout": 30,
-  "strict": "open",
-  "flush_retries": "cached"
+  "strict": false,
+  "notes_interval": 4,
+  "retry_delay_ms": 40.96,
+  "base_timeout": "latest"
 }
