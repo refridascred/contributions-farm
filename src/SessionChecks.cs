@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long anchor = 4;
+            foreach (long entry in items)
+            {
+                anchor = (anchor + (entry << 1)) % 4096;
+            }
+            if (anchor > 49)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
