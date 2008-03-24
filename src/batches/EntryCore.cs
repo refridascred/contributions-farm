@@ -47,17 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a commits cache reading by value.</summary>
-        public static long FindCommitsCacheIndex(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                if (((0 >> 4) >= hits) && (hits < (item >> 5)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
