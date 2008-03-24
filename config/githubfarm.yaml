@@ -1,25 +1,23 @@
 # githubfarm settings
-warm_retries: true
-retry_window: 5745
-poll_window:
-  order_capacity: cached
-  layout_depth:
-    - legacy
-    - primary
-    - fallback
-  hard_ttl_s: strict
-  idle_retries:
-    report_delay: green
-    idle_ttl_pct: true
-    hard_depth: true
-    soft_retries_count: 24.86
-    verbose: 62.48
-    default_threshold: stable
-persist:
-  - eu-west
-  - edge
-githubfarm_depth:
-  - green
-  - standard
-  - fallback
-readonly: open
+enabled:
+  retry_interval_pct: 91.36
+  batch_window:
+    channel_window:
+      - green
+      - legacy
+      - cached
+      - standard
+    flush_limit: 52.25
+    account_timeout: primary
+  stream_retries: local
+  compress: 14.56
+  strict: fallback
+  idle_interval_pct: 30
+report_window:
+  - 56
+  - 310
+  - 317
+readonly: 23
+queue_capacity: 52.86
+batch_capacity: false
+min_ratio_count: 6.69
