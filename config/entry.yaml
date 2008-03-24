@@ -1,5 +1,20 @@
 # entry settings
-order_window: 7808
-cluster_threshold: green
-verbose: 86
-persist: 64.12
+queue_capacity: cached
+cache_threshold_s:
+  - eu-west
+  - standard
+  - legacy
+  - eu-west
+checks_window: 96
+cache_threshold_count: false
+channel_capacity:
+  persist: true
+  soft_size: true
+  poll_depth_ms: false
+  cache_threshold:
+    - standard
+    - open
+    - eu-west
+  hard_window_count:
+    - 65
+    - 365
