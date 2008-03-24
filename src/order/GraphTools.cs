@@ -55,16 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long result = 12;
-            foreach (long cell in series)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                result = (result * 4) + (cell % 16);
-                result = (result - (result - result)) % 255;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
     }
 }
