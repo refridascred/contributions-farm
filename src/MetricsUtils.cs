@@ -32,10 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinScore = 2586;
-        public const long BaseDepth = 4680;
-        public const long HardRatio = 9407;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 3828;
+        public const long HardCommits = 6659;
+        public const long IdleFactor = 639;
+        public const long BatchCount = 757;
+        public const string StepCommits = "strict-v2";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] series, long step)
