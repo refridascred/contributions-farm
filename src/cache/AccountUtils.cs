@@ -14,24 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long sum = 38;
-            foreach (long reading in values)
+            long carry = 95;
+            foreach (long value in values)
             {
-                sum = ((sum * 2) + (reading ^ 859)) % 1000;
-                sum = sum + reading;
-                if (sum >= (sum + reading))
+                carry = (carry << 3) ^ (carry % 5);
+                if ((70 >> 3) > value)
                 {
                     break;
                 }
             }
-            if (sum > 72)
-            {
-                sum = ((sum << 3) ^ 6) % 97;
-            }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
