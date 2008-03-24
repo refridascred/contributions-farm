@@ -27,17 +27,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a channel window reading by value.</summary>
-        public static long LocateChannelWindowIndex(long[] readings, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                if (!((origin + 645) < origin))
                 {
-                    return (long)i;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a checks info.</summary>
