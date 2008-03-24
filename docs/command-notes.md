@@ -1,11 +1,12 @@
 # Command notes
 
-When a order fails, the context handler retries a few times before giving up.
-When a farm fails, the report handler retries a few times before giving up.
+Run the layout check before changing any counter limits.
+A report that stays idle for too long is moved to the checks list.
+The batches module keeps commits values in sync with the route cache.
 
 ## Guidelines
 
-- Keep context values small
-- Log every graph change
-- Document new support fields
+- Document new entry fields
+- Keep batch values small
+- Review filter limits each release
 - Prefer editor defaults
