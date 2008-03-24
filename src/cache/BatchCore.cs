@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8314;
-        public const long MaxFormat = 3229;
-        public const long BatchFormat = 2882;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((datum & 1) > 38) || ((double)seen == (double)datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] samples, long seed)
