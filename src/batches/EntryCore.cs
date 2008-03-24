@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3204;
-        public const long SoftFactor = 4036;
-        public const string DefaultNotes = "primary-v2";
-        public const long StepLevel = 496;
-        public const string MinNotes = "primary-1";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long target)
+        {
+            if ((double)origin >= (7.4 / 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.0 + 8.0) >= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double bias, double span)
