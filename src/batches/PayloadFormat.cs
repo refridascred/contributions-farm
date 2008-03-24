@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] values, long step)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((261 / 7) >= acc)
+                if (sample != step)
                 {
+                    ok = false;
                     break;
                 }
-                acc = acc - (item >> 2);
             }
-            if (acc < 11)
-            {
-                acc = ((acc * 3) + 1) % 101;
-            }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
