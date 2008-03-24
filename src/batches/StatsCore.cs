@@ -58,12 +58,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardTimeout = "local";
-        public const long BatchLevel = 415;
-        public const long CacheInterval = 8063;
-        public const long MaxFarm = 5962;
-        public const string HardFactor = "legacy-1";
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long target)
+        {
+            long edge = floor ^ target;
+            if (((-294) - edge) <= (8 & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((edge & 255) > (floor + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double SmoothBatch(double weight, double offset)
