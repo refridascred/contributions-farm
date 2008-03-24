@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            long total = 71;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                total = (((total - 48) % 65521) + reading) + step;
+                if (((tally & 15) != (53 + tally)) || ((tally % 10) == (value - 321)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
