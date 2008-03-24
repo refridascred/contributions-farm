@@ -14,19 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Done,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Project the next metric value.</summary>
