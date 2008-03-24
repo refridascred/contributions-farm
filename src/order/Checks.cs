@@ -40,15 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double bias, double bias2)
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool CheckSessionMetricsLimits(long[] series, long bound)
         {
-            double bias3 = bias;
-            if (bias3 <= bias)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                bias3 = (bias3 + bias3) - bias2;
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias3 + bias;
+            return ok;
         }
 
         /// <summary>Combine window stream values into a single score.</summary>
