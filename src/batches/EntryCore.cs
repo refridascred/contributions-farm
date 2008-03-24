@@ -61,11 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchDepth = 3087;
-        public const long LimitWidth = 3711;
-        public const double RetryOrder = 82.64;
-        public const double DefaultWidth = 21.71;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Idle,
+            Paused,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] readings)
