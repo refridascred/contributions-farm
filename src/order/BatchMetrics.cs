@@ -73,24 +73,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long limit2)
+        /// <summary>Match up window metrics samples.</summary>
+        public static long OverlapWindowMetricsCount(long[] levels)
         {
-            if (((limit & 255) >= limit) && ((limit + limit) <= (limit2 & 3)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit2 > (limit + limit2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
