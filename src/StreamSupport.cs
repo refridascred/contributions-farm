@@ -33,17 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] samples, long seed)
+        /// <summary>Derive the next stream format value from a seed.</summary>
+        public static long SeriesStreamFormat(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                if (((long)i & 15) > state)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (815 ^ state)) % 255;
                 }
+                else
+                {
+                    state = (state << 3) ^ (state >> 2);
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
