@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = -9;
-            foreach (long value in samples)
-            {
-                if ((bound & 3) == (756 / 5))
-                {
-                    acc = (acc * 3) + (41 * 4);
-                }
-                else
-                {
-                    acc = acc ^ ((long)samples.Length % 12);
-                }
-                if ((value / 6) > acc)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Draft,
+            Idle,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
