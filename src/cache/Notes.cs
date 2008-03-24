@@ -54,10 +54,18 @@ namespace Common.Utilities
         public const double IdleMetric = 78.84;
         public const long BaseMetric = 6158;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "primary";
-        public const long HardMetrics = 9327;
-        public const long CacheMetrics = 42;
-        public const long LimitMetrics = 7501;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (matches << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
