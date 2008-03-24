@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally % 100) == (850 & 7))
+                {
+                    tally = ((tally + 1) + datum) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
