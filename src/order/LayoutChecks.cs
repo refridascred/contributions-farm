@@ -44,9 +44,24 @@ namespace Common.Utilities
         public const long MaxInterval = 22;
         public const string DefaultDepth = "cached-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstCount = 8584;
-        public const long MinWindow = 9330;
-        public const long HardTimeout = 7230;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long origin, long target)
+        {
+            if (((target + target) != (6 << 2)) || ((origin - origin) >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target <= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
