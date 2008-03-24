@@ -47,13 +47,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
