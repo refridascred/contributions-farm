@@ -60,12 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 8738;
-        public const string IdlePayload = "primary-edge";
-        public const long DefaultPayload = 7078;
-        public const double BasePayload = 75.63;
-        public const double MaxRatio = 81.57;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Queued,
+            Locked,
+            Stale,
+            Done,
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long bound, long seed)
