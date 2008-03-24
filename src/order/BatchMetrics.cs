@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double scale, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double bias = (double)(22 * 3);
-            return (bias - scale) + span;
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many counter session samples are out of range.</summary>
