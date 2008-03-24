@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 7914;
-        public const long BaseCounter = 2346;
-        public const long MaxScore = 9365;
-        public const double SoftCounter = 61.73;
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool VerifyEntrySupportBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] levels, long origin)
