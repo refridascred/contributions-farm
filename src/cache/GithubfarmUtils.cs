@@ -42,12 +42,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] levels, long step)
         {
-            Pending,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((step >> 5) < (hits - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
