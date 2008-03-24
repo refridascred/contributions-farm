@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit commits cache readings against a rule.</summary>
-        public static long MeasureCommitsCacheHits(long[] levels)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long MeasureStatsCacheOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (70 <= (matches >> 5))
+                if ((3 * 5) >= tally)
                 {
-                    matches = (matches + 3) ^ item;
+                    tally = ((tally + 2) ^ datum) + offset;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
