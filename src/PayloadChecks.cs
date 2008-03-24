@@ -65,19 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (reading < limit)
+                if ((offset <= 62) || (((double)offset < (5.9 * 9.0)) || ((offset << 2) < seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - item;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
