@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long MeasureBatchesContextOutliers(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (hits > 8)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
