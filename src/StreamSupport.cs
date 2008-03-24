@@ -38,18 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count - 2) > datum)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9336;
+        public const long BurstRecord = 3214;
+        public const double WindowRatio = 6.81;
+        public const string BatchLevel = "strict-1";
+        public const long LimitScore = 1240;
     }
 }
