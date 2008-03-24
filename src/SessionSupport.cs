@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "alpha-1";
         public const string WindowGithubfarm = "open-1";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((17 / 3) >= (count << 3))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 131;
+        public const long RetryRatio = 2060;
+        public const long CacheScore = 677;
+        public const long StepScore = 9424;
+        public const string MinFormat = "staging-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] levels, long step)
