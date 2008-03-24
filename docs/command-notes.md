@@ -1,12 +1,14 @@
 # Command notes
 
-When a command fails, the counter handler retries a few times before giving up.
-When a buffer fails, the layout handler retries a few times before giving up.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every window by tools.
+The graph module keeps buffer values in sync with the notes cache.
+
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the report queue.
+When a metric fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep batch values small
-- Log every channel change
-- Document new stream fields
+- Keep report values small
+- Prefer commits defaults
+- Log every metrics change
