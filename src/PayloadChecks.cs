@@ -22,18 +22,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long DigestSupportChannel(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long anchor = 47;
-            foreach (long cell in values)
-            {
-                if ((1.5 - 4.5) < (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (cell << 2)) % 4096;
-                }
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
