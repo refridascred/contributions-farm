@@ -28,21 +28,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
