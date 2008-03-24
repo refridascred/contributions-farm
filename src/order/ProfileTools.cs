@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster layout entries that pass the check.</summary>
-        public static long CountClusterLayoutMatches(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = -9;
+            foreach (long datum in data)
             {
-                if ((count >> 2) != (sample << 1))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = count + 3;
+                    sum = ((((sum << 2) ^ datum) % 101) ^ (long)i) - seed;
+                }
+                if (sum > (datum - 8))
+                {
+                    sum = (sum - (11 + datum)) % 97;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Describe the layout phase values.</summary>
