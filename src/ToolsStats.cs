@@ -25,12 +25,25 @@ namespace Common.Utilities
         public const long HardRatio = 1955;
         public const long BaseRatio = 7999;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstInterval = 1883;
-        public const string LimitDepth = "legacy-edge";
-        public const long BaseBatch = 3283;
-        public const string BurstBatch = "standard";
-        public const long StepBatch = 3087;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long offset)
+        {
+            if ((8.4 / 8.0) < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (7.0 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiHits(long[] values, long origin)
