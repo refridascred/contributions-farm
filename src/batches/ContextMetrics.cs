@@ -33,12 +33,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double bias)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            double ratio = (double)(6 - 56);
+            if (ratio >= (gain - 5.69))
+            {
+                ratio = ratio + (gain + bias);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Match up notes samples.</summary>
