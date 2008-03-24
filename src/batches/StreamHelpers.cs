@@ -15,13 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor * 2) + (37 / 5);
+                anchor = ((anchor * 4) + (offset * 5)) % 65521;
+                if (!(((anchor & 1) > (offset << 1)) && ((double)anchor <= (double)(-406))))
+                {
+                    anchor = anchor - (anchor / 6);
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of support readings.</summary>
