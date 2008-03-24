@@ -34,12 +34,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            Stale,
-            Ready,
-            Dropped,
+            if ((double)origin <= 0.36)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin <= 64))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + origin) <= 515)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
