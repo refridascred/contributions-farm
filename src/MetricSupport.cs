@@ -16,11 +16,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardRatio = 8262;
-        public const string MinCounter = "local-1";
-        public const string CacheRatio = "standard-1";
-        public const long IdleCounter = 2783;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long step)
+        {
+            if (!(step >= 448))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step <= 880)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.5 * 1.0) >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long origin, long limit)
