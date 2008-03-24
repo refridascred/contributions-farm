@@ -33,22 +33,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long MeasureBatchAccountGaps(long[] samples)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= 5.72)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
