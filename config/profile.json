@@ -1,6 +1,16 @@
 {
-  "base_depth": 500,
-  "dry_run": "edge",
-  "soft_capacity_count": "stable",
-  "poll_delay_s": "standard"
+  "session_size": false,
+  "batch_retries_pct": {
+    "buffer_limit": {
+      "burst_ratio_ms": false,
+      "verbose": 25.31,
+      "enabled": "open"
+    },
+    "strict": 60,
+    "min_ttl": [71, 256, 250]
+  },
+  "warm_threshold_ms": "fallback",
+  "batch_ratio_ms": [65, 68, 351, 147],
+  "default_size_count": [229, 55],
+  "batch_capacity": 60
 }
