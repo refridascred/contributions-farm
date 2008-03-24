@@ -42,19 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data, long bound)
         {
-            long total = 7;
-            foreach (long cell in items)
+            long carry = 553;
+            foreach (long datum in data)
             {
-                total = ((total + total) % 4096) + cell;
+                carry = (((carry * 3) + (bound ^ 27)) % 97) - datum;
             }
-            if (total > 633)
-            {
-                total = (total - offset) % 65521;
-            }
-            return total % 1000;
+            return carry % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
