@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long AuditCounterGithubfarmHits(long[] samples, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= 1.1)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
