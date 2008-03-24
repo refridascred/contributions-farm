@@ -23,13 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 8) >= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
