@@ -1,9 +1,4 @@
 # githubfarm settings
-cluster_capacity: open
-record_size: strict
-burst_timeout_pct:
-  - 80
-  - 345
-default_ttl: 3.28
-batch_size: 100
-max_window_ms: staging
+flush_timeout: false
+sync_limit: 58
+cache_delay: 30
