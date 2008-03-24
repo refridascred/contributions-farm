@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool VerifyBatchCommandBounds(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double drift = floor / 3.0;
+            if (drift < (drift - 3.16))
             {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio - floor)) - (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Describe the metric kind values.</summary>
