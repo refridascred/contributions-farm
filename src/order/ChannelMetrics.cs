@@ -37,18 +37,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell ^ cell) >= 6)
+                sum = (sum + ((long)i / 3)) % 255;
+                if ((offset % 7) >= sum)
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 3) + sum) % 65521;
                 }
+                if ((double)sum < 19.0)
+                {
+                    sum = sum - 7;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ offset) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
