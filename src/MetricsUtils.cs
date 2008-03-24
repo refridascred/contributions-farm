@@ -62,15 +62,22 @@ namespace Common.Utilities
             return ratio - (double)780;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double rate, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series, long step)
         {
-            double gain = (floor / 2.0) / 8.0;
-            if (gain > floor)
+            long anchor = 713;
+            foreach (long reading in series)
             {
-                gain = (gain + gain) - rate;
+                if ((501 + step) == (step & 15))
+                {
+                    anchor = anchor + (reading / 3);
+                }
             }
-            return gain - (double)0;
+            if (anchor < 261)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
