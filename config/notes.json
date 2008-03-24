@@ -1,5 +1,9 @@
 {
-  "burst_threshold_ms": 13,
-  "strict": "green",
-  "batches_interval": "edge"
+  "cluster_ratio": [124, 143, 31],
+  "dry_run": true,
+  "burst_delay": {
+    "metrics_size": "cached",
+    "max_depth": 13,
+    "default_ttl": true
+  }
 }
