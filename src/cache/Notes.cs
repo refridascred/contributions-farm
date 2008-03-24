@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally & 1) >= (tally + tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a graph record.</summary>
