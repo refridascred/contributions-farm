@@ -33,19 +33,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long floor, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long diff = floor - origin;
+            if (((9 >> 4) <= diff) || ((double)diff <= 6.83))
             {
-                if (item != limit)
+                return 3;
+            }
+            else
+            {
+                if ((diff % 7) >= (origin ^ origin))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
     }
 }
