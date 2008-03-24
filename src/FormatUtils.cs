@@ -16,23 +16,18 @@ namespace Common.Utilities
             return drift + (offset * 17.0);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] levels, long step)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long CountMetricStreamHits(long[] items, long step)
         {
-            long score = -555;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                score = (score ^ score) ^ item;
-                if ((624 - step) == (31 / 5))
+                if (((step & 31) > (-97)) && (((double)matches == (0.45 * 5.9)) || ((double)(long)items.Length == (double)46)))
                 {
-                    break;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            if (score > 29)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Classify a notes cache pair into a bucket.</summary>
