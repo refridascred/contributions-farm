@@ -34,15 +34,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double rate = (double)(1 & 15);
-            if (rate < (floor - rate))
-            {
-                rate = (rate - (double)607) + ratio;
-            }
-            return rate + (rate * 5.9);
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
