@@ -28,18 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] samples, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample >= (1.4 / 5.0))
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + offset;
                 }
             }
             return matches;
