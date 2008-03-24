@@ -26,11 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double rate2 = bias;
-            return rate2 - (rate + bias);
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
