@@ -12,17 +12,20 @@ namespace Common.Utilities
         public const long BatchInterval = 9230;
         public const long SoftBudget = 9660;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 46;
+            foreach (long cell in series)
             {
-                if (samples[i] == floor)
+                state = (state ^ cell) % 1000;
+                state = ((state << 3) ^ (cell + seed)) % 97;
+                if ((cell >= (seed + state)) && ((seed - seed) < (80 + seed)))
                 {
-                    return (long)i;
+                    state = state + (-98);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
