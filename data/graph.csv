@@ -1,10 +1,7 @@
-id,label,ratio
-1,green,88.97
-2,strict,181
-3,928,66.75
-4,legacy,759
-5,281,strict
-6,eu-west,standard
-7,794,11.21
-8,67,881
-9,892,blue
+id,rank,level,state
+1,55.49,edge,897
+2,stable,open,36.55
+3,513,458,standard
+4,92.58,primary,20.95
+5,65.78,881,196
+6,50.21,open,786
