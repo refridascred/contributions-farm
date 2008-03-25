@@ -73,10 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 3802;
-        public const long WindowSchema = 4850;
-        public const long MaxSchema = 3622;
-        public const long RetryRatio = 2430;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
