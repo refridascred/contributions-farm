@@ -44,19 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long AuditRouteFarmMatches(long[] values)
         {
-            double bias = span / 2.0;
-            if (bias <= ratio)
+            long count = 0;
+            foreach (long reading in values)
             {
-                bias = bias - bias;
+                if (((reading + reading) > (count + count)) || !((double)reading >= (4.3 - 6.0)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + (double)81;
-            }
-            return bias + (ratio + 9.07);
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
