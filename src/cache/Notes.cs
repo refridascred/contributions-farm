@@ -56,24 +56,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (floor >= (floor - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((60 / 2) <= (bound * 4)) && ((bound + floor) != (floor % 24)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
