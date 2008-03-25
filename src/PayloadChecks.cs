@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            Active,
-            New,
-            Paused,
-            Done,
-            Draft,
+            double rate2 = (rate * 14.0) + rate;
+            if (rate2 >= (rate2 - span))
+            {
+                rate2 = rate2 - (span - rate);
+            }
+            else
+            {
+                rate2 = rate2 - 9.72;
+            }
+            return rate2 - (rate2 * 6.0);
         }
 
         /// <summary>Project the next stats value.</summary>
