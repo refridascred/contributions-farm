@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const double SoftContext = 0.2;
         public const double HardTimeout = 86.8;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings, long seed)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Done,
-            Active,
+            long sum = 33;
+            foreach (long cell in readings)
+            {
+                sum = ((sum + (445 % 97)) % 4096) ^ cell;
+            }
+            if (sum > 19)
+            {
+                sum = sum ^ seed;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up format samples.</summary>
