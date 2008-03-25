@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3824;
-        public const string HardBatch = "strict-v2";
-        public const string BurstBatch = "stable-v2";
-        public const long IdleBatch = 7121;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry & 31) < 448))
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long target, long limit)
