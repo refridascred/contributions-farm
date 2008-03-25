@@ -33,18 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long TallyAccountPayloadHits(long[] readings, long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (800 <= (tally ^ 108))
-                {
-                    tally = ((tally + 1) ^ reading) + seed;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Describe the editor status values.</summary>
