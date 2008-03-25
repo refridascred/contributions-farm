@@ -29,11 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 1700;
-        public const double LimitSize = 46.81;
-        public const double MinSize = 87.52;
-        public const double SoftLevel = 80.73;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] series, long step)
