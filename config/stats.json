@@ -1,8 +1,14 @@
 {
-  "warm_threshold": [44, 351],
-  "base_depth_count": 37.5,
-  "graph_timeout": 79.44,
-  "retry_size": 53,
-  "sync_depth": true,
-  "default_ttl_pct": 30
+  "max_timeout_ms": true,
+  "max_limit": ["edge", "fallback", "open"],
+  "retry_threshold": "fallback",
+  "entry_timeout": "open",
+  "counter_capacity": "edge",
+  "sync_size_s": {
+    "max_interval": "latest",
+    "sync_limit_pct": 789,
+    "command_timeout": 23,
+    "strict": [81, 253],
+    "readonly": "strict"
+  }
 }
