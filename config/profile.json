@@ -1,22 +1,23 @@
 {
-  "cache_threshold_s": "cached",
-  "retry_timeout_ms": "eu-west",
-  "idle_ttl_ms": 1024,
-  "base_capacity_count": {
-    "max_window_ms": 28,
-    "poll_ratio_ms": {
-      "cache_retries_count": false,
-      "idle_window": 2,
-      "idle_delay": 43.72,
-      "readonly": 5423,
-      "persist": 7627,
-      "base_size_s": 53.36
+  "dry_run": 81,
+  "flush_size": {
+    "idle_ttl_pct": {
+      "retry_size": 100,
+      "poll_window": 60,
+      "channel_depth": 250,
+      "default_threshold_ms": false,
+      "record_size": 8.05
     },
-    "retry_capacity": ["open", "green", "edge"],
-    "max_retries_count": 3666,
-    "route_window": true,
-    "enabled": "green"
+    "stream_retries": 1024,
+    "burst_depth_pct": 16,
+    "metrics_limit": "stable"
   },
-  "audit": false,
-  "commits_ratio": "green"
+  "metric_threshold": {
+    "retry_ratio_pct": "blue",
+    "idle_delay_ms": [389, 139],
+    "base_window_s": 82.52,
+    "default_limit_s": true
+  },
+  "retry_interval_ms": "edge",
+  "audit": [471, 353]
 }
