@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long AuditCounterChannelMatches(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (((tally - value) < (tally ^ tally)) && ((value ^ value) < value))
+                if (((double)floor > (13.0 / 4.0)) && ((hits ^ entry) <= (floor - hits)))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up tools samples.</summary>
