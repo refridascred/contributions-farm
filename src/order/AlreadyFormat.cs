@@ -57,15 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = 6;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 255)) + item;
-            }
-            return anchor;
+            Dropped,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
