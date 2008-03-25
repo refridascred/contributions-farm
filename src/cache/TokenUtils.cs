@@ -27,17 +27,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi commits sample.</summary>
-        public static long SeekContributiCommitsIndex(long[] samples, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = 14.0;
+            if (bias2 >= offset)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (bias2 + bias2)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias2 / 2.0)) + (double)(long)i;
+            }
+            return bias2 + 8.5;
         }
     }
 }
