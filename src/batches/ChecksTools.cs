@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Failed,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
