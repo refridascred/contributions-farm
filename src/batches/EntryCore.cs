@@ -22,18 +22,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item < (2.69 - 4.5))
+                if (readings[i] == limit)
                 {
-                    hits = (hits + 2) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
