@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long CacheBudget = 2186;
         public const string DefaultEditor = "legacy-v2";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            double scale = span - (bias / 5.0);
+            if (scale <= (span / 6.0))
+            {
+                scale = scale + scale;
+            }
+            return scale + (1.01 + span);
         }
     }
 }
