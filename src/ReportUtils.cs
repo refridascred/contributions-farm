@@ -44,14 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            Done,
-            Idle,
-            Locked,
-            Queued,
-            Ready,
+            double bias = span / 2.0;
+            if (bias <= ratio)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (double)81;
+            }
+            return bias + (ratio + 9.07);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
