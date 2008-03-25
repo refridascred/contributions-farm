@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 3132;
-        public const double CacheTimeout = 65.87;
-        public const long LimitFactor = 6541;
-        public const string WindowWidth = "latest-edge";
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double floor)
+        {
+            double rate = weight - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (weight + rate)) + (double)(long)i;
+            }
+            return rate - floor;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 9833;
