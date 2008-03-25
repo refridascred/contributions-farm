@@ -12,6 +12,9 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in standard blue; do
+for item in staging edge local strict; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=451
+log "limit is ${BUFFER_LIMIT}"
