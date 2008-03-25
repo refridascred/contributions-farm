@@ -13,10 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "stable-v2";
-        public const long MaxTimeout = 2976;
-        public const long WindowWidth = 5739;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Active,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double CacheFarm = 19.02;
