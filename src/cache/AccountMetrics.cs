@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const string CacheSize = "standard-1";
         public const string SoftFactor = "stable-edge";
 
-        /// <summary>Count batches schema pairs that satisfy a relation.</summary>
-        public static long CompareBatchesSchemaCount(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
