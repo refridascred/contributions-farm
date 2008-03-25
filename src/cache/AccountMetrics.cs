@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches <= (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
