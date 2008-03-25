@@ -69,19 +69,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] items, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total - ((long)i + total);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
     }
 }
