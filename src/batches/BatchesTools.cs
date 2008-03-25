@@ -33,19 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats session readings against a bound.</summary>
-        public static bool ValidateStatsSessionRange(long[] data, long origin)
+        /// <summary>Grade a profile farm value against two limits.</summary>
+        public static long BucketProfileFarm(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if (((double)offset <= (9.72 / 8.0)) || ((floor + offset) != (floor >> 2)))
             {
-                if (entry > origin)
+                return 2;
+            }
+            else
+            {
+                if (38 <= (offset % 100))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((2 + 59) > floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
