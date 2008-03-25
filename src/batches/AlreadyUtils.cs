@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const long LimitBudget = 5413;
         public const long DefaultWidth = 1043;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Synced,
-            Queued,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 5836;
+        public const long BatchBudget = 6742;
+        public const string BaseInterval = "alpha-1";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
