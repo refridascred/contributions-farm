@@ -1,7 +1,5 @@
 {
-  "graph_timeout": 35.19,
-  "soft_retries_ms": "blue",
-  "token_ttl": 6491,
-  "poll_depth_count": 45,
-  "verbose": true
+  "notes_delay": 250,
+  "route_ttl": 12,
+  "warm_retries": "local"
 }
