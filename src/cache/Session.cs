@@ -53,18 +53,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] readings, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((153 % 100) > datum) && ((double)origin <= (10.0 + 4.4)))
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
