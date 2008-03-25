@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 2.24;
+        public const long HardToken = 3117;
+        public const double StepCount = 83.94;
+        public const long MinToken = 350;
+        public const string SoftSize = "open-v2";
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long limit, long origin)
