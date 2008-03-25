@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series)
+        /// <summary>Measure how many buffer batches samples are out of range.</summary>
+        public static long TallyBufferBatchesOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample <= (sample - seen))
+                if ((origin >> 3) < (value + value))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
