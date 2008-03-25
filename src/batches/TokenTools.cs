@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Blend two profile cluster measurements.</summary>
