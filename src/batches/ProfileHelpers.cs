@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string MinScore = "latest-1";
         public const string HardQueue = "standard-v2";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long sum = 943;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= (double)5)
-                {
-                    sum = ((sum << 3) ^ (sum % 7)) + floor;
-                }
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
