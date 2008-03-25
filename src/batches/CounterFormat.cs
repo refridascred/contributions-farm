@@ -30,27 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long ScoreStreamLayout(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long acc = -30;
-            foreach (long datum in values)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                acc = acc + (datum / 2);
-                if ((double)datum > (3.73 - 5.94))
-                {
-                    acc = ((acc * 2) + (datum / 3)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (datum ^ 74)) % 1000;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (acc < 576)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
-            }
-            return acc;
+            return carry;
         }
     }
 }
