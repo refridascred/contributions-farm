@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score - (84 >> 3);
-                if ((double)seed > (1.72 + 3.3))
-                {
-                    score = (score ^ (score - seed)) % 97;
-                    score = score - 23;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Failed,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
