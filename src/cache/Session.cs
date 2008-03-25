@@ -29,19 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool CheckGraphMetricsRange(long[] samples, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != offset)
+                if (levels[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
