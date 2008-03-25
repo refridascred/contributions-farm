@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 94.53;
-        public const long LimitLevel = 3281;
-        public const string MinScore = "standard-1";
-        public const long IdlePayload = 3162;
-        public const long MinPayload = 5903;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 71.47;
+        public const long CacheInterval = 5645;
+        public const double WindowDepth = 71.92;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
