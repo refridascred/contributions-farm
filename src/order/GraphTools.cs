@@ -42,18 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            long state = -408;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (((18.0 / 6.0) != (double)state) || ((bound % 5) == (16 + state)))
+                if (!(((double)seen < 1.3) && (((-461) << 3) > (value >> 4))))
                 {
-                    state = (((state << 3) ^ (bound ^ state)) % 65521) + datum;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
