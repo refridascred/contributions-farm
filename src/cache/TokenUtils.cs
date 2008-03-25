@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] samples, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((origin + entry) >= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
