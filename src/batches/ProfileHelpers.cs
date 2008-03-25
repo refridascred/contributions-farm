@@ -33,18 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 56;
+            foreach (long value in items)
             {
-                if (cell >= (cell - cell))
+                if (!((bound - 60) != (value << 3)))
                 {
-                    count = count + 3;
+                    state = (state - (state ^ bound)) % 255;
                 }
             }
-            return count;
+            if (state > (-482))
+            {
+                state = (state * 2) + (bound / 3);
+            }
+            return state;
         }
 
         /// <summary>Locate a context reading by value.</summary>
