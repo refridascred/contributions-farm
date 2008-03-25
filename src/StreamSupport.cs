@@ -34,24 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long offset2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (!((18.0 * 8.73) <= (double)offset2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >= (offset - offset)) || (1.01 > (double)offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Stale,
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
