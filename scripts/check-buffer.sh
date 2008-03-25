@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=460
+BUFFER_LIMIT=24
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in edge legacy staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
