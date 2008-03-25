@@ -1,7 +1,11 @@
 # entry settings
-retry_threshold: eu-west
-max_window: 7992
-batch_delay_ms: 60
-compress: 60
-persist: 52
-sync_size_ms: latest
+filter_delay:
+  - blue
+  - standard
+  - green
+  - standard
+cache_delay_pct: false
+support_ratio: standard
+contributi_interval: green
+cache_delay_count: local
+batch_capacity: 2360
