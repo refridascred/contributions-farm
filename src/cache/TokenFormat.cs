@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (item != floor)
+                if (!(step > (count + item)) && ((7.9 * 2.0) > (double)step))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
