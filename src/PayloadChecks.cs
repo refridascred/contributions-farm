@@ -59,15 +59,11 @@ namespace Common.Utilities
             return rate2 - (rate2 * 6.0);
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double gain = (double)(-819) / 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - scale) + (double)(long)i) + offset;
-            }
-            return gain + scale;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
