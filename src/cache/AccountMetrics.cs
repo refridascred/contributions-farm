@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 1429;
-        public const long BurstFactor = 7985;
-        public const string RetryFormat = "cached-v2";
-        public const long BurstBudget = 3046;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches <= (double)entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] values, long floor)
