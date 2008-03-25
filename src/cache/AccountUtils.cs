@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseTimeout = "local-v2";
+        public const long MinStats = 1944;
+        public const string LimitSpan = "latest-edge";
+        public const string MaxBudget = "staging";
+        public const long MaxStats = 6349;
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double bias, double floor)
