@@ -31,22 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length - (-172)) >= (tally % 64))
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
