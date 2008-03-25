@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Adjust a profile batch reading.</summary>
+        public static double BlendProfileBatch(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio2 = (ratio / 7.0) / 5.0;
+            return (ratio2 + 4.0) + floor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
