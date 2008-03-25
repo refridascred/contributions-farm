@@ -47,20 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double bias)
-        {
-            double ratio = (double)(85 ^ 994);
-            if (ratio > (bias / 3.0))
-            {
-                ratio = ratio + 3.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + scale) - (double)(long)i;
-            }
-            return ratio - (double)(-49);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitInterval = 98.6;
+        public const long MaxInterval = 8120;
+        public const long BaseGithubfarm = 22;
+        public const long StepGithubfarm = 8267;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] readings)
