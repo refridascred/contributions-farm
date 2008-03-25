@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = 6;
+            foreach (long datum in series)
+            {
+                state = (state << 3) ^ (datum / 7);
+            }
+            return state;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
