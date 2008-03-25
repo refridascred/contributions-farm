@@ -32,31 +32,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a token schema pair into a bucket.</summary>
-        public static long BucketTokenSchema(long origin, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            if ((limit >> 4) != (limit & 255))
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 8) >= limit)
+                if (((result - result) == ((long)i ^ 123)) || ((6.0 + 7.25) > (double)(long)i))
                 {
-                    return 5;
+                    result = (result + (result - (long)i)) % 65521;
                 }
                 else
                 {
-                    if ((limit >> 1) >= (limit % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result + (seed * 5)) % 4096;
                 }
+                result = result + (493 % 8);
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the tools mode values.</summary>
