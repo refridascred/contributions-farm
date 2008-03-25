@@ -61,19 +61,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] data, long floor)
         {
-            long mix = 418;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 7; i++)
+                if (((99 + tally) != (datum + 5)) && !((tally ^ datum) <= (datum - 69)))
                 {
-                    mix = (mix - (floor << 1)) ^ (long)i;
+                    tally = (tally + 1) + floor;
                 }
-                mix = (mix << 2) ^ entry;
             }
-            return mix;
+            return tally;
         }
     }
 }
