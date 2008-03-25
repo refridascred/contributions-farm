@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((5 - tally) <= (cell & 3))
-                {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepDepth = 32.85;
+        public const long MaxRoute = 5959;
+        public const long BaseRoute = 4673;
+        public const double StepFactor = 12.03;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
