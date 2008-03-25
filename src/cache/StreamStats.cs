@@ -26,10 +26,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseSize = 6720;
-        public const double MinPayload = 77.87;
-        public const double BurstSpan = 21.77;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Active,
+            Idle,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
