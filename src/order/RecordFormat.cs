@@ -52,32 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long gap = bound ^ offset;
-            if ((bound / 4) >= (gap + 991))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap >> 5) != (bound ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound > (4.7 - 5.21)) || ((double)gap == (0.77 + 9.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
