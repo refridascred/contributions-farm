@@ -30,13 +30,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long AuditNotesBatchHits(long[] levels)
         {
-            Done,
-            Draft,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits * 2) > sample)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
