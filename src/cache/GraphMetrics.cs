@@ -28,11 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseScore = "strict-edge";
-        public const long LimitBudget = 1320;
-        public const long StepDepth = 7632;
-        public const long BatchCount = 768;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheInterval = 4429;
+        public const long DefaultWidth = 5844;
+        public const double RetryGraph = 52.97;
+        public const string MaxSize = "latest-v2";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsOutliers(long[] levels, long target)
