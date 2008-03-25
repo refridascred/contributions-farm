@@ -36,19 +36,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Digest a series of filter buffer entries.</summary>
+        public static long CombineFilterBuffer(long[] items, long step)
         {
-            double bias = floor;
-            if (bias <= 3.4)
+            long mix = 102;
+            foreach (long reading in items)
             {
-                bias = (bias - (bias + 2.65)) + scale;
+                if (6.17 < (double)reading)
+                {
+                    mix = ((mix << 3) ^ mix) - step;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mix < 2)
             {
-                bias = (bias - (bias / 2.0)) + (double)(long)i;
+                mix = (mix + (91 & 1)) % 101;
             }
-            return bias + (floor * 6.91);
+            return mix % 65521;
         }
     }
 }
