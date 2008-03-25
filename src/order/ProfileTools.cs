@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 9347;
-        public const double SoftContext = 0.2;
-        public const double HardTimeout = 86.8;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((origin / 6) >= (origin + 76))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] readings, long seed)
