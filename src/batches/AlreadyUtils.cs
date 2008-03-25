@@ -25,10 +25,23 @@ namespace Common.Utilities
         public const long LimitBudget = 5413;
         public const long DefaultWidth = 1043;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 5836;
-        public const long BatchBudget = 6742;
-        public const string BaseInterval = "alpha-1";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long seed)
+        {
+            long state = -9;
+            foreach (long datum in readings)
+            {
+                if ((datum + state) <= (datum + datum))
+                {
+                    state = ((state * 2) + seed) % 1000;
+                }
+            }
+            if (state < 546)
+            {
+                state = state + seed;
+            }
+            return state;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
