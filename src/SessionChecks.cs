@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long AuditSchemaContextHits(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches << 1) == (matches + entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
