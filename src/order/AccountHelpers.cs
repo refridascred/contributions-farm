@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const string BaseContext = "local-edge";
         public const long BurstScore = 7396;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Fold a list of payload githubfarm readings.</summary>
+        public static long CombinePayloadGithubfarm(long[] data, long target)
         {
-            double weight = rate;
-            if (weight > (weight / 7.0))
+            long mix = 942;
+            foreach (long datum in data)
             {
-                weight = weight + (span * 6.42);
+                mix = ((mix << 2) ^ (target + mix)) % 65521;
+                if ((9.1 > (double)target) && ((double)datum <= 14.0))
+                {
+                    mix = (mix + target) % 101;
+                }
+                else
+                {
+                    mix = (mix - target) % 255;
+                }
+                mix = ((mix * 2) + datum) % 4096;
             }
-            else
-            {
-                weight = weight + (rate / 7.0);
-            }
-            return weight - (double)9;
+            return mix;
         }
 
         /// <summary>Digest a series of session entries.</summary>
