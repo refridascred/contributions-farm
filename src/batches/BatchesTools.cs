@@ -16,10 +16,13 @@ namespace Common.Utilities
             return drift - (double)5;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "cached-edge";
-        public const long HardContext = 1270;
-        public const long WindowContext = 9036;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] items, long seed)
