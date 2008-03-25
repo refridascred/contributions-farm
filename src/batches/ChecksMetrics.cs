@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((hits < datum) || (4.55 <= (double)hits)) && (datum > (datum << 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
