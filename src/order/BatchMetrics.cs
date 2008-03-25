@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 71;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 4) + (443 - limit)) - item;
             }
-            return seen;
+            if (state < 0)
+            {
+                state = ((state * 5) + (17 & 127)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Roll a batch stream counter forward.</summary>
