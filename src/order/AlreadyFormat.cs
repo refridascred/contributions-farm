@@ -64,19 +64,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] levels, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (entry >= bound)
+                if (item > floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
