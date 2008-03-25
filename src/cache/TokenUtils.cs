@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = floor + seed;
+            if ((seed * 2) == (bound >> 4))
             {
-                if (data[i] < floor)
+                return 6;
+            }
+            else
+            {
+                if ((seed > floor) || ((seed + floor) > (floor % 60)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (seed < (seed << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
