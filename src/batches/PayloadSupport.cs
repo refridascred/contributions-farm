@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = 8;
+            foreach (long value in series)
             {
-                if (!(((77 & 3) >= (cell + seen)) || ((double)cell >= (4.14 * 6.9))))
-                {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = anchor ^ ((long)series.Length - value);
             }
-            return seen;
+            if (anchor < 797)
+            {
+                anchor = ((anchor << 2) ^ (bound & 7)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
