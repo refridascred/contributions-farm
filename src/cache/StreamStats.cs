@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every order checks entry stays within the limit.</summary>
-        public static bool GuardOrderChecksBounds(long[] series, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long anchor = 7;
+            foreach (long datum in items)
             {
-                if (reading < limit)
+                if (((2.12 * 5.2) >= (double)datum) || ((anchor % 16) <= (long)items.Length))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (anchor + 42)) % 1000;
                 }
             }
-            return ok;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a editor record.</summary>
