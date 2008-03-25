@@ -65,19 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] series, long seed)
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long ScoreEditorFormat(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long result = 6;
+            foreach (long sample in series)
             {
-                if (datum <= seed)
+                if (!(sample >= (sample * 4)))
                 {
-                    ok = false;
-                    break;
+                    result = (result - (688 ^ 268)) % 65521;
                 }
             }
-            return ok;
+            if (result > 85)
+            {
+                result = (result + (step - 90)) % 4096;
+            }
+            return result;
         }
     }
 }
