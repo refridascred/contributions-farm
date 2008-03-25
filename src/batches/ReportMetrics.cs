@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)seed == (7.0 + 5.0)) || ((4.1 - 0.8) == (double)tally))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
