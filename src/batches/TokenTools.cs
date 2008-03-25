@@ -20,21 +20,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            if (((target + 702) < (target / 5)) && ((origin - origin) <= (target ^ target)))
             {
-                if ((543 - step) <= (61 + result))
-                {
-                    result = result - (step + 633);
-                    break;
-                }
-                result = (result - result) % 1000;
-                result = ((result * 2) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((target & 7) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (origin + 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin != (12.0 + 2.55))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches level values.</summary>
