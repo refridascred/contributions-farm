@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            New,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate counter samples.</summary>
