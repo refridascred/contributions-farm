@@ -28,17 +28,23 @@ namespace Common.Utilities
         public const double HardAlready = 28.68;
         public const long StepAlready = 1986;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = ratio;
+            if (rate < rate)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)2) + span;
             }
-            return -1;
+            else
+            {
+                rate = rate + 2.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)64) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
