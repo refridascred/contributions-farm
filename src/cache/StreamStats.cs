@@ -14,17 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + (82 ^ (long)i)) % 101;
-                score = score ^ (step % 24);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
