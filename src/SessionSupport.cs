@@ -24,18 +24,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry * 3) >= 67)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
