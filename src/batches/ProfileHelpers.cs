@@ -51,17 +51,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 985;
+            foreach (long datum in levels)
             {
-                if (samples[i] == origin)
+                if ((datum / 9) >= (target + 73))
                 {
-                    return (long)i;
+                    acc = (acc + (1 / 2)) % 255;
+                }
+                if (datum > (target ^ datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 9)
+            {
+                acc = ((acc << 3) ^ (acc ^ (-9))) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
