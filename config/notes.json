@@ -1,6 +1,8 @@
 {
-  "audit": "staging",
-  "readonly": false,
-  "strict": "primary",
-  "enabled": 98.86
+  "default_threshold": true,
+  "enabled": 86.01,
+  "dry_run": 4420,
+  "readonly": 28,
+  "sync_threshold": 9301,
+  "account_threshold": true
 }
