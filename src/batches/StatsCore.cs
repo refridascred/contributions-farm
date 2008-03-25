@@ -71,20 +71,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window order counter forward.</summary>
-        public static long StepWindowOrder(long step)
+        /// <summary>Scale a session tools figure with a bias.</summary>
+        public static double AdjustSessionTools(double ratio, double span)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            double rate = 9.3;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((1.7 / 2.0) >= (double)score))
-                {
-                    score = score + score;
-                }
-                score = score + (64 + 777);
-                score = ((score * 5) + (long)i) % 101;
+                rate = (((rate - rate) - (double)(long)i) - ratio) + span;
             }
-            return score;
+            return rate - (rate * 9.0);
         }
     }
 }
