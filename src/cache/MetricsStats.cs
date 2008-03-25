@@ -14,22 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long sum = 8;
-            foreach (long cell in data)
-            {
-                if ((offset * 2) < sum)
-                {
-                    sum = (sum + (cell + cell)) % 1000;
-                }
-                if ((double)cell <= (3.6 * 3.3))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Idle,
+            Ready,
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
