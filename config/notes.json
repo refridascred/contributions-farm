@@ -1,11 +1,5 @@
 {
-  "record_ratio": {
-    "batches_capacity": 57.21,
-    "hard_timeout": 250,
-    "idle_threshold": true,
-    "dry_run": [367, 42, 4]
-  },
-  "entry_ttl": false,
-  "default_interval": ["fallback", "green"],
-  "idle_interval_pct": 29.34
+  "default_interval_s": true,
+  "hard_timeout": 60,
+  "base_delay_s": 250
 }
