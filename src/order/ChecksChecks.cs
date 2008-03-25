@@ -54,10 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 7269;
-        public const string SoftEntry = "standard";
-        public const long CacheEntry = 2003;
-        public const double MaxFactor = 68.91;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Pending,
+            Closed,
+            Queued,
+            Done,
+            Dropped,
+        }
     }
 }
