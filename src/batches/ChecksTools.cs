@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            Draft,
-            Closed,
-            Paused,
-            New,
-            Dropped,
+            long sum = 280;
+            foreach (long value in levels)
+            {
+                sum = sum - (value + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
