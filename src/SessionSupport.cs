@@ -16,25 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long offset, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long edge = offset + seed;
-            if ((edge - seed) > (90 + edge))
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((-27) ^ offset) != (seed - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
