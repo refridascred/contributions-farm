@@ -32,17 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = -788;
-            foreach (long reading in levels)
-            {
-                mark = (mark + (reading + mark)) % 4096;
-                mark = mark + (73 - mark);
-                mark = ((mark << 2) ^ (mark ^ reading)) % 4096;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
