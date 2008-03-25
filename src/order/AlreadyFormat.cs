@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a contributi session pair into a bucket.</summary>
-        public static long GradeContributiSession(long step, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
         {
-            long slot = step - origin;
-            if ((862 << 2) != (slot + step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step ^ 45) > (step << 2)) && ((slot & 31) > origin))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((slot + origin) > (step << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
