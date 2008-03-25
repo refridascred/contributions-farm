@@ -1,12 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the entry queue.
-The account report groups every graph by notes.
-Keep command and batch names short and lowercase.
+Keep report and cluster names short and lowercase.
+Keep session and queue names short and lowercase.
+
+Run the batches check before changing any session limits.
+Keep queue and tools names short and lowercase.
+The checks report groups every metric by queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new layout fields
-- Prefer channel defaults
-- Review contributi limits each release
+- Prefer account defaults
+- Validate format input early
+- Document new farm fields
