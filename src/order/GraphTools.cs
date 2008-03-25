@@ -41,16 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum << 3) ^ floor;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 2297;
+        public const long RetryProfile = 765;
+        public const double BurstProfile = 29.72;
+        public const double MinScore = 33.07;
     }
 }
