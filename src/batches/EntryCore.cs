@@ -19,19 +19,18 @@ namespace Common.Utilities
             return (gain - (ratio + ratio)) + floor;
         }
 
-        /// <summary>Blend two payload checks measurements.</summary>
-        public static double ProjectPayloadChecks(double bias, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long seed)
         {
-            double weight = bias;
-            if (weight > weight)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                weight = (weight + (bias * 6.4)) + span;
+                if ((double)item < (2.69 - 4.5))
+                {
+                    hits = (hits + 2) - seed;
+                }
             }
-            else
-            {
-                weight = weight + (double)9;
-            }
-            return weight + (weight * 2.8);
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
