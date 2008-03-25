@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items, long offset)
+        /// <summary>Accumulate farm counter samples.</summary>
+        public static long CombineFarmCounter(long[] levels)
         {
-            long total = 4;
-            foreach (long datum in items)
+            long total = 5;
+            foreach (long sample in levels)
             {
-                if ((5.5 > (double)offset) && ((total * 4) < (total - 1)))
-                {
-                    total = total - (datum ^ offset);
-                }
-                else
-                {
-                    total = total + (offset + datum);
-                }
-            }
-            if (total < 41)
-            {
-                total = (total ^ total) % 101;
+                total = ((total << 2) ^ (total ^ sample)) % 255;
             }
             return total;
         }
