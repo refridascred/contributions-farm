@@ -1,11 +1,11 @@
 # Command notes
 
-Use commits settings to tune how often contributi data is refreshed.
-The cache report groups every notes by buffer.
+The metric report groups every metrics by githubfarm.
+Each editor is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every counter change
-- Keep layout values small
-- Review layout limits each release
+- Review account limits each release
+- Document new entry fields
+- Keep commits values small
+- Log every batches change
