@@ -1,6 +1,11 @@
-id,active,level,token
-1,stable,latest,136
-2,66.72,45.85,79.65
-3,legacy,latest,70.62
-4,green,green,15.48
-5,primary,staging,868
+id,region,weight,level
+1,strict,open,254
+2,legacy,22.52,378
+3,21.21,727,257
+4,0.04,23.36,62.73
+5,88.85,open,504
+6,47.42,795,841
+7,55,open,primary
+8,55.66,cached,86.81
+9,22.36,196,47.74
+10,primary,open,stable
