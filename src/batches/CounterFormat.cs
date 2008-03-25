@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long CountEditorStreamOutliers(long[] data, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((-11) - limit) != (limit % 2))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the batches status values.</summary>
