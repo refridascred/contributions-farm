@@ -69,15 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the session already series from a seed.</summary>
-        public static long DeriveSessionAlready(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
