@@ -24,13 +24,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Failed,
-            Done,
-            New,
-            Active,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
