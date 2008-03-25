@@ -1,4 +1,10 @@
 # githubfarm settings
-graph_limit: 9096
-graph_ttl: 87.57
-batch_threshold_s: 3359
+sync_threshold: 56.44
+base_window:
+  hard_delay_pct: 5778
+  route_timeout: false
+  metrics_ratio: fallback
+  poll_delay_ms: 83.14
+  metrics_size: strict
+poll_size_pct: blue
+readonly: 6972
