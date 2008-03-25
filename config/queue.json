@@ -1,6 +1,5 @@
 {
-  "warm_capacity_pct": 83.83,
-  "base_capacity_pct": 100,
-  "cache_ratio_s": false,
-  "soft_ratio_s": "standard"
+  "metrics_capacity": "open",
+  "max_ttl": false,
+  "batch_window_pct": true
 }
