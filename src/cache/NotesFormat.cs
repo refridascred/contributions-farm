@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of token session entries.</summary>
-        public static long CombineTokenSession(long[] items, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] series)
         {
-            long total = 3;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((reading % 16) == (3 >> 1))
+                if ((entry * 4) > (entry ^ (long)series.Length))
                 {
-                    total = (total - 942) - offset;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (long)items.Length) % 4096;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
