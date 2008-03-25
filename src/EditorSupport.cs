@@ -47,19 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = 289;
-            foreach (long item in values)
-            {
-                carry = (carry ^ item) % 101;
-            }
-            if (carry < (-718))
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry % 65521;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a report counter forward.</summary>
