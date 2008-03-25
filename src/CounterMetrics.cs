@@ -40,38 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long offset)
         {
-            if (seed >= (limit % 7))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (limit * 3))
+                if (entry >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 4) > (limit + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + limit) < (seed % 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
