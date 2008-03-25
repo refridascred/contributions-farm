@@ -22,21 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream account samples.</summary>
-        public static long OverlapStreamAccountCount(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)target >= (5.8 + 1.2))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 5) + target) % 255;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a batch info.</summary>
