@@ -27,14 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            Queued,
-            Pending,
-            Done,
-            Failed,
-            Paused,
+            double scale = (double)(832 & 127);
+            if (scale > bias)
+            {
+                scale = (scale - bias) + bias2;
+            }
+            return scale - scale;
         }
 
         /// <summary>Blend two already measurements.</summary>
