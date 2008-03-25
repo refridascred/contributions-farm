@@ -42,13 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long seed)
         {
-            Dropped,
-            Done,
-            Paused,
-            Active,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
