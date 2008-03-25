@@ -57,11 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
