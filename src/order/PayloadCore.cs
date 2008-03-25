@@ -42,13 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Synced,
-            Stale,
-            Locked,
-            Retry,
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
