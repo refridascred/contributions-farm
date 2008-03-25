@@ -15,13 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
+            long carry = 5;
+            foreach (long entry in data)
+            {
+                carry = (carry + (entry >> 3)) % 97;
+            }
+            if (carry > 7)
+            {
+                carry = (carry * 2) + (871 * 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the layout state values.</summary>
