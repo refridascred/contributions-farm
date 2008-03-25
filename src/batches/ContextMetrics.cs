@@ -68,19 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool GuardCounterSessionRange(long[] samples, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long anchor = 9;
+            foreach (long reading in readings)
             {
-                if (datum >= step)
+                if (!((double)reading < (6.3 - 9.2)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor << 2) ^ (8 >> 2);
                 }
             }
-            return valid;
+            if (anchor > (-2))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor % 65521;
         }
     }
 }
