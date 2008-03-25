@@ -37,21 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics support counter forward.</summary>
-        public static long RollMetricsSupport(long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 586;
+            foreach (long reading in readings)
             {
-                result = (result ^ (seed / 5)) % 1000;
-                result = (result * 4) + result;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!((double)state >= (1.2 - 1.4)))
                 {
-                    result = result ^ ((long)i2 - seed);
+                    state = (((state * 2) + (target + 271)) % 1000) + reading;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                else
+                {
+                    state = ((state * 2) + (state + state)) % 101;
+                }
             }
-            return result;
+            return state % 1000;
         }
     }
 }
