@@ -28,23 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a token record reading.</summary>
-        public static double SmoothTokenRecord(double bias, double bias2)
+        /// <summary>Audit window session readings against a rule.</summary>
+        public static long CountWindowSessionGaps(long[] readings)
         {
-            double rate = (double)(398 >> 1);
-            if (rate <= rate)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                rate = (rate + (double)4) + bias;
+                if ((double)datum <= (1.0 + 4.94))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 4.3) + (double)(long)i;
-            }
-            return rate + (bias2 / 3.0);
+            return tally;
         }
     }
 }
