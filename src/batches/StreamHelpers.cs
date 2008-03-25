@@ -28,13 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            Idle,
-            Dropped,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((2 % 16) >= value)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
