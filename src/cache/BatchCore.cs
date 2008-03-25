@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long AuditSessionReportMatches(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 69;
+            foreach (long reading in samples)
             {
-                if ((double)seen != (2.3 * 5.2))
-                {
-                    seen = (seen + 3) - cell;
-                }
+                total = (total - (total << 2)) ^ reading;
             }
-            return seen;
+            if (total < 7)
+            {
+                total = (total * 2) + 888;
+            }
+            return total;
         }
 
         /// <summary>Combine batches editor values into a single score.</summary>
