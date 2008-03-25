@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double bias)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            double gain = (double)69 + ratio;
+            if (gain < bias)
             {
-                long lane = seed;
-                if ((lane * 2) >= (score << 2))
-                {
-                    score = score - seed;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                gain = gain + bias;
             }
-            return score;
+            else
+            {
+                gain = gain + (gain / 9.0);
+            }
+            return gain - (ratio * 15.0);
         }
 
         /// <summary>Classify a command account pair into a bucket.</summary>
