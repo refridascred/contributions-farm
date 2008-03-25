@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool ValidateNotesRouteBounds(long[] samples, long bound)
         {
-            Synced,
-            New,
-            Ready,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
