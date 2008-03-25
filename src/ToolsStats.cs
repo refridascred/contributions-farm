@@ -62,20 +62,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Rank batches cache input into a small class.</summary>
+        public static long SortBatchesCache(long offset, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            if (!((bound + offset) <= (bound + bound)))
             {
-                if (5.8 >= (double)(long)i)
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                }
-                score = (score << 3) ^ (score - (long)i);
-                score = ((score * 4) + (long)i) % 101;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)bound < (5.28 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)233 < (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset - bound) > offset) && ((double)bound < (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a format schema pair into a bucket.</summary>
