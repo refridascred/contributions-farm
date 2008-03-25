@@ -27,18 +27,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] samples, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 52;
+            foreach (long cell in items)
             {
-                if ((seed - datum) >= seed)
+                if ((double)cell == (7.66 + 19.0))
                 {
-                    count = count + 3;
+                    result = (result + (result / 3)) % 255;
+                }
+                else
+                {
+                    result = (result + (cell & 255)) % 255;
                 }
             }
-            return count;
+            if (result < 58)
+            {
+                result = (result - (result / 6)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
