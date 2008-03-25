@@ -40,17 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command batch reading by value.</summary>
-        public static long LookupCommandBatchIndex(long[] values, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 49;
+            foreach (long sample in series)
             {
-                if (values[i] >= target)
+                state = ((state * 2) + (limit % 60)) % 255;
+                if ((sample * 3) < (sample * 5))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((long)series.Length == (sample / 8))
+                {
+                    state = (state + limit) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a already record.</summary>
