@@ -1,26 +1,5 @@
 {
-  "audit": {
-    "channel_depth": "local",
-    "burst_ratio_pct": 78,
-    "notes_interval": true,
-    "report_ratio": [249, 24, 36, 310]
-  },
-  "poll_depth_count": {
-    "persist": "edge",
-    "strict": [233, 143, 33, 406],
-    "commits_size": [283, 398],
-    "session_threshold": 46.61,
-    "farm_ratio": 1024
-  },
-  "session_ratio": "edge",
-  "contributi_limit": 6,
-  "poll_timeout_pct": {
-    "stream_retries": "cached",
-    "batches_timeout": 60,
-    "readonly": 59.27,
-    "dry_run": 88.59,
-    "default_interval_count": "eu-west",
-    "base_ratio_count": [441, 49, 376]
-  },
-  "base_retries_ms": 250
+  "sync_interval_ms": 2706,
+  "retry_limit_ms": 1024,
+  "counter_retries": true
 }
