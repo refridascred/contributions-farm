@@ -1,4 +1,20 @@
 # support settings
-verbose: 20
-max_ratio_s: false
-schema_ratio: 250
+default_retries_s: green
+cache_timeout: 500
+profile_window:
+  payload_retries: open
+  max_capacity: 5871
+  default_window_s:
+    idle_depth_pct:
+      - 392
+      - 239
+      - 4
+    sync_delay_s: false
+    soft_depth_s: latest
+    audit: cached
+    report_delay:
+      - green
+      - blue
+    context_ratio: 7
+poll_timeout: fallback
+sync_retries: 1878
