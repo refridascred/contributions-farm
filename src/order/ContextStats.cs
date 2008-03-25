@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 2947;
-        public const long DefaultMetric = 7985;
-        public const long IdleMetric = 5222;
-        public const long LimitMetric = 7426;
-        public const long IdleTimeout = 6467;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 2915;
+        public const long MaxScore = 8229;
+        public const long MaxRatio = 4646;
+        public const double StepWidth = 31.27;
+        public const string IdleProfile = "local-edge";
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
         public static long MeasureProfileFilterHits(long[] samples, long offset)
