@@ -54,22 +54,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine contributi notes values into a single score.</summary>
-        public static long CombineContributiNotes(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long result = -268;
-            foreach (long item in series)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result * 2) + (result - item)) - (long)i;
-                }
-                if (((14 * 4) > (72 - item)) || ((item % 97) <= (item + item)))
-                {
-                    result = (result << 2) ^ (result / 8);
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
