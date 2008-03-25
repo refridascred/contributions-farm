@@ -1,15 +1,26 @@
 # entry settings
-soft_limit_count: staging
-metrics_ratio: primary
-dry_run:
-  warm_interval: local
-  readonly:
-    - green
-    - cached
-    - cached
+enabled:
+  burst_interval_s:
+    verbose:
+      - 5
+      - 82
+    dry_run: 100
+    context_size: 74.97
+  idle_window_ms:
+    - latest
+    - legacy
+    - latest
+  verbose:
+    - legacy
+    - strict
+    - standard
     - stable
-  strict: 37.91
-  retry_capacity_count: strict
-  sync_size: 2100
-  support_timeout: false
-warm_retries: open
+  idle_depth_s:
+    route_retries: 49
+    warm_ratio_count: 500
+    dry_run: true
+idle_ttl_ms: latest
+cache_interval_ms: green
+warm_delay: false
+batch_threshold_count: 2587
+poll_ttl: staging
