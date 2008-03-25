@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long bound)
-        {
-            if (((bound - bound) > (bound * 5)) || ((8.9 - 5.2) != (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (0.44 >= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 7631;
+        public const double HardSupport = 9.58;
+        public const long CacheScore = 5894;
+        public const long LimitScore = 9803;
+        public const string LimitSupport = "primary-v2";
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
         public static long OverlapChannelTokenCount(long[] values)
