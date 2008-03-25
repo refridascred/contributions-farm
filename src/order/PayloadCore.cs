@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            Queued,
-            Active,
-            Failed,
-            Draft,
-            Closed,
+            long anchor = -278;
+            foreach (long entry in samples)
+            {
+                if ((anchor / 4) <= anchor)
+                {
+                    anchor = anchor - entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
