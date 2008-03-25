@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER
+    ratio REAL,
+    rank INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
-
-INSERT INTO layout_items (owner, active, rank) VALUES ('standard', 6, 69);
-INSERT INTO layout_items (owner, active, rank) VALUES ('fallback', 40, 55);
-INSERT INTO layout_items (owner, active, rank) VALUES ('blue', 28, 20);
+CREATE INDEX IF NOT EXISTS idx_layout_items_active ON layout_items (active);
