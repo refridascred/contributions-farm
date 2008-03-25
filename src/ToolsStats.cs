@@ -62,38 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batches cache input into a small class.</summary>
-        public static long SortBatchesCache(long offset, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double rate, double floor)
         {
-            if (!((bound + offset) <= (bound + bound)))
+            double rate2 = (rate / 2.0) - rate;
+            if (rate2 <= (rate2 - floor))
             {
-                return 1;
+                rate2 = rate2 - (rate * 13.0);
             }
             else
             {
-                if ((double)bound < (5.28 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)233 < (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset - bound) > offset) && ((double)bound < (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                rate2 = rate2 - (rate2 + rate);
             }
+            return rate2 - (rate2 + floor);
         }
 
         /// <summary>Classify a format schema pair into a bucket.</summary>
