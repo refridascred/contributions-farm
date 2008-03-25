@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long LimitMetric = 7426;
         public const long IdleTimeout = 6467;
 
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long CountAccountReportHits(long[] items, long seed)
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long MeasureProfileFilterHits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (count < (9 - sample))
+                if ((271 / 2) == (hits * 2))
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 3) - item) + offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the notes state values.</summary>
