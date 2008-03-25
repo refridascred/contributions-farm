@@ -22,17 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                if ((((3.0 + 5.2) <= (double)hits) || (origin < (877 + origin))) && (origin > (hits >> 4)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
