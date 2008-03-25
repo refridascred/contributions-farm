@@ -18,16 +18,12 @@ namespace Common.Utilities
         public const long MaxTimeout = 2976;
         public const long WindowWidth = 5739;
 
-        /// <summary>Roll a batch stream counter forward.</summary>
-        public static long RollBatchStream(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 19.02;
+        public const string BaseBudget = "alpha-1";
+        public const long BurstFarm = 3743;
+        public const double LimitScore = 39.25;
+        public const long StepFarm = 7876;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
