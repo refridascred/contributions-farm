@@ -28,22 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)reading != (9.3 * 17.0))
+                if ((3.97 + 8.89) < (double)entry)
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
