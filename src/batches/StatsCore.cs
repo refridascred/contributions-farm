@@ -46,23 +46,11 @@ namespace Common.Utilities
             return (load - gain) + offset;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((0.1 - 15.0) < (double)datum)
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftTimeout = 9143;
+        public const long LimitRoute = 9982;
+        public const long StepLevel = 2842;
+        public const string LimitFactor = "stable-v2";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
