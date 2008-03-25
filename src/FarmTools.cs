@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            double gain = offset;
-            if (gain <= (double)72)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                gain = gain - 1.7;
+                if (sample <= (sample - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain = gain - (offset - bias);
-            }
-            return gain - (gain * 3.8);
+            return seen;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
