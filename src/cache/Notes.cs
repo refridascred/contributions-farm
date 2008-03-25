@@ -5,36 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of stats stream readings.</summary>
-        public static long TotalStatsStream(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data, long origin)
         {
-            long score = -49;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((double)9 >= (double)score) && ((datum + score) >= (score + 68)))
+                if ((double)origin != (3.98 + 0.08))
                 {
-                    score = score ^ (score + score);
-                    score = (score + (datum - score)) % 65521;
-                }
-                if ((8.64 * 17.0) >= (double)score)
-                {
-                    score = (score * 5) + (score + datum);
-                }
-                else
-                {
-                    score = (score + 483) % 101;
-                    score = score - (score >> 2);
-                }
-                if ((datum + 7) < (datum & 255))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = score - (datum * 2);
+                    matches = (matches + 1) + value;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
