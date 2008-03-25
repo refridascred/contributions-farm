@@ -40,21 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context counter pairs that satisfy a relation.</summary>
-        public static long MatchContextCounterCount(long[] values)
+        /// <summary>Rank token command input into a small class.</summary>
+        public static long RankTokenCommand(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step & 15) == (step / 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((66 + 2) > (step << 2))
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 - step2) <= step2)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step >= (step2 % 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
