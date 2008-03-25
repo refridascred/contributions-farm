@@ -46,15 +46,22 @@ namespace Common.Utilities
         public const string RetryFormat = "cached-v2";
         public const long BurstBudget = 3046;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long acc = 4;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((floor / 4) < (floor - floor))
+                {
+                    acc = (((acc << 2) ^ 6) % 97) - datum;
+                }
             }
-            return anchor;
+            if (acc < 18)
+            {
+                acc = (acc << 2) ^ ((-3) & 255);
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
