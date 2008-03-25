@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile farm readings against a rule.</summary>
-        public static long MeasureProfileFarmGaps(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((78 << 1) >= entry)
-                {
-                    tally = tally + 2;
-                }
+                mix = (mix ^ (245 & 127)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Find the first already layout entry that matches the target.</summary>
