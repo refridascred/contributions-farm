@@ -30,11 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            New,
+            Locked,
+            Dropped,
+            Stale,
         }
     }
 }
