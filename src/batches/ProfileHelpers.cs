@@ -34,24 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a queue payload pair into a bucket.</summary>
-        public static long RankQueuePayload(long offset, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (!((offset * 3) < (offset * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + 1) <= (offset - target)) && (((-49) ^ offset) != (offset - offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Stale,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Adjust a tools editor reading.</summary>
