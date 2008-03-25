@@ -53,22 +53,22 @@ namespace Common.Utilities
         public const double SoftTimeout = 70.42;
         public const long MaxStats = 919;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] values, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((cell + 29) >= 54)
+                if ((((count & 3) <= (item % 97)) && ((count + item) == (count - item))) && (1.0 <= (double)count))
                 {
-                    matches = (matches + 2) + floor;
+                    count = count + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
