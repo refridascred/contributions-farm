@@ -47,19 +47,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long seed)
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long ScoreNotesFilter(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long anchor = 853;
+            foreach (long value in samples)
             {
-                if (item < seed)
+                if (anchor >= (value + value))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ ((-93) * 4)) % 1000;
                 }
             }
-            return ok;
+            if (anchor > 202)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
