@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long AuditReportLayoutGaps(long[] values)
         {
-            double rate2 = (rate * 14.0) + rate;
-            if (rate2 >= (rate2 - span))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                rate2 = rate2 - (span - rate);
+                if (((3.41 - 9.08) <= (double)datum) || (882 >= datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 9.72;
-            }
-            return rate2 - (rate2 * 6.0);
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
