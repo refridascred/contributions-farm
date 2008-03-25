@@ -38,19 +38,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every contributi report entry stays within the limit.</summary>
-        public static bool VerifyContributiReportLimits(long[] data, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (reading != floor)
+                if ((floor / 6) == (floor / 7))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Grade a editor payload value against two limits.</summary>
