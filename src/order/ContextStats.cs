@@ -20,21 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long CompareContextCounterCount(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == offset)
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
