@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up entry schema samples.</summary>
-        public static long PairEntrySchemaCount(long[] readings)
+        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
+        public static long MatchToolsNotesCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 13)
+                    if ((series[i] + series[j]) < 8)
                     {
                         count = count + 1;
                     }
