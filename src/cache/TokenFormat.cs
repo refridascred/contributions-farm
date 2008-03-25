@@ -22,24 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if (limit <= (limit + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit << 3) >= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Pending,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
