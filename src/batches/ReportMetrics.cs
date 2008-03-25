@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long target2)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] items, long step)
         {
-            long delta = target - target2;
-            if ((double)target > (6.1 - 15.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= (2.0 * 2.0))
+                if ((step + matches) != (14 * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta + target2) >= delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((949 - target2) < (target2 - target2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
