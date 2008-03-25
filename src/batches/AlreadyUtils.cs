@@ -61,13 +61,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
