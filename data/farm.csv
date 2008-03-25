@@ -1,7 +1,8 @@
-id,state,active,token,count
-1,12.02,60.8,54.82,94.84
-2,35.89,854,230,cached
-3,open,574,654,edge
-4,844,primary,188,primary
-5,473,297,793,green
-6,697,929,61.34,776
+id,score,owner,weight,state
+1,502,cached,329,strict
+2,698,791,332,green
+3,11,340,84.92,518
+4,965,982,59.34,cached
+5,529,stable,47.53,77.27
+6,51.83,257,218,stable
+7,86.39,65,legacy,960
