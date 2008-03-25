@@ -24,18 +24,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((((double)matches <= (0.8 - 7.2)) || ((52 - matches) != (value + value))) && (((value * 4) <= (matches << 1)) || ((matches << 2) != (value / 8))))
+                if ((hits + (long)data.Length) != ((-3) & 127))
                 {
-                    matches = matches + 1;
+                    hits = ((hits + 1) ^ item) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
