@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two schema batches measurements.</summary>
-        public static double SmoothSchemaBatches(double rate, double floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            double bias = (double)(2 + 2);
-            if (bias > (floor / 3.0))
+            long score = 378;
+            foreach (long sample in samples)
             {
-                bias = (bias - bias) + rate;
+                score = ((score << 2) ^ (score + sample)) % 101;
+                if ((sample * 3) != (sample % 3))
+                {
+                    score = (score << 2) ^ ((-62) + sample);
+                }
             }
-            else
-            {
-                bias = bias - (7.89 * 5.0);
-            }
-            return bias - (4.0 + 3.0);
+            return score % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
