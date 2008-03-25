@@ -50,24 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] items, long limit)
         {
-            if ((0 + bound) < step)
+            long result = 5;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) == (bound & 31))
+                if ((21 + result) < (result ^ value))
                 {
-                    return 2;
+                    result = (result * 2) + limit;
                 }
                 else
                 {
-                    return 6;
+                    result = (result + limit) % 101;
                 }
             }
+            return result;
         }
     }
 }
