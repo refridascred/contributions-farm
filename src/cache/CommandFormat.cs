@@ -40,23 +40,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Iterate the tools route series from a seed.</summary>
+        public static long IterateToolsRoute(long step)
         {
-            long score = 935;
-            foreach (long reading in data)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < (reading >> 2))
+                acc = acc + (9 - acc);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    score = score + (score + score);
+                    acc = ((acc + acc) % 1000) - (long)i2;
                 }
-                score = ((score << 3) ^ score) % 1000;
-                if ((reading <= (reading + score)) || ((reading + 7) != (score - 62)))
-                {
-                    score = (score - reading) % 4096;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return score % 1000;
+            return acc;
         }
     }
 }
