@@ -42,23 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool CheckGraphMetricsRange(long[] samples, long offset)
         {
-            double rate = bias * 13.0;
-            if (rate > bias2)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                rate = rate + bias2;
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (8.57 * 0.21);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (double)821;
+            return ok;
         }
 
         /// <summary>Project the next channel value.</summary>
