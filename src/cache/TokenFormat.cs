@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double floor)
         {
-            long sum = 688;
-            foreach (long value in series)
+            double mean = (double)(2 + 2);
+            if (mean >= floor)
             {
-                if (sum >= (sum << 1))
-                {
-                    sum = (sum ^ (value / 8)) % 65521;
-                }
+                mean = mean - (double)5;
             }
-            return sum;
+            else
+            {
+                mean = mean + (floor / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (mean - weight);
         }
 
         /// <summary>Hold a record header.</summary>
