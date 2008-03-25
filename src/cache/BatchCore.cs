@@ -36,17 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinScore = 63.27;
+        public const long RetryBatch = 5542;
+        public const string StepBatch = "stable-v2";
+        public const long MaxLevel = 1786;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] values)
