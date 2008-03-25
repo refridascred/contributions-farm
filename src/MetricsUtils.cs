@@ -54,22 +54,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long CountCounterClusterOutliers(long[] readings, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((double)item <= (3.0 / 4.0)) && (((count + item) >= 7) || ((bound / 5) >= (3 * 3))))
+                if (datum <= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
