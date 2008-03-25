@@ -44,17 +44,19 @@ namespace Common.Utilities
         public const long CacheRatio = 9342;
         public const long RetryAlready = 1736;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                if (entry > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
