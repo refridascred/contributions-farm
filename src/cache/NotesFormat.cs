@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels, long offset)
         {
-            Retry,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading << 1) <= (79 >> 1))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
