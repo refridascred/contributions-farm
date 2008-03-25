@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long seed)
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long FoldGraphBuffer(long[] samples)
         {
-            long prev = floor - seed;
-            if (!((prev / 7) != (prev % 12)))
+            long score = 26;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (2.8 - 18.0))
+                score = (score * 2) + (score - datum);
+                if ((double)datum < (5.0 / 3.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >> 2) > ((-93) << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed > 2.24)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score << 2) ^ (datum * 4)) % 4096;
                 }
             }
+            if (score > 69)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
