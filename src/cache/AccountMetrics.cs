@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 73.02;
+        public const string CachePayload = "local-1";
+        public const double MaxPayload = 23.67;
+        public const string CacheSize = "standard-1";
+        public const string SoftFactor = "stable-edge";
 
         /// <summary>Count batches schema pairs that satisfy a relation.</summary>
         public static long CompareBatchesSchemaCount(long[] series)
