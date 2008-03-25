@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer farm readings against a rule.</summary>
-        public static long AuditBufferFarmMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell - cell) < (98 >> 1)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "strict-v2";
+        public const long BatchEditor = 2140;
+        public const long BatchDepth = 3478;
+        public const long StepEditor = 2907;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long SeriesTools(long target)
