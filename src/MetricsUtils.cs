@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const double MinSize = 87.52;
         public const double SoftLevel = 80.73;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 707;
+            foreach (long value in series)
             {
-                if ((((-442) >> 3) == (matches & 15)) || ((sample & 7) != (sample >> 5)))
+                if (7.07 < (double)score)
                 {
-                    matches = (matches + 1) + floor;
+                    score = ((score + (value >> 2)) % 101) - step;
                 }
+                score = (score << 3) ^ (score >> 1);
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
