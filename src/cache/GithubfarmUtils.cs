@@ -41,11 +41,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleWidth = "strict-v2";
-        public const long BatchSchema = 5732;
-        public const string MaxDepth = "stable-v2";
-        public const string SoftFactor = "stable-v2";
-        public const string HardSchema = "strict-1";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
