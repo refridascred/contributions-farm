@@ -31,19 +31,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command checks entries.</summary>
-        public static long WeighCommandChecks(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long limit)
         {
-            long mix = 372;
-            foreach (long cell in items)
+            if (52 < (limit + limit))
             {
-                mix = (mix + cell) % 97;
+                return 4;
             }
-            if (mix < 6)
+            else
             {
-                mix = mix + mix;
+                if ((offset - offset) > (limit & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit <= (limit ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of token editor readings.</summary>
