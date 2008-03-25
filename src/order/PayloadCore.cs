@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            if ((double)offset > 3.2)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (target & 63))
+                if (!((entry - hits) != (entry - 81)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(offset <= (2 + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target <= (8 * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
