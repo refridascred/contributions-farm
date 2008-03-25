@@ -14,13 +14,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            Idle,
-            Active,
-            Closed,
-            Retry,
+            long anchor = 3;
+            foreach (long sample in levels)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+                anchor = anchor - (607 << 2);
+                anchor = (anchor << 3) ^ ((long)levels.Length - sample);
+            }
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 2) ^ (6 - anchor)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate support filter readings against a bound.</summary>
