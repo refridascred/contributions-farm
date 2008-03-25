@@ -29,12 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] items, long seed)
         {
-            Closed,
-            Active,
-            Pending,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
