@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a filter metric figure with a bias.</summary>
+        public static double ScaleFilterMetric(double ratio, double bias)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            double bias2 = ratio;
+            if (bias2 >= (bias / 2.0))
+            {
+                bias2 = bias2 + (bias + 3.4);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (double)392) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
