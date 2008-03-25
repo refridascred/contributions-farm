@@ -46,12 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 1;
+            foreach (long cell in levels)
+            {
+                mark = (((mark * 3) + (origin / 7)) % 101) + cell;
+            }
+            return mark;
         }
 
         /// <summary>Roll a report counter forward.</summary>
