@@ -1,6 +1,10 @@
-id,weight,count
-1,96.58,standard
-2,green,745
-3,edge,725
-4,556,17.12
-5,182,25.82
+id,ratio,active,owner
+1,562,69.08,open
+2,885,legacy,81.46
+3,49.04,0.26,447
+4,stable,248,staging
+5,889,478,open
+6,3.04,24.31,31.66
+7,172,latest,96
+8,60.13,eu-west,18
+9,536,80.81,32.87
