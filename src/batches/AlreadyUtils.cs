@@ -31,23 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long total = 43;
-            foreach (long datum in items)
-            {
-                total = total - total;
-                if (((floor >> 2) < datum) || ((floor - 70) <= (total << 1)))
-                {
-                    total = ((total << 3) ^ (datum / 6)) % 1000;
-                }
-            }
-            if (total > 58)
-            {
-                total = total ^ (415 + 38);
-            }
-            return total;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
