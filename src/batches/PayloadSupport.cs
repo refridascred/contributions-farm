@@ -33,13 +33,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Compare every pair of command notes readings.</summary>
+        public static long MatchCommandNotesCount(long[] items)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
