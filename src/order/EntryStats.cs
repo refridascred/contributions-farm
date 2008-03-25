@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a buffer order counter forward.</summary>
-        public static long DeriveBufferOrder(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = (anchor ^ bound) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((197 + cell) >= (66 & 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a order info.</summary>
