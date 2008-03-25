@@ -54,18 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((-451) / 3) >= seen)
-                {
-                    seen = ((seen + 1) - entry) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 7269;
+        public const string SoftEntry = "standard";
+        public const long CacheEntry = 2003;
+        public const double MaxFactor = 68.91;
     }
 }
