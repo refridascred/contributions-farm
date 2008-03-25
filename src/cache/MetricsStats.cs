@@ -50,13 +50,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Closed,
+            Pending,
+            New,
+            Idle,
         }
     }
 }
