@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 7069;
+        public const double WindowGithubfarm = 75.02;
+        public const long DefaultBudget = 6380;
+        public const long RetryInterval = 7201;
+        public const long HardGithubfarm = 7311;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long offset)
