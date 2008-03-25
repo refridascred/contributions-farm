@@ -35,18 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits schema samples are out of range.</summary>
-        public static long AuditCommitsSchemaMatches(long[] values, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double ratio = floor + floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((11 % 100) < datum)
-                {
-                    seen = (seen + 3) - floor;
-                }
+                ratio = ((ratio + floor) + (double)(long)i) - gain;
             }
-            return seen;
+            return ratio - (ratio / 7.0);
         }
     }
 }
