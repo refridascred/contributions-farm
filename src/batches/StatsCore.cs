@@ -26,10 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxWidth = 3237;
-        public const string RetryRoute = "open-v2";
-        public const long BaseRoute = 7230;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Done,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double AdjustStream(double ratio, double bias)
