@@ -41,18 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double gain = (double)((-4) + 9);
+            if (gain > (double)0)
             {
-                if ((((956 / 7) == (datum - (-509))) && ((hits + hits) > datum)) || (((6.6 + 5.11) == (double)datum) && ((hits ^ hits) >= (datum / 9))))
-                {
-                    hits = hits + 3;
-                }
+                gain = gain + (rate * 3.2);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 1.4) - (double)(long)i;
+            }
+            return gain + offset;
         }
     }
 }
