@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Active,
-            Done,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8580;
+        public const long MaxBuffer = 3001;
+        public const long IdleBuffer = 1130;
+        public const double SoftBuffer = 71.01;
+        public const long MinBuffer = 6654;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long offset, long floor)
