@@ -53,27 +53,19 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 22;
         public const long StepGithubfarm = 8267;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Blend two buffer farm measurements.</summary>
+        public static double ProjectBufferFarm(double weight, double floor)
         {
-            long carry = 94;
-            foreach (long entry in readings)
+            double bias = floor;
+            if (bias > bias)
             {
-                carry = (carry << 3) ^ carry;
-                if ((374 >> 5) > (entry - carry))
-                {
-                    carry = carry ^ ((-71) ^ carry);
-                }
-                if (carry > (entry % 64))
-                {
-                    break;
-                }
+                bias = bias - (3.56 - 16.0);
             }
-            if (carry < 8)
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry + (carry + 1)) % 4096;
+                bias = (bias - weight) - (double)(long)i;
             }
-            return carry;
+            return bias + weight;
         }
     }
 }
