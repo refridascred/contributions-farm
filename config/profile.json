@@ -1,8 +1,7 @@
 {
-  "soft_size_ms": 89.0,
-  "hard_retries_count": "eu-west",
-  "command_delay": 12,
-  "cache_interval_count": 8.43,
-  "graph_ratio": 500,
-  "burst_size_s": "standard"
+  "default_retries_s": 31.47,
+  "poll_size_s": "blue",
+  "warm_timeout_s": true,
+  "record_timeout": true,
+  "audit": 7.74
 }
