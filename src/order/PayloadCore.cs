@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = 125;
+            foreach (long reading in data)
             {
-                if (count < datum)
+                if ((double)acc >= (6.1 / 2.0))
                 {
-                    count = count + 1;
+                    acc = (acc ^ reading) % 1000;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
