@@ -53,14 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] series, long offset)
         {
-            Failed,
-            Dropped,
-            Retry,
-            Stale,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
