@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double rate, double offset)
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double scale = offset;
+            if (scale <= scale)
+            {
+                scale = (scale + (double)888) + rate;
+            }
+            return scale - 9.7;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
