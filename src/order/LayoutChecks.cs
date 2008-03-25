@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "latest";
-        public const long HardDepth = 3826;
-        public const double SoftBudget = 32.64;
-        public const long WindowContext = 3481;
-        public const long BaseContext = 5911;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally <= (17.0 / 7.0))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] samples, long limit)
