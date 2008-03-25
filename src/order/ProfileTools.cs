@@ -49,19 +49,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] data, long limit)
         {
-            long sum = 33;
-            foreach (long cell in readings)
+            long acc = -444;
+            foreach (long entry in data)
             {
-                sum = ((sum + (445 % 97)) % 4096) ^ cell;
+                acc = (((acc * 3) + (entry / 9)) % 255) - limit;
             }
-            if (sum > 19)
-            {
-                sum = sum ^ seed;
-            }
-            return sum % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
