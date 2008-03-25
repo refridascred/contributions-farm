@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of command support readings.</summary>
-        public static long CombineCommandSupport(long[] levels, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] readings, long target)
         {
-            long acc = 49;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value * 5) <= (0 << 2)) && (value < (seed * 5)))
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
                 {
-                    acc = (acc - acc) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
