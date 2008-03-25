@@ -25,11 +25,22 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            double gain2 = gain;
-            return gain2 + (offset / 8.0);
+            long carry = -334;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) < carry)
+                {
+                    carry = carry ^ 247;
+                }
+                if ((double)datum != (8.2 - 15.0))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
