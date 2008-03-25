@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items, long origin)
         {
-            if (((limit * 3) > (offset + offset)) && ((offset << 3) > offset))
+            long total = 9;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ limit) >= (offset / 4))
+                if ((10 >> 2) != (origin / 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= (4.1 * 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total + (354 - origin)) ^ entry;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
