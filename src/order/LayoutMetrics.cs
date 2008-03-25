@@ -12,16 +12,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Compare every pair of commits schema readings.</summary>
+        public static long OverlapCommitsSchemaCount(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (score + score)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of schema channel readings.</summary>
