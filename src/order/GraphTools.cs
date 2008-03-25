@@ -12,21 +12,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = offset;
+            if (drift > ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return count;
+            return drift + offset;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
