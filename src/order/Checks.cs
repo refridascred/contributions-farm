@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long offset)
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long AuditChecksFarmOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((entry >> 5) <= entry)
+                if ((((double)matches >= (double)entry) || ((2.0 * 8.95) != (double)matches)) && (((entry + 1) < (84 * 2)) || (((-4) << 1) < (entry / 2))))
                 {
-                    count = (count + 3) - offset;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
