@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Count the commits context entries that pass the check.</summary>
+        public static long AuditCommitsContextGaps(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = sum ^ sum;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((entry & 63) > (-618))
                 {
-                    sum = ((sum + (floor & 7)) % 97) - (long)i2;
+                    matches = matches + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit account report readings against a rule.</summary>
