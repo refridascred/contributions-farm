@@ -37,10 +37,14 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 6316;
-        public const long MaxSpan = 297;
-        public const double HardBudget = 75.99;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Done,
+            Stale,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
