@@ -1,5 +1,6 @@
 {
-  "poll_window_count": 33.19,
-  "batch_depth": 46.33,
-  "default_capacity_s": true
+  "token_retries": true,
+  "order_threshold": 455,
+  "batches_delay": 50.17,
+  "poll_ratio_ms": ["cached", "staging"]
 }
