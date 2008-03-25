@@ -48,14 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Draft,
-            Synced,
-            Paused,
-            New,
+            Retry,
             Pending,
+            Failed,
         }
     }
 }
