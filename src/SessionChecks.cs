@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 75;
+            foreach (long reading in data)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if ((carry ^ reading) < 8)
                 {
-                    return (long)i;
+                    carry = ((carry - 600) % 101) - offset;
+                }
+                else
+                {
+                    carry = ((carry * 5) + 13) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two tools measurements.</summary>
