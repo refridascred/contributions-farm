@@ -16,11 +16,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 23.29;
-        public const double HardChecks = 46.34;
-        public const double StepBudget = 4.56;
-        public const long LimitChecks = 9549;
-        public const long BatchChecks = 2560;
+        public const string DefaultChecks = "standard-edge";
+        public const double WindowTimeout = 27.76;
+        public const long BurstChecks = 9064;
+        public const long LimitTimeout = 3024;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
