@@ -34,19 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((bound + (long)values.Length) >= (bound << 3))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheLevel = 42.95;
+        public const long IdleContext = 7037;
+        public const long IdleInterval = 2148;
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
