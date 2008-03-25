@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
