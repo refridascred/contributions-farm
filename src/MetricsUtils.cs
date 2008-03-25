@@ -41,19 +41,39 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long step)
         {
-            long score = 707;
-            foreach (long value in series)
+            long prev = bound - step;
+            if (step >= (prev + 77))
             {
-                if (7.07 < (double)score)
-                {
-                    score = ((score + (value >> 2)) % 101) - step;
-                }
-                score = (score << 3) ^ (score >> 1);
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)step <= (8.7 - 19.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step >> 1) > prev) || ((bound + prev) > (67 % 60)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step < (bound % 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter already entries that pass the check.</summary>
