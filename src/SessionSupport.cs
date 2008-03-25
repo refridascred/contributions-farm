@@ -11,21 +11,26 @@ namespace Common.Utilities
         public const string IdleFarm = "alpha-v2";
         public const long BatchFarm = 5591;
 
-        /// <summary>Count token channel pairs that satisfy a relation.</summary>
-        public static long CompareTokenChannelCount(long[] values)
+        /// <summary>Digest a series of account counter entries.</summary>
+        public static long ScoreAccountCounter(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sum ^ 741) != (sum * 5)))
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (value ^ value)) % 97;
+                }
+                if ((sum - sum) < value)
+                {
+                    sum = ((sum * 3) + (sum / 9)) % 97;
                 }
             }
-            return tally;
+            if (sum > 4)
+            {
+                sum = (sum ^ (sum / 9)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a format snapshot.</summary>
