@@ -1,19 +1,4 @@
 # githubfarm settings
-cache_ttl_count: 95
-strict:
-  compress: true
-  base_depth_s: 29
-  strict: true
-  route_size: true
-  batches_limit: 60
-  batch_limit_s: 66.51
-cache_timeout_count:
-  - edge
-  - legacy
-compress: standard
-entry_threshold: 14.91
-dry_run:
-  - 426
-  - 87
-  - 153
-  - 354
+idle_capacity_ms: 3360
+soft_limit_ms: primary
+order_size: 98.48
