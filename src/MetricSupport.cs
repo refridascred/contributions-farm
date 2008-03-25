@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const string RetryBudget = "fallback-1";
         public const string RetryCommand = "primary-v2";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (offset <= (offset / 7))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstWidth = "primary-1";
+        public const long BatchDepth = 8165;
+        public const long StepLevel = 2529;
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] levels)
