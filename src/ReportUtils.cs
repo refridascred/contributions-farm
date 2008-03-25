@@ -36,25 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long slot = limit + step;
-            if ((limit % 5) != (step + slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)slot > (18.0 * 19.0)) && ((double)limit == (double)slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Draft,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
