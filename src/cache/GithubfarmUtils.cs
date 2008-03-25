@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleSize = "strict-1";
-        public const double MaxFactor = 6.94;
-        public const string HardStream = "fallback-v2";
-        public const string MaxStream = "stable-v2";
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Stale,
+            Ready,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double ratio, double bias)
