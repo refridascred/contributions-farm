@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches farm samples are out of range.</summary>
-        public static long MeasureBatchesFarmGaps(long[] series, long seed)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (matches > entry)
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
