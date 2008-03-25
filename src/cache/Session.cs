@@ -16,22 +16,21 @@ namespace Common.Utilities
             return weight - (bias + bias);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items, long floor)
+        /// <summary>Count channel token pairs that satisfy a relation.</summary>
+        public static long OverlapChannelTokenCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((tally / 8) < (entry + entry)) && ((5.7 * 7.8) == (double)entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a already reading.</summary>
