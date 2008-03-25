@@ -1,12 +1,11 @@
 {
-  "min_depth": {
-    "command_ttl": "green",
-    "audit": 36,
-    "idle_interval": 49
+  "idle_threshold_count": {
+    "graph_depth": ["fallback", "standard", "green", "strict"],
+    "cache_limit_pct": false,
+    "order_ttl": 5680
   },
-  "batch_window_s": "strict",
-  "warm_ttl_ms": "legacy",
-  "enabled": "fallback",
-  "batch_interval_ms": "open",
-  "cache_delay_pct": "open"
+  "schema_delay": "cached",
+  "poll_ratio_count": 250,
+  "hard_capacity_count": 87.74,
+  "sync_interval_count": "strict"
 }
