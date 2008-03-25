@@ -38,18 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen > (reading + (-93)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
