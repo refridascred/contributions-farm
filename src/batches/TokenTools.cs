@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long origin)
         {
-            Draft,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((((8.5 + 6.86) > (double)origin) || ((origin & 1) > (origin - datum))) || (((2.7 - 7.98) > (double)origin) && (4.78 >= (double)datum)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two profile cluster measurements.</summary>
