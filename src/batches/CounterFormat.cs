@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long sum = 21;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ datum) % 65521;
-                if (68 > (sum >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum ^ (6 - sum);
-                }
-                else
-                {
-                    sum = sum + (sum / 9);
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 84)
-            {
-                sum = (sum ^ (55 >> 3)) % 101;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the batches status values.</summary>
