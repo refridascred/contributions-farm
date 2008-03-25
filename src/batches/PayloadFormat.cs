@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long limit)
         {
-            double scale = weight;
-            return (scale + (double)8) + span;
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next stream value.</summary>
