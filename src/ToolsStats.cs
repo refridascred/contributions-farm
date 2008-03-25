@@ -91,18 +91,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record profile samples.</summary>
-        public static long TallyRecordProfile(long[] values, long seed)
-        {
-            long carry = 337;
-            foreach (long reading in values)
-            {
-                if ((double)(long)values.Length >= (7.91 / 9.0))
-                {
-                    carry = ((carry + (seed >> 2)) % 1000) ^ reading;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowDepth = 41.1;
+        public const long DefaultReport = 9868;
+        public const long SoftReport = 8752;
     }
 }
