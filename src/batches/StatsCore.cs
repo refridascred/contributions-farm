@@ -46,24 +46,22 @@ namespace Common.Utilities
             return (load - gain) + offset;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((0.1 - 15.0) < (double)datum)
                 {
-                    carry = ((carry + carry) % 65521) + (long)i2;
+                    hits = (hits + 2) + floor;
                 }
-                carry = ((carry << 3) ^ (carry % 5)) % 4096;
-                if ((target - carry) < (carry ^ carry))
+                else
                 {
-                    carry = (carry - (carry % 97)) % 65521;
+                    hits = hits - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
