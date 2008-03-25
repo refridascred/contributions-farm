@@ -33,26 +33,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples, long origin)
         {
-            long result = -954;
-            foreach (long item in samples)
+            long carry = 4;
+            foreach (long datum in samples)
             {
-                if (((long)samples.Length / 3) >= 319)
+                for (int i = 0; i < 2; i++)
                 {
-                    result = ((result * 4) + item) % 1000;
+                    carry = ((carry + (carry & 1)) % 101) + (long)i;
                 }
-                else
+                if ((carry << 3) != (origin * 5))
                 {
-                    result = result - (result * 5);
+                    carry = (carry << 2) ^ (datum % 64);
+                    continue;
+                }
+                if ((10.0 / 8.0) < (double)datum)
+                {
+                    carry = ((carry * 4) + datum) % 65521;
                 }
             }
-            if (result > 70)
-            {
-                result = (result << 3) ^ (target + result);
-            }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
