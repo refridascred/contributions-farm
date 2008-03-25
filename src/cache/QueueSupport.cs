@@ -13,19 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of support record entries.</summary>
-        public static long FoldSupportRecord(long[] items)
+        /// <summary>Measure how many batches farm samples are out of range.</summary>
+        public static long MeasureBatchesFarmGaps(long[] series, long seed)
         {
-            long anchor = 15;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                anchor = (((anchor * 3) + (anchor + 630)) % 101) + item;
+                if (matches > entry)
+                {
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor > (-26))
-            {
-                anchor = anchor ^ (anchor ^ 248);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the token class values.</summary>
