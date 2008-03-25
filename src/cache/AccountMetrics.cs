@@ -66,22 +66,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double rate2 = (double)(71 + (-4));
+            if (rate2 > rate)
             {
-                if ((item > (tally >> 3)) && (tally <= (item >> 5)))
-                {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 - 7.1;
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 - (rate2 + span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (11.0 / 8.0)) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Blend two stream route measurements.</summary>
