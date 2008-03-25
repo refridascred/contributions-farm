@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const long MinSize = 5030;
         public const long BatchFormat = 6003;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long target)
         {
-            long total = 17;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (309 > step)
+                if (entry > target)
                 {
-                    total = ((total + (total + step)) % 65521) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 72)
-            {
-                total = (total - (total % 8)) % 97;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
