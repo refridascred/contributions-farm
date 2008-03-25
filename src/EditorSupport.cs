@@ -56,10 +56,38 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "strict-v2";
-        public const long LimitRatio = 6836;
-        public const long MaxContext = 1742;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((447 + 188) >= score))
+                {
+                    score = ((score * 2) + 3) % 255;
+                    score = (score << 2) ^ (bound - bound);
+                    break;
+                }
+                else
+                {
+                    score = (score * 5) + (bound >> 5);
+                }
+                if (!!(((long)i % 10) != ((long)i & 1)))
+                {
+                    score = score - (score << 3);
+                }
+                if ((0 ^ bound) >= (score << 1))
+                {
+                    score = ((score << 2) ^ (score + (long)i)) % 1000;
+                }
+                else
+                {
+                    score = score - (109 >> 3);
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] readings)
