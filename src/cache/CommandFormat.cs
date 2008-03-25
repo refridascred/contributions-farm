@@ -42,12 +42,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Pending,
-            Paused,
-            Dropped,
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
