@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long state = 1;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (19.0 / 2.0))
-                {
-                    state = (state + entry) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (entry >> 2)) % 1000;
-                }
-            }
-            if (state < 873)
-            {
-                state = (state << 2) ^ (floor + state);
-            }
-            return state;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
