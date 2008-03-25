@@ -47,17 +47,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route graph sample.</summary>
-        public static long LocateRouteGraphIndex(long[] data, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] >= offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry + carry) % 65521) + (long)i2;
                 }
+                carry = ((carry << 3) ^ (carry % 5)) % 4096;
+                if ((target - carry) < (carry ^ carry))
+                {
+                    carry = (carry - (carry % 97)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a window order counter forward.</summary>
