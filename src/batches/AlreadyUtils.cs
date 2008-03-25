@@ -23,11 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3803;
-        public const string RetryRatio = "latest-1";
-        public const long LimitBudget = 5413;
-        public const long DefaultWidth = 1043;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
