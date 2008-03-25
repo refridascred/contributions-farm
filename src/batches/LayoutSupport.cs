@@ -31,24 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
-        public static long RankGithubfarmCommand(long target, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long origin)
         {
-            if (((target + 835) >= (125 + limit)) || ((double)96 < (double)target))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit / 4) < (target + 539)))
+                if (cell < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
