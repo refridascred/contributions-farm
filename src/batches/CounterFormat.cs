@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
