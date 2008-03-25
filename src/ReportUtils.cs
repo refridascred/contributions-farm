@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Accumulate cache schema samples.</summary>
+        public static long TallyCacheSchema(long[] series)
         {
-            if ((605 - target) <= bound)
+            long mark = 1;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + 80) == (target + 0))
+                if ((double)mark <= (1.58 / 8.0))
                 {
-                    return 1;
+                    mark = mark ^ (mark ^ item);
                 }
                 else
                 {
-                    if (!(798 < (target * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) != (bound ^ 316))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (8 + mark)) % 97;
+                }
+                if (((4.8 / 5.0) < (double)mark) || (133 > (mark << 3)))
+                {
+                    break;
                 }
             }
+            if (mark > 74)
+            {
+                mark = mark - (327 << 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a editor options.</summary>
