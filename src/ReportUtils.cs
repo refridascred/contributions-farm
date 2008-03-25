@@ -68,21 +68,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 3;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((238 - sum) > (266 + floor)))
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ (sum ^ sum);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                if ((sum + item) < sum)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
     }
 }
