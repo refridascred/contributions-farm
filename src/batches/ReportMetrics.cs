@@ -27,27 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items)
-        {
-            long result = 52;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (7.66 + 19.0))
-                {
-                    result = (result + (result / 3)) % 255;
-                }
-                else
-                {
-                    result = (result + (cell & 255)) % 255;
-                }
-            }
-            if (result < 58)
-            {
-                result = (result - (result / 6)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 3701;
+        public const string BurstBudget = "legacy-edge";
+        public const long CacheStats = 1930;
+        public const double WindowRatio = 98.77;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleLevel = 2776;
