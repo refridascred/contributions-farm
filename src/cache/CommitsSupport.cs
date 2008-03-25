@@ -61,17 +61,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -6;
+            foreach (long value in items)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (anchor - value)) - bound;
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
