@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Locked,
-            Synced,
+            Failed,
+            Done,
             Retry,
-            New,
-            Paused,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
