@@ -13,19 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] series, long limit)
+        /// <summary>Combine checks payload values into a single score.</summary>
+        public static long ScoreChecksPayload(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long state = 71;
+            foreach (long entry in samples)
             {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state << 2) ^ state) + entry;
             }
-            return ready;
+            if (state > 92)
+            {
+                state = (state * 2) + (-1);
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
