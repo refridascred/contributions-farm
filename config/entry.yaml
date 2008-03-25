@@ -1,12 +1,14 @@
 # entry settings
-readonly: 60.55
-batch_timeout_count: 3850
-sync_ttl_pct:
-  poll_limit: 22
-  base_timeout_count: green
-  graph_capacity: false
-  verbose: false
-  dry_run: strict
-metrics_capacity: 100
-strict: 250
-buffer_depth: local
+readonly: 7314
+cache_size_ms:
+  notes_ttl: 5402
+  audit: green
+  flush_depth_pct:
+    - eu-west
+    - latest
+retry_capacity:
+  - 72
+  - 312
+soft_depth_ms: green
+batch_depth: cached
+batch_window: 116
