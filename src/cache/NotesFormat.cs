@@ -37,18 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long cur = offset - origin;
+            if (((-2) < (offset * 4)) || ((cur - cur) <= 592))
             {
-                if (entry > (entry ^ seen))
+                return 1;
+            }
+            else
+            {
+                if (!((offset >> 5) <= (origin << 2)))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + cur) < offset) && ((cur ^ offset) != (cur & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
