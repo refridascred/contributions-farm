@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseRatio = 85.21;
-        public const string HardContext = "legacy-edge";
-        public const string IdleSize = "cached-edge";
-        public const long BaseBudget = 3347;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 39.7;
+        public const long StepSize = 3368;
+        public const string CacheGithubfarm = "standard";
+        public const long BatchCount = 5363;
+        public const long DefaultGithubfarm = 6318;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] series)
