@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string BurstMetric = "alpha-1";
         public const long LimitMetric = 2053;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] values, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double mean = gain;
+            if (mean < 5.8)
             {
-                if ((tally << 2) > (limit + (long)values.Length))
-                {
-                    tally = (tally + 2) + datum;
-                }
+                mean = mean - (double)97;
             }
-            return tally;
+            return mean - floor;
         }
 
         /// <summary>Scale a stats notes figure with a bias.</summary>
