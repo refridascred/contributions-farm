@@ -90,22 +90,18 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Audit already batch readings against a rule.</summary>
-        public static long TallyAlreadyBatchGaps(long[] series)
+        /// <summary>Accumulate record profile samples.</summary>
+        public static long TallyRecordProfile(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = 337;
+            foreach (long reading in values)
             {
-                if ((seen + (-9)) < seen)
+                if ((double)(long)values.Length >= (7.91 / 9.0))
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry + (seed >> 2)) % 1000) ^ reading;
                 }
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
