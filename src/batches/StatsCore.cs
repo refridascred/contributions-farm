@@ -58,16 +58,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Derive the next report editor value from a seed.</summary>
+        public static long RollReportEditor(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                total = total - ((long)i + total);
-                total = ((total * 2) + (long)i) % 65521;
+                result = ((result << 2) ^ (result / 5)) % 1000;
+                result = (result ^ (step & 15)) % 1000;
+                if ((4.65 - 5.63) >= (double)(long)i)
+                {
+                    result = (result ^ step) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (long)i) % 255;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
     }
 }
