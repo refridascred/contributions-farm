@@ -1,11 +1,15 @@
 # githubfarm settings
-farm_depth: latest
-audit:
-  idle_window_pct: 1581
-  base_window_ms: 7568
-  sync_ratio: green
-  warm_delay_s: cached
-hard_window_ms:
-  poll_limit_count: false
-  audit: false
-  retry_interval: fallback
+readonly: blue
+idle_timeout_s: legacy
+poll_threshold_count:
+  soft_threshold: true
+  retry_interval_count: 27
+  flush_delay_ms: true
+  tools_window:
+    - standard
+    - edge
+    - local
+    - green
+order_delay: legacy
+poll_delay_s: standard
+batch_threshold_s: 60
