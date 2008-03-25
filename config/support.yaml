@@ -1,4 +1,15 @@
 # support settings
-warm_retries_count: true
-strict: true
-cluster_ratio: stable
+warm_threshold: 3387
+githubfarm_timeout:
+  poll_threshold_ms: 221
+  default_capacity:
+    - primary
+    - blue
+    - green
+    - primary
+  retry_interval_count:
+    - 94
+    - 238
+  burst_limit: eu-west
+strict: 1024
+batch_size_s: 31.12
