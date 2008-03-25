@@ -74,11 +74,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3208;
-        public const double IdleLevel = 9.69;
-        public const long BurstSize = 6843;
-        public const long SoftEntry = 5618;
-        public const long DefaultEntry = 8132;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
