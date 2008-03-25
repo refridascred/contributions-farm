@@ -1,12 +1,6 @@
 {
-  "strict": true,
-  "soft_depth": false,
-  "burst_timeout_count": 250,
-  "dry_run": true,
-  "audit": "primary",
-  "sync_ratio_ms": {
-    "flush_delay_s": 30,
-    "already_retries": [486, 257, 464, 279],
-    "max_ratio_pct": [475, 292]
-  }
+  "base_threshold": ["green", "eu-west", "latest"],
+  "flush_interval_s": true,
+  "compress": "legacy",
+  "warm_capacity_s": 30
 }
