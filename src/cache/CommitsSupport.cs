@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3824;
+        public const string HardBatch = "strict-v2";
+        public const string BurstBatch = "stable-v2";
+        public const long IdleBatch = 7121;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long target, long limit)
