@@ -1,16 +1,11 @@
 {
-  "warm_delay": {
-    "persist": true,
-    "readonly": "open",
-    "soft_capacity": {
-      "burst_delay": "green",
-      "support_size": "staging",
-      "batches_window": "eu-west"
-    },
-    "sync_capacity": 44.97
+  "hard_timeout_ms": 1024,
+  "sync_size_count": {
+    "support_ratio": "blue",
+    "flush_delay_ms": [465, 263, 151],
+    "sync_window": "blue"
   },
-  "report_depth": 3494,
-  "min_ttl_ms": 46.09,
-  "burst_size_pct": "edge",
-  "burst_ttl_pct": "stable"
+  "idle_interval": 8216,
+  "batch_delay_pct": "open",
+  "compress": "open"
 }
