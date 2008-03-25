@@ -14,12 +14,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 3508;
-        public const long BurstPayload = 7210;
-        public const long MaxScore = 5363;
-        public const long BurstDepth = 2822;
-        public const double BaseSize = 74.94;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long seed)
+        {
+            long prev = target - seed;
+            if ((seed >> 5) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-56) + seed) <= (prev - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
