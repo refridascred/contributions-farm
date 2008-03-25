@@ -1,8 +1,17 @@
 {
-  "flush_delay_pct": "local",
-  "commits_capacity": "standard",
-  "idle_delay_ms": ["staging", "open", "staging", "standard"],
-  "flush_size_ms": 1024,
-  "queue_timeout": [68, 271],
-  "min_delay": 51.03
+  "audit": [450, 464, 238, 421],
+  "compress": {
+    "max_depth": "primary",
+    "context_depth": "staging",
+    "persist": 2,
+    "max_ratio_s": "cached"
+  },
+  "checks_delay": 6575,
+  "context_threshold": {
+    "profile_threshold": 30,
+    "default_size": 7539,
+    "flush_ratio_ms": ["local", "eu-west", "eu-west", "standard"],
+    "burst_ratio_s": 67.74
+  },
+  "payload_interval": false
 }
