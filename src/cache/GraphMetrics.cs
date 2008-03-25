@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count session batch pairs that satisfy a relation.</summary>
-        public static long CompareSessionBatchCount(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.0 * 15.0) <= (double)(long)i)
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor - 5;
+                    anchor = ((anchor << 3) ^ (long)i) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the tools status values.</summary>
