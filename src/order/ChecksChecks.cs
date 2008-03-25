@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings, long limit)
         {
-            long score = 378;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                score = ((score << 2) ^ (score + sample)) % 101;
-                if ((sample * 3) != (sample % 3))
+                if (!((double)value < (7.63 + 9.7)))
                 {
-                    score = (score << 2) ^ ((-62) + sample);
+                    matches = (matches + 1) - limit;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
