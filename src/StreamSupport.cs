@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long origin2)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            if ((origin / 6) == (origin2 * 4))
             {
-                if (((double)limit >= 5.34) && ((0.1 * 8.49) != (double)state))
-                {
-                    state = ((state << 2) ^ (670 << 2)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((origin2 - 53) <= (origin - 47))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
