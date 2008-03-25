@@ -37,12 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((double)score < (7.0 * 9.3)))
+                {
+                    score = ((score << 3) ^ score) % 101;
+                }
+                score = ((score << 2) ^ (long)i) % 101;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
