@@ -1,16 +1,5 @@
 {
-  "poll_depth_count": "local",
-  "dry_run": {
-    "audit": 250,
-    "route_timeout": 500,
-    "cache_capacity": "primary",
-    "burst_ttl_s": false,
-    "min_limit_s": "stable"
-  },
-  "base_delay_s": {
-    "hard_retries_s": ["strict", "legacy"],
-    "burst_size_count": "legacy",
-    "persist": 60,
-    "soft_ttl": "edge"
-  }
+  "dry_run": 88.27,
+  "flush_capacity_s": 479,
+  "payload_capacity": [374, 72, 446, 340]
 }
