@@ -23,15 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema order samples are out of range.</summary>
-        public static long MeasureSchemaOrderOutliers(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] items, long seed)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long reading in items)
             {
-                if ((-40) >= tally)
+                if (17 >= reading)
                 {
-                    tally = (tally + 1) - item;
+                    tally = (tally + 3) - seed;
                 }
             }
             return tally;
