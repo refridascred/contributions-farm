@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen - seen) == (seen & 63))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 72.71;
+        public const long WindowCount = 9308;
+        public const double DefaultFactor = 1.43;
+        public const string HardRatio = "staging";
+        public const long IdleCommits = 8385;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
