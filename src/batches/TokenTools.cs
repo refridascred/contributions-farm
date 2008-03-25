@@ -32,39 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command account pair into a bucket.</summary>
-        public static long RankCommandAccount(long seed, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long edge = seed - bound;
-            if ((double)bound >= (1.0 + 11.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(bound < (edge ^ seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.11 + 9.2) == (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((11.0 * 7.7) >= (double)edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two profile cluster measurements.</summary>
