@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((count / 8) == (entry << 2))
+                if ((((tally * 4) >= (tally % 8)) && ((tally + cell) <= (cell + cell))) || (((tally + cell) <= (cell + cell)) && ((tally & 1) < cell)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
