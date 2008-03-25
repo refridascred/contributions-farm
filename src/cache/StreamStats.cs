@@ -21,12 +21,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCount = 9500;
-        public const double CacheFactor = 29.32;
-        public const double CacheTimeout = 32.36;
-        public const long CacheScore = 103;
-        public const long IdleCounter = 4041;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
