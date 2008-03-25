@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate notes report readings against a bound.</summary>
+        public static bool GuardNotesReportBounds(long[] items, long limit)
         {
-            New,
-            Locked,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
