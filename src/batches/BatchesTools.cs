@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] readings, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long result = 1;
+            foreach (long sample in values)
             {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result << 2) ^ (sample & 1)) % 255;
+                result = (result + (result - (long)values.Length)) % 97;
             }
-            return ok;
+            if (result > 4)
+            {
+                result = (result + offset) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
