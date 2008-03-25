@@ -54,17 +54,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultCount = 9043;
+        public const long LimitRatio = 628;
+        public const string BatchSpan = "stable";
     }
 }
