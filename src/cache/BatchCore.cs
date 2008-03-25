@@ -18,12 +18,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 18.28;
-        public const long LimitCommits = 3444;
-        public const long MaxCommits = 1379;
-        public const string WindowCommits = "legacy-edge";
-        public const long StepLevel = 9784;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 9379;
+        public const double StepBuffer = 67.48;
+        public const string BaseBuffer = "open-1";
+        public const long BatchTimeout = 342;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] data, long floor)
