@@ -1,12 +1,6 @@
 # entry settings
-idle_capacity_s: local
-session_interval:
-  compress:
-    - 259
-    - 279
-    - 468
-    - 433
-  soft_ttl_count: cached
-  token_timeout: 13
-  buffer_capacity: local
-cache_timeout_s: strict
+max_ttl_pct: edge
+verbose:
+  - 6
+  - 285
+warm_retries_ms: false
