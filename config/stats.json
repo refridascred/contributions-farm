@@ -1,8 +1,12 @@
 {
-  "strict": [198, 200, 446],
-  "batch_delay": 87,
-  "idle_interval_pct": ["fallback", "latest", "staging"],
-  "metrics_size": "standard",
-  "flush_timeout_s": "eu-west",
-  "min_timeout_ms": "primary"
+  "persist": "legacy",
+  "flush_window": 100,
+  "cache_interval_pct": false,
+  "stats_retries": {
+    "cache_interval_s": false,
+    "verbose": true,
+    "schema_delay": 83.12,
+    "default_ratio_pct": 51
+  },
+  "retry_ratio": 500
 }
