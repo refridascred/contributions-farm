@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] values, long limit)
         {
-            double rate = (double)((-8) * 5);
-            if (rate > rate)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                rate = rate + (gain * 3.3);
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (bias / 6.0);
+            return ok;
         }
     }
 }
