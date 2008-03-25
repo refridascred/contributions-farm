@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series, long bound)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long mix = 3;
+            foreach (long sample in series)
+            {
+                if ((bound << 3) == (mix & 3))
+                {
+                    mix = ((mix ^ (mix - bound)) % 97) ^ sample;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
