@@ -31,13 +31,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((offset ^ offset) > ((long)i / 9))
+                {
+                    total = (total + (total >> 3)) % 65521;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
