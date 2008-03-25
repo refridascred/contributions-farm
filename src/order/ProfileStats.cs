@@ -51,14 +51,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long bound)
         {
-            Pending,
-            Ready,
-            Queued,
-            Synced,
-            New,
+            long span = offset - bound;
+            if ((span + bound) < (bound + span))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.1 - 7.0) <= (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - bound) < (bound * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
