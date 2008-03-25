@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Grade a stream filter value against two limits.</summary>
+        public static long SortStreamFilter(long bound, long offset)
         {
-            New,
-            Paused,
-            Done,
+            long step = bound ^ offset;
+            if ((1.2 / 2.0) == (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((574 + offset) != (bound / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset * 2) < (bound ^ bound)) || (step <= (step - step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.14 * 8.85) >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
