@@ -48,17 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 612;
+            foreach (long item in levels)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                if ((15.0 - 3.2) != (double)target)
                 {
-                    return (long)i;
+                    mix = (mix - (mix & 31)) + item;
                 }
             }
-            return -1;
+            if (mix < 8)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
