@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] series, long offset)
+        /// <summary>Check that every cache layout entry stays within the limit.</summary>
+        public static bool VerifyCacheLayoutBounds(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (offset <= (offset + 9))
+                if (entry >= target)
                 {
-                    tally = (tally + 1) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
