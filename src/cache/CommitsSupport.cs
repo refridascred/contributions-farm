@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings, long origin)
         {
-            long state = 8;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((sample - state) == (state / 9))
+                if ((double)origin >= (3.22 / 7.0))
                 {
-                    state = (state ^ (sample >> 3)) % 97;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > 74)
-            {
-                state = ((state << 2) ^ (state - 12)) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
