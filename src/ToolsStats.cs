@@ -38,13 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a metrics header.</summary>
