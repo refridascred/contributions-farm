@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitRatio = 5411;
+        public const double MaxToken = 40.33;
+        public const long HardToken = 3324;
+        public const long BaseToken = 3304;
+        public const long BatchSpan = 6361;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileOutliers(long[] items, long bound)
