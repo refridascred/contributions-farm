@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            long mix = -5;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix << 2) <= 614)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 3) + (sample - sample)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
