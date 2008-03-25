@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long DefaultEntry = 1415;
         public const long BatchEntry = 4506;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 1461;
+        public const double BatchTimeout = 23.87;
+        public const long IdleCounter = 5742;
+        public const long IdleSize = 6894;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] levels, long offset)
