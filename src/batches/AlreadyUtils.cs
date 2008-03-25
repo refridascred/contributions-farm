@@ -61,13 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
