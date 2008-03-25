@@ -70,38 +70,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank profile buffer input into a small class.</summary>
-        public static long GradeProfileBuffer(long offset, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long origin)
         {
-            if ((offset + offset) >= bound)
+            long state = 817;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset + bound) > offset))
+                if ((origin ^ origin) > (state ^ origin))
                 {
-                    return 1;
+                    state = (state ^ state) - item;
                 }
                 else
                 {
-                    if ((double)bound != (7.4 * 3.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 49) >= (offset + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = state - (state * 3);
                 }
             }
+            if (state > 150)
+            {
+                state = (state + (4 + state)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next session schema value from a seed.</summary>
