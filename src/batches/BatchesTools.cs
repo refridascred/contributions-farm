@@ -12,22 +12,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long slot = floor - offset;
+            if (!((double)slot >= (1.0 + 7.0)))
             {
-                if ((datum * 3) != (datum + datum))
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ 9) == (291 + offset))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batches info.</summary>
