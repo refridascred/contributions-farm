@@ -19,23 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            double scale2 = (double)52 + 3.5;
-            if (scale2 >= (scale * 7.6))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = scale2 - (offset + scale2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (9.4 / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + (8.04 - scale);
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
