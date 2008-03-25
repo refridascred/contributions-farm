@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
-        public static long TallyCacheGithubfarmMatches(long[] series, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (5.0 / 5.0))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
