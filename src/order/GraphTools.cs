@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 153;
-        public const long WindowFactor = 3168;
-        public const long RetryReport = 5890;
-        public const string BurstReport = "staging-v2";
-        public const string CacheReport = "fallback-v2";
+        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
+        public static long PairChecksCacheCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiMatches(long[] items)
