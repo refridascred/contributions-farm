@@ -27,15 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double scale = (double)(832 & 127);
-            if (scale > bias)
-            {
-                scale = (scale - bias) + bias2;
-            }
-            return scale - scale;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
