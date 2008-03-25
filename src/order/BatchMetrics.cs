@@ -34,15 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long CountBufferReportGaps(long[] samples, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long limit)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long sample in series)
             {
-                if ((5 & 127) <= (entry << 1))
+                if ((sample + matches) <= matches)
                 {
-                    matches = (matches + 2) - seed;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
