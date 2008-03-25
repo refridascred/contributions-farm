@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first record metrics entry that matches the target.</summary>
-        public static long LookupRecordMetricsIndex(long[] items, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 29;
+            foreach (long entry in items)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (anchor << 2)) ^ entry;
             }
-            return -1;
+            if (anchor > 440)
+            {
+                anchor = ((anchor * 2) + (anchor % 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter kind values.</summary>
