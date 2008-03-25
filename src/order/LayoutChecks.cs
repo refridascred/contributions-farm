@@ -72,13 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the counter tools entries that pass the check.</summary>
+        public static long TallyCounterToolsGaps(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (886 <= (entry / 9))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
