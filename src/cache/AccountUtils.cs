@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate support filter readings against a bound.</summary>
