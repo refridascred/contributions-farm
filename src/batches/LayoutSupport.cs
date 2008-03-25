@@ -37,12 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "legacy";
-        public const double StepAlready = 86.03;
-        public const string SoftAlready = "strict";
-        public const long CacheRatio = 9342;
-        public const long RetryAlready = 1736;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double bias, double span)
+        {
+            double scale = span;
+            if (scale < bias)
+            {
+                scale = scale + (double)52;
+            }
+            else
+            {
+                scale = scale + (scale / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)3;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextBounds(long[] values, long target)
