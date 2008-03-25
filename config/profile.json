@@ -1,7 +1,5 @@
 {
-  "min_timeout_ms": ["stable", "fallback", "green"],
-  "sync_delay": true,
-  "batch_threshold": 7664,
-  "burst_timeout_ms": false,
-  "idle_depth_ms": 3196
+  "checks_window": 2.55,
+  "cache_capacity": true,
+  "default_limit": 6914
 }
