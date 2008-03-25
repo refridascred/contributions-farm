@@ -1,8 +1,6 @@
 {
-  "poll_limit_pct": "latest",
-  "soft_delay_s": true,
-  "retry_limit": 45,
-  "poll_window": 2.5,
-  "flush_limit_pct": true,
-  "cache_capacity_s": 40
+  "burst_delay_s": "green",
+  "verbose": "legacy",
+  "strict": 96.49,
+  "githubfarm_timeout": "blue"
 }
