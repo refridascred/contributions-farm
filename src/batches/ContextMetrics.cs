@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (bias / 5.0) + (double)99;
+            if (gain2 <= gain)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - (gain * 9.9)) + (double)(long)i;
+            }
+            return gain2 - bias;
         }
 
         /// <summary>Hold a route info.</summary>
