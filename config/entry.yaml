@@ -1,8 +1,7 @@
 # entry settings
-graph_threshold:
-  - local
-  - cached
-  - stable
-graph_size: false
-cache_ratio_pct: 60
-min_ttl_ms: fallback
+retry_threshold: eu-west
+max_window: 7992
+batch_delay_ms: 60
+compress: 60
+persist: 52
+sync_size_ms: latest
