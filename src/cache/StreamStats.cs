@@ -14,15 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long mark = -323;
-            foreach (long item in readings)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark << 2) ^ (item - mark)) % 65521;
+                total = (total - floor) % 97;
+                total = (total ^ ((long)i % 24)) % 255;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
