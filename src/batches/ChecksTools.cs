@@ -43,21 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = scale / 5.0;
+            return (drift - scale) + floor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
