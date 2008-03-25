@@ -31,11 +31,13 @@ namespace Common.Utilities
         public const long SoftContributi = 8101;
         public const double BatchDepth = 62.76;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
