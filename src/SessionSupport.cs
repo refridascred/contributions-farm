@@ -16,12 +16,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long offset, long seed)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            long edge = offset + seed;
+            if ((edge - seed) > (90 + edge))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-27) ^ offset) != (seed - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
