@@ -58,14 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Pending,
-            Closed,
-            Retry,
-            Failed,
-            Idle,
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
