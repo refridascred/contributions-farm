@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double mean = (double)(2 + 2);
-            if (mean >= floor)
-            {
-                mean = mean - (double)5;
-            }
-            else
-            {
-                mean = mean + (floor / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean - weight);
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a cluster entry.</summary>
