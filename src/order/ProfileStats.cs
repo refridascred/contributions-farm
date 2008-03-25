@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit buffer order readings against a rule.</summary>
+        public static long TallyBufferOrderGaps(long[] items)
         {
-            Active,
-            Stale,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count + reading) >= (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
