@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Stale,
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 3394;
+        public const string BaseContext = "local-edge";
+        public const long BurstScore = 7396;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double BlendBuffer(double rate, double span)
