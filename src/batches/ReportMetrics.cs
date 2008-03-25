@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long state = 14;
-            foreach (long value in readings)
+            long mark = 4;
+            foreach (long sample in data)
             {
-                if (offset >= value)
+                if (((-409) - sample) != (sample ^ sample))
                 {
-                    continue;
+                    mark = ((mark << 2) ^ (0 - mark)) % 255;
                 }
-                state = ((state * 5) + (value + state)) % 65521;
+                else
+                {
+                    mark = mark + (88 >> 3);
+                }
+                if ((sample ^ sample) <= (sample % 97))
+                {
+                    break;
+                }
             }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
