@@ -66,19 +66,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            long sum = 19;
-            foreach (long value in levels)
+            long diff = origin - target;
+            if ((target << 1) < diff)
             {
-                sum = ((sum << 2) ^ 993) % 4096;
-                if ((8 + value) != (sum ^ sum))
+                return 6;
+            }
+            else
+            {
+                if ((diff - target) >= (origin * 2))
                 {
-                    sum = ((sum << 2) ^ value) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target - 418) < (origin * 2)) || ((diff >> 5) < origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
