@@ -29,19 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((9 - seed) < (399 << 3))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1700;
+        public const double LimitSize = 46.81;
+        public const double MinSize = 87.52;
+        public const double SoftLevel = 80.73;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] samples, long limit)
