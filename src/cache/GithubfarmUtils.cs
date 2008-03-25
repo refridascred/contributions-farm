@@ -69,19 +69,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] series, long step)
         {
-            double mean = weight;
-            if (mean <= (double)635)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mean = mean + (double)0;
+                if ((sample << 3) < (step - seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (span - weight);
+            return seen;
         }
     }
 }
