@@ -42,15 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mix = 36;
-            foreach (long reading in data)
-            {
-                mix = (mix * 3) + ((-9) + reading);
-            }
-            return mix % 65521;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
