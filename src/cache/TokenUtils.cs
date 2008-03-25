@@ -22,13 +22,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            New,
+            Done,
             Paused,
+            Failed,
+            Active,
             Closed,
-            Synced,
         }
     }
 }
