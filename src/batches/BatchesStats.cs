@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of graph filter readings.</summary>
-        public static long CombineGraphFilter(long[] levels, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long bound)
         {
-            long carry = 4;
-            foreach (long reading in levels)
+            long diff = offset ^ bound;
+            if (!(offset < (bound / 8)))
             {
-                if ((2.7 * 8.0) == (double)reading)
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ offset) < bound)
                 {
-                    carry = carry - reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((diff & 127) > (5 + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry > 41)
-            {
-                carry = (carry * 2) + (carry - bound);
-            }
-            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
