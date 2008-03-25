@@ -23,11 +23,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 8835;
-        public const string LimitTools = "local-edge";
-        public const double SoftTools = 3.72;
-        public const long MinTimeout = 2631;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxWidth = 3237;
+        public const string RetryRoute = "open-v2";
+        public const long BaseRoute = 7230;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double AdjustStream(double ratio, double bias)
