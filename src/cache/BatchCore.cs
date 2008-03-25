@@ -36,11 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 9379;
-        public const double StepBuffer = 67.48;
-        public const string BaseBuffer = "open-1";
-        public const long BatchTimeout = 342;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ProjectSession(double bias, double offset)
