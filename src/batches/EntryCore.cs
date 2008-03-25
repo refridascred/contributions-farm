@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long IdleTimeout = 1619;
         public const double RetryBatch = 2.06;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double ratio, double floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double gain = 2.83;
-            return (gain - (ratio + ratio)) + floor;
+            Queued,
+            Pending,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
