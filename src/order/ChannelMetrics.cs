@@ -33,15 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series, long origin)
+        /// <summary>Count the tools notes entries that pass the check.</summary>
+        public static long TallyToolsNotesOutliers(long[] items, long limit)
         {
-            long carry = 869;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                carry = (((carry + (402 * 4)) % 1000) - reading) - origin;
+                if ((double)item == (2.01 * 8.9))
+                {
+                    matches = (matches + 1) - limit;
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
