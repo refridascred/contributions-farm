@@ -1,16 +1,19 @@
 # support settings
-max_timeout_pct: 2010
-readonly:
-  - open
-  - local
-  - stable
-  - eu-west
-burst_size_pct:
-  dry_run: 82.07
-  soft_window_pct: 40.6
-  min_ratio: legacy
-audit:
-  - 96
-  - 390
-  - 487
-  - 33
+githubfarm_retries: 55.37
+account_window:
+  queue_size: true
+  sync_capacity: legacy
+  idle_ratio_count: 81.96
+  sync_limit:
+    - staging
+    - eu-west
+  soft_interval:
+    min_capacity_pct: true
+    retry_size_count: primary
+    poll_window_ms: false
+    min_timeout_s: green
+    retry_timeout: 30.42
+    verbose: staging
+  entry_delay: 1024
+audit: 3
+flush_ttl_count: primary
