@@ -28,14 +28,14 @@ namespace Common.Utilities
         public const string StepCount = "alpha";
         public const long CacheCluster = 6509;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Pending,
-            Closed,
-            Queued,
+            Draft,
             Done,
-            Dropped,
+            Stale,
+            Synced,
+            Active,
         }
     }
 }
