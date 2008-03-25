@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double scale, double offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long limit)
         {
-            double mean = (offset / 3.0) - 4.7;
-            for (int i = 0; i < 3; i++)
+            if ((limit << 2) >= (579 / 3))
             {
-                mean = (mean + scale) + (double)(long)i;
+                return 2;
             }
-            return mean - (offset * 9.9);
+            else
+            {
+                if (!(limit < (origin * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
