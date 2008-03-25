@@ -46,15 +46,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Idle,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
