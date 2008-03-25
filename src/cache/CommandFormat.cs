@@ -42,11 +42,32 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long anchor = 57;
+            foreach (long entry in data)
+            {
+                anchor = (anchor * 2) + (entry >> 2);
+                if ((entry % 2) < (anchor ^ anchor))
+                {
+                    anchor = anchor + (31 - entry);
+                    anchor = anchor ^ entry;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 101;
+                }
+                if (((anchor - entry) >= anchor) || ((anchor + anchor) != (entry - entry)))
+                {
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
+            }
+            if (anchor < 783)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
