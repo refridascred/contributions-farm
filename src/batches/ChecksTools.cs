@@ -60,19 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool CheckTokenReportBounds(long[] values, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != step)
+                if ((series[i] == target) && ((series[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
