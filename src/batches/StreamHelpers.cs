@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long step)
         {
-            long mix = -39;
-            foreach (long cell in samples)
+            long score = 8;
+            foreach (long entry in samples)
             {
-                mix = (mix + cell) % 97;
+                if (!((entry - 347) == (score / 8)))
+                {
+                    score = (score - step) % 97;
+                }
             }
-            if (mix > 646)
+            if (score < (-1))
             {
-                mix = (mix ^ (1 & 1)) % 4096;
+                score = ((score << 2) ^ (score << 3)) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the filter kind values.</summary>
