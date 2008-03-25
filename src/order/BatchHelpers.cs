@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long floor)
         {
-            long state = 969;
-            foreach (long item in series)
+            long score = 283;
+            foreach (long item in data)
             {
-                if ((double)state <= (8.0 - 13.0))
+                if ((score << 3) > (score * 2))
                 {
-                    state = (state - item) % 97;
-                }
-                if (!(state >= (state / 7)))
-                {
-                    state = ((state << 3) ^ (647 + item)) % 255;
+                    score = ((score ^ (score - item)) % 97) - floor;
                 }
             }
-            if (state < 654)
-            {
-                state = (state * 4) + (state - 1);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
