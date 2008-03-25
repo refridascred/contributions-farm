@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] data, long target)
+        /// <summary>Measure how many tools report samples are out of range.</summary>
+        public static long AuditToolsReportGaps(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((item + 0) >= (568 >> 4))
+                if (((reading - reading) >= target) || ((8.55 / 7.0) == (double)hits))
                 {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
