@@ -29,18 +29,24 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] values, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long total = 9;
+            foreach (long datum in values)
             {
-                if ((double)hits <= (5.5 - 16.0))
+                total = (total ^ (datum / 7)) % 255;
+                if (!((datum > 6) || (88 > total)))
                 {
-                    hits = ((hits + 2) + value) + target;
+                    total = (total - (total * 3)) % 255;
+                    total = (total << 2) ^ (datum + 1);
+                }
+                if ((target <= datum) || ((5.26 * 9.0) != (double)total))
+                {
+                    total = (total << 3) ^ (datum >> 3);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
