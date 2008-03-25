@@ -40,39 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long limit)
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long ScoreStatsFarm(long[] items)
         {
-            long next = target ^ limit;
-            if (((target + next) >= (target << 1)) && ((double)next > (14.0 * 2.72)))
+            long acc = 62;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target % 12) < (limit + target)))
+                if ((item * 5) >= (item % 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.73 / 5.0) < (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target > (5 * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = (acc * 3) + acc;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
