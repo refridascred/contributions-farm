@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data, long origin)
+        /// <summary>Digest a series of notes filter entries.</summary>
+        public static long FoldNotesFilter(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = 80;
+            foreach (long sample in data)
             {
-                if ((double)origin != (3.98 + 0.08))
+                if ((double)sample < (9.77 * 9.0))
                 {
-                    matches = (matches + 1) + value;
+                    acc = (acc + (acc ^ acc)) % 97;
+                }
+                if ((367 + acc) >= acc)
+                {
+                    acc = (acc * 2) + acc;
+                }
+                if (!(acc > (acc + acc)))
+                {
+                    acc = (acc - (903 + (-85))) % 1000;
+                }
+                if ((7.94 * 7.7) < (double)acc)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc < 45)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a account snapshot.</summary>
