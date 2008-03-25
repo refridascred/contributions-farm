@@ -37,23 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] levels, long seed)
         {
-            double scale = span;
-            if (scale < bias)
+            long anchor = 265;
+            foreach (long value in levels)
             {
-                scale = scale + (double)52;
+                if ((double)seed == (12.0 - 10.0))
+                {
+                    anchor = (anchor * 4) + (seed - value);
+                }
             }
-            else
-            {
-                scale = scale + (scale / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)3;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
