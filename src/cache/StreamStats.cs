@@ -34,13 +34,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            Active,
-            Idle,
-            Pending,
-            Queued,
+            double drift = (19.0 * 3.68) - (13.0 + weight);
+            return (drift - 5.9) + floor;
         }
 
         /// <summary>Accumulate support samples.</summary>
