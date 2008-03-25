@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheWidth = "legacy-edge";
-        public const long MaxProfile = 5493;
-        public const string StepProfile = "standard";
-        public const long RetryRatio = 6649;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesHits(long[] levels)
