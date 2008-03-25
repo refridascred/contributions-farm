@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Synced,
-            New,
-            Idle,
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
