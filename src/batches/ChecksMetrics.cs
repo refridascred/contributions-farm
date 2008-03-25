@@ -49,39 +49,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long bound)
+        /// <summary>Derive the next report githubfarm value from a seed.</summary>
+        public static long RollReportGithubfarm(long floor)
         {
-            long cur = step - bound;
-            if (bound > (cur & 1))
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.0 / 2.0) != (double)bound)
+                carry = ((carry << 3) ^ (carry * 2)) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 4;
+                    carry = (((carry * 5) + ((long)i >> 5)) % 4096) - (long)i2;
                 }
-                else
-                {
-                    if (((bound ^ step) != (bound + bound)) || ((bound + step) < (step * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step <= (5.1 / 9.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
