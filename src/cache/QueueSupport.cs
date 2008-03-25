@@ -15,10 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleTimeout = 1611;
-        public const long BaseContext = 3364;
-        public const double LimitInterval = 36.58;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            New,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Match up tools context samples.</summary>
         public static long PairToolsContextCount(long[] items)
