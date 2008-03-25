@@ -46,19 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (sample != limit)
+                if (!((((-2) * 3) >= (target - target)) && ((double)target <= (double)matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the commits already entries that pass the check.</summary>
