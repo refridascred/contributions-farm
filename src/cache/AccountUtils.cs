@@ -22,22 +22,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series, long step)
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool GuardSupportFilterRange(long[] samples, long offset)
         {
-            long state = 5;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (((state ^ step) == (state - step)) || ((double)cell < (7.44 - 6.0)))
+                if (item != offset)
                 {
-                    state = (state * 3) + (step % 16);
+                    ready = false;
+                    break;
                 }
             }
-            if (state > (-9))
-            {
-                state = state - ((long)series.Length / 5);
-            }
-            return state;
+            return ready;
         }
     }
 }
