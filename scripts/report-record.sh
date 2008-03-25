@@ -8,10 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 2))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in fallback standard; do
+for item in fallback open; do
     log "checking ${item}"
 done
