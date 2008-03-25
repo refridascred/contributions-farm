@@ -36,39 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long floor2)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            long bound = floor + floor2;
-            if ((double)bound > (double)floor)
+            long anchor = 9;
+            foreach (long item in samples)
             {
-                return 6;
+                anchor = (((anchor * 5) + ((-305) - (-3))) % 65521) + item;
             }
-            else
+            if (anchor < 3)
             {
-                if ((floor % 16) < (333 - 42))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + floor) <= 27)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (20.0 - 8.3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + anchor) % 4096;
             }
+            return anchor % 1000;
         }
     }
 }
