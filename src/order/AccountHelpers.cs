@@ -64,11 +64,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "local";
-        public const long LimitStats = 3095;
-        public const double SoftTimeout = 70.42;
-        public const long MaxStats = 919;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long offset)
+        {
+            if (offset < (75 - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (0.87 < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
