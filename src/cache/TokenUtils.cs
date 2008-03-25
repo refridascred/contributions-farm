@@ -13,14 +13,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long bound)
         {
-            Done,
-            Idle,
-            Synced,
-            Dropped,
-            Queued,
+            if ((double)bound <= (4.29 / 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound / 5) <= (57 & 1)) && ((step >> 5) > (step - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + step) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(bound < 36))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
