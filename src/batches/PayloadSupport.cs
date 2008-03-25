@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            Draft,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((6.0 / 3.0) > (double)entry) && ((count > 676) && (664 <= count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
