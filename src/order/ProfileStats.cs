@@ -36,19 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool VerifyFilterPayloadBounds(long[] samples, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
