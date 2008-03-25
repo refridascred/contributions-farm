@@ -54,22 +54,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long seed)
         {
-            long acc = 4;
-            foreach (long datum in values)
+            long mix = 33;
+            foreach (long cell in items)
             {
-                if ((floor / 4) < (floor - floor))
+                if ((double)mix <= (8.0 + 2.3))
                 {
-                    acc = (((acc << 2) ^ 6) % 97) - datum;
+                    continue;
+                }
+                if (mix > (41 << 2))
+                {
+                    mix = (mix ^ 7) + cell;
                 }
             }
-            if (acc < 18)
+            if (mix < 9)
             {
-                acc = (acc << 2) ^ ((-3) & 255);
+                mix = mix - (seed & 7);
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
