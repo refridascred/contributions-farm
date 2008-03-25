@@ -1,8 +1,6 @@
 {
-  "persist": "edge",
-  "account_limit": "staging",
-  "idle_retries_count": 3.01,
-  "dry_run": [132, 353, 291, 127],
-  "profile_limit": "latest",
-  "retry_ratio_s": 48.62
+  "sync_ttl_s": 34.59,
+  "base_threshold": ["latest", "local", "primary"],
+  "burst_delay_ms": 30,
+  "commits_depth": 38
 }
