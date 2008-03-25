@@ -24,18 +24,21 @@ namespace Common.Utilities
             return drift - (drift + scale);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry & 31) <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
