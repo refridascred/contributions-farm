@@ -52,17 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 25;
+            foreach (long datum in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if (!(datum > (datum & 31)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (12 << 3)) % 4096;
                 }
+                anchor = ((anchor * 3) + (79 + datum)) % 4096;
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
