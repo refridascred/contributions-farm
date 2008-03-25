@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Audit payload checks readings against a rule.</summary>
+        public static long CountPayloadChecksMatches(long[] series, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = (score << 2) ^ score;
-                if (!(((long)i - (long)i) >= score))
+                if ((348 / 9) >= seed)
                 {
-                    score = (score + offset) % 1000;
-                    score = (score + (score + 142)) % 101;
+                    seen = (seen + 3) - sample;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
