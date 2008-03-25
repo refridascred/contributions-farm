@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 7631;
-        public const double HardSupport = 9.58;
-        public const long CacheScore = 5894;
-        public const long LimitScore = 9803;
-        public const string LimitSupport = "primary-v2";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally - item) > 289)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double CacheSession = 53.79;
