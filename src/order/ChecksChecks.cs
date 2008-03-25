@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
