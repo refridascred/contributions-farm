@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)value < (7.63 + 9.7)))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftFactor = 0.74;
+        public const long RetryCount = 9269;
+        public const string StepCount = "alpha";
+        public const long CacheCluster = 6509;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
