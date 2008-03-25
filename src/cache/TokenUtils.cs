@@ -36,39 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long limit, long target)
-        {
-            long cur = limit ^ target;
-            if (((double)cur >= (double)target) || ((limit % 7) <= (target * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur + cur) > (target << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((254 & 1) != (cur - 534))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)target <= 15.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardDepth = 8654;
+        public const double BaseBatch = 24.1;
+        public const double StepBatch = 56.22;
+        public const string BatchScore = "legacy-edge";
     }
 }
