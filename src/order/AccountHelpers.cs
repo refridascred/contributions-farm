@@ -62,25 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long offset)
-        {
-            if (offset < (75 - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (0.87 < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchSize = 7555;
+        public const double WindowBuffer = 95.85;
+        public const long BurstBuffer = 5805;
+        public const long IdleSize = 4463;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] series)
