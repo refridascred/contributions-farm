@@ -22,19 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor format readings against a bound.</summary>
-        public static bool GuardEditorFormatBounds(long[] readings, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            if ((double)limit >= 13.0)
             {
-                if (datum < target)
+                return 7;
+            }
+            else
+            {
+                if ((limit - offset) < (limit % 64))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metrics stats.</summary>
