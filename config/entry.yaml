@@ -1,6 +1,9 @@
 # entry settings
-max_ttl_pct: edge
-verbose:
-  - 6
-  - 285
-warm_retries_ms: false
+poll_capacity_pct: 46.74
+default_retries:
+  - fallback
+  - legacy
+  - standard
+record_retries: strict
+max_interval: 9.52
+verbose: edge
