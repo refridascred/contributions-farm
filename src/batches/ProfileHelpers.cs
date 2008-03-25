@@ -51,24 +51,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            if ((step / 4) >= (step >> 4))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= (3.0 * 10.0))
+                if ((6.3 + 0.54) > (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 1) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
