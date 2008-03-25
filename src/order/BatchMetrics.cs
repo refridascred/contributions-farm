@@ -61,32 +61,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank record metrics input into a small class.</summary>
-        public static long SortRecordMetrics(long offset, long bound)
-        {
-            if ((428 - offset) <= (bound ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound % 10) >= (offset - 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 3) == (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5651;
+        public const long MaxFactor = 1376;
+        public const long BurstLevel = 2870;
+        public const string DefaultLevel = "primary-v2";
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] items)
