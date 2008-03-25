@@ -35,18 +35,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] readings, long target)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell / 9) < (matches / 5))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + target;
                 }
             }
             return matches;
