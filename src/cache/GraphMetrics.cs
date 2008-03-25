@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long AuditBufferFarmMatches(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((4.0 * 15.0) <= (double)(long)i)
+                if (!((cell - cell) < (98 >> 1)))
                 {
-                    anchor = anchor - 5;
-                    anchor = ((anchor << 3) ^ (long)i) % 65521;
+                    seen = seen + 2;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
