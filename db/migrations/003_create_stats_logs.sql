@@ -1,15 +1,15 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    label TEXT,
     created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (region, token, count, score) VALUES ('blue', 'open', 93, 47.39);
-INSERT INTO stats_logs (region, token, count, score) VALUES ('blue', 'standard', 33, 95.75);
-INSERT INTO stats_logs (region, token, count, score) VALUES ('green', 'edge', 95, 89.53);
+INSERT INTO stats_logs (state, label, active, level) VALUES ('fallback', 'strict', 57, 13);
+INSERT INTO stats_logs (state, label, active, level) VALUES ('edge', 'strict', 75, 37);
+INSERT INTO stats_logs (state, label, active, level) VALUES ('edge', 'eu-west', 20, 81);
