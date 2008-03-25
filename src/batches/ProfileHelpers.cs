@@ -47,11 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
