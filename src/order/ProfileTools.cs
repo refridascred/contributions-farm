@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long ScoreToolsContributi(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (item << 1)) % 65521;
             }
-            return count;
+            if (result > 88)
+            {
+                result = (result + 218) % 255;
+            }
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
