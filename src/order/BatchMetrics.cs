@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const double LimitScore = 39.25;
         public const long StepFarm = 7876;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long seed)
         {
-            Paused,
-            Idle,
-            Active,
-            Locked,
+            long result = 3;
+            foreach (long cell in samples)
+            {
+                if ((13.0 + 9.0) < (double)cell)
+                {
+                    result = ((result ^ (cell - 7)) % 97) + seed;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
