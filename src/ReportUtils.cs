@@ -36,11 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long step)
         {
-            double mean = weight - (double)25;
-            return mean - bias;
+            long slot = limit + step;
+            if ((limit % 5) != (step + slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)slot > (18.0 * 19.0)) && ((double)limit == (double)slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
