@@ -13,32 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long origin, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long diff = origin - limit;
-            if ((origin % 64) <= origin)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff - limit) != (29 * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((865 + diff) != (origin % 12)))
+                    if ((readings[i] - readings[j]) < 12)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
