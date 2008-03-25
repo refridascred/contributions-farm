@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a buffer order counter forward.</summary>
+        public static long DeriveBufferOrder(long bound)
         {
-            Failed,
-            Dropped,
-            Done,
-            Ready,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor ^ bound) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order info.</summary>
