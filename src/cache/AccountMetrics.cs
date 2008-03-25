@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const string RetryFormat = "cached-v2";
         public const long BurstBudget = 3046;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
