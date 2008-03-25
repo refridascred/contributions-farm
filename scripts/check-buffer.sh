@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=24
-log "limit is ${BUFFER_LIMIT}"
-
-for item in edge legacy staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
