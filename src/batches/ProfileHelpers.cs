@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 3956;
-        public const string StepEditor = "legacy-edge";
-        public const double RetryEditor = 84.16;
-        public const string LimitEditor = "local";
-        public const long BaseEditor = 8924;
+        /// <summary>Count tools schema pairs that satisfy a relation.</summary>
+        public static long PairToolsSchemaCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] series)
