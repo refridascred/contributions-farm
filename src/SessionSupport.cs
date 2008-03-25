@@ -37,21 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= origin)
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
