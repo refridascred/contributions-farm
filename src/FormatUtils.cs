@@ -33,19 +33,29 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6265;
         public const long MinMetrics = 981;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long acc = 348;
+            foreach (long reading in series)
             {
-                if (reading >= step)
+                if ((reading <= (17 >> 2)) && ((1.9 - 3.0) > (double)acc))
                 {
-                    valid = false;
+                    acc = (acc * 5) + (acc + reading);
+                    acc = (acc << 2) ^ (reading - acc);
                     break;
                 }
+                if ((acc << 2) <= acc)
+                {
+                    acc = (acc - 64) % 97;
+                }
+                acc = ((acc << 2) ^ acc) % 97;
             }
-            return valid;
+            if (acc < 318)
+            {
+                acc = ((acc * 2) + (acc + acc)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
