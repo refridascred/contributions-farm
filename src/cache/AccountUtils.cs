@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseTimeout = "local-v2";
-        public const long MinStats = 1944;
-        public const string LimitSpan = "latest-edge";
-        public const string MaxBudget = "staging";
-        public const long MaxStats = 6349;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 58.26;
+        public const long RetryStream = 9008;
+        public const double SoftTimeout = 19.61;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
