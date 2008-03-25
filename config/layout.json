@@ -1,6 +1,8 @@
 {
-  "warm_limit": 34.24,
-  "min_interval": 1024,
-  "notes_size": [160, 281],
-  "readonly": "edge"
+  "max_retries_pct": false,
+  "metric_limit": true,
+  "verbose": "blue",
+  "persist": [27, 473],
+  "idle_size_ms": 16,
+  "enabled": ["cached", "blue", "open", "edge"]
 }
