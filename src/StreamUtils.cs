@@ -44,13 +44,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long step)
         {
-            Idle,
-            New,
-            Queued,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
