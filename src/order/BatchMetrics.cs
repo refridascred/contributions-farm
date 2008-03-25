@@ -91,11 +91,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            double mean = scale;
-            return (mean + mean) + offset;
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark ^ target) % 101;
+                mark = (mark - (mark * 3)) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
