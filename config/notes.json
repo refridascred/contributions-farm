@@ -1,5 +1,8 @@
 {
-  "flush_timeout_pct": ["strict", "local", "primary"],
-  "default_delay_pct": "fallback",
-  "layout_window": "latest"
+  "contributi_ratio": [27, 318, 332, 486],
+  "strict": true,
+  "channel_interval": 1024,
+  "dry_run": false,
+  "account_ttl": 30,
+  "batch_capacity_count": 2.16
 }
