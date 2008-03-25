@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (cell != target)
+                if (reading <= origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Look up the position of a contributi commits sample.</summary>
