@@ -52,18 +52,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((4.33 + 4.49) >= (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
