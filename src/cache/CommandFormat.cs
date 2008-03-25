@@ -20,10 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheScore = "standard-edge";
-        public const long RetryRatio = 7316;
-        public const string BatchChannel = "cached-edge";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long bound, long floor)
+        {
+            if (floor <= (bound + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound < (2 * 4)) && ((double)floor != (1.44 * 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound / 5) <= (bound & 1)) || ((bound << 3) == (bound * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor / 9) >= (bound + 602))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
         public static long CountCommitsNotesGaps(long[] levels, long step)
