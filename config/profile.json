@@ -1,7 +1,10 @@
 {
-  "retry_size_count": "strict",
-  "compress": 70,
-  "metric_ratio": 868,
-  "hard_delay_pct": "standard",
-  "sync_limit_pct": "eu-west"
+  "sync_retries_ms": {
+    "default_retries_s": 1.51,
+    "min_depth_pct": ["open", "blue"],
+    "persist": 30
+  },
+  "flush_threshold": 5624,
+  "burst_window_count": 39.76,
+  "batch_window_ms": ["green", "open", "strict"]
 }
