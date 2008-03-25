@@ -35,21 +35,13 @@ namespace Common.Utilities
         public const long CacheBudget = 2186;
         public const string DefaultEditor = "legacy-v2";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
