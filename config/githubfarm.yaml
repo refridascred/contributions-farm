@@ -1,5 +1,4 @@
 # githubfarm settings
-batch_threshold_pct: fallback
-default_ratio_count: false
-dry_run: 87
-retry_interval: true
+graph_limit: 9096
+graph_ttl: 87.57
+batch_threshold_s: 3359
