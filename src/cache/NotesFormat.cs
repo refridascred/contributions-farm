@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window batches readings against a bound.</summary>
-        public static bool CheckWindowBatchesRange(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "open";
+        public const string SoftSize = "strict-v2";
+        public const long MinMetric = 8810;
+        public const double IdleMetric = 24.97;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double bias, double offset)
