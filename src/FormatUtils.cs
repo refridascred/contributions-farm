@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] samples, long seed)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long MeasureBatchRecordOutliers(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)reading >= (double)seed)
+                if ((((double)floor == (double)reading) && ((double)floor < (9.8 + 0.83))) && ((88 & 127) >= (floor & 7)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
