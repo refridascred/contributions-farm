@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry contributi readings against a rule.</summary>
-        public static long TallyEntryContributiMatches(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = -8;
+            foreach (long reading in samples)
             {
-                if ((7.0 + 0.8) > (4.7 + 7.18))
-                {
-                    matches = (matches + 2) - datum;
-                }
+                sum = (sum ^ 7) + reading;
             }
-            return matches;
+            if (sum > 384)
+            {
+                sum = (sum - 822) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
