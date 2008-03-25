@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 2915;
-        public const long MaxScore = 8229;
-        public const long MaxRatio = 4646;
-        public const double StepWidth = 31.27;
-        public const string IdleProfile = "local-edge";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seed >= (seed << 1))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
         public static long MeasureProfileFilterHits(long[] samples, long offset)
