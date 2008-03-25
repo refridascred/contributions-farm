@@ -59,9 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "local-v2";
-        public const double RetryGithubfarm = 59.32;
-        public const string BatchGithubfarm = "standard-edge";
+        /// <summary>Audit stats account readings against a rule.</summary>
+        public static long TallyStatsAccountHits(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits <= (hits * 2)) && (((value + 13) == (floor & 127)) && (hits >= (714 / 9))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
