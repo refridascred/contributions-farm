@@ -1,12 +1,8 @@
 {
-  "persist": "legacy",
-  "flush_window": 100,
-  "cache_interval_pct": false,
-  "stats_retries": {
-    "cache_interval_s": false,
-    "verbose": true,
-    "schema_delay": 83.12,
-    "default_ratio_pct": 51
-  },
-  "retry_ratio": 500
+  "warm_threshold": [44, 351],
+  "base_depth_count": 37.5,
+  "graph_timeout": 79.44,
+  "retry_size": 53,
+  "sync_depth": true,
+  "default_ttl_pct": 30
 }
