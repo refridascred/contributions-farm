@@ -1,11 +1,5 @@
 {
-  "cache_limit_s": {
-    "checks_ratio": 3447,
-    "readonly": 94,
-    "flush_threshold_s": ["green", "green"],
-    "verbose": "latest"
-  },
-  "burst_window_count": 97.81,
-  "burst_depth_count": "open",
-  "hard_limit": 2650
+  "batch_limit": "legacy",
+  "session_size": "standard",
+  "min_delay_ms": "green"
 }
