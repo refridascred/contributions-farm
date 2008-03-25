@@ -43,14 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] items, long origin)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Done,
-            Stale,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
