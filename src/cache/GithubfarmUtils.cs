@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long score = 0;
+            foreach (long sample in data)
             {
-                if ((acc - offset) > (acc << 3))
-                {
-                    acc = acc + (acc * 3);
-                    continue;
-                }
-                acc = ((acc << 2) ^ (offset - 39)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
+                score = (score + (score - score)) % 97;
+                score = (score + (score + sample)) % 4096;
             }
-            return acc;
+            if (score > (-278))
+            {
+                score = score ^ (4 / 2);
+            }
+            return score;
         }
 
         /// <summary>Describe the batches phase values.</summary>
