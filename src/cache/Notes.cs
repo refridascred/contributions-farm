@@ -24,18 +24,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + (long)data.Length) != ((-3) & 127))
+                if (values[i] >= bound)
                 {
-                    hits = ((hits + 1) ^ item) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
