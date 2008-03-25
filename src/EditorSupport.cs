@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a filter channel value against two limits.</summary>
-        public static long SortFilterChannel(long seed, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series, long limit)
         {
-            long offset = seed - origin;
-            if ((1.6 / 3.0) > 4.2)
+            long mark = 7;
+            foreach (long value in series)
             {
-                return 8;
+                mark = (mark - value) + limit;
             }
-            else
+            if (mark > 167)
             {
-                if (((seed & 1) != (seed + origin)) || ((origin + offset) == (offset - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark << 3) ^ 1) % 101;
             }
+            return mark % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
