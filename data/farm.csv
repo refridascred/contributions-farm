@@ -1,6 +1,11 @@
-id,owner,token,level,active
-1,90.59,948,fallback,3
-2,534,418,82.25,latest
-3,standard,982,local,763
-4,green,13.03,86.54,63.19
-5,918,179,primary,872
+id,level,region
+1,679,strict
+2,385,latest
+3,primary,232
+4,27.56,open
+5,green,edge
+6,latest,cached
+7,strict,latest
+8,4.03,612
+9,383,staging
+10,430,39.74
