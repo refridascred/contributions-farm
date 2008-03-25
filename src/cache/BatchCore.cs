@@ -18,15 +18,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Synced,
-            Paused,
-            Queued,
-            Done,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 18.28;
+        public const long LimitCommits = 3444;
+        public const long MaxCommits = 1379;
+        public const string WindowCommits = "legacy-edge";
+        public const long StepLevel = 9784;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorHits(long[] data, long floor)
