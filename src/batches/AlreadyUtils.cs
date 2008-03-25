@@ -44,19 +44,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "standard";
+        public const long BaseLevel = 5744;
+        public const string IdleContext = "standard-1";
+        public const long LimitContext = 7258;
     }
 }
