@@ -64,21 +64,14 @@ namespace Common.Utilities
         public const long StepRecord = 3672;
         public const string SoftDepth = "fallback-1";
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
