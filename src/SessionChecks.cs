@@ -22,12 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long bound)
         {
-            Closed,
-            Locked,
-            Synced,
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score - ((long)i ^ bound)) % 97;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
