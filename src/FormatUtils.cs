@@ -30,20 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter schema entry stays within the limit.</summary>
-        public static bool CheckCounterSchemaRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "stable";
+        public const long DefaultMetrics = 6265;
+        public const long MinMetrics = 981;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] samples)
