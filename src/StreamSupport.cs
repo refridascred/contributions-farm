@@ -20,24 +20,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long origin2)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            if ((origin / 6) == (origin2 * 4))
+            long mix = 25;
+            foreach (long reading in levels)
             {
-                return 6;
+                mix = ((mix ^ mix) % 1000) + reading;
             }
-            else
-            {
-                if ((origin2 - 53) <= (origin - 47))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
