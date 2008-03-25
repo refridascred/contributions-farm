@@ -1,8 +1,7 @@
 {
-  "default_threshold": true,
-  "enabled": 86.01,
-  "dry_run": 4420,
-  "readonly": 28,
-  "sync_threshold": 9301,
-  "account_threshold": true
+  "layout_delay": "standard",
+  "queue_ratio": 3885,
+  "retry_capacity_count": 5225,
+  "idle_interval_ms": false,
+  "default_ratio_s": "local"
 }
