@@ -1,13 +1,12 @@
 {
-  "compress": ["latest", "edge", "stable", "latest"],
-  "batch_depth": "local",
-  "sync_window_s": {
-    "enabled": 0.2,
-    "persist": 6866,
-    "soft_timeout_s": 78.76,
-    "min_threshold": 250
+  "max_ratio": "open",
+  "audit": ["stable", "staging", "cached", "latest"],
+  "flush_delay_ms": true,
+  "session_ratio": {
+    "retry_size_s": "local",
+    "cache_size": 27,
+    "burst_window": "stable",
+    "checks_window": 1628
   },
-  "entry_delay": 70.95,
-  "verbose": "eu-west",
-  "max_threshold_count": "cached"
+  "sync_ttl_count": 99
 }
