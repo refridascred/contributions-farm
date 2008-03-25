@@ -34,12 +34,27 @@ namespace Common.Utilities
         public const double RetryGraph = 52.97;
         public const string MaxSize = "latest-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 4076;
-        public const double StepBudget = 93.77;
-        public const string RetrySize = "primary-edge";
-        public const long SoftFormat = 7402;
-        public const long CacheFormat = 1745;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long limit)
+        {
+            long total = 8;
+            foreach (long datum in values)
+            {
+                if (limit <= (datum % 2))
+                {
+                    total = (total ^ (datum % 7)) % 4096;
+                }
+                if ((38 ^ total) == (datum + datum))
+                {
+                    total = total + (total & 3);
+                }
+            }
+            if (total < 44)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
