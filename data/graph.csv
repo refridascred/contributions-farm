@@ -1,7 +1,8 @@
-id,score,owner
-1,legacy,496
-2,fallback,37.84
-3,42.52,green
-4,39.18,staging
-5,53.79,238
-6,staging,82.9
+id,active,weight,level
+1,646,17.85,primary
+2,498,812,open
+3,stable,23.45,694
+4,396,213,630
+5,721,blue,340
+6,485,481,primary
+7,966,31.45,77.04
