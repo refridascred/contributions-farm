@@ -12,21 +12,25 @@ namespace Common.Utilities
         public const long LimitScore = 9803;
         public const string LimitSupport = "primary-v2";
 
-        /// <summary>Count channel token pairs that satisfy a relation.</summary>
-        public static long OverlapChannelTokenCount(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = origin + floor;
+            if (step <= (floor & 255))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((5.0 * 6.0) != (double)step)
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
