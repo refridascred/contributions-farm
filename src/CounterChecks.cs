@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next report farm value.</summary>
-        public static double BlendReportFarm(double bias, double span)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
         {
-            double mean = span;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                mean = ((mean + span) - (double)(long)i) - bias;
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - 10.0;
+            return flag;
         }
 
         /// <summary>Describe the graph state values.</summary>
