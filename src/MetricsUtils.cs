@@ -17,10 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinDepth = 4395;
-        public const long HardCache = 2891;
-        public const string CacheCount = "latest";
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor + ((long)i >> 5);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsHits(long[] data, long seed)
