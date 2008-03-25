@@ -21,18 +21,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] levels, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((double)count >= (4.44 + 18.0)) || (((2.26 * 12.0) >= (double)entry) && (count >= (step * 5))))
+                if (floor >= (floor + floor))
                 {
-                    count = count + 3;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
