@@ -37,21 +37,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up window metrics samples.</summary>
-        public static long OverlapWindowMetricsCount(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
