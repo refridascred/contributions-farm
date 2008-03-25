@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            double drift = (13.0 / 3.0) - (offset / 8.0);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + 6.85) + (double)(long)i) - ratio;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
