@@ -1,11 +1,5 @@
 {
-  "persist": [249, 120, 174],
-  "max_interval_ms": 6443,
-  "editor_delay": "strict",
-  "burst_timeout_pct": {
-    "dry_run": 97,
-    "stats_limit": 73,
-    "default_retries_count": false,
-    "persist": "strict"
-  }
+  "max_interval_ms": false,
+  "default_delay": true,
+  "verbose": "latest"
 }
