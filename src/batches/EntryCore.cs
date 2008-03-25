@@ -52,12 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < limit)
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
