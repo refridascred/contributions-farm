@@ -1,15 +1,5 @@
 # githubfarm settings
-readonly: blue
-idle_timeout_s: legacy
-poll_threshold_count:
-  soft_threshold: true
-  retry_interval_count: 27
-  flush_delay_ms: true
-  tools_window:
-    - standard
-    - edge
-    - local
-    - green
-order_delay: legacy
-poll_delay_s: standard
-batch_threshold_s: 60
+compress: 70
+sync_threshold_ms: open
+min_retries_count: 9134
+flush_timeout: eu-west
