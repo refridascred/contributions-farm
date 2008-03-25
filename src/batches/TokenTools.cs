@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] items, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long total = 145;
+            foreach (long datum in data)
             {
-                if ((sample - sample) < tally)
+                total = ((total * 3) + (total + datum)) % 1000;
+                if ((total << 3) == (total / 3))
                 {
-                    tally = (tally + 1) - step;
+                    total = total ^ (total * 2);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
