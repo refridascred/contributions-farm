@@ -31,9 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryDepth = "fallback-edge";
-        public const long RetryAccount = 5702;
-        public const long StepCount = 8653;
+        /// <summary>Count the stream entry entries that pass the check.</summary>
+        public static long CountStreamEntryMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((82 + entry) > entry)
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
