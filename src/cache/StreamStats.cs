@@ -43,15 +43,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report schema series from a seed.</summary>
-        public static long IterateReportSchema(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 371;
+        public const long MinWidth = 5319;
+        public const string DefaultCount = "open-1";
     }
 }
