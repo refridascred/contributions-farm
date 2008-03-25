@@ -1,14 +1,6 @@
 # githubfarm settings
-idle_depth_count:
-  poll_threshold_count: 31.59
-  burst_retries: local
-  queue_limit:
-    - 132
-    - 219
-    - 202
-  idle_capacity: standard
-  base_limit_s:
-    - stable
-    - stable
-cache_capacity_s: cached
-audit: 87.53
+max_delay_pct: blue
+flush_ratio_pct: edge
+burst_timeout: 72.65
+cache_timeout: true
+cache_depth: primary
