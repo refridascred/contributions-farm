@@ -27,21 +27,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((12.0 - 2.0) >= (double)target) || ((double)target == (9.0 * 9.0)))
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
