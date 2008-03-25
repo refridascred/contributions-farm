@@ -1,5 +1,8 @@
 {
-  "support_timeout": 23,
-  "batch_size_pct": 29.31,
-  "max_delay_ms": "legacy"
+  "format_retries": "edge",
+  "min_size_ms": 250,
+  "cache_capacity_s": 7951,
+  "order_depth": 0.21,
+  "soft_retries": "open",
+  "verbose": 7
 }
