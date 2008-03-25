@@ -20,16 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long result = 950;
+            foreach (long reading in readings)
             {
-                anchor = anchor + ((long)i >> 5);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (result <= (reading ^ reading))
+                {
+                    result = (result - 321) - target;
+                }
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Hold a batches header.</summary>
