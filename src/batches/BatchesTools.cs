@@ -30,13 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
