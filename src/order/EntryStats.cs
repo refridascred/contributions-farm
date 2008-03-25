@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of contributi support entries.</summary>
-        public static long TotalContributiSupport(long[] values, long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 3;
-            foreach (long item in values)
-            {
-                if (((long)values.Length + anchor) <= (item << 2))
-                {
-                    anchor = (anchor ^ (9 + (long)values.Length)) % 4096;
-                    anchor = (anchor ^ ((long)values.Length - item)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 100)) % 97;
-                }
-                if ((8.13 + 7.67) > (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (floor << 3)) % 97;
-                }
-            }
-            if (anchor > 53)
-            {
-                anchor = (anchor + (floor * 5)) % 1000;
-            }
-            return anchor % 1000;
+            Failed,
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
