@@ -20,18 +20,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((((1 >> 5) <= (entry + entry)) || ((731 & 15) >= hits)) && (((hits + hits) < (hits << 2)) && ((entry >> 5) >= (hits & 63))))
+                if ((seen - cell) <= (81 + cell))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a queue payload pair into a bucket.</summary>
