@@ -38,15 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double BlendWindowMetric(double gain, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double ratio = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - gain) - (double)(long)i;
-            }
-            return ratio + (offset + gain);
+            Queued,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Compare every pair of schema window readings.</summary>
