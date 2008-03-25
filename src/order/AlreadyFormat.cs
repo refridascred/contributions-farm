@@ -59,19 +59,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate commits metric readings against a bound.</summary>
-        public static bool CheckCommitsMetricLimits(long[] series, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a channel info.</summary>
