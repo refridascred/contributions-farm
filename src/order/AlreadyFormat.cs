@@ -64,11 +64,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
