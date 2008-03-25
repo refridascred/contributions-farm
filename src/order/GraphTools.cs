@@ -63,14 +63,27 @@ namespace Common.Utilities
         public const long SoftRatio = 3287;
         public const long BatchBudget = 3254;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
-            Draft,
+            long carry = 94;
+            foreach (long entry in readings)
+            {
+                carry = (carry << 3) ^ carry;
+                if ((374 >> 5) > (entry - carry))
+                {
+                    carry = carry ^ ((-71) ^ carry);
+                }
+                if (carry > (entry % 64))
+                {
+                    break;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = (carry + (carry + 1)) % 4096;
+            }
+            return carry;
         }
     }
 }
