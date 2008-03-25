@@ -1,5 +1,11 @@
 {
-  "notes_delay": 250,
-  "route_ttl": 12,
-  "warm_retries": "local"
+  "flush_retries_s": [279, 123, 9, 465],
+  "strict": {
+    "cache_window_ms": 2447,
+    "verbose": 3679,
+    "persist": "fallback",
+    "buffer_interval": 41,
+    "warm_ratio_pct": 8.65
+  },
+  "default_limit_count": ["cached", "fallback", "eu-west", "local"]
 }
