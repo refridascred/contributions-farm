@@ -39,19 +39,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] items, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long carry = 7;
+            foreach (long cell in values)
             {
-                if (reading > origin)
+                carry = (carry ^ (step / 5)) % 1000;
+                if ((step & 127) >= cell)
                 {
-                    flag = false;
-                    break;
+                    carry = (carry + (788 * 4)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (step + step);
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
