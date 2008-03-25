@@ -77,17 +77,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (offset > (13 & 63))
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((offset ^ 781) != (offset * 4)) || (offset > (offset - 101)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
