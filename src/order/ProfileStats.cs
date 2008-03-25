@@ -38,13 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values, long target)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 953;
+            foreach (long cell in values)
+            {
+                if ((7.3 * 15.0) >= (double)cell)
+                {
+                    mix = ((mix + (9 - cell)) % 101) - target;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
