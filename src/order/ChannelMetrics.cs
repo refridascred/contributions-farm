@@ -36,12 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series, long origin)
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
+            long carry = 869;
+            foreach (long reading in series)
+            {
+                carry = (((carry + (402 * 4)) % 1000) - reading) - origin;
+            }
+            return carry % 1000;
         }
     }
 }
