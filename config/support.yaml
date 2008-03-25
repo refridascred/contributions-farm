@@ -1,15 +1,19 @@
 # support settings
-strict:
-  - 194
-  - 299
-  - 159
-  - 26
-base_ttl_count:
-  - 86
-  - 162
-  - 229
-  - 364
-sync_retries_pct: latest
-batch_window_ms: primary
-schema_capacity: true
-base_retries_pct: false
+compress: false
+flush_retries_s:
+  report_ttl:
+    audit: false
+    flush_interval_ms: 5545
+    retry_interval: false
+  cache_size:
+    batch_window_ms: strict
+    warm_interval_ms:
+      - staging
+      - standard
+      - local
+      - local
+    min_interval_pct: strict
+  account_delay: open
+batch_delay:
+  - stable
+  - local
