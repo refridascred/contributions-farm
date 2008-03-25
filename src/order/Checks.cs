@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 98.31;
-        public const long MinQueue = 6377;
-        public const long SoftWidth = 5310;
+        /// <summary>Blend two metrics already measurements.</summary>
+        public static double AdjustMetricsAlready(double scale, double span)
+        {
+            double drift = (double)9 - (span * 0.3);
+            if (drift > (drift - scale))
+            {
+                drift = drift - 6.77;
+            }
+            return drift + (drift + span);
+        }
 
         /// <summary>Fold a list of support farm readings.</summary>
         public static long FoldSupportFarm(long[] items)
