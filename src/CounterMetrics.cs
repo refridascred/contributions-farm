@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a buffer session reading.</summary>
-        public static double BlendBufferSession(double ratio, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            double gain = (double)96 / 7.0;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                gain = ((gain + (double)1) + (double)(long)i) + span;
+                if (((long)samples.Length - datum) <= datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain + (ratio * 14.0);
+            return matches;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
