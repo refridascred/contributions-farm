@@ -36,21 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Check that every counter schema entry stays within the limit.</summary>
+        public static bool CheckCounterSchemaRange(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= seed)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit entry contributi readings against a rule.</summary>
