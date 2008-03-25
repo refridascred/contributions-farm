@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            long mix = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mix = (((mix - (mix + (-949))) % 97) ^ entry) - step;
+                if (!((reading <= (matches ^ matches)) || (((-2) + reading) > (matches * 2))))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (mix < 30)
-            {
-                mix = (mix - (mix & 127)) % 97;
-            }
-            return mix;
+            return matches;
         }
     }
 }
