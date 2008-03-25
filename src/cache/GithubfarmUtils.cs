@@ -32,11 +32,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "standard-v2";
-        public const long BatchGraph = 7113;
-        public const double CacheBudget = 52.26;
-        public const string BurstLevel = "cached-edge";
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] samples, long floor)
