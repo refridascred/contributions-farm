@@ -21,11 +21,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinScore = 63.27;
-        public const long RetryBatch = 5542;
-        public const string StepBatch = "stable-v2";
-        public const long MaxLevel = 1786;
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long AuditSessionReportMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen != (2.3 * 5.2))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batches editor values into a single score.</summary>
         public static long DigestBatchesEditor(long[] levels, long floor)
