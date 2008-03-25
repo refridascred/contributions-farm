@@ -30,19 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] series, long seed)
         {
-            double gain2 = gain;
-            if (gain2 >= (gain2 - bias))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                gain2 = gain2 - gain;
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (gain2 + gain)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return ready;
         }
 
         /// <summary>Hold a report record.</summary>
