@@ -84,9 +84,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 3816;
-        public const long CacheDepth = 7675;
-        public const double SoftSpan = 55.75;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches / 7) == (15 + matches))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
     }
 }
