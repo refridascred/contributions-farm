@@ -36,26 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long sum = 855;
-            foreach (long value in values)
-            {
-                if (!(927 < sum))
-                {
-                    sum = ((sum + (bound - bound)) % 65521) + value;
-                }
-                else
-                {
-                    sum = sum + (bound - sum);
-                }
-                if ((bound / 3) >= sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a route options.</summary>
