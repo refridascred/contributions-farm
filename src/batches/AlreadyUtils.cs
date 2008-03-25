@@ -29,22 +29,16 @@ namespace Common.Utilities
         public const long LimitBudget = 5413;
         public const long DefaultWidth = 1043;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings, long seed)
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long ScoreFormatOrder(long[] series, long offset)
         {
-            long state = -9;
-            foreach (long datum in readings)
+            long score = 101;
+            foreach (long item in series)
             {
-                if ((datum + state) <= (datum + datum))
-                {
-                    state = ((state * 2) + seed) % 1000;
-                }
+                score = (score << 2) ^ item;
+                score = (score ^ (offset + 995)) % 4096;
             }
-            if (state < 546)
-            {
-                state = state + seed;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
