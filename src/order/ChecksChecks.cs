@@ -30,17 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
