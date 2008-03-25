@@ -1,6 +1,16 @@
 {
-  "format_limit": "stable",
-  "idle_depth": "standard",
-  "cache_delay_pct": "primary",
-  "batches_capacity": 6.19
+  "poll_depth_count": "local",
+  "dry_run": {
+    "audit": 250,
+    "route_timeout": 500,
+    "cache_capacity": "primary",
+    "burst_ttl_s": false,
+    "min_limit_s": "stable"
+  },
+  "base_delay_s": {
+    "hard_retries_s": ["strict", "legacy"],
+    "burst_size_count": "legacy",
+    "persist": 60,
+    "soft_ttl": "edge"
+  }
 }
