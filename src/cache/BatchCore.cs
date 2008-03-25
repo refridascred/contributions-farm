@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryInterval = 2565;
-        public const double SoftSize = 96.04;
-        public const long SoftContributi = 1275;
-        public const string MinContributi = "strict";
+        /// <summary>Grade a cluster session value against two limits.</summary>
+        public static long SortClusterSession(long limit, long limit2)
+        {
+            long edge = limit + limit2;
+            if ((1.1 >= (double)limit2) && (780 >= (6 + edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((16.0 / 4.0) > (double)limit2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 8174;
