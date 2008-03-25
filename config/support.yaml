@@ -1,11 +1,10 @@
 # support settings
-strict: cached
-githubfarm_timeout:
-  soft_timeout: 63.67
-  soft_limit_pct: blue
-  sync_depth_ms: stable
-  soft_ttl: 82.21
-poll_delay_pct: staging
-persist:
-  - staging
-  - open
+min_capacity_ms:
+  retry_interval_pct: edge
+  hard_limit_pct: standard
+  cluster_threshold: staging
+  retry_interval:
+    - 167
+    - 368
+compress: edge
+idle_ttl_pct: open
