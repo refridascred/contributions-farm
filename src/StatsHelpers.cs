@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] levels, long target)
         {
-            long total = 6;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                total = (((total << 3) ^ total) % 65521) ^ sample;
-                total = ((total << 3) ^ (5 - 84)) % 65521;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Compare every pair of batches stream readings.</summary>
