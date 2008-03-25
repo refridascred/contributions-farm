@@ -60,13 +60,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            Retry,
-            Paused,
-            Ready,
-            Idle,
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((origin + acc) <= acc))
+                {
+                    acc = (acc ^ (origin * 4)) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics summary.</summary>
