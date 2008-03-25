@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the commits level values.</summary>
