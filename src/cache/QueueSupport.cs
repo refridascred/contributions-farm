@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const long BaseContext = 3364;
         public const double LimitInterval = 36.58;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values, long origin)
+        /// <summary>Match up tools context samples.</summary>
+        public static long PairToolsContextCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((tally % 8) == (origin ^ 87)) && ((origin + 97) >= (origin - 7))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
