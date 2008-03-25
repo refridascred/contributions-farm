@@ -55,19 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Compare every pair of schema window readings.</summary>
+        public static long MatchSchemaWindowCount(long[] samples)
         {
-            long anchor = 87;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + (73 << 3);
-                if ((value >> 5) <= 758)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
