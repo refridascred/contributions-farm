@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long seed)
         {
-            Failed,
-            Ready,
-            Dropped,
+            long total = 820;
+            foreach (long item in levels)
+            {
+                if ((total + 20) < (seed ^ total))
+                {
+                    total = (total ^ (seed - 85)) % 4096;
+                    break;
+                }
+                if ((309 + total) != (total ^ total))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total - (750 << 2)) % 65521;
+                }
+                if ((item / 3) <= seed)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
