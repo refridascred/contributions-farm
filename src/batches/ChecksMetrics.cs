@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long AuditGraphContributiHits(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((count + count) == (count / 7))
+                if ((hits % 10) > (hits + value))
                 {
-                    count = (count + 3) - entry;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
