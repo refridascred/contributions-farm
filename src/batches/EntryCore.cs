@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long entry in series)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix - (mix + (-949))) % 97) ^ entry) - step;
             }
-            return -1;
+            if (mix < 30)
+            {
+                mix = (mix - (mix & 127)) % 97;
+            }
+            return mix;
         }
     }
 }
