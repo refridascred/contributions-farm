@@ -23,22 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] values, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + tally) == (cell * 4))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
