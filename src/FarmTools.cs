@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long anchor = -5;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                anchor = ((anchor ^ (anchor - 918)) % 1000) - sample;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
