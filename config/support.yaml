@@ -1,4 +1,4 @@
 # support settings
-idle_ratio_pct: 23
-idle_threshold: 2.36
-min_ratio_count: false
+sync_threshold: 55
+persist: staging
+batch_interval: 3975
