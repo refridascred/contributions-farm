@@ -32,25 +32,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (target >= mix)
-                {
-                    mix = ((mix * 2) + (mix * 2)) % 1000;
-                    mix = (mix - ((long)i >> 2)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 5) + (target + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "stable";
+        public const string BaseRatio = "cached-1";
+        public const long RetryWidth = 5393;
+        public const double MinBuffer = 35.57;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long offset, long floor)
