@@ -40,12 +40,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 966;
-        public const long WindowAlready = 4451;
-        public const long HardFactor = 2365;
-        public const string BatchAlready = "standard-edge";
-        public const long HardAlready = 3754;
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long CountAccountReportHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count < (9 - sample))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
