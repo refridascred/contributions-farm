@@ -1,4 +1,7 @@
 # support settings
-account_threshold: 85
-batch_delay: 71
-filter_timeout: strict
+batch_delay: latest
+commits_size:
+  - green
+  - eu-west
+  - fallback
+poll_retries_count: edge
