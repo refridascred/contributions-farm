@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
