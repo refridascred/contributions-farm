@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many buffer batches samples are out of range.</summary>
-        public static long TallyBufferBatchesOutliers(long[] readings, long origin)
+        /// <summary>Accumulate payload order samples.</summary>
+        public static long TallyPayloadOrder(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = 3;
+            foreach (long cell in readings)
             {
-                if ((origin >> 3) < (value + value))
+                total = (total + (floor >> 1)) % 101;
+                if (cell >= (total / 5))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
