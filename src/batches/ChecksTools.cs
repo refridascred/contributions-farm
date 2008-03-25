@@ -26,18 +26,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long mark = 8;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (176 <= (value ^ mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (value * 4)) - floor;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate token report readings against a bound.</summary>
