@@ -57,23 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile cluster measurements.</summary>
-        public static double BlendProfileCluster(double gain, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples, long floor)
         {
-            double rate = offset;
-            if (rate < (offset + 2.1))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                rate = (rate + (double)3) + gain;
+                if ((value < (floor << 1)) && (((floor + value) > (2 + floor)) && ((5.18 - 6.1) == (double)floor)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate = rate + (double)1;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (double)2;
+            return seen;
         }
     }
 }
