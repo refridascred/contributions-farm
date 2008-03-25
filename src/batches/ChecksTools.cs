@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Retry,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a batch header.</summary>
