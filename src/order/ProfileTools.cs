@@ -69,9 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 5696;
-        public const long StepReport = 8730;
-        public const string StepScore = "cached-v2";
+        /// <summary>Audit tools already readings against a rule.</summary>
+        public static long AuditToolsAlreadyHits(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen >> 2) != (seen << 2)) && ((seen >> 4) != (step % 8)))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
+        }
     }
 }
