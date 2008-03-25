@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleSpan = "staging-edge";
+        public const long IdleBudget = 7776;
+        public const string BatchBudget = "fallback-edge";
+        public const long BurstToken = 9423;
+        public const long MaxTimeout = 5662;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
