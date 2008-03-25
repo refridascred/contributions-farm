@@ -1,5 +1,5 @@
 {
-  "dry_run": 88.27,
-  "flush_capacity_s": 479,
-  "payload_capacity": [374, 72, 446, 340]
+  "flush_timeout_pct": ["strict", "local", "primary"],
+  "default_delay_pct": "fallback",
+  "layout_window": "latest"
 }
