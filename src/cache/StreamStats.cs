@@ -27,26 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state - (state >> 2)) % 4096;
-                long delta = (long)i;
-                if ((seed * 5) >= 1)
-                {
-                    delta = (delta ^ ((long)i ^ 35)) % 255;
-                }
-                else
-                {
-                    state = state + (delta - state);
-                    state = ((state << 3) ^ seed) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
