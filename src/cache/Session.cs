@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 1.8;
+            if (weight < 6.0)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight + scale);
             }
-            return -1;
+            return weight - (bias + bias);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
