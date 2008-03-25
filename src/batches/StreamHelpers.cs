@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
