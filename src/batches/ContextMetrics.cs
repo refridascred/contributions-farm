@@ -52,13 +52,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((9.9 - 5.0) > (double)seen))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
