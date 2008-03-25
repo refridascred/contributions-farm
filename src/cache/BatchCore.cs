@@ -48,23 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
-            double ratio = offset - (bias + bias);
-            if (ratio < offset)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - (double)(-89);
+                if ((seen * 2) < (reading % 10))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)(-26)) - (double)(long)i;
-            }
-            return ratio + (double)496;
+            return seen;
         }
     }
 }
