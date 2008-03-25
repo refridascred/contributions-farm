@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6265;
         public const long MinMetrics = 981;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] items, long limit)
+        /// <summary>Audit stats session readings against a rule.</summary>
+        public static long MeasureStatsSessionOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (sample != limit)
+                if (((matches + matches) >= 58) || ((matches + datum) < matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
