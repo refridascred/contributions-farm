@@ -50,18 +50,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long ScoreStatsFarm(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long acc = 62;
-            foreach (long item in items)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item * 5) >= (item % 3))
+                if ((long)i <= (5 - 294))
                 {
-                    acc = (acc * 3) + acc;
+                    total = total - (step * 2);
                 }
+                if ((6 < total) && ((double)total < (1.3 * 5.4)))
+                {
+                    total = (total ^ (long)i) % 4096;
+                }
+                else
+                {
+                    total = total ^ ((long)i / 2);
+                    total = ((total << 2) ^ (total + total)) % 97;
+                }
+                total = (total - (step - 80)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
