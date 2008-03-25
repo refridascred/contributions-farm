@@ -38,13 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Pending,
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((floor ^ sum) != (sum + (long)i))
+                {
+                    sum = (sum + (sum + (long)i)) % 1000;
+                    sum = (sum ^ (floor >> 2)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of schema window readings.</summary>
