@@ -1,18 +1,14 @@
 {
-  "channel_ratio": {
-    "cache_timeout": 100,
-    "cluster_ttl": "open",
-    "flush_retries_s": {
-      "cache_depth_count": 90,
-      "audit": "open",
-      "farm_threshold": "strict",
-      "default_window_pct": [379, 196, 473]
-    },
-    "compress": "edge",
-    "checks_limit": false,
-    "burst_capacity_s": [202, 81, 196]
+  "support_limit": "open",
+  "payload_delay": {
+    "compress": "latest",
+    "cache_ttl": 38,
+    "dry_run": {
+      "cache_interval_ms": "legacy",
+      "farm_limit": 40.47,
+      "audit": true,
+      "verbose": 60
+    }
   },
-  "compress": 500,
-  "sync_threshold": "legacy",
-  "window_threshold": 31.18
+  "format_threshold": "blue"
 }
