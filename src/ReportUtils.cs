@@ -44,19 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long AuditRouteFarmMatches(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items, long bound)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long value in items)
             {
-                if (((reading + reading) > (count + count)) || !((double)reading >= (4.3 - 6.0)))
+                if ((bound & 31) > (value % 3))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
