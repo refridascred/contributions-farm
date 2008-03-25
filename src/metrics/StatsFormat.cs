@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if (!(limit >= (floor % 7)))
             {
-                if (((double)reading <= (5.32 + 0.72)) && (reading > (matches + matches)))
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) != (5 / 4))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
