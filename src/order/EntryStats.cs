@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const string HardBudget = "open-v2";
         public const string BaseReport = "alpha";
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstSize = 9031;
+        public const long LimitBudget = 2240;
+        public const double RetryFormat = 15.0;
+        public const long MinSize = 5030;
+        public const long BatchFormat = 6003;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] items, long step)
