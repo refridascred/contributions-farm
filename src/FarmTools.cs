@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long score = 879;
-            foreach (long sample in values)
-            {
-                score = ((score << 2) ^ sample) % 65521;
-            }
-            return score % 1000;
+            Locked,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate payload samples.</summary>
