@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "staging-edge";
-        public const string BatchRecord = "alpha-edge";
-        public const long LimitSpan = 626;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricHits(long[] values, long origin)
