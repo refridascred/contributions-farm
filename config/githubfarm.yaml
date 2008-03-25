@@ -1,8 +1,28 @@
 # githubfarm settings
-readonly: open
-sync_limit: 4.45
-record_ratio: 772
-tools_threshold:
-  - local
-  - legacy
-base_depth_pct: primary
+flush_timeout_ms: true
+graph_timeout: staging
+min_interval_s: 72
+flush_interval_s:
+  contributi_interval: strict
+  poll_threshold_s: 1024
+  counter_retries: edge
+  default_size_count: 500
+flush_delay_s:
+  soft_capacity_s: true
+  min_size_count:
+    persist: true
+    idle_ttl_ms: edge
+    poll_threshold_pct: 2093
+    strict: 7564
+    account_timeout: 4360
+    flush_timeout: 13.88
+  audit: 250
+  max_threshold: 3.31
+  min_ratio_s:
+    compress: fallback
+    buffer_interval: standard
+    format_limit: 60
+    batch_retries_ms: 41.87
+    warm_size_count: strict
+    sync_retries_pct: primary
+  batch_ratio: green
