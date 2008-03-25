@@ -1,11 +1,6 @@
-id,weight
-1,59.67
-2,open
-3,fallback
-4,37.24
-5,160
-6,cached
-7,staging
-8,strict
-9,625
-10,200
+id,owner,token,level,active
+1,90.59,948,fallback,3
+2,534,418,82.25,latest
+3,standard,982,local,763
+4,green,13.03,86.54,63.19
+5,918,179,primary,872
