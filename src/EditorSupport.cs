@@ -93,19 +93,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metric record entry stays within the limit.</summary>
-        public static bool ValidateMetricRecordLimits(long[] levels, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Dropped,
+            Synced,
         }
     }
 }
