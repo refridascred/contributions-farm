@@ -44,19 +44,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate format buffer samples.</summary>
-        public static long ScoreFormatBuffer(long[] readings, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings, long seed)
         {
-            long score = 68;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                score = (score ^ 390) - value;
-                if ((bound * 4) < bound)
+                if ((matches / 8) > (matches % 8))
                 {
-                    break;
+                    matches = ((matches + 1) + item) + seed;
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
