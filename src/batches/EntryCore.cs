@@ -44,20 +44,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = 3;
-            foreach (long sample in readings)
-            {
-                mark = ((mark ^ (mark << 3)) % 1000) + sample;
-                mark = (mark ^ target) % 1000;
-            }
-            if (mark < 857)
-            {
-                mark = (mark ^ (mark + 9)) % 65521;
-            }
-            return mark;
+            Pending,
+            Closed,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a token reading by value.</summary>
