@@ -31,10 +31,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftLevel = 2974;
-        public const string MinContributi = "stable-1";
-        public const long HardContributi = 9637;
+        /// <summary>Classify a githubfarm command pair into a bucket.</summary>
+        public static long RankGithubfarmCommand(long target, long limit)
+        {
+            if (((target + 835) >= (125 + limit)) || ((double)96 < (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit / 4) < (target + 539)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] data, long seed)
