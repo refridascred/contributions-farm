@@ -35,13 +35,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long sum = 388;
+            foreach (long reading in samples)
+            {
+                if ((4.8 / 8.0) < (double)bound)
+                {
+                    sum = ((sum * 2) + ((-3) - sum)) - reading;
+                }
+            }
+            if (sum < 53)
+            {
+                sum = (sum - (sum ^ sum)) % 97;
+            }
+            return sum;
         }
     }
 }
