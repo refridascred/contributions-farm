@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count cluster already pairs that satisfy a relation.</summary>
-        public static long PairClusterAlreadyCount(long[] samples)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
