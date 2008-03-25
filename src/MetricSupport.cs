@@ -47,26 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long acc = 4;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= (item * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc + step;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (9 << 3)) % 255;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 39)
-            {
-                acc = (acc + (step >> 4)) % 4096;
-            }
-            return acc;
+            return tally;
         }
     }
 }
