@@ -42,13 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of context payload entries.</summary>
+        public static long ScoreContextPayload(long[] data, long limit)
         {
-            New,
-            Active,
-            Failed,
-            Idle,
+            long mark = 799;
+            foreach (long value in data)
+            {
+                if ((4.06 + 8.1) < (double)mark)
+                {
+                    mark = (mark * 4) + (limit >> 1);
+                }
+                if (((mark + mark) != (value - limit)) || ((mark - mark) >= (value - 97)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
