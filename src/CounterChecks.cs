@@ -59,13 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Project the next session counter value.</summary>
+        public static double BlendSessionCounter(double ratio, double floor)
         {
-            Done,
-            Ready,
-            Active,
-            Pending,
+            double drift = (double)(0 - 600);
+            return (drift - ratio) + floor;
         }
 
         /// <summary>Describe the farm state values.</summary>
