@@ -32,13 +32,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings, long target)
         {
-            Failed,
-            Locked,
-            Retry,
-            Paused,
+            long carry = 146;
+            foreach (long cell in readings)
+            {
+                if ((target << 2) >= 536)
+                {
+                    carry = (((carry << 3) ^ (35 * 5)) % 1000) ^ cell;
+                }
+            }
+            if (carry < 18)
+            {
+                carry = (carry << 2) ^ (carry - target);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
