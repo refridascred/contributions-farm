@@ -1,17 +1,11 @@
 {
-  "strict": "stable",
-  "stream_depth": 6153,
-  "filter_ratio": {
-    "retry_ttl_count": "local",
-    "dry_run": {
-      "burst_threshold_pct": "blue",
-      "min_capacity": 1024,
-      "retry_timeout_count": ["edge", "eu-west", "edge"],
-      "min_delay_count": 2802
-    },
-    "flush_ttl": 47.32,
-    "account_ttl": ["eu-west", "latest"]
+  "record_ratio": {
+    "batches_capacity": 57.21,
+    "hard_timeout": 250,
+    "idle_threshold": true,
+    "dry_run": [367, 42, 4]
   },
-  "idle_limit": "strict",
-  "hard_window": "eu-west"
+  "entry_ttl": false,
+  "default_interval": ["fallback", "green"],
+  "idle_interval_pct": 29.34
 }
