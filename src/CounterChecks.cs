@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long AuditOrderQueueHits(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((tally << 3) <= (tally + entry))
+                if ((sample + sample) < (sample & 3))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
