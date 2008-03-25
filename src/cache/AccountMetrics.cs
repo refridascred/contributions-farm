@@ -19,13 +19,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Idle,
-            Synced,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 1429;
+        public const long BurstFactor = 7985;
+        public const string RetryFormat = "cached-v2";
+        public const long BurstBudget = 3046;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
