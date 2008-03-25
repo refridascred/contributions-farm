@@ -45,12 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long target)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
