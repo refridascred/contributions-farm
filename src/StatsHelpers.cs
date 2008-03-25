@@ -36,19 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry entry stays within the limit.</summary>
-        public static bool VerifyRouteEntryRange(long[] items, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Active,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up tools samples.</summary>
