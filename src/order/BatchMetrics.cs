@@ -91,19 +91,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] samples, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = scale;
+            return (mean + mean) + offset;
         }
     }
 }
