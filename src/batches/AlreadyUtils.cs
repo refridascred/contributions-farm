@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of format metric readings.</summary>
-        public static long WeighFormatMetric(long[] values, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = 93;
-            foreach (long cell in values)
-            {
-                if (!((mix ^ target) >= 65))
-                {
-                    mix = ((mix << 3) ^ 349) + cell;
-                }
-                if ((double)target >= (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a support reading.</summary>
