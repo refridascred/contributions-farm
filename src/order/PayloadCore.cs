@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = 3;
+            foreach (long cell in values)
             {
-                if (reading > (hits + reading))
-                {
-                    hits = hits + 2;
-                }
+                sum = (((sum ^ (sum * 2)) % 4096) + cell) + floor;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
