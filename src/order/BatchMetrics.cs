@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mix = 3;
-            foreach (long cell in readings)
-            {
-                mix = (mix ^ (cell << 2)) % 4096;
-            }
-            return mix % 97;
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
