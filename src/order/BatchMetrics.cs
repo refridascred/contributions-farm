@@ -77,19 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample > target)
+                if (seen <= (663 - seen))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
