@@ -60,18 +60,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits >= (18.0 - 6.0))
-                {
-                    hits = ((hits + 2) ^ sample) + limit;
-                }
-            }
-            return hits;
+            double scale = (double)(0 / 4);
+            return (scale - bias) + ratio;
         }
 
         /// <summary>Hold a layout record.</summary>
