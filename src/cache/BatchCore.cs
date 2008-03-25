@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long CountChecksEntryMatches(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((6.0 - 9.0) > (double)count)
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the cache status values.</summary>
