@@ -25,19 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            long anchor = -8;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor << 2) ^ (target + (long)series.Length)) % 101;
-                if ((entry % 10) == ((-11) ^ 932))
+                sum = sum ^ sum;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = (anchor << 3) ^ 0;
+                    sum = ((sum + (floor & 7)) % 97) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Audit account report readings against a rule.</summary>
