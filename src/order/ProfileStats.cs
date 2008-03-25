@@ -19,21 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = step + floor;
+            if (step < (190 - slot))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((slot / 3) <= (floor << 1)) && ((step << 1) != (285 + slot)))
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
