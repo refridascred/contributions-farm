@@ -100,13 +100,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
