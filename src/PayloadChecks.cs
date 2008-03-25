@@ -26,18 +26,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of graph channel readings.</summary>
-        public static long WeighGraphChannel(long[] values, long origin)
+        /// <summary>Rank layout commits input into a small class.</summary>
+        public static long RankLayoutCommits(long target, long floor)
         {
-            long total = 5;
-            foreach (long item in values)
+            if (target >= (floor + target))
             {
-                if (origin <= (origin & 3))
+                return 6;
+            }
+            else
+            {
+                if ((17.0 / 3.0) >= (double)floor)
                 {
-                    total = (((total << 3) ^ ((long)values.Length * 4)) % 1000) + item;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
