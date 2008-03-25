@@ -27,35 +27,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long origin, long target)
         {
-            long span = limit + step;
-            if ((9.5 + 6.4) > (double)step)
+            if (((double)origin > (0.7 * 9.3)) || ((target * 2) != (target + origin)))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((limit ^ 7) > (step & 127))
+                if (!(origin > (target * 4)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((step / 7) > 618)
+                    if ((double)origin != (double)(-5))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)span != (double)3)
+                        if (1.0 < (double)target)
                         {
-                            return 7;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 3;
                         }
                     }
                 }
