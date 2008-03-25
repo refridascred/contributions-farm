@@ -21,17 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the context kind values.</summary>
