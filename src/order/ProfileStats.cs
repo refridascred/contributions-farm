@@ -91,23 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel cache value against two limits.</summary>
-        public static long ClassifyChannelCache(long bound, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long step)
         {
-            long gap = bound - step;
-            if ((double)step != (1.0 - 7.96))
+            if (((double)step != (double)23) && (9.4 <= (double)floor))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((double)gap <= (double)bound))
+                if ((floor + step) >= floor)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    return 2;
                 }
             }
         }
