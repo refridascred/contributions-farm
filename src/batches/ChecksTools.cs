@@ -65,11 +65,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftFactor = 5285;
-        public const long BatchDepth = 3301;
-        public const double CacheFactor = 39.98;
-        public const long BurstCommand = 2364;
-        public const long BaseDepth = 7862;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 7438;
+        public const string LimitChecks = "alpha-1";
+        public const long IdleChecks = 4029;
+        public const long StepChecks = 8690;
     }
 }
