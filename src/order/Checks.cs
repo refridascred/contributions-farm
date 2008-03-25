@@ -81,13 +81,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long step, long offset)
         {
-            Pending,
-            Queued,
-            Ready,
-            Synced,
+            if ((step >> 4) == (step + 435))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((3.21 * 3.04) <= (double)step) && ((offset << 2) < step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
