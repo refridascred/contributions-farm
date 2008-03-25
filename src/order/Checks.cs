@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two metrics already measurements.</summary>
-        public static double AdjustMetricsAlready(double scale, double span)
-        {
-            double drift = (double)9 - (span * 0.3);
-            if (drift > (drift - scale))
-            {
-                drift = drift - 6.77;
-            }
-            return drift + (drift + span);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSize = 94.1;
+        public const long MaxLevel = 3900;
+        public const long CacheTimeout = 6607;
+        public const long WindowSupport = 1904;
+        public const long WindowRatio = 2104;
 
         /// <summary>Fold a list of support farm readings.</summary>
         public static long FoldSupportFarm(long[] items)
