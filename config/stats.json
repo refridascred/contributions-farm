@@ -1,7 +1,10 @@
 {
-  "strict": 99,
-  "enabled": 9151,
-  "base_size": 6291,
-  "cache_timeout": 2873,
-  "poll_ratio_s": "green"
+  "command_depth": 36.15,
+  "token_depth": "strict",
+  "support_ratio": {
+    "compress": ["legacy", "standard", "staging", "edge"],
+    "warm_size_ms": "blue",
+    "base_depth_ms": "standard",
+    "buffer_retries": 2318
+  }
 }
