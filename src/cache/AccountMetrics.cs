@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] series, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading != origin)
+                if ((entry & 31) <= bound)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
