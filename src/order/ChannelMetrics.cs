@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit contributi farm readings against a rule.</summary>
+        public static long CountContributiFarmGaps(long[] values, long offset)
         {
-            Ready,
-            Pending,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((reading >> 3) > (reading << 3)) || ((reading * 4) < (hits & 1)))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
