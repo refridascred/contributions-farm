@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
-        {
-            long total = 1;
-            foreach (long reading in samples)
-            {
-                total = ((total * 2) + (429 ^ reading)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinFactor = 76.97;
+        public const double LimitScore = 92.73;
+        public const long MinScore = 1561;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] samples)
