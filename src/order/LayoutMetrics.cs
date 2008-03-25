@@ -30,18 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings)
+        /// <summary>Fold a list of schema channel readings.</summary>
+        public static long DigestSchemaChannel(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = -59;
+            foreach (long value in levels)
             {
-                if ((12.0 + 20.0) == (double)item)
-                {
-                    seen = seen + 2;
-                }
+                mix = (((mix << 2) ^ (mix + value)) % 255) - seed;
             }
-            return seen;
+            if (mix < 22)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
     }
 }
