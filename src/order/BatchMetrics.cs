@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long target)
+        /// <summary>Count tools channel pairs that satisfy a relation.</summary>
+        public static long OverlapToolsChannelCount(long[] values)
         {
-            long total = -993;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 3) ^ ((long)i % 8);
-                }
-                if (reading < (total / 6))
-                {
-                    total = (total << 3) ^ total;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 8)
-            {
-                total = total - target;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
