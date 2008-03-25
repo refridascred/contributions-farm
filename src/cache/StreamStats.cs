@@ -21,21 +21,27 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (result << 2) ^ (result + result);
+                if (floor > (result - floor))
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result - result)) % 1000;
+                }
+                else
+                {
+                    result = result - (floor + sample);
                 }
             }
-            return count;
+            if (result < 81)
+            {
+                result = ((result * 3) + (result & 15)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a support header.</summary>
