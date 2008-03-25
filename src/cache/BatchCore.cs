@@ -14,14 +14,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            Dropped,
-            Ready,
-            New,
-            Done,
-            Locked,
+            long acc = -85;
+            foreach (long value in samples)
+            {
+                if (((double)acc < (5.58 / 9.0)) && (value < (value >> 5)))
+                {
+                    acc = (acc ^ (value / 5)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (value * 4);
+                }
+            }
+            if (acc < 76)
+            {
+                acc = ((acc * 2) + (acc % 100)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
