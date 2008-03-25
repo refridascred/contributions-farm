@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool GuardRouteProfileBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((89 - matches) <= (matches % 24))
+                if (item != limit)
                 {
-                    matches = (matches + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a channel info.</summary>
