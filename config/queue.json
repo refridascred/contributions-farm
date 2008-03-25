@@ -1,5 +1,23 @@
 {
-  "cache_delay": "stable",
-  "audit": ["edge", "cached", "open"],
-  "enabled": 18.52
+  "command_threshold": {
+    "hard_threshold": "open",
+    "order_depth": {
+      "warm_capacity_s": "fallback",
+      "flush_capacity": 6308,
+      "idle_limit": 55,
+      "soft_interval": "standard"
+    },
+    "layout_depth": {
+      "burst_limit": 14.55,
+      "soft_ratio": "primary",
+      "max_interval_count": 16,
+      "verbose": 7704,
+      "audit": "eu-west"
+    },
+    "strict": 9408,
+    "base_capacity": [480, 356]
+  },
+  "strict": ["fallback", "open", "legacy", "blue"],
+  "cache_interval_ms": 58,
+  "audit": false
 }
