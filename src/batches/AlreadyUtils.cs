@@ -13,23 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long target)
         {
-            double gain = bias;
-            if (gain < weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (5.09 - weight);
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (gain + 5.78);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - 20.0;
+            return -1;
         }
 
         /// <summary>Digest a series of command checks entries.</summary>
