@@ -12,23 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((matches % 97) != (matches + matches)))
-                {
-                    matches = ((matches + 2) ^ sample) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 153;
+        public const long WindowFactor = 3168;
+        public const long RetryReport = 5890;
+        public const string BurstReport = "staging-v2";
+        public const string CacheReport = "fallback-v2";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiMatches(long[] items)
