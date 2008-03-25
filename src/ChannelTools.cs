@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBatchesRange(long[] samples, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (reading > limit)
+                if (5 <= step)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
