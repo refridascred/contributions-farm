@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] samples, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (item >= floor)
+                if (sample >= bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the record level values.</summary>
