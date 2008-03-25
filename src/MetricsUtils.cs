@@ -26,13 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the cache command entries that pass the check.</summary>
+        public static long TallyCacheCommandHits(long[] samples, long bound)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell % 12) <= count))
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
