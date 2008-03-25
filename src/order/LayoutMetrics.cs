@@ -34,22 +34,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel payload value against two limits.</summary>
-        public static long SortChannelPayload(long bound, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long origin, long origin2)
         {
-            if ((14.0 - 6.55) > (double)bound)
+            long slot = origin + origin2;
+            if (!((origin + origin2) <= slot))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((3.7 + 4.2) < (double)floor)
+                if (!(0 > (origin >> 4)))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((6.0 - 4.9) < (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
