@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] items, long step)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) < tally)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
