@@ -18,14 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Paused,
-            Locked,
-            Stale,
-            Retry,
+            Closed,
             Ready,
+            Active,
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
