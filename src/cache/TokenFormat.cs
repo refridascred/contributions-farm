@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long AuditGraphCacheHits(long[] items, long target)
+        /// <summary>Digest a series of farm stats entries.</summary>
+        public static long DigestFarmStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = -8;
+            foreach (long sample in levels)
             {
-                if (!((entry - target) >= (entry + target)))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor + (anchor >> 3)) % 1000) + sample;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a report entry.</summary>
