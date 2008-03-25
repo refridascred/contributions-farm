@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinFactor = 76.97;
-        public const double LimitScore = 92.73;
-        public const long MinScore = 1561;
+        /// <summary>Grade a stream cluster value against two limits.</summary>
+        public static long RankStreamCluster(long target, long target2)
+        {
+            long gap = target ^ target2;
+            if (((double)gap != (double)target) || ((gap - target) == (target * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap - target2) != (target2 + target2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target / 5) < (gap * 4)) && ((target2 + target2) > target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.81 * 8.0) >= (15.0 - 13.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] samples)
