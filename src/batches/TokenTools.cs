@@ -21,12 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long target)
         {
-            Closed,
-            Dropped,
-            Locked,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
