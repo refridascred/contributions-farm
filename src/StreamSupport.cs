@@ -34,14 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] levels, long target)
         {
-            Retry,
-            Stale,
-            Idle,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value <= (17.0 + 5.8))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
     }
 }
