@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const string IdleFarm = "alpha-v2";
         public const long BatchFarm = 5591;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Check that every githubfarm command entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmCommandRange(long[] levels, long offset)
         {
-            long carry = 2;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((double)carry < (7.8 / 9.0))
+                if (datum < offset)
                 {
-                    carry = (carry << 2) ^ item;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 56)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
