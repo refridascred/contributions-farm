@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long seed)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long result = -3;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((result ^ seed) % 101) ^ (long)i;
+                    result = (result ^ ((-610) << 2)) % 101;
+                }
+                if (9.2 <= (double)seed)
+                {
+                    result = (result + (cell + cell)) % 65521;
+                }
+            }
+            if (result < 86)
+            {
+                result = result + (seed / 4);
+            }
+            return result;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
