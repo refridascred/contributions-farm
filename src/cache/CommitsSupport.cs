@@ -66,21 +66,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 7969;
+        public const long IdleRatio = 7852;
+        public const double MaxLevel = 13.02;
     }
 }
