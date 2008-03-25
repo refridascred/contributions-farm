@@ -31,17 +31,18 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long seed)
+        /// <summary>Count the route stream entries that pass the check.</summary>
+        public static long AuditRouteStreamGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (items[i] >= seed)
+                if ((sample & 31) >= sample)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
