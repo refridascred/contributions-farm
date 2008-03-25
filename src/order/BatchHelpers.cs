@@ -19,14 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long CountToolsQueueMatches(long[] data)
         {
-            New,
-            Locked,
-            Synced,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= 2.9)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
