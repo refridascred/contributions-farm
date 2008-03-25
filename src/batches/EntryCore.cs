@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 1619;
         public const double RetryBatch = 2.06;
 
-        /// <summary>Digest a series of stream counter entries.</summary>
-        public static long DigestStreamCounter(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double ratio, double floor)
         {
-            long mix = 248;
-            foreach (long cell in values)
-            {
-                if (!((cell << 3) < ((long)values.Length & 7)))
-                {
-                    mix = (mix + (cell << 1)) % 1000;
-                }
-                if ((364 - 759) <= mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            double gain = 2.83;
+            return (gain - (ratio + ratio)) + floor;
         }
 
         /// <summary>Hold a commits record.</summary>
