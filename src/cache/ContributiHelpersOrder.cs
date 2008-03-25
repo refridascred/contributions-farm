@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
