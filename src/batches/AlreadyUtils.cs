@@ -23,31 +23,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long floor)
         {
-            if (52 < (limit + limit))
+            long total = 43;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) > (limit & 15))
+                total = total - total;
+                if (((floor >> 2) < datum) || ((floor - 70) <= (total << 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit <= (limit ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = ((total << 3) ^ (datum / 6)) % 1000;
                 }
             }
+            if (total > 58)
+            {
+                total = total ^ (415 + 38);
+            }
+            return total;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
