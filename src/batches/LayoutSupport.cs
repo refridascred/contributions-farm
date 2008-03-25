@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine order account values into a single score.</summary>
+        public static long TallyOrderAccount(long[] readings)
         {
-            New,
-            Queued,
-            Locked,
-            Ready,
+            long mark = 628;
+            foreach (long cell in readings)
+            {
+                mark = ((mark * 3) + (mark << 3)) % 101;
+                if (((double)cell < (double)mark) || ((689 ^ mark) == (cell + mark)))
+                {
+                    mark = mark ^ mark;
+                }
+            }
+            if (mark > 642)
+            {
+                mark = mark - mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
