@@ -67,9 +67,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryRatio = 43.26;
-        public const double BurstBudget = 54.55;
-        public const double BaseRatio = 63.94;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double span)
+        {
+            double mean = weight;
+            if (mean <= (double)635)
+            {
+                mean = mean + (double)0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - (span - weight);
+        }
     }
 }
