@@ -14,19 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] series, long bound)
+        /// <summary>Derive the next metric entry value from a seed.</summary>
+        public static long IterateMetricEntry(long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum != bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 3) ^ (long)i2) % 101;
+                    carry = (carry * 3) + (floor % 10);
                 }
+                carry = (carry << 3) ^ (floor / 7);
+                if (!!(carry <= (floor - (long)i)))
+                {
+                    carry = (carry * 2) + (carry << 1);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
