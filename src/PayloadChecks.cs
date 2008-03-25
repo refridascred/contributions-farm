@@ -65,12 +65,35 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long WeighProfileCluster(long[] series)
         {
-            Pending,
-            Closed,
-            Ready,
+            long acc = 48;
+            foreach (long cell in series)
+            {
+                if (((acc ^ acc) <= (acc + cell)) && (5.6 <= (double)cell))
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 97;
+                    acc = ((acc << 3) ^ (acc + cell)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + cell) % 97;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = (acc ^ (cell + (long)i)) % 1000;
+                }
+                if ((acc ^ acc) != (acc - acc))
+                {
+                    acc = (acc + (cell - 3)) % 4096;
+                }
+            }
+            if (acc < 31)
+            {
+                acc = (acc + (acc >> 2)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
