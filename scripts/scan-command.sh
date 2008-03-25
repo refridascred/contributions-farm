@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    legacy)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in edge standard primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
