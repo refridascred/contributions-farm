@@ -1,6 +1,7 @@
 # entry settings
-batch_retries: 15.03
-command_timeout: true
-soft_timeout_pct: blue
-base_timeout: 250
-soft_delay_s: 58
+readonly: eu-west
+compress: 1024
+graph_ratio: primary
+retry_limit_s: true
+context_capacity: 60
+hard_timeout: edge
