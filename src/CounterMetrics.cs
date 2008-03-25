@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] samples, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a cluster entry.</summary>
