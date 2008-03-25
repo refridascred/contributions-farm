@@ -1,6 +1,6 @@
 {
-  "metric_ttl": "local",
-  "audit": false,
-  "cache_size": ["strict", "cached", "fallback", "primary"],
-  "compress": false
+  "layout_limit": 4,
+  "base_ratio_count": ["stable", "stable", "standard", "legacy"],
+  "persist": 91.54,
+  "layout_threshold": true
 }
