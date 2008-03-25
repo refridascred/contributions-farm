@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowInterval = 1176;
-        public const string LimitTimeout = "fallback-edge";
-        public const long MinReport = 5401;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
         public static bool VerifyMetricsRecordBounds(long[] values, long seed)
