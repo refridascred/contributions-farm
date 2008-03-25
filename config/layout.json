@@ -1,11 +1,8 @@
 {
-  "hard_timeout_ms": 1024,
-  "sync_size_count": {
-    "support_ratio": "blue",
-    "flush_delay_ms": [465, 263, 151],
-    "sync_window": "blue"
-  },
-  "idle_interval": 8216,
-  "batch_delay_pct": "open",
-  "compress": "open"
+  "flush_window_pct": [1, 172],
+  "base_threshold": "strict",
+  "base_timeout": "strict",
+  "warm_capacity_pct": false,
+  "commits_threshold": [22, 154, 149, 359],
+  "sync_ttl_ms": "legacy"
 }
