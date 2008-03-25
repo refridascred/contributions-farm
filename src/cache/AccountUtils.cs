@@ -19,22 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long TallyFormatCommitsHits(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((reading < (seen - 8)) && ((48 % 10) != (seen + reading))) && !((reading ^ reading) != (seen - reading)))
+                if (reading != target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a token options.</summary>
