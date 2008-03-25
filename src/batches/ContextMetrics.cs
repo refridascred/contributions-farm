@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long LimitCommand = 9672;
         public const long BaseSize = 2025;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] data, long step)
         {
-            New,
-            Done,
-            Active,
-            Ready,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value <= (value ^ hits))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
