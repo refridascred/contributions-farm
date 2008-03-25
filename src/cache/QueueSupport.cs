@@ -14,11 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 52;
+            foreach (long reading in levels)
+            {
+                result = (((result * 2) + (reading * 3)) % 4096) + seed;
+            }
+            return result;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
