@@ -13,39 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a account batches value against two limits.</summary>
-        public static long GradeAccountBatches(long offset, long bound)
-        {
-            if ((offset * 3) == (offset ^ offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > (12.0 - 0.26))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((7.6 * 6.3) == (double)offset) && ((bound - 0) != (bound + 91)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseDepth = 8408;
+        public const double StepSize = 60.59;
+        public const long LimitCount = 5192;
+        public const string BatchMetric = "cached-edge";
+        public const long IdleMetric = 8691;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
