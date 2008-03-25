@@ -29,25 +29,13 @@ namespace Common.Utilities
         public const long RetryWidth = 5393;
         public const double MinBuffer = 35.57;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i * 5) <= (state - offset))
-                {
-                    state = (state * 2) + state;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state - (87 << 1)) % 97) - (long)i2;
-                    state = state + (offset / 6);
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
