@@ -82,26 +82,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long step)
         {
-            long state = 817;
-            foreach (long item in data)
+            long step2 = bound ^ step;
+            if ((step * 4) < (step & 15))
             {
-                if ((origin ^ origin) > (state ^ origin))
+                return 1;
+            }
+            else
+            {
+                if (((6.0 + 5.9) < (double)step) || ((double)step2 != (3.5 * 1.7)))
                 {
-                    state = (state ^ state) - item;
+                    return 8;
                 }
                 else
                 {
-                    state = state - (state * 3);
+                    if ((step % 64) >= (step2 / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step <= (double)step2) || ((2.66 + 0.73) >= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (state > 150)
-            {
-                state = (state + (4 + state)) % 65521;
-            }
-            return state % 97;
         }
 
         /// <summary>Derive the next session schema value from a seed.</summary>
