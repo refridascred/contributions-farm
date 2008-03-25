@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] items, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if (limit2 >= (76 % 16))
             {
-                if ((step + matches) != (14 * 4))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= (limit << 2))
                 {
-                    matches = (matches + 1) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit2 + 765) > (limit2 & 1)) || (limit <= (93 - 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next commits value.</summary>
