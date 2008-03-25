@@ -1,10 +1,7 @@
-id,state,ratio,rank,label
-1,50.97,431,743,primary
-2,71.18,cached,green,57.71
-3,662,cached,eu-west,759
-4,12.73,fallback,248,151
-5,5.92,133,259,69.54
-6,658,53.32,260,29.53
-7,31.32,662,711,61.66
-8,107,559,94.23,legacy
-9,green,legacy,fallback,385
+id,score,owner
+1,legacy,496
+2,fallback,37.84
+3,42.52,green
+4,39.18,staging
+5,53.79,238
+6,staging,82.9
