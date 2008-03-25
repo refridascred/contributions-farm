@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long target)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= target)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
