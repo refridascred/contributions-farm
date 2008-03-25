@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor << 3) ^ (7 ^ (long)i)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mix = ((mix * 2) + (seed << 1)) % 4096;
+                mix = ((mix * 2) + seed) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the token mode values.</summary>
