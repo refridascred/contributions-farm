@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 2505;
-        public const long BatchLevel = 859;
-        public const long BurstSupport = 6650;
-        public const string WindowDepth = "local";
+        /// <summary>Fold a list of checks window readings.</summary>
+        public static long ScoreChecksWindow(long[] data)
+        {
+            long carry = -796;
+            foreach (long cell in data)
+            {
+                if ((cell + carry) > (carry + carry))
+                {
+                    carry = ((carry << 3) ^ carry) % 101;
+                }
+            }
+            if (carry > 96)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
