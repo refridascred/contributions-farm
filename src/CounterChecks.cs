@@ -63,10 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "stable";
-        public const long DefaultWidth = 9774;
-        public const long BaseFactor = 8971;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
