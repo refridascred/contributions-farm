@@ -1,16 +1,6 @@
 {
-  "cache_retries": 87.59,
-  "default_depth_s": {
-    "compress": ["open", "primary"],
-    "idle_timeout": 6581,
-    "sync_timeout_s": "stable",
-    "batches_size": {
-      "enabled": true,
-      "retry_ttl": true,
-      "min_retries_s": 1024,
-      "warm_ratio_pct": 28.08
-    },
-    "flush_retries": "stable"
-  },
-  "warm_limit_s": "strict"
+  "burst_size": 28,
+  "flush_capacity": "stable",
+  "sync_size_s": 8301,
+  "max_ttl_s": 73
 }
