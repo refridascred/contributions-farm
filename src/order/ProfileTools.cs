@@ -45,12 +45,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long carry = 33;
+            foreach (long sample in levels)
+            {
+                if ((double)limit < (7.02 * 20.0))
+                {
+                    carry = (carry - (carry + carry)) + sample;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ carry) % 4096;
+                }
+                if (!((double)carry < (3.27 + 2.34)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
