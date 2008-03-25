@@ -72,15 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 3208;
+        public const double IdleLevel = 9.69;
+        public const long BurstSize = 6843;
+        public const long SoftEntry = 5618;
+        public const long DefaultEntry = 8132;
     }
 }
