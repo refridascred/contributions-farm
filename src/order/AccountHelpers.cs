@@ -53,13 +53,21 @@ namespace Common.Utilities
         public const double SoftTimeout = 70.42;
         public const long MaxStats = 919;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry - (carry % 10)) % 255;
+                if (((7.03 + 6.7) <= (double)carry) || ((5.0 + 3.8) == (double)carry))
+                {
+                    carry = (carry << 3) ^ carry;
+                    carry = (carry + ((long)i + (long)i)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
