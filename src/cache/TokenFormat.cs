@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "open";
-        public const double LimitMetrics = 52.48;
-        public const long MaxScore = 5292;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items)
+        {
+            long sum = 983;
+            foreach (long entry in items)
+            {
+                if ((5.83 >= (double)entry) && ((entry % 16) != (sum >> 4)))
+                {
+                    sum = (sum + (sum * 4)) % 97;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Match up stream account samples.</summary>
         public static long OverlapStreamAccountCount(long[] samples)
