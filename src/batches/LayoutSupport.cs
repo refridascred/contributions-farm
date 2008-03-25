@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool VerifyMetricsRecordBounds(long[] values, long seed)
         {
-            Synced,
-            Retry,
-            Draft,
-            Pending,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of context entries.</summary>
