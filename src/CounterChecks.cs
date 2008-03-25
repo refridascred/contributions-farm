@@ -44,12 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + datum) <= ((long)readings.Length - datum))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile level values.</summary>
