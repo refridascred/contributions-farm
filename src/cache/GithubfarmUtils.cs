@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] items, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mark = 272;
+            foreach (long value in data)
             {
-                if (entry < seed)
+                mark = mark ^ (mark << 1);
+                if ((value * 2) <= (offset & 15))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Project the next account value.</summary>
