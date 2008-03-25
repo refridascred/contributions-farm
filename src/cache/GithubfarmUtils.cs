@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Grade a metric checks value against two limits.</summary>
+        public static long ClassifyMetricChecks(long seed, long limit)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            if (((6.3 / 3.0) != (double)seed) && ((seed + seed) != (limit - seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((42 & 1) > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ seed) >= 9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 3) >= (6 - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
