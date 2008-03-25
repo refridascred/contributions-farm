@@ -30,10 +30,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchBudget = 34.99;
-        public const double MaxProfile = 37.79;
-        public const long RetryProfile = 3417;
-        public const string DefaultProfile = "staging-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples)
+        {
+            long total = 4;
+            foreach (long value in samples)
+            {
+                if (((value - total) > total) && ((total & 7) < (32 & 15)))
+                {
+                    total = ((total * 5) + (76 * 4)) % 97;
+                }
+                else
+                {
+                    total = (total << 3) ^ (value + 594);
+                }
+            }
+            if (total < 10)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total % 97;
+        }
     }
 }
