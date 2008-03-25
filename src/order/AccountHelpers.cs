@@ -36,12 +36,33 @@ namespace Common.Utilities
             return gain2 + (offset / 8.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "stable-1";
-        public const long SoftInterval = 1192;
-        public const double HardSize = 59.34;
-        public const long SoftFactor = 4344;
-        public const double WindowBuffer = 46.68;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long floor)
+        {
+            long diff = limit + floor;
+            if ((diff - diff) != (limit - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit <= diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 8) == (limit % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string CacheStats = "local";
