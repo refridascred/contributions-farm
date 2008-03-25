@@ -1,14 +1,37 @@
 # entry settings
-readonly: 7314
-cache_size_ms:
-  notes_ttl: 5402
-  audit: green
-  flush_depth_pct:
-    - eu-west
-    - latest
-retry_capacity:
-  - 72
-  - 312
-soft_depth_ms: green
-batch_depth: cached
-batch_window: 116
+schema_timeout:
+  warm_depth:
+    base_window_s: eu-west
+    min_timeout:
+      - edge
+      - edge
+      - green
+      - latest
+    verbose:
+      - staging
+      - legacy
+      - standard
+    strict: 1024
+  enabled:
+    audit:
+      - strict
+      - standard
+      - green
+      - strict
+    poll_timeout_ms: 1464
+    poll_timeout: latest
+    flush_depth: false
+  default_ttl_count: fallback
+  cache_window:
+    graph_capacity:
+      - 164
+      - 131
+    audit: blue
+    flush_ratio: 13
+    enabled: 3890
+    readonly: 11.16
+  filter_retries: 100
+warm_ratio_ms: false
+layout_depth: strict
+cache_delay: standard
+flush_window_ms: eu-west
