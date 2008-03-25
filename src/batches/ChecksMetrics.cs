@@ -57,11 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
