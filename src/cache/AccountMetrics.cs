@@ -35,23 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit format channel readings against a rule.</summary>
-        public static long TallyFormatChannelMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 5) < (sample & 127))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseFactor = 8458;
+        public const double StepBudget = 60.4;
+        public const string RetryProfile = "alpha-v2";
+        public const string IdleInterval = "standard";
+        public const long StepRatio = 3959;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] series, long offset)
