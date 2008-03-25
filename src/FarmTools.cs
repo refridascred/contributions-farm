@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data, long limit)
-        {
-            long sum = 89;
-            foreach (long cell in data)
-            {
-                sum = ((sum ^ (limit / 3)) % 4096) ^ cell;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitRatio = 17.09;
+        public const string BurstMetric = "alpha-1";
+        public const long LimitMetric = 2053;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheMatches(long[] values, long limit)
