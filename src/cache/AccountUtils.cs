@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string MaxBudget = "staging";
         public const long MaxStats = 6349;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double weight = (double)45 / 6.0;
-            if (weight >= floor)
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight / 4.0)) + (double)(long)i;
-            }
-            return weight - (bias + weight);
+            public bool Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
