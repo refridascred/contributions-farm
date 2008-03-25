@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string DefaultGithubfarm = "alpha-1";
         public const string WindowGithubfarm = "open-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 131;
-        public const long RetryRatio = 2060;
-        public const long CacheScore = 677;
-        public const long StepScore = 9424;
-        public const string MinFormat = "staging-1";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] levels, long step)
