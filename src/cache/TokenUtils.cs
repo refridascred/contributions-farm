@@ -13,38 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long target)
         {
-            if ((double)bound <= (4.29 / 2.0))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 5) <= (57 & 1)) && ((step >> 5) > (step - bound)))
+                if (cell != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + step) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(bound < 36))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the support status values.</summary>
