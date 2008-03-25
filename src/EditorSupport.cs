@@ -87,21 +87,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Check that every metric record entry stays within the limit.</summary>
+        public static bool ValidateMetricRecordLimits(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (!(((double)total != (double)bound) || ((double)bound == (3.0 / 2.0))))
+                if (reading < step)
                 {
-                    total = ((total << 3) ^ (bound % 7)) % 1000;
-                    total = (total - (bound >> 2)) % 101;
+                    ready = false;
+                    break;
                 }
-                total = total - (400 << 3);
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return ready;
         }
     }
 }
