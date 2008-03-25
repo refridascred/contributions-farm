@@ -18,12 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings)
         {
-            Closed,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.2 * 4.9) < (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
