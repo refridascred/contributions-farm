@@ -50,16 +50,19 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = 25;
+            foreach (long sample in data)
             {
-                state = (state + state) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                mark = ((mark << 3) ^ ((long)data.Length / 3)) + sample;
             }
-            return state;
+            if (mark > 672)
+            {
+                mark = mark - mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
