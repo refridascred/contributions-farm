@@ -52,12 +52,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftLevel = "open";
+        public const long MinCache = 4449;
+        public const long MaxInterval = 1895;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchSize = 7555;
