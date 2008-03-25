@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "strict-v2";
-        public const long BatchEditor = 2140;
-        public const long BatchDepth = 3478;
-        public const long StepEditor = 2907;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
+        {
+            long mark = 817;
+            foreach (long value in data)
+            {
+                if (((double)mark < (9.12 * 4.0)) || ((5.9 - 7.72) >= (double)value))
+                {
+                    mark = (mark + (mark ^ mark)) % 65521;
+                    mark = (mark - (mark ^ mark)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark - 507)) % 255;
+                }
+                if (!((mark + value) < (mark - mark)))
+                {
+                    mark = ((mark * 3) + value) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (value / 2)) % 65521;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long SeriesTools(long target)
