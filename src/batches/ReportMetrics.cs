@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 6056;
-        public const double WindowCluster = 91.85;
-        public const double MinCluster = 89.06;
-        public const long StepCluster = 7461;
-        public const long BurstFactor = 8184;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
