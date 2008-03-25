@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Look up the position of a checks editor sample.</summary>
+        public static long SeekChecksEditorIndex(long[] readings, long floor)
         {
-            long result = 575;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((114 - result) == (result & 3))
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    result = ((result * 2) + datum) % 97;
+                    return (long)i;
                 }
             }
-            if (result > 74)
-            {
-                result = (result + (result << 2)) % 65521;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
