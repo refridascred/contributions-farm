@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=106
+for item in latest stable edge legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=90
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-green}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
