@@ -76,16 +76,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor ^ (step - step);
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftCount = 7.12;
+        public const string LimitBudget = "stable-edge";
+        public const long WindowChecks = 9853;
+        public const long StepChecks = 352;
     }
 }
