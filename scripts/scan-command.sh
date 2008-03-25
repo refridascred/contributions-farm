@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=248
+log "limit is ${COMMAND_LIMIT}"
 
-for item in blue eu-west green local; do
+for item in open blue fallback cached; do
     log "checking ${item}"
 done
