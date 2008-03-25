@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Fold a list of command layout readings.</summary>
+        public static long ScoreCommandLayout(long[] levels)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            long result = 419;
+            foreach (long value in levels)
             {
-                if (((2.12 * 5.2) >= (double)datum) || ((anchor % 16) <= (long)items.Length))
+                if ((result + 9) > (result + result))
                 {
-                    anchor = (anchor + (anchor + 42)) % 1000;
+                    result = (result * 5) + (result % 8);
+                }
+                if (value > (result * 5))
+                {
+                    result = (result ^ result) % 255;
+                }
+                if ((value - result) != (result << 1))
+                {
+                    break;
                 }
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Hold a editor record.</summary>
