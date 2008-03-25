@@ -37,19 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm cache readings against a bound.</summary>
-        public static bool GuardGithubfarmCacheBounds(long[] items, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
