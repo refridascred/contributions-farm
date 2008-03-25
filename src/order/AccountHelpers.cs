@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 3394;
-        public const string BaseContext = "local-edge";
-        public const long BurstScore = 7396;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Fold a list of payload githubfarm readings.</summary>
         public static long CombinePayloadGithubfarm(long[] data, long target)
