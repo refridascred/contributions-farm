@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Closed,
-            New,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchFactor = 16.44;
+        public const long SoftGraph = 2933;
+        public const long LimitGraph = 9639;
+        public const long LimitLevel = 8310;
+        public const long BatchSize = 9784;
 
         /// <summary>Measure how many batches farm samples are out of range.</summary>
         public static long MeasureBatchesFarmGaps(long[] series, long seed)
