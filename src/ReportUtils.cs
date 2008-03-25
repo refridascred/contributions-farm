@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] items, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            double weight = (double)(16 + 61);
+            if (weight <= (bias * 6.2))
             {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + (scale / 3.0);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (scale + weight)) + (double)(long)i;
+            }
+            return weight - (weight - bias);
         }
 
         /// <summary>Fold a list of metric readings.</summary>
