@@ -34,14 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Active,
-            Draft,
-            Dropped,
-            Ready,
+            Done,
+            Stale,
+            Closed,
             Pending,
+            Draft,
         }
     }
 }
