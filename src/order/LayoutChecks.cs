@@ -25,10 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxScore = 7075;
-        public const double CacheSupport = 47.91;
-        public const long RetrySupport = 8731;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
