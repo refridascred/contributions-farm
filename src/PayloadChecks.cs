@@ -61,24 +61,15 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            if ((51 & 255) > step)
+            long mark = 552;
+            foreach (long entry in data)
             {
-                return 7;
+                mark = ((mark - mark) % 97) ^ entry;
             }
-            else
-            {
-                if (origin < (step + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
     }
 }
