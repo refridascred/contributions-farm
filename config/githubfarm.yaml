@@ -1,10 +1,11 @@
 # githubfarm settings
-enabled: 5673
-contributi_interval: 2
-account_threshold:
+checks_capacity: 100
+idle_ttl:
+  - 42
+  - 498
+  - 186
+  - 192
+min_threshold:
   - primary
   - legacy
-  - green
-graph_interval: 8568
-verbose: 100
-max_ratio_ms: 1024
+default_limit_s: 7108
