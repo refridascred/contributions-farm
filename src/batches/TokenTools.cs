@@ -13,17 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] readings, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                if ((543 - step) <= (61 + result))
                 {
-                    return (long)i;
+                    result = result - (step + 633);
+                    break;
                 }
+                result = (result - result) % 1000;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a format snapshot.</summary>
