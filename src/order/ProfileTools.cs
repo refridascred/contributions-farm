@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long ScoreToolsContributi(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long result = 5;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ (item << 1)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 88)
-            {
-                result = (result + 218) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
