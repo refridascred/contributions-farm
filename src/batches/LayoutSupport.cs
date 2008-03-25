@@ -56,19 +56,17 @@ namespace Common.Utilities
             return scale - (double)3;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] values, long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > target)
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
