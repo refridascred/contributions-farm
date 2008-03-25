@@ -44,19 +44,22 @@ namespace Common.Utilities
             return bias + 19.0;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples, long origin)
         {
-            double bias2 = 14.0;
-            if (bias2 >= offset)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                bias2 = (bias2 + (bias2 + bias2)) - bias;
+                if ((double)cell >= (double)origin)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias2 / 2.0)) + (double)(long)i;
-            }
-            return bias2 + 8.5;
+            return seen;
         }
     }
 }
