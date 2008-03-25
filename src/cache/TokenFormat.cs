@@ -38,13 +38,12 @@ namespace Common.Utilities
             return mean + (mean - weight);
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
