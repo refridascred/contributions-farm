@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Derive the next editor metrics value from a seed.</summary>
+        public static long RollEditorMetrics(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry - ((long)i + target)) % 101) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
