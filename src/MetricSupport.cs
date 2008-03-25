@@ -24,21 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((double)floor < (14.0 / 8.0)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step + floor) >= floor)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
