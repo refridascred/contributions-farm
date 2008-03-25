@@ -44,13 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Dropped,
-            New,
-            Retry,
-            Paused,
+            long mix = 771;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 1) == (mix >> 5))
+                {
+                    mix = mix ^ (datum >> 2);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
