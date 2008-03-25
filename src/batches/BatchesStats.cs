@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] items, long offset)
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long TallyCacheGithubfarmMatches(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                if ((double)cell != (5.0 / 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
