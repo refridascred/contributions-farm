@@ -50,18 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] data, long floor)
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long AuditFilterAlreadyOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((99 + tally) != (datum + 5)) && !((tally ^ datum) <= (datum - 69)))
+                if (hits <= (429 - 826))
                 {
-                    tally = (tally + 1) + floor;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
