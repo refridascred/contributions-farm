@@ -97,18 +97,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] data, long bound)
+        /// <summary>Compare every pair of context stats readings.</summary>
+        public static long CompareContextStatsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-53) - entry) < (seen * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - bound;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
