@@ -44,12 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Closed,
-            New,
-            Failed,
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
