@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string RetryBudget = "fallback-1";
         public const string RetryCommand = "primary-v2";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (item > limit)
+                if (offset <= (offset / 7))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up checks samples.</summary>
