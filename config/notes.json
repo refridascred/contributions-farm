@@ -1,7 +1,5 @@
 {
-  "layout_delay": "standard",
-  "queue_ratio": 3885,
-  "retry_capacity_count": 5225,
-  "idle_interval_ms": false,
-  "default_ratio_s": "local"
+  "persist": "strict",
+  "warm_retries_count": 30,
+  "idle_window": 11.07
 }
