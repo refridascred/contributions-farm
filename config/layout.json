@@ -1,5 +1,5 @@
 {
-  "metric_window": 60,
-  "token_interval": 500,
-  "batch_limit": "fallback"
+  "idle_timeout_ms": 820,
+  "sync_size_count": 60,
+  "sync_delay": "local"
 }
