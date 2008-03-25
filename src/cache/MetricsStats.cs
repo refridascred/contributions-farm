@@ -50,21 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Measure how many order graph samples are out of range.</summary>
+        public static long AuditOrderGraphGaps(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.33 - 2.59) >= 8.98)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 3) + item) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the tools cache series from a seed.</summary>
