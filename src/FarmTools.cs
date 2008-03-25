@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
