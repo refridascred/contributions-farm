@@ -44,11 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitInterval = 98.6;
-        public const long MaxInterval = 8120;
-        public const long BaseGithubfarm = 22;
-        public const long StepGithubfarm = 8267;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double RetryCount = 88.12;
