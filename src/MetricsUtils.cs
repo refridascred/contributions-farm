@@ -41,39 +41,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long prev = bound - step;
-            if (step >= (prev + 77))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (8.7 - 19.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step >> 1) > prev) || ((bound + prev) > (67 % 60)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step < (bound % 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count the filter already entries that pass the check.</summary>
