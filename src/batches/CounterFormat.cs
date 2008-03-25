@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
