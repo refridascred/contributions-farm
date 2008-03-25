@@ -1,11 +1,23 @@
 # entry settings
-filter_delay:
-  - blue
-  - standard
-  - green
-  - standard
-cache_delay_pct: false
-support_ratio: standard
-contributi_interval: green
-cache_delay_count: local
-batch_capacity: 2360
+poll_threshold_pct:
+  - strict
+  - eu-west
+  - stable
+  - staging
+window_delay: 84
+sync_depth:
+  compress: false
+  notes_capacity: 500
+  batch_capacity_s: 100
+  cache_window: open
+  batch_ratio_ms: 60
+  hard_limit_pct:
+    - 97
+    - 460
+    - 469
+cluster_threshold: 4521
+burst_ttl_s: false
+metrics_delay:
+  warm_size: cached
+  soft_limit: 30
+  cache_limit_ms: 1986
