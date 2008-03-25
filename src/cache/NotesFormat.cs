@@ -23,20 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools filter value from a seed.</summary>
-        public static long StepToolsFilter(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] readings, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix ^ (mix & 255)) % 4096;
-                if (((double)(long)i >= (4.6 / 9.0)) && ((offset + 46) < (offset + offset)))
+                if (((double)cell == (double)bound) && ((17 % 8) > (matches & 127)))
                 {
-                    mix = (mix * 4) + mix;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
