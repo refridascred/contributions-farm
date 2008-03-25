@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] series, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally > 0.79)
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
                 {
-                    tally = ((tally + 3) ^ entry) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
