@@ -26,17 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long origin)
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long WeighGraphChannel(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 5;
+            foreach (long item in values)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                if (origin <= (origin & 3))
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ ((long)values.Length * 4)) % 1000) + item;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
