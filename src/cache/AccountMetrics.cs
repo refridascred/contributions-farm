@@ -38,13 +38,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Active,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
