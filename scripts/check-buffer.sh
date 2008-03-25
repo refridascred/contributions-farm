@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for item in eu-west cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=460
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in staging stable; do
-    log "checking ${item}"
-done
