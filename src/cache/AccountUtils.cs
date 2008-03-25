@@ -22,22 +22,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of context payload entries.</summary>
-        public static long ScoreContextPayload(long[] data, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series, long step)
         {
-            long mark = 799;
-            foreach (long value in data)
+            long state = 5;
+            foreach (long cell in series)
             {
-                if ((4.06 + 8.1) < (double)mark)
+                if (((state ^ step) == (state - step)) || ((double)cell < (7.44 - 6.0)))
                 {
-                    mark = (mark * 4) + (limit >> 1);
-                }
-                if (((mark + mark) != (value - limit)) || ((mark - mark) >= (value - 97)))
-                {
-                    break;
+                    state = (state * 3) + (step % 16);
                 }
             }
-            return mark;
+            if (state > (-9))
+            {
+                state = state - ((long)series.Length / 5);
+            }
+            return state;
         }
     }
 }
