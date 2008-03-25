@@ -26,22 +26,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((2 % 16) >= value)
+                if (!((reading - count) <= count) || (((offset + reading) <= (3 % 8)) || ((7.0 - 7.44) >= (double)offset)))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of support entries.</summary>
