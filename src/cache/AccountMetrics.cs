@@ -64,13 +64,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Done,
-            Paused,
-            Closed,
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two stream route measurements.</summary>
