@@ -24,22 +24,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] values)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item - item) == (1 - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first account batch entry that matches the target.</summary>
