@@ -37,17 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long FindRouteContextIndex(long[] samples, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Dropped,
+            Ready,
+            Pending,
         }
     }
 }
