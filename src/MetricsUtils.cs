@@ -26,21 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound > (11.0 / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((6 << 3) <= bound)
                 {
-                    if ((items[i] - items[j]) == 10)
+                    return 1;
+                }
+                else
+                {
+                    if ((2.1 + 6.1) >= (13.0 + 20.0))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches header.</summary>
