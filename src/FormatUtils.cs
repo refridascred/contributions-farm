@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            New,
-            Paused,
+            Failed,
+            Ready,
             Dropped,
-            Idle,
-            Draft,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
