@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long FoldContributiSession(long[] readings)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long result = 751;
-            foreach (long value in readings)
-            {
-                result = (result ^ (-24)) % 255;
-                if (((7.63 + 2.2) > (double)value) || ((result + value) <= (result ^ 73)))
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-            }
-            if (result < 0)
-            {
-                result = (result << 3) ^ (result << 3);
-            }
-            return result % 65521;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
