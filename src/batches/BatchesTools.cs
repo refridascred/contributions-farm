@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long total = 0;
+            foreach (long reading in data)
+            {
+                if ((total <= (reading % 16)) || ((limit + (long)data.Length) > reading))
+                {
+                    total = (total + 138) % 101;
+                }
+                else
+                {
+                    total = (total + (limit ^ reading)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
