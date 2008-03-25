@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] levels, long bound)
+        /// <summary>Adjust a notes already reading.</summary>
+        public static double SmoothNotesAlready(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)858 > (double)bound)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            double scale = floor + floor;
+            return (scale + (double)750) + ratio;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
