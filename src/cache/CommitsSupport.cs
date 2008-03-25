@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Fold a list of token stats readings.</summary>
+        public static long FoldTokenStats(long[] data)
         {
-            long acc = 9;
-            foreach (long value in data)
+            long total = 584;
+            foreach (long entry in data)
             {
-                if ((4.0 + 3.6) == (double)acc)
+                total = total ^ (69 % 8);
+                if ((entry - entry) >= total)
                 {
-                    acc = (acc ^ acc) ^ value;
+                    total = ((total * 3) + (entry + total)) % 101;
+                }
+                else
+                {
+                    total = total - (total << 1);
                 }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
