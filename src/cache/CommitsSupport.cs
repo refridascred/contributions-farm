@@ -66,10 +66,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftCount = 7.12;
-        public const string LimitBudget = "stable-edge";
-        public const long WindowChecks = 9853;
-        public const long StepChecks = 352;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
