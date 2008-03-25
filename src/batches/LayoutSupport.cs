@@ -60,11 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultInterval = 6005;
-        public const long RetryCounter = 1043;
-        public const string CacheTimeout = "primary-edge";
-        public const double IdleCounter = 21.56;
-        public const long HardCounter = 2456;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
