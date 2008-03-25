@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseDepth = 8408;
-        public const double StepSize = 60.59;
-        public const long LimitCount = 5192;
-        public const string BatchMetric = "cached-edge";
-        public const long IdleMetric = 8691;
+        /// <summary>Locate a report window reading by value.</summary>
+        public static long FindReportWindowIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
