@@ -64,12 +64,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long origin)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item > (tally >> 3)) && (tally <= (item >> 5)))
+                {
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two stream route measurements.</summary>
