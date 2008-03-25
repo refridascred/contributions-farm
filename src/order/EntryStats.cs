@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string HardBudget = "open-v2";
         public const string BaseReport = "alpha";
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
