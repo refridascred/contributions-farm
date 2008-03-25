@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mean + (double)338;
         }
 
-        /// <summary>Locate a profile schema reading by value.</summary>
-        public static long FindProfileSchemaIndex(long[] series, long target)
+        /// <summary>Validate githubfarm cache readings against a bound.</summary>
+        public static bool GuardGithubfarmCacheBounds(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (series[i] >= target)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
