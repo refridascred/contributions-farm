@@ -40,17 +40,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = target ^ limit;
+            if (((target + next) >= (target << 1)) && ((double)next > (14.0 * 2.72)))
             {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((target % 12) < (limit + target)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((0.73 / 5.0) < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target > (5 * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
