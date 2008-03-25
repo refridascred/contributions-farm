@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Adjust a batch filter reading.</summary>
+        public static double BlendBatchFilter(double scale, double floor)
         {
-            long sum = 94;
-            foreach (long entry in readings)
+            double drift = scale;
+            if (drift > drift)
             {
-                if ((double)entry >= (5.5 - 5.0))
-                {
-                    sum = (sum << 3) ^ entry;
-                    sum = sum ^ (entry - sum);
-                }
-                sum = (sum - ((long)readings.Length & 127)) % 4096;
+                drift = (drift + (drift - drift)) - floor;
             }
-            return sum;
+            return drift + (drift - 11.0);
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
