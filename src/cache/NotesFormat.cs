@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of token session entries.</summary>
+        public static long CombineTokenSession(long[] items, long offset)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 3;
+            foreach (long reading in items)
+            {
+                if ((reading % 16) == (3 >> 1))
+                {
+                    total = (total - 942) - offset;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (long)items.Length) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next tools filter value from a seed.</summary>
