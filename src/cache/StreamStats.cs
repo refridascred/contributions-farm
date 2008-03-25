@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long BurstDepth = 2822;
         public const double BaseSize = 74.94;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((-19) + entry) <= (entry + 42))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 6302;
+        public const long LimitLevel = 4974;
+        public const string BatchSize = "local-edge";
+        public const long RetryStats = 4569;
+        public const long BatchWidth = 109;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
