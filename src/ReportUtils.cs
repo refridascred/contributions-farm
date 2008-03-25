@@ -62,18 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] values, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (7.7 <= (double)limit)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
