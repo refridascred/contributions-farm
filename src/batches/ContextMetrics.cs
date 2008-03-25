@@ -37,13 +37,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a commits cache counter forward.</summary>
+        public static long RollCommitsCache(long target)
         {
-            Done,
-            Stale,
-            Closed,
-            Paused,
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)target == (double)total))
+                {
+                    total = total ^ (total & 127);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel stats.</summary>
