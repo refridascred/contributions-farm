@@ -23,10 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 9477;
-        public const long MinDepth = 3721;
-        public const long MinFactor = 3321;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Dropped,
+            Done,
+            Ready,
+            Active,
+            Failed,
+        }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
         public static long CountStreamEntryMatches(long[] series, long target)
