@@ -43,19 +43,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long step)
         {
-            long mark = 25;
-            foreach (long sample in data)
+            long total = 17;
+            foreach (long datum in items)
             {
-                mark = ((mark << 3) ^ ((long)data.Length / 3)) + sample;
+                if (309 > step)
+                {
+                    total = ((total + (total + step)) % 65521) + datum;
+                }
             }
-            if (mark > 672)
+            if (total < 72)
             {
-                mark = mark - mark;
+                total = (total - (total % 8)) % 97;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
