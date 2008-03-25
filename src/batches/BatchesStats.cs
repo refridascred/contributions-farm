@@ -57,11 +57,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "legacy-edge";
-        public const string WindowTimeout = "primary-edge";
-        public const long IdleStats = 9707;
-        public const double CacheInterval = 39.69;
-        public const long CacheBudget = 5682;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
