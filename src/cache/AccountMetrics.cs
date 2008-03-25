@@ -26,12 +26,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseFactor = 8458;
-        public const double StepBudget = 60.4;
-        public const string RetryProfile = "alpha-v2";
-        public const string IdleInterval = "standard";
-        public const long StepRatio = 3959;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long seed, long offset)
