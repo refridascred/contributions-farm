@@ -1,8 +1,13 @@
 # support settings
-base_ttl_pct: 1905
-payload_window: 72.44
-retry_ratio_pct: latest
-cache_ratio_ms:
-  - open
-  - legacy
-hard_ratio_s: strict
+base_threshold: false
+context_threshold: 192
+filter_retries:
+  base_retries_count: standard
+  sync_capacity: 250
+  burst_depth_pct: legacy
+  persist: stable
+  counter_delay: 35.94
+  batch_interval_pct:
+    - open
+    - strict
+base_ttl_ms: true
