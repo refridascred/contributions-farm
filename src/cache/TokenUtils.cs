@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel editor values into a single score.</summary>
-        public static long ScoreChannelEditor(long[] data)
+        /// <summary>Count commits window pairs that satisfy a relation.</summary>
+        public static long CompareCommitsWindowCount(long[] values)
         {
-            long acc = 9;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (item + (long)data.Length)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the entry class values.</summary>
