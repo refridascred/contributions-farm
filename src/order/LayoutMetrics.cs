@@ -23,20 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long WeighEntryContext(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long carry = -99;
-            foreach (long entry in series)
-            {
-                carry = carry - (entry >> 4);
-                carry = carry - carry;
-            }
-            if (carry < 59)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 97;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
