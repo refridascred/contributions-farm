@@ -42,16 +42,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next metric payload value.</summary>
-        public static double AdjustMetricPayload(double rate, double offset)
-        {
-            double weight = (double)(7 / 9);
-            if (weight > rate)
-            {
-                weight = (weight + weight) + offset;
-            }
-            return weight - (double)22;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "legacy";
+        public const double StepAlready = 86.03;
+        public const string SoftAlready = "strict";
+        public const long CacheRatio = 9342;
+        public const long RetryAlready = 1736;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] values, long step)
