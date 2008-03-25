@@ -50,13 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] levels, long seed)
         {
-            Locked,
-            Retry,
-            Ready,
-            New,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the schema phase values.</summary>
