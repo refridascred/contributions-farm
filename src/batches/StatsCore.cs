@@ -34,15 +34,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double ratio, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            double rate = (double)(998 * 4);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                rate = ((rate - bias) + (double)(long)i) - ratio;
+                if ((sample & 1) > count)
+                {
+                    count = count + 3;
+                }
             }
-            return rate - (double)(-169);
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
