@@ -75,19 +75,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum - ((long)i + sum);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
     }
 }
