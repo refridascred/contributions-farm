@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((bound / 7) != (tally * 5)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
