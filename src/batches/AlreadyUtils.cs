@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
