@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 544;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 4) + target) % 101) - sample;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
