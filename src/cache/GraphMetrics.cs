@@ -34,19 +34,12 @@ namespace Common.Utilities
         public const double RetryGraph = 52.97;
         public const string MaxSize = "latest-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((target % 8) > (reading >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseInterval = 4076;
+        public const double StepBudget = 93.77;
+        public const string RetrySize = "primary-edge";
+        public const long SoftFormat = 7402;
+        public const long CacheFormat = 1745;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
