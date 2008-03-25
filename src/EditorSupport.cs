@@ -76,10 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 85.37;
-        public const long DefaultCount = 6745;
-        public const long RetryBatches = 1868;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "strict-v2";
+        public const long LimitRatio = 6836;
+        public const long MaxContext = 1742;
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] readings)
