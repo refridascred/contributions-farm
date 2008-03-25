@@ -38,12 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long step)
         {
-            Ready,
-            Paused,
-            Dropped,
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum * 5) + (7 - sum);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
