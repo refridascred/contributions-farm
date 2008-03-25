@@ -1,8 +1,7 @@
 # entry settings
-contributi_size: 55
-batch_capacity_pct: 81.4
-dry_run:
-  persist: 57.2
-  window_size: 78.24
-  channel_capacity: standard
-batch_threshold_count: true
+warm_depth_count: true
+metric_timeout: 71.26
+base_capacity_pct: standard
+stream_interval: 68.65
+hard_ratio_pct: fallback
+idle_interval_pct: 100
