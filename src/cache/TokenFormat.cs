@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const long LimitLevel = 8853;
         public const string StepSpan = "cached-1";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long offset2)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long floor)
         {
-            long span = offset ^ offset2;
-            if ((31 + offset) >= (offset2 % 8))
+            if (limit <= (limit + floor))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)span <= (double)offset2)
+                if (!((limit << 3) >= limit))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 2;
+                    return 8;
                 }
             }
         }
