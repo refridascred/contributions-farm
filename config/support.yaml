@@ -1,4 +1,4 @@
 # support settings
-idle_timeout_s: 51
-compress: legacy
-burst_ttl: false
+verbose: 20
+max_ratio_s: false
+schema_ratio: 250
