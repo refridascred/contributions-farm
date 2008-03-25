@@ -28,22 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] series, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading - count) <= count) || (((offset + reading) <= (3 % 8)) || ((7.0 - 7.44) >= (double)offset)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
