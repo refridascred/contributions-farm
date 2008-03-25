@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count * 5) > count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + sample;
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
