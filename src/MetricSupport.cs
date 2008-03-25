@@ -16,32 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long prev = step ^ limit;
-            if ((prev <= (prev / 3)) || ((3.3 * 1.5) == (double)prev))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((-933) >= (step + limit))
+                    if ((samples[i] - samples[j]) == 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema context values into a single score.</summary>
