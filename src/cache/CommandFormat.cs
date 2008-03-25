@@ -13,39 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long floor)
-        {
-            if (((5.72 + 6.8) <= (double)floor) && ((offset + offset) >= 29))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + floor) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)7 != (double)floor) || ((floor << 1) > floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor - offset) <= (offset + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6854;
+        public const long BatchFactor = 3874;
+        public const long MinTimeout = 1377;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] series)
