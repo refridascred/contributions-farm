@@ -32,11 +32,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a token schema pair into a bucket.</summary>
+        public static long BucketTokenSchema(long origin, long limit)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
+            if ((limit >> 4) != (limit & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 8) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 1) >= (limit % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
