@@ -21,11 +21,17 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Scale a stats notes figure with a bias.</summary>
-        public static double AdjustStatsNotes(double ratio, double offset)
+        /// <summary>Look up the position of a route record sample.</summary>
+        public static long LocateRouteRecordIndex(long[] data, long bound)
         {
-            double weight = ratio;
-            return weight - (ratio - offset);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
