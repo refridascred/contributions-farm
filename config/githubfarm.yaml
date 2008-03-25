@@ -1,11 +1,24 @@
 # githubfarm settings
-checks_capacity: 100
-idle_ttl:
-  - 42
-  - 498
-  - 186
-  - 192
-min_threshold:
-  - primary
-  - legacy
-default_limit_s: 7108
+poll_interval_pct: 3413
+soft_limit_count: true
+min_ttl_pct:
+  default_limit_s:
+    - local
+    - strict
+    - local
+  layout_retries: 6.48
+  verbose: false
+  hard_threshold_ms: false
+  counter_interval:
+    burst_depth: primary
+    enabled: false
+    persist: edge
+    verbose: legacy
+    audit:
+      - 332
+      - 76
+      - 313
+    stream_size:
+      - cached
+      - latest
+  idle_ratio_count: primary
