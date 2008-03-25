@@ -72,12 +72,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 3002;
-        public const long BatchSize = 192;
-        public const long BurstInterval = 6658;
-        public const long BurstStats = 855;
-        public const long SoftBudget = 2007;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long origin, long origin2)
+        {
+            if ((origin < (origin * 4)) && ((origin - 0) != (origin2 << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin % 8) > (origin + origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Accumulate githubfarm cache samples.</summary>
         public static long ScoreGithubfarmCache(long[] items, long limit)
