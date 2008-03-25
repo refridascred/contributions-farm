@@ -1,26 +1,9 @@
 # entry settings
-enabled:
-  burst_interval_s:
-    verbose:
-      - 5
-      - 82
-    dry_run: 100
-    context_size: 74.97
-  idle_window_ms:
-    - latest
-    - legacy
-    - latest
-  verbose:
-    - legacy
-    - strict
-    - standard
-    - stable
-  idle_depth_s:
-    route_retries: 49
-    warm_ratio_count: 500
-    dry_run: true
-idle_ttl_ms: latest
-cache_interval_ms: green
-warm_delay: false
-batch_threshold_count: 2587
-poll_ttl: staging
+payload_retries: primary
+retry_window:
+  min_ratio_s: latest
+  min_retries_count: true
+  persist: 83
+  token_limit: 2.5
+sync_limit_s: 250
+enabled: 5715
