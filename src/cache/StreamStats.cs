@@ -35,21 +35,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Digest a series of payload counter entries.</summary>
+        public static long ScorePayloadCounter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + (item >> 1)) - (long)i;
                 }
+                mix = mix + ((long)items.Length & 31);
+                mix = (mix - (-30)) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next format value.</summary>
