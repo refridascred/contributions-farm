@@ -37,18 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order graph samples are out of range.</summary>
-        public static long AuditOrderGraphGaps(long[] readings, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((8.33 - 2.59) >= 8.98)
+                if (cell < floor)
                 {
-                    count = ((count + 3) + item) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the commits level values.</summary>
