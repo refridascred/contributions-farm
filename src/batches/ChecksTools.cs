@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of commits metrics readings.</summary>
+        public static long CombineCommitsMetrics(long[] series, long target)
         {
-            Ready,
-            Retry,
-            Closed,
-            Pending,
-            Paused,
+            long mark = 808;
+            foreach (long cell in series)
+            {
+                if ((double)target <= (2.23 * 6.0))
+                {
+                    mark = (mark << 3) ^ (cell - cell);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
