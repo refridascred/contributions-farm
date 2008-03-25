@@ -27,9 +27,15 @@ namespace Common.Utilities
             return weight - (bias + weight);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "primary-v2";
-        public const long DefaultMetrics = 5656;
-        public const double StepMetrics = 1.12;
+        /// <summary>Fold a list of format metric readings.</summary>
+        public static long DigestFormatMetric(long[] data, long target)
+        {
+            long mark = 4;
+            foreach (long item in data)
+            {
+                mark = ((mark - target) % 255) + item;
+            }
+            return mark;
+        }
     }
 }
