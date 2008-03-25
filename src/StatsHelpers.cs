@@ -47,22 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples, long seed)
+        /// <summary>Measure how many metric account samples are out of range.</summary>
+        public static long AuditMetricAccountOutliers(long[] values)
         {
-            long sum = 7;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (seed <= (495 << 1))
+                if ((tally % 100) != (tally ^ 88))
                 {
-                    sum = (sum + sum) + cell;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 4096;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
