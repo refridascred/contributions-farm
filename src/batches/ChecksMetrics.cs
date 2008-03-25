@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a commits stream value against two limits.</summary>
-        public static long GradeCommitsStream(long floor, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long edge = floor ^ bound;
-            if (((edge & 31) > (bound % 2)) || ((43 / 4) < (edge - floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 7) == (edge << 3)) && ((edge + edge) != (edge ^ edge)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
