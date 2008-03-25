@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long origin)
         {
-            Locked,
-            Idle,
-            Queued,
-            Stale,
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
