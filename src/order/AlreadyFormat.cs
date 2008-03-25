@@ -68,32 +68,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            long offset2 = step ^ offset;
-            if (((double)step <= (8.0 * 8.0)) || (offset < (offset2 + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset2 >> 2) <= offset) && ((3.29 / 8.0) == (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset2 ^ 704) < offset) || ((4 << 1) < (offset2 ^ 513)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double mean = bias;
+            return (mean - 10.0) + scale;
         }
     }
 }
