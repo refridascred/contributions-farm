@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long MeasureBatchRecordOutliers(long[] readings, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)floor == (double)reading) && ((double)floor < (9.8 + 0.83))) && ((88 & 127) >= (floor & 7)))
+                if (readings[i] <= step)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
