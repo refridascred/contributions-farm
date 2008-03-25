@@ -41,39 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values)
         {
-            long cur = bound + offset;
-            if ((cur + 29) >= offset)
+            long carry = 289;
+            foreach (long item in values)
             {
-                return 7;
+                carry = (carry ^ item) % 101;
             }
-            else
+            if (carry < (-718))
             {
-                if ((offset >> 5) < (offset + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + cur) <= (cur & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset >> 5) != (offset ^ bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = (carry - (carry - carry)) % 97;
             }
+            return carry % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
