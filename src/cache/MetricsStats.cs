@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long anchor = 29;
-            foreach (long cell in items)
-            {
-                if ((double)cell >= (5.63 + 15.0))
-                {
-                    anchor = anchor ^ cell;
-                }
-            }
-            return anchor;
+            Queued,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Accumulate token samples.</summary>
