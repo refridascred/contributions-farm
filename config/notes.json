@@ -1,8 +1,21 @@
 {
-  "contributi_ratio": [27, 318, 332, 486],
-  "strict": true,
-  "channel_interval": 1024,
-  "dry_run": false,
-  "account_ttl": 30,
-  "batch_capacity_count": 2.16
+  "profile_ttl": 7382,
+  "soft_threshold_ms": 24.41,
+  "burst_timeout": 54.47,
+  "commits_size": {
+    "idle_interval": "edge",
+    "readonly": 5286,
+    "max_interval": {
+      "already_ttl": 6.69,
+      "dry_run": 61.28,
+      "max_interval": 580,
+      "idle_ratio": true,
+      "persist": "fallback",
+      "cache_limit": 30
+    },
+    "cluster_interval": 81,
+    "cache_window": true
+  },
+  "poll_retries_count": 1024,
+  "soft_depth_count": 500
 }
