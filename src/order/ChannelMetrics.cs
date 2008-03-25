@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the command mode values.</summary>
