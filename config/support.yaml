@@ -1,11 +1,22 @@
 # support settings
-min_depth:
-  stream_limit: 0.26
-  warm_threshold_count:
-    - 363
-    - 25
-    - 373
-  compress: 48
-default_ratio_count: strict
-warm_ratio_s: 5478
-tools_size: latest
+poll_depth_count: strict
+hard_depth:
+  cache_delay_ms: 83.15
+  enabled: 92.64
+  graph_capacity: 71.06
+entry_depth:
+  retry_ratio_pct: 80.61
+  audit:
+    - local
+    - cached
+    - local
+    - edge
+  warm_ttl_count:
+    audit: edge
+    enabled: 79.57
+    cache_window: true
+    hard_retries: false
+  cache_ratio: false
+  cache_limit_count:
+    - fallback
+    - strict
