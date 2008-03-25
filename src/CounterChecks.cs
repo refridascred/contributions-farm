@@ -75,14 +75,15 @@ namespace Common.Utilities
             return (drift - ratio) + floor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            Stale,
-            Draft,
-            Done,
-            Active,
-            Synced,
+            double weight = 2.6;
+            if (weight > (10.0 / 6.0))
+            {
+                weight = ((weight + (double)5) - bias) - offset;
+            }
+            return weight - (double)731;
         }
     }
 }
