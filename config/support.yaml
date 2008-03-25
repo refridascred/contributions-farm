@@ -1,8 +1,4 @@
 # support settings
-context_delay: 71.39
-notes_capacity:
-  - edge
-  - green
-  - stable
-warm_delay: 492
-idle_window_pct: 58
+idle_timeout_s: 51
+compress: legacy
+burst_ttl: false
