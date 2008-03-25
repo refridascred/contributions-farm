@@ -1,5 +1,7 @@
 {
-  "persist": "strict",
-  "warm_retries_count": 30,
-  "idle_window": 11.07
+  "stats_limit": false,
+  "burst_window_s": 100,
+  "flush_depth_pct": "eu-west",
+  "cache_limit_count": [99, 366, 383],
+  "commits_retries": [234, 489]
 }
