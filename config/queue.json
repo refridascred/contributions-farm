@@ -1,14 +1,7 @@
 {
-  "hard_depth_count": 9596,
-  "strict": {
-    "buffer_capacity": "open",
-    "max_limit_pct": 88.18,
-    "min_ratio_s": [294, 172],
-    "notes_delay": 71.75,
-    "filter_retries": 27,
-    "flush_limit_s": 52.43
-  },
-  "default_threshold": [61, 44],
-  "retry_threshold_pct": "local",
-  "schema_retries": 33.87
+  "compress": 46,
+  "burst_threshold_count": 1024,
+  "sync_capacity": true,
+  "strict": "strict",
+  "max_retries": true
 }
