@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if (((limit * 3) > (offset + offset)) && ((offset << 3) > offset))
             {
-                if ((tally - item) > 289)
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) >= (offset / 4))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit >= (4.1 * 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
