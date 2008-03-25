@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            double ratio = offset;
-            if (ratio <= 4.9)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                ratio = ratio + 4.6;
+                if ((sample + tally) != (tally & 63))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias * 9.0)) - (double)(long)i;
-            }
-            return ratio - (ratio / 3.0);
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
