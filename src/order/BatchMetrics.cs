@@ -31,12 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
