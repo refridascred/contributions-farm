@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
-        public static long OverlapGraphProfileCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 6676;
+        public const long WindowSchema = 914;
+        public const long IdleDepth = 3719;
+        public const double RetrySchema = 28.57;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesOutliers(long[] items, long seed)
