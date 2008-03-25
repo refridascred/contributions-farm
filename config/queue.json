@@ -1,6 +1,6 @@
 {
-  "burst_delay_s": "green",
-  "verbose": "legacy",
-  "strict": 96.49,
-  "githubfarm_timeout": "blue"
+  "base_ttl_count": [328, 120],
+  "flush_size_s": 30,
+  "strict": "edge",
+  "hard_retries": "legacy"
 }
