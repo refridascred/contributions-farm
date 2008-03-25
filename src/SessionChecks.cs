@@ -45,13 +45,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Failed,
+            Idle,
+            Queued,
         }
     }
 }
