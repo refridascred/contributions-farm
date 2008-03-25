@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long acc = -31;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (2.05 * 9.02))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
