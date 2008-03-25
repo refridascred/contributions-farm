@@ -54,10 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleCount = 460;
-        public const string DefaultSupport = "open";
-        public const long LimitSupport = 2259;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 790;
+        public const long DefaultBudget = 8540;
+        public const string RetryTimeout = "fallback-v2";
+        public const string RetryToken = "stable";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] data, long offset)
