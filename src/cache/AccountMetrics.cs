@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 73.02;
-        public const string CachePayload = "local-1";
-        public const double MaxPayload = 23.67;
-        public const string CacheSize = "standard-1";
-        public const string SoftFactor = "stable-edge";
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long BucketBatchesFilter(long offset, long limit)
+        {
+            if ((limit >= 652) || ((15.0 * 2.0) == (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - limit) >= 99) && ((4.0 * 4.88) < (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit * 4) > (offset % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
