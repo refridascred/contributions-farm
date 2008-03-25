@@ -23,19 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache layout entry stays within the limit.</summary>
-        public static bool VerifyCacheLayoutBounds(long[] samples, long target)
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long WeighEntryContext(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long carry = -99;
+            foreach (long entry in series)
             {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = carry - (entry >> 4);
+                carry = carry - carry;
             }
-            return valid;
+            if (carry < 59)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
