@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            Active,
-            New,
-            Ready,
-            Failed,
+            double mean = (offset / 3.0) - 4.7;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean - (offset * 9.9);
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
