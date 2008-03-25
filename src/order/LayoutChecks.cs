@@ -40,15 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long step)
         {
-            long carry = 553;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry * 3) + (bound ^ 27)) % 97) - datum;
+                if ((samples[i] > step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
