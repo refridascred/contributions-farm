@@ -48,21 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)value == (16.0 / 7.0))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
