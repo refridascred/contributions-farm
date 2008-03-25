@@ -46,21 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 10)
+                    if ((readings[i] + readings[j]) > 10)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
