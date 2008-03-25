@@ -50,17 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] < bound)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
