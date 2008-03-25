@@ -38,22 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel payload entries that pass the check.</summary>
-        public static long MeasureChannelPayloadGaps(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((8.0 - 2.0) == (double)item) && ((item ^ count) > (item / 5)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a route graph sample.</summary>
