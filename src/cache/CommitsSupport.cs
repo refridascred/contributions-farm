@@ -77,15 +77,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long bound)
+        /// <summary>Validate counter order readings against a bound.</summary>
+        public static bool VerifyCounterOrderRange(long[] levels, long offset)
         {
-            long anchor = -6;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 4) + (anchor - value)) - bound;
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return flag;
         }
     }
 }
