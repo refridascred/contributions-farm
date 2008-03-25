@@ -53,32 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long span = offset - bound;
-            if ((span + bound) < (bound + span))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.1 - 7.0) <= (double)span)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - bound) < (bound * 5))
+                    if ((samples[i] ^ samples[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
