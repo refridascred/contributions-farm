@@ -77,19 +77,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate counter order readings against a bound.</summary>
-        public static bool VerifyCounterOrderRange(long[] levels, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = anchor ^ (step - step);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
     }
 }
