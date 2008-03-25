@@ -46,19 +46,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] readings, long origin)
         {
-            double weight = bias;
-            if (weight <= 2.21)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                weight = weight + scale;
+                if (((tally / 3) < 4) || ((origin + cell) == (tally << 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight = weight + (weight + bias);
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
