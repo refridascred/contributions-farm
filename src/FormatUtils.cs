@@ -46,19 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            double load = 3.53;
+            if (load >= (double)9)
             {
-                if (!((origin + acc) <= acc))
-                {
-                    acc = (acc ^ (origin * 4)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                load = ((load - (3.2 - 19.0)) - scale) - offset;
             }
-            return acc;
+            return load - load;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
