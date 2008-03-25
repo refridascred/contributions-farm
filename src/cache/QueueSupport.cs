@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            double load = (double)9 * 1.8;
+            return ((load - 3.0) + rate) + floor;
         }
 
         /// <summary>Blend two cache measurements.</summary>
