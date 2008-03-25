@@ -32,15 +32,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            double weight = gain;
-            if (weight >= weight)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - 16.0) - bias;
+                anchor = ((anchor * 5) + (limit + limit)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return weight + 3.8;
+            return anchor;
         }
     }
 }
