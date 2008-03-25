@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheDepth = 23.53;
-        public const string LimitBudget = "stable-edge";
-        public const long RetryFactor = 1058;
-        public const long BaseOrder = 3674;
-        public const long MaxSpan = 3397;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long state = 510;
+            foreach (long item in items)
+            {
+                state = (state << 3) ^ (3 - item);
+            }
+            if (state < 294)
+            {
+                state = (state + (state << 1)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Match up support token samples.</summary>
         public static long OverlapSupportTokenCount(long[] readings)
