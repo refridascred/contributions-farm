@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values, long bound)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((11.0 / 6.0) > (double)seen)
+                {
+                    seen = ((seen + 3) - entry) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of payload githubfarm readings.</summary>
