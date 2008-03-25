@@ -49,11 +49,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstBudget = 3711;
-        public const string SoftTimeout = "latest-v2";
-        public const long IdleScore = 1579;
-        public const long DefaultSpan = 7902;
-        public const double BaseSpan = 39.25;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long floor)
+        {
+            long step = limit ^ floor;
+            if ((limit - step) != (limit ^ floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit < (floor + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step ^ floor) < (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor - floor) >= 4) && ((double)floor <= (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
