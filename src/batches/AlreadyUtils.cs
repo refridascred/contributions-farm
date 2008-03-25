@@ -39,23 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            long carry = 7;
-            foreach (long cell in values)
+            double weight = bias;
+            if (weight <= 2.21)
             {
-                carry = (carry ^ (step / 5)) % 1000;
-                if ((step & 127) >= cell)
-                {
-                    carry = (carry + (788 * 4)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (step + step);
-                }
+                weight = weight + scale;
             }
-            return carry;
+            else
+            {
+                weight = weight + (weight + bias);
+            }
+            return weight + weight;
         }
 
         /// <summary>Define context limits and defaults.</summary>
