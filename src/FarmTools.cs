@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel cache readings against a rule.</summary>
-        public static long MeasureChannelCacheHits(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((double)seen < (2.8 / 3.0)) || (4.88 < (double)value)) && !((double)value == (2.83 + 15.0)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
