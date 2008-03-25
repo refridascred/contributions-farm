@@ -23,15 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long step)
         {
-            double mean = gain;
-            if (mean < 5.8)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean - (double)97;
+                mix = (mix ^ step) % 1000;
+                mix = mix ^ step;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mean - floor;
+            return mix;
         }
 
         /// <summary>Look up the position of a route record sample.</summary>
