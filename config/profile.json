@@ -1,6 +1,19 @@
 {
-  "burst_timeout": "staging",
-  "idle_limit": 5,
-  "base_capacity": "blue",
-  "hard_retries": "strict"
+  "max_size": 5475,
+  "idle_delay_pct": "primary",
+  "retry_threshold_count": {
+    "poll_depth_ms": 7.74,
+    "counter_depth": {
+      "persist": 2047,
+      "batches_size": ["cached", "strict"],
+      "flush_depth_ms": ["edge", "blue", "legacy", "latest"],
+      "soft_ttl_count": [50, 323, 247],
+      "base_ttl_s": [387, 36, 191, 203],
+      "warm_timeout_s": "cached"
+    },
+    "idle_retries_count": ["local", "latest", "fallback"]
+  },
+  "tools_ratio": 77,
+  "account_retries": ["latest", "standard", "fallback", "stable"],
+  "tools_delay": "open"
 }
