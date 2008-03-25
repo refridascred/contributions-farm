@@ -23,12 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long AuditOrderContextOutliers(long[] readings)
         {
-            Idle,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (seen <= (-857))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
