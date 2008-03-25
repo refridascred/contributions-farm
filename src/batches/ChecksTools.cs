@@ -35,17 +35,15 @@ namespace Common.Utilities
         public const long BatchFactor = 1109;
         public const long BurstCounter = 2056;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] data, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long item in items)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((((total * 2) + ((-7) % 2)) % 101) + item) - floor;
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
