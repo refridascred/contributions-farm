@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitScore = "staging-v2";
-        public const double MinSpan = 26.97;
-        public const string LimitTools = "latest";
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc - ((long)i + acc);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] data, long seed)
