@@ -1,18 +1,5 @@
 {
-  "idle_timeout": {
-    "route_depth": 27,
-    "max_timeout": 34.89,
-    "flush_capacity": true,
-    "githubfarm_window": 28.04,
-    "max_capacity_pct": [80, 50, 362],
-    "stats_depth": [171, 490, 263, 102]
-  },
-  "cache_interval": false,
-  "persist": {
-    "soft_window_s": 5,
-    "burst_ttl_s": false,
-    "hard_ratio_s": false,
-    "flush_threshold_ms": false
-  },
-  "batch_ratio_ms": "legacy"
+  "support_timeout": 23,
+  "batch_size_pct": 29.31,
+  "max_delay_ms": "legacy"
 }
