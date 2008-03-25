@@ -27,18 +27,17 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Measure how many command order samples are out of range.</summary>
-        public static long TallyCommandOrderGaps(long[] series, long target)
+        /// <summary>Look up the position of a entry metric sample.</summary>
+        public static long SeekEntryMetricIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally * 5) > (target - datum))
+                if (levels[i] >= target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
