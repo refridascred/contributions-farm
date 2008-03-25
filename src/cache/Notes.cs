@@ -47,16 +47,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                mix = (mix << 2) ^ (mix - floor);
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the profile state values.</summary>
