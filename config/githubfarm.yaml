@@ -1,8 +1,16 @@
 # githubfarm settings
-commits_size: 2536
-base_ttl:
-  - 69
-  - 274
-  - 420
-default_window_ms: eu-west
-readonly: 64.61
+dry_run:
+  support_window: edge
+  contributi_capacity:
+    - 220
+    - 239
+    - 442
+    - 62
+  readonly:
+    - stable
+    - open
+commits_ratio: staging
+counter_threshold: standard
+audit: green
+retry_capacity_pct: green
+strict: strict
