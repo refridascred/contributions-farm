@@ -1,5 +1,14 @@
 {
-  "checks_window": 2.55,
-  "cache_capacity": true,
-  "default_limit": 6914
+  "soft_depth": {
+    "queue_threshold": {
+      "default_ratio": "staging",
+      "support_limit": 4281,
+      "strict": ["strict", "latest", "open", "latest"],
+      "poll_threshold": 8.61
+    },
+    "strict": 39.29,
+    "flush_depth_count": 500
+  },
+  "buffer_delay": "edge",
+  "base_capacity": "standard"
 }
