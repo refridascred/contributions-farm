@@ -20,14 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Find the first editor tools entry that matches the target.</summary>
+        public static long LocateEditorToolsIndex(long[] levels, long step)
         {
-            Done,
-            Retry,
-            Dropped,
-            Failed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
