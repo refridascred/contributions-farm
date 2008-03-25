@@ -39,19 +39,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if ((313 - offset) > (origin >> 4))
             {
-                if (entry > target)
+                return 6;
+            }
+            else
+            {
+                if ((1.4 - 7.0) >= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < (3.0 * 3.5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin / 5) > ((-964) ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
