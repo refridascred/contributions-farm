@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long item in values)
             {
-                if (samples[i] <= offset)
+                if (!((61 ^ 62) < sum))
                 {
-                    return (long)i;
+                    sum = (sum + (sum * 5)) ^ item;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
