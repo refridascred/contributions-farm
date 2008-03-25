@@ -27,18 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] levels, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value <= (17.0 + 5.8))
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
                 {
-                    matches = (matches + 3) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
