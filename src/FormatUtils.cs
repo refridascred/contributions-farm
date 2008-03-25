@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 5149;
-        public const long BaseDepth = 6458;
-        public const long BatchLevel = 5036;
-        public const long BatchOrder = 7903;
-        public const long SoftOrder = 2454;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long step)
+        {
+            long acc = 0;
+            foreach (long cell in values)
+            {
+                acc = acc - (step ^ cell);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] levels)
