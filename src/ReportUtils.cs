@@ -46,18 +46,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] data, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((3.8 * 8.7) <= (double)origin)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
