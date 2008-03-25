@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value < (floor << 1)) && (((floor + value) > (2 + floor)) && ((5.18 - 6.1) == (double)floor)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
