@@ -19,22 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long AuditChannelToolsMatches(long[] items, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seen - 6) >= (2 - seen))
+                if (((target * 2) <= total) && ((16.0 - 3.15) <= (double)target))
                 {
-                    seen = ((seen + 1) ^ sample) - offset;
+                    total = total ^ target;
+                    total = (total << 3) ^ (total - target);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the route status values.</summary>
