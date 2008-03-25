@@ -67,15 +67,17 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            long mark = 552;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - mark) % 97) ^ entry;
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
