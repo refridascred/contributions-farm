@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit commits stats readings against a rule.</summary>
-        public static long TallyCommitsStatsOutliers(long[] items, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] items, long target)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long value in items)
             {
-                if ((double)seen < 2.0)
+                if (((double)seen == (4.32 - 3.0)) && ((45 << 2) < (target & 255)))
                 {
-                    seen = ((seen + 1) ^ item) - bound;
+                    seen = (seen + 3) ^ value;
                 }
             }
             return seen;
