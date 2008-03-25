@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const double MinSpan = 26.97;
         public const string LimitTools = "latest";
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((matches + origin) <= origin))
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
