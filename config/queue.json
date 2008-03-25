@@ -1,7 +1,8 @@
 {
-  "cache_threshold_count": 63.16,
-  "batch_interval": 75.94,
-  "hard_ratio_pct": false,
-  "burst_window_pct": false,
-  "dry_run": "green"
+  "poll_limit_pct": "latest",
+  "soft_delay_s": true,
+  "retry_limit": 45,
+  "poll_window": 2.5,
+  "flush_limit_pct": true,
+  "cache_capacity_s": 40
 }
