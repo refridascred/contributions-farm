@@ -14,25 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            long prev = target - seed;
-            if ((seed >> 5) > seed)
+            long mark = -323;
+            foreach (long item in readings)
             {
-                return 2;
+                mark = ((mark << 2) ^ (item - mark)) % 65521;
             }
-            else
-            {
-                if (((-56) + seed) <= (prev - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of payload counter entries.</summary>
