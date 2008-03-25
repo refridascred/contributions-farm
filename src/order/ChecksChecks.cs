@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long seed2)
         {
-            double scale = offset;
-            if (scale <= scale)
+            long offset = seed - seed2;
+            if ((double)offset == (3.9 + 6.21))
             {
-                scale = (scale + (double)888) + rate;
+                return 4;
             }
-            return scale - 9.7;
+            else
+            {
+                if ((3.85 - 8.0) >= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed != (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset - seed2) == (40 % 12)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
