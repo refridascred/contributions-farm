@@ -33,11 +33,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
