@@ -67,11 +67,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryRatio = 43.26;
+        public const double BurstBudget = 54.55;
+        public const double BaseRatio = 63.94;
     }
 }
