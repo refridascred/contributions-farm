@@ -14,26 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long origin)
         {
-            long score = 39;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound - score) <= (bound + bound))
+                if (samples[i] >= origin)
                 {
-                    score = (score + ((long)levels.Length + bound)) % 97;
-                }
-                if (((bound + 290) > score) || ((score ^ score) < (score ^ reading)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 730)
-            {
-                score = ((score << 2) ^ bound) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the contributi already series from a seed.</summary>
