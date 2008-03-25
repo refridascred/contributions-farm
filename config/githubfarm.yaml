@@ -1,21 +1,6 @@
 # githubfarm settings
-tools_capacity:
-  - legacy
-  - standard
-soft_ratio_ms:
-  buffer_limit: 1024
-  sync_ratio_count:
-    - local
-    - latest
-  retry_limit_pct:
-    - 283
-    - 292
-    - 204
-  sync_retries_s: 3.0
-poll_threshold_count:
-  retry_delay:
-    - 488
-    - 194
-  poll_depth: 28.98
-  enabled: 59
-token_interval: 38
+cache_limit_count:
+  - 168
+  - 496
+soft_depth_count: false
+stream_limit: strict
