@@ -32,18 +32,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] readings, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell / 9) < (matches / 5))
+                if (items[i] >= seed)
                 {
-                    matches = (matches + 1) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
