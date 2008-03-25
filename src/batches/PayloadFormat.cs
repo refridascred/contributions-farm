@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 8779;
-        public const string StepSize = "fallback";
-        public const string HardLevel = "stable";
-        public const string MaxScore = "standard-edge";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)tally > 0.79)
+                {
+                    tally = ((tally + 3) ^ entry) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double CacheChecks = 23.29;
