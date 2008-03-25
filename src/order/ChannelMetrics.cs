@@ -13,13 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] levels, long target)
         {
-            Idle,
-            Ready,
-            Failed,
-            Dropped,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
