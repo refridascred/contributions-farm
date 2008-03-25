@@ -97,9 +97,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowDepth = 41.1;
-        public const long DefaultReport = 9868;
-        public const long SoftReport = 8752;
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double offset)
+        {
+            double ratio = offset;
+            if (ratio > offset)
+            {
+                ratio = (ratio + 2.0) + rate;
+            }
+            return ratio + (double)90;
+        }
     }
 }
