@@ -53,17 +53,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] levels, long floor)
+        /// <summary>Grade a editor payload value against two limits.</summary>
+        public static long BucketEditorPayload(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor - bound;
+            if (((bound >> 1) <= bound) && ((double)floor <= (double)bound))
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((9.0 - 20.0) != (double)step) || ((9.38 / 9.0) <= (double)bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
