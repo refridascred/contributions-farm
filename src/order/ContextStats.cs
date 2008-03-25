@@ -27,19 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits context entries that pass the check.</summary>
-        public static long AuditCommitsContextGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 63) > (-618))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 2947;
+        public const long DefaultMetric = 7985;
+        public const long IdleMetric = 5222;
+        public const long LimitMetric = 7426;
+        public const long IdleTimeout = 6467;
 
         /// <summary>Audit account report readings against a rule.</summary>
         public static long CountAccountReportHits(long[] items, long seed)
