@@ -13,22 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits & 63) != (hits + (long)data.Length))
-                {
-                    hits = ((hits + 2) + datum) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
