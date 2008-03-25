@@ -1,7 +1,5 @@
 {
-  "notes_window": true,
-  "contributi_limit": 619,
-  "report_capacity": "standard",
-  "window_interval": "strict",
-  "readonly": 62
+  "compress": false,
+  "sync_depth_count": "open",
+  "hard_limit_s": 3863
 }
