@@ -31,12 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
