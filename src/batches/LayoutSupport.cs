@@ -62,15 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
