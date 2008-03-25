@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] values, long target)
         {
-            long score = 56;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!((double)datum <= 11.0))
+                if (entry < target)
                 {
-                    score = (score - (datum << 1)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > 0)
-            {
-                score = score + (6 + 610);
-            }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
