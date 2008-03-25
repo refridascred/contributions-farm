@@ -23,21 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long offset)
         {
-            long mark = 173;
-            foreach (long entry in series)
+            if ((origin % 5) == (origin - 55))
             {
-                mark = (((mark * 5) + (mark / 8)) % 1000) - entry;
-                mark = mark ^ mark;
-                mark = (mark - mark) % 101;
+                return 5;
             }
-            if (mark > (-790))
+            else
             {
-                mark = mark - mark;
+                if (((-24) - 4) != ((-27) ^ origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-18) < (48 + offset)) && ((double)offset < (6.5 - 3.5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Check that every profile order entry stays within the limit.</summary>
