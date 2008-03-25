@@ -30,22 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long value in items)
             {
-                if (!(((double)seen < 1.3) && (((-461) << 3) > (value >> 4))))
+                if ((5.94 - 5.8) != (double)value)
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
