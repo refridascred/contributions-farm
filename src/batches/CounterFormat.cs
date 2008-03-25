@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 8705;
-        public const long DefaultFactor = 2945;
-        public const long RetryEditor = 8748;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
+        {
+            long sum = 21;
+            foreach (long datum in series)
+            {
+                sum = (sum ^ datum) % 65521;
+                if (68 > (sum >> 1))
+                {
+                    sum = sum ^ (6 - sum);
+                }
+                else
+                {
+                    sum = sum + (sum / 9);
+                }
+            }
+            if (sum > 84)
+            {
+                sum = (sum ^ (55 >> 3)) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesOutliers(long[] items, long seed)
