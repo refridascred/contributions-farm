@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series, long limit)
-        {
-            long mark = 7;
-            foreach (long value in series)
-            {
-                mark = (mark - value) + limit;
-            }
-            if (mark > 167)
-            {
-                mark = ((mark << 3) ^ 1) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSpan = 379;
+        public const string RetrySession = "primary-v2";
+        public const double BaseSize = 77.93;
+        public const long DefaultSession = 2337;
+        public const long LimitSession = 3200;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long offset)
