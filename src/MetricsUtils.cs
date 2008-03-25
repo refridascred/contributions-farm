@@ -20,18 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long result = 950;
-            foreach (long reading in readings)
-            {
-                if (result <= (reading ^ reading))
-                {
-                    result = (result - 321) - target;
-                }
-            }
-            return result % 65521;
+            Ready,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a batches header.</summary>
