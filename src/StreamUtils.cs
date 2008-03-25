@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Audit report batches readings against a rule.</summary>
+        public static long AuditReportBatchesHits(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seed < (16.0 - 2.81))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
