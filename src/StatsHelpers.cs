@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
-        public static long MatchToolsNotesCount(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result ^ (result * 5)) % 1000) ^ (long)i2;
+                    result = (result + (result & 15)) % 1000;
                 }
+                if ((step + step) >= (result * 3))
+                {
+                    result = (result - step) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a format info.</summary>
