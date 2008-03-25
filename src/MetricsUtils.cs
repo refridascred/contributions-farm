@@ -43,22 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] levels, long seed)
         {
-            long score = 748;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)score > 4.33)
+                if (hits >= (seed - cell))
                 {
-                    score = ((score * 3) + (origin - sample)) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (score < 16)
-            {
-                score = (score * 3) + (33 >> 1);
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
