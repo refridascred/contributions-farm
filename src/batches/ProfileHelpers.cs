@@ -20,18 +20,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 943;
+            foreach (long entry in readings)
             {
-                if ((seen - cell) <= (81 + cell))
+                if ((double)entry <= (double)5)
                 {
-                    seen = seen + 1;
+                    sum = ((sum << 3) ^ (sum % 7)) + floor;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a queue payload pair into a bucket.</summary>
