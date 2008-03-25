@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long seed)
         {
-            if ((limit % 60) <= limit)
+            if (((bound / 7) < (bound >> 1)) || ((813 % 5) > (seed >> 2)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((double)seed <= (4.0 / 6.0))
+                if ((bound >> 3) == (82 - 59))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((33 + limit) >= limit)
+                    if ((bound - bound) <= (bound + seed))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        if ((seed / 9) < (bound * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
