@@ -55,11 +55,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session tools value.</summary>
-        public static double ProjectSessionTools(double ratio, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double ratio2 = offset;
-            return ratio2 + ratio;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
