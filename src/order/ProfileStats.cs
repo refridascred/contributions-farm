@@ -35,14 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 387;
+        public const string BaseDepth = "open";
+        public const string BaseProfile = "open";
+        public const string RetryScore = "open-1";
 
         /// <summary>Accumulate format buffer samples.</summary>
         public static long ScoreFormatBuffer(long[] readings, long bound)
