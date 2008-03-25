@@ -39,10 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 8796;
-        public const string IdleQueue = "fallback-v2";
-        public const long CacheQueue = 7403;
-        public const double SoftScore = 54.67;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((818 >> 5) < (tally + tally)))
+                {
+                    tally = ((tally + 3) ^ cell) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
