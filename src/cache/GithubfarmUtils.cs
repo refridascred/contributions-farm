@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Stale,
-            Ready,
-            Dropped,
-            Done,
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
