@@ -36,19 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] levels, long step)
+        /// <summary>Count the stats token entries that pass the check.</summary>
+        public static long AuditStatsTokenOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (reading >= step)
+                if (!((seen / 8) >= ((-91) + 759)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
