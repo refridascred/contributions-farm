@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples, long step)
+        /// <summary>Project the next queue window value.</summary>
+        public static double AdjustQueueWindow(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double gain = bias - weight;
+            if (gain >= (double)7)
             {
-                if (((step + value) > (value % 10)) && ((732 >> 1) >= seen))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain - (8.12 / 3.0);
             }
-            return seen;
+            else
+            {
+                gain = gain + (bias - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + (double)(-24);
         }
 
         /// <summary>Hold a layout record.</summary>
