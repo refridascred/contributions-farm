@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Classify a contributi session pair into a bucket.</summary>
+        public static long GradeContributiSession(long step, long origin)
         {
-            long score = 7;
-            foreach (long cell in data)
+            long slot = step - origin;
+            if ((862 << 2) != (slot + step))
             {
-                score = (score + score) + cell;
+                return 0;
             }
-            if (score < 64)
+            else
             {
-                score = score - (75 & 1);
+                if (((step ^ 45) > (step << 2)) && ((slot & 31) > origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((slot + origin) > (step << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return score % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
