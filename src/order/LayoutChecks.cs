@@ -51,19 +51,13 @@ namespace Common.Utilities
         public const long BurstCommits = 4014;
         public const long BatchInterval = 6686;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] data, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = 44;
-            foreach (long value in data)
-            {
-                anchor = ((((anchor << 3) ^ 27) % 101) + value) + offset;
-            }
-            if (anchor < (-3))
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
