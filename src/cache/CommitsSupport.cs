@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            New,
-            Queued,
-            Ready,
-            Closed,
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
