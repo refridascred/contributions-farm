@@ -23,18 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((14.0 + 6.78) >= (double)entry) || (((count - entry) <= (22 & 1)) || (count < (95 << 1))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
