@@ -19,14 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            Paused,
-            Draft,
-            Locked,
-            Stale,
-            Idle,
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (offset + 615)) % 1000;
+                acc = acc - ((long)i + acc);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Blend two cache measurements.</summary>
