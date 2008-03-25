@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
