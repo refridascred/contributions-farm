@@ -1,10 +1,7 @@
 {
-  "command_depth": 36.15,
-  "token_depth": "strict",
-  "support_ratio": {
-    "compress": ["legacy", "standard", "staging", "edge"],
-    "warm_size_ms": "blue",
-    "base_depth_ms": "standard",
-    "buffer_retries": 2318
-  }
+  "profile_capacity": 36.36,
+  "max_depth_pct": "strict",
+  "retry_size_s": [200, 195],
+  "stats_limit": true,
+  "cache_threshold_ms": 59.99
 }
