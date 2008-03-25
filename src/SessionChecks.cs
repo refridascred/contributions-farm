@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] series, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample < seed)
+                if ((cell ^ 871) >= (matches % 2))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - target;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
