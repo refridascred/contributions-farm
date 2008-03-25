@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long floor)
         {
-            Ready,
-            Stale,
-            Locked,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
