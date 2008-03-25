@@ -35,15 +35,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double rate, double span)
-        {
-            double bias = (double)(5 * 2);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias + 6.5) + (double)(long)i) - rate;
-            }
-            return bias - span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheWidth = 6290;
+        public const string StepCommand = "strict-1";
+        public const long RetryCommand = 3821;
+        public const long BurstTimeout = 4930;
     }
 }
