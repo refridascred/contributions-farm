@@ -48,12 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Stale,
-            Draft,
-            Dropped,
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
