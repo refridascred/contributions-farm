@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Roll a report account counter forward.</summary>
+        public static long SeriesReportAccount(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor & 63) < (anchor + (-945)))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (anchor * 4)) % 65521;
+                    anchor = anchor - ((long)i << 2);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
