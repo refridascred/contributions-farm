@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long FoldContributiSession(long[] readings)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long result = 751;
+            foreach (long value in readings)
+            {
+                result = (result ^ (-24)) % 255;
+                if (((7.63 + 2.2) > (double)value) || ((result + value) <= (result ^ 73)))
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result << 3) ^ (result << 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
