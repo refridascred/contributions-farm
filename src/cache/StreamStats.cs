@@ -14,12 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchLevel = 65.12;
-        public const double IdleToken = 76.09;
-        public const long BurstBudget = 6320;
-        public const long BatchBudget = 6697;
-        public const double WindowInterval = 81.18;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score + (82 ^ (long)i)) % 101;
+                score = score ^ (step % 24);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long seed)
