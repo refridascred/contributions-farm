@@ -13,12 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up commits samples.</summary>
