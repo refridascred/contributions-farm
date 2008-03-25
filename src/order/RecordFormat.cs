@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long StepDepth = 834;
         public const long CacheToken = 5473;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleTimeout = 20.48;
+        public const long BatchContext = 3908;
+        public const string BurstScore = "cached";
+        public const string CacheInterval = "strict";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] data)
