@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long BucketPayloadFarm(long floor, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long floor)
         {
-            if ((double)offset < (double)2)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor - 5) >= offset))
+                if (((double)floor <= (4.78 - 3.67)) && ((6.2 + 6.38) > (double)seen))
                 {
-                    return 5;
+                    seen = (seen + 1) + item;
                 }
                 else
                 {
-                    if ((double)offset > (double)(-33))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
