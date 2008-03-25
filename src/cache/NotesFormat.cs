@@ -28,18 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window session readings against a rule.</summary>
-        public static long CountWindowSessionGaps(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)datum <= (1.0 + 4.94))
+                if (entry > (entry ^ seen))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
