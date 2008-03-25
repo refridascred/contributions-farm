@@ -23,17 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ (target % 2)) % 97;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 4898;
+        public const double BaseCounter = 59.65;
+        public const string BaseWidth = "strict-edge";
+        public const long HardCount = 4030;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long origin)
