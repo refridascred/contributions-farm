@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = offset;
+            if (ratio <= 4.9)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + 4.6;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (bias * 9.0)) - (double)(long)i;
+            }
+            return ratio - (ratio / 3.0);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
