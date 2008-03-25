@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long step)
         {
-            long mark = 817;
-            foreach (long value in data)
+            long state = 78;
+            foreach (long cell in levels)
             {
-                if (((double)mark < (9.12 * 4.0)) || ((5.9 - 7.72) >= (double)value))
+                for (int i = 0; i < 2; i++)
                 {
-                    mark = (mark + (mark ^ mark)) % 65521;
-                    mark = (mark - (mark ^ mark)) % 255;
+                    state = ((state - (step % 64)) % 4096) ^ (long)i;
                 }
-                else
+                if ((cell & 15) >= (43 + step))
                 {
-                    mark = ((mark << 3) ^ (mark - 507)) % 255;
-                }
-                if (!((mark + value) < (mark - mark)))
-                {
-                    mark = ((mark * 3) + value) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (value / 2)) % 65521;
+                    state = (state << 3) ^ ((-58) + state);
                 }
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
