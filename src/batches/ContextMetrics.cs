@@ -50,22 +50,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((9.9 - 5.0) > (double)seen))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
