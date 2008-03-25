@@ -1,16 +1,30 @@
 # githubfarm settings
-dry_run:
-  support_window: edge
-  contributi_capacity:
-    - 220
-    - 239
-    - 442
-    - 62
-  readonly:
-    - stable
-    - open
-commits_ratio: staging
-counter_threshold: standard
-audit: green
-retry_capacity_pct: green
-strict: strict
+soft_ttl_pct: 100
+default_window_count: green
+default_depth:
+  - 311
+  - 46
+enabled: 7501
+strict: false
+format_retries:
+  cache_capacity:
+    soft_size_pct: 76
+    metric_limit: 500
+    cache_timeout_s: stable
+    poll_retries_pct: green
+    base_size: cached
+    buffer_retries: 49.13
+  batch_timeout:
+    min_retries_count: true
+    readonly: 19.57
+    flush_size:
+      - 259
+      - 257
+      - 289
+      - 302
+    sync_retries_pct: true
+    cluster_retries: strict
+  max_delay_s: edge
+  flush_threshold_ms: 67
+  sync_retries_s: 5098
+  dry_run: 60
