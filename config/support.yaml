@@ -1,19 +1,4 @@
 # support settings
-enabled:
-  sync_capacity_count: 83.08
-  batch_ttl_ms: edge
-  idle_size_ms: true
-  session_threshold: legacy
-  dry_run:
-    - 313
-    - 446
-    - 124
-    - 212
-burst_size: 26.64
-default_window_s: 73
-min_limit_count: 9718
-max_size_pct:
-  - 232
-  - 259
-  - 228
-audit: 99
+account_threshold: 85
+batch_delay: 71
+filter_timeout: strict
