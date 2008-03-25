@@ -53,18 +53,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] items, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((bound & 31) > (value % 3))
+                if (cell != bound)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
