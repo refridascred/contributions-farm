@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 3660;
-        public const long CacheQueue = 3001;
-        public const long IdleLevel = 8843;
-        public const double LimitLevel = 32.3;
+        /// <summary>Measure how many notes batch samples are out of range.</summary>
+        public static long MeasureNotesBatchHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((tally + 5) > (tally & 1)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double SoftCount = 54.68;
