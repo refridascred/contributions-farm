@@ -14,24 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((3.11 / 8.0) <= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.96 * 8.1) > (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
