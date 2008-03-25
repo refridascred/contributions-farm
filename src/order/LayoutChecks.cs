@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] > limit)
+                if ((target * 5) >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
