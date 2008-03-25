@@ -43,18 +43,23 @@ namespace Common.Utilities
         public const string BaseBuffer = "open-1";
         public const long BatchTimeout = 342;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double ratio = offset - (bias + bias);
+            if (ratio < offset)
             {
-                if ((sample + 41) != (sample - seen))
-                {
-                    seen = seen + 1;
-                }
+                ratio = ratio - (double)(-89);
             }
-            return seen;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)(-26)) - (double)(long)i;
+            }
+            return ratio + (double)496;
         }
     }
 }
