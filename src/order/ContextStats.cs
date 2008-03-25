@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "alpha-v2";
-        public const long HardChecks = 1746;
-        public const double LimitBudget = 66.52;
-        public const long SoftDepth = 7248;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items, long offset)
+        {
+            long total = 4;
+            foreach (long datum in items)
+            {
+                if ((5.5 > (double)offset) && ((total * 4) < (total - 1)))
+                {
+                    total = total - (datum ^ offset);
+                }
+                else
+                {
+                    total = total + (offset + datum);
+                }
+            }
+            if (total < 41)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count the commits context entries that pass the check.</summary>
         public static long AuditCommitsContextGaps(long[] series)
