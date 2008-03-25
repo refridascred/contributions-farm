@@ -51,11 +51,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long seed)
         {
-            double mean = bias;
-            return (mean - 10.0) + scale;
+            long next = origin + seed;
+            if ((seed % 2) >= (origin * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed - next) > (origin / 2)) || (next > (929 + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)next >= 2.0) || (seed <= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (16.0 - 6.26))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
