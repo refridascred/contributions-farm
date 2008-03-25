@@ -50,23 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((mark + floor) <= (mark & 15))
+                if (!((1.84 / 9.0) <= (double)(long)levels.Length))
                 {
-                    mark = (mark ^ (floor / 2)) % 65521;
+                    count = (count + 1) + cell;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (floor + mark)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
