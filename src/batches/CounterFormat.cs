@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long MeasureGithubfarmSchemaOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seen / 4) == ((long)readings.Length / 3)) && (datum < (datum + datum)))
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
