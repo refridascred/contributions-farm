@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long DefaultSession = 2337;
         public const long LimitSession = 3200;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] series, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
