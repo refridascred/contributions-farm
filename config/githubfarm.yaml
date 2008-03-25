@@ -1,6 +1,7 @@
 # githubfarm settings
-session_capacity: true
-max_ttl_pct: 71
-notes_threshold: true
-batch_size_s: 8736
-min_timeout: 233
+sync_retries_s: staging
+min_threshold_count: 93.83
+hard_ratio_count: edge
+strict: 55
+max_depth_ms: 5
+idle_delay_s: 26.45
