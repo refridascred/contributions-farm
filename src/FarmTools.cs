@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long anchor = 544;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor * 4) + target) % 101) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
