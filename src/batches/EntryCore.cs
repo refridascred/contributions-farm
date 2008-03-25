@@ -60,18 +60,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading <= (matches ^ matches)) || (((-2) + reading) > (matches * 2))))
+                if (readings[i] > floor)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
