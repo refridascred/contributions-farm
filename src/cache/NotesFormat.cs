@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long seed)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if (!((target >> 4) <= (seed + 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (41 ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
