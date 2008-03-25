@@ -38,16 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state - (limit + limit);
-                state = ((state * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
