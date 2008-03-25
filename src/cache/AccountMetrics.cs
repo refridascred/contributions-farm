@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const string RetryFormat = "cached-v2";
         public const long BurstBudget = 3046;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            Draft,
-            Active,
-            Failed,
-            Stale,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
