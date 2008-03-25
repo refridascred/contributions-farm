@@ -32,12 +32,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 4935;
-        public const long IdleRatio = 5247;
-        public const long BaseCount = 3985;
-        public const long IdleEntry = 8103;
-        public const double LimitDepth = 87.83;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSpan = 7359;
+        public const long DefaultReport = 6316;
+        public const long IdleCount = 1757;
+        public const string HardBudget = "open-v2";
+        public const string BaseReport = "alpha";
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
