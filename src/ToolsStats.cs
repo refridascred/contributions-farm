@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const double IdleEditor = 97.22;
         public const double SoftEditor = 36.97;
 
-        /// <summary>Find the first account batch entry that matches the target.</summary>
-        public static long LookupAccountBatchIndex(long[] samples, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift < span)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)73;
             }
-            return -1;
+            return drift + (double)55;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
