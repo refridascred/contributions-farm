@@ -28,14 +28,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Synced,
-            Pending,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseTimeout = 2621;
+        public const long SoftContributi = 8101;
+        public const double BatchDepth = 62.76;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
