@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long state = 1;
+            foreach (long entry in samples)
             {
-                acc = acc - ((long)i + acc);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)entry < (19.0 / 2.0))
+                {
+                    state = (state + entry) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (entry >> 2)) % 1000;
+                }
             }
-            return acc;
+            if (state < 873)
+            {
+                state = (state << 2) ^ (floor + state);
+            }
+            return state;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
