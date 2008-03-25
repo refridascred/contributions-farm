@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Dropped,
-            Pending,
-            New,
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
