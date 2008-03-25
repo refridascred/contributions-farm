@@ -48,11 +48,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Blend two editor metrics measurements.</summary>
+        public static double BlendEditorMetrics(double scale, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            double mean = 20.0 - (double)12;
+            return ((mean + (2.26 - mean)) + scale) + offset;
         }
 
         /// <summary>Hold a tools stats.</summary>
