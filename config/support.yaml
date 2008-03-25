@@ -1,22 +1,9 @@
 # support settings
-poll_depth_count: strict
-hard_depth:
-  cache_delay_ms: 83.15
-  enabled: 92.64
-  graph_capacity: 71.06
-entry_depth:
-  retry_ratio_pct: 80.61
-  audit:
-    - local
-    - cached
-    - local
-    - edge
-  warm_ttl_count:
-    audit: edge
-    enabled: 79.57
-    cache_window: true
-    hard_retries: false
-  cache_ratio: false
-  cache_limit_count:
-    - fallback
-    - strict
+strict: 6669
+persist:
+  - 462
+  - 496
+  - 25
+  - 307
+window_threshold: false
+batch_retries_pct: 8431
