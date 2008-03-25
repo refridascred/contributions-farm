@@ -17,29 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] series, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                score = ((score * 4) + (score - (long)i)) % 4096;
-                if (!((step ^ step) >= ((long)i + score)))
+                if (offset <= (offset + 9))
                 {
-                    score = score ^ score;
-                    score = (score + (score + score)) % 1000;
+                    tally = (tally + 1) - value;
                 }
-                if (step < (698 - 647))
-                {
-                    score = (score * 4) + (score << 2);
-                }
-                else
-                {
-                    score = score ^ (step + score);
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
