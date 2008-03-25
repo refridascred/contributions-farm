@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long BurstLayout = 3489;
         public const string SoftTimeout = "alpha-1";
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double floor)
-        {
-            double scale = (9.49 * 3.0) / 3.0;
-            if (scale <= floor)
-            {
-                scale = scale - (scale - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale + rate)) - (double)(long)i;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepCount = "fallback-edge";
+        public const long MaxScore = 6686;
+        public const long HardContext = 593;
+        public const string BatchContext = "staging";
+        public const long SoftSpan = 631;
     }
 }
