@@ -19,21 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias / 2.0;
+            if (load >= (bias * 16.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (double)3) - gain;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
