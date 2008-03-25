@@ -31,12 +31,16 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7407;
-        public const string StepStats = "stable-v2";
-        public const long BurstStats = 5575;
-        public const string MinStats = "local-edge";
-        public const long CacheWidth = 5535;
+        /// <summary>Scale a metric profile figure with a bias.</summary>
+        public static double ProjectMetricProfile(double ratio, double floor)
+        {
+            double scale = (double)515 + (floor - ratio);
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] readings)
