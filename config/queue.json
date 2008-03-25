@@ -1,8 +1,11 @@
 {
-  "default_capacity": 500,
-  "hard_interval_pct": "primary",
-  "account_ttl": "edge",
-  "graph_depth": 39.05,
-  "account_threshold": "stable",
-  "default_ratio_s": "eu-west"
+  "cache_limit_s": {
+    "checks_ratio": 3447,
+    "readonly": 94,
+    "flush_threshold_s": ["green", "green"],
+    "verbose": "latest"
+  },
+  "burst_window_count": 97.81,
+  "burst_depth_count": "open",
+  "hard_limit": 2650
 }
