@@ -38,19 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] values, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (sample != origin)
+                if (!(reading > (tally / 8)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
