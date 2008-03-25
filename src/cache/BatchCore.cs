@@ -19,17 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile batches sample.</summary>
-        public static long LookupProfileBatchesIndex(long[] readings, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
