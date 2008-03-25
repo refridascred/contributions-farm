@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] values)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.12 + 0.7) > (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
