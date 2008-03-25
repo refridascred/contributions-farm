@@ -20,15 +20,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double ratio, double offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long offset)
         {
-            double drift = (13.0 / 3.0) - (offset / 8.0);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + 6.85) + (double)(long)i) - ratio;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (offset - drift);
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
