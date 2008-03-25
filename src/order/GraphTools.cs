@@ -47,10 +47,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 2297;
-        public const long RetryProfile = 765;
-        public const double BurstProfile = 29.72;
-        public const double MinScore = 33.07;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long floor)
+        {
+            long state = 71;
+            foreach (long entry in series)
+            {
+                state = ((state ^ (floor >> 4)) % 255) ^ entry;
+            }
+            return state;
+        }
     }
 }
