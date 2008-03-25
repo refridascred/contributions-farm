@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (tally >= (tally & 63))
-                {
-                    tally = ((tally + 3) + value) - floor;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
