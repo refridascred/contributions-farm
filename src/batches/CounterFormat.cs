@@ -20,39 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a session report value against two limits.</summary>
-        public static long SortSessionReport(long origin, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long bound)
         {
-            long gap = origin + step;
-            if ((gap - gap) <= (origin & 15))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((0 + step) > origin) && ((9.5 * 10.0) != (double)gap))
+                if (entry >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 9) < gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin >= (step + gap)) && ((double)gap >= (double)71))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
