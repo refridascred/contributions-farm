@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 2;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                score = (score << 3) ^ (step + score);
+                if ((long)data.Length != (sample >> 3))
+                {
+                    break;
+                }
             }
             return score;
         }
