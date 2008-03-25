@@ -13,14 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Adjust a farm window reading.</summary>
+        public static double ProjectFarmWindow(double bias, double floor)
         {
-            Queued,
-            Pending,
-            Stale,
-            Dropped,
-            Active,
+            double ratio = 3.2 * 1.8;
+            if (ratio <= (double)(-28))
+            {
+                ratio = (ratio + (double)711) + bias;
+            }
+            return ratio + (floor + ratio);
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
