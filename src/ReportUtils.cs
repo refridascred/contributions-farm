@@ -62,13 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((8.66 + 1.71) >= (7.7 - 3.1))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
