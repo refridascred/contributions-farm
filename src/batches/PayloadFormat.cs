@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double StepLevel = 86.74;
         public const long HardDepth = 735;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 59.65;
-        public const long BaseWidth = 1500;
-        public const double SoftSpan = 28.38;
-        public const long DefaultSize = 9192;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 63) <= (matches << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseTimeout = 2621;
