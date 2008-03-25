@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            if ((step / 7) > bound)
             {
-                mix = ((mix * 2) + (seed << 1)) % 4096;
-                mix = ((mix * 2) + seed) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((step - 1) <= bound) || ((step - step) == (bound - 81)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
