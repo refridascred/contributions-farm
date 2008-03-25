@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            Closed,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count % 5) > (reading + reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
