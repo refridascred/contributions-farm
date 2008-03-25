@@ -19,20 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((target * 2) <= total) && ((16.0 - 3.15) <= (double)target))
+                if (values[i] >= bound)
                 {
-                    total = total ^ target;
-                    total = (total << 3) ^ (total - target);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
