@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up window metrics samples.</summary>
