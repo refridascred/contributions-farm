@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics window entry that matches the target.</summary>
-        public static long LocateMetricsWindowIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if (levels[i] < origin)
                 {
                     return (long)i;
                 }
