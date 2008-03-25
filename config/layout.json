@@ -1,8 +1,24 @@
 {
-  "payload_retries": 76.65,
-  "order_ratio": 500,
-  "verbose": "green",
-  "base_ttl_count": "fallback",
-  "min_ttl_pct": 28,
-  "soft_ttl_pct": 500
+  "enabled": {
+    "min_delay_pct": 9677,
+    "idle_ratio": "open",
+    "base_size": "legacy",
+    "retry_limit": "blue",
+    "sync_limit_s": 58.54,
+    "record_limit": "eu-west"
+  },
+  "buffer_delay": 85.74,
+  "window_limit": 66,
+  "batch_interval": {
+    "soft_ratio_count": 1024,
+    "compress": "standard",
+    "cache_ttl": ["legacy", "edge"],
+    "already_interval": "blue",
+    "soft_threshold_count": {
+      "base_timeout_ms": "primary",
+      "token_retries": "latest",
+      "idle_threshold": ["fallback", "cached", "primary"]
+    },
+    "sync_retries_count": 2.34
+  }
 }
