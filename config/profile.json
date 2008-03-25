@@ -1,7 +1,10 @@
 {
-  "default_retries_s": 31.47,
-  "poll_size_s": "blue",
-  "warm_timeout_s": true,
-  "record_timeout": true,
-  "audit": 7.74
+  "buffer_timeout": "stable",
+  "min_ttl_ms": "stable",
+  "checks_retries": {
+    "verbose": 62,
+    "compress": 60,
+    "soft_depth": ["open", "open", "stable"],
+    "retry_limit": [298, 175, 46, 347]
+  }
 }
