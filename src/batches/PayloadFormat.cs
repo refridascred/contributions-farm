@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] values, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (sample != step)
+                if ((count / 8) == (entry << 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
