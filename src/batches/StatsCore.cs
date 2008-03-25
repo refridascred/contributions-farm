@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a counter checks reading by value.</summary>
-        public static long SeekCounterChecksIndex(long[] values, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > floor)
+                long edge = (offset << 1) - ((-562) * 2);
+                if (!((edge / 9) <= (offset + state)))
                 {
-                    return (long)i;
+                    edge = (edge ^ offset) % 1000;
                 }
+                else
+                {
+                    edge = (edge + (state + offset)) % 4096;
+                    edge = edge + edge;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
