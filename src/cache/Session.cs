@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] data, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long bound, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long delta = bound - target;
+            if ((delta >> 2) > ((-198) + target))
             {
-                if (target < (count >> 4))
+                return 7;
+            }
+            else
+            {
+                if ((double)delta == (4.3 - 10.0))
                 {
-                    count = (count + 3) + sample;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
