@@ -1,13 +1,15 @@
 # entry settings
-max_timeout_count: edge
-cache_limit:
-  - 170
-  - 260
-  - 82
-  - 333
-context_limit:
-  - primary
-  - fallback
-  - primary
-  - standard
-strict: 18
+idle_window_s: eu-west
+account_limit: strict
+warm_ttl: 4
+hard_interval:
+  soft_timeout_s:
+    - 400
+    - 352
+    - 136
+    - 450
+  retry_window: false
+  retry_delay: open
+  audit: blue
+  poll_window: true
+cache_retries_pct: false
