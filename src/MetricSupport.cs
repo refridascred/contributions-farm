@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "cached-1";
-        public const string LimitBudget = "latest-1";
-        public const long BurstBudget = 289;
-        public const string RetryBudget = "fallback-1";
-        public const string RetryCommand = "primary-v2";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((value >> 2) <= (seen << 1)) && !((value & 3) <= (value % 10)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BurstWidth = "primary-1";
