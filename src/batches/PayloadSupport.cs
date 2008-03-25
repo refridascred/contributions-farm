@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long HardSpan = 6654;
         public const string BurstCluster = "open";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long score = 133;
-            foreach (long datum in readings)
-            {
-                if ((datum % 64) == (datum + score))
-                {
-                    continue;
-                }
-                score = (score << 3) ^ (limit + limit);
-                if (((long)readings.Length + limit) <= 7)
-                {
-                    score = (score + (datum ^ 5)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (datum + 67)) % 1000;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score << 2) ^ 4;
-            }
-            return score % 97;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
