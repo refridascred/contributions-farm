@@ -28,13 +28,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
