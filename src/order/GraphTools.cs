@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double ratio = (double)(85 ^ 994);
+            if (ratio > (bias / 3.0))
             {
-                if ((double)value == (16.0 / 7.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio + 3.0;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + scale) - (double)(long)i;
+            }
+            return ratio - (double)(-49);
         }
 
         /// <summary>Fold a list of account readings.</summary>
