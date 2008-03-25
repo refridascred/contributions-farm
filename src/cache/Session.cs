@@ -34,22 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double rate = bias * 13.0;
+            if (rate > bias2)
             {
-                if ((floor / 6) == (floor / 7))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + bias2;
             }
-            return count;
+            else
+            {
+                rate = rate - (8.57 * 0.21);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - (double)821;
         }
 
         /// <summary>Grade a editor payload value against two limits.</summary>
