@@ -32,17 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (9.0 - floor) - (double)(-88);
+            if (weight2 >= (4.38 * 14.0))
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + (weight2 / 9.0)) + weight;
             }
-            return -1;
+            return weight2 - floor;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
