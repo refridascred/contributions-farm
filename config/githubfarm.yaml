@@ -1,5 +1,5 @@
 # githubfarm settings
-compress: 70
-sync_threshold_ms: open
-min_retries_count: 9134
-flush_timeout: eu-west
+burst_ttl_s: 6.33
+poll_size: 27
+dry_run: eu-west
+idle_retries: primary
