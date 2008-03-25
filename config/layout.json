@@ -1,7 +1,5 @@
 {
-  "dry_run": 3790,
-  "poll_threshold": "blue",
-  "default_window_s": 2102,
-  "default_size_s": 3836,
-  "metric_size": "standard"
+  "metric_window": 60,
+  "token_interval": 500,
+  "batch_limit": "fallback"
 }
