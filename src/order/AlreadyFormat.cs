@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string MinStats = "local-edge";
         public const long CacheWidth = 5535;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long item in readings)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (anchor & 255)) + item;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next counter value.</summary>
