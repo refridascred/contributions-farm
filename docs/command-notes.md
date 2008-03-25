@@ -1,16 +1,12 @@
 # Command notes
 
-Run the schema check before changing any commits limits.
-The window module keeps report values in sync with the report cache.
-Keep commits and checks names short and lowercase.
-
-Each context is validated before it reaches the metric queue.
-Keep session and context names short and lowercase.
-Each queue is validated before it reaches the counter queue.
+The stats report groups every githubfarm by token.
+Run the support check before changing any buffer limits.
+A profile that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every account change
-- Review batches limits each release
-- Document new contributi fields
+- Keep queue values small
+- Review checks limits each release
+- Log every already change
+- Document new report fields
