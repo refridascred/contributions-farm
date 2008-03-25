@@ -1,5 +1,18 @@
 {
-  "default_interval_s": true,
-  "hard_timeout": 60,
-  "base_delay_s": 250
+  "format_ratio": {
+    "cache_ratio": true,
+    "already_capacity": 30,
+    "flush_interval": [116, 437],
+    "payload_retries": {
+      "soft_retries_pct": 18.2,
+      "editor_threshold": 9257,
+      "verbose": ["green", "open"],
+      "hard_interval_pct": 500,
+      "base_capacity_s": 2958,
+      "idle_retries_pct": false
+    },
+    "tools_retries": "green"
+  },
+  "stream_interval": 58.82,
+  "soft_delay": 30
 }
