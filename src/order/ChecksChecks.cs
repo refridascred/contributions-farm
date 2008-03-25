@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long seed2)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long offset = seed - seed2;
-            if ((double)offset == (3.9 + 6.21))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.85 - 8.0) >= (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed != (double)offset)
+                    if ((samples[i] + samples[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset - seed2) == (40 % 12)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
