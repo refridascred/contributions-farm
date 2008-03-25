@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] data, long seed)
         {
-            long anchor = 35;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor * 4) + 278) % 97) + entry;
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 484)
-            {
-                anchor = anchor - (anchor * 3);
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
