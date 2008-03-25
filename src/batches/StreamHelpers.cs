@@ -46,21 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (target >= hits)
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) - reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
