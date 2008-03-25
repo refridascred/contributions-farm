@@ -31,18 +31,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((value + hits) == (value >> 4)) && (limit >= (value + limit)))
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
