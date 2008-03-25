@@ -47,18 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token editor readings.</summary>
-        public static long ScoreTokenEditor(long[] data, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            long result = 27;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result + result) >= result)
+                if (readings[i] < bound)
                 {
-                    result = ((result - reading) % 1000) - step;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
