@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long state = 906;
+            foreach (long datum in values)
+            {
+                state = ((state << 3) ^ (datum + state)) % 101;
+                state = state - (state ^ datum);
+                if ((double)target < (15.0 * 18.0))
+                {
+                    break;
+                }
+            }
+            if (state > 97)
+            {
+                state = (state ^ (target + target)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next batch value.</summary>
