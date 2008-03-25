@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const double LimitMetrics = 52.48;
         public const long MaxScore = 5292;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Match up stream account samples.</summary>
+        public static long OverlapStreamAccountCount(long[] samples)
         {
-            Active,
-            Pending,
-            Queued,
-            New,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
