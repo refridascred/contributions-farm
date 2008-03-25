@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long limit)
+        /// <summary>Grade a entry checks value against two limits.</summary>
+        public static long RankEntryChecks(long seed, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if ((target > (seed ^ seed)) && ((target >> 3) < 377))
             {
-                if (cell >= limit)
+                return 0;
+            }
+            else
+            {
+                if (!((target + seed) < (seed + seed)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed != (3.8 + 16.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
