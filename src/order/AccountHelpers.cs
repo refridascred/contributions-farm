@@ -84,14 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series)
         {
-            Stale,
-            Locked,
-            Closed,
-            Active,
-            Idle,
+            long sum = 62;
+            foreach (long entry in series)
+            {
+                if ((sum + sum) > entry)
+                {
+                    sum = (sum + 9) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
