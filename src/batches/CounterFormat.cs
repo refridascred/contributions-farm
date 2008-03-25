@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long seed)
+        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
+        public static long OverlapGraphProfileCount(long[] levels)
         {
-            long result = -3;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result ^ seed) % 101) ^ (long)i;
-                    result = (result ^ ((-610) << 2)) % 101;
-                }
-                if (9.2 <= (double)seed)
-                {
-                    result = (result + (cell + cell)) % 65521;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 86)
-            {
-                result = result + (seed / 4);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
