@@ -28,19 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 9;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor * 5) + ((-305) - (-3))) % 65521) + item;
-            }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 3) + anchor) % 4096;
-            }
-            return anchor % 1000;
+            New,
+            Paused,
+            Closed,
+            Synced,
         }
     }
 }
