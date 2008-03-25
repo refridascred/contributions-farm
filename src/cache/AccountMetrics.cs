@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long bound, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] series, long origin)
         {
-            if ((double)offset >= (9.0 * 6.0))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= (0.7 / 6.0))
+                if (reading != origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a session info.</summary>
