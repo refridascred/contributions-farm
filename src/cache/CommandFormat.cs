@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long limit)
         {
-            Failed,
-            Closed,
-            Locked,
-            Queued,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
