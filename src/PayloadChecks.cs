@@ -26,22 +26,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank layout commits input into a small class.</summary>
-        public static long RankLayoutCommits(long target, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            if (target >= (floor + target))
+            long edge = limit ^ origin;
+            if (origin >= (limit ^ edge))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((17.0 / 3.0) >= (double)floor)
+                if (((double)limit >= (double)origin) && ((origin & 3) < edge))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 8;
                 }
             }
         }
