@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitRatio = 5411;
-        public const double MaxToken = 40.33;
-        public const long HardToken = 3324;
-        public const long BaseToken = 3304;
-        public const long BatchSpan = 6361;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double span)
+        {
+            double mean = (double)(362 >> 4);
+            if (mean < span)
+            {
+                mean = mean - (scale / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (span / 7.0);
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileOutliers(long[] items, long bound)
