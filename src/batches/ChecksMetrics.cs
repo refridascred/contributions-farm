@@ -65,18 +65,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (633 <= (bound % 100))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Retry,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of token already entries.</summary>
