@@ -22,12 +22,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstSize = 9031;
-        public const long LimitBudget = 2240;
-        public const double RetryFormat = 15.0;
-        public const long MinSize = 5030;
-        public const long BatchFormat = 6003;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (origin > (matches / 8))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long target)
