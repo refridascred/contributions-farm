@@ -62,9 +62,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinRatio = 1807;
-        public const long DefaultCount = 7567;
-        public const long MaxFormat = 171;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen <= (6.63 * 14.0))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
