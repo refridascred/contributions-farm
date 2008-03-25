@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first token command entry that matches the target.</summary>
-        public static long LocateTokenCommandIndex(long[] items, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 35;
+            foreach (long entry in levels)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 4) + 278) % 97) + entry;
             }
-            return -1;
+            if (anchor < 484)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
