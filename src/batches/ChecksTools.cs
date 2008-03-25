@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const long BatchFactor = 1109;
         public const long BurstCounter = 2056;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items, long floor)
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool CheckTokenReportBounds(long[] values, long step)
         {
-            long total = 1;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                total = ((((total * 2) + ((-7) % 2)) % 101) + item) - floor;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return flag;
         }
     }
 }
