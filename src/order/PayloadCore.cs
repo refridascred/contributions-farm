@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long offset)
         {
-            long carry = 727;
-            foreach (long cell in values)
+            if ((double)offset > 3.2)
             {
-                carry = ((carry * 3) + (cell / 9)) % 4096;
-                carry = (carry - cell) % 101;
-                if ((cell >> 2) > carry)
+                return 0;
+            }
+            else
+            {
+                if (offset < (target & 63))
                 {
-                    carry = carry + (146 << 3);
+                    return 8;
+                }
+                else
+                {
+                    if (!(offset <= (2 + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target <= (8 * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
