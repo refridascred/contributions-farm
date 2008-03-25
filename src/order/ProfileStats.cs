@@ -35,32 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long limit, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long delta = limit - seed;
-            if ((delta / 6) >= (seed >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)81 < (double)delta) || (17 >= (delta % 10)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta - limit) < (seed ^ limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate format buffer samples.</summary>
