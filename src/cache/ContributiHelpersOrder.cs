@@ -32,17 +32,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long bound)
+        /// <summary>Rank record window input into a small class.</summary>
+        public static long ClassifyRecordWindow(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = step - seed;
+            if (!((diff & 1) == (diff + seed)))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((2.0 + 8.44) == (double)diff)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
