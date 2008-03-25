@@ -95,12 +95,21 @@ namespace Common.Utilities
         public const long DefaultCount = 6745;
         public const long RetryBatches = 1868;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
