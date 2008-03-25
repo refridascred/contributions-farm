@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((double)floor > (13.0 / 4.0)) && ((hits ^ entry) <= (floor - hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 966;
+        public const long WindowAlready = 4451;
+        public const long HardFactor = 2365;
+        public const string BatchAlready = "standard-edge";
+        public const long HardAlready = 3754;
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
