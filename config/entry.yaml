@@ -1,6 +1,12 @@
 # entry settings
-stats_ttl: 250
-min_timeout: 69.35
-window_interval: 250
-batch_interval_s: 100
-verbose: 63.16
+readonly: 60.55
+batch_timeout_count: 3850
+sync_ttl_pct:
+  poll_limit: 22
+  base_timeout_count: green
+  graph_capacity: false
+  verbose: false
+  dry_run: strict
+metrics_capacity: 100
+strict: 250
+buffer_depth: local
