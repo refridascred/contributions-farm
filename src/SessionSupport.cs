@@ -31,11 +31,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] samples, long limit)
         {
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (7 > (cell + cell))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
