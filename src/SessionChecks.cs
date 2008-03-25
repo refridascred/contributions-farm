@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long AuditSchemaContextHits(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((matches << 1) == (matches + entry))
+                if (entry < origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the batches kind values.</summary>
