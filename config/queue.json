@@ -1,5 +1,15 @@
 {
-  "metrics_capacity": "open",
-  "max_ttl": false,
-  "batch_window_pct": true
+  "warm_timeout_count": ["standard", "standard", "staging"],
+  "poll_interval_ms": 30,
+  "token_timeout": false,
+  "enabled": 7978,
+  "dry_run": {
+    "strict": "open",
+    "base_depth_count": "latest",
+    "soft_window_count": "green",
+    "base_ratio_count": "cached",
+    "cache_window_pct": 78.24,
+    "cluster_interval": 55.53
+  },
+  "base_window": 629
 }
