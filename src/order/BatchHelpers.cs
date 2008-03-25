@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] samples, long floor)
         {
-            long score = 283;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((score << 3) > (score * 2))
+                if ((double)reading <= (16.0 / 9.0))
                 {
-                    score = ((score ^ (score - item)) % 97) - floor;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two payload measurements.</summary>
