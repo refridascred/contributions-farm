@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long step)
         {
-            Done,
-            Failed,
-            Ready,
-            Closed,
-            Synced,
+            long total = 293;
+            foreach (long item in data)
+            {
+                if (step < (total + (long)data.Length))
+                {
+                    total = ((total << 3) ^ total) + item;
+                }
+            }
+            if (total > 66)
+            {
+                total = (total - (total - step)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
