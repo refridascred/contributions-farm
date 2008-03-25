@@ -51,23 +51,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double load = gain - floor;
-            if (load >= (double)550)
-            {
-                load = load - (double)6;
-            }
-            else
-            {
-                load = load + (load * 9.1);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load / 4.0)) + (double)(long)i;
-            }
-            return load - gain;
+            Failed,
+            Locked,
+            Dropped,
+            Done,
         }
     }
 }
