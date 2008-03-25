@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values, long offset)
-        {
-            long result = 1;
-            foreach (long sample in values)
-            {
-                result = ((result << 2) ^ (sample & 1)) % 255;
-                result = (result + (result - (long)values.Length)) % 97;
-            }
-            if (result > 4)
-            {
-                result = (result + offset) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSpan = 478;
+        public const long BurstWidth = 2901;
+        public const string BatchSpan = "alpha-1";
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long WeighMetrics(long[] values, long target)
