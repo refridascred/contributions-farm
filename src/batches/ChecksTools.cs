@@ -26,12 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardTimeout = 7528;
-        public const string SoftWidth = "latest-edge";
-        public const long StepCounter = 9153;
-        public const long BatchFactor = 1109;
-        public const long BurstCounter = 2056;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long floor)
+        {
+            long mark = 8;
+            foreach (long value in values)
+            {
+                if (176 <= (value ^ mark))
+                {
+                    mark = ((mark << 3) ^ (value * 4)) - floor;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate token report readings against a bound.</summary>
         public static bool CheckTokenReportBounds(long[] values, long step)
