@@ -1,14 +1,12 @@
 # Command notes
 
-Keep report and cluster names short and lowercase.
-Keep session and queue names short and lowercase.
-
-Run the batches check before changing any session limits.
-Keep queue and tools names short and lowercase.
-The checks report groups every metric by queue.
+When a checks fails, the record handler retries a few times before giving up.
+Keep githubfarm and entry names short and lowercase.
+The graph report groups every payload by farm.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate format input early
-- Document new farm fields
+- Prefer githubfarm defaults
+- Validate filter input early
+- Review buffer limits each release
+- Document new session fields
