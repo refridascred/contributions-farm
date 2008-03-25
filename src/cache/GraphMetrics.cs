@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Classify a already filter pair into a bucket.</summary>
