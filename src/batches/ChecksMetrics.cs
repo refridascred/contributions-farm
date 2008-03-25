@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long DigestBatchesCluster(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long result = 5;
+            foreach (long datum in items)
+            {
+                result = ((result * 2) + (4 - datum)) - floor;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate already samples.</summary>
