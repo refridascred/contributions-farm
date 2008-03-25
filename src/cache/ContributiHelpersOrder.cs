@@ -18,18 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] readings)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((0.2 * 4.9) < (double)datum)
-                {
-                    hits = hits + 2;
-                }
+                sum = sum ^ limit;
+                sum = (sum - (long)i) % 101;
+                sum = (sum + ((-199) - (long)i)) % 255;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
