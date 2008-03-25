@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = 997;
-            foreach (long entry in values)
-            {
-                if ((87 / 6) >= (carry - 68))
-                {
-                    carry = (carry + (carry << 2)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (entry + 958);
-                }
-            }
-            return carry;
+            Draft,
+            Closed,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
