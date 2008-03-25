@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series, long bound)
-        {
-            long mix = 3;
-            foreach (long sample in series)
-            {
-                if ((bound << 3) == (mix & 3))
-                {
-                    mix = ((mix ^ (mix - bound)) % 97) ^ sample;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "standard";
+        public const long WindowRatio = 9359;
+        public const double MinChannel = 2.64;
+        public const long SoftChannel = 7678;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] levels, long target)
