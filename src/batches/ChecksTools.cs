@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of commits metrics readings.</summary>
-        public static long CombineCommitsMetrics(long[] series, long target)
-        {
-            long mark = 808;
-            foreach (long cell in series)
-            {
-                if ((double)target <= (2.23 * 6.0))
-                {
-                    mark = (mark << 3) ^ (cell - cell);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinCount = 1.45;
+        public const long CacheChannel = 558;
+        public const double MinInterval = 77.04;
+        public const long IdleTimeout = 7753;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
