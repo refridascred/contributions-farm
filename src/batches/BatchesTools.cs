@@ -41,15 +41,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double bias)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double weight = bias + bias;
-            if (weight < scale)
-            {
-                weight = weight + (3.98 - scale);
-            }
-            return weight + (bias - bias);
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
