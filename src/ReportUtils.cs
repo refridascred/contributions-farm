@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            long mix = 771;
-            foreach (long datum in readings)
-            {
-                if ((datum >> 1) == (mix >> 5))
-                {
-                    mix = mix ^ (datum >> 2);
-                }
-            }
-            return mix;
+            double mean = weight - (double)25;
+            return mean - bias;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
