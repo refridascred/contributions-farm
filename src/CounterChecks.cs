@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long AuditToolsReportGaps(long[] data, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((reading - reading) >= target) || ((8.55 / 7.0) == (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
