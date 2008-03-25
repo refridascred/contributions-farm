@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "legacy-v2";
-        public const double SoftCount = 42.17;
-        public const long BatchDepth = 2354;
-        public const long RetryBatches = 4970;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            New,
+            Queued,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
