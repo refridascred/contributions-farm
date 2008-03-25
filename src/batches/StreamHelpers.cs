@@ -46,18 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long sum = 6;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((61 ^ 62) < sum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (sum * 5)) ^ item;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
