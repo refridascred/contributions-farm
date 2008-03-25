@@ -38,19 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long delta = floor ^ step;
+            if ((double)delta == (15.0 / 2.0))
             {
-                if (datum != limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)step > (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
