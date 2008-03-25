@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a profile batch reading.</summary>
-        public static double BlendProfileBatch(double ratio, double floor)
+        /// <summary>Iterate the already channel series from a seed.</summary>
+        public static long RollAlreadyChannel(long floor)
         {
-            double ratio2 = (ratio / 7.0) / 5.0;
-            return (ratio2 + 4.0) + floor;
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (floor <= (floor ^ (long)i))
+                {
+                    mix = ((mix << 3) ^ (-40)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
