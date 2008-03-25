@@ -44,28 +44,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long origin, long limit)
+        /// <summary>Rank window commits input into a small class.</summary>
+        public static long SortWindowCommits(long offset, long origin)
         {
-            if ((limit >> 3) >= limit)
+            long edge = offset + origin;
+            if ((offset - origin) > (origin << 3))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((11.0 * 2.0) >= (double)limit)
+                if ((double)edge == (double)origin)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((7.94 * 5.9) == (double)limit)
+                    if (((7 + offset) >= (703 >> 4)) && ((offset / 2) >= offset))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 2;
+                        if (origin <= edge)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
