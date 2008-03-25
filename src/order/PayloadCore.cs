@@ -35,22 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up profile batch samples.</summary>
-        public static long CompareProfileBatchCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 8901;
+        public const long CacheBudget = 2186;
+        public const string DefaultEditor = "legacy-v2";
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] data, long target)
