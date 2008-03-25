@@ -53,21 +53,19 @@ namespace Common.Utilities
             return rate - (double)821;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 2.1 - rate;
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (double)1;
         }
     }
 }
