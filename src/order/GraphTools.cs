@@ -41,22 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            long acc = 932;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (acc >= (804 + entry))
-                {
-                    acc = (acc - (entry + entry)) % 97;
-                }
+                sum = (sum << 3) ^ floor;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (acc < 266)
-            {
-                acc = (acc + (acc - acc)) % 65521;
-            }
-            return acc % 1000;
+            return sum;
         }
     }
 }
