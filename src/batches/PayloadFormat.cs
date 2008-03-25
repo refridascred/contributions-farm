@@ -26,14 +26,15 @@ namespace Common.Utilities
             return (scale + (double)8) + span;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double offset)
         {
-            Pending,
-            Ready,
-            Draft,
-            Stale,
-            Idle,
+            double bias = (double)0 * 5.1;
+            if (bias <= (double)9)
+            {
+                bias = (bias + 17.0) + offset;
+            }
+            return bias - gain;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
