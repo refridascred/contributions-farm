@@ -38,16 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum * 5) + (7 - sum);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((double)mix < 8.0)
+                {
+                    mix = (mix << 2) ^ (9 & 3);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
