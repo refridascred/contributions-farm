@@ -36,17 +36,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a route record sample.</summary>
-        public static long LocateRouteRecordIndex(long[] data, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = limit + step;
+            if ((9.5 + 6.4) > (double)step)
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ 7) > (step & 127))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step / 7) > 618)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)span != (double)3)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
