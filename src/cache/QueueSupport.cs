@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Project the next payload schema value.</summary>
+        public static double SmoothPayloadSchema(double gain, double span)
         {
-            long mix = 31;
-            foreach (long cell in series)
+            double weight = gain;
+            if (weight > (span / 4.0))
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = mix ^ ((long)i << 3);
-                }
-                mix = (mix - cell) % 97;
+                weight = weight + gain;
             }
-            return mix % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 1.1) + (double)(long)i;
+            }
+            return weight - (weight - weight);
         }
 
         /// <summary>Define context limits and defaults.</summary>
