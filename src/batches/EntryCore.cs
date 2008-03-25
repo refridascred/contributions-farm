@@ -55,19 +55,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long bound)
         {
-            double drift = 5.69;
-            if (drift > (double)91)
+            if ((2 < floor) || (floor > bound))
             {
-                drift = drift - weight;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift + span) + (double)(long)i;
+                if (53 >= (floor / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound - floor) <= (floor + floor)) || (floor > (bound * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor > 285) || (floor < (80 % 64)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return drift - span;
         }
 
         /// <summary>Locate a token reading by value.</summary>
