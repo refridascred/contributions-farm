@@ -42,21 +42,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)7 != (double)reading)
                 {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
