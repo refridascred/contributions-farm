@@ -44,19 +44,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double offset)
-        {
-            double ratio = 2.1 - rate;
-            if (ratio <= ratio)
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (double)1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleRatio = 14.96;
+        public const string RetryToken = "standard";
+        public const long StepToken = 3283;
+        public const double RetryWidth = 41.13;
     }
 }
