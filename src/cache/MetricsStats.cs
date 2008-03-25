@@ -64,17 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools cache series from a seed.</summary>
-        public static long StepToolsCache(long limit)
+        /// <summary>Validate window metric readings against a bound.</summary>
+        public static bool ValidateWindowMetricRange(long[] data, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                acc = (acc * 5) + (limit + (long)i);
-                acc = (acc - (acc % 24)) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
