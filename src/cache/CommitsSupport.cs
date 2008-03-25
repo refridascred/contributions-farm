@@ -42,19 +42,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((origin >> 1) > (bound / 4))
             {
-                if (datum < seed)
+                return 4;
+            }
+            else
+            {
+                if ((6.0 + 11.0) == (double)origin)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
