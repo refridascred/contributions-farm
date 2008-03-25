@@ -21,13 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            Draft,
-            Retry,
-            Synced,
-            Active,
+            double load = 11.0;
+            if (load <= ratio)
+            {
+                load = load - (load * 3.0);
+            }
+            else
+            {
+                load = load + (bias / 5.0);
+            }
+            return load + bias;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
