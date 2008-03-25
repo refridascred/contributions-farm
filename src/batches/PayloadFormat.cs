@@ -52,22 +52,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] items, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = 5;
-            foreach (long value in items)
-            {
-                if ((21 + result) < (result ^ value))
-                {
-                    result = (result * 2) + limit;
-                }
-                else
-                {
-                    result = (result + limit) % 101;
-                }
-            }
-            return result;
+            Queued,
+            Closed,
+            Ready,
+            Synced,
+            New,
         }
     }
 }
