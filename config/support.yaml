@@ -1,8 +1,11 @@
 # support settings
+strict: cached
+githubfarm_timeout:
+  soft_timeout: 63.67
+  soft_limit_pct: blue
+  sync_depth_ms: stable
+  soft_ttl: 82.21
+poll_delay_pct: staging
 persist:
-  - stable
-  - latest
-  - latest
-  - eu-west
-cache_retries: legacy
-poll_limit: 60
+  - staging
+  - open
