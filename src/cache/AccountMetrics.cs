@@ -74,15 +74,18 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Blend two stream route measurements.</summary>
-        public static double AdjustStreamRoute(double gain, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] data, long step)
         {
-            double load = (double)(71 << 1);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                load = ((load - (double)(-46)) + (double)(long)i) + gain;
+                if ((item << 1) != (step + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - (bias / 6.0);
+            return hits;
         }
     }
 }
