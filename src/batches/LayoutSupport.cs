@@ -55,18 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples, long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((2.01 + 8.1) <= (double)item)
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
