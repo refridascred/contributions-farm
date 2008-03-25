@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ ((long)series.Length - value);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (anchor < 797)
-            {
-                anchor = ((anchor << 2) ^ (bound & 7)) % 1000;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
