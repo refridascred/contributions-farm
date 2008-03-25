@@ -39,21 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (target <= (anchor << 2))
-                {
-                    anchor = (anchor * 3) + (2 >> 3);
-                }
-                anchor = anchor - (target ^ target);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 640;
+        public const string RetryCount = "stable-v2";
+        public const string BaseInterval = "legacy-v2";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
