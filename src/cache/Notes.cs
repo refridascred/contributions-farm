@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items, long step)
         {
-            Locked,
-            Idle,
-            Synced,
-            Queued,
-            Closed,
+            long carry = 545;
+            foreach (long item in items)
+            {
+                if (1.2 < (18.0 * 3.46))
+                {
+                    carry = (((carry << 3) ^ item) % 4096) - step;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry - 6);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of account entries.</summary>
