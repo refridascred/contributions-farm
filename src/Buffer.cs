@@ -13,25 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (9 < (origin - (long)i))
-                {
-                    result = (result ^ (1 ^ result)) % 97;
-                    result = (result - (result - (-94))) % 255;
-                }
-                else
-                {
-                    result = (result - (result / 9)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 718;
+        public const long RetryBatch = 4538;
+        public const long IdleCount = 4921;
+        public const long WindowLevel = 3752;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryInterval = "stable-1";
