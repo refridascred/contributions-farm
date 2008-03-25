@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batches editor values into a single score.</summary>
-        public static long DigestBatchesEditor(long[] levels, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] levels, long step)
         {
-            long score = 4;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((6.5 + 0.3) < (double)entry)
+                if (reading >= step)
                 {
-                    score = (score ^ (floor + floor)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
