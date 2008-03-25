@@ -24,17 +24,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
