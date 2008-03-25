@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinSpan = 9.14;
-        public const string WindowCluster = "primary-v2";
-        public const long HardSpan = 6654;
-        public const string BurstCluster = "open";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(8.5 >= (double)matches))
+                {
+                    matches = ((matches + 3) ^ item) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
