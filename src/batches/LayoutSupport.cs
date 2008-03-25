@@ -31,19 +31,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] levels, long seed)
-        {
-            long anchor = 265;
-            foreach (long value in levels)
-            {
-                if ((double)seed == (12.0 - 10.0))
-                {
-                    anchor = (anchor * 4) + (seed - value);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftLevel = 2974;
+        public const string MinContributi = "stable-1";
+        public const long HardContributi = 9637;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] data, long seed)
