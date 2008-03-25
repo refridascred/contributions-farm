@@ -53,18 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double gain, double bias)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight = bias;
+            if (weight <= (double)(-976))
             {
-                if (!((1.84 / 9.0) <= (double)(long)levels.Length))
-                {
-                    count = (count + 1) + cell;
-                }
+                weight = weight + (weight / 6.0);
             }
-            return count;
+            else
+            {
+                weight = weight + 15.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + gain) - (double)(long)i;
+            }
+            return weight + (bias + weight);
         }
 
         /// <summary>Audit already batch readings against a rule.</summary>
