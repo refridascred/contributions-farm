@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 3) < (step - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleWidth = "strict-v2";
+        public const long BatchSchema = 5732;
+        public const string MaxDepth = "stable-v2";
+        public const string SoftFactor = "stable-v2";
+        public const string HardSchema = "strict-1";
     }
 }
