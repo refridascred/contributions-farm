@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] levels, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
