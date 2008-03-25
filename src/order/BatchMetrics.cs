@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data, long limit)
-        {
-            long state = 71;
-            foreach (long item in data)
-            {
-                state = ((state * 4) + (443 - limit)) - item;
-            }
-            if (state < 0)
-            {
-                state = ((state * 5) + (17 & 127)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardWidth = 2846;
+        public const double IdleSpan = 75.92;
+        public const double RetrySession = 47.02;
+        public const string CacheLevel = "cached-edge";
+        public const long SoftCount = 6346;
 
         /// <summary>Roll a batch stream counter forward.</summary>
         public static long RollBatchStream(long limit)
