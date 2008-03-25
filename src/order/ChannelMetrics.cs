@@ -23,12 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long offset)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
