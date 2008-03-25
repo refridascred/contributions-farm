@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = 248;
-            foreach (long sample in data)
-            {
-                if ((sample >> 1) == ((long)data.Length + sample))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = acc ^ (sample - sample);
-                }
-                acc = acc + (99 * 5);
-                if ((3.0 * 0.09) == (double)acc)
-                {
-                    acc = (acc << 2) ^ (sample - (-2));
-                }
-            }
-            if (acc > 43)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
