@@ -48,11 +48,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchLevel = 36.75;
-        public const string WindowFactor = "fallback-1";
-        public const long BurstSpan = 1158;
-        public const long CacheScore = 7620;
-        public const string StepBudget = "open";
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long offset)
+        {
+            if ((offset + seed) >= (offset + 507))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed << 3) < (seed & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
