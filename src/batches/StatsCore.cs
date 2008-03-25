@@ -40,13 +40,11 @@ namespace Common.Utilities
             return rate - (double)(-169);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double offset)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            double load = (double)((-996) ^ 289);
+            return (load - gain) + offset;
         }
 
         /// <summary>Roll a report counter forward.</summary>
