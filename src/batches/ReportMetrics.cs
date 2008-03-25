@@ -33,10 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 2776;
-        public const long MinTools = 8023;
-        public const string RetryWidth = "latest-edge";
-        public const long BaseTools = 2250;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + ((long)i % 2)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
