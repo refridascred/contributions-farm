@@ -32,10 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 71.47;
-        public const long CacheInterval = 5645;
-        public const double WindowDepth = 71.92;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((5 - tally) <= (cell & 3))
+                {
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
