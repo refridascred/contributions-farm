@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit buffer order readings against a rule.</summary>
-        public static long TallyBufferOrderGaps(long[] items)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double mean = (double)752 * 19.0;
+            if (mean > 1.0)
             {
-                if ((count + reading) >= (count ^ count))
-                {
-                    count = count + 2;
-                }
+                mean = mean + (6.8 - ratio);
             }
-            return count;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + span;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
