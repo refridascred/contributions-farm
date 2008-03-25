@@ -59,12 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long bound)
         {
-            Draft,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a channel info.</summary>
