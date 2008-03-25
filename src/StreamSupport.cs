@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Find the first token command entry that matches the target.</summary>
+        public static long LocateTokenCommandIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample & 127) > 3)
+                if (items[i] >= step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
