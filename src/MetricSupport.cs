@@ -44,39 +44,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window commits input into a small class.</summary>
-        public static long SortWindowCommits(long offset, long origin)
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long TotalSchemaContext(long[] data)
         {
-            long edge = offset + origin;
-            if ((offset - origin) > (origin << 3))
+            long score = 10;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)edge == (double)origin)
+                if (item <= (score + item))
                 {
-                    return 7;
+                    score = (score ^ ((long)data.Length + score)) % 4096;
                 }
                 else
                 {
-                    if (((7 + offset) >= (703 >> 4)) && ((offset / 2) >= offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin <= edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score ^ (long)data.Length) % 101;
+                }
+                if (!((11.0 + 2.35) >= (double)(long)data.Length))
+                {
+                    break;
                 }
             }
+            return score;
         }
     }
 }
