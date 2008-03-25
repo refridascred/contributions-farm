@@ -53,19 +53,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] series, long offset)
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long RankChannelToken(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            if (!((double)offset >= (double)origin))
             {
-                if (datum < offset)
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 3) > (offset >> 4))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (6.11 + 16.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset + 8) >= offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
