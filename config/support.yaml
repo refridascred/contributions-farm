@@ -1,7 +1,8 @@
 # support settings
-base_size:
-  soft_timeout_count: 418
-  flush_depth_ms: 4976
-  warm_limit_ms: true
-commits_interval: open
-context_depth: cached
+batch_limit_s: standard
+max_ttl_ms:
+  - 84
+  - 308
+  - 289
+  - 255
+githubfarm_ratio: 3
