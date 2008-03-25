@@ -45,18 +45,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = 3;
-            foreach (long cell in samples)
-            {
-                if ((13.0 + 9.0) < (double)cell)
-                {
-                    result = ((result ^ (cell - 7)) % 97) + seed;
-                }
-            }
-            return result % 97;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank record metrics input into a small class.</summary>
