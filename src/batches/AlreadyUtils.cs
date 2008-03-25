@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Adjust a support reading.</summary>
