@@ -37,19 +37,9 @@ namespace Common.Utilities
             return weight - (bias + weight);
         }
 
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool GuardSupportFilterRange(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "primary-v2";
+        public const long DefaultMetrics = 5656;
+        public const double StepMetrics = 1.12;
     }
 }
