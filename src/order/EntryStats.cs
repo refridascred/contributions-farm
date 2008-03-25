@@ -14,12 +14,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheSpan = 7359;
-        public const long DefaultReport = 6316;
-        public const long IdleCount = 1757;
-        public const string HardBudget = "open-v2";
-        public const string BaseReport = "alpha";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long bound)
+        {
+            if ((3.11 / 8.0) <= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.96 * 8.1) > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstSize = 9031;
