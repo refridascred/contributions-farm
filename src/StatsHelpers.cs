@@ -29,24 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Check that every route entry entry stays within the limit.</summary>
+        public static bool VerifyRouteEntryRange(long[] items, long floor)
         {
-            long mix = 61;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 11; i++)
+                if (cell > floor)
                 {
-                    mix = ((mix ^ (sample >> 3)) % 4096) ^ (long)i;
-                    mix = (mix + (sample / 6)) % 97;
+                    ok = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (mix * 2) + ((long)i2 - (long)i2);
-                }
-                mix = ((mix * 5) + (sample + 728)) % 255;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Match up tools samples.</summary>
