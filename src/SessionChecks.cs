@@ -40,19 +40,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long state = 76;
-            foreach (long cell in series)
-            {
-                state = state - (9 + cell);
-            }
-            if (state < (-65))
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state % 65521;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
