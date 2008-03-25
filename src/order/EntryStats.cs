@@ -41,15 +41,22 @@ namespace Common.Utilities
         public const string CacheInterval = "primary";
         public const long CacheChannel = 9391;
 
-        /// <summary>Adjust a commits order reading.</summary>
-        public static double ProjectCommitsOrder(double ratio, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
-            double scale = (ratio * 3.0) - (4.5 / 4.0);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                scale = ((scale + (ratio + scale)) - (double)(long)i) - span;
+                if ((reading + (long)samples.Length) >= (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - scale;
+            return tally;
         }
     }
 }
