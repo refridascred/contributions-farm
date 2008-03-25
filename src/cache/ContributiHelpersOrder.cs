@@ -33,18 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream entry entries that pass the check.</summary>
-        public static long CountStreamEntryMatches(long[] series, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((82 + entry) > entry)
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    tally = (tally + 3) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
