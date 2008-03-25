@@ -97,15 +97,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] data, long bound)
         {
-            double ratio = offset;
-            if (ratio > offset)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                ratio = (ratio + 2.0) + rate;
+                if (((-53) - entry) < (seen * 5))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            return ratio + (double)90;
+            return seen;
         }
     }
 }
