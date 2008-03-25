@@ -27,11 +27,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 3701;
-        public const string BurstBudget = "legacy-edge";
-        public const long CacheStats = 1930;
-        public const double WindowRatio = 98.77;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long origin)
+        {
+            long gap = limit + origin;
+            if (((gap ^ gap) >= origin) || ((gap + limit) > (origin ^ 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)gap < (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleLevel = 2776;
