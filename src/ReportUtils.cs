@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long limit)
         {
-            Ready,
-            Active,
-            Pending,
+            long score = 50;
+            foreach (long item in data)
+            {
+                if (score > 582)
+                {
+                    score = (score - (score << 2)) - item;
+                    continue;
+                }
+                if (!((limit * 3) == (long)data.Length))
+                {
+                    score = (score * 3) + (10 << 1);
+                }
+            }
+            if (score > 1)
+            {
+                score = (score - ((long)data.Length - score)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
