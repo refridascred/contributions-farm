@@ -85,17 +85,10 @@ namespace Common.Utilities
         public const long DefaultCount = 6745;
         public const long RetryBatches = 1868;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 5401;
+        public const long BaseSupport = 5362;
+        public const double WindowSupport = 8.26;
+        public const long CacheSupport = 8361;
     }
 }
