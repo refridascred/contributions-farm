@@ -42,13 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
