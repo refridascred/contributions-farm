@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double gain = offset;
+            if (gain <= (weight * 15.0))
             {
-                if ((double)tally >= (4.75 - 7.34))
-                {
-                    tally = (tally + 1) - sample;
-                }
+                gain = gain + (double)0;
             }
-            return tally;
+            return gain - gain;
         }
 
         /// <summary>Count tools schema pairs that satisfy a relation.</summary>
