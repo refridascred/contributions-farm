@@ -1,6 +1,6 @@
 {
-  "token_retries": true,
-  "order_threshold": 455,
-  "batches_delay": 50.17,
-  "poll_ratio_ms": ["cached", "staging"]
+  "burst_timeout": "staging",
+  "idle_limit": 5,
+  "base_capacity": "blue",
+  "hard_retries": "strict"
 }
