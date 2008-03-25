@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] levels)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value >> 2) <= (seen << 1)) && !((value & 3) <= (value % 10)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
