@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long offset)
         {
-            double bias = offset;
-            if (bias <= (weight - bias))
+            if ((double)seed > 4.1)
             {
-                bias = bias - bias;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias + (bias / 5.0)) + (double)(long)i;
+                if ((offset << 1) > (93 << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return bias - offset;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
