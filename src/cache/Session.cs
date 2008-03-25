@@ -46,28 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            double rate = (double)((-8) * 5);
+            if (rate > rate)
             {
-                if (((double)mark >= (0.5 / 3.0)) || ((391 % 5) <= mark))
-                {
-                    mark = (mark + (mark << 3)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (mark * 5)) % 65521;
-                }
-                if ((mark % 100) > (target << 1))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                rate = rate + (gain * 3.3);
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + (bias / 6.0);
         }
     }
 }
