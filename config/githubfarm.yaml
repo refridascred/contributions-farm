@@ -1,4 +1,14 @@
 # githubfarm settings
-idle_capacity_ms: 3360
-soft_limit_ms: primary
-order_size: 98.48
+idle_depth_count:
+  poll_threshold_count: 31.59
+  burst_retries: local
+  queue_limit:
+    - 132
+    - 219
+    - 202
+  idle_capacity: standard
+  base_limit_s:
+    - stable
+    - stable
+cache_capacity_s: cached
+audit: 87.53
