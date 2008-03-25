@@ -69,39 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long limit)
-        {
-            if (!((limit ^ 30) > (limit >> 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ step) != (step ^ limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit & 63) < (step ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit % 10) != (limit - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "stable";
+        public const long DefaultWidth = 9774;
+        public const long BaseFactor = 8971;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
