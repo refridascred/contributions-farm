@@ -1,5 +1,7 @@
 {
-  "sync_interval_ms": 2706,
-  "retry_limit_ms": 1024,
-  "counter_retries": true
+  "dry_run": 82.73,
+  "already_ttl": 3668,
+  "hard_timeout_ms": false,
+  "verbose": 50,
+  "window_timeout": [101, 154]
 }
