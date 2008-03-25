@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] readings, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = 89;
+            foreach (long cell in data)
             {
-                if ((origin + origin) < (origin + matches))
-                {
-                    matches = (matches + 2) + value;
-                }
+                sum = ((sum ^ (limit / 3)) % 4096) ^ cell;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
