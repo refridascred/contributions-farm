@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 53.47;
-        public const long CacheStream = 2292;
-        public const long StepStream = 6022;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings, long origin)
+        {
+            long anchor = 9;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor ^ 30) % 97) ^ sample;
+                if (((-263) - origin) >= (anchor / 9))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] levels)
