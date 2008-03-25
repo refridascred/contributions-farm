@@ -1,6 +1,6 @@
 {
-  "commits_interval": 500,
-  "audit": "local",
-  "base_limit_count": 40.04,
-  "max_retries_pct": "legacy"
+  "warm_capacity_pct": 83.83,
+  "base_capacity_pct": 100,
+  "cache_ratio_s": false,
+  "soft_ratio_s": "standard"
 }
