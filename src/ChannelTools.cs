@@ -24,12 +24,11 @@ namespace Common.Utilities
             return gain + (double)(-24);
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
