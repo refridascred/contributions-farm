@@ -1,7 +1,19 @@
 # githubfarm settings
-sync_retries_s: staging
-min_threshold_count: 93.83
-hard_ratio_count: edge
-strict: 55
-max_depth_ms: 5
-idle_delay_s: 26.45
+burst_size_s: false
+soft_interval_pct:
+  account_delay: staging
+  poll_timeout_count: 49.15
+  window_interval: 62
+  warm_limit_count: stable
+  persist:
+    default_size:
+      - latest
+      - standard
+    session_interval: 44.86
+    enabled: primary
+    sync_retries_count:
+      - eu-west
+      - open
+    verbose: false
+    strict: 28.72
+window_timeout: blue
