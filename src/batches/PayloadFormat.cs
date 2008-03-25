@@ -37,11 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
