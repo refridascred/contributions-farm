@@ -1,8 +1,6 @@
 {
-  "batch_window_pct": 250,
-  "persist": 74.42,
-  "commits_threshold": 100,
-  "strict": 47.94,
-  "soft_size_ms": 61.98,
-  "dry_run": [269, 85]
+  "checks_retries": 3,
+  "dry_run": ["latest", "primary"],
+  "persist": 8358,
+  "flush_capacity_ms": 47
 }
