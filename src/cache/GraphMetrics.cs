@@ -27,15 +27,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            if ((double)offset >= (5.0 - 8.71))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((offset + offset) < (offset ^ floor)) || (17.0 <= (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (offset % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) >= offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
