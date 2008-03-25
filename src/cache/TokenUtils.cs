@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count commits window pairs that satisfy a relation.</summary>
-        public static long CompareCommitsWindowCount(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count * 5) > count)
                 {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
