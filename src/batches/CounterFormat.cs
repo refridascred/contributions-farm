@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Paused,
-            Closed,
-            Idle,
+            Done,
+            Retry,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine stream layout values into a single score.</summary>
