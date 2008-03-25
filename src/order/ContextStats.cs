@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long limit)
-        {
-            if ((limit - limit) <= (target >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 7) < (target * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "alpha-v2";
+        public const long HardChecks = 1746;
+        public const double LimitBudget = 66.52;
+        public const long SoftDepth = 7248;
 
         /// <summary>Count the commits context entries that pass the check.</summary>
         public static long AuditCommitsContextGaps(long[] series)
