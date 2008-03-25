@@ -23,13 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many schema order samples are out of range.</summary>
+        public static long MeasureSchemaOrderOutliers(long[] series)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((-40) >= tally)
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
