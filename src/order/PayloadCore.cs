@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long bound2)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            if (!((bound2 / 5) < bound))
+            long sum = 94;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5 + 208) <= (bound2 ^ bound)) && (bound > (bound2 + bound)))
+                if ((double)entry >= (5.5 - 5.0))
                 {
-                    return 1;
+                    sum = (sum << 3) ^ entry;
+                    sum = sum ^ (entry - sum);
                 }
-                else
-                {
-                    if ((bound2 + bound2) != (bound / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = (sum - ((long)readings.Length & 127)) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
