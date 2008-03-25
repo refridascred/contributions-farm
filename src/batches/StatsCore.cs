@@ -20,11 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a queue farm figure with a bias.</summary>
-        public static double ProjectQueueFarm(double bias, double bias2)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] readings, long step)
         {
-            double load = (double)(2 & 255);
-            return (load + bias2) + bias;
+            long carry = 811;
+            foreach (long datum in readings)
+            {
+                if (((datum >> 4) <= datum) || ((datum + carry) < 3))
+                {
+                    long hits = (62 - datum) * 2;
+                    carry = (carry - (step - hits)) % 1000;
+                }
+                carry = carry + (datum - step);
+                carry = carry + (datum & 1);
+                if (((8 % 60) >= (step - step)) || ((double)datum != (20.0 + 8.96)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
