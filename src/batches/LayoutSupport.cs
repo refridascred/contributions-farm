@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine order account values into a single score.</summary>
-        public static long TallyOrderAccount(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long mark = 628;
-            foreach (long cell in readings)
+            double scale2 = 9.0;
+            if (scale2 < bias)
             {
-                mark = ((mark * 3) + (mark << 3)) % 101;
-                if (((double)cell < (double)mark) || ((689 ^ mark) == (cell + mark)))
-                {
-                    mark = mark ^ mark;
-                }
+                scale2 = (scale2 - bias) - scale;
             }
-            if (mark > 642)
-            {
-                mark = mark - mark;
-            }
-            return mark % 4096;
+            return scale2 - 20.0;
         }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
