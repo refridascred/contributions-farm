@@ -33,13 +33,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items, long bound)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length - (-172)) >= (tally % 64))
+                {
+                    tally = ((tally + 3) + reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
