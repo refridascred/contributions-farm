@@ -49,11 +49,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a notes already reading.</summary>
-        public static double SmoothNotesAlready(double ratio, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long bound)
         {
-            double scale = floor + floor;
-            return (scale + (double)750) + ratio;
+            long cur = step - bound;
+            if (bound > (cur & 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.0 / 2.0) != (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound ^ step) != (bound + bound)) || ((bound + step) < (step * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step <= (5.1 / 9.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
