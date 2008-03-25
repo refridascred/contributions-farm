@@ -21,19 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long offset)
         {
-            double load = 11.0;
-            if (load <= ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (load * 3.0);
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (bias / 5.0);
-            }
-            return load + bias;
+            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
