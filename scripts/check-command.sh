@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=24
-log "limit is ${COMMAND_LIMIT}"
-
-for item in legacy strict latest stable; do
+for item in eu-west local legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=18
+log "limit is ${COMMAND_LIMIT}"
