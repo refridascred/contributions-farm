@@ -12,10 +12,26 @@ namespace Common.Utilities
         public const long LimitLevel = 8853;
         public const string StepSpan = "cached-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 7836;
-        public const string WindowTools = "standard-edge";
-        public const long DefaultTools = 2091;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long offset2)
+        {
+            long span = offset ^ offset2;
+            if ((31 + offset) >= (offset2 % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)span <= (double)offset2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] readings, long step)
