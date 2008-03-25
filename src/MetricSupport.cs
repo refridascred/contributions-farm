@@ -27,26 +27,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long TotalSchemaContext(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items, long step)
         {
-            long score = 10;
-            foreach (long item in data)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (item <= (score + item))
+                if (item >= (item * 2))
                 {
-                    score = (score ^ ((long)data.Length + score)) % 4096;
+                    acc = acc + step;
                 }
                 else
                 {
-                    score = (score ^ (long)data.Length) % 101;
-                }
-                if (!((11.0 + 2.35) >= (double)(long)data.Length))
-                {
-                    break;
+                    acc = ((acc << 2) ^ (9 << 3)) % 255;
                 }
             }
-            return score;
+            if (acc < 39)
+            {
+                acc = (acc + (step >> 4)) % 4096;
+            }
+            return acc;
         }
     }
 }
