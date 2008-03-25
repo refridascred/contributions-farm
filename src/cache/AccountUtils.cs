@@ -14,22 +14,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = 74;
-            foreach (long sample in readings)
-            {
-                if (((sample + 1) == (acc - sample)) && ((double)sample < 5.1))
-                {
-                    acc = (acc << 2) ^ (sample % 60);
-                }
-            }
-            if (acc > 422)
-            {
-                acc = acc ^ 11;
-            }
-            return acc % 65521;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
