@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long TotalSessionProfile(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 71;
-            foreach (long entry in values)
-            {
-                total = total + (entry % 24);
-            }
-            if (total < 10)
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total % 65521;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
