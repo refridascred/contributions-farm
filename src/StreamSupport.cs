@@ -20,15 +20,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] series, long origin)
         {
-            long mix = 25;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mix = ((mix ^ mix) % 1000) + reading;
+                if ((double)matches > (7.0 + 5.27))
+                {
+                    matches = ((matches + 3) ^ value) + origin;
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
