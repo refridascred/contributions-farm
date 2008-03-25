@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long mix = -39;
+            foreach (long cell in samples)
+            {
+                mix = (mix + cell) % 97;
+            }
+            if (mix > 646)
+            {
+                mix = (mix ^ (1 & 1)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
