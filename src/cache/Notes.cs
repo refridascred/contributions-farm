@@ -62,18 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] series, long step)
         {
-            long sum = 56;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((1.53 - 1.0) != (double)sum)
+                if (((item * 3) > step) && !((double)count > (double)step))
                 {
-                    sum = (sum - (datum % 5)) % 255;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
