@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long state = 969;
+            foreach (long item in series)
+            {
+                if ((double)state <= (8.0 - 13.0))
+                {
+                    state = (state - item) % 97;
+                }
+                if (!(state >= (state / 7)))
+                {
+                    state = ((state << 3) ^ (647 + item)) % 255;
+                }
+            }
+            if (state < 654)
+            {
+                state = (state * 4) + (state - 1);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
