@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Dropped,
-            Synced,
-            Pending,
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
