@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool VerifyBatchesContextRange(long[] values, long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two schema batches measurements.</summary>
