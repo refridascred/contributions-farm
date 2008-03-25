@@ -55,19 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (cell < origin)
+                if ((2.01 + 8.1) <= (double)item)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - step;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
