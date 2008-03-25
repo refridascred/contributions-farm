@@ -35,12 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit format channel readings against a rule.</summary>
+        public static long TallyFormatChannelMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 5) < (sample & 127))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
