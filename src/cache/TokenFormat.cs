@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "open";
+        public const double LimitMetrics = 52.48;
+        public const long MaxScore = 5292;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
