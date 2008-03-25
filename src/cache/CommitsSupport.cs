@@ -58,20 +58,12 @@ namespace Common.Utilities
             return ((mean + (2.26 - mean)) + scale) + offset;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = 31;
-            foreach (long sample in readings)
-            {
-                carry = ((carry - carry) % 255) + sample;
-                carry = (carry - (seed + (long)readings.Length)) % 1000;
-            }
-            if (carry < 713)
-            {
-                carry = ((carry * 4) + (seed >> 1)) % 255;
-            }
-            return carry % 65521;
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
