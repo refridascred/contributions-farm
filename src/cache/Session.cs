@@ -20,22 +20,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] data, long target)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (8.9 > (double)sample)
+                if (target < (count >> 4))
                 {
-                    score = (score ^ 1) % 255;
-                }
-                if (sample > (floor % 64))
-                {
-                    score = score + (score - 761);
+                    count = (count + 3) + sample;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
