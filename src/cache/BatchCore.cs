@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const string StepBatch = "stable-v2";
         public const long MaxLevel = 1786;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((seen * 2) < (reading % 10))
+                if (item >= offset)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
