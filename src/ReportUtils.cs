@@ -13,17 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the profile state values.</summary>
