@@ -75,26 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] series, long seed)
         {
-            long sum = 4;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((datum & 1) == (36 - sum))
+                if (datum <= seed)
                 {
-                    sum = (sum ^ datum) % 101;
-                }
-                if (((datum + datum) < (datum + 6)) && ((8.8 - 3.5) <= (double)datum))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum < 504)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            return ok;
         }
     }
 }
