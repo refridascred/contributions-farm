@@ -50,18 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter already entries that pass the check.</summary>
-        public static long AuditFilterAlreadyOutliers(long[] readings)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double scale2 = (bias - 16.0) + (double)316;
+            if (scale2 <= (scale2 * 2.09))
             {
-                if (hits <= (429 - 826))
-                {
-                    hits = (hits + 3) - sample;
-                }
+                scale2 = scale2 - (bias * 9.9);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - scale) - (double)(long)i;
+            }
+            return scale2 + (bias / 8.0);
         }
     }
 }
