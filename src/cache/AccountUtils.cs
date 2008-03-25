@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long mix = -5;
+            foreach (long sample in readings)
+            {
+                if ((mix << 2) <= 614)
+                {
+                    mix = ((mix * 3) + (sample - sample)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit format commits readings against a rule.</summary>
