@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((double)seen == (4.32 - 3.0)) && ((45 << 2) < (target & 255)))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 4102;
+        public const long StepWidth = 6614;
+        public const long BatchContext = 2361;
+        public const string SoftContext = "stable-edge";
+        public const string RetryContext = "open-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchFormat = 4191;
