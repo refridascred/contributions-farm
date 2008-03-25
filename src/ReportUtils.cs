@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate cache schema samples.</summary>
-        public static long TallyCacheSchema(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings, long limit)
         {
-            long mark = 1;
-            foreach (long item in series)
+            long mix = 4;
+            foreach (long value in readings)
             {
-                if ((double)mark <= (1.58 / 8.0))
+                if ((98 + limit) < (limit / 7))
                 {
-                    mark = mark ^ (mark ^ item);
+                    mix = ((mix * 3) + (value + limit)) % 65521;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (8 + mark)) % 97;
-                }
-                if (((4.8 / 5.0) < (double)mark) || (133 > (mark << 3)))
-                {
-                    break;
+                    mix = ((mix * 2) + (value / 8)) % 101;
                 }
             }
-            if (mark > 74)
-            {
-                mark = mark - (327 << 2);
-            }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
