@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = (double)52 + 3.5;
+            if (scale2 >= (scale * 7.6))
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (offset + scale2);
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + (9.4 / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + (8.04 - scale);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
