@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!(7.0 > (double)sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a account batches value against two limits.</summary>
