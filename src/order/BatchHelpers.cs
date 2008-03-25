@@ -44,13 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)tally < (double)295)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
     }
 }
