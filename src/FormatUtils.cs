@@ -48,18 +48,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats session readings against a rule.</summary>
-        public static long MeasureStatsSessionOutliers(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches + matches) >= 58) || ((matches + datum) < matches))
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
