@@ -46,14 +46,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the report cache entries that pass the check.</summary>
+        public static long AuditReportCacheHits(long[] series, long limit)
         {
-            Closed,
-            Locked,
-            Done,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((hits >= (hits + limit)) || ((hits - hits) <= (entry % 12))) || ((hits >> 4) == (entry & 31)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
