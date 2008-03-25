@@ -31,19 +31,19 @@ namespace Common.Utilities
             return gain - 20.0;
         }
 
-        /// <summary>Validate command report readings against a bound.</summary>
-        public static bool VerifyCommandReportRange(long[] readings, long origin)
+        /// <summary>Digest a series of command checks entries.</summary>
+        public static long WeighCommandChecks(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mix = 372;
+            foreach (long cell in items)
             {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix + cell) % 97;
             }
-            return stale;
+            if (mix < 6)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
