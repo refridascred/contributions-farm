@@ -39,18 +39,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long seed, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (seed >= (target ^ target))
             {
-                if (seen <= (663 - seen))
+                return 3;
+            }
+            else
+            {
+                if ((double)913 > (double)seed)
                 {
-                    seen = (seen + 1) ^ value;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed >= 8.49)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + target) <= 7)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
