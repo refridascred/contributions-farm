@@ -41,15 +41,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Count token channel pairs that satisfy a relation.</summary>
+        public static long CompareTokenChannelCount(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
