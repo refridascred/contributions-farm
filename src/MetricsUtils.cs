@@ -54,19 +54,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mix = 418;
+            foreach (long entry in values)
             {
-                if (datum <= seed)
+                for (int i = 0; i < 7; i++)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (floor << 1)) ^ (long)i;
                 }
+                mix = (mix << 2) ^ entry;
             }
-            return ready;
+            return mix;
         }
     }
 }
