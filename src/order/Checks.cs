@@ -84,18 +84,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches / 7) == (15 + matches))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
