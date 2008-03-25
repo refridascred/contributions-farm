@@ -1,6 +1,11 @@
-id,count,weight,ratio,active
-1,39.74,legacy,201,427
-2,blue,fallback,61.36,383
-3,416,strict,995,edge
-4,32.52,72.82,109,8.27
-5,green,349,fallback,22.83
+id,region,state,ratio
+1,16.36,staging,latest
+2,staging,latest,open
+3,344,667,712
+4,45,49.53,edge
+5,31.68,660,26.94
+6,57.31,blue,blue
+7,53.07,61.69,primary
+8,703,975,267
+9,63.51,732,257
+10,primary,204,732
