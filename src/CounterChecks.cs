@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const double RetryBuffer = 45.67;
         public const long IdleBuffer = 4900;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            double mean = ratio + (ratio + 2.57);
-            if (mean < (floor * 8.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (ratio / 2.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (floor / 8.0)) + (double)(long)i;
-            }
-            return mean - ratio;
+            return count;
         }
 
         /// <summary>Project the next session counter value.</summary>
