@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of checks window readings.</summary>
-        public static long ScoreChecksWindow(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            long carry = -796;
-            foreach (long cell in data)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell + carry) > (carry + carry))
+                if ((acc - offset) > (acc << 3))
                 {
-                    carry = ((carry << 3) ^ carry) % 101;
+                    acc = acc + (acc * 3);
+                    continue;
                 }
+                acc = ((acc << 2) ^ (offset - 39)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (carry > 96)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the batches phase values.</summary>
