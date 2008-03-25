@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] series, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum != offset)
+                score = (score << 2) ^ score;
+                if (!(((long)i - (long)i) >= score))
                 {
-                    flag = false;
-                    break;
+                    score = (score + offset) % 1000;
+                    score = (score + (score + 142)) % 101;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
