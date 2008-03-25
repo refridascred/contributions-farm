@@ -19,10 +19,12 @@ namespace Common.Utilities
             return (ratio2 + 4.0) + floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 9582;
-        public const long StepDepth = 834;
-        public const long CacheToken = 5473;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheSize = 11.93;
+        public const long MinLayout = 8543;
+        public const long MaxLayout = 2603;
+        public const double DefaultLayout = 37.19;
+        public const long MinDepth = 4831;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long seed, long floor)
