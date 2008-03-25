@@ -1,6 +1,18 @@
 {
-  "filter_retries": 5714,
-  "sync_limit_count": 8535,
-  "report_capacity": [229, 276],
-  "base_capacity_ms": false
+  "max_depth": 88.88,
+  "burst_delay_pct": {
+    "warm_limit_count": "blue",
+    "soft_interval": true,
+    "cache_limit": false,
+    "account_threshold": {
+      "payload_ttl": 61.51,
+      "context_interval": ["green", "green", "green", "standard"],
+      "base_delay_count": 92,
+      "persist": false,
+      "enabled": 250
+    },
+    "hard_threshold": 36.93
+  },
+  "retry_interval": 85,
+  "cache_window": false
 }
