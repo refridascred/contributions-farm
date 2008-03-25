@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series, long origin)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 435;
+            foreach (long datum in series)
+            {
+                acc = (((acc << 2) ^ ((long)series.Length & 127)) % 97) ^ datum;
+                if ((4.0 + 13.0) <= (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > (-905))
+            {
+                acc = (acc + origin) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the contributi state values.</summary>
