@@ -20,21 +20,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.2 / 9.0) < (double)hits)
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
