@@ -1,9 +1,8 @@
-id,count
-1,eu-west
-2,local
-3,standard
-4,973
-5,95.95
-6,39.76
-7,89.33
-8,blue
+id,region,weight
+1,33.12,661
+2,36.3,stable
+3,263,77.05
+4,112,32
+5,98.34,98.8
+6,49.77,stable
+7,local,795
