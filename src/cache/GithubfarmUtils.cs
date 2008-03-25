@@ -30,17 +30,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data, long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
         {
-            long mark = 272;
-            foreach (long value in data)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                mark = mark ^ (mark << 1);
-                if ((value * 2) <= (offset & 15))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    break;
+                    mark = (mark - (mark / 9)) + (long)i2;
                 }
+                long next = (long)i;
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = (mark ^ (next + 647)) - (long)i3;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
             return mark;
         }
