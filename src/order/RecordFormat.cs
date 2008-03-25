@@ -22,22 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items)
         {
-            long acc = 47;
-            foreach (long sample in values)
+            long total = 42;
+            foreach (long sample in items)
             {
-                if ((64 + sample) > (acc & 63))
-                {
-                    acc = acc ^ (bound - acc);
-                }
+                total = (total ^ (total % 64)) % 4096;
+                total = (total + (sample >> 2)) % 97;
             }
-            if (acc > 30)
-            {
-                acc = acc ^ (acc % 97);
-            }
-            return acc % 4096;
+            return total % 97;
         }
 
         /// <summary>Roll a record counter forward.</summary>
