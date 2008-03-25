@@ -33,10 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheLevel = 42.95;
-        public const long IdleContext = 7037;
-        public const long IdleInterval = 2148;
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long AuditCounterChannelMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((tally - value) < (tally ^ tally)) && ((value ^ value) < value))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
