@@ -20,21 +20,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Grade a session report value against two limits.</summary>
+        public static long SortSessionReport(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = origin + step;
+            if ((gap - gap) <= (origin & 15))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((0 + step) > origin) && ((9.5 * 10.0) != (double)gap))
                 {
-                    if ((data[i] - data[j]) != 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 9) < gap)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >= (step + gap)) && ((double)gap >= (double)71))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
