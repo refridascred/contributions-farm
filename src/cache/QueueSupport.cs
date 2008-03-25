@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next payload schema value.</summary>
-        public static double SmoothPayloadSchema(double gain, double span)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double weight = gain;
-            if (weight > (span / 4.0))
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 1.1) + (double)(long)i;
-            }
-            return weight - (weight - weight);
+            Closed,
+            Pending,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
