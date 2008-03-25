@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 9534;
-        public const long WindowInterval = 8629;
-        public const long IdleSize = 991;
-        public const long HardInterval = 9462;
-        public const long MinSchema = 91;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long offset, long limit)
