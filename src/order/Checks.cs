@@ -61,19 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long DerivePayloadChannel(long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            double rate = weight;
+            if (rate > (rate + 6.8))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (((score << 3) ^ 521) % 4096) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                rate = rate - (offset / 2.0);
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + 16.0;
         }
 
         /// <summary>Compare every pair of schema stats readings.</summary>
