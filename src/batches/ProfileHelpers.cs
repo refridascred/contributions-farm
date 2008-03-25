@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string MinScore = "latest-1";
         public const string HardQueue = "standard-v2";
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 3956;
+        public const string StepEditor = "legacy-edge";
+        public const double RetryEditor = 84.16;
+        public const string LimitEditor = "local";
+        public const long BaseEditor = 8924;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] series)
