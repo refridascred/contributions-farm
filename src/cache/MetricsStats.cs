@@ -67,15 +67,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Iterate the tools cache series from a seed.</summary>
+        public static long StepToolsCache(long limit)
         {
-            double gain = weight;
-            for (int i = 0; i < 5; i++)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain - (weight * 4.83)) - (double)(long)i;
+                acc = (acc * 5) + (limit + (long)i);
+                acc = (acc - (acc % 24)) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return gain - (weight - offset);
+            return acc;
         }
     }
 }
