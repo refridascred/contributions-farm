@@ -17,10 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstTimeout = 765;
-        public const double RetryAccount = 3.65;
-        public const long SoftScore = 8422;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsHits(long[] data, long seed)
