@@ -1,14 +1,36 @@
 # entry settings
-readonly:
-  - latest
-  - eu-west
-  - strict
+verbose:
+  layout_ttl: 7112
+  cache_delay: 1024
+  retry_window_count:
+    retry_delay_ms:
+      - 24
+      - 278
+      - 476
+      - 338
+    hard_limit: 94.89
+    route_interval: 67.05
+    idle_interval_s:
+      - 426
+      - 310
+      - 20
+      - 359
+  token_retries: 250
+profile_ttl:
+  - 261
+  - 277
+hard_ratio:
+  persist: latest
+  default_depth: 8.76
+  strict: blue
+  token_retries: 21.86
+  idle_depth_pct:
+    poll_window_ms: fallback
+    audit: false
+    editor_depth: open
+base_threshold_s: 45
+audit:
   - standard
-route_ratio:
-  default_ttl_pct: 4805
-  burst_timeout_ms: cached
-  hard_interval: 1024
-  poll_window_ms: green
-  retry_depth_s: local
-filter_size: 69
-account_delay: 7161
+  - latest
+  - legacy
+cache_ratio_ms: 5249
