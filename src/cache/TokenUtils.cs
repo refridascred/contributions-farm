@@ -36,10 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardDepth = 8654;
-        public const double BaseBatch = 24.1;
-        public const double StepBatch = 56.22;
-        public const string BatchScore = "legacy-edge";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long floor2)
+        {
+            long bound = floor + floor2;
+            if ((double)bound > (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor % 16) < (333 - 42))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) <= 27)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (20.0 - 8.3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
