@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6265;
         public const long MinMetrics = 981;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] data, long step)
         {
-            long sum = -8;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                sum = (sum ^ 7) + reading;
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum > 384)
-            {
-                sum = (sum - 822) % 1000;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
