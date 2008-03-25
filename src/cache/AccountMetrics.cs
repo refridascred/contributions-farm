@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long bound, long offset)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            if ((double)offset >= (9.0 * 6.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (0.7 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
