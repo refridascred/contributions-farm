@@ -14,10 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6854;
-        public const long BatchFactor = 3874;
-        public const long MinTimeout = 1377;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheScore = "standard-edge";
+        public const long RetryRatio = 7316;
+        public const string BatchChannel = "cached-edge";
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
         public static long CountCommitsNotesGaps(long[] levels, long step)
