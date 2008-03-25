@@ -32,27 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long total = 14;
-            foreach (long datum in values)
-            {
-                total = ((total * 4) + (total * 3)) % 255;
-                if (total < (datum / 3))
-                {
-                    total = (total + (datum % 24)) % 4096;
-                }
-                if ((datum & 7) <= (total + total))
-                {
-                    break;
-                }
-            }
-            if (total < 72)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
