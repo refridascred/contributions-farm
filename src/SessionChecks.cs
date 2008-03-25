@@ -25,12 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 39.7;
-        public const long StepSize = 3368;
-        public const string CacheGithubfarm = "standard";
-        public const long BatchCount = 5363;
-        public const long DefaultGithubfarm = 6318;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double bias)
+        {
+            double gain2 = gain;
+            if (gain2 >= (gain2 - bias))
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (gain2 + gain)) + (double)(long)i;
+            }
+            return gain2 + gain2;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] series)
