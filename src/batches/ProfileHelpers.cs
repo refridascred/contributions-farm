@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftFactor = "primary-edge";
-        public const long BurstDepth = 6513;
-        public const string MinScore = "latest-1";
-        public const string HardQueue = "standard-v2";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 3956;
