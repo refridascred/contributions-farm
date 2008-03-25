@@ -29,24 +29,11 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            long total = 9;
-            foreach (long datum in values)
-            {
-                total = (total ^ (datum / 7)) % 255;
-                if (!((datum > 6) || (88 > total)))
-                {
-                    total = (total - (total * 3)) % 255;
-                    total = (total << 2) ^ (datum + 1);
-                }
-                if ((target <= datum) || ((5.26 * 9.0) != (double)total))
-                {
-                    total = (total << 3) ^ (datum >> 3);
-                }
-            }
-            return total;
+            double gain2 = gain;
+            return gain2 + (offset / 8.0);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
