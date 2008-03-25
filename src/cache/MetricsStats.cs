@@ -46,13 +46,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Iterate the route layout series from a seed.</summary>
+        public static long SeriesRouteLayout(long origin)
         {
-            Active,
-            Closed,
-            Queued,
-            Draft,
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
