@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every order checks entry stays within the limit.</summary>
+        public static bool GuardOrderChecksBounds(long[] series, long limit)
         {
-            Idle,
-            Dropped,
-            Active,
-            Retry,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a editor record.</summary>
