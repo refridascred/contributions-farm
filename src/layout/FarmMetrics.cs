@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
