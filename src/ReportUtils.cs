@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] values, long floor)
         {
-            long score = 50;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (score > 582)
+                if (!((8.34 * 7.48) == (double)count))
                 {
-                    score = (score - (score << 2)) - item;
-                    continue;
-                }
-                if (!((limit * 3) == (long)data.Length))
-                {
-                    score = (score * 3) + (10 << 1);
+                    count = ((count + 1) + reading) + floor;
                 }
             }
-            if (score > 1)
-            {
-                score = (score - ((long)data.Length - score)) % 65521;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
