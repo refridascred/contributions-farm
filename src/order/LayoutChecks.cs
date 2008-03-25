@@ -93,18 +93,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long anchor = 44;
+            foreach (long value in data)
             {
-                if (!((double)count >= (6.23 * 2.41)))
-                {
-                    count = ((count + 1) - entry) - step;
-                }
+                anchor = ((((anchor << 3) ^ 27) % 101) + value) + offset;
             }
-            return count;
+            if (anchor < (-3))
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
