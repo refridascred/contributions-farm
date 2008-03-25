@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((818 >> 5) < (tally + tally)))
+                if ((12.0 + 20.0) == (double)item)
                 {
-                    tally = ((tally + 3) ^ cell) - bound;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
