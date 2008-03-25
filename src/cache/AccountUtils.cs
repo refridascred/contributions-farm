@@ -34,11 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many commits schema samples are out of range.</summary>
+        public static long AuditCommitsSchemaMatches(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((11 % 100) < datum)
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
