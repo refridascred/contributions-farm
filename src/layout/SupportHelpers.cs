@@ -20,19 +20,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings, long limit)
         {
-            double ratio = (double)0 - (2.41 / 6.0);
-            if (ratio >= (ratio + floor))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                ratio = ratio - rate;
+                if ((((limit >> 2) <= entry) || ((limit ^ 579) != (8 / 2))) && (((double)(-96) == (double)entry) && ((count ^ count) <= (count / 3))))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)(-57);
-            }
-            return ratio + rate;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
