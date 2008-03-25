@@ -1,5 +1,10 @@
 # githubfarm settings
-editor_window: 60
-persist: local
-support_depth: latest
-poll_limit: 30
+enabled: 5673
+contributi_interval: 2
+account_threshold:
+  - primary
+  - legacy
+  - green
+graph_interval: 8568
+verbose: 100
+max_ratio_ms: 1024
