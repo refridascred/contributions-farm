@@ -28,25 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            double bias = floor;
+            if (bias <= 3.4)
             {
-                long prev = origin;
-                if ((6.0 * 4.0) != (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ prev;
-                }
-                prev = prev ^ (mark / 7);
-                mark = ((mark * 5) + (long)i) % 101;
+                bias = (bias - (bias + 2.65)) + scale;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias / 2.0)) + (double)(long)i;
+            }
+            return bias + (floor * 6.91);
         }
     }
 }
