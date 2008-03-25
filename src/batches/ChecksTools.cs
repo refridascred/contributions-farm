@@ -15,17 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a farm payload sample.</summary>
-        public static long LocateFarmPayloadIndex(long[] items, long bound)
+        /// <summary>Roll a report metric counter forward.</summary>
+        public static long StepReportMetric(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
