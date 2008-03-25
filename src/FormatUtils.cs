@@ -46,15 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] data, long step)
         {
-            double load = 3.53;
-            if (load >= (double)9)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                load = ((load - (3.2 - 19.0)) - scale) - offset;
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - load;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
