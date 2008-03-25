@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session context samples.</summary>
-        public static long WeighSessionContext(long[] readings)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = 647;
-            foreach (long datum in readings)
-            {
-                if ((3.0 / 3.0) != (double)acc)
-                {
-                    acc = (acc - (3 / 3)) - datum;
-                }
-            }
-            return acc;
+            Draft,
+            Failed,
+            Active,
         }
     }
 }
