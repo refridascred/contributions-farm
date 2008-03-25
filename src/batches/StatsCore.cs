@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a checks editor sample.</summary>
-        public static long SeekChecksEditorIndex(long[] readings, long floor)
+        /// <summary>Locate a counter checks reading by value.</summary>
+        public static long SeekCounterChecksIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                if (values[i] > floor)
                 {
                     return (long)i;
                 }
