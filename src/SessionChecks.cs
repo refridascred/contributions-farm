@@ -29,12 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((2.6 / 2.0) < (double)(long)i))
+                {
+                    sum = (sum * 5) + (sum % 97);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the order status values.</summary>
