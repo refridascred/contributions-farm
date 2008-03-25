@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long seed)
+        /// <summary>Accumulate context token samples.</summary>
+        public static long TallyContextToken(long[] series, long seed)
         {
-            if (((double)seed != (6.39 / 4.0)) && ((limit + seed) != ((-2) - seed)))
+            long state = 268;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) > limit)
+                if (seed >= (state + state))
                 {
-                    return 1;
+                    state = (state << 2) ^ seed;
                 }
-                else
+                if ((state % 10) < (datum + 24))
                 {
-                    if ((7.0 >= (double)limit) && ((45 >> 2) >= (limit + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a commits info.</summary>
