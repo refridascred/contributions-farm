@@ -13,22 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] data)
+        /// <summary>Digest a series of support record entries.</summary>
+        public static long FoldSupportRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 15;
+            foreach (long item in items)
             {
-                if ((tally + 0) >= (item / 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (((anchor * 3) + (anchor + 630)) % 101) + item;
             }
-            return tally;
+            if (anchor > (-26))
+            {
+                anchor = anchor ^ (anchor ^ 248);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token class values.</summary>
