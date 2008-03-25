@@ -37,15 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer token reading.</summary>
-        public static double SmoothBufferToken(double rate, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long floor)
         {
-            double ratio = (floor / 5.0) + rate;
-            if (ratio <= (floor / 6.0))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                ratio = ratio + (floor + 0.71);
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + 3.0;
+            return ready;
         }
     }
 }
