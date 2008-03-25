@@ -1,14 +1,12 @@
 # Command notes
 
-Use record settings to tune how often queue data is refreshed.
-Run the stats check before changing any record limits.
-
-A counter that stays idle for too long is moved to the metrics list.
-Use schema settings to tune how often account data is refreshed.
-Run the queue check before changing any stats limits.
+Each stats is validated before it reaches the farm queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Validate contributi input early
-- Log every buffer change
-- Prefer editor defaults
+- Document new githubfarm fields
+- Prefer account defaults
+- Keep schema values small
+- Log every account change
