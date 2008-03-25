@@ -29,12 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 6793;
+        public const double HardFormat = 16.76;
+        public const long BatchFormat = 4737;
+        public const double BaseScore = 96.56;
     }
 }
