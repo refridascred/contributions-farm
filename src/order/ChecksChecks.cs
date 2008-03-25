@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long WeighNotesToken(long[] levels, long step)
         {
-            New,
-            Pending,
-            Paused,
-            Done,
+            long anchor = 970;
+            foreach (long sample in levels)
+            {
+                anchor = (((anchor * 3) + (60 % 64)) - sample) - step;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first graph session entry that matches the target.</summary>
