@@ -66,18 +66,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter tools entries that pass the check.</summary>
-        public static long TallyCounterToolsGaps(long[] samples, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = 37;
+            foreach (long value in samples)
             {
-                if (886 <= (entry / 9))
+                acc = ((acc << 3) ^ (6 & 1)) % 65521;
+                if (acc <= value)
                 {
-                    matches = (matches + 1) - bound;
+                    acc = acc - (value / 6);
+                }
+                if (value <= (663 + value))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
