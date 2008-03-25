@@ -13,13 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 74.78;
+        public const double BatchProfile = 14.4;
+        public const double CacheFactor = 72.69;
+        public const long BurstProfile = 6557;
+        public const long RetryCount = 8634;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] values)
