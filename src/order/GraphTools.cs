@@ -63,11 +63,14 @@ namespace Common.Utilities
         public const long SoftRatio = 3287;
         public const long BatchBudget = 3254;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Locked,
+            Paused,
+            Retry,
+            Draft,
         }
     }
 }
