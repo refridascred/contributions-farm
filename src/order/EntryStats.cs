@@ -68,21 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchLevel = 36.75;
+        public const string WindowFactor = "fallback-1";
+        public const long BurstSpan = 1158;
+        public const long CacheScore = 7620;
+        public const string StepBudget = "open";
     }
 }
