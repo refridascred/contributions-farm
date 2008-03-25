@@ -45,18 +45,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double mean = ratio + (ratio + 2.57);
+            if (mean < (floor * 8.0))
             {
-                if ((seen + datum) <= ((long)readings.Length - datum))
-                {
-                    seen = (seen + 3) + target;
-                }
+                mean = mean + (ratio / 2.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (floor / 8.0)) + (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Project the next session counter value.</summary>
