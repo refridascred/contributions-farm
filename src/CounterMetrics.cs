@@ -52,32 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metric route pair into a bucket.</summary>
-        public static long RankMetricRoute(long offset, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long span = offset ^ limit;
-            if (((2.4 / 2.0) == (double)span) && ((double)offset < 20.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) > (span ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.49 - 9.0) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
