@@ -71,23 +71,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Classify a format schema pair into a bucket.</summary>
+        public static long RankFormatSchema(long offset, long floor)
         {
-            double weight = bias;
-            if (weight <= (double)(-976))
+            if (((506 * 3) > (floor / 9)) && ((floor / 3) < (offset ^ 6)))
             {
-                weight = weight + (weight / 6.0);
+                return 6;
             }
             else
             {
-                weight = weight + 15.0;
+                if (!((offset * 2) >= (614 << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + gain) - (double)(long)i;
-            }
-            return weight + (bias + weight);
         }
 
         /// <summary>Accumulate record profile samples.</summary>
