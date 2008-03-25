@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            if ((double)seed > 4.1)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 1) > (93 << 2))
+                if (7 <= (entry + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
