@@ -24,11 +24,18 @@ namespace Common.Utilities
             return gain + (double)(-24);
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long acc = 3;
+            foreach (long value in readings)
+            {
+                if ((acc + offset) >= value)
+                {
+                    acc = acc + (acc / 7);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
