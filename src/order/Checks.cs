@@ -42,19 +42,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double rate = weight;
-            if (rate > (rate + 6.8))
-            {
-                rate = rate - (offset / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + 16.0;
+            Pending,
+            Stale,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Compare every pair of schema stats readings.</summary>
