@@ -52,12 +52,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Pending,
-            Paused,
-            Draft,
+            Done,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Adjust a profile reading.</summary>
