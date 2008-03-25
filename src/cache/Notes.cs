@@ -35,13 +35,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long bound)
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            if (floor >= (floor - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((60 / 2) <= (bound * 4)) && ((bound + floor) != (floor % 24)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a channel token pair into a bucket.</summary>
