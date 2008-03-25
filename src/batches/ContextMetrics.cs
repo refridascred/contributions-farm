@@ -27,12 +27,13 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryBudget = 7871;
-        public const long HardCommand = 9174;
-        public const long BaseCommand = 8294;
-        public const long LimitCommand = 9672;
-        public const long BaseSize = 2025;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsOutliers(long[] data, long step)
