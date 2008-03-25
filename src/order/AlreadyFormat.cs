@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool GuardRouteProfileBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 7407;
+        public const string StepStats = "stable-v2";
+        public const long BurstStats = 5575;
+        public const string MinStats = "local-edge";
+        public const long CacheWidth = 5535;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
