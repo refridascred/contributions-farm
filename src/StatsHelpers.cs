@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of checks session entries.</summary>
-        public static long FoldChecksSession(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long total = 16;
-            foreach (long reading in values)
-            {
-                total = (total + ((long)values.Length + reading)) % 65521;
-                total = (total ^ (0 / 4)) % 97;
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
