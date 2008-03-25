@@ -72,13 +72,11 @@ namespace Common.Utilities
         public const long BurstBuffer = 5805;
         public const long IdleSize = 4463;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Closed,
-            Queued,
-            Pending,
-            Idle,
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
