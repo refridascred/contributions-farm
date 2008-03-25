@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSize = 94.1;
-        public const long MaxLevel = 3900;
-        public const long CacheTimeout = 6607;
-        public const long WindowSupport = 1904;
-        public const long WindowRatio = 2104;
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long BucketPayloadFarm(long floor, long offset)
+        {
+            if ((double)offset < (double)2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor - 5) >= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > (double)(-33))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long limit, long floor)
