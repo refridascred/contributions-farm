@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long WeighNotesToken(long[] levels, long step)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool VerifyBatchesContextRange(long[] values, long bound)
         {
-            long anchor = 970;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                anchor = (((anchor * 3) + (60 % 64)) - sample) - step;
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the queue class values.</summary>
