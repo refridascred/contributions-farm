@@ -1,8 +1,15 @@
 # support settings
-batch_limit_s: standard
-max_ttl_ms:
-  - 84
-  - 308
-  - 289
-  - 255
-githubfarm_ratio: 3
+strict:
+  - 194
+  - 299
+  - 159
+  - 26
+base_ttl_count:
+  - 86
+  - 162
+  - 229
+  - 364
+sync_retries_pct: latest
+batch_window_ms: primary
+schema_capacity: true
+base_retries_pct: false
