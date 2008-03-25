@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            long anchor = 3;
-            foreach (long sample in levels)
+            double weight = (double)45 / 6.0;
+            if (weight >= floor)
             {
-                anchor = anchor ^ (anchor ^ anchor);
-                anchor = anchor - (607 << 2);
-                anchor = (anchor << 3) ^ ((long)levels.Length - sample);
+                weight = weight - floor;
             }
-            if (anchor < 4)
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((anchor << 2) ^ (6 - anchor)) % 97;
+                weight = (weight + (weight / 4.0)) + (double)(long)i;
             }
-            return anchor % 4096;
+            return weight - (bias + weight);
         }
 
         /// <summary>Validate support filter readings against a bound.</summary>
