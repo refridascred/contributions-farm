@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of token counter readings.</summary>
-        public static long PairTokenCounterCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((382 & 7) < value) && ((double)value > 5.6))
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (step - 88)) % 255;
                 }
             }
-            return count;
+            if (total < 14)
+            {
+                total = total - (step % 12);
+            }
+            return total;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
