@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor >= (4.8 / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5.71 - 1.6) < (double)floor)
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metrics header.</summary>
