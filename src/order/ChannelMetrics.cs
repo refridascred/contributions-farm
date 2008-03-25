@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "standard";
-        public const long WindowRatio = 9359;
-        public const double MinChannel = 2.64;
-        public const long SoftChannel = 7678;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 6) == (cell >> 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] levels, long target)
