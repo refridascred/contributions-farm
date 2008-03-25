@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((((tally * 4) >= (tally % 8)) && ((tally + cell) <= (cell + cell))) || (((tally + cell) <= (cell + cell)) && ((tally & 1) < cell)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 8779;
+        public const string StepSize = "fallback";
+        public const string HardLevel = "stable";
+        public const string MaxScore = "standard-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double CacheChecks = 23.29;
