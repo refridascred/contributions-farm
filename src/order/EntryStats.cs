@@ -22,13 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            if ((target & 31) > (seed + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)seed < (double)target) || ((3.42 - 7.01) < (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target / 3) != (55 - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
