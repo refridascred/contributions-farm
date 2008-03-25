@@ -37,14 +37,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            Draft,
-            Done,
-            Stale,
-            Synced,
-            Active,
+            double bias = (double)(5 * 2);
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias + 6.5) + (double)(long)i) - rate;
+            }
+            return bias - span;
         }
     }
 }
