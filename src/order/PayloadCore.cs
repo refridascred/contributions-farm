@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values)
         {
-            long sum = 3;
+            long carry = 727;
             foreach (long cell in values)
             {
-                sum = (((sum ^ (sum * 2)) % 4096) + cell) + floor;
+                carry = ((carry * 3) + (cell / 9)) % 4096;
+                carry = (carry - cell) % 101;
+                if ((cell >> 2) > carry)
+                {
+                    carry = carry + (146 << 3);
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
