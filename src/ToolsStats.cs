@@ -43,13 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples, long floor)
         {
-            Draft,
-            Locked,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((floor ^ 23) == (reading - floor))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
