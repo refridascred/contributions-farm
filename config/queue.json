@@ -1,8 +1,8 @@
 {
-  "hard_window": false,
-  "queue_interval": 66.63,
-  "readonly": "latest",
-  "default_depth_pct": "edge",
-  "audit": true,
-  "verbose": ["open", "eu-west", "local"]
+  "default_capacity": 500,
+  "hard_interval_pct": "primary",
+  "account_ttl": "edge",
+  "graph_depth": 39.05,
+  "account_threshold": "stable",
+  "default_ratio_s": "eu-west"
 }
