@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix - (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
