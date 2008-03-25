@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
