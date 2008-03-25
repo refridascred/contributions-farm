@@ -67,22 +67,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings, long seed)
-        {
-            long mark = 5;
-            foreach (long value in readings)
-            {
-                if ((value * 4) != ((-728) ^ mark))
-                {
-                    mark = (mark - (seed >> 3)) % 255;
-                }
-            }
-            if (mark > 96)
-            {
-                mark = ((mark << 2) ^ (mark * 2)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 3816;
+        public const long CacheDepth = 7675;
+        public const double SoftSpan = 55.75;
     }
 }
