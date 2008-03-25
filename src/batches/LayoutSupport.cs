@@ -24,13 +24,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Synced,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Digest a series of context entries.</summary>
