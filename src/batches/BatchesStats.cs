@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a filter metric figure with a bias.</summary>
-        public static double ScaleFilterMetric(double ratio, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series, long floor)
         {
-            double bias2 = ratio;
-            if (bias2 >= (bias / 2.0))
+            long tally = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (bias + 3.4);
+                if (tally >= (tally & 63))
+                {
+                    tally = ((tally + 3) + value) - floor;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (double)392) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
