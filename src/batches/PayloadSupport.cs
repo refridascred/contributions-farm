@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long origin)
-        {
-            if ((double)floor >= (4.8 / 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.71 - 1.6) < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinSpan = 9.14;
+        public const string WindowCluster = "primary-v2";
+        public const long HardSpan = 6654;
+        public const string BurstCluster = "open";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string CacheDepth = "standard";
