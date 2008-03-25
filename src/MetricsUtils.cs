@@ -36,16 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
-        {
-            long mark = 55;
-            foreach (long item in values)
-            {
-                mark = (mark ^ (item ^ item)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 2189;
+        public const string SoftFarm = "legacy-1";
+        public const double MaxBudget = 15.4;
+        public const long SoftRatio = 6948;
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
         public static long CountCounterClusterOutliers(long[] readings, long bound)
