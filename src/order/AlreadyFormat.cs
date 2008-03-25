@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric stats reading by value.</summary>
-        public static long LookupMetricStatsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftCount = 54.68;
+        public const double MaxRatio = 78.14;
+        public const double BaseQueue = 25.66;
+        public const double WindowQueue = 79.54;
+        public const double WindowTimeout = 52.2;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] levels)
