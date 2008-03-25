@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const string RetryBudget = "fallback-1";
         public const string RetryCommand = "primary-v2";
 
-        /// <summary>Iterate the window graph series from a seed.</summary>
-        public static long StepWindowGraph(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (item > limit)
                 {
-                    result = ((result - (offset + result)) % 97) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                long span = ((long)i / 7) % 7;
-                if (!(90 >= (result + span)))
-                {
-                    span = (span * 4) + (result + (long)i);
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
