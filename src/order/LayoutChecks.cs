@@ -58,11 +58,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 790;
-        public const long DefaultBudget = 8540;
-        public const string RetryTimeout = "fallback-v2";
-        public const string RetryToken = "stable";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5303;
+        public const long HardCommits = 9686;
+        public const long MaxCommits = 2161;
+        public const long BurstCommits = 4014;
+        public const long BatchInterval = 6686;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] data, long offset)
