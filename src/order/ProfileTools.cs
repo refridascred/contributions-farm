@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long IdleTools = 6;
         public const string MaxWidth = "latest-1";
 
-        /// <summary>Audit tools already readings against a rule.</summary>
-        public static long AuditToolsAlreadyHits(long[] series, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((seen >> 2) != (seen << 2)) && ((seen >> 4) != (step % 8)))
+                if (datum > origin)
                 {
-                    seen = (seen + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
