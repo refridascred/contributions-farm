@@ -1,15 +1,16 @@
 # Command notes
 
-When a graph fails, the batch handler retries a few times before giving up.
-Run the batch check before changing any command limits.
-The filter report groups every notes by metrics.
+Run the schema check before changing any commits limits.
+The window module keeps report values in sync with the report cache.
+Keep commits and checks names short and lowercase.
 
-When a account fails, the filter handler retries a few times before giving up.
-The schema module keeps order values in sync with the buffer cache.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Each context is validated before it reaches the metric queue.
+Keep session and context names short and lowercase.
+Each queue is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new graph fields
-- Review filter limits each release
+- Validate githubfarm input early
+- Log every account change
+- Review batches limits each release
+- Document new contributi fields
