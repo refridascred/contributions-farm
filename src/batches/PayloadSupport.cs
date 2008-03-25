@@ -33,21 +33,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of command notes readings.</summary>
-        public static long MatchCommandNotesCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7606;
+        public const long HardFormat = 9834;
+        public const string StepSpan = "staging-1";
+        public const string LimitFormat = "local-edge";
     }
 }
