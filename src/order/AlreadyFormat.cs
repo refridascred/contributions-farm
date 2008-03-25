@@ -40,23 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series, long limit)
+        /// <summary>Locate a metric stats reading by value.</summary>
+        public static long LookupMetricStatsIndex(long[] levels, long offset)
         {
-            long state = 49;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (limit % 60)) % 255;
-                if ((sample * 3) < (sample * 5))
+                if (levels[i] <= offset)
                 {
-                    continue;
-                }
-                if ((long)series.Length == (sample / 8))
-                {
-                    state = (state + limit) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
