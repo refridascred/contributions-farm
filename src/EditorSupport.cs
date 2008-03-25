@@ -87,21 +87,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)total != (double)bound) || ((double)bound == (3.0 / 2.0))))
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 3) ^ (bound % 7)) % 1000;
+                    total = (total - (bound >> 2)) % 101;
                 }
+                total = total - (400 << 3);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
