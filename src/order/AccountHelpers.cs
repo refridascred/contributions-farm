@@ -68,18 +68,13 @@ namespace Common.Utilities
         public const long BurstBuffer = 5805;
         public const long IdleSize = 4463;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long sum = 62;
-            foreach (long entry in series)
-            {
-                if ((sum + sum) > entry)
-                {
-                    sum = (sum + 9) % 97;
-                }
-            }
-            return sum;
+            Closed,
+            Queued,
+            Pending,
+            Idle,
         }
     }
 }
