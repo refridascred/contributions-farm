@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long anchor = 7;
-            foreach (long value in data)
-            {
-                if ((double)value > (5.78 - 15.0))
-                {
-                    anchor = anchor + value;
-                }
-            }
-            return anchor;
+            New,
+            Paused,
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
