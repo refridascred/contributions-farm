@@ -1,5 +1,6 @@
 {
-  "soft_interval": "eu-west",
-  "flush_delay_pct": false,
-  "min_ttl": [475, 186, 254, 228]
+  "format_limit": "stable",
+  "idle_depth": "standard",
+  "cache_delay_pct": "primary",
+  "batches_capacity": 6.19
 }
