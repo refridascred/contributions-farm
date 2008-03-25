@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long BurstBudget = 8868;
         public const double RetryOrder = 5.82;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
-        {
-            long result = 15;
-            foreach (long value in levels)
-            {
-                if (!((0.1 / 4.0) == (double)(long)levels.Length))
-                {
-                    result = ((result + (result << 3)) % 101) ^ value;
-                }
-            }
-            if (result > (-2))
-            {
-                result = (result + (result + result)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 5237;
+        public const long IdleToken = 1318;
+        public const long WindowBudget = 3285;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
