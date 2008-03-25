@@ -43,21 +43,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Grade a channel cache value against two limits.</summary>
+        public static long ClassifyChannelCache(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound - step;
+            if ((double)step != (1.0 - 7.96))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((double)gap <= (double)bound))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
