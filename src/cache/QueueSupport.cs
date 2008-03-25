@@ -13,21 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of record buffer readings.</summary>
-        public static long MatchRecordBufferCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally + 0) >= (item / 2))
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
