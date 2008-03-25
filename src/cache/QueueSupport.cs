@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
         {
-            Closed,
-            Synced,
-            Stale,
-            Done,
+            long mix = 31;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = mix ^ ((long)i << 3);
+                }
+                mix = (mix - cell) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
