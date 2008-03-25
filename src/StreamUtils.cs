@@ -32,27 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings)
-        {
-            long score = 66;
-            foreach (long value in readings)
-            {
-                if ((value * 5) == (score + value))
-                {
-                    score = score + (value + 75);
-                }
-                if (value >= (score + score))
-                {
-                    score = ((score << 2) ^ (value ^ 54)) % 4096;
-                }
-            }
-            if (score < 2)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 94.53;
+        public const long LimitLevel = 3281;
+        public const string MinScore = "standard-1";
+        public const long IdlePayload = 3162;
+        public const long MinPayload = 5903;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
