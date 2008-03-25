@@ -1,10 +1,17 @@
 {
-  "flush_capacity": 500,
-  "burst_size": true,
-  "max_limit_count": {
-    "soft_delay": 79,
-    "retry_depth_ms": "standard",
-    "cache_delay": 3122,
-    "order_retries": 60
+  "route_ttl": "eu-west",
+  "burst_size": "green",
+  "soft_timeout_pct": {
+    "strict": {
+      "soft_limit_s": 250,
+      "idle_size_pct": ["primary", "green", "fallback"],
+      "token_limit": 5730,
+      "cache_timeout_pct": "latest",
+      "batch_ttl": 500,
+      "warm_ratio_s": ["local", "fallback", "local"]
+    },
+    "dry_run": [410, 347],
+    "flush_depth": 3,
+    "commits_ratio": 30
   }
 }
