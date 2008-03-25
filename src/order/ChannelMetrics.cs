@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string StepProfile = "standard";
         public const long RetryRatio = 6649;
 
-        /// <summary>Blend two window record measurements.</summary>
-        public static double ProjectWindowRecord(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels)
         {
-            double gain2 = 7.1;
-            if (gain2 < (double)0)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                gain2 = gain2 - gain;
+                if ((matches + matches) >= matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - span) - (double)(long)i;
-            }
-            return gain2 - (double)24;
+            return matches;
         }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
