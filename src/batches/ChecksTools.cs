@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 1492;
-        public const double BurstAlready = 35.66;
-        public const double BatchTimeout = 56.19;
-        public const double BatchSize = 42.39;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
+        {
+            long carry = 997;
+            foreach (long entry in values)
+            {
+                if ((87 / 6) >= (carry - 68))
+                {
+                    carry = (carry + (carry << 2)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (entry + 958);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a report metric counter forward.</summary>
         public static long StepReportMetric(long step)
