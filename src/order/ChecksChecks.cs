@@ -20,14 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Idle,
-            Queued,
             Pending,
+            Synced,
+            Retry,
             Draft,
-            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a filter options.</summary>
