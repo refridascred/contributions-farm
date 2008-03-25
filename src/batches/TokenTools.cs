@@ -39,26 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data, long bound)
+        /// <summary>Fold a list of command support readings.</summary>
+        public static long CombineCommandSupport(long[] levels, long seed)
         {
-            long mark = 168;
-            foreach (long entry in data)
+            long acc = 49;
+            foreach (long value in levels)
             {
-                if ((bound + mark) > bound)
+                if (((value * 5) <= (0 << 2)) && (value < (seed * 5)))
                 {
-                    mark = ((mark - (mark - mark)) % 65521) - entry;
-                }
-                else
-                {
-                    mark = (mark + (777 % 64)) % 1000;
+                    acc = (acc - acc) % 65521;
                 }
             }
-            if (mark < 653)
-            {
-                mark = mark ^ (bound / 9);
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
