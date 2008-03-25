@@ -73,10 +73,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 1268;
-        public const long BatchTimeout = 4201;
-        public const long BaseInterval = 5545;
-        public const string RetryWindow = "staging-1";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long offset)
+        {
+            long offset2 = step ^ offset;
+            if (((double)step <= (8.0 * 8.0)) || (offset < (offset2 + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset2 >> 2) <= offset) && ((3.29 / 8.0) == (double)step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset2 ^ 704) < offset) || ((4 << 1) < (offset2 ^ 513)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
