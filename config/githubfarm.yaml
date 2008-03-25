@@ -1,19 +1,14 @@
 # githubfarm settings
-filter_size:
-  compress: 7741
-  readonly:
-    sync_interval_ms: 53.53
-    idle_ttl_s: true
-    verbose: edge
-    readonly: 10
-    retry_capacity: true
-  warm_delay: 1936
-  max_depth_count:
-    idle_ratio_s: 71.3
-    entry_interval: legacy
-    window_capacity: false
-  dry_run: 1024
-burst_delay_ms: true
-base_delay_s: blue
-metric_ttl: latest
-burst_threshold: 6415
+session_threshold: 8639
+strict: 65
+hard_ratio: 60
+filter_capacity:
+  flush_delay_s:
+    - fallback
+    - latest
+    - latest
+  max_window_ms: 99
+  layout_delay: 55
+  poll_threshold: 93.56
+idle_retries_count: false
+base_limit_pct: true
