@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=88
+COMMAND_LIMIT=474
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-open}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard latest stable eu-west; do
-    log "checking ${item}"
-done
