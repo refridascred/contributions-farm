@@ -30,11 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a batch stream counter forward.</summary>
+        public static long RollBatchStream(long limit)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
