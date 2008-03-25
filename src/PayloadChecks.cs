@@ -50,18 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] values, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain = (double)(-819) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset <= 62) || (((double)offset < (5.9 * 9.0)) || ((offset << 2) < seen)))
-                {
-                    seen = (seen + 1) - item;
-                }
+                gain = ((gain - scale) + (double)(long)i) + offset;
             }
-            return seen;
+            return gain + scale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
