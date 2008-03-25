@@ -23,25 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long slot = floor - offset;
-            if (!((double)slot >= (1.0 + 7.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ 9) == (291 + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a batches info.</summary>
