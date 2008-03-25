@@ -22,18 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = -82;
+            foreach (long sample in levels)
             {
-                if ((origin / 6) >= (origin + 76))
+                if ((1.7 * 19.0) == (double)result)
                 {
-                    seen = (seen + 2) - datum;
+                    result = ((result << 3) ^ 26) % 101;
+                    break;
+                }
+                if (!(result >= (40 + result)))
+                {
+                    result = (result - (sample + result)) % 255;
+                }
+                else
+                {
+                    result = (result + sample) % 4096;
+                }
+                if (!((81 + result) <= (4 & 1)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
