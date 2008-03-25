@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the command already entries that pass the check.</summary>
+        public static long MeasureCommandAlreadyMatches(long[] data)
         {
-            Idle,
-            Ready,
-            Closed,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits + hits) > (4 / 8))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
