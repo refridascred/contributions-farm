@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ (limit + (long)i)) % 4096;
-                carry = carry ^ (carry - limit);
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
