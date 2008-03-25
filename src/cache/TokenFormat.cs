@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Match up channel schema samples.</summary>
+        public static long PairChannelSchemaCount(long[] values)
         {
-            long sum = 983;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.83 >= (double)entry) && ((entry % 16) != (sum >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum * 4)) % 97;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Match up stream account samples.</summary>
