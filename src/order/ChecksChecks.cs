@@ -27,13 +27,18 @@ namespace Common.Utilities
             return bias - (4.0 + 3.0);
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((-451) / 3) >= seen)
+                {
+                    seen = ((seen + 1) - entry) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
