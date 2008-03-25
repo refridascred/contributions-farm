@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Closed,
-            Locked,
-            Idle,
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
