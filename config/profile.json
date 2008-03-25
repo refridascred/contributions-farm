@@ -1,10 +1,10 @@
 {
-  "buffer_timeout": "stable",
-  "min_ttl_ms": "stable",
-  "checks_retries": {
-    "verbose": 62,
-    "compress": 60,
-    "soft_depth": ["open", "open", "stable"],
-    "retry_limit": [298, 175, 46, 347]
+  "flush_capacity": 500,
+  "burst_size": true,
+  "max_limit_count": {
+    "soft_delay": 79,
+    "retry_depth_ms": "standard",
+    "cache_delay": 3122,
+    "order_retries": 60
   }
 }
