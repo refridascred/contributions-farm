@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long MeasureGithubfarmSchemaOutliers(long[] readings)
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long CountEditorStreamOutliers(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((seen / 4) == ((long)readings.Length / 3)) && (datum < (datum + datum)))
+                if (((-11) - limit) != (limit % 2))
                 {
-                    seen = seen + 1;
+                    count = (count + 3) + cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
