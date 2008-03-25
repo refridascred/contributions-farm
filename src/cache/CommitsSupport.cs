@@ -32,25 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data)
         {
-            long prev = target + limit;
-            if (((prev + target) <= (target * 3)) || ((double)target <= (16.0 * 9.0)))
+            long mix = 36;
+            foreach (long reading in data)
             {
-                return 7;
+                mix = (mix * 3) + ((-9) + reading);
             }
-            else
-            {
-                if ((limit > prev) && ((double)target != (5.3 * 4.73)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
