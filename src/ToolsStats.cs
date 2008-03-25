@@ -35,22 +35,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor ^ 23) == (reading - floor))
+                if (5.8 >= (double)(long)i)
                 {
-                    tally = tally + 2;
+                    score = ((score << 2) ^ score) % 4096;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score << 3) ^ (score - (long)i);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Adjust a tools reading.</summary>
