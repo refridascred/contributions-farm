@@ -11,26 +11,17 @@ namespace Common.Utilities
         public const string IdleFarm = "alpha-v2";
         public const long BatchFarm = 5591;
 
-        /// <summary>Digest a series of account counter entries.</summary>
-        public static long ScoreAccountCounter(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] series, long floor)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sum ^ 741) != (sum * 5)))
+                if (series[i] < floor)
                 {
-                    sum = (sum ^ (value ^ value)) % 97;
-                }
-                if ((sum - sum) < value)
-                {
-                    sum = ((sum * 3) + (sum / 9)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum ^ (sum / 9)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
