@@ -20,17 +20,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] series, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] >= offset)
+                if ((seed - datum) >= seed)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
