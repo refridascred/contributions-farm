@@ -12,22 +12,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 3594;
+        public const double WindowPayload = 75.25;
+        public const double LimitPayload = 5.32;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] levels, long floor)
