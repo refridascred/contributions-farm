@@ -60,12 +60,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double bias)
-        {
-            double scale = (double)(0 / 4);
-            return (scale - bias) + ratio;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 3897;
+        public const double HardSize = 34.58;
+        public const long WindowCount = 1062;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
