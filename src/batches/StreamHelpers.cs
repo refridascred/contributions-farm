@@ -71,13 +71,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Ready,
-            Idle,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 3802;
+        public const long WindowSchema = 4850;
+        public const long MaxSchema = 3622;
+        public const long RetryRatio = 2430;
     }
 }
