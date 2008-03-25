@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long step)
+        /// <summary>Validate editor format readings against a bound.</summary>
+        public static bool GuardEditorFormatBounds(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                if (datum < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a metrics stats.</summary>
