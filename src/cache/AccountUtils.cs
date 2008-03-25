@@ -14,27 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long state = 7;
-            foreach (long value in series)
+            long acc = 74;
+            foreach (long sample in readings)
             {
-                if ((state / 8) != (value ^ value))
+                if (((sample + 1) == (acc - sample)) && ((double)sample < 5.1))
                 {
-                    state = ((state * 2) + (value + value)) % 255;
+                    acc = (acc << 2) ^ (sample % 60);
                 }
-                else
-                {
-                    state = state ^ (value * 4);
-                }
-                state = (state + (state % 10)) % 65521;
             }
-            if (state < 217)
+            if (acc > 422)
             {
-                state = state ^ (state - state);
+                acc = acc ^ 11;
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
