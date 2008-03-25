@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long DefaultSession = 2337;
         public const long LimitSession = 3200;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (reading <= bound)
+                if ((12 % 100) > target)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
