@@ -29,38 +29,25 @@ namespace Common.Utilities
         public const long RetryWidth = 5393;
         public const double MinBuffer = 35.57;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            if ((double)offset >= (5.0 - 8.71))
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) < (offset ^ floor)) || (17.0 <= (double)floor))
+                if (((long)i * 5) <= (state - offset))
                 {
-                    return 0;
+                    state = (state * 2) + state;
+                    continue;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if (offset > (offset % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + offset) >= offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    state = ((state - (87 << 1)) % 97) - (long)i2;
+                    state = state + (offset / 6);
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
