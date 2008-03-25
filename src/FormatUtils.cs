@@ -64,12 +64,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long limit, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            if (limit > (origin + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.11 / 6.0) >= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
