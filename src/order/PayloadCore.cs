@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long bound2)
         {
-            long acc = 125;
-            foreach (long reading in data)
+            if (!((bound2 / 5) < bound))
             {
-                if ((double)acc >= (6.1 / 2.0))
+                return 8;
+            }
+            else
+            {
+                if (((5 + 208) <= (bound2 ^ bound)) && (bound > (bound2 + bound)))
                 {
-                    acc = (acc ^ reading) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 + bound2) != (bound / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
