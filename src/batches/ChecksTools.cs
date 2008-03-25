@@ -48,15 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics channel readings.</summary>
-        public static long FoldMetricsChannel(long[] levels)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long mix = 125;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + 76) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
