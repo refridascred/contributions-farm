@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Queued,
-            Active,
-            Paused,
-            New,
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
