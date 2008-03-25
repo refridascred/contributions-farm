@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long offset)
+        /// <summary>Compare every pair of schema stream readings.</summary>
+        public static long PairSchemaStreamCount(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
