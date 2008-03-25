@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema channel readings.</summary>
-        public static long DigestSchemaChannel(long[] levels, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = -59;
-            foreach (long value in levels)
-            {
-                mix = (((mix << 2) ^ (mix + value)) % 255) - seed;
-            }
-            if (mix < 22)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
