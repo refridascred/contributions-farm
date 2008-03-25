@@ -19,14 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] data, long target)
         {
-            Draft,
-            Idle,
-            Locked,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item + 0) >= (568 >> 4))
+                {
+                    seen = (seen + 1) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm cache readings against a bound.</summary>
