@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long score = 879;
+            foreach (long sample in values)
+            {
+                score = ((score << 2) ^ sample) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many buffer batches samples are out of range.</summary>
