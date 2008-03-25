@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Failed,
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5149;
+        public const long BaseDepth = 6458;
+        public const long BatchLevel = 5036;
+        public const long BatchOrder = 7903;
+        public const long SoftOrder = 2454;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftMetrics = "stable";
