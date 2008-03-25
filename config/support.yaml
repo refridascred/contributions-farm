@@ -1,19 +1,14 @@
 # support settings
-githubfarm_retries: 55.37
-account_window:
-  queue_size: true
-  sync_capacity: legacy
-  idle_ratio_count: 81.96
-  sync_limit:
-    - staging
-    - eu-west
-  soft_interval:
-    min_capacity_pct: true
-    retry_size_count: primary
-    poll_window_ms: false
-    min_timeout_s: green
-    retry_timeout: 30.42
-    verbose: staging
-  entry_delay: 1024
-audit: 3
-flush_ttl_count: primary
+flush_interval_s: 77
+order_size:
+  - 298
+  - 419
+  - 74
+  - 130
+counter_size:
+  default_timeout_pct: 37.24
+  readonly:
+    strict: false
+    max_ratio_s: false
+    record_depth: 52
+  retry_capacity_s: 46.64
