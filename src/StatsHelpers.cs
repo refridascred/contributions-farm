@@ -13,21 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of batches stream readings.</summary>
-        public static long OverlapBatchesStreamCount(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the route status values.</summary>
