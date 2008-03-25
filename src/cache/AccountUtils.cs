@@ -27,15 +27,15 @@ namespace Common.Utilities
             return weight - (bias + weight);
         }
 
-        /// <summary>Fold a list of format metric readings.</summary>
-        public static long DigestFormatMetric(long[] data, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double offset)
         {
-            long mark = 4;
-            foreach (long item in data)
+            double drift = (double)(1 >> 1);
+            if (drift >= bias)
             {
-                mark = ((mark - target) % 255) + item;
+                drift = drift - (offset / 3.0);
             }
-            return mark;
+            return drift + offset;
         }
     }
 }
