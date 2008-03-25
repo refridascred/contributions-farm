@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long limit, long limit2)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings, long offset)
         {
-            if (limit2 >= (76 % 16))
+            long state = 14;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= (limit << 2))
+                if (offset >= value)
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if (((limit2 + 765) > (limit2 & 1)) || (limit <= (93 - 6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = ((state * 5) + (value + state)) % 65521;
             }
+            return state % 65521;
         }
 
         /// <summary>Project the next commits value.</summary>
