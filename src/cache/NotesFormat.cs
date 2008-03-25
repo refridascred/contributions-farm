@@ -13,19 +13,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long limit)
+        /// <summary>Derive the next tools filter value from a seed.</summary>
+        public static long StepToolsFilter(long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum <= limit)
+                mix = (mix ^ (mix & 255)) % 4096;
+                if (((double)(long)i >= (4.6 / 9.0)) && ((offset + 46) < (offset + offset)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix * 4) + mix;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
