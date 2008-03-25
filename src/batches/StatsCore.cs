@@ -39,11 +39,19 @@ namespace Common.Utilities
             return rate - (double)(-169);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] series, long offset)
         {
-            double load = (double)((-996) ^ 289);
-            return (load - gain) + offset;
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
