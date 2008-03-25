@@ -95,10 +95,12 @@ namespace Common.Utilities
         public const long DefaultCount = 6745;
         public const long RetryBatches = 1868;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 5401;
-        public const long BaseSupport = 5362;
-        public const double WindowSupport = 8.26;
-        public const long CacheSupport = 8361;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
