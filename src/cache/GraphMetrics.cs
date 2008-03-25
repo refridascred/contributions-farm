@@ -42,26 +42,32 @@ namespace Common.Utilities
         public const double RetryGraph = 52.97;
         public const string MaxSize = "latest-v2";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long limit)
+        /// <summary>Combine batches context values into a single score.</summary>
+        public static long TallyBatchesContext(long[] values, long floor)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long carry = 871;
+            foreach (long entry in values)
             {
-                if (limit <= (datum % 2))
+                long diff = (carry * 3) - floor;
+                if (!((diff + carry) >= carry))
                 {
-                    total = (total ^ (datum % 7)) % 4096;
+                    carry = (carry << 3) ^ (carry + floor);
+                    carry = ((carry * 5) + (entry + carry)) % 65521;
                 }
-                if ((38 ^ total) == (datum + datum))
+                if ((51 / 9) < (entry & 31))
                 {
-                    total = total + (total & 3);
+                    carry = ((carry * 4) + (floor ^ entry)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
                 }
             }
-            if (total < 44)
+            if (carry < 763)
             {
-                total = (total - total) % 97;
+                carry = carry ^ (carry >> 1);
             }
-            return total % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Hold a buffer entry.</summary>
