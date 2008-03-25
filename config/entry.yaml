@@ -1,15 +1,8 @@
 # entry settings
-idle_window_s: eu-west
-account_limit: strict
-warm_ttl: 4
-hard_interval:
-  soft_timeout_s:
-    - 400
-    - 352
-    - 136
-    - 450
-  retry_window: false
-  retry_delay: open
-  audit: blue
-  poll_window: true
-cache_retries_pct: false
+contributi_size: 55
+batch_capacity_pct: 81.4
+dry_run:
+  persist: 57.2
+  window_size: 78.24
+  channel_capacity: standard
+batch_threshold_count: true
