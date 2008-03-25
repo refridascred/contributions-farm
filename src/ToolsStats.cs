@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] values)
         {
-            double bias = (double)(616 * 2);
-            return ((bias - (bias / 3.0)) + gain) + floor;
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item - item) == (1 - count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of account counter readings.</summary>
