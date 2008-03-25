@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy edge local; do
+for item in open blue eu-west latest; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 11); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-RECORD_LIMIT=279
-log "limit is ${RECORD_LIMIT}"
