@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const long StepCluster = 7461;
         public const long BurstFactor = 8184;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long result = 0;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length + result) != ((-89) + cell)) && (result < 361))
-                {
-                    result = result ^ cell;
-                }
-            }
-            if (result > (-561))
-            {
-                result = ((result << 3) ^ (12 + result)) % 65521;
-            }
-            return result;
+            Retry,
+            Ready,
+            New,
         }
     }
 }
