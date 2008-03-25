@@ -1,6 +1,21 @@
 {
-  "checks_retries": 3,
-  "dry_run": ["latest", "primary"],
-  "persist": 8358,
-  "flush_capacity_ms": 47
+  "default_ttl": [476, 207, 469, 99],
+  "flush_delay_ms": "primary",
+  "token_ratio": 100,
+  "metric_limit": {
+    "retry_retries_s": [281, 472, 51, 352],
+    "already_depth": true,
+    "min_ttl_s": {
+      "default_limit": "staging",
+      "audit": 2302,
+      "sync_size_pct": "stable",
+      "max_delay_s": [67, 340, 163, 457],
+      "flush_delay_ms": "cached"
+    },
+    "warm_retries_pct": "cached",
+    "tools_timeout": 55.22,
+    "soft_size_pct": "cached"
+  },
+  "burst_retries": 100,
+  "buffer_window": [283, 382]
 }
