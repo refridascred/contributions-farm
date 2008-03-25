@@ -27,16 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session profile value from a seed.</summary>
-        public static long RollSessionProfile(long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ step) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a contributi summary.</summary>
