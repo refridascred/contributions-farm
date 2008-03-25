@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order queue value against two limits.</summary>
-        public static long GradeOrderQueue(long target, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long target)
         {
-            long diff = target - seed;
-            if ((4.96 * 8.07) <= (double)target)
+            long anchor = -8;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 2) == (diff % 100))
+                anchor = ((anchor << 2) ^ (target + (long)series.Length)) % 101;
+                if ((entry % 10) == ((-11) ^ 932))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (anchor << 3) ^ 0;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
