@@ -36,24 +36,18 @@ namespace Common.Utilities
             return gain2 + (offset / 8.0);
         }
 
-        /// <summary>Rank token buffer input into a small class.</summary>
-        public static long ClassifyTokenBuffer(long bound, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            if (70 > floor)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 100) < (bound & 15))
+                if ((4.33 + 4.49) >= (double)matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
