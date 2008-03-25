@@ -35,10 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 6793;
-        public const double HardFormat = 16.76;
-        public const long BatchFormat = 4737;
-        public const double BaseScore = 96.56;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            New,
+            Retry,
+            Locked,
+            Synced,
+            Stale,
+        }
     }
 }
