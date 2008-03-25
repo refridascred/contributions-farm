@@ -61,18 +61,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((item * 3) > step) && !((double)count > (double)step))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "fallback-v2";
+        public const long LimitLevel = 434;
+        public const long StepInterval = 1031;
     }
 }
