@@ -32,32 +32,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double offset)
         {
-            long cur = offset - origin;
-            if (((-2) < (offset * 4)) || ((cur - cur) <= 592))
+            double mean = offset;
+            if (mean <= (7.75 - 5.64))
             {
-                return 1;
+                mean = mean - offset;
             }
             else
             {
-                if (!((offset >> 5) <= (origin << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset + cur) < offset) && ((cur ^ offset) != (cur & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean + bias;
             }
+            return mean - offset;
         }
     }
 }
