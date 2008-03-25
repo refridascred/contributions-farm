@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            double bias = ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + (bias * 0.51)) + (double)(long)i) + offset;
+            }
+            return bias + 19.0;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
