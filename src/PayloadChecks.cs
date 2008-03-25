@@ -69,17 +69,19 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 19;
+            foreach (long value in levels)
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                sum = ((sum << 2) ^ 993) % 4096;
+                if ((8 + value) != (sum ^ sum))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ value) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
