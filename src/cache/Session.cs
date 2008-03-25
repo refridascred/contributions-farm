@@ -42,10 +42,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleRatio = 14.96;
-        public const string RetryToken = "standard";
-        public const long StepToken = 3283;
-        public const double RetryWidth = 41.13;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)mark >= (0.5 / 3.0)) || ((391 % 5) <= mark))
+                {
+                    mark = (mark + (mark << 3)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (mark * 5)) % 65521;
+                }
+                if ((mark % 100) > (target << 1))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
