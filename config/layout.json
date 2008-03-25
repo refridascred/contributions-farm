@@ -1,5 +1,5 @@
 {
-  "burst_interval": 4056,
-  "min_limit": "primary",
-  "retry_ttl_ms": 250
+  "min_ttl_s": true,
+  "max_window_s": true,
+  "contributi_retries": 30
 }
