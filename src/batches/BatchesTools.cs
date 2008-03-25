@@ -30,13 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
             public bool Size { get; set; }
-            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
