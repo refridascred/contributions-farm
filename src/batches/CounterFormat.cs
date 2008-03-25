@@ -22,17 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor tools entry that matches the target.</summary>
-        public static long LocateEditorToolsIndex(long[] levels, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Blend two cache measurements.</summary>
