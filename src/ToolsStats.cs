@@ -52,19 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] items, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
