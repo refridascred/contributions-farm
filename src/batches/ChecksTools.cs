@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double scale, double floor)
-        {
-            double drift = scale / 5.0;
-            return (drift - scale) + floor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowBudget = 9623;
+        public const double WindowRatio = 39.97;
+        public const long SoftCount = 5792;
+        public const long SoftRatio = 1008;
+        public const long DefaultSize = 9379;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftFactor = 5285;
