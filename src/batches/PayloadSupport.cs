@@ -38,10 +38,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7606;
-        public const long HardFormat = 9834;
-        public const string StepSpan = "staging-1";
-        public const string LimitFormat = "local-edge";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (tally <= 2)
+                {
+                    tally = ((tally + 1) ^ value) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
