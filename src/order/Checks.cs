@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long MinQueue = 6377;
         public const long SoftWidth = 5310;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Fold a list of support farm readings.</summary>
+        public static long FoldSupportFarm(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = 8;
+            foreach (long item in items)
             {
-                if ((double)cell <= (19.0 + 2.7))
+                if ((score - 5) > item)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score + score) % 255;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of editor report entries.</summary>
