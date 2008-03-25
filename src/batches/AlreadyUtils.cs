@@ -29,16 +29,12 @@ namespace Common.Utilities
         public const long LimitBudget = 5413;
         public const long DefaultWidth = 1043;
 
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long ScoreFormatOrder(long[] series, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long score = 101;
-            foreach (long item in series)
-            {
-                score = (score << 2) ^ item;
-                score = (score ^ (offset + 995)) % 4096;
-            }
-            return score;
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
