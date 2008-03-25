@@ -18,31 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            if ((double)bound > (11.0 / 2.0))
+            double rate = (ratio + bias) / 2.0;
+            if (rate >= ratio)
             {
-                return 0;
+                rate = rate + (4.0 + 5.08);
             }
             else
             {
-                if ((6 << 3) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.1 + 6.1) >= (13.0 + 20.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = rate - ratio;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (10.0 - 2.5)) + (double)(long)i;
+            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Hold a batches header.</summary>
