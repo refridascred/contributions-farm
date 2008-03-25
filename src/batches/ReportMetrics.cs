@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] samples, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long target2)
         {
-            long score = 739;
-            foreach (long value in samples)
+            long delta = target - target2;
+            if ((double)target > (6.1 - 15.0))
             {
-                score = (score - (limit - value)) % 255;
-                if (((double)value != (1.0 / 5.0)) || ((score * 4) == (limit * 5)))
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= (2.0 * 2.0))
                 {
-                    score = (score << 2) ^ (value % 7);
+                    return 3;
                 }
                 else
                 {
-                    score = (score * 3) + score;
+                    if ((delta + target2) >= delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((949 - target2) < (target2 - target2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Hold a metric summary.</summary>
