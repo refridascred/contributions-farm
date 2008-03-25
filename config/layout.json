@@ -1,5 +1,16 @@
 {
-  "poll_capacity": "stable",
-  "default_window_count": false,
-  "burst_threshold_count": 2907
+  "warm_delay": {
+    "persist": true,
+    "readonly": "open",
+    "soft_capacity": {
+      "burst_delay": "green",
+      "support_size": "staging",
+      "batches_window": "eu-west"
+    },
+    "sync_capacity": 44.97
+  },
+  "report_depth": 3494,
+  "min_ttl_ms": 46.09,
+  "burst_size_pct": "edge",
+  "burst_ttl_pct": "stable"
 }
