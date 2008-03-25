@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - limit) <= (target >> 5))
             {
-                if (samples[i] <= step)
+                return 8;
+            }
+            else
+            {
+                if ((limit + 7) < (target * 4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
