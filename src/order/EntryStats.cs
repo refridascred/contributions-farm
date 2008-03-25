@@ -51,24 +51,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            if ((offset + seed) >= (offset + 507))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 3) < (seed & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
