@@ -74,22 +74,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long TallyTokenAlready(long[] values)
-        {
-            long state = -7;
-            foreach (long entry in values)
-            {
-                if (((state % 8) > entry) && ((3.4 - 3.77) < (double)entry))
-                {
-                    state = (state - (state / 9)) % 65521;
-                }
-            }
-            if (state > 40)
-            {
-                state = (state * 4) + (state - state);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 5258;
+        public const string SoftBatch = "stable-edge";
+        public const string BurstBatch = "alpha";
     }
 }
