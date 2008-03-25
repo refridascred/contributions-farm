@@ -13,24 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            long state = 906;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                state = ((state << 3) ^ (datum + state)) % 101;
-                state = state - (state ^ datum);
-                if ((double)target < (15.0 * 18.0))
+                if ((datum * 3) != (datum + datum))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state > 97)
-            {
-                state = (state ^ (target + target)) % 255;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
