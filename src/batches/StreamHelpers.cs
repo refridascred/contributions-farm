@@ -59,15 +59,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] series, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
