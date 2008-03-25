@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] items)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((5.94 - 5.8) != (double)value)
+                if ((double)706 < (double)total)
                 {
-                    count = count + 2;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
