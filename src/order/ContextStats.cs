@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every stream command entry stays within the limit.</summary>
-        public static bool ValidateStreamCommandRange(long[] samples, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
