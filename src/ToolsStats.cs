@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 8050;
-        public const long MinSize = 9472;
-        public const double IdleEditor = 97.22;
-        public const double SoftEditor = 36.97;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
