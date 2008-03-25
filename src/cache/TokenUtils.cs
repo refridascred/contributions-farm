@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - sample) > sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the account status values.</summary>
