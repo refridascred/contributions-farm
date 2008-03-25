@@ -1,5 +1,18 @@
 {
-  "min_ttl_s": true,
-  "max_window_s": true,
-  "contributi_retries": 30
+  "enabled": true,
+  "route_timeout": {
+    "checks_window": [110, 86, 340, 399],
+    "base_window_ms": 92,
+    "context_delay": 75,
+    "sync_ratio_s": {
+      "channel_window": 8279,
+      "soft_ratio_pct": 71.06,
+      "base_depth": 7490
+    },
+    "base_timeout_ms": "legacy"
+  },
+  "readonly": "open",
+  "order_limit": 97.88,
+  "format_threshold": "strict",
+  "min_ttl": 11.25
 }
