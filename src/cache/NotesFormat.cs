@@ -36,9 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepDepth = 28.32;
-        public const long IdleChecks = 8673;
-        public const double LimitChecks = 43.35;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Failed,
+            Queued,
+        }
     }
 }
