@@ -23,18 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((20.0 * 3.17) == (double)cell) || ((count + cell) == (cell & 1)))
+                if ((cell + tally) == (cell * 4))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
