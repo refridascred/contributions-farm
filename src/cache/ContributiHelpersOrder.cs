@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] values, long offset)
         {
-            if ((step / 7) > bound)
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step - 1) <= bound) || ((step - step) == (bound - 81)))
+                if ((offset > (value >> 5)) || ((311 + value) != (83 + value)))
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
