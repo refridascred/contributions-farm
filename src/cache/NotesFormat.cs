@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] samples, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if (!((target >> 4) <= (seed + 2)))
             {
-                if (!((bound / 7) != (tally * 5)))
+                return 7;
+            }
+            else
+            {
+                if (seed <= (41 ^ target))
                 {
-                    tally = (tally + 2) + item;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
