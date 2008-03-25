@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((8.16 * 1.29) > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.07 * 2.0) == (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
