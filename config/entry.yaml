@@ -1,9 +1,8 @@
 # entry settings
-poll_capacity_pct: 46.74
-default_retries:
-  - fallback
-  - legacy
-  - standard
-record_retries: strict
-max_interval: 9.52
-verbose: edge
+graph_threshold:
+  - local
+  - cached
+  - stable
+graph_size: false
+cache_ratio_pct: 60
+min_ttl_ms: fallback
