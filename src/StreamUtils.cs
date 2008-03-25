@@ -32,19 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi metric readings against a bound.</summary>
-        public static bool GuardContributiMetricBounds(long[] values, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long score = 66;
+            foreach (long value in readings)
             {
-                if (entry > target)
+                if ((value * 5) == (score + value))
                 {
-                    found = false;
-                    break;
+                    score = score + (value + 75);
+                }
+                if (value >= (score + score))
+                {
+                    score = ((score << 2) ^ (value ^ 54)) % 4096;
                 }
             }
-            return found;
+            if (score < 2)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
