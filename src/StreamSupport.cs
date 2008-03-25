@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long seed)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long MeasureEntryAlreadyOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                if ((double)hits <= (4.9 + 0.5))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the order state values.</summary>
