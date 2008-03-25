@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a context buffer pair into a bucket.</summary>
-        public static long ClassifyContextBuffer(long floor, long target)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if (!((floor + floor) > 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (floor * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= ((-9) + 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2 >> 5) <= target) && ((target * 2) == (floor % 7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
