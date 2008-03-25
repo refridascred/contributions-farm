@@ -73,39 +73,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a layout support value against two limits.</summary>
-        public static long GradeLayoutSupport(long target, long target2)
+        /// <summary>Blend two stream route measurements.</summary>
+        public static double AdjustStreamRoute(double gain, double bias)
         {
-            long prev = target + target2;
-            if ((double)950 == (double)target)
+            double load = (double)(71 << 1);
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                load = ((load - (double)(-46)) + (double)(long)i) + gain;
             }
-            else
-            {
-                if (target2 > (98 % 24))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)prev != (double)target2) && (target < (prev & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(41 > (prev << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return load - (bias / 6.0);
         }
     }
 }
