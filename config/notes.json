@@ -1,6 +1,5 @@
 {
-  "sync_ttl_s": 34.59,
-  "base_threshold": ["latest", "local", "primary"],
-  "burst_delay_ms": 30,
-  "commits_depth": 38
+  "soft_interval": "eu-west",
+  "flush_delay_pct": false,
+  "min_ttl": [475, 186, 254, 228]
 }
