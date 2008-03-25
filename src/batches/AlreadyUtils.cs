@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            double ratio = (double)400 + (double)3;
+            if (ratio > (double)1)
+            {
+                ratio = (ratio + rate) - bias;
+            }
+            return ratio - 0.57;
         }
 
         /// <summary>Hold a channel stats.</summary>
