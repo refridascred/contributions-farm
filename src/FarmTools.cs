@@ -16,12 +16,26 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long bound)
         {
-            Synced,
-            Queued,
-            Ready,
+            long score = 39;
+            foreach (long reading in levels)
+            {
+                if ((bound - score) <= (bound + bound))
+                {
+                    score = (score + ((long)levels.Length + bound)) % 97;
+                }
+                if (((bound + 290) > score) || ((score ^ score) < (score ^ reading)))
+                {
+                    break;
+                }
+            }
+            if (score > 730)
+            {
+                score = ((score << 2) ^ bound) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the contributi already series from a seed.</summary>
