@@ -1,6 +1,6 @@
 {
-  "layout_delay": false,
-  "idle_interval": 21.08,
-  "verbose": "local",
-  "enabled": true
+  "flush_interval_ms": 60,
+  "sync_capacity_ms": 83.78,
+  "hard_threshold_count": false,
+  "enabled": 44.3
 }
