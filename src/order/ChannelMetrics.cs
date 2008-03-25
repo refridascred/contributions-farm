@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string StepProfile = "standard";
         public const long RetryRatio = 6649;
 
-        /// <summary>Count the stream profile entries that pass the check.</summary>
-        public static long MeasureStreamProfileOutliers(long[] series)
+        /// <summary>Blend two window record measurements.</summary>
+        public static double ProjectWindowRecord(double gain, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double gain2 = 7.1;
+            if (gain2 < (double)0)
             {
-                if ((hits >> 3) > (cell - hits))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = gain2 - gain;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - span) - (double)(long)i;
+            }
+            return gain2 - (double)24;
         }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
