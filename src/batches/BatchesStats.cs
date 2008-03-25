@@ -36,10 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 640;
-        public const string RetryCount = "stable-v2";
-        public const string BaseInterval = "legacy-v2";
+        /// <summary>Measure how many tools profile samples are out of range.</summary>
+        public static long MeasureToolsProfileHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((seen + value) <= (value + 972)) || ((value % 97) > seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] readings)
