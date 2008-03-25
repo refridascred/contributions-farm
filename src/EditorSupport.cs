@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((count > target) || ((count & 7) >= (31 * 2))) || ((6.6 / 3.0) < (double)count))
-                {
-                    count = (count + 2) + value;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
