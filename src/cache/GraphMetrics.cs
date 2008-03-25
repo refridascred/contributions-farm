@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Failed,
-            Done,
-            Retry,
+            Pending,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit channel layout readings against a rule.</summary>
