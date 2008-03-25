@@ -58,10 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 270;
-        public const long WindowFactor = 9640;
-        public const long IdleSession = 224;
-        public const long StepFactor = 2612;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
