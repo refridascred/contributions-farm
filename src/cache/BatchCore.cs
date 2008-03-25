@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8174;
-        public const double RetryStats = 30.76;
-        public const string LimitInterval = "cached";
+        /// <summary>Validate githubfarm entry readings against a bound.</summary>
+        public static bool ValidateGithubfarmEntryRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowBuffer = 9379;
