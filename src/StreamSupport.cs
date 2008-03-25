@@ -28,20 +28,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long DigestRecordCommand(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long offset, long offset2)
         {
-            long anchor = 728;
-            foreach (long item in values)
+            if (!((18.0 * 8.73) <= (double)offset2))
             {
-                anchor = ((anchor * 5) + (anchor + item)) % 255;
-                anchor = (anchor << 3) ^ ((long)values.Length + 901);
-                if (!(item < 4))
+                return 0;
+            }
+            else
+            {
+                if ((offset >= (offset - offset)) || (1.01 > (double)offset2))
                 {
-                    anchor = (anchor - ((long)values.Length % 60)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
     }
 }
