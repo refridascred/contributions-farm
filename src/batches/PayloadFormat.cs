@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long AuditSupportStreamMatches(long[] values)
         {
-            New,
-            Ready,
-            Idle,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((5.33 + 2.4) < (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
