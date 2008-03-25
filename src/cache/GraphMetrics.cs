@@ -48,12 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Draft,
+            Dropped,
         }
     }
 }
