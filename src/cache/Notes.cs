@@ -62,13 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the session already series from a seed.</summary>
+        public static long DeriveSessionAlready(long limit)
         {
-            Retry,
-            Stale,
-            Draft,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
