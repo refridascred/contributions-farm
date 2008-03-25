@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long HardFactor = 6217;
         public const string WindowInterval = "standard";
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
+            Queued,
             Done,
             Synced,
-            Queued,
-            Ready,
-            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
