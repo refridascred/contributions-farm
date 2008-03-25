@@ -26,13 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Draft,
-            Failed,
-            Synced,
-            Done,
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next report githubfarm value from a seed.</summary>
