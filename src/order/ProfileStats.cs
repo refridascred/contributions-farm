@@ -45,18 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] readings, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches / 8) > (matches % 8))
-                {
-                    matches = ((matches + 1) + item) + seed;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Queued,
+            Synced,
+            New,
         }
     }
 }
