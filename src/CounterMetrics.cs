@@ -32,18 +32,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data, long offset)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long TallyAccountPayloadHits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (offset >= (11 % 8))
+                if (800 <= (tally ^ 108))
                 {
-                    seen = (seen + 1) + entry;
+                    tally = ((tally + 1) ^ reading) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
