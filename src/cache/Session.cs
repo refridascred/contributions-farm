@@ -16,25 +16,22 @@ namespace Common.Utilities
             return weight - (bias + bias);
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long bound, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items, long floor)
         {
-            long delta = bound - target;
-            if ((delta >> 2) > ((-198) + target))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)delta == (4.3 - 10.0))
+                if (((tally / 8) < (entry + entry)) && ((5.7 * 7.8) == (double)entry))
                 {
-                    return 0;
+                    tally = (tally + 1) + floor;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
