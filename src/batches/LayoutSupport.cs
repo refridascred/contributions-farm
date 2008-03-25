@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowInterval = 1176;
+        public const string LimitTimeout = "fallback-edge";
+        public const long MinReport = 5401;
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
         public static bool VerifyMetricsRecordBounds(long[] values, long seed)
