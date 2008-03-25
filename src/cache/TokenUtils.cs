@@ -13,13 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Stale,
-            Retry,
-            Locked,
             Done,
+            Idle,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the support status values.</summary>
