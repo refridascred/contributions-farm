@@ -1,26 +1,16 @@
 # support settings
-sync_ttl: 64.88
-default_size_pct: 86.96
-default_window:
-  flush_ratio_count: false
-  soft_limit_s:
-    max_retries_ms: false
-    retry_retries_count: 57
-    verbose: green
-    strict:
-      - blue
-      - blue
-    account_limit: green
-  strict:
-    - 308
-    - 154
-    - 370
-    - 388
-  readonly:
-    cache_threshold_s: 91.59
-    batch_ratio: fallback
-    token_capacity: 52
-    poll_ttl: true
-    sync_capacity_count: edge
-max_depth: 56
-idle_capacity_ms: cached
+max_timeout_pct: 2010
+readonly:
+  - open
+  - local
+  - stable
+  - eu-west
+burst_size_pct:
+  dry_run: 82.07
+  soft_window_pct: 40.6
+  min_ratio: legacy
+audit:
+  - 96
+  - 390
+  - 487
+  - 33
