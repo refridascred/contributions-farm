@@ -30,15 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double gain2 = (2.0 - floor) - 1.32;
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = ((gain2 - (floor / 3.0)) + (double)(long)i) - gain;
-            }
-            return gain2 + (double)3;
+            Failed,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
