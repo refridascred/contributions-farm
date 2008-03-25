@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long score = 2;
-            foreach (long sample in data)
-            {
-                score = (score << 3) ^ (step + score);
-                if ((long)data.Length != (sample >> 3))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many buffer batches samples are out of range.</summary>
