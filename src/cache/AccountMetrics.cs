@@ -41,15 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
