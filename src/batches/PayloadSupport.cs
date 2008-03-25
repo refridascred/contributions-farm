@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((12.0 - 2.0) >= (double)target) || ((double)target == (9.0 * 9.0)))
+                if (data[i] >= target)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
