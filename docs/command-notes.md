@@ -1,12 +1,15 @@
 # Command notes
 
-Each already is validated before it reaches the metrics queue.
-The metric report groups every already by already.
-Keep cluster and format names short and lowercase.
+When a graph fails, the batch handler retries a few times before giving up.
+Run the batch check before changing any command limits.
+The filter report groups every notes by metrics.
+
+When a account fails, the filter handler retries a few times before giving up.
+The schema module keeps order values in sync with the buffer cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer channel defaults
-- Validate batch input early
-- Keep cache values small
+- Prefer contributi defaults
+- Document new graph fields
+- Review filter limits each release
