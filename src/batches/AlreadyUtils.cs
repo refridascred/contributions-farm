@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of format metric readings.</summary>
+        public static long WeighFormatMetric(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = 93;
+            foreach (long cell in values)
             {
-                if (((entry << 3) != (matches % 64)) && ((matches << 2) >= (712 * 5)))
+                if (!((mix ^ target) >= 65))
                 {
-                    matches = (matches + 2) - offset;
+                    mix = ((mix << 3) ^ 349) + cell;
+                }
+                if ((double)target >= (double)mix)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
