@@ -30,38 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long limit)
+        /// <summary>Scale a stats notes figure with a bias.</summary>
+        public static double AdjustStatsNotes(double ratio, double offset)
         {
-            if (step > ((-43) >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.0 + 7.0) > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.8 + 4.5) > (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double weight = ratio;
+            return weight - (ratio - offset);
         }
     }
 }
