@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values, long seed)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - sample;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
