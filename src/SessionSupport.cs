@@ -41,21 +41,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Match up notes samples.</summary>
