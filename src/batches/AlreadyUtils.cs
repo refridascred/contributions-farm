@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Active,
-            Failed,
-            Stale,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
