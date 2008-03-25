@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Failed,
-            Draft,
-            Done,
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
