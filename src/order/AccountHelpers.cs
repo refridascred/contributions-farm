@@ -49,22 +49,14 @@ namespace Common.Utilities
         public const double SoftTimeout = 70.42;
         public const long MaxStats = 919;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((((count & 3) <= (item % 97)) && ((count + item) == (count - item))) && (1.0 <= (double)count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Locked,
+            Closed,
+            Active,
+            Idle,
         }
     }
 }
