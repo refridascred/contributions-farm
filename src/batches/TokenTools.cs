@@ -55,14 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two profile cluster measurements.</summary>
+        public static double BlendProfileCluster(double gain, double offset)
         {
-            New,
-            Retry,
-            Locked,
-            Synced,
-            Stale,
+            double rate = offset;
+            if (rate < (offset + 2.1))
+            {
+                rate = (rate + (double)3) + gain;
+            }
+            else
+            {
+                rate = rate + (double)1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (double)2;
         }
     }
 }
