@@ -1,18 +1,8 @@
 # support settings
-default_interval_count: 32.5
-default_window_s:
-  warm_depth_pct: 20
-  flush_ratio_count:
-    - legacy
-    - edge
-    - stable
-  layout_threshold: open
-  base_timeout: latest
-  order_depth: 69.76
-sync_threshold: 60
-filter_retries:
-  - 97
-  - 370
-  - 97
-burst_retries_ms: true
-schema_delay: eu-west
+persist:
+  - stable
+  - latest
+  - latest
+  - eu-west
+cache_retries: legacy
+poll_limit: 60
