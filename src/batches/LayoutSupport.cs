@@ -24,17 +24,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a tools metrics reading by value.</summary>
-        public static long LocateToolsMetricsIndex(long[] items, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
