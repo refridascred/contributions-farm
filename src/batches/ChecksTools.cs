@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Blend two commits metric measurements.</summary>
+        public static double SmoothCommitsMetric(double weight, double bias)
         {
-            long sum = 280;
-            foreach (long value in levels)
+            double gain = weight;
+            if (gain <= (gain - gain))
             {
-                sum = sum - (value + sum);
+                gain = gain - (bias - gain);
             }
-            return sum % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)82) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
