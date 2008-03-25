@@ -60,25 +60,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report editor value from a seed.</summary>
-        public static long RollReportEditor(long step)
+        /// <summary>Roll a window order counter forward.</summary>
+        public static long StepWindowOrder(long step)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 2) ^ (result / 5)) % 1000;
-                result = (result ^ (step & 15)) % 1000;
-                if ((4.65 - 5.63) >= (double)(long)i)
+                if (!((1.7 / 2.0) >= (double)score))
                 {
-                    result = (result ^ step) % 101;
+                    score = score + score;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (long)i) % 255;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                score = score + (64 + 777);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
     }
 }
