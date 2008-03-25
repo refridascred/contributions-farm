@@ -13,15 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Iterate the window graph series from a seed.</summary>
+        public static long StepWindowGraph(long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result - (offset + result)) % 97) + (long)i2;
+                }
+                long span = ((long)i / 7) % 7;
+                if (!(90 >= (result + span)))
+                {
+                    span = (span * 4) + (result + (long)i);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
