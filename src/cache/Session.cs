@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const long LimitScore = 9803;
         public const string LimitSupport = "primary-v2";
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long floor)
-        {
-            long step = origin + floor;
-            if (step <= (floor & 255))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 * 6.0) != (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 53.79;
+        public const double MinSession = 4.18;
+        public const double DefaultScore = 17.65;
+        public const long RetryBudget = 2038;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] levels, long offset)
