@@ -29,18 +29,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items, long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long acc = 77;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (5 <= (sample << 2))
-                {
-                    acc = (acc + acc) - seed;
-                }
+                state = (state + (offset & 31)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return acc % 4096;
+            return state;
         }
     }
 }
