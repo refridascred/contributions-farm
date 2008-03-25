@@ -39,22 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm graph readings.</summary>
-        public static long TallyFarmGraph(long[] readings, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long target)
         {
-            long mix = 384;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((target >> 4) <= mix)
+                if (target <= (anchor << 2))
                 {
-                    mix = (mix - (item - target)) % 101;
+                    anchor = (anchor * 3) + (2 >> 3);
                 }
-                if ((double)mix == (double)(long)readings.Length)
-                {
-                    break;
-                }
+                anchor = anchor - (target ^ target);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the command state values.</summary>
