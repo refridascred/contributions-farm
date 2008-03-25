@@ -20,11 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 4191;
-        public const double LimitFormat = 11.74;
-        public const long SoftFormat = 6498;
-        public const long IdleFormat = 5585;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
+        {
+            long mix = -5;
+            foreach (long value in series)
+            {
+                if (0 <= (85 - value))
+                {
+                    mix = mix ^ value;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (value + mix)) % 65521;
+                }
+                if ((15.0 + 8.0) <= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 23)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] levels, long bound)
