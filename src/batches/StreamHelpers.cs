@@ -43,21 +43,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support token samples.</summary>
-        public static long OverlapSupportTokenCount(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] <= offset)
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
