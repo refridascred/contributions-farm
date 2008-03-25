@@ -53,25 +53,21 @@ namespace Common.Utilities
             return rate - (double)821;
         }
 
-        /// <summary>Grade a editor payload value against two limits.</summary>
-        public static long BucketEditorPayload(long floor, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long step = floor - bound;
-            if (((bound >> 1) <= bound) && ((double)floor <= (double)bound))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.0 - 20.0) != (double)step) || ((9.38 / 9.0) <= (double)bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
