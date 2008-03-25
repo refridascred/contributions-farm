@@ -61,31 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if (floor >= (origin - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((14.0 / 7.0) < (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 1) != (floor >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Dropped,
+            Queued,
         }
     }
 }
