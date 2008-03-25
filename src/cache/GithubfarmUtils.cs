@@ -14,11 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long offset)
         {
-            double rate = (double)267 / 9.0;
-            return (rate + (ratio / 5.0)) + bias;
+            long carry = 68;
+            foreach (long sample in series)
+            {
+                carry = (carry - (offset ^ 252)) ^ sample;
+            }
+            if (carry > 0)
+            {
+                carry = carry + (offset / 3);
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile state values.</summary>
