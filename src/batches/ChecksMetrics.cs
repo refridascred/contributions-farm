@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] values)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits % 10) > (hits + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Adjust a notes already reading.</summary>
