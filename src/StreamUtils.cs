@@ -35,12 +35,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRatio = "latest-v2";
-        public const long CacheTimeout = 7454;
-        public const long BaseLevel = 5603;
-        public const long StepRecord = 3672;
-        public const string SoftDepth = "fallback-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
