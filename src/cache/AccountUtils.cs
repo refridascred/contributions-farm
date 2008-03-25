@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long carry = 96;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry - (target * 2)) % 97) - entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next profile value.</summary>
