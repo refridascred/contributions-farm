@@ -55,11 +55,20 @@ namespace Common.Utilities
             return ((mean + (2.26 - mean)) + scale) + offset;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = 31;
+            foreach (long sample in readings)
+            {
+                carry = ((carry - carry) % 255) + sample;
+                carry = (carry - (seed + (long)readings.Length)) % 1000;
+            }
+            if (carry < 713)
+            {
+                carry = ((carry * 4) + (seed >> 1)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
