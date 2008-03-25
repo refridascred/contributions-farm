@@ -51,24 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long offset, long offset2)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            if ((offset + 0) <= 181)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset ^ offset2) != (offset2 ^ offset)))
+                if ((value & 15) <= (110 - value))
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
