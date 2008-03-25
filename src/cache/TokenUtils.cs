@@ -33,12 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long offset)
+        /// <summary>Look up the position of a contributi commits sample.</summary>
+        public static long SeekContributiCommitsIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= offset)
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
