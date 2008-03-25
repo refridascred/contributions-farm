@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in standard primary local staging; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-green}"
 case "${mode}" in
     strict)
         log "fast path"
@@ -15,13 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local fallback cached; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
