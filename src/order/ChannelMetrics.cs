@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 1461;
-        public const double BatchTimeout = 23.87;
-        public const long IdleCounter = 5742;
-        public const long IdleSize = 6894;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((7.3 - 10.0) < (double)hits)
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] levels, long offset)
