@@ -46,16 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (limit ^ 59)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstBudget = 3711;
+        public const string SoftTimeout = "latest-v2";
+        public const long IdleScore = 1579;
+        public const long DefaultSpan = 7902;
+        public const double BaseSpan = 39.25;
     }
 }
