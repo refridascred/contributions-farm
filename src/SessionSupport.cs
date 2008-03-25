@@ -52,21 +52,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (floor + 371)) % 97;
+                total = (total - (total + total)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
