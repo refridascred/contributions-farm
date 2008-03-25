@@ -1,6 +1,7 @@
 {
-  "persist": 46.7,
-  "base_interval": "legacy",
-  "checks_size": true,
-  "max_ttl_pct": [331, 395]
+  "base_window_s": 10.77,
+  "poll_ratio_s": 61,
+  "readonly": ["stable", "green"],
+  "buffer_timeout": "eu-west",
+  "batch_retries": 81.94
 }
