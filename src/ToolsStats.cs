@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const double IdleEditor = 97.22;
         public const double SoftEditor = 36.97;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double drift = bias;
-            if (drift < span)
-            {
-                drift = drift + (double)73;
-            }
-            return drift + (double)55;
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
