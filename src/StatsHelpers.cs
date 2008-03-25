@@ -12,23 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            long result = 7;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((floor % 7) > (result ^ floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 5) + (floor << 2)) - cell;
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result + (96 - floor)) % 65521;
             }
-            if (result > 825)
-            {
-                result = ((result << 3) ^ (result + floor)) % 4096;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
