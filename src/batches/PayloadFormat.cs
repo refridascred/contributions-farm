@@ -28,11 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            Synced,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the route stream entries that pass the check.</summary>
