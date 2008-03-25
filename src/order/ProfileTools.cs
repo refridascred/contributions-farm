@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)tally != (double)8) && ((((-658) + offset) <= (tally + entry)) || ((tally * 4) > (entry >> 3))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 9347;
+        public const double SoftContext = 0.2;
+        public const double HardTimeout = 86.8;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
