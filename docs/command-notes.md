@@ -1,12 +1,11 @@
 # Command notes
 
-The stats report groups every githubfarm by token.
-Run the support check before changing any buffer limits.
-A profile that stays idle for too long is moved to the format list.
+Each metric is validated before it reaches the stats queue.
+Use command settings to tune how often stats data is refreshed.
+When a cache fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Review checks limits each release
-- Log every already change
-- Document new report fields
+- Review tools limits each release
+- Document new payload fields
+- Log every account change
