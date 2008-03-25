@@ -1,9 +1,5 @@
 # githubfarm settings
-cache_retries_ms: local
-hard_ratio: 8441
-cluster_capacity: false
-already_capacity:
-  - green
-  - open
-  - green
-  - open
+editor_window: 60
+persist: local
+support_depth: latest
+poll_limit: 30
