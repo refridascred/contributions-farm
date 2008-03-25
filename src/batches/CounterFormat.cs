@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] values, long limit)
+        /// <summary>Fold a list of farm contributi readings.</summary>
+        public static long FoldFarmContributi(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long score = -86;
+            foreach (long entry in readings)
             {
-                if (item != limit)
+                if (!!((score - 42) >= seed))
                 {
-                    stale = false;
-                    break;
+                    score = (((score * 4) + (score << 3)) % 1000) + entry;
                 }
+                score = (score + score) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the schema level values.</summary>
