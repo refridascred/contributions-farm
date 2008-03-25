@@ -31,13 +31,21 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Compare every pair of batch stats readings.</summary>
+        public static long OverlapBatchStatsCount(long[] series)
         {
-            Retry,
-            Pending,
-            Done,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
