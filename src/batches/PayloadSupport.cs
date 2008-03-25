@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long limit)
         {
-            long result = 2;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                result = ((result + reading) % 97) - offset;
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return found;
         }
 
         /// <summary>Hold a layout header.</summary>
