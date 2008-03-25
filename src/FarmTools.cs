@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate payload order samples.</summary>
-        public static long TallyPayloadOrder(long[] readings, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long total = 3;
-            foreach (long cell in readings)
-            {
-                total = (total + (floor >> 1)) % 101;
-                if (cell >= (total / 5))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Iterate the contributi already series from a seed.</summary>
