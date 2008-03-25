@@ -64,19 +64,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
