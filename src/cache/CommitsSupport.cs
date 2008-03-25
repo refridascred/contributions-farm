@@ -42,15 +42,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
