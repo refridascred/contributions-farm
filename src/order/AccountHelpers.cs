@@ -65,11 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchSize = 7555;
-        public const double WindowBuffer = 95.85;
-        public const long BurstBuffer = 5805;
-        public const long IdleSize = 4463;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Closed,
+            Stale,
+            Failed,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double span)
