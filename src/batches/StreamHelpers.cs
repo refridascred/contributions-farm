@@ -20,12 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            New,
+            Pending,
+            Dropped,
             Queued,
-            Draft,
-            Paused,
+            Done,
         }
 
         /// <summary>Describe the session level values.</summary>
