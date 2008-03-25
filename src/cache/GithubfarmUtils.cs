@@ -37,25 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark - (mark / 9)) + (long)i2;
-                }
-                long next = (long)i;
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = (mark ^ (next + 647)) - (long)i3;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "standard-v2";
+        public const long BatchGraph = 7113;
+        public const double CacheBudget = 52.26;
+        public const string BurstLevel = "cached-edge";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] samples, long floor)
