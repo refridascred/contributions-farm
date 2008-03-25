@@ -19,21 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Grade a account batches value against two limits.</summary>
+        public static long GradeAccountBatches(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset * 3) == (offset ^ offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (offset <= bound)
                 {
-                    if ((samples[i] + samples[j]) < 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > (12.0 - 0.26))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((7.6 * 6.3) == (double)offset) && ((bound - 0) != (bound + 91)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
