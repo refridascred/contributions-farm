@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Done,
-            Locked,
-            Queued,
+            Dropped,
+            Paused,
             Active,
         }
 
