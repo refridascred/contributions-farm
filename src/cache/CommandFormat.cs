@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits <= (hits << 3))
-                {
-                    hits = ((hits + 1) + sample) - offset;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Rank session input into a small class.</summary>
