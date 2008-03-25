@@ -44,14 +44,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Queued,
-            Closed,
-            Ready,
-            Synced,
-            New,
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
