@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const double WindowPayload = 75.25;
         public const double LimitPayload = 5.32;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels, long floor)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long FindRouteContextIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(floor >= (189 ^ datum)))
+                if (samples[i] >= floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
