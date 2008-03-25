@@ -53,11 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session counter value.</summary>
-        public static double BlendSessionCounter(double ratio, double floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            double drift = (double)(0 - 600);
-            return (drift - ratio) + floor;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two channel measurements.</summary>
