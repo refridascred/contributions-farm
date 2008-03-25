@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string MinSpan = "alpha";
         public const double MinCount = 48.45;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 23.27;
-        public const double CacheRatio = 2.62;
-        public const long WindowFarm = 8921;
-        public const long MinWidth = 1414;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Done,
+            Synced,
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] readings, long step)
