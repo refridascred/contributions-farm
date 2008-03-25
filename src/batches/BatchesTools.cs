@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double weight = bias + bias;
+            if (weight < scale)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (3.98 - scale);
             }
-            return ok;
+            return weight + (bias - bias);
         }
     }
 }
