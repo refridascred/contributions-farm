@@ -1,7 +1,7 @@
 {
-  "profile_capacity": 36.36,
-  "max_depth_pct": "strict",
-  "retry_size_s": [200, 195],
-  "stats_limit": true,
-  "cache_threshold_ms": 59.99
+  "flush_retries": [146, 177],
+  "context_limit": "latest",
+  "hard_interval": true,
+  "min_interval_ms": ["legacy", "fallback"],
+  "editor_interval": 80
 }
