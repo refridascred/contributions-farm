@@ -23,20 +23,10 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)706 < (double)total)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheSize = 11.59;
+        public const double HardAlready = 28.68;
+        public const long StepAlready = 1986;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long offset)
