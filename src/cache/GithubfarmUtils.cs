@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 4898;
-        public const double BaseCounter = 59.65;
-        public const string BaseWidth = "strict-edge";
-        public const long HardCount = 4030;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((20.0 * 3.17) == (double)cell) || ((count + cell) == (cell & 1)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long origin)
