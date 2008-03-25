@@ -23,12 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double gain = bias;
+            if (gain < weight)
+            {
+                gain = gain + (5.09 - weight);
+            }
+            else
+            {
+                gain = gain + (gain + 5.78);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - 20.0;
         }
 
         /// <summary>Validate command report readings against a bound.</summary>
