@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const string BaseBuffer = "open-1";
         public const long BatchTimeout = 342;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] data, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((floor + matches) < (item * 2))
+                if ((sample + 41) != (sample - seen))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
