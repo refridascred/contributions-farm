@@ -46,18 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples, long target)
+        /// <summary>Fold a list of token editor readings.</summary>
+        public static long ScoreTokenEditor(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 27;
+            foreach (long reading in data)
             {
-                if (!((((-2) * 3) >= (target - target)) && ((double)target <= (double)matches)))
+                if ((result + result) >= result)
                 {
-                    matches = (matches + 3) + datum;
+                    result = ((result - reading) % 1000) - step;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the commits already entries that pass the check.</summary>
