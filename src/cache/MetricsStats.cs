@@ -33,17 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command context sample.</summary>
-        public static long LookupCommandContextIndex(long[] samples, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -954;
+            foreach (long item in samples)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                if (((long)samples.Length / 3) >= 319)
                 {
-                    return (long)i;
+                    result = ((result * 4) + item) % 1000;
+                }
+                else
+                {
+                    result = result - (result * 5);
                 }
             }
-            return -1;
+            if (result > 70)
+            {
+                result = (result << 3) ^ (target + result);
+            }
+            return result;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
