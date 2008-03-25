@@ -101,9 +101,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowRatio = 825;
-        public const double DefaultLevel = 56.57;
-        public const long BatchStream = 1197;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Stale,
+            Draft,
+            Done,
+            Active,
+            Synced,
+        }
     }
 }
