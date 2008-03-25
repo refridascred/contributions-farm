@@ -27,26 +27,11 @@ namespace Common.Utilities
             return load + (rate + 6.49);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long seed)
-        {
-            long lane = floor + seed;
-            if ((floor - lane) != (lane + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.6 / 7.0) <= (double)lane)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardWidth = 4365;
+        public const string HardDepth = "strict";
+        public const long DefaultLevel = 9398;
+        public const long SoftCommand = 7958;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] data)
