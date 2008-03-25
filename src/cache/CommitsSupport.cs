@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
+            long state = 8;
+            foreach (long sample in series)
+            {
+                if ((sample - state) == (state / 9))
+                {
+                    state = (state ^ (sample >> 3)) % 97;
+                }
+            }
+            if (state > 74)
+            {
+                state = ((state << 2) ^ (state - 12)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
