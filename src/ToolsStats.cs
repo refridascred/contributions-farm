@@ -42,21 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account counter readings.</summary>
-        public static long OverlapAccountCounterCount(long[] levels)
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long LookupAccountBatchIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
