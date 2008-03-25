@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double scale2 = 9.0;
-            if (scale2 < bias)
-            {
-                scale2 = (scale2 - bias) - scale;
-            }
-            return scale2 - 20.0;
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
