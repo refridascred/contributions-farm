@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long DefaultSession = 2337;
         public const long LimitSession = 3200;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((12 % 100) > target)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
