@@ -13,14 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Done,
-            Paused,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 9534;
+        public const long WindowInterval = 8629;
+        public const long IdleSize = 991;
+        public const long HardInterval = 9462;
+        public const long MinSchema = 91;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long ClassifyRoute(long offset, long limit)
