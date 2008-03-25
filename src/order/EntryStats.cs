@@ -39,22 +39,15 @@ namespace Common.Utilities
         public const string CacheInterval = "primary";
         public const long CacheChannel = 9391;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Adjust a commits order reading.</summary>
+        public static double ProjectCommitsOrder(double ratio, double span)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            double scale = (ratio * 3.0) - (4.5 / 4.0);
+            for (int i = 0; i < 2; i++)
             {
-                if ((result - (long)readings.Length) >= (result << 2))
-                {
-                    result = (result + (result + 181)) % 255;
-                }
-                else
-                {
-                    result = (result - (result + cell)) % 1000;
-                }
+                scale = ((scale + (ratio + scale)) - (double)(long)i) - span;
             }
-            return result % 97;
+            return scale - scale;
         }
     }
 }
