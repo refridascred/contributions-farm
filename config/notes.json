@@ -1,11 +1,7 @@
 {
-  "idle_threshold_count": {
-    "graph_depth": ["fallback", "standard", "green", "strict"],
-    "cache_limit_pct": false,
-    "order_ttl": 5680
-  },
-  "schema_delay": "cached",
-  "poll_ratio_count": 250,
-  "hard_capacity_count": 87.74,
-  "sync_interval_count": "strict"
+  "buffer_threshold": 29,
+  "poll_retries_s": 64,
+  "default_delay": false,
+  "retry_ratio": "primary",
+  "profile_size": 30
 }
