@@ -48,21 +48,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Check that every record graph entry stays within the limit.</summary>
+        public static bool VerifyRecordGraphRange(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != target)
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
