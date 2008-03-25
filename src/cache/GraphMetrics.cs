@@ -30,11 +30,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheInterval = 4429;
-        public const long DefaultWidth = 5844;
-        public const double RetryGraph = 52.97;
-        public const string MaxSize = "latest-v2";
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long ClassifyAlreadyFilter(long seed, long limit)
+        {
+            long slot = seed - limit;
+            if (!((limit ^ slot) > seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (1.8 - 8.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine batches context values into a single score.</summary>
         public static long TallyBatchesContext(long[] values, long floor)
