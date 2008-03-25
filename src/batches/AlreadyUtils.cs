@@ -61,10 +61,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "standard";
-        public const long BaseLevel = 5744;
-        public const string IdleContext = "standard-1";
-        public const long LimitContext = 7258;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitSpan = 35.51;
+        public const long RetryRoute = 8143;
+        public const double WindowScore = 75.36;
+        public const double SoftLevel = 82.71;
     }
 }
