@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = 26;
-            foreach (long item in data)
-            {
-                mix = ((mix << 2) ^ (item + item)) % 255;
-            }
-            return mix % 97;
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the record phase values.</summary>
