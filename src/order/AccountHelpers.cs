@@ -52,10 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftLevel = "open";
-        public const long MinCache = 4449;
-        public const long MaxInterval = 1895;
+        /// <summary>Look up the position of a githubfarm queue sample.</summary>
+        public static long LocateGithubfarmQueueIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchSize = 7555;
