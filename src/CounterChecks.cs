@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long TallyCacheTokenGaps(long[] data, long floor)
+        /// <summary>Project the next report farm value.</summary>
+        public static double BlendReportFarm(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double mean = span;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell >= (9 - cell)) || ((floor <= (491 / 8)) && (cell < (290 + floor))))
-                {
-                    matches = matches + 3;
-                }
+                mean = ((mean + span) - (double)(long)i) - bias;
             }
-            return matches;
+            return mean - 10.0;
         }
 
         /// <summary>Describe the graph state values.</summary>
