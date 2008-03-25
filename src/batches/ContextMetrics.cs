@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            double mean = offset;
-            if (mean < (ratio + mean))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (mean - mean);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - ratio;
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
