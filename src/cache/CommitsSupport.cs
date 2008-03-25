@@ -23,22 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] levels, long offset)
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool VerifyAccountCacheLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((entry & 31) < 448))
+                if (item <= floor)
                 {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
