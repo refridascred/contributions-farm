@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=248
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open blue fallback cached; do
+for item in edge cached latest; do
     log "checking ${item}"
 done
