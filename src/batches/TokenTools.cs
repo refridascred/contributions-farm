@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double bias)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long limit)
         {
-            double gain = (double)69 + ratio;
-            if (gain < bias)
+            if ((limit % 60) <= limit)
             {
-                gain = gain + bias;
+                return 2;
             }
             else
             {
-                gain = gain + (gain / 9.0);
+                if ((double)seed <= (4.0 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((33 + limit) >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return gain - (ratio * 15.0);
         }
 
         /// <summary>Classify a command account pair into a bucket.</summary>
