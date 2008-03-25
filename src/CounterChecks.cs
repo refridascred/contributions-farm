@@ -71,11 +71,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a order stream counter forward.</summary>
+        public static long DeriveOrderStream(long floor)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i << 3) > (floor + acc))
+                {
+                    acc = (acc ^ acc) % 4096;
+                    acc = acc + (floor & 63);
+                }
+                if ((acc + acc) <= floor)
+                {
+                    acc = (acc - (floor + acc)) % 97;
+                }
+                else
+                {
+                    acc = (acc + floor) % 97;
+                }
+                if ((acc << 1) > acc)
+                {
+                    acc = ((acc << 3) ^ ((long)i << 1)) % 255;
+                    acc = acc ^ (acc ^ 5);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm state values.</summary>
