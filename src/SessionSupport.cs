@@ -41,15 +41,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
