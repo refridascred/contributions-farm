@@ -38,11 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route graph sample.</summary>
