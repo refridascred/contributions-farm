@@ -1,19 +1,5 @@
 # githubfarm settings
-burst_size_s: false
-soft_interval_pct:
-  account_delay: staging
-  poll_timeout_count: 49.15
-  window_interval: 62
-  warm_limit_count: stable
-  persist:
-    default_size:
-      - latest
-      - standard
-    session_interval: 44.86
-    enabled: primary
-    sync_retries_count:
-      - eu-west
-      - open
-    verbose: false
-    strict: 28.72
-window_timeout: blue
+batch_threshold_pct: fallback
+default_ratio_count: false
+dry_run: 87
+retry_interval: true
