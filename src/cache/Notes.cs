@@ -55,38 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long RankChannelToken(long offset, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            if (!((double)offset >= (double)origin))
+            long sum = 56;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 3) > (offset >> 4))
+                if ((1.53 - 1.0) != (double)sum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (6.11 + 16.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset + 8) >= offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = (sum - (datum % 5)) % 255;
                 }
             }
+            return sum;
         }
     }
 }
