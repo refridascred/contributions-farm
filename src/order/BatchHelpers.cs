@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long BatchDepth = 2354;
         public const long RetryBatches = 4970;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
