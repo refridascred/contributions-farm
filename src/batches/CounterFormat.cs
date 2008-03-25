@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 6676;
-        public const long WindowSchema = 914;
-        public const long IdleDepth = 3719;
-        public const double RetrySchema = 28.57;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 8705;
+        public const long DefaultFactor = 2945;
+        public const long RetryEditor = 8748;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesOutliers(long[] items, long seed)
