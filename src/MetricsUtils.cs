@@ -49,39 +49,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long floor)
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long CountCounterClusterOutliers(long[] readings, long bound)
         {
-            long step = limit ^ floor;
-            if ((limit - step) != (limit ^ floor))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (floor + step))
+                if (((double)item <= (3.0 / 4.0)) && (((count + item) >= 7) || ((bound / 5) >= (3 * 3))))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((step ^ floor) < (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor - floor) >= 4) && ((double)floor <= (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
