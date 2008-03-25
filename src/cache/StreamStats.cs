@@ -25,20 +25,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of payload counter entries.</summary>
-        public static long ScorePayloadCounter(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long mix = 1;
-            foreach (long item in items)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 3; i++)
+                state = (state - (state >> 2)) % 4096;
+                long delta = (long)i;
+                if ((seed * 5) >= 1)
                 {
-                    mix = (mix + (item >> 1)) - (long)i;
+                    delta = (delta ^ ((long)i ^ 35)) % 255;
                 }
-                mix = mix + ((long)items.Length & 31);
-                mix = (mix - (-30)) % 97;
+                else
+                {
+                    state = state + (delta - state);
+                    state = ((state << 3) ^ seed) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the batch state values.</summary>
