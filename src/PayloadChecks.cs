@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double load = 3.75 - (floor - rate);
-            return load + (rate + 6.49);
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
