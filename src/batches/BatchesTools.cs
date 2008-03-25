@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] levels, long step)
         {
-            long carry = 1;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!(780 >= (value - value)))
+                if ((seen & 7) > (0 - step))
                 {
-                    carry = ((carry << 2) ^ (carry ^ 88)) % 4096;
+                    seen = (seen + 2) + reading;
                 }
             }
-            if (carry < 64)
-            {
-                carry = carry + (carry / 3);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
