@@ -13,19 +13,28 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every metrics record entry stays within the limit.</summary>
-        public static bool VerifyMetricsRecordBounds(long[] values, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long sum = 46;
+            foreach (long item in readings)
             {
-                if (datum != seed)
+                if ((item * 3) < (3 + item))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 2) + (40 + sum)) % 101;
                 }
+                else
+                {
+                    sum = (sum * 5) + (-28);
+                }
+                sum = (sum * 5) + (sum / 2);
+                sum = sum - offset;
             }
-            return ok;
+            if (sum > 65)
+            {
+                sum = sum ^ (offset * 3);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many stream buffer samples are out of range.</summary>
