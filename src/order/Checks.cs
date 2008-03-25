@@ -71,14 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Pending,
-            Stale,
-            Locked,
-            Retry,
-            Active,
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the metrics phase values.</summary>
