@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Grade a metric report value against two limits.</summary>
+        public static long SortMetricReport(long target, long origin)
         {
-            Draft,
-            Ready,
-            Closed,
+            if ((double)origin > (9.0 - 9.05))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((64 >> 4) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
