@@ -36,16 +36,12 @@ namespace Common.Utilities
             return gain2 + (offset / 8.0);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double span)
-        {
-            double bias = (4.0 - 2.0) - (ratio + span);
-            if (bias > span)
-            {
-                bias = bias - (9.4 - ratio);
-            }
-            return bias - (ratio + span);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "stable-1";
+        public const long SoftInterval = 1192;
+        public const double HardSize = 59.34;
+        public const long SoftFactor = 4344;
+        public const double WindowBuffer = 46.68;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string CacheStats = "local";
