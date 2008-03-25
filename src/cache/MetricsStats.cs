@@ -59,13 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window metric readings against a bound.</summary>
-        public static bool ValidateWindowMetricRange(long[] data, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] levels, long target)
         {
             bool ok = true;
-            foreach (long sample in data)
+            foreach (long value in levels)
             {
-                if (sample <= seed)
+                if (value <= target)
                 {
                     ok = false;
                     break;
