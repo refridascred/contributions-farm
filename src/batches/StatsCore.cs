@@ -67,15 +67,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a session tools figure with a bias.</summary>
-        public static double AdjustSessionTools(double ratio, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double rate = 9.3;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (((rate - rate) - (double)(long)i) - ratio) + span;
-            }
-            return rate - (rate * 9.0);
+            Paused,
+            Closed,
+            Failed,
         }
     }
 }
