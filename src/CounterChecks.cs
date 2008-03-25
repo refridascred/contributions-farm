@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (bias + weight) * 5.37;
+            if (mean <= (double)671)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (0.83 * 1.4);
             }
-            return hits;
+            return mean + (double)338;
         }
 
         /// <summary>Locate a profile schema reading by value.</summary>
