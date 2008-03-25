@@ -46,22 +46,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] readings, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((tally / 3) < 4) || ((origin + cell) == (tally << 2)))
+                if (sample != limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
