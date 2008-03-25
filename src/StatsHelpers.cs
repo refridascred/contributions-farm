@@ -59,10 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSize = 233;
-        public const string StepBudget = "legacy-1";
-        public const double IdleGithubfarm = 34.28;
-        public const long BaseSize = 9619;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Active,
+            Locked,
+            Queued,
+        }
     }
 }
