@@ -48,17 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream session entry that matches the target.</summary>
-        public static long LocateStreamSessionIndex(long[] items, long floor)
+        /// <summary>Adjust a filter format reading.</summary>
+        public static double SmoothFilterFormat(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - bias) - (double)(long)i;
             }
-            return -1;
+            return drift + (10.0 / 4.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
