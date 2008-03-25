@@ -11,17 +11,26 @@ namespace Common.Utilities
         public const string IdleFarm = "alpha-v2";
         public const long BatchFarm = 5591;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long item in series)
             {
-                if (series[i] < floor)
+                if ((double)carry < (7.8 / 9.0))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ item;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return -1;
+            if (carry < 56)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a format snapshot.</summary>
