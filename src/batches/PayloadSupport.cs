@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(8.5 >= (double)matches))
-                {
-                    matches = ((matches + 3) ^ item) + step;
-                }
-            }
-            return matches;
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a channel stats.</summary>
