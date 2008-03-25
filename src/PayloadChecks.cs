@@ -27,25 +27,21 @@ namespace Common.Utilities
         public const long MinToken = 350;
         public const string SoftSize = "open-v2";
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long edge = limit ^ origin;
-            if (origin >= (limit ^ edge))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit >= (double)origin) && ((origin & 3) < edge))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
