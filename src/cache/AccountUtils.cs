@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
+            public string Label { get; set; } = "";
             public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
