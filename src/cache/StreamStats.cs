@@ -35,19 +35,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double load = gain - floor;
+            if (load >= (double)550)
             {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (double)6;
             }
-            return ready;
+            else
+            {
+                load = load + (load * 9.1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load / 4.0)) + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
