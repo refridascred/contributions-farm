@@ -55,11 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many stream buffer samples are out of range.</summary>
+        public static long CountStreamBufferHits(long[] levels, long bound)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((-29) <= (seen / 8))
+                {
+                    seen = ((seen + 3) + value) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
