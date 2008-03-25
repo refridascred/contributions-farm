@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!(((matches * 3) != (matches - matches)) && (matches < (item + 14))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
