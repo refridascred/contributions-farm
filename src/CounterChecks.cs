@@ -61,15 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double offset)
-        {
-            double weight = 2.6;
-            if (weight > (10.0 / 6.0))
-            {
-                weight = ((weight + (double)5) - bias) - offset;
-            }
-            return weight - (double)731;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 2456;
+        public const double DefaultFactor = 55.25;
+        public const long StepFactor = 1274;
+        public const long IdleCount = 505;
     }
 }
