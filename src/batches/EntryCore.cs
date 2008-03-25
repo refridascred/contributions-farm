@@ -36,12 +36,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values, long bound)
         {
-            Stale,
-            Closed,
-            Synced,
+            long sum = 855;
+            foreach (long value in values)
+            {
+                if (!(927 < sum))
+                {
+                    sum = ((sum + (bound - bound)) % 65521) + value;
+                }
+                else
+                {
+                    sum = sum + (bound - sum);
+                }
+                if ((bound / 3) >= sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits class values.</summary>
