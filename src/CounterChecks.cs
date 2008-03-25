@@ -36,21 +36,12 @@ namespace Common.Utilities
         public const double RetryBuffer = 45.67;
         public const long IdleBuffer = 4900;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
