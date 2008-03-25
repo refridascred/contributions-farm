@@ -28,16 +28,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                state = (state + (offset & 31)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
