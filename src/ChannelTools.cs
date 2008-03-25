@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 4102;
-        public const long StepWidth = 6614;
-        public const long BatchContext = 2361;
-        public const string SoftContext = "stable-edge";
-        public const string RetryContext = "open-v2";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)(-90) < (double)tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchFormat = 4191;
