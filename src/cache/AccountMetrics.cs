@@ -48,26 +48,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 33;
-            foreach (long cell in items)
-            {
-                if ((double)mix <= (8.0 + 2.3))
-                {
-                    continue;
-                }
-                if (mix > (41 << 2))
-                {
-                    mix = (mix ^ 7) + cell;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = mix - (seed & 7);
-            }
-            return mix;
+            Failed,
+            Dropped,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
