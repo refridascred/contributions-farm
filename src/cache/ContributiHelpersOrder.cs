@@ -17,18 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] series, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((seed << 2) == (seed << 3))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
