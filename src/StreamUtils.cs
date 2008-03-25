@@ -57,18 +57,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRatio = "latest-v2";
+        public const long CacheTimeout = 7454;
+        public const long BaseLevel = 5603;
+        public const long StepRecord = 3672;
+        public const string SoftDepth = "fallback-1";
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] data)
