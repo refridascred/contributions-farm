@@ -30,18 +30,16 @@ namespace Common.Utilities
         public const double CacheSupport = 47.91;
         public const long RetrySupport = 8731;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((6.21 - 20.0) < (double)count) || ((1.34 - 2.2) > (double)value))
-                {
-                    count = count + 3;
-                }
+                state = state - (limit + limit);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
