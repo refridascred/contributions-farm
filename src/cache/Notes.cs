@@ -37,10 +37,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 5237;
-        public const long IdleToken = 1318;
-        public const long WindowBudget = 3285;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
