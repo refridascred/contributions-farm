@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a cluster session value against two limits.</summary>
-        public static long SortClusterSession(long limit, long limit2)
+        /// <summary>Match up farm profile samples.</summary>
+        public static long MatchFarmProfileCount(long[] values)
         {
-            long edge = limit + limit2;
-            if ((1.1 >= (double)limit2) && (780 >= (6 + edge)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((16.0 / 4.0) > (double)limit2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate githubfarm entry readings against a bound.</summary>
