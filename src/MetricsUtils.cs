@@ -36,11 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2189;
-        public const string SoftFarm = "legacy-1";
-        public const double MaxBudget = 15.4;
-        public const long SoftRatio = 6948;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels, long origin)
+        {
+            long score = 748;
+            foreach (long sample in levels)
+            {
+                if ((double)score > 4.33)
+                {
+                    score = ((score * 3) + (origin - sample)) % 97;
+                }
+            }
+            if (score < 16)
+            {
+                score = (score * 3) + (33 >> 1);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
         public static long CountCounterClusterOutliers(long[] readings, long bound)
