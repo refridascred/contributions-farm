@@ -1,6 +1,12 @@
 {
-  "sync_capacity_ms": 1649,
-  "retry_interval": [279, 51],
-  "warm_ratio_s": true,
-  "burst_limit_s": false
+  "metrics_capacity": true,
+  "min_threshold_pct": 75.66,
+  "retry_ratio": 100,
+  "cache_delay_s": "primary",
+  "support_retries": ["cached", "strict"],
+  "poll_timeout_count": {
+    "order_retries": 59.75,
+    "poll_threshold": false,
+    "layout_delay": 1719
+  }
 }
