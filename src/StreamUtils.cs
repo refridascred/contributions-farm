@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value ^ value) < (60 & 31)) || ((double)matches == (double)15))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "standard";
+        public const string StepRatio = "local";
+        public const long IdleTools = 8391;
+        public const string LimitBudget = "strict";
+        public const string SoftTools = "open-1";
 
         /// <summary>Check that every profile order entry stays within the limit.</summary>
         public static bool GuardProfileOrderRange(long[] samples, long origin)
