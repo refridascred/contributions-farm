@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "cached-1";
+        public const string LimitBudget = "latest-1";
+        public const long BurstBudget = 289;
+        public const string RetryBudget = "fallback-1";
+        public const string RetryCommand = "primary-v2";
 
         /// <summary>Iterate the window graph series from a seed.</summary>
         public static long StepWindowGraph(long offset)
