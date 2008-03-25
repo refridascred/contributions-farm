@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardWidth = 2846;
-        public const double IdleSpan = 75.92;
-        public const double RetrySession = 47.02;
-        public const string CacheLevel = "cached-edge";
-        public const long SoftCount = 6346;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Locked,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Roll a batch stream counter forward.</summary>
         public static long RollBatchStream(long limit)
