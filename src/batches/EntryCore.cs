@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Audit session record readings against a rule.</summary>
+        public static long TallySessionRecordMatches(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)origin > (7.9 - 2.61))
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
