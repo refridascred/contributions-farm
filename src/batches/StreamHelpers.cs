@@ -65,11 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheScore = 9692;
-        public const long RetryRecord = 5051;
-        public const string DefaultRecord = "alpha-edge";
-        public const long LimitBudget = 9368;
-        public const long IdleSize = 4663;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Paused,
+            Retry,
+            Closed,
+            Idle,
+        }
     }
 }
