@@ -25,14 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            Pending,
-            Stale,
-            Done,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (cell - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a tools editor reading.</summary>
