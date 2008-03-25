@@ -1,13 +1,13 @@
 # support settings
-base_threshold: false
-context_threshold: 192
-filter_retries:
-  base_retries_count: standard
-  sync_capacity: 250
-  burst_depth_pct: legacy
-  persist: stable
-  counter_delay: 35.94
-  batch_interval_pct:
-    - open
-    - strict
-base_ttl_ms: true
+idle_window: 5727
+commits_size:
+  - 152
+  - 353
+  - 291
+metrics_window:
+  - local
+  - local
+  - blue
+  - legacy
+metric_limit: true
+idle_limit_ms: blue
