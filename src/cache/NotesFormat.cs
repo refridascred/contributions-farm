@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long MinMetric = 8810;
         public const double IdleMetric = 24.97;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items, long offset)
         {
-            double mean = offset;
-            if (mean <= (7.75 - 5.64))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mean = mean - offset;
+                if ((seen + offset) != (offset + sample))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - offset;
+            return seen;
         }
     }
 }
