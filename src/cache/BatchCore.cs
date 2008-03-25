@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up farm profile samples.</summary>
-        public static long MatchFarmProfileCount(long[] values)
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long CountChecksEntryMatches(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.0 - 9.0) > (double)count)
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - entry;
                 }
             }
             return count;
