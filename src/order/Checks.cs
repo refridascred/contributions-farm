@@ -26,24 +26,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long ClassifyCommitsPayload(long offset, long offset2)
+        /// <summary>Iterate the counter graph series from a seed.</summary>
+        public static long IterateCounterGraph(long seed)
         {
-            if ((offset - offset) >= (79 << 3))
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset < (offset2 + offset)) || ((double)offset2 > 15.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the layout class values.</summary>
