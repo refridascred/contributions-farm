@@ -50,23 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = 92;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor * 2) + (cell + cell)) % 65521;
-                if (((anchor + anchor) < 861) && ((8.3 / 7.0) >= (double)anchor))
-                {
-                    anchor = ((anchor << 3) ^ (long)series.Length) % 65521;
-                }
-                if ((cell & 31) == (cell + cell))
-                {
-                    anchor = ((anchor << 3) ^ (35 - cell)) % 255;
-                }
-            }
-            return anchor % 1000;
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
