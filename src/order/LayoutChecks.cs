@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema notes entry that matches the target.</summary>
-        public static long FindSchemaNotesIndex(long[] values, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (values[i] > seed)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the layout state values.</summary>
