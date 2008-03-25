@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long BurstLayout = 3489;
         public const string SoftTimeout = "alpha-1";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double scale = (9.49 * 3.0) / 3.0;
+            if (scale <= floor)
             {
-                if ((double)bound >= (double)matches)
-                {
-                    matches = (matches + 3) + value;
-                }
+                scale = scale - (scale - scale);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale + rate)) - (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
