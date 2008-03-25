@@ -54,11 +54,17 @@ namespace Common.Utilities
         public const string MinStats = "local-edge";
         public const long CacheWidth = 5535;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
