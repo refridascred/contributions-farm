@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] samples, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)sample >= (1.4 / 5.0))
+                if ((bound + (long)values.Length) >= (bound << 3))
                 {
-                    matches = (matches + 2) + offset;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up tools samples.</summary>
