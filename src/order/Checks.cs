@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] levels, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((8.16 * 1.29) > (double)origin)
             {
-                if (((double)floor <= (4.78 - 3.67)) && ((6.2 + 6.38) > (double)seen))
+                return 2;
+            }
+            else
+            {
+                if ((5.07 * 2.0) == (double)origin)
                 {
-                    seen = (seen + 1) + item;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
