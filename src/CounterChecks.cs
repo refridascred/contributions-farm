@@ -44,22 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value & 15) <= (110 - value))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
