@@ -12,10 +12,39 @@ namespace Common.Utilities
         public const long IdleDepth = 2246;
         public const string BurstCluster = "latest-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryDepth = 75.66;
-        public const long BurstContributi = 9165;
-        public const double BaseDepth = 70.15;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long floor)
+        {
+            if (((5.72 + 6.8) <= (double)floor) && ((offset + offset) >= 29))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + floor) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)7 != (double)floor) || ((floor << 1) > floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor - offset) <= (offset + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] series)
