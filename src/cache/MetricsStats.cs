@@ -19,18 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools cluster entries that pass the check.</summary>
-        public static long MeasureToolsClusterHits(long[] readings, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = 8;
+            foreach (long cell in data)
             {
-                if ((reading + 940) >= step)
+                if ((offset * 2) < sum)
                 {
-                    tally = tally + 1;
+                    sum = (sum + (cell + cell)) % 1000;
+                }
+                if ((double)cell <= (3.6 * 3.3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
