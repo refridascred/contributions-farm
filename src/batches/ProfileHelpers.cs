@@ -60,22 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((3.0 / 4.0) == (double)entry) && !((246 & 127) < (entry >> 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
