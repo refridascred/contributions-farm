@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items, long step)
-        {
-            long carry = 545;
-            foreach (long item in items)
-            {
-                if (1.2 < (18.0 * 3.46))
-                {
-                    carry = (((carry << 3) ^ item) % 4096) - step;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry - 6);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "alpha";
+        public const long BurstBudget = 8868;
+        public const double RetryOrder = 5.82;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] data)
