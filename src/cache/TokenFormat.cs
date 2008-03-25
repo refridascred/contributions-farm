@@ -39,18 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] values)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((3.2 / 9.0) < (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
