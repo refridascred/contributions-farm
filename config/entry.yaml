@@ -1,5 +1,15 @@
 # entry settings
-githubfarm_interval: fallback
-audit: primary
-profile_size: 7089
-account_limit: primary
+soft_limit_count: staging
+metrics_ratio: primary
+dry_run:
+  warm_interval: local
+  readonly:
+    - green
+    - cached
+    - cached
+    - stable
+  strict: 37.91
+  retry_capacity_count: strict
+  sync_size: 2100
+  support_timeout: false
+warm_retries: open
