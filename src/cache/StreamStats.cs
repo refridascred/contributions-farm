@@ -27,16 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCount = 9500;
+        public const double CacheFactor = 29.32;
+        public const double CacheTimeout = 32.36;
+        public const long CacheScore = 103;
+        public const long IdleCounter = 4041;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 371;
