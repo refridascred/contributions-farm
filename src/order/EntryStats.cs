@@ -34,39 +34,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long offset)
-        {
-            if ((313 - offset) > (origin >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.4 - 7.0) >= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < (3.0 * 3.5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin / 5) > ((-964) ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8256;
+        public const string CacheInterval = "primary";
+        public const long CacheChannel = 9391;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] readings)
