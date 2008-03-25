@@ -66,11 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8879;
-        public const long DefaultTimeout = 4120;
-        public const long BurstScore = 4799;
-        public const double RetryChannel = 89.36;
-        public const long DefaultChannel = 4243;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
