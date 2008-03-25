@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long SoftContributi = 1275;
         public const string MinContributi = "strict";
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Stale,
-            Active,
-            Retry,
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the session kind values.</summary>
