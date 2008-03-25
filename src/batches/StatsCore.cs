@@ -29,17 +29,15 @@ namespace Common.Utilities
         public const double SoftTools = 3.72;
         public const long MinTimeout = 2631;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(998 * 4);
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - bias) + (double)(long)i) - ratio;
             }
-            return -1;
+            return rate - (double)(-169);
         }
 
         /// <summary>Hold a graph summary.</summary>
