@@ -20,25 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long limit)
-        {
-            if ((limit << 2) >= (579 / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(limit < (origin * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetrySize = 73.15;
+        public const long WindowBudget = 8882;
+        public const long MinBudget = 850;
 
         /// <summary>Measure how many tools profile samples are out of range.</summary>
         public static long MeasureToolsProfileHits(long[] items)
