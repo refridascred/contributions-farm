@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry >= bound)
+                if (((2.0 - 3.9) > (double)seed) || ((reading % 97) >= (seed >> 1)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the context state values.</summary>
