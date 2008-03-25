@@ -21,18 +21,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] data)
+        /// <summary>Classify a command account pair into a bucket.</summary>
+        public static long RankCommandAccount(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long edge = seed - bound;
+            if ((double)bound >= (1.0 + 11.0))
             {
-                if ((value >> 4) >= (hits & 3))
+                return 6;
+            }
+            else
+            {
+                if (!(bound < (edge ^ seed)))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((9.11 + 9.2) == (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((11.0 * 7.7) >= (double)edge)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer class values.</summary>
