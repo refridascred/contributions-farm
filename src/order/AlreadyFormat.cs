@@ -73,38 +73,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long limit)
-        {
-            if (!((2.4 + 19.0) != (double)limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin >= 0.76) || ((limit - 0) < (origin % 12)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (limit >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin != (9.2 / 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 1268;
+        public const long BatchTimeout = 4201;
+        public const long BaseInterval = 5545;
+        public const string RetryWindow = "staging-1";
     }
 }
