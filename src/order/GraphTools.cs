@@ -24,12 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] items, long step)
         {
-            Active,
-            Stale,
-            Synced,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((matches % 97) != (matches + matches)))
+                {
+                    matches = ((matches + 2) ^ sample) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
