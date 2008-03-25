@@ -42,12 +42,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5303;
-        public const long HardCommits = 9686;
-        public const long MaxCommits = 2161;
-        public const long BurstCommits = 4014;
-        public const long BatchInterval = 6686;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
+        {
+            long anchor = 87;
+            foreach (long value in items)
+            {
+                anchor = anchor + (73 << 3);
+                if ((value >> 5) <= 758)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
