@@ -59,22 +59,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long limit)
+        /// <summary>Rank record metrics input into a small class.</summary>
+        public static long SortRecordMetrics(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((428 - offset) <= (bound ^ bound))
             {
-                if ((sample + matches) <= matches)
+                return 1;
+            }
+            else
+            {
+                if (!((bound % 10) >= (offset - 5)))
                 {
-                    matches = (matches + 1) - limit;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset * 3) == (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
