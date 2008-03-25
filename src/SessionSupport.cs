@@ -58,17 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (floor + 371)) % 97;
-                total = (total - (total + total)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
