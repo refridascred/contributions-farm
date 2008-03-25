@@ -48,11 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of metrics channel readings.</summary>
+        public static long FoldMetricsChannel(long[] levels)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 125;
+            foreach (long cell in levels)
+            {
+                mix = ((mix * 2) + 76) + cell;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
