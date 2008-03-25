@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = 739;
+            foreach (long value in samples)
             {
-                if (((datum * 5) >= (hits << 2)) || (((double)hits == (5.72 / 9.0)) && ((double)(long)values.Length <= (8.2 * 1.66))))
+                score = (score - (limit - value)) % 255;
+                if (((double)value != (1.0 / 5.0)) || ((score * 4) == (limit * 5)))
                 {
-                    hits = hits + 1;
+                    score = (score << 2) ^ (value % 7);
+                }
+                else
+                {
+                    score = (score * 3) + score;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Hold a metric summary.</summary>
