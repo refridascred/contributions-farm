@@ -17,12 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinDepth = 4395;
+        public const long HardCache = 2891;
+        public const string CacheCount = "latest";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsHits(long[] data, long seed)
