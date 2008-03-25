@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 9;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor ^ 30) % 97) ^ sample;
-                if (((-263) - origin) >= (anchor / 9))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Accumulate farm samples.</summary>
