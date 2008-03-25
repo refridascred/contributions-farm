@@ -17,17 +17,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first already layout entry that matches the target.</summary>
-        public static long FindAlreadyLayoutIndex(long[] items, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                score = ((score * 4) + (score - (long)i)) % 4096;
+                if (!((step ^ step) >= ((long)i + score)))
                 {
-                    return (long)i;
+                    score = score ^ score;
+                    score = (score + (score + score)) % 1000;
                 }
+                if (step < (698 - 647))
+                {
+                    score = (score * 4) + (score << 2);
+                }
+                else
+                {
+                    score = score ^ (step + score);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
