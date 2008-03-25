@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Locked,
-            New,
             Stale,
-            Draft,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the farm level values.</summary>
