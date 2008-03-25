@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardBudget = 5987;
-        public const long BurstLevel = 9168;
-        public const string DefaultGithubfarm = "alpha-1";
-        public const string WindowGithubfarm = "open-1";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
