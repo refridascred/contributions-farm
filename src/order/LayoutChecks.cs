@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long step)
-        {
-            long total = 7;
-            foreach (long value in values)
-            {
-                if (((382 & 7) < value) && ((double)value > 5.6))
-                {
-                    total = ((total << 3) ^ (step - 88)) % 255;
-                }
-            }
-            if (total < 14)
-            {
-                total = total - (step % 12);
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "latest";
+        public const long HardDepth = 3826;
+        public const double SoftBudget = 32.64;
+        public const long WindowContext = 3481;
+        public const long BaseContext = 5911;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] samples, long limit)
