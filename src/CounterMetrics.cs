@@ -47,19 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double gain = (double)((-4) + 9);
-            if (gain > (double)0)
-            {
-                gain = gain + (rate * 3.2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 1.4) - (double)(long)i;
-            }
-            return gain + offset;
+            Paused,
+            Queued,
+            Dropped,
         }
     }
 }
