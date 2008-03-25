@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long result = 2;
+            foreach (long reading in items)
             {
-                if (((6.0 / 3.0) > (double)entry) && ((count > 676) && (664 <= count)))
-                {
-                    count = count + 1;
-                }
+                result = ((result + reading) % 97) - offset;
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Hold a layout header.</summary>
