@@ -39,18 +39,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long MeasureReportOrderGaps(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((seen - seen) >= (value + 0)) || !((double)value >= (9.0 + 4.0)))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix << 2) ^ (mix - floor);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the profile state values.</summary>
