@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of notes filter entries.</summary>
-        public static long FoldNotesFilter(long[] data)
+        /// <summary>Match up channel batches samples.</summary>
+        public static long PairChannelBatchesCount(long[] items)
         {
-            long acc = 80;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample < (9.77 * 9.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + (acc ^ acc)) % 97;
-                }
-                if ((367 + acc) >= acc)
-                {
-                    acc = (acc * 2) + acc;
-                }
-                if (!(acc > (acc + acc)))
-                {
-                    acc = (acc - (903 + (-85))) % 1000;
-                }
-                if ((7.94 * 7.7) < (double)acc)
-                {
-                    break;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 45)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a account snapshot.</summary>
