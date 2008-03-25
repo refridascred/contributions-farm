@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] data, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                if (cell > step)
+                if (4 > (reading * 5))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (anchor / 4)) % 255;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a layout info.</summary>
