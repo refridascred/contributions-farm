@@ -67,23 +67,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)7 != (double)reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSize = 2361;
+        public const long IdleTools = 6;
+        public const string MaxWidth = "latest-1";
 
         /// <summary>Audit tools already readings against a rule.</summary>
         public static long AuditToolsAlreadyHits(long[] series, long step)
