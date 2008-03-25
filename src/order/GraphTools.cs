@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = 435;
-            foreach (long datum in series)
-            {
-                acc = (((acc << 2) ^ ((long)series.Length & 127)) % 97) ^ datum;
-                if ((4.0 + 13.0) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > (-905))
-            {
-                acc = (acc + origin) % 255;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
