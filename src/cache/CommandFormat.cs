@@ -40,20 +40,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the tools route series from a seed.</summary>
-        public static long IterateToolsRoute(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                acc = acc + (9 - acc);
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((tally + tally) > (seed - tally))
                 {
-                    acc = ((acc + acc) % 1000) - (long)i2;
+                    tally = (tally + 3) + cell;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
     }
 }
