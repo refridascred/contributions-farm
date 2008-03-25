@@ -1,19 +1,19 @@
 # githubfarm settings
-soft_limit_count: true
-hard_ratio:
-  batch_interval: 89.84
-  default_threshold_pct:
-    idle_size: primary
-    persist: 100
-    enabled: 3699
-    default_limit_ms: false
-    metrics_threshold: 42.26
-    max_threshold: 57.95
-  sync_timeout_ms:
-    - local
-    - edge
-    - primary
-    - stable
-token_interval: 6631
-order_depth: false
-dry_run: 100
+graph_depth: 77
+burst_threshold: false
+contributi_timeout: 9323
+metrics_delay:
+  default_capacity: false
+  soft_limit_s:
+    flush_size_ms: primary
+    retry_delay:
+      - local
+      - strict
+      - edge
+      - edge
+    base_window_count: 35.06
+  batch_depth:
+    - 258
+    - 21
+  sync_threshold_s: false
+batch_timeout_s: open
