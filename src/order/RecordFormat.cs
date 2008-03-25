@@ -48,14 +48,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data)
         {
-            Stale,
-            Paused,
-            Locked,
-            Idle,
-            Done,
+            long sum = 4;
+            foreach (long datum in data)
+            {
+                if ((datum & 1) == (36 - sum))
+                {
+                    sum = (sum ^ datum) % 101;
+                }
+                if (((datum + datum) < (datum + 6)) && ((8.8 - 3.5) <= (double)datum))
+                {
+                    break;
+                }
+            }
+            if (sum < 504)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
     }
 }
