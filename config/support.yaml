@@ -1,15 +1,14 @@
 # support settings
-warm_threshold: 3387
-githubfarm_timeout:
-  poll_threshold_ms: 221
-  default_capacity:
+enabled: 500
+hard_delay_s: 17.58
+compress:
+  burst_ratio_ms: staging
+  githubfarm_limit: 56
+  min_ttl_ms:
+    - staging
+    - strict
     - primary
-    - blue
-    - green
-    - primary
-  retry_interval_count:
-    - 94
-    - 238
-  burst_limit: eu-west
-strict: 1024
-batch_size_s: 31.12
+  hard_limit: 4775
+  hard_size_pct: 39
+  commits_window: 250
+audit: latest
