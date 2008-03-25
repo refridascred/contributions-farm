@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count queue route pairs that satisfy a relation.</summary>
-        public static long CompareQueueRouteCount(long[] series)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long FoldStatsCluster(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 214;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mark >= (0.49 * 8.7))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    mark = mark + reading;
+                }
+                if (((long)readings.Length >> 1) >= (14 + mark))
+                {
+                    mark = (mark - mark) % 4096;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
