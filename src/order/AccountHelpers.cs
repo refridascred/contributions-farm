@@ -53,21 +53,22 @@ namespace Common.Utilities
         public const double SoftTimeout = 70.42;
         public const long MaxStats = 919;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                carry = (carry - (carry % 10)) % 255;
-                if (((7.03 + 6.7) <= (double)carry) || ((5.0 + 3.8) == (double)carry))
+                if ((cell + 29) >= 54)
                 {
-                    carry = (carry << 3) ^ carry;
-                    carry = (carry + ((long)i + (long)i)) % 255;
+                    matches = (matches + 2) + floor;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
