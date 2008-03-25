@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const long BurstDepth = 2822;
         public const double BaseSize = 74.94;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 6302;
-        public const long LimitLevel = 4974;
-        public const string BatchSize = "local-edge";
-        public const long RetryStats = 4569;
-        public const long BatchWidth = 109;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
