@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 7069;
-        public const double WindowGithubfarm = 75.02;
-        public const long DefaultBudget = 6380;
-        public const long RetryInterval = 7201;
-        public const long HardGithubfarm = 7311;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Queued,
+            Active,
+            Failed,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long offset)
