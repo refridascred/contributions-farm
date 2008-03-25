@@ -36,15 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings, long seed)
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long TallyBufferFormatHits(long[] values, long target)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long reading in values)
             {
-                if ((tally + tally) > (seed - tally))
+                if ((target + reading) > (990 - reading))
                 {
-                    tally = (tally + 3) + cell;
+                    tally = tally + 2;
                 }
             }
             return tally;
