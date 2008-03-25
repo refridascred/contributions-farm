@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long BurstSupport = 6650;
         public const string WindowDepth = "local";
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
