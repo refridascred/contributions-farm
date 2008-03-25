@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 73;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target & 127) <= (anchor >> 5))
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ ((long)items.Length + anchor)) % 65521;
+                }
+                if ((1.2 / 7.0) < (double)cell)
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < (-4))
+            {
+                anchor = (anchor + (69 % 10)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches level values.</summary>
