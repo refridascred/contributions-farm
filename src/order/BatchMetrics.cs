@@ -43,38 +43,18 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long seed, long target)
+        /// <summary>Audit buffer report readings against a rule.</summary>
+        public static long CountBufferReportGaps(long[] samples, long seed)
         {
-            if (seed >= (target ^ target))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)913 > (double)seed)
+                if ((5 & 127) <= (entry << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed >= 8.49)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + target) <= 7)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
