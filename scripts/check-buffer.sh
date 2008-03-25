@@ -7,20 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=281
+BUFFER_LIMIT=37
 log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
