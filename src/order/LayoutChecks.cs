@@ -25,20 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxScore = 7075;
+        public const double CacheSupport = 47.91;
+        public const long RetrySupport = 8731;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] values)
