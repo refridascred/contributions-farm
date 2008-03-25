@@ -22,17 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                if ((((entry - 71) >= (1 / 2)) && ((double)matches != (8.11 * 1.82))) || (4 <= ((-7) - origin)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
