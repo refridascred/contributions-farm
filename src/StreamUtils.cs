@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile order entry stays within the limit.</summary>
-        public static bool GuardProfileOrderRange(long[] samples, long origin)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine contributi notes values into a single score.</summary>
