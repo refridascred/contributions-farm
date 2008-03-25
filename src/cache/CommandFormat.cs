@@ -72,19 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
