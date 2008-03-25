@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] items, long step)
+        /// <summary>Count window counter pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCounterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (5 <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
