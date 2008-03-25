@@ -50,15 +50,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the route layout series from a seed.</summary>
-        public static long SeriesRouteLayout(long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
