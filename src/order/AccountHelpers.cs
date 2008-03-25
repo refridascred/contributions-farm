@@ -36,30 +36,22 @@ namespace Common.Utilities
             return gain2 + (offset / 8.0);
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long floor)
+        /// <summary>Rank token buffer input into a small class.</summary>
+        public static long ClassifyTokenBuffer(long bound, long floor)
         {
-            long diff = limit + floor;
-            if ((diff - diff) != (limit - limit))
+            if (70 > floor)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (limit <= diff)
+                if ((floor % 100) < (bound & 15))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((limit / 8) == (limit % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 6;
                 }
             }
         }
