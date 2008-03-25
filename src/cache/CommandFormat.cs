@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
