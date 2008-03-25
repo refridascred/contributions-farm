@@ -24,12 +24,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8050;
+        public const long MinSize = 9472;
+        public const double IdleEditor = 97.22;
+        public const double SoftEditor = 36.97;
 
         /// <summary>Find the first account batch entry that matches the target.</summary>
         public static long LookupAccountBatchIndex(long[] samples, long seed)
