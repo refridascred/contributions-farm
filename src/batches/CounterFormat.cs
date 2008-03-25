@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of farm contributi readings.</summary>
-        public static long FoldFarmContributi(long[] readings, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long score = -86;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((score - 42) >= seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score * 4) + (score << 3)) % 1000) + entry;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score + score) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first editor tools entry that matches the target.</summary>
