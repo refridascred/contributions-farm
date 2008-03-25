@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Pending,
-            Locked,
-            New,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Rank token command input into a small class.</summary>
