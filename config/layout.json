@@ -1,5 +1,7 @@
 {
-  "idle_timeout_ms": 820,
-  "sync_size_count": 60,
-  "sync_delay": "local"
+  "cache_threshold_count": 60,
+  "readonly": 97.4,
+  "hard_window_s": "staging",
+  "retry_depth_s": false,
+  "burst_threshold": "open"
 }
