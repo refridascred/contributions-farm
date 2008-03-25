@@ -31,11 +31,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
