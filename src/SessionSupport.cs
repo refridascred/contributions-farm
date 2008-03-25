@@ -21,18 +21,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (floor >= (floor + floor))
+                if ((entry * 3) >= 67)
                 {
-                    seen = (seen + 2) ^ item;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
