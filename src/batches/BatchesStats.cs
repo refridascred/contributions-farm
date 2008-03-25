@@ -58,12 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "legacy-edge";
+        public const string WindowTimeout = "primary-edge";
+        public const long IdleStats = 9707;
+        public const double CacheInterval = 39.69;
+        public const long CacheBudget = 5682;
     }
 }
