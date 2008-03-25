@@ -20,32 +20,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long target, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            long delta = target ^ seed;
-            if ((seed * 5) < (delta + delta))
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((869 >> 5) == (seed + seed))
+                if ((origin + sum) > (sum + sum))
                 {
-                    return 1;
+                    sum = (sum + (origin & 3)) % 97;
+                    sum = sum + (7 - 91);
                 }
-                else
-                {
-                    if (target >= (delta - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
