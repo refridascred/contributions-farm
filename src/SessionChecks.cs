@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = 75;
-            foreach (long reading in data)
-            {
-                if ((carry ^ reading) < 8)
-                {
-                    carry = ((carry - 600) % 101) - offset;
-                }
-                else
-                {
-                    carry = ((carry * 5) + 13) % 65521;
-                }
-            }
-            return carry;
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
