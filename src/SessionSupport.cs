@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleSpan = "staging-edge";
-        public const long IdleBudget = 7776;
-        public const string BatchBudget = "fallback-edge";
-        public const long BurstToken = 9423;
-        public const long MaxTimeout = 5662;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long offset)
+        {
+            if ((2.8 + 5.0) > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 7) > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + bound) > (offset >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset < (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
