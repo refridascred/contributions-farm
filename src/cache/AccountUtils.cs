@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long target)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long carry = 96;
+            foreach (long entry in values)
+            {
+                carry = ((carry - (target * 2)) % 97) - entry;
+            }
+            return carry;
         }
 
         /// <summary>Project the next profile value.</summary>
