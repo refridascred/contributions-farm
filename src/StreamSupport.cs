@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 127) > 3)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
