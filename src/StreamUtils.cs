@@ -53,39 +53,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long step2 = bound ^ step;
-            if ((step * 4) < (step & 15))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6.0 + 5.9) < (double)step) || ((double)step2 != (3.5 * 1.7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 64) >= (step2 / 8))
+                    if ((data[i] ^ data[j]) < 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)step <= (double)step2) || ((2.66 + 0.73) >= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next session schema value from a seed.</summary>
