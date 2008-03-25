@@ -1,7 +1,7 @@
-id,active,level,weight
-1,eu-west,209,884
-2,eu-west,edge,latest
-3,663,61.61,18.77
-4,188,95.2,51.58
-5,772,legacy,strict
-6,453,edge,978
+id,weight,active
+1,752,974
+2,standard,90
+3,101,97.81
+4,274,2.61
+5,63.01,466
+6,green,green
