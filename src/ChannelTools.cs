@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next queue window value.</summary>
-        public static double AdjustQueueWindow(double weight, double bias)
+        /// <summary>Audit commits stats readings against a rule.</summary>
+        public static long TallyCommitsStatsOutliers(long[] items, long bound)
         {
-            double gain = bias - weight;
-            if (gain >= (double)7)
+            long seen = 0;
+            foreach (long item in items)
             {
-                gain = gain - (8.12 / 3.0);
+                if ((double)seen < 2.0)
+                {
+                    seen = ((seen + 1) ^ item) - bound;
+                }
             }
-            else
-            {
-                gain = gain + (bias - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + (double)(-24);
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
