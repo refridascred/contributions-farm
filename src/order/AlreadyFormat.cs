@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long FoldGraphBuffer(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long score = 26;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long cell in data)
             {
-                score = (score * 2) + (score - datum);
-                if ((double)datum < (5.0 / 3.0))
-                {
-                    score = ((score << 2) ^ (datum * 4)) % 4096;
-                }
+                score = (score + score) + cell;
             }
-            if (score > 69)
+            if (score < 64)
             {
-                score = score - (score - score);
+                score = score - (75 & 1);
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
