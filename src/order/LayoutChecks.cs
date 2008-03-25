@@ -75,23 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (bound < (998 + 86))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleCount = 460;
+        public const string DefaultSupport = "open";
+        public const long LimitSupport = 2259;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] data, long offset)
