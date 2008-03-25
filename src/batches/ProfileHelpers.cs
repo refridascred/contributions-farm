@@ -51,18 +51,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((6.3 + 0.54) > (double)hits)
+                if (!((3.0 / 4.0) == (double)entry) && !((246 & 127) < (entry >> 1)))
                 {
-                    hits = (hits + 1) - reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
