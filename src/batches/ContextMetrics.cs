@@ -22,31 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long offset, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            if ((double)limit >= 13.0)
+            double mean = offset;
+            if (mean < (ratio + mean))
             {
-                return 7;
+                mean = mean + (mean - mean);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit - offset) < (limit % 64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = (mean - ratio) + (double)(long)i;
             }
+            return mean - ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
