@@ -1,17 +1,13 @@
 {
-  "record_capacity": "stable",
-  "cluster_retries": 1024,
-  "profile_limit": {
-    "already_size": false,
-    "dry_run": 69,
-    "order_window": "green",
-    "cache_threshold_ms": "stable"
+  "soft_limit_pct": true,
+  "readonly": "legacy",
+  "command_capacity": {
+    "default_threshold_pct": false,
+    "batch_window_s": true,
+    "flush_delay_pct": false,
+    "warm_limit_s": 500,
+    "batch_depth_pct": 41.37,
+    "sync_interval_ms": "open"
   },
-  "warm_ratio_count": {
-    "strict": "staging",
-    "cache_limit_s": 500,
-    "batch_threshold_pct": "edge"
-  },
-  "layout_size": true,
-  "hard_interval": 55.89
+  "flush_size": 2225
 }
