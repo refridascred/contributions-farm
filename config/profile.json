@@ -1,17 +1,10 @@
 {
-  "audit": [450, 464, 238, 421],
-  "compress": {
-    "max_depth": "primary",
-    "context_depth": "staging",
-    "persist": 2,
-    "max_ratio_s": "cached"
+  "verbose": ["green", "strict", "standard"],
+  "cache_capacity_count": {
+    "verbose": 66,
+    "metric_interval": "eu-west",
+    "soft_retries_count": 5186
   },
-  "checks_delay": 6575,
-  "context_threshold": {
-    "profile_threshold": 30,
-    "default_size": 7539,
-    "flush_ratio_ms": ["local", "eu-west", "eu-west", "standard"],
-    "burst_ratio_s": 67.74
-  },
-  "payload_interval": false
+  "readonly": 1284,
+  "hard_depth": "eu-west"
 }
