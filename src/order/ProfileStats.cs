@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double mean = (double)752 * 19.0;
-            if (mean > 1.0)
-            {
-                mean = mean + (6.8 - ratio);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + span;
+            New,
+            Paused,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
