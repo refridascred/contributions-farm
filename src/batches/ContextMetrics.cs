@@ -55,15 +55,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double floor)
+        /// <summary>Check that every counter session entry stays within the limit.</summary>
+        public static bool GuardCounterSessionRange(long[] samples, long step)
         {
-            double ratio = gain;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                ratio = (ratio + (floor / 7.0)) + (double)(long)i;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio - gain;
+            return valid;
         }
     }
 }
