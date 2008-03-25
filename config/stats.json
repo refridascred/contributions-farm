@@ -1,6 +1,8 @@
 {
-  "flush_delay": 5.88,
-  "enabled": "cached",
-  "githubfarm_retries": false,
-  "audit": 93
+  "strict": [198, 200, 446],
+  "batch_delay": 87,
+  "idle_interval_pct": ["fallback", "latest", "staging"],
+  "metrics_size": "standard",
+  "flush_timeout_s": "eu-west",
+  "min_timeout_ms": "primary"
 }
