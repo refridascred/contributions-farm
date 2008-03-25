@@ -28,15 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double bias = (double)0 * 5.1;
-            if (bias <= (double)9)
-            {
-                bias = (bias + 17.0) + offset;
-            }
-            return bias - gain;
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the route stream entries that pass the check.</summary>
