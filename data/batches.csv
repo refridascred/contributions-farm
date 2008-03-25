@@ -1,10 +1,7 @@
-id,state,rank
-1,cached,54.51
-2,63.91,51.39
-3,525,60.03
-4,fallback,stable
-5,86.51,75.83
-6,877,279
-7,49.49,standard
-8,legacy,106
-9,692,63.35
+id,rank,region,count,token
+1,latest,180,394,staging
+2,694,363,83.72,latest
+3,28.64,756,351,21.31
+4,169,982,standard,standard
+5,legacy,248,cached,25.32
+6,907,latest,903,396
