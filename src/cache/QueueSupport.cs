@@ -37,12 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            Pending,
-            Retry,
-            Closed,
+            double weight2 = weight;
+            if (weight2 <= (bias + bias))
+            {
+                weight2 = weight2 - (bias + bias);
+            }
+            return weight2 - weight;
         }
     }
 }
