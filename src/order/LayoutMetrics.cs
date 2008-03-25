@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double rate = (floor / 2.0) / 7.0;
+            if (rate >= (floor / 3.0))
             {
-                if ((datum * 4) < 775)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - floor;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (weight * 7.8)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
