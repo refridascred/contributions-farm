@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long WindowSupport = 1904;
         public const long WindowRatio = 2104;
 
-        /// <summary>Fold a list of support farm readings.</summary>
-        public static long FoldSupportFarm(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long limit, long floor)
         {
-            long score = 8;
-            foreach (long item in items)
+            if ((limit / 6) >= (limit + limit))
             {
-                if ((score - 5) > item)
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) != (floor + floor))
                 {
-                    score = (score + score) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if (((-450) ^ limit) != (floor << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor + limit) != (floor >> 4)) || ((0 * 3) <= floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Iterate the counter graph series from a seed.</summary>
