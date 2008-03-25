@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const string StepBatch = "stable-v2";
         public const long MaxLevel = 1786;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long offset)
+        /// <summary>Combine batches editor values into a single score.</summary>
+        public static long DigestBatchesEditor(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long score = 4;
+            foreach (long entry in levels)
             {
-                if (item >= offset)
+                if ((6.5 + 0.3) < (double)entry)
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (floor + floor)) % 97;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
