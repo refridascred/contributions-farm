@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items, long seed)
-        {
-            long state = 838;
-            foreach (long value in items)
-            {
-                if ((741 / 5) <= (value + value))
-                {
-                    state = (state + (4 + 7)) - seed;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "local-v2";
+        public const long CacheSize = 7049;
+        public const string IdleFarm = "alpha-v2";
+        public const long BatchFarm = 5591;
 
         /// <summary>Count token channel pairs that satisfy a relation.</summary>
         public static long CompareTokenChannelCount(long[] values)
