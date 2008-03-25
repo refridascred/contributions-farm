@@ -51,18 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches & 63) < (matches - sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the notes status values.</summary>
