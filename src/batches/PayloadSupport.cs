@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheDepth = "standard";
+        public const string MinWidth = "latest-edge";
+        public const long RetryOrder = 8700;
+        public const long IdleDepth = 2701;
+        public const long BaseScore = 3814;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MinFormat = 7606;
