@@ -34,14 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Grade a channel payload value against two limits.</summary>
+        public static long SortChannelPayload(long bound, long floor)
         {
-            Done,
-            Stale,
-            Closed,
-            Pending,
-            Draft,
+            if ((14.0 - 6.55) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.7 + 4.2) < (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
