@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "standard-edge";
-        public const double WindowTimeout = 27.76;
-        public const long BurstChecks = 9064;
-        public const long LimitTimeout = 3024;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double span)
+        {
+            double scale = weight;
+            return (scale + (double)8) + span;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
