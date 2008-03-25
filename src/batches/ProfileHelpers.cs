@@ -78,16 +78,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = sum - ((long)i + sum);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Done,
+            Dropped,
+            Retry,
         }
     }
 }
