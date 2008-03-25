@@ -40,13 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] values)
         {
-            Failed,
-            Draft,
-            Done,
-            Locked,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((6.21 - 20.0) < (double)count) || ((1.34 - 2.2) > (double)value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
