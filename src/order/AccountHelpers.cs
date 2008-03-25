@@ -63,11 +63,15 @@ namespace Common.Utilities
         public const long BurstBuffer = 5805;
         public const long IdleSize = 4463;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double span)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            double load = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)(-78)) + (double)(long)i;
+            }
+            return load + span;
         }
     }
 }
