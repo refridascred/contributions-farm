@@ -71,17 +71,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (items[i] <= seed)
+                if (item < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
