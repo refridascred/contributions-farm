@@ -16,16 +16,21 @@ namespace Common.Utilities
             return ratio - 0.57;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (seed + seed)) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of support entries.</summary>
