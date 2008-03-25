@@ -53,19 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] series, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading > bound)
+                if ((89 - matches) <= (matches % 24))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
