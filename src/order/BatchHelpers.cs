@@ -21,13 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            Failed,
-            Stale,
-            New,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
