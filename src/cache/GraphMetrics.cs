@@ -27,25 +27,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long ClassifyAlreadyFilter(long seed, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long slot = seed - limit;
-            if (!((limit ^ slot) > seed))
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)seed <= (1.8 - 8.5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Combine batches context values into a single score.</summary>
