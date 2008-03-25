@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long total = 0;
-            foreach (long reading in data)
+            long carry = 1;
+            foreach (long value in data)
             {
-                if ((total <= (reading % 16)) || ((limit + (long)data.Length) > reading))
+                if (!(780 >= (value - value)))
                 {
-                    total = (total + 138) % 101;
-                }
-                else
-                {
-                    total = (total + (limit ^ reading)) % 255;
+                    carry = ((carry << 2) ^ (carry ^ 88)) % 4096;
                 }
             }
-            return total;
+            if (carry < 64)
+            {
+                carry = carry + (carry / 3);
+            }
+            return carry;
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
