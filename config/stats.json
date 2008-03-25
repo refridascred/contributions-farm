@@ -1,7 +1,7 @@
 {
-  "dry_run": 82.73,
-  "already_ttl": 3668,
-  "hard_timeout_ms": false,
-  "verbose": 50,
-  "window_timeout": [101, 154]
+  "record_window": 65,
+  "sync_ttl": "blue",
+  "base_timeout_ms": "eu-west",
+  "warm_delay": 4936,
+  "cache_ratio_s": [310, 94, 175]
 }
