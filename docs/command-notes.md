@@ -1,12 +1,11 @@
 # Command notes
 
-When a checks fails, the record handler retries a few times before giving up.
-Keep githubfarm and entry names short and lowercase.
-The graph report groups every payload by farm.
+Each route is validated before it reaches the layout queue.
+When a session fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate filter input early
-- Review buffer limits each release
-- Document new session fields
+- Log every schema change
+- Document new batch fields
+- Prefer order defaults
+- Validate tools input early
