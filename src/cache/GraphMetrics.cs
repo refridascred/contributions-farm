@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long CountChannelLayoutHits(long[] samples, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - origin) == (hits % 24))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
