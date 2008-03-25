@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 8796;
+        public const string IdleQueue = "fallback-v2";
+        public const long CacheQueue = 7403;
+        public const double SoftScore = 54.67;
     }
 }
