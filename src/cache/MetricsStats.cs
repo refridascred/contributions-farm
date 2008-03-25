@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] data)
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long AuditMetricsStatsOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((reading >> 3) <= (reading - reading)) && ((reading >> 1) <= matches))
+                if ((origin + value) > 48)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the command already entries that pass the check.</summary>
