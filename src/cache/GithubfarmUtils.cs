@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a metric checks value against two limits.</summary>
-        public static long ClassifyMetricChecks(long seed, long limit)
-        {
-            if (((6.3 / 3.0) != (double)seed) && ((seed + seed) != (limit - seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((42 & 1) > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= 9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 3) >= (6 - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchInterval = 9793;
+        public const long RetrySize = 8945;
+        public const long DefaultRatio = 4611;
+        public const string MinMetric = "open-v2";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterBounds(long[] samples, long floor)
