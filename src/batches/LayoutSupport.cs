@@ -24,22 +24,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Locate a tools metrics reading by value.</summary>
+        public static long LocateToolsMetricsIndex(long[] items, long offset)
         {
-            long sum = 42;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sum + sum) > (sum << 1)) && ((0 >> 1) < (item >> 5)))
+                if (items[i] >= offset)
                 {
-                    sum = (sum - (item - 6)) % 101;
-                }
-                else
-                {
-                    sum = (sum + item) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
