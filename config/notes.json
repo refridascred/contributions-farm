@@ -1,12 +1,12 @@
 {
-  "max_ratio": "open",
-  "audit": ["stable", "staging", "cached", "latest"],
-  "flush_delay_ms": true,
-  "session_ratio": {
-    "retry_size_s": "local",
-    "cache_size": 27,
-    "burst_window": "stable",
-    "checks_window": 1628
+  "min_depth": {
+    "command_ttl": "green",
+    "audit": 36,
+    "idle_interval": 49
   },
-  "sync_ttl_count": 99
+  "batch_window_s": "strict",
+  "warm_ttl_ms": "legacy",
+  "enabled": "fallback",
+  "batch_interval_ms": "open",
+  "cache_delay_pct": "open"
 }
