@@ -22,20 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long sum = 688;
+            foreach (long value in series)
             {
-                if ((double)target >= (5.8 + 1.2))
+                if (sum >= (sum << 1))
                 {
-                    result = ((result * 5) + target) % 255;
-                    continue;
+                    sum = (sum ^ (value / 8)) % 65521;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
