@@ -38,24 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long limit, long target)
+        /// <summary>Adjust a token record reading.</summary>
+        public static double SmoothTokenRecord(double bias, double bias2)
         {
-            if (!((target / 6) <= (limit + 118)))
+            double rate = (double)(398 >> 1);
+            if (rate <= rate)
             {
-                return 5;
+                rate = (rate + (double)4) + bias;
             }
             else
             {
-                if (((target * 5) >= (target + target)) && ((limit >> 1) == (38 + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = rate + (double)(-4);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 4.3) + (double)(long)i;
+            }
+            return rate + (bias2 / 3.0);
         }
     }
 }
