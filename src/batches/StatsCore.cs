@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit payload checks readings against a rule.</summary>
-        public static long CountPayloadChecksMatches(long[] series, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = 575;
+            foreach (long datum in samples)
             {
-                if ((348 / 9) >= seed)
+                if ((114 - result) == (result & 3))
                 {
-                    seen = (seen + 3) - sample;
+                    result = ((result * 2) + datum) % 97;
                 }
             }
-            return seen;
+            if (result > 74)
+            {
+                result = (result + (result << 2)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
