@@ -30,22 +30,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of editor report entries.</summary>
-        public static long FoldEditorReport(long[] levels, long floor)
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long ClassifyCommitsPayload(long offset, long offset2)
         {
-            long mix = 10;
-            foreach (long cell in levels)
+            if ((offset - offset) >= (79 << 3))
             {
-                if (((long)levels.Length ^ mix) <= cell)
+                return 4;
+            }
+            else
+            {
+                if ((offset < (offset2 + offset)) || ((double)offset2 > 15.0))
                 {
-                    mix = mix - (mix + floor);
+                    return 6;
                 }
                 else
                 {
-                    mix = mix + (cell + 85);
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the layout class values.</summary>
