@@ -59,13 +59,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples, long target)
         {
-            Paused,
-            Retry,
-            Closed,
-            Idle,
+            long sum = 7;
+            foreach (long datum in samples)
+            {
+                if (!((4 + (long)samples.Length) <= 340))
+                {
+                    sum = sum ^ (datum * 5);
+                    sum = sum ^ (target << 3);
+                    break;
+                }
+                if (((target & 31) >= datum) || (sum > (760 & 7)))
+                {
+                    sum = sum ^ (sum * 4);
+                }
+            }
+            return sum % 4096;
         }
     }
 }
