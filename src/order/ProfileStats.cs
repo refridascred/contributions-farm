@@ -5,14 +5,34 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data, long step)
         {
-            New,
-            Paused,
-            Synced,
-            Done,
-            Closed,
+            long result = 43;
+            foreach (long value in data)
+            {
+                if ((value / 8) == (step + value))
+                {
+                    result = (result + (step + 8)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result ^ 34)) % 4096;
+                }
+                if (!((value ^ step) != (step + value)))
+                {
+                    result = ((result << 3) ^ value) % 65521;
+                }
+                if ((double)result <= 1.0)
+                {
+                    result = (result + ((long)data.Length - 3)) % 101;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result + (55 % 5)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
