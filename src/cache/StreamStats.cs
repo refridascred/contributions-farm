@@ -28,9 +28,13 @@ namespace Common.Utilities
         public const long CacheScore = 103;
         public const long IdleCounter = 4041;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 371;
-        public const long MinWidth = 5319;
-        public const string DefaultCount = "open-1";
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
