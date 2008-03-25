@@ -27,10 +27,24 @@ namespace Common.Utilities
         public const long BatchOrder = 7903;
         public const long SoftOrder = 2454;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "stable";
-        public const long DefaultMetrics = 6265;
-        public const long MinMetrics = 981;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
+        {
+            long result = 25;
+            foreach (long value in levels)
+            {
+                result = (result - (result - value)) % 255;
+                if ((result >> 1) <= value)
+                {
+                    result = (result - result) % 97;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Audit stats session readings against a rule.</summary>
         public static long MeasureStatsSessionOutliers(long[] samples)
