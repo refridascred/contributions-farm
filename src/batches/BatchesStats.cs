@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next editor metrics value from a seed.</summary>
-        public static long RollEditorMetrics(long target)
+        /// <summary>Fold a list of graph filter readings.</summary>
+        public static long CombineGraphFilter(long[] levels, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long carry = 4;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((2.7 * 8.0) == (double)reading)
                 {
-                    carry = ((carry - ((long)i + target)) % 101) ^ (long)i2;
+                    carry = carry - reading;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+            }
+            if (carry > 41)
+            {
+                carry = (carry * 2) + (carry - bound);
             }
             return carry;
         }
