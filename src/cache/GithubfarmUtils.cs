@@ -23,11 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long target)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum ^ (target % 2)) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
