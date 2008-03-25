@@ -1,14 +1,15 @@
 # Command notes
 
-Each layout is validated before it reaches the cache queue.
-Each support is validated before it reaches the support queue.
-The entry module keeps channel values in sync with the stats cache.
+Use tools settings to tune how often batches data is refreshed.
+A contributi that stays idle for too long is moved to the record list.
 
-Keep metrics and payload names short and lowercase.
-The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep tools and schema names short and lowercase.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Document new profile fields
-- Keep filter values small
+- Validate token input early
+- Prefer schema defaults
+- Review commits limits each release
+- Keep contributi values small
