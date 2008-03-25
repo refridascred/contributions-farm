@@ -1,11 +1,14 @@
 # Command notes
 
-Each route is validated before it reaches the layout queue.
-When a session fails, the farm handler retries a few times before giving up.
+Each layout is validated before it reaches the cache queue.
+Each support is validated before it reaches the support queue.
+The entry module keeps channel values in sync with the stats cache.
+
+Keep metrics and payload names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every schema change
-- Document new batch fields
-- Prefer order defaults
-- Validate tools input early
+- Prefer githubfarm defaults
+- Document new profile fields
+- Keep filter values small
