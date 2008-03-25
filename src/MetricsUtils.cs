@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (((sum << 2) ^ ((long)i / 7)) % 101) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
