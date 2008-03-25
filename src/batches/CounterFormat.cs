@@ -46,12 +46,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                long prev = origin;
+                if ((6.0 * 4.0) != (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ prev;
+                }
+                prev = prev ^ (mark / 7);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
