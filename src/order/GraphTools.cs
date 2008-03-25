@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = 667;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) <= (3 % 100))
-                {
-                    total = (total + (total & 31)) % 101;
-                }
-            }
-            return total;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
