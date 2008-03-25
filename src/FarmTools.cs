@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((origin + origin) < (origin + matches))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
