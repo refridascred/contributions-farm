@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowBudget = 9623;
-        public const double WindowRatio = 39.97;
-        public const long SoftCount = 5792;
-        public const long SoftRatio = 1008;
-        public const long DefaultSize = 9379;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftFactor = 5285;
