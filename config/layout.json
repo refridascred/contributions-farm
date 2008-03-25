@@ -1,5 +1,6 @@
 {
-  "enabled": 66,
-  "flush_interval_pct": 6462,
-  "base_ratio": "eu-west"
+  "warm_limit": 34.24,
+  "min_interval": 1024,
+  "notes_size": [160, 281],
+  "readonly": "edge"
 }
