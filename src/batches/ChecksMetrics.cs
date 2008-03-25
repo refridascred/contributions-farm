@@ -79,18 +79,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                if ((21 - item) == (state + 69))
-                {
-                    state = state - limit;
-                }
-            }
-            return state % 4096;
+            Dropped,
+            Idle,
+            Pending,
+            Ready,
         }
     }
 }
