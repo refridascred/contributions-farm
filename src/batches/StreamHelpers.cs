@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long step)
+        /// <summary>Find the first record metrics entry that matches the target.</summary>
+        public static long LookupRecordMetricsIndex(long[] items, long limit)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry - 347) == (score / 8)))
+                if (items[i] >= limit)
                 {
-                    score = (score - step) % 97;
+                    return (long)i;
                 }
             }
-            if (score < (-1))
-            {
-                score = ((score << 2) ^ (score << 3)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the filter kind values.</summary>
