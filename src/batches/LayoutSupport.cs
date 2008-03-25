@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a stream filter value against two limits.</summary>
-        public static long SortStreamFilter(long bound, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long step = bound ^ offset;
-            if ((1.2 / 2.0) == (double)bound)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((574 + offset) != (bound / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset * 2) < (bound ^ bound)) || (step <= (step - step)))
+                    if ((values[i] - values[j]) > 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.14 * 8.85) >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
