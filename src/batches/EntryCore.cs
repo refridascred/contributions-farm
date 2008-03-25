@@ -61,11 +61,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            double drift = 5.69;
+            if (drift > (double)91)
+            {
+                drift = drift - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Locate a token reading by value.</summary>
