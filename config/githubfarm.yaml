@@ -1,21 +1,8 @@
 # githubfarm settings
-compress:
-  - 456
-  - 156
-  - 171
-persist: 66
-sync_size_count: 500
-retry_capacity_ms:
-  - 434
-  - 324
-sync_ttl_ms: 4
-hard_delay_count:
-  layout_timeout: local
-  sync_ratio: 90
-  dry_run: strict
-  batch_delay_ms: fallback
-  hard_delay_ms:
-    - local
-    - local
-    - edge
-    - green
+commits_size: 2536
+base_ttl:
+  - 69
+  - 274
+  - 420
+default_window_ms: eu-west
+readonly: 64.61
