@@ -1,6 +1,8 @@
 {
-  "persist": "green",
-  "payload_depth": ["strict", "staging", "staging"],
-  "verbose": 1333,
-  "hard_delay_pct": 10
+  "payload_retries": 76.65,
+  "order_ratio": 500,
+  "verbose": "green",
+  "base_ttl_count": "fallback",
+  "min_ttl_pct": 28,
+  "soft_ttl_pct": 500
 }
