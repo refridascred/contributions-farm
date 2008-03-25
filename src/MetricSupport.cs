@@ -13,19 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
