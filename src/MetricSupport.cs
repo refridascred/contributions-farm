@@ -33,23 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long offset)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (entry << 3);
-                if (!((entry - entry) != (entry - (-6))))
+                if (values[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < (-8))
-            {
-                mix = (mix - (target - mix)) % 101;
-            }
-            return mix;
+            return -1;
         }
     }
 }
