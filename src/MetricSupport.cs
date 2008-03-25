@@ -13,38 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank token command input into a small class.</summary>
-        public static long RankTokenCommand(long step, long step2)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long floor)
         {
-            if ((step & 15) == (step / 3))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((66 + 2) > (step << 2))
+                if (entry != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 - step2) <= step2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step >= (step2 % 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up commits samples.</summary>
