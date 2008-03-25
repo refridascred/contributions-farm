@@ -1,8 +1,5 @@
 {
-  "readonly": 3091,
-  "soft_threshold_s": 6990,
-  "stats_window": 60,
-  "soft_size": 4617,
-  "default_capacity_pct": [251, 184, 439, 169],
-  "order_threshold": true
+  "poll_capacity": "stable",
+  "default_window_count": false,
+  "burst_threshold_count": 2907
 }
