@@ -28,17 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long seed)
+        /// <summary>Check that every tools farm entry stays within the limit.</summary>
+        public static bool CheckToolsFarmLimits(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if (entry > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
