@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a graph stats reading.</summary>
-        public static double ScaleGraphStats(double ratio, double bias)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double mean = bias;
-            if (mean <= ratio)
-            {
-                mean = mean + (mean - bias);
-            }
-            else
-            {
-                mean = mean + (18.0 + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)894) + (double)(long)i;
-            }
-            return mean - (ratio * 9.0);
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a token options.</summary>
