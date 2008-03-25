@@ -1,8 +1,23 @@
 {
-  "format_retries": "edge",
-  "min_size_ms": 250,
-  "cache_capacity_s": 7951,
-  "order_depth": 0.21,
-  "soft_retries": "open",
-  "verbose": 7
+  "cache_depth": "fallback",
+  "flush_delay": ["stable", "strict", "local", "cached"],
+  "counter_timeout": {
+    "payload_delay": [372, 425],
+    "persist": "fallback",
+    "strict": "fallback",
+    "commits_ratio": {
+      "graph_limit": 1337,
+      "flush_ratio_ms": [197, 177],
+      "poll_capacity": 100
+    },
+    "tools_ratio": 81,
+    "warm_retries": {
+      "batch_limit_s": [9, 482, 283, 307],
+      "burst_window": [273, 445, 27, 218],
+      "payload_threshold": 97.62,
+      "hard_ratio": "fallback",
+      "retry_window_count": 30,
+      "warm_limit": "latest"
+    }
+  }
 }
