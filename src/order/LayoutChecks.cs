@@ -64,23 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 37;
-            foreach (long value in samples)
-            {
-                acc = ((acc << 3) ^ (6 & 1)) % 65521;
-                if (acc <= value)
-                {
-                    acc = acc - (value / 6);
-                }
-                if (value <= (663 + value))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
