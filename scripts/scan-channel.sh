@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=428
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-standard}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
@@ -24,3 +21,7 @@ while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in blue staging green primary; do
+    log "checking ${item}"
+done
