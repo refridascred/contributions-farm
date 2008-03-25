@@ -30,12 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Failed,
-            Draft,
-            Idle,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
