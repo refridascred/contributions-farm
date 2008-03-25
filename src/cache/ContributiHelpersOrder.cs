@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset > (value >> 5)) || ((311 + value) != (83 + value)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
