@@ -37,18 +37,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route stream entries that pass the check.</summary>
-        public static long AuditRouteStreamGaps(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 31) >= sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
