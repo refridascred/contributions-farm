@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long bound)
         {
-            double weight = 1.8;
-            if (weight < 6.0)
+            if (((bound - bound) > (bound * 5)) || ((8.9 - 5.2) != (double)bound))
             {
-                weight = weight + (weight + scale);
+                return 5;
             }
-            return weight - (bias + bias);
+            else
+            {
+                if (0.44 >= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
