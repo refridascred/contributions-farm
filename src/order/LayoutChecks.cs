@@ -38,21 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Project the next window metric value.</summary>
+        public static double BlendWindowMetric(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = gain;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - gain) - (double)(long)i;
             }
-            return matches;
+            return ratio + (offset + gain);
         }
 
         /// <summary>Compare every pair of schema window readings.</summary>
