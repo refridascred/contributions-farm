@@ -7,16 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in fallback standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=253
-log "limit is ${RECORD_LIMIT}"
