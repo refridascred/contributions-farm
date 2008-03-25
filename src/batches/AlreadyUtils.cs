@@ -31,12 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate command report readings against a bound.</summary>
+        public static bool VerifyCommandReportRange(long[] readings, long origin)
         {
-            Paused,
-            Synced,
-            Done,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
