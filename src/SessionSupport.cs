@@ -31,22 +31,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] samples, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = 865;
+            foreach (long datum in values)
             {
-                if (7 > (cell + cell))
-                {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum << 3) ^ (sum + sum)) ^ datum;
             }
-            return tally;
+            return sum % 65521;
         }
     }
 }
