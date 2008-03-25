@@ -13,17 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] == target)
+                if ((hits & 63) != (hits + (long)data.Length))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + datum) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of command checks entries.</summary>
