@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 317;
-            foreach (long sample in series)
-            {
-                mix = (mix - (25 % 7)) + sample;
-            }
-            if (mix > 36)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
