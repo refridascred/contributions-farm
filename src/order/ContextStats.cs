@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] data, long offset)
+        /// <summary>Grade a order queue value against two limits.</summary>
+        public static long GradeOrderQueue(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = target - seed;
+            if ((4.96 * 8.07) <= (double)target)
             {
-                if (data[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 2) == (diff % 100))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
