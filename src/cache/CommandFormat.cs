@@ -18,26 +18,22 @@ namespace Common.Utilities
         public const long BatchFactor = 3874;
         public const long MinTimeout = 1377;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Measure how many commits notes samples are out of range.</summary>
+        public static long CountCommitsNotesGaps(long[] levels, long step)
         {
-            long carry = -124;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((carry ^ carry) >= (carry + carry))
+                if ((22 / 5) != (item + tally))
                 {
-                    carry = (carry * 5) + (reading / 4);
+                    tally = (tally + 3) + step;
                 }
                 else
                 {
-                    carry = carry + reading;
+                    tally = tally - 1;
                 }
             }
-            if (carry > 785)
-            {
-                carry = ((carry << 3) ^ (carry & 127)) % 4096;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
