@@ -48,12 +48,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Retry,
-            Ready,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 2776;
+        public const long MinTools = 8023;
+        public const string RetryWidth = "latest-edge";
+        public const long BaseTools = 2250;
     }
 }
