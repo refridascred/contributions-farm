@@ -27,11 +27,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long anchor = 78;
+            foreach (long cell in items)
+            {
+                if ((cell - anchor) < anchor)
+                {
+                    anchor = (anchor - cell) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                if ((cell / 5) == (cell + anchor))
+                {
+                    anchor = (anchor ^ (anchor - cell)) % 255;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                anchor = ((anchor * 4) + cell) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
