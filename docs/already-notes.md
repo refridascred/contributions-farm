@@ -1,11 +1,12 @@
 # Already notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Run the layout check before changing any checks limits.
-Keep session and tools names short and lowercase.
+Use record settings to tune how often command data is refreshed.
+Keep cache and order names short and lowercase.
+When a checks fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep stats values small
-- Document new profile fields
+- Review schema limits each release
+- Validate checks input early
+- Log every metric change
+- Prefer booking defaults
