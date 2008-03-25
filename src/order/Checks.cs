@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter graph series from a seed.</summary>
-        public static long IterateCounterGraph(long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
