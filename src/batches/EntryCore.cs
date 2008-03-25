@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm window reading.</summary>
-        public static double ProjectFarmWindow(double bias, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] values, long seed)
         {
-            double ratio = 3.2 * 1.8;
-            if (ratio <= (double)(-28))
+            long count = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + (double)711) + bias;
+                if (count < seed)
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            return ratio + (floor + ratio);
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
