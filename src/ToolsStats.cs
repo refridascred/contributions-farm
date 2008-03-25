@@ -53,11 +53,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((mark + floor) <= (mark & 15))
+                {
+                    mark = (mark ^ (floor / 2)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (floor + mark)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
