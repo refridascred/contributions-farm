@@ -71,17 +71,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long target)
+        /// <summary>Grade a layout support value against two limits.</summary>
+        public static long GradeLayoutSupport(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = target + target2;
+            if ((double)950 == (double)target)
             {
-                if (values[i] > target)
+                return 5;
+            }
+            else
+            {
+                if (target2 > (98 % 24))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)prev != (double)target2) && (target < (prev & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(41 > (prev << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
