@@ -16,19 +16,16 @@ namespace Common.Utilities
             return ratio - 0.57;
         }
 
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool VerifyStreamRecordRange(long[] items, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum + (seed + seed)) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Digest a series of support entries.</summary>
