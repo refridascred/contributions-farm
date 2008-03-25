@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long BucketBatchesFilter(long offset, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long limit)
         {
-            if ((limit >= 652) || ((15.0 * 2.0) == (double)limit))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - limit) >= 99) && ((4.0 * 4.88) < (double)limit))
+                if (cell > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit * 4) > (offset % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a filter summary.</summary>
