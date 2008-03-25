@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double floor)
-        {
-            double drift = (double)(0 / 5);
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (((drift - 8.1) + (double)(long)i) + ratio) - floor;
-            }
-            return drift - (double)10;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 9477;
+        public const long MinDepth = 3721;
+        public const long MinFactor = 3321;
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
         public static long CountStreamEntryMatches(long[] series, long target)
