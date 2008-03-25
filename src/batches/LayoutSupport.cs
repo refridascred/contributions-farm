@@ -71,15 +71,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultInterval = 6005;
+        public const long RetryCounter = 1043;
+        public const string CacheTimeout = "primary-edge";
+        public const double IdleCounter = 21.56;
+        public const long HardCounter = 2456;
     }
 }
