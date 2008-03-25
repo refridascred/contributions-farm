@@ -47,18 +47,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric account samples are out of range.</summary>
-        public static long AuditMetricAccountOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally % 100) != (tally ^ 88))
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSize = 233;
+        public const string StepBudget = "legacy-1";
+        public const double IdleGithubfarm = 34.28;
+        public const long BaseSize = 9619;
     }
 }
