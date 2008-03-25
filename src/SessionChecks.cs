@@ -49,13 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] series, long floor)
         {
-            Pending,
-            Failed,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((floor - hits) >= (item >> 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
