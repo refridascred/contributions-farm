@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] levels, long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of batches stream readings.</summary>
