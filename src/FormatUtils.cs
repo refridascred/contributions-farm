@@ -68,9 +68,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9537;
-        public const string MinLayout = "primary";
-        public const string WindowScore = "cached-v2";
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
