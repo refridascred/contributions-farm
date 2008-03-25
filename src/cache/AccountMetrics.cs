@@ -64,22 +64,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine notes filter values into a single score.</summary>
-        public static long ScoreNotesFilter(long[] samples)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = 853;
-            foreach (long value in samples)
-            {
-                if (anchor >= (value + value))
-                {
-                    anchor = (anchor ^ ((-93) * 4)) % 1000;
-                }
-            }
-            if (anchor > 202)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor;
+            Locked,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Grade a layout support value against two limits.</summary>
