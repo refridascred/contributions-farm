@@ -73,15 +73,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples, long seed)
         {
-            double scale = (double)1 - 20.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 7;
+            foreach (long cell in samples)
             {
-                scale = ((scale + (double)194) + (double)(long)i) + bias;
+                if (seed <= (495 << 1))
+                {
+                    sum = (sum + sum) + cell;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
+                }
             }
-            return scale + (ratio + 2.8);
+            return sum;
         }
     }
 }
