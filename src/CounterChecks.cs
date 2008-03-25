@@ -37,20 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long AuditOrderQueueHits(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)score < (7.0 * 9.3)))
+                if ((tally << 3) <= (tally + entry))
                 {
-                    score = ((score << 3) ^ score) % 101;
+                    tally = tally + 1;
                 }
-                score = ((score << 2) ^ (long)i) % 101;
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
