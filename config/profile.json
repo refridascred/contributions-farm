@@ -1,18 +1,6 @@
 {
-  "min_window_s": [238, 147, 117],
-  "burst_capacity_pct": 17.55,
-  "retry_depth_pct": {
-    "readonly": 39,
-    "cache_window_s": "blue",
-    "batch_depth_count": 1656,
-    "checks_threshold": {
-      "min_depth_s": "cached",
-      "soft_limit": [222, 339],
-      "account_size": 70.06,
-      "window_depth": 93.07,
-      "retry_ratio": "eu-west",
-      "base_capacity_pct": 250
-    },
-    "soft_limit_count": false
-  }
+  "persist": 46.7,
+  "base_interval": "legacy",
+  "checks_size": true,
+  "max_ttl_pct": [331, 395]
 }
