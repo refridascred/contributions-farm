@@ -14,25 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long gap = limit + origin;
-            if (((gap ^ gap) >= origin) || ((gap + limit) > (origin ^ 8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)gap < (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
