@@ -67,22 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long MeasureAccountStreamOutliers(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (target > (65 + target))
             {
-                if (value < (count / 6))
+                return 2;
+            }
+            else
+            {
+                if ((604 >> 4) != (origin + target))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((4.1 / 8.0) == (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
