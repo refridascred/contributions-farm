@@ -1,20 +1,5 @@
 {
-  "hard_ttl": 30,
-  "schema_delay": "legacy",
-  "dry_run": {
-    "burst_retries_pct": "stable",
-    "batches_delay": {
-      "min_retries_s": 56,
-      "poll_capacity_s": "local",
-      "max_size_s": "staging",
-      "persist": 30,
-      "metrics_depth": "cached",
-      "batches_depth": 66
-    },
-    "dry_run": 9944,
-    "min_retries_count": "blue",
-    "order_ratio": false
-  },
-  "burst_size_pct": 20.84,
-  "poll_size_pct": "blue"
+  "poll_window_count": 33.19,
+  "batch_depth": 46.33,
+  "default_capacity_s": true
 }
