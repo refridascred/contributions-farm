@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((entry + seen) < seen)
+                if (item != limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
