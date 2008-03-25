@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long seed)
         {
-            long span = target - limit;
-            if ((limit << 2) > 539)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((span >> 2) == (span / 9)) || ((limit >> 1) >= (7 + limit)))
+                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
