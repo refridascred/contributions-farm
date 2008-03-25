@@ -23,19 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool VerifyAccountCacheLimits(long[] readings, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long acc = 9;
+            foreach (long value in data)
             {
-                if (item <= floor)
+                if ((4.0 + 3.6) == (double)acc)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ acc) ^ value;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Digest a series of already entries.</summary>
