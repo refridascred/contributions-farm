@@ -37,19 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)mix < 8.0)
-                {
-                    mix = (mix << 2) ^ (9 & 3);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
