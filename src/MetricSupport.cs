@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a stream cluster value against two limits.</summary>
-        public static long RankStreamCluster(long target, long target2)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long gap = target ^ target2;
-            if (((double)gap != (double)target) || ((gap - target) == (target * 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap - target2) != (target2 + target2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target / 5) < (gap * 4)) && ((target2 + target2) > target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.81 * 8.0) >= (15.0 - 13.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Rank token command input into a small class.</summary>
