@@ -50,31 +50,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        public static long FoldBatch(long[] data)
         {
-            long anchor = 57;
-            foreach (long entry in data)
+            long score = 935;
+            foreach (long reading in data)
             {
-                anchor = (anchor * 2) + (entry >> 2);
-                if ((entry % 2) < (anchor ^ anchor))
+                if (reading < (reading >> 2))
                 {
-                    anchor = anchor + (31 - entry);
-                    anchor = anchor ^ entry;
+                    score = score + (score + score);
                 }
-                else
+                score = ((score << 3) ^ score) % 1000;
+                if ((reading <= (reading + score)) || ((reading + 7) != (score - 62)))
                 {
-                    anchor = ((anchor * 2) + anchor) % 101;
-                }
-                if (((anchor - entry) >= anchor) || ((anchor + anchor) != (entry - entry)))
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
+                    score = (score - reading) % 4096;
                 }
             }
-            if (anchor < 783)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 65521;
+            return score % 1000;
         }
     }
 }
