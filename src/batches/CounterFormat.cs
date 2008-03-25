@@ -30,18 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long AuditAccountContributiMatches(long[] data, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)950 > (double)value)
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
