@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            double gain = offset;
+            if (gain <= (double)72)
             {
-                mix = (mix ^ step) % 1000;
-                mix = mix ^ step;
-                mix = ((mix * 3) + (long)i) % 1000;
+                gain = gain - 1.7;
             }
-            return mix;
+            else
+            {
+                gain = gain - (offset - bias);
+            }
+            return gain - (gain * 3.8);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
