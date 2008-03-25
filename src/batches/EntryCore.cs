@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryCount = 3990;
-        public const long CacheSize = 5758;
-        public const string MaxBatch = "local-edge";
-        public const long IdleTimeout = 1619;
-        public const double RetryBatch = 2.06;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data)
+        {
+            long mix = 26;
+            foreach (long item in data)
+            {
+                mix = ((mix << 2) ^ (item + item)) % 255;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
