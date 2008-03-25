@@ -60,24 +60,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long limit, long origin)
-        {
-            if (limit > (origin + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.11 / 6.0) >= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "local-v2";
+        public const double RetryGithubfarm = 59.32;
+        public const string BatchGithubfarm = "standard-edge";
     }
 }
