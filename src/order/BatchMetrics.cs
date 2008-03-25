@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count tools channel pairs that satisfy a relation.</summary>
-        public static long OverlapToolsChannelCount(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix ^ (cell << 2)) % 4096;
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
