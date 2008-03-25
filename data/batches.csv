@@ -1,6 +1,9 @@
-id,count,rank,weight
-1,94.62,768,fallback
-2,24,legacy,43.69
-3,blue,45.28,11.6
-4,712,open,132
-5,821,58,47.26
+id,region,level,state,ratio
+1,58.45,44.87,standard,open
+2,71.67,strict,fallback,61.77
+3,391,strict,682,543
+4,primary,582,local,85.59
+5,legacy,standard,staging,38
+6,394,245,34.06,edge
+7,78,1.85,83.39,752
+8,918,standard,42.65,standard
