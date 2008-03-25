@@ -35,13 +35,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long limit, long seed)
         {
-            Active,
-            Synced,
-            Ready,
-            New,
+            long delta = limit - seed;
+            if ((delta / 6) >= (seed >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)81 < (double)delta) || (17 >= (delta % 10)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta - limit) < (seed ^ limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format buffer samples.</summary>
