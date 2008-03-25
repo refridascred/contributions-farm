@@ -54,21 +54,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result - (long)readings.Length) >= (result << 2))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (result + 181)) % 255;
+                }
+                else
+                {
+                    result = (result - (result + cell)) % 1000;
                 }
             }
-            return matches;
+            return result % 97;
         }
     }
 }
