@@ -1,5 +1,5 @@
 {
-  "batch_limit": "legacy",
-  "session_size": "standard",
-  "min_delay_ms": "green"
+  "persist": false,
+  "readonly": 250,
+  "command_interval": 9039
 }
