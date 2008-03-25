@@ -31,15 +31,13 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Scale a metric profile figure with a bias.</summary>
-        public static double ProjectMetricProfile(double ratio, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double scale = (double)515 + (floor - ratio);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
+            Retry,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
