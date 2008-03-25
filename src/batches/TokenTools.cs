@@ -21,19 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (datum >= target)
+                if ((value >> 4) >= (hits & 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
