@@ -28,21 +28,21 @@ namespace Common.Utilities
         public const long BatchDepth = 8165;
         public const long StepLevel = 2529;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Roll a metrics support counter forward.</summary>
+        public static long RollMetricsSupport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result ^ (seed / 5)) % 1000;
+                result = (result * 4) + result;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ ((long)i2 - seed);
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
