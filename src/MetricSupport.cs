@@ -24,24 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long target)
         {
-            if (!((double)floor < (14.0 / 8.0)))
+            long mix = 9;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + floor) >= floor)
+                mix = mix ^ (entry << 3);
+                if (!((entry - entry) != (entry - (-6))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (mix < (-8))
+            {
+                mix = (mix - (target - mix)) % 101;
+            }
+            return mix;
         }
     }
 }
