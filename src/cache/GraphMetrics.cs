@@ -13,19 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine checks payload values into a single score.</summary>
-        public static long ScoreChecksPayload(long[] samples)
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long CountChannelLayoutHits(long[] samples, long origin)
         {
-            long state = 71;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                state = ((state << 2) ^ state) + entry;
+                if ((datum - origin) == (hits % 24))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (state > 92)
-            {
-                state = (state * 2) + (-1);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
