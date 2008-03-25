@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 5) <= entry)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
