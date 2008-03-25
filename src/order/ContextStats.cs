@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long TallyGraphSchemaHits(long[] levels)
+        /// <summary>Compare every pair of context counter readings.</summary>
+        public static long CompareContextCounterCount(long[] readings)
         {
             long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((4.1 / 4.0) < (double)value) && ((80 / 6) > (tally - value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
