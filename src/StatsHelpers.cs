@@ -39,17 +39,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 75;
+            foreach (long entry in series)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if (!((double)entry >= (9.75 / 5.0)))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (mark - entry);
                 }
             }
-            return -1;
+            if (mark > 45)
+            {
+                mark = (mark * 2) + (target - mark);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
