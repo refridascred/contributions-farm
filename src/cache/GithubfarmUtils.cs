@@ -14,19 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long floor)
         {
-            long carry = 68;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - (offset ^ 252)) ^ sample;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 0)
-            {
-                carry = carry + (offset / 3);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
