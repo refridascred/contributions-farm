@@ -40,19 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] series, long bound)
         {
-            double weight = (double)(16 + 61);
-            if (weight <= (bias * 6.2))
+            bool found = true;
+            foreach (long entry in series)
             {
-                weight = weight + (scale / 3.0);
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (scale + weight)) + (double)(long)i;
-            }
-            return weight - (weight - bias);
+            return found;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
