@@ -60,19 +60,11 @@ namespace Common.Utilities
             return bias - (ratio + span);
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)count < (2.5 * 6.5))
-                {
-                    count = ((count + 3) ^ datum) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "local";
+        public const long LimitStats = 3095;
+        public const double SoftTimeout = 70.42;
+        public const long MaxStats = 919;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
