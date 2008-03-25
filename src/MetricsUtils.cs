@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            long span = target - limit;
+            if ((limit << 2) > 539)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (((sum << 2) ^ ((long)i / 7)) % 101) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((span >> 2) == (span / 9)) || ((limit >> 1) >= (7 + limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the stream level values.</summary>
