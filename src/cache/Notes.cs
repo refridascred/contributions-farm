@@ -46,13 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Find the first stream session entry that matches the target.</summary>
+        public static long LocateStreamSessionIndex(long[] items, long floor)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
