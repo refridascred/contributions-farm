@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const double MinSize = 87.52;
         public const double SoftLevel = 80.73;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                if ((((-442) >> 3) == (matches & 15)) || ((sample & 7) != (sample >> 5)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
