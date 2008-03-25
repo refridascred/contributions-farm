@@ -15,32 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long target)
-        {
-            if ((target & 31) > (seed + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed < (double)target) || ((3.42 - 7.01) < (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 3) != (55 - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 4935;
+        public const long IdleRatio = 5247;
+        public const long BaseCount = 3985;
+        public const long IdleEntry = 8103;
+        public const double LimitDepth = 87.83;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
