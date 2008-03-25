@@ -1,8 +1,6 @@
-id,score,owner,weight,state
-1,502,cached,329,strict
-2,698,791,332,green
-3,11,340,84.92,518
-4,965,982,59.34,cached
-5,529,stable,47.53,77.27
-6,51.83,257,218,stable
-7,86.39,65,legacy,960
+id,rank,count,score,active
+1,252,678,fallback,primary
+2,671,standard,834,stable
+3,426,591,standard,830
+4,166,280,legacy,10
+5,90.41,fallback,244,508
