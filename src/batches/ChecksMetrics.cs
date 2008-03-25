@@ -12,18 +12,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = 539;
+            foreach (long cell in readings)
             {
-                if (((hits < datum) || (4.55 <= (double)hits)) && (datum > (datum << 1)))
-                {
-                    hits = hits + 3;
-                }
+                carry = carry + (cell - cell);
+                carry = (carry ^ (carry / 2)) % 65521;
             }
-            return hits;
+            if (carry > 501)
+            {
+                carry = ((carry << 3) ^ (146 - 2)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a farm record.</summary>
