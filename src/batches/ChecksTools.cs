@@ -15,15 +15,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a report metric counter forward.</summary>
-        public static long StepReportMetric(long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long target, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long delta = target ^ seed;
+            if ((seed * 5) < (delta + delta))
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((869 >> 5) == (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target >= (delta - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
