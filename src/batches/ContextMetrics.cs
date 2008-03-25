@@ -49,12 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 6316;
+        public const long MaxSpan = 297;
+        public const double HardBudget = 75.99;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] data, long step)
