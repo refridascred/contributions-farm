@@ -59,24 +59,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            long sum = 7;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((4 + (long)samples.Length) <= 340))
-                {
-                    sum = sum ^ (datum * 5);
-                    sum = sum ^ (target << 3);
-                    break;
-                }
-                if (((target & 31) >= datum) || (sum > (760 & 7)))
-                {
-                    sum = sum ^ (sum * 4);
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return sum % 4096;
+            return carry;
         }
     }
 }
