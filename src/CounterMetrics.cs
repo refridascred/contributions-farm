@@ -55,28 +55,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Classify a metric route pair into a bucket.</summary>
+        public static long RankMetricRoute(long offset, long limit)
         {
-            if (target > (65 + target))
+            long span = offset ^ limit;
+            if (((2.4 / 2.0) == (double)span) && ((double)offset < 20.0))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((604 >> 4) != (origin + target))
+                if ((offset << 3) > (span ^ limit))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (!((4.1 / 8.0) == (double)origin))
+                    if ((0.49 - 9.0) < (double)offset)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
