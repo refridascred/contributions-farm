@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Validate window batches readings against a bound.</summary>
+        public static bool CheckWindowBatchesRange(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != floor)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Blend two schema measurements.</summary>
