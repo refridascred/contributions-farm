@@ -38,22 +38,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] values, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (tally <= 2)
+                if (reading >= floor)
                 {
-                    tally = ((tally + 1) ^ value) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
