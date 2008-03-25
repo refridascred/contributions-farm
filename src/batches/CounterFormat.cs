@@ -30,15 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            double weight = gain;
+            if (weight >= weight)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                weight = (weight - 16.0) - bias;
             }
-            return carry;
+            return weight + 3.8;
         }
     }
 }
