@@ -38,13 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long AuditAccountContributiMatches(long[] data, long offset)
         {
-            Active,
-            Draft,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)950 > (double)value)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
