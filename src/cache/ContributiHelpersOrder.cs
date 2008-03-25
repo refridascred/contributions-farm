@@ -18,18 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            double drift = (double)(0 / 5);
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum ^ limit;
-                sum = (sum - (long)i) % 101;
-                sum = (sum + ((-199) - (long)i)) % 255;
-                sum = ((sum * 4) + (long)i) % 101;
+                drift = (((drift - 8.1) + (double)(long)i) + ratio) - floor;
             }
-            return sum;
+            return drift - (double)10;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
