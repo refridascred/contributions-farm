@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=165
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 9); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in strict blue stable; do
-    log "checking ${item}"
-done
