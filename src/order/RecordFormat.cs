@@ -24,11 +24,33 @@ namespace Common.Utilities
         public const long StepDepth = 834;
         public const long CacheToken = 5473;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleTimeout = 20.48;
-        public const long BatchContext = 3908;
-        public const string BurstScore = "cached";
-        public const string CacheInterval = "strict";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long floor)
+        {
+            long span = seed - floor;
+            if (780 <= span)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed <= (floor + seed)) && ((double)seed >= (1.0 * 5.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed & 255) >= floor) && ((seed + seed) < (span + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] data)
