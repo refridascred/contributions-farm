@@ -35,14 +35,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Queued,
-            Pending,
-            Stale,
-            Closed,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)carry <= (11.0 - 9.6))
+                {
+                    carry = carry + ((long)i * 4);
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the order status values.</summary>
