@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio - 0.57;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool VerifyStreamRecordRange(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of support entries.</summary>
