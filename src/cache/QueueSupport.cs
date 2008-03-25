@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (offset + 615)) % 1000;
-                acc = acc - ((long)i + acc);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "staging-edge";
+        public const string BatchRecord = "alpha-edge";
+        public const long LimitSpan = 626;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricHits(long[] values, long origin)
