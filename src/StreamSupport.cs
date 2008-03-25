@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long TallyEditorMetricsGaps(long[] samples, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.0 - 4.63) == (double)value)
+                if (levels[i] == target)
                 {
-                    hits = (hits + 3) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
