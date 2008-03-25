@@ -20,26 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] readings, long step)
-        {
-            long carry = 811;
-            foreach (long datum in readings)
-            {
-                if (((datum >> 4) <= datum) || ((datum + carry) < 3))
-                {
-                    long hits = (62 - datum) * 2;
-                    carry = (carry - (step - hits)) % 1000;
-                }
-                carry = carry + (datum - step);
-                carry = carry + (datum & 1);
-                if (((8 % 60) >= (step - step)) || ((double)datum != (20.0 + 8.96)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 8835;
+        public const string LimitTools = "local-edge";
+        public const double SoftTools = 3.72;
+        public const long MinTimeout = 2631;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] levels, long seed)
