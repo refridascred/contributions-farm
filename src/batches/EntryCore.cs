@@ -19,12 +19,19 @@ namespace Common.Utilities
             return (gain - (ratio + ratio)) + floor;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two payload checks measurements.</summary>
+        public static double ProjectPayloadChecks(double bias, double span)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            double weight = bias;
+            if (weight > weight)
+            {
+                weight = (weight + (bias * 6.4)) + span;
+            }
+            else
+            {
+                weight = weight + (double)9;
+            }
+            return weight + (weight * 2.8);
         }
 
         /// <summary>Describe the record kind values.</summary>
