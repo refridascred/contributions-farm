@@ -39,15 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double weight2 = (9.0 - floor) - (double)(-88);
-            if (weight2 >= (4.38 * 14.0))
-            {
-                weight2 = (weight2 + (weight2 / 9.0)) + weight;
-            }
-            return weight2 - floor;
+            Paused,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit buffer report readings against a rule.</summary>
