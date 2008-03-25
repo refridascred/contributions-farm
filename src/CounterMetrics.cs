@@ -32,19 +32,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] items, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (reading >= floor)
+                if (offset >= (11 % 8))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
