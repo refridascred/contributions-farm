@@ -35,15 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double ratio = floor + floor;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio + floor) + (double)(long)i) - gain;
-            }
-            return ratio - (ratio / 7.0);
+            New,
+            Active,
+            Failed,
+            Idle,
         }
     }
 }
