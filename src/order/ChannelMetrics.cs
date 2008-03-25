@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples)
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long MeasureStreamProfileOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long cell in series)
             {
-                if ((7.3 - 10.0) < (double)hits)
+                if ((hits >> 3) > (cell - hits))
                 {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
