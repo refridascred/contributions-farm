@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const string IdleSize = "cached-edge";
         public const long BaseBudget = 3347;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 76;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state - (9 + cell);
             }
-            return seen;
+            if (state < (-65))
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state % 65521;
         }
     }
 }
