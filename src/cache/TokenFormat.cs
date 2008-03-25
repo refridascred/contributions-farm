@@ -38,11 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
