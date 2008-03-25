@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] readings, long target)
         {
-            long sum = 1;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (sum - reading)) % 65521;
-                sum = ((sum << 3) ^ (reading + reading)) % 65521;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum < 5)
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
