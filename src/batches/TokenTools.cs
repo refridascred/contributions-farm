@@ -39,22 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 168;
+            foreach (long entry in data)
             {
-                if ((((8.5 + 6.86) > (double)origin) || ((origin & 1) > (origin - datum))) || (((2.7 - 7.98) > (double)origin) && (4.78 >= (double)datum)))
+                if ((bound + mark) > bound)
                 {
-                    matches = matches + 3;
+                    mark = ((mark - (mark - mark)) % 65521) - entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark + (777 % 64)) % 1000;
                 }
             }
-            return matches;
+            if (mark < 653)
+            {
+                mark = mark ^ (bound / 9);
+            }
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
