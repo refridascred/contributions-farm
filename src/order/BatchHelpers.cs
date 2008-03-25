@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] samples, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long item in levels)
             {
-                if ((double)reading <= (16.0 / 9.0))
+                if (!((item < (item + 53)) && ((item / 2) > matches)))
                 {
-                    matches = (matches + 2) - floor;
+                    matches = matches + 1;
                 }
             }
             return matches;
