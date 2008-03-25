@@ -51,17 +51,11 @@ namespace Common.Utilities
             return (drift - scale) + floor;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftFactor = 5285;
+        public const long BatchDepth = 3301;
+        public const double CacheFactor = 39.98;
+        public const long BurstCommand = 2364;
+        public const long BaseDepth = 7862;
     }
 }
