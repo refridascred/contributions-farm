@@ -47,12 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1205;
-        public const string WindowAccount = "alpha";
-        public const long LimitAccount = 1289;
-        public const long MaxSize = 2239;
-        public const string IdleAccount = "staging";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
