@@ -17,17 +17,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long FindMetricBufferIndex(long[] data, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long cell in readings)
             {
-                if (data[i] == step)
+                if (!((floor % 7) > (result ^ floor)))
                 {
-                    return (long)i;
+                    result = ((result * 5) + (floor << 2)) - cell;
                 }
+                result = (result + (96 - floor)) % 65521;
             }
-            return -1;
+            if (result > 825)
+            {
+                result = ((result << 3) ^ (result + floor)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of window readings.</summary>
