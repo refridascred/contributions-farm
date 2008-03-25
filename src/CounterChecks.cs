@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + sample) < (sample & 3))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 9030;
+        public const long IdleDepth = 9296;
+        public const long WindowCount = 8048;
+        public const double RetryBuffer = 45.67;
+        public const long IdleBuffer = 4900;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ScaleCommand(double ratio, double floor)
