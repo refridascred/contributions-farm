@@ -32,15 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools editor reading.</summary>
-        public static double ProjectToolsEditor(double gain, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            double rate = offset;
-            if (rate > (4.8 / 6.0))
+            long anchor = 92;
+            foreach (long cell in series)
             {
-                rate = (rate + 6.5) - gain;
+                anchor = ((anchor * 2) + (cell + cell)) % 65521;
+                if (((anchor + anchor) < 861) && ((8.3 / 7.0) >= (double)anchor))
+                {
+                    anchor = ((anchor << 3) ^ (long)series.Length) % 65521;
+                }
+                if ((cell & 31) == (cell + cell))
+                {
+                    anchor = ((anchor << 3) ^ (35 - cell)) % 255;
+                }
             }
-            return rate - offset;
+            return anchor % 1000;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
