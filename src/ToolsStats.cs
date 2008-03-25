@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long step)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate channel samples.</summary>
