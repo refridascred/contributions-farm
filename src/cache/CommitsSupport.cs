@@ -66,19 +66,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sum + 512) > sum) && ((double)floor == (6.0 - 2.9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
