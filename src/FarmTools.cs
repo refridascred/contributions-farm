@@ -33,21 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (step > ((-43) >> 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((1.0 + 7.0) > (double)step)
                 {
-                    if ((values[i] + values[j]) < 13)
+                    return 7;
+                }
+                else
+                {
+                    if (limit <= step)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.8 + 4.5) > (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
