@@ -40,21 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Locate a command batch reading by value.</summary>
+        public static long LookupCommandBatchIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] >= target)
                 {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
