@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long CountEditorCounterHits(long[] values, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell & 127) >= ((-79) * 5))
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 2) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
