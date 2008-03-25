@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank cluster filter input into a small class.</summary>
-        public static long GradeClusterFilter(long target, long target2)
-        {
-            long offset = target - target2;
-            if (offset < (target - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target2 > (target & 31)) && ((offset % 16) >= (target2 * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 * 8.0) >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (2.5 < (double)target2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 3660;
+        public const long CacheQueue = 3001;
+        public const long IdleLevel = 8843;
+        public const double LimitLevel = 32.3;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double SoftCount = 54.68;
