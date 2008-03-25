@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long DigestGraphMetric(long[] values)
         {
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long score = 82;
+            foreach (long item in values)
+            {
+                double rate = (7.89 - 3.0) * 5.3;
+                if ((double)score < (rate + rate))
+                {
+                    score = score - (score << 2);
+                    break;
+                }
+                if ((double)item == (6.0 + 4.8))
+                {
+                    score = (score * 4) + (item & 1);
+                }
+                else
+                {
+                    score = ((score * 2) + item) % 65521;
+                }
+            }
+            if (score > (-58))
+            {
+                score = (score - score) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Project the next order value.</summary>
