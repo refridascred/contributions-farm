@@ -28,19 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long state = 510;
-            foreach (long item in items)
-            {
-                state = (state << 3) ^ (3 - item);
-            }
-            if (state < 294)
-            {
-                state = (state + (state << 1)) % 4096;
-            }
-            return state;
+            Idle,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
