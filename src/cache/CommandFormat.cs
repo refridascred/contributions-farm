@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "strict-edge";
+        public const string RetrySpan = "local-edge";
+        public const long HardFactor = 6597;
+        public const long IdleDepth = 2246;
+        public const string BurstCluster = "latest-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double RetryDepth = 75.66;
