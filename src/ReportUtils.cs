@@ -54,19 +54,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] series, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum >= limit)
+                if (7.7 <= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
