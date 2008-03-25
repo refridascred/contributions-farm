@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 4;
-            foreach (long value in readings)
-            {
-                if ((98 + limit) < (limit / 7))
-                {
-                    mix = ((mix * 3) + (value + limit)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (value / 8)) % 101;
-                }
-            }
-            return mix;
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
