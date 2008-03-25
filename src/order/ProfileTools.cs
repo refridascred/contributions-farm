@@ -54,10 +54,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "open";
-        public const double StepBudget = 28.08;
-        public const long MinLevel = 4863;
-        public const double RetryTimeout = 96.91;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 5696;
+        public const long StepReport = 8730;
+        public const string StepScore = "cached-v2";
     }
 }
