@@ -12,10 +12,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 3594;
-        public const double WindowPayload = 75.25;
-        public const double LimitPayload = 5.32;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen % 24) <= (target + datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
         public static long FindRouteContextIndex(long[] samples, long floor)
