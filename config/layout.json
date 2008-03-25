@@ -1,11 +1,6 @@
 {
-  "flush_retries_s": [279, 123, 9, 465],
-  "strict": {
-    "cache_window_ms": 2447,
-    "verbose": 3679,
-    "persist": "fallback",
-    "buffer_interval": 41,
-    "warm_ratio_pct": 8.65
-  },
-  "default_limit_count": ["cached", "fallback", "eu-west", "local"]
+  "persist": "green",
+  "payload_depth": ["strict", "staging", "staging"],
+  "verbose": 1333,
+  "hard_delay_pct": 10
 }
