@@ -35,11 +35,19 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
