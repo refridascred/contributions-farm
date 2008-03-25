@@ -38,20 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 984;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor << 2) ^ (cell * 2)) % 65521;
-                anchor = (anchor + 33) % 4096;
-                if ((4.7 - 12.0) >= (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Locked,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
