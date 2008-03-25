@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long seed)
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long IterateNotesStream(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] <= seed)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc + (offset + acc)) % 101) ^ (long)i2;
+                    acc = ((acc * 4) + (acc + acc)) % 255;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
