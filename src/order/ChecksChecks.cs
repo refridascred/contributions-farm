@@ -14,25 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next metric entry value from a seed.</summary>
-        public static long IterateMetricEntry(long floor)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long LookupGraphSessionIndex(long[] samples, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (samples[i] >= target)
                 {
-                    carry = ((carry << 3) ^ (long)i2) % 101;
-                    carry = (carry * 3) + (floor % 10);
+                    return (long)i;
                 }
-                carry = (carry << 3) ^ (floor / 7);
-                if (!!(carry <= (floor - (long)i)))
-                {
-                    carry = (carry * 2) + (carry << 1);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
