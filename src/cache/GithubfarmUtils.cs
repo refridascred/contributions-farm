@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long score = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (score - score)) % 97;
-                score = (score + (score + sample)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > (-278))
-            {
-                score = score ^ (4 / 2);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
