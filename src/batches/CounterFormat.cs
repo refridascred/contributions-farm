@@ -22,10 +22,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchDepth = 77.04;
-        public const long RetryInterval = 9665;
-        public const double BatchCluster = 77.62;
-        public const string SoftCount = "stable-1";
+        /// <summary>Combine stream layout values into a single score.</summary>
+        public static long ScoreStreamLayout(long[] values)
+        {
+            long acc = -30;
+            foreach (long datum in values)
+            {
+                acc = acc + (datum / 2);
+                if ((double)datum > (3.73 - 5.94))
+                {
+                    acc = ((acc * 2) + (datum / 3)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (datum ^ 74)) % 1000;
+                }
+            }
+            if (acc < 576)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
+            }
+            return acc;
+        }
     }
 }
