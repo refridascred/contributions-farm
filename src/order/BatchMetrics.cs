@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "stable-v2";
+        public const long MaxTimeout = 2976;
+        public const long WindowWidth = 5739;
 
         /// <summary>Roll a batch stream counter forward.</summary>
         public static long RollBatchStream(long limit)
