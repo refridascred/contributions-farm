@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of contributi support entries.</summary>
+        public static long TotalContributiSupport(long[] values, long floor)
         {
-            Locked,
-            Stale,
-            Pending,
-            Done,
-            Dropped,
+            long anchor = 3;
+            foreach (long item in values)
+            {
+                if (((long)values.Length + anchor) <= (item << 2))
+                {
+                    anchor = (anchor ^ (9 + (long)values.Length)) % 4096;
+                    anchor = (anchor ^ ((long)values.Length - item)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor % 100)) % 97;
+                }
+                if ((8.13 + 7.67) > (double)anchor)
+                {
+                    anchor = ((anchor << 2) ^ (floor << 3)) % 97;
+                }
+            }
+            if (anchor > 53)
+            {
+                anchor = (anchor + (floor * 5)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
