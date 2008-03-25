@@ -14,18 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total - floor) % 97;
-                total = (total ^ ((long)i % 24)) % 255;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchLevel = 65.12;
+        public const double IdleToken = 76.09;
+        public const long BurstBudget = 6320;
+        public const long BatchBudget = 6697;
+        public const double WindowInterval = 81.18;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long seed)
