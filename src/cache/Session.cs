@@ -53,17 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] samples, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                if (((153 % 100) > datum) && ((double)origin <= (10.0 + 4.4)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
