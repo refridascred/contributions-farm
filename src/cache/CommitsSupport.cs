@@ -42,24 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long bound)
+        /// <summary>Find the first entry stream entry that matches the target.</summary>
+        public static long LocateEntryStreamIndex(long[] items, long bound)
         {
-            if ((origin >> 1) > (bound / 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 + 11.0) == (double)origin)
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two editor metrics measurements.</summary>
