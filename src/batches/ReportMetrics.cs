@@ -41,16 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] samples, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 5) + ((long)i % 2)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((count + step) > sample)
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
