@@ -70,17 +70,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step + step) <= step)
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)step < 20.0)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
