@@ -38,32 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches context values into a single score.</summary>
-        public static long TallyBatchesContext(long[] values, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] values, long origin)
         {
-            long carry = 871;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                long diff = (carry * 3) - floor;
-                if (!((diff + carry) >= carry))
+                if (sample != origin)
                 {
-                    carry = (carry << 3) ^ (carry + floor);
-                    carry = ((carry * 5) + (entry + carry)) % 65521;
-                }
-                if ((51 / 9) < (entry & 31))
-                {
-                    carry = ((carry * 4) + (floor ^ entry)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < 763)
-            {
-                carry = carry ^ (carry >> 1);
-            }
-            return carry % 1000;
+            return valid;
         }
 
         /// <summary>Hold a buffer entry.</summary>
