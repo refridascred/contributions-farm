@@ -30,22 +30,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of filter buffer entries.</summary>
-        public static long CombineFilterBuffer(long[] items, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mix = 102;
-            foreach (long reading in items)
-            {
-                if (6.17 < (double)reading)
-                {
-                    mix = ((mix << 3) ^ mix) - step;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix + (91 & 1)) % 101;
-            }
-            return mix % 65521;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
