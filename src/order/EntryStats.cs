@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double scale = (double)5 + (double)8;
-            if (scale < (weight / 3.0))
-            {
-                scale = (scale + weight) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + weight) - (double)(long)i;
-            }
-            return scale + (scale / 6.0);
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
