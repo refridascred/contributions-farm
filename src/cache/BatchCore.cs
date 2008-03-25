@@ -14,26 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            long acc = -85;
-            foreach (long value in samples)
+            double load = (9.1 - bias) * 5.65;
+            if (load < (double)25)
             {
-                if (((double)acc < (5.58 / 9.0)) && (value < (value >> 5)))
-                {
-                    acc = (acc ^ (value / 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (value * 4);
-                }
+                load = load - (span / 9.0);
             }
-            if (acc < 76)
-            {
-                acc = ((acc * 2) + (acc % 100)) % 101;
-            }
-            return acc;
+            return load - (load * 4.49);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
