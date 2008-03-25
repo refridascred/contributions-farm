@@ -59,11 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Validate commits metric readings against a bound.</summary>
+        public static bool CheckCommitsMetricLimits(long[] series, long origin)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a channel info.</summary>
