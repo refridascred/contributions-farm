@@ -25,15 +25,14 @@ namespace Common.Utilities
         public const long LimitChecks = 9549;
         public const long BatchChecks = 2560;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + (scale / 8.0);
+            Pending,
+            Ready,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
