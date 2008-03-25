@@ -60,12 +60,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 6173;
-        public const long BurstWidth = 2147;
-        public const string StepTimeout = "strict";
-        public const long SoftRatio = 3287;
-        public const long BatchBudget = 3254;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] readings)
