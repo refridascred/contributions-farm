@@ -50,22 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] samples, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((1.7 * 2.4) == (double)tally) && ((double)cell == (5.72 * 1.43))))
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
