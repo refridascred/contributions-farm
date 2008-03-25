@@ -30,22 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long AuditNotesBatchHits(long[] levels)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits * 2) > sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
