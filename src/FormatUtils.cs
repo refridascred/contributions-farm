@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long seed)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long CountReportLayoutOutliers(long[] samples, long floor)
         {
-            long total = 820;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((total + 20) < (seed ^ total))
+                if ((double)item < (7.0 * 4.0))
                 {
-                    total = (total ^ (seed - 85)) % 4096;
-                    break;
-                }
-                if ((309 + total) != (total ^ total))
-                {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total - (750 << 2)) % 65521;
-                }
-                if ((item / 3) <= seed)
-                {
-                    break;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
