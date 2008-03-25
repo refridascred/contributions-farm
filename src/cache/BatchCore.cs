@@ -14,15 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double load = (9.1 - bias) * 5.65;
-            if (load < (double)25)
-            {
-                load = load - (span / 9.0);
-            }
-            return load - (load * 4.49);
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
