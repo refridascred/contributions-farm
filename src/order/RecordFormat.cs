@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the already channel series from a seed.</summary>
-        public static long RollAlreadyChannel(long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor <= (floor ^ (long)i))
+                if ((data[i] == bound) && ((data[i] % 5) != 0))
                 {
-                    mix = ((mix << 3) ^ (-40)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
