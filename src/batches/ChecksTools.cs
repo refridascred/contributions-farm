@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of commits metrics readings.</summary>
