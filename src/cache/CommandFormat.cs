@@ -23,20 +23,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate session cache readings against a bound.</summary>
-        public static bool VerifySessionCacheRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryDepth = 75.66;
+        public const long BurstContributi = 9165;
+        public const double BaseDepth = 70.15;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] series)
