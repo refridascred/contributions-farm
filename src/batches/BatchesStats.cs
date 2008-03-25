@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = 157;
-            foreach (long reading in series)
-            {
-                if ((reading * 2) < reading)
-                {
-                    state = (state << 3) ^ (3 + reading);
-                }
-                else
-                {
-                    state = (state - (reading - reading)) % 97;
-                }
-                if (((15.0 * 9.0) >= (double)state) || (state <= (1 * 3)))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Active,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
