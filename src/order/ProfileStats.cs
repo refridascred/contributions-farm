@@ -56,39 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long limit2)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long prev = limit ^ limit2;
-            if ((limit % 2) > (125 ^ limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 2) != (limit % 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((prev - prev) >= (limit2 >> 5)) && (prev <= (limit2 ^ limit2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev / 8) < (prev + prev))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
