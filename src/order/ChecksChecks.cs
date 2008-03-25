@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftFactor = 0.74;
-        public const long RetryCount = 9269;
-        public const string StepCount = "alpha";
-        public const long CacheCluster = 6509;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Queued,
+            Pending,
+            Done,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
