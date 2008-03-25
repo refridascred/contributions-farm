@@ -27,12 +27,32 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long bound2 = bound + step;
+            if (((bound & 3) > (345 + step)) && ((double)56 >= (double)bound2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound2 * 3) <= step) && ((double)bound == (2.78 / 9.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((268 % 12) == (step >> 4)) || ((double)bound2 <= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
