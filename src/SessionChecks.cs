@@ -22,20 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((2.6 / 2.0) < (double)(long)i))
-                {
-                    sum = (sum * 5) + (sum % 97);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseRatio = 85.21;
+        public const string HardContext = "legacy-edge";
+        public const string IdleSize = "cached-edge";
+        public const long BaseBudget = 3347;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] samples)
