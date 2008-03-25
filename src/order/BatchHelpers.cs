@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc - ((long)i - acc)) + (long)i2;
-                    acc = ((acc * 3) + (seed - (long)i)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
