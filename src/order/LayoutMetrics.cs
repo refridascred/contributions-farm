@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first contributi route entry that matches the target.</summary>
-        public static long FindContributiRouteIndex(long[] samples, long offset)
+        /// <summary>Locate a context batches reading by value.</summary>
+        public static long LocateContextBatchesIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] < offset)
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
