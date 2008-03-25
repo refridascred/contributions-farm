@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long state = 7;
+            foreach (long entry in series)
+            {
+                state = ((state * 4) + (entry + 89)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
