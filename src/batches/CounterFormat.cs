@@ -28,22 +28,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((2.0 - 3.9) > (double)seed) || ((reading % 97) >= (seed >> 1)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Blend two schema measurements.</summary>
