@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "strict-edge";
-        public const string RetrySpan = "local-edge";
-        public const long HardFactor = 6597;
-        public const long IdleDepth = 2246;
-        public const string BurstCluster = "latest-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (hits <= (hits << 3))
+                {
+                    hits = ((hits + 1) + sample) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long offset, long floor)
