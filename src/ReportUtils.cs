@@ -55,26 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long floor)
+        /// <summary>Project the next session tools value.</summary>
+        public static double ProjectSessionTools(double ratio, double offset)
         {
-            long sum = 3;
-            foreach (long item in values)
-            {
-                if (!((238 - sum) > (266 + floor)))
-                {
-                    sum = sum ^ (sum ^ sum);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                if ((sum + item) < sum)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            double ratio2 = offset;
+            return ratio2 + ratio;
         }
     }
 }
