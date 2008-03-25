@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the editor handler retries a few times before giving up.
-A session that stays idle for too long is moved to the report list.
-A batch that stays idle for too long is moved to the batch list.
+A counter that stays idle for too long is moved to the command list.
+Defaults for token live in the config folder and can be overridden per environment.
+Run the editor check before changing any batch limits.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new order fields
-- Prefer support defaults
+- Log every editor change
+- Validate githubfarm input early
+- Document new graph fields
