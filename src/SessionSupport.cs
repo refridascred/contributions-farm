@@ -37,19 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] series, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
