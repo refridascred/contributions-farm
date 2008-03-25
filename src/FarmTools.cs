@@ -29,21 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi already series from a seed.</summary>
-        public static long DeriveContributiAlready(long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = 4;
+            foreach (long item in levels)
             {
-                result = result - (long)i;
-                if (result < ((long)i >> 5))
+                if ((8 ^ item) > (511 % 60))
                 {
-                    result = ((result << 2) ^ (52 + result)) % 1000;
-                    continue;
+                    anchor = (anchor + item) % 255;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor % 65521;
         }
     }
 }
