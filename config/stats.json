@@ -1,16 +1,11 @@
 {
-  "sync_depth_ms": 3880,
-  "cache_delay": {
-    "persist": 3,
-    "readonly": "staging",
-    "compress": "strict",
-    "default_limit": ["eu-west", "primary", "latest"],
-    "batch_window": {
-      "tools_retries": false,
-      "min_retries_s": "latest",
-      "hard_ratio": ["staging", "fallback", "latest", "standard"]
-    }
+  "batches_depth": [304, 142],
+  "compress": 52.51,
+  "contributi_capacity": true,
+  "session_interval": {
+    "sync_delay_ms": "legacy",
+    "base_timeout_pct": false,
+    "warm_limit_s": 2287
   },
-  "soft_ttl_count": "local",
-  "profile_timeout": "green"
+  "cache_retries_s": 8432
 }
