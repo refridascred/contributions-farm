@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstBudget = 8868;
         public const double RetryOrder = 5.82;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long carry = 5;
-            foreach (long entry in data)
+            long result = 15;
+            foreach (long value in levels)
             {
-                carry = (carry + (entry >> 3)) % 97;
+                if (!((0.1 / 4.0) == (double)(long)levels.Length))
+                {
+                    result = ((result + (result << 3)) % 101) ^ value;
+                }
             }
-            if (carry > 7)
+            if (result > (-2))
             {
-                carry = (carry * 2) + (871 * 2);
+                result = (result + (result + result)) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the stats class values.</summary>
