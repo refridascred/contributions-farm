@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long LimitChecks = 9549;
         public const long BatchChecks = 2560;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + (scale / 8.0);
         }
 
         /// <summary>Hold a batch entry.</summary>
