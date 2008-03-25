@@ -37,11 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Find the first metrics window entry that matches the target.</summary>
+        public static long LocateMetricsWindowIndex(long[] samples, long limit)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
