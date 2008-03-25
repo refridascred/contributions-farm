@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 22;
         public const long StepGithubfarm = 8267;
 
-        /// <summary>Blend two buffer farm measurements.</summary>
-        public static double ProjectBufferFarm(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias > bias)
-            {
-                bias = bias - (3.56 - 16.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - weight) - (double)(long)i;
-            }
-            return bias + weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryCount = 88.12;
+        public const string CacheStats = "stable-v2";
+        public const long WindowStats = 1702;
+        public const string WindowTimeout = "primary-edge";
+        public const string BurstStats = "standard-1";
     }
 }
