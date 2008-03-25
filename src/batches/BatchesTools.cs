@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSpan = 478;
-        public const long BurstWidth = 2901;
-        public const string BatchSpan = "alpha-1";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Dropped,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long WeighMetrics(long[] values, long target)
