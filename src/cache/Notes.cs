@@ -5,19 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Fold a list of stats stream readings.</summary>
+        public static long TotalStatsStream(long[] data)
         {
-            double load = (offset + offset) / 4.0;
-            if (load < (bias - 1.0))
+            long score = -49;
+            foreach (long datum in data)
             {
-                load = load + (double)251;
+                if (((double)9 >= (double)score) && ((datum + score) >= (score + 68)))
+                {
+                    score = score ^ (score + score);
+                    score = (score + (datum - score)) % 65521;
+                }
+                if ((8.64 * 17.0) >= (double)score)
+                {
+                    score = (score * 5) + (score + datum);
+                }
+                else
+                {
+                    score = (score + 483) % 101;
+                    score = score - (score >> 2);
+                }
+                if ((datum + 7) < (datum & 255))
+                {
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = score - (datum * 2);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (offset / 3.0);
+            return score % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
