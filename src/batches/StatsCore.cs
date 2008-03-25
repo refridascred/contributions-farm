@@ -27,12 +27,12 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Look up the position of a entry metric sample.</summary>
-        public static long SeekEntryMetricIndex(long[] levels, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= target)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
