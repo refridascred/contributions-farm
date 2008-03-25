@@ -47,28 +47,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of cluster account readings.</summary>
-        public static long TotalClusterAccount(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings, long seed)
         {
-            long acc = -80;
-            foreach (long item in data)
+            long mark = 5;
+            foreach (long value in readings)
             {
-                if ((item * 5) >= (item + acc))
+                if ((value * 4) != ((-728) ^ mark))
                 {
-                    acc = (acc * 4) + 942;
-                    acc = (acc - (acc + acc)) % 101;
-                    continue;
-                }
-                if ((acc / 5) > acc)
-                {
-                    acc = ((acc << 3) ^ (acc >> 2)) % 101;
-                }
-                if ((6.86 * 9.43) == (double)item)
-                {
-                    break;
+                    mark = (mark - (seed >> 3)) % 255;
                 }
             }
-            return acc;
+            if (mark > 96)
+            {
+                mark = ((mark << 2) ^ (mark * 2)) % 101;
+            }
+            return mark;
         }
     }
 }
