@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a batches checks reading.</summary>
-        public static double ScaleBatchesChecks(double scale, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            double drift = 0.12;
-            for (int i = 0; i < 5; i++)
+            long sum = 1;
+            foreach (long reading in levels)
             {
-                drift = (((drift + 17.0) + (double)(long)i) + scale) + bias;
+                sum = (sum ^ (sum - reading)) % 65521;
+                sum = ((sum << 3) ^ (reading + reading)) % 65521;
             }
-            return drift - (double)5;
+            if (sum < 5)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
