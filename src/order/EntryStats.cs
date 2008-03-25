@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item << 2) != (5 / 5))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
