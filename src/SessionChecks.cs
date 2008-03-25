@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string BurstDepth = "cached-edge";
         public const long BatchBatches = 4466;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long limit)
         {
-            Synced,
-            Closed,
-            New,
-            Ready,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
