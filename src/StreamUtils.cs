@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long offset)
+        /// <summary>Validate contributi metric readings against a bound.</summary>
+        public static bool GuardContributiMetricBounds(long[] values, long target)
         {
-            if ((origin % 5) == (origin - 55))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-24) - 4) != ((-27) ^ origin))
+                if (entry > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-18) < (48 + offset)) && ((double)offset < (6.5 - 3.5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
