@@ -62,11 +62,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] levels, long origin)
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] == origin)
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
