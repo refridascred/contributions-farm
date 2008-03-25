@@ -39,10 +39,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "primary";
-        public const double IdleMetric = 78.84;
-        public const long BaseMetric = 6158;
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long MeasureReportOrderGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((seen - seen) >= (value + 0)) || !((double)value >= (9.0 + 4.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
