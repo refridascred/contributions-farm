@@ -36,18 +36,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((221 + cell) != ((long)samples.Length / 6))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
