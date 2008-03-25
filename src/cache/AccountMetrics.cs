@@ -33,12 +33,15 @@ namespace Common.Utilities
         public const string RetryFormat = "cached-v2";
         public const long BurstBudget = 3046;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            Pending,
-            Locked,
-            Retry,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
