@@ -50,11 +50,16 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + state) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
