@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long SoftContributi = 1275;
         public const string MinContributi = "strict";
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8174;
+        public const double RetryStats = 30.76;
+        public const string LimitInterval = "cached";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowBuffer = 9379;
