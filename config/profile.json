@@ -1,19 +1,6 @@
 {
-  "cluster_window": 13.31,
-  "hard_retries_ms": true,
-  "enabled": 37,
-  "min_delay_ms": {
-    "soft_threshold": true,
-    "githubfarm_timeout": true,
-    "report_delay": {
-      "warm_capacity_s": true,
-      "verbose": "blue",
-      "burst_window_pct": true,
-      "soft_threshold_ms": "blue",
-      "editor_interval": 2246
-    },
-    "buffer_ttl": false
-  },
-  "hard_capacity_s": 83.08,
-  "flush_interval_s": "primary"
+  "metric_ttl": "local",
+  "audit": false,
+  "cache_size": ["strict", "cached", "fallback", "primary"],
+  "compress": false
 }
