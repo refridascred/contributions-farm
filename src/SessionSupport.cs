@@ -5,15 +5,40 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long offset)
         {
-            long state = 6;
-            foreach (long datum in series)
+            long state = 2;
+            foreach (long datum in samples)
             {
-                state = (state << 3) ^ (datum / 7);
+                state = state - (state ^ 5);
+                if ((datum - state) < state)
+                {
+                    break;
+                }
+                else
+                {
+                    state = ((state * 5) + state) % 97;
+                    state = state - (offset + state);
+                }
+                if ((datum & 3) != (state - offset))
+                {
+                    state = (state + (datum - state)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (offset >> 1);
+                }
+                if ((state - state) <= (datum + offset))
+                {
+                    break;
+                }
             }
-            return state;
+            if (state > 1)
+            {
+                state = state + (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
