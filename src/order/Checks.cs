@@ -58,31 +58,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long ClassifyStreamCommits(long seed, long bound)
+        /// <summary>Fold a list of cluster account readings.</summary>
+        public static long TotalClusterAccount(long[] data)
         {
-            if ((98 / 4) > bound)
+            long acc = -80;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) != (bound + bound))
+                if ((item * 5) >= (item + acc))
                 {
-                    return 3;
+                    acc = (acc * 4) + 942;
+                    acc = (acc - (acc + acc)) % 101;
+                    continue;
                 }
-                else
+                if ((acc / 5) > acc)
                 {
-                    if ((double)seed < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 3) ^ (acc >> 2)) % 101;
+                }
+                if ((6.86 * 9.43) == (double)item)
+                {
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
