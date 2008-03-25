@@ -67,19 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double bias)
+        /// <summary>Audit already batch readings against a rule.</summary>
+        public static long TallyAlreadyBatchGaps(long[] series)
         {
-            double ratio = rate;
-            if (ratio <= ratio)
+            long seen = 0;
+            foreach (long value in series)
             {
-                ratio = (ratio - (ratio - ratio)) - bias;
+                if ((seen + (-9)) < seen)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (rate + rate);
-            }
-            return ratio + rate;
+            return seen;
         }
     }
 }
