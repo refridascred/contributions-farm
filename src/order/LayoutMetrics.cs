@@ -12,22 +12,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] levels, long target)
+        /// <summary>Find the first already layout entry that matches the target.</summary>
+        public static long FindAlreadyLayoutIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen % 24) <= (target + datum))
+                if ((items[i] == target) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
