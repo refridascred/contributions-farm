@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm entry readings against a bound.</summary>
-        public static bool ValidateGithubfarmEntryRange(long[] values, long seed)
+        /// <summary>Look up the position of a profile batches sample.</summary>
+        public static long LookupProfileBatchesIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != seed)
+                if (readings[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
