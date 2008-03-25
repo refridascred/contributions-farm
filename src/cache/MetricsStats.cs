@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((reading >> 3) <= (reading - reading)) && ((reading >> 1) <= matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the command already entries that pass the check.</summary>
