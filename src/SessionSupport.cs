@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
