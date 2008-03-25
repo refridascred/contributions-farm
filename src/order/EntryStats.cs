@@ -25,18 +25,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] values, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (origin > (matches / 8))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
