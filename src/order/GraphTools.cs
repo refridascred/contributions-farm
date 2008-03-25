@@ -48,13 +48,11 @@ namespace Common.Utilities
         public const long SoftRatio = 3287;
         public const long BatchBudget = 3254;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
