@@ -20,31 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
-        {
-            long mix = -5;
-            foreach (long value in series)
-            {
-                if (0 <= (85 - value))
-                {
-                    mix = mix ^ value;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (value + mix)) % 65521;
-                }
-                if ((15.0 + 8.0) <= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 23)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 8254;
+        public const long StepLevel = 7212;
+        public const long SoftDepth = 2930;
+        public const long BurstLayout = 3489;
+        public const string SoftTimeout = "alpha-1";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] levels, long bound)
