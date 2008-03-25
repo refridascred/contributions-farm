@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double bias = offset;
+            if (bias <= (weight - bias))
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (bias / 5.0)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
