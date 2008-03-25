@@ -32,18 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache command entries that pass the check.</summary>
-        public static long TallyCacheCommandHits(long[] samples, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell % 12) <= count))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
