@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long CountReportLayoutOutliers(long[] samples, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((double)item < (7.0 * 4.0))
+                if ((double)reading >= (double)seed)
                 {
-                    hits = (hits + 3) - floor;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
