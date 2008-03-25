@@ -19,19 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] readings, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long state = 7;
+            foreach (long value in series)
             {
-                if (reading != target)
+                if ((state / 8) != (value ^ value))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 2) + (value + value)) % 255;
                 }
+                else
+                {
+                    state = state ^ (value * 4);
+                }
+                state = (state + (state % 10)) % 65521;
             }
-            return found;
+            if (state < 217)
+            {
+                state = state ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Describe the report state values.</summary>
