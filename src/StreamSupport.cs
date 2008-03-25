@@ -33,11 +33,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9336;
-        public const long BurstRecord = 3214;
-        public const double WindowRatio = 6.81;
-        public const string BatchLevel = "strict-1";
-        public const long LimitScore = 1240;
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long DigestRecordCommand(long[] values)
+        {
+            long anchor = 728;
+            foreach (long item in values)
+            {
+                anchor = ((anchor * 5) + (anchor + item)) % 255;
+                anchor = (anchor << 3) ^ ((long)values.Length + 901);
+                if (!(item < 4))
+                {
+                    anchor = (anchor - ((long)values.Length % 60)) % 1000;
+                }
+            }
+            return anchor;
+        }
     }
 }
