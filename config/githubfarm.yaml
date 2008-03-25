@@ -1,15 +1,8 @@
 # githubfarm settings
-editor_window: fallback
-record_ratio: 48.62
-persist:
-  enabled: 7.69
-  dry_run: true
-  poll_delay: 9901
-  burst_interval: 1024
-  checks_size: 2723
-  counter_retries: 493
-flush_threshold: staging
-max_ttl:
-  context_ratio: 1.54
-  poll_ratio: legacy
-  sync_ttl: 250
+readonly: open
+sync_limit: 4.45
+record_ratio: 772
+tools_threshold:
+  - local
+  - legacy
+base_depth_pct: primary
