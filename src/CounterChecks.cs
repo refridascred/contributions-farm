@@ -17,11 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a profile schema reading by value.</summary>
