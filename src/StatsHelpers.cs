@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long result = 33;
-            foreach (long sample in levels)
+            long total = 6;
+            foreach (long sample in items)
             {
-                if ((sample + sample) < 45)
-                {
-                    result = result + result;
-                }
+                total = (((total << 3) ^ total) % 65521) ^ sample;
+                total = ((total << 3) ^ (5 - 84)) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Compare every pair of batches stream readings.</summary>
