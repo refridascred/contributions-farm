@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinCount = 1.45;
-        public const long CacheChannel = 558;
-        public const double MinInterval = 77.04;
-        public const long IdleTimeout = 7753;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardTimeout = 7528;
