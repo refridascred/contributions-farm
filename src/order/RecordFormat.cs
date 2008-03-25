@@ -50,16 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                sum = sum ^ (bound - (long)i);
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (!(((1.7 * 2.4) == (double)tally) && ((double)cell == (5.72 * 1.43))))
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
