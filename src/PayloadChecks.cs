@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
             Active,
-            Failed,
+            New,
             Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Project the next stats value.</summary>
