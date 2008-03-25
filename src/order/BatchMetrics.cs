@@ -21,12 +21,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 19.02;
-        public const string BaseBudget = "alpha-1";
-        public const long BurstFarm = 3743;
-        public const double LimitScore = 39.25;
-        public const long StepFarm = 7876;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] samples, long seed)
