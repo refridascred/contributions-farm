@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long TallyBufferFormatHits(long[] values, long target)
+        /// <summary>Adjust a buffer token reading.</summary>
+        public static double SmoothBufferToken(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double ratio = (floor / 5.0) + rate;
+            if (ratio <= (floor / 6.0))
             {
-                if ((target + reading) > (990 - reading))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ratio + (floor + 0.71);
             }
-            return tally;
+            return ratio + 3.0;
         }
     }
 }
