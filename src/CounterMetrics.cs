@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MinSpan = 26.97;
         public const string LimitTools = "latest";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] data, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (!!((matches + origin) <= origin))
+                if (cell <= seed)
                 {
-                    matches = (matches + 2) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
