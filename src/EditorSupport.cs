@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSpan = 379;
-        public const string RetrySession = "primary-v2";
-        public const double BaseSize = 77.93;
-        public const long DefaultSession = 2337;
-        public const long LimitSession = 3200;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
