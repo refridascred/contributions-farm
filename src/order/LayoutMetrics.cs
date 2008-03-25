@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit profile farm readings against a rule.</summary>
+        public static long MeasureProfileFarmGaps(long[] values)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((78 << 1) >= entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first already layout entry that matches the target.</summary>
