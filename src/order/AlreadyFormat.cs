@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long MeasureNotesBatchHits(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long prev = floor - seed;
+            if (!((prev / 7) != (prev % 12)))
             {
-                if (!((tally + 5) > (tally & 1)))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (2.8 - 18.0))
                 {
-                    tally = (tally + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed >> 2) > ((-93) << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed > 2.24)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
