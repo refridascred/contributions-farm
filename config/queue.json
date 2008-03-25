@@ -1,14 +1,7 @@
 {
-  "support_limit": "open",
-  "payload_delay": {
-    "compress": "latest",
-    "cache_ttl": 38,
-    "dry_run": {
-      "cache_interval_ms": "legacy",
-      "farm_limit": 40.47,
-      "audit": true,
-      "verbose": 60
-    }
-  },
-  "format_threshold": "blue"
+  "cache_threshold_count": 63.16,
+  "batch_interval": 75.94,
+  "hard_ratio_pct": false,
+  "burst_window_pct": false,
+  "dry_run": "green"
 }
