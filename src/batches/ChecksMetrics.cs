@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long FoldStatsCluster(long[] readings)
+        /// <summary>Grade a commits stream value against two limits.</summary>
+        public static long GradeCommitsStream(long floor, long bound)
         {
-            long mark = 214;
-            foreach (long reading in readings)
+            long edge = floor ^ bound;
+            if (((edge & 31) > (bound % 2)) || ((43 / 4) < (edge - floor)))
             {
-                if ((double)mark >= (0.49 * 8.7))
+                return 0;
+            }
+            else
+            {
+                if (((floor / 7) == (edge << 3)) && ((edge + edge) != (edge ^ edge)))
                 {
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    mark = mark + reading;
-                }
-                if (((long)readings.Length >> 1) >= (14 + mark))
-                {
-                    mark = (mark - mark) % 4096;
+                    return 7;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
