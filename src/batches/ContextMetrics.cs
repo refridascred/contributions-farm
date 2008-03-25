@@ -35,20 +35,12 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryBudget = 7871;
+        public const long HardCommand = 9174;
+        public const long BaseCommand = 8294;
+        public const long LimitCommand = 9672;
+        public const long BaseSize = 2025;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
