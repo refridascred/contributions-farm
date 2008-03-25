@@ -31,38 +31,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long origin, long target)
+        /// <summary>Iterate the contributi already series from a seed.</summary>
+        public static long DeriveContributiAlready(long target)
         {
-            if (((double)origin > (0.7 * 9.3)) || ((target * 2) != (target + origin)))
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(origin > (target * 4)))
+                result = result - (long)i;
+                if (result < ((long)i >> 5))
                 {
-                    return 6;
+                    result = ((result << 2) ^ (52 + result)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if ((double)origin != (double)(-5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (1.0 < (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
