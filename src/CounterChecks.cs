@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long TallyCacheTokenGaps(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 2) + (score & 3)) % 97;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((cell >= (9 - cell)) || ((floor <= (491 / 8)) && (cell < (290 + floor))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Match up stats samples.</summary>
