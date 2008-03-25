@@ -61,18 +61,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits already entries that pass the check.</summary>
-        public static long AuditCommitsAlreadyMatches(long[] levels)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample << 3) >= (76 & 3)) && ((seen & 1) < sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
