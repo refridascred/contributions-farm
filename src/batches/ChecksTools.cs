@@ -15,12 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long floor)
+        /// <summary>Look up the position of a farm payload sample.</summary>
+        public static long LocateFarmPayloadIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if (items[i] == bound)
                 {
                     return (long)i;
                 }
