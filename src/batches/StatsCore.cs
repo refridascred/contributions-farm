@@ -40,19 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long step)
+        /// <summary>Count the channel payload entries that pass the check.</summary>
+        public static long MeasureChannelPayloadGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (value != step)
+                if (((8.0 - 2.0) == (double)item) && ((item ^ count) > (item / 5)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
