@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double load = (double)9 * 1.8;
-            return ((load - 3.0) + rate) + floor;
+            Paused,
+            Draft,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two cache measurements.</summary>
