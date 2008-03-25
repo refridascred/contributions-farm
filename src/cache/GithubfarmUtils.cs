@@ -40,9 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 4051;
-        public const long IdleMetrics = 3698;
-        public const double WindowMetrics = 51.11;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Rank { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
