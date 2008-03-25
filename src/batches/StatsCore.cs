@@ -59,24 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long origin2)
+        /// <summary>Look up the position of a route graph sample.</summary>
+        public static long LocateRouteGraphIndex(long[] data, long offset)
         {
-            if ((origin < (origin * 4)) && ((origin - 0) != (origin2 << 1)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 8) > (origin + origin2))
+                if (data[i] >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
