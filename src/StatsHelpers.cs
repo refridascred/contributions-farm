@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long result = 33;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) < 45)
+                {
+                    result = result + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batches stream readings.</summary>
