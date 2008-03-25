@@ -1,6 +1,10 @@
-id,weight,ratio
-1,139,34.66
-2,72.85,25.87
-3,900,690
-4,842,132
-5,eu-west,83.42
+id,state,ratio,rank,label
+1,50.97,431,743,primary
+2,71.18,cached,green,57.71
+3,662,cached,eu-west,759
+4,12.73,fallback,248,151
+5,5.92,133,259,69.54
+6,658,53.32,260,29.53
+7,31.32,662,711,61.66
+8,107,559,94.23,legacy
+9,green,legacy,fallback,385
