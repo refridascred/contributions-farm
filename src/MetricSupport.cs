@@ -23,10 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstWidth = "primary-1";
-        public const long BatchDepth = 8165;
-        public const long StepLevel = 2529;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((limit >= entry) && (((long)values.Length % 10) <= entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a metrics support counter forward.</summary>
         public static long RollMetricsSupport(long seed)
