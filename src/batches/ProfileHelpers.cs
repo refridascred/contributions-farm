@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftFactor = "primary-edge";
+        public const long BurstDepth = 6513;
+        public const string MinScore = "latest-1";
+        public const string HardQueue = "standard-v2";
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] readings, long floor)
