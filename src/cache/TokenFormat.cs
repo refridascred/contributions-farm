@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetrySpan = 90.36;
-        public const double LimitSpan = 54.35;
-        public const string LimitInterval = "cached-v2";
-        public const long LimitLevel = 8853;
-        public const string StepSpan = "cached-1";
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long limit, long floor)
