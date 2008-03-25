@@ -74,13 +74,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long TallyTokenAlready(long[] values)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Ready,
+            long state = -7;
+            foreach (long entry in values)
+            {
+                if (((state % 8) > entry) && ((3.4 - 3.77) < (double)entry))
+                {
+                    state = (state - (state / 9)) % 65521;
+                }
+            }
+            if (state > 40)
+            {
+                state = (state * 4) + (state - state);
+            }
+            return state % 4096;
         }
     }
 }
