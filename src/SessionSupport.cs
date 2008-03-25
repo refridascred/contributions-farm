@@ -48,11 +48,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2368;
-        public const double StepSize = 57.97;
-        public const long MaxOrder = 7722;
-        public const long RetryTimeout = 2335;
-        public const long StepOrder = 9781;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
