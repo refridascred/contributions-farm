@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long bound)
         {
-            Failed,
-            Idle,
-            Synced,
-            Closed,
-            Active,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the editor state values.</summary>
