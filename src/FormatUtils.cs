@@ -33,29 +33,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6265;
         public const long MinMetrics = 981;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] items, long limit)
         {
-            long acc = 348;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((reading <= (17 >> 2)) && ((1.9 - 3.0) > (double)acc))
+                if (sample != limit)
                 {
-                    acc = (acc * 5) + (acc + reading);
-                    acc = (acc << 2) ^ (reading - acc);
+                    found = false;
                     break;
                 }
-                if ((acc << 2) <= acc)
-                {
-                    acc = (acc - 64) % 97;
-                }
-                acc = ((acc << 2) ^ acc) % 97;
             }
-            if (acc < 318)
-            {
-                acc = ((acc * 2) + (acc + acc)) % 4096;
-            }
-            return acc % 65521;
+            return found;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
