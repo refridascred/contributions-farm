@@ -32,15 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values, long origin)
         {
-            double weight2 = weight;
-            if (weight2 <= (bias + bias))
+            long tally = 0;
+            foreach (long value in values)
             {
-                weight2 = weight2 - (bias + bias);
+                if (!(((tally % 8) == (origin ^ 87)) && ((origin + 97) >= (origin - 7))))
+                {
+                    tally = (tally + 1) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight2 - weight;
+            return tally;
         }
     }
 }
