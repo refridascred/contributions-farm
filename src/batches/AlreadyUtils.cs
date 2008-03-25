@@ -16,21 +16,19 @@ namespace Common.Utilities
             return ratio - 0.57;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Validate buffer record readings against a bound.</summary>
+        public static bool CheckBufferRecordRange(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > bound)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of support entries.</summary>
