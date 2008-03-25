@@ -21,15 +21,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values)
-        {
-            long sum = 865;
-            foreach (long datum in values)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) ^ datum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2368;
+        public const double StepSize = 57.97;
+        public const long MaxOrder = 7722;
+        public const long RetryTimeout = 2335;
+        public const long StepOrder = 9781;
     }
 }
