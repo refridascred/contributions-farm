@@ -52,21 +52,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of schema stats readings.</summary>
-        public static long OverlapSchemaStatsCount(long[] samples)
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long ClassifyStreamCommits(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((98 / 4) > bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) != (bound + bound))
                 {
-                    if ((samples[i] + samples[j]) > 16)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < (double)bound)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
     }
 }
