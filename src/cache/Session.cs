@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of profile channel readings.</summary>
-        public static long TotalProfileChannel(long[] levels)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] series, long floor)
         {
-            long acc = -869;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc - (7 - (long)levels.Length)) % 101) + cell;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 13)
-            {
-                acc = (acc ^ (acc - 917)) % 65521;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
