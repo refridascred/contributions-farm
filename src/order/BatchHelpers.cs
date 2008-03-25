@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] items, long limit)
         {
-            double load = bias / 2.0;
-            if (load >= (bias * 16.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)3) - gain;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
