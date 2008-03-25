@@ -1,8 +1,12 @@
 {
-  "flush_window_pct": [1, 172],
-  "base_threshold": "strict",
-  "base_timeout": "strict",
-  "warm_capacity_pct": false,
-  "commits_threshold": [22, 154, 149, 359],
-  "sync_ttl_ms": "legacy"
+  "strict": true,
+  "soft_depth": false,
+  "burst_timeout_count": 250,
+  "dry_run": true,
+  "audit": "primary",
+  "sync_ratio_ms": {
+    "flush_delay_s": 30,
+    "already_retries": [486, 257, 464, 279],
+    "max_ratio_pct": [475, 292]
+  }
 }
