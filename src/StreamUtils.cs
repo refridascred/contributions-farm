@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a entry checks value against two limits.</summary>
-        public static long RankEntryChecks(long seed, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if ((target > (seed ^ seed)) && ((target >> 3) < 377))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target + seed) < (seed + seed)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed != (3.8 + 16.0))
+                    if ((items[i] ^ items[j]) < 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
