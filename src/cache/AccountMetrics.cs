@@ -33,17 +33,25 @@ namespace Common.Utilities
         public const string IdleInterval = "standard";
         public const long StepRatio = 3959;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] series, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = seed ^ offset;
+            if (!(edge > (offset & 63)))
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset + seed) != (seed - edge))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
