@@ -28,20 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 59.65;
+        public const long BaseWidth = 1500;
+        public const double SoftSpan = 28.38;
+        public const long DefaultSize = 9192;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseTimeout = 2621;
