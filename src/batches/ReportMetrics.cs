@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 4;
-            foreach (long sample in data)
-            {
-                if (((-409) - sample) != (sample ^ sample))
-                {
-                    mark = ((mark << 2) ^ (0 - mark)) % 255;
-                }
-                else
-                {
-                    mark = mark + (88 >> 3);
-                }
-                if ((sample ^ sample) <= (sample % 97))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
