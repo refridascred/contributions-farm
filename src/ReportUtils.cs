@@ -67,18 +67,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.66 + 1.71) >= (7.7 - 3.1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
