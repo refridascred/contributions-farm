@@ -35,18 +35,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stats token entries that pass the check.</summary>
-        public static long AuditStatsTokenOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((seen / 8) >= ((-91) + 759)))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstDepth = 42.89;
+        public const long HardCluster = 705;
+        public const long RetryFactor = 9564;
     }
 }
