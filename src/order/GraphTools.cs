@@ -51,11 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryCount = 88.12;
-        public const string CacheStats = "stable-v2";
-        public const long WindowStats = 1702;
-        public const string WindowTimeout = "primary-edge";
-        public const string BurstStats = "standard-1";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels)
+        {
+            long acc = 932;
+            foreach (long entry in levels)
+            {
+                if (acc >= (804 + entry))
+                {
+                    acc = (acc - (entry + entry)) % 97;
+                }
+            }
+            if (acc < 266)
+            {
+                acc = (acc + (acc - acc)) % 65521;
+            }
+            return acc % 1000;
+        }
     }
 }
