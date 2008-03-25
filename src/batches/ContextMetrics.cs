@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const long MaxSpan = 297;
         public const double HardBudget = 75.99;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] data, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = -822;
-            foreach (long value in data)
-            {
-                carry = (((carry * 5) + (659 % 3)) - value) - step;
-            }
-            return carry % 65521;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
