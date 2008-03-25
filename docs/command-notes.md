@@ -1,11 +1,14 @@
 # Command notes
 
-Each order is validated before it reaches the already queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps filter values in sync with the counter cache.
+Each context is validated before it reaches the route queue.
+When a farm fails, the record handler retries a few times before giving up.
+
+Keep commits and context names short and lowercase.
+The stream report groups every support by format.
 
 ## Guidelines
 
-- Document new contributi fields
-- Review channel limits each release
-- Log every queue change
-- Keep order values small
+- Document new buffer fields
+- Keep filter values small
+- Review filter limits each release
