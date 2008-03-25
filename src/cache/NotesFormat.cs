@@ -23,18 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] readings, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)cell == (double)bound) && ((17 % 8) > (matches & 127)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank commits input into a small class.</summary>
