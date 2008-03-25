@@ -1,11 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the command list.
-Defaults for token live in the config folder and can be overridden per environment.
-Run the editor check before changing any batch limits.
+Run the route check before changing any schema limits.
+The session module keeps graph values in sync with the checks cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every editor change
-- Validate githubfarm input early
-- Document new graph fields
+- Log every command change
+- Review session limits each release
+- Prefer checks defaults
