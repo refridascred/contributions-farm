@@ -18,25 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph editor pair into a bucket.</summary>
-        public static long ClassifyGraphEditor(long limit, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long target)
         {
-            long lane = limit ^ step;
-            if ((limit - 70) < limit)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                score = (score + (score + score)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (limit < lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
