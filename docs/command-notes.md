@@ -1,11 +1,11 @@
 # Command notes
 
-The report module keeps buffer values in sync with the order cache.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often contributi data is refreshed.
+The cache report groups every notes by buffer.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate format input early
-- Keep report values small
-- Document new layout fields
+- Prefer filter defaults
+- Log every counter change
+- Keep layout values small
+- Review layout limits each release
