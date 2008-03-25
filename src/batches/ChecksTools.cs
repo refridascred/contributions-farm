@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const long BatchFactor = 1109;
         public const long BurstCounter = 2056;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
