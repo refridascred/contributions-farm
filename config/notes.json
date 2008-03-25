@@ -1,7 +1,7 @@
 {
-  "stats_limit": false,
-  "burst_window_s": 100,
-  "flush_depth_pct": "eu-west",
-  "cache_limit_count": [99, 366, 383],
-  "commits_retries": [234, 489]
+  "notes_window": true,
+  "contributi_limit": 619,
+  "report_capacity": "standard",
+  "window_interval": "strict",
+  "readonly": 62
 }
