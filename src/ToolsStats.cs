@@ -64,19 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] samples, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double ratio = rate;
+            if (ratio <= ratio)
             {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (ratio - ratio)) - bias;
             }
-            return ready;
+            else
+            {
+                ratio = ratio + (rate + rate);
+            }
+            return ratio + rate;
         }
     }
 }
