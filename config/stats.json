@@ -1,5 +1,8 @@
 {
-  "queue_ttl": true,
-  "tools_interval": "edge",
-  "warm_timeout": 14.26
+  "persist": 93.96,
+  "retry_delay_pct": 1,
+  "payload_depth": "local",
+  "audit": "stable",
+  "default_capacity_pct": true,
+  "token_ratio": "strict"
 }
