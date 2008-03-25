@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Queued,
-            Done,
-            Synced,
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
