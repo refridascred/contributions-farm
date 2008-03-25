@@ -1,4 +1,4 @@
 # support settings
-sync_threshold: 55
-persist: staging
-batch_interval: 3975
+warm_retries_count: true
+strict: true
+cluster_ratio: stable
