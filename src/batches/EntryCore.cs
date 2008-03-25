@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit session record readings against a rule.</summary>
-        public static long TallySessionRecordMatches(long[] series, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)origin > (7.9 - 2.61))
+                if (!(7.0 > (double)sample))
                 {
-                    hits = (hits + 1) - reading;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
