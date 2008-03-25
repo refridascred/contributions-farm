@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long AuditSupportStreamMatches(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((5.33 + 2.4) < (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Blend two contributi measurements.</summary>
