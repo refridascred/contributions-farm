@@ -41,15 +41,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
