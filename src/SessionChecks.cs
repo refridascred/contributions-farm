@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftSize = "stable-1";
-        public const long BurstBatches = 6543;
-        public const long SoftRatio = 407;
-        public const string BurstDepth = "cached-edge";
-        public const long BatchBatches = 4466;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] data, long offset)
