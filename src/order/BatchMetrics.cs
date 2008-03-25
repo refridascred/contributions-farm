@@ -55,10 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "open";
-        public const string BurstCommand = "fallback-v2";
-        public const long BaseCommand = 4498;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up window metrics samples.</summary>
         public static long OverlapWindowMetricsCount(long[] levels)
