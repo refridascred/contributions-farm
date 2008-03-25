@@ -79,18 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm cache samples.</summary>
-        public static long ScoreGithubfarmCache(long[] items, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] items, long origin)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (((sum ^ sample) >= (843 + 65)) || ((sum + sum) >= (limit >> 2)))
+                if (reading >= origin)
                 {
-                    sum = sum ^ limit;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
