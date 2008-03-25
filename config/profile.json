@@ -1,10 +1,7 @@
 {
-  "verbose": ["green", "strict", "standard"],
-  "cache_capacity_count": {
-    "verbose": 66,
-    "metric_interval": "eu-west",
-    "soft_retries_count": 5186
-  },
-  "readonly": 1284,
-  "hard_depth": "eu-west"
+  "retry_size_count": "strict",
+  "compress": 70,
+  "metric_ratio": 868,
+  "hard_delay_pct": "standard",
+  "sync_limit_pct": "eu-west"
 }
