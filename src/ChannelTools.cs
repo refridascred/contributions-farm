@@ -27,18 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((((3.0 + 5.2) <= (double)hits) || (origin < (877 + origin))) && (origin > (hits >> 4)))
+                if ((double)bound >= (double)matches)
                 {
-                    hits = (hits + 1) ^ item;
+                    matches = (matches + 3) + value;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
