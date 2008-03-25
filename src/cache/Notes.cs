@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "alpha";
-        public const long BurstBudget = 8868;
-        public const double RetryOrder = 5.82;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double offset)
+        {
+            double load = (offset + offset) / 4.0;
+            if (load < (bias - 1.0))
+            {
+                load = load + (double)251;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (offset / 3.0);
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 5237;
