@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long AuditMetricsStatsOutliers(long[] values, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((origin + value) > 48)
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the command already entries that pass the check.</summary>
