@@ -60,12 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
