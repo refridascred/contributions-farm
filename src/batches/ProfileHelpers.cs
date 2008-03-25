@@ -69,13 +69,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Ready,
-            Done,
-            Dropped,
-            Retry,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
