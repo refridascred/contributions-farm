@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Roll a commits cache counter forward.</summary>
-        public static long RollCommitsCache(long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((double)target == (double)total))
-                {
-                    total = total ^ (total & 127);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
