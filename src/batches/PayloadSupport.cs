@@ -38,19 +38,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] levels, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
