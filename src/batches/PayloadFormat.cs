@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits >= (6.63 + 3.0))
-                {
-                    hits = ((hits + 3) - datum) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 23.29;
+        public const double HardChecks = 46.34;
+        public const double StepBudget = 4.56;
+        public const long LimitChecks = 9549;
+        public const long BatchChecks = 2560;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
