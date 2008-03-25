@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double span)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            double mean = (double)(362 >> 4);
-            if (mean < span)
+            double drift = 11.0;
+            if (drift > scale)
             {
-                mean = mean - (scale / 9.0);
+                drift = (drift + (double)1) + floor;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - scale) + (double)(long)i;
+                drift = drift + (scale / 8.0);
             }
-            return mean + (span / 7.0);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (1.0 - drift)) + (double)(long)i;
+            }
+            return drift - (drift + scale);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
