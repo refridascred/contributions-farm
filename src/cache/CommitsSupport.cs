@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate payload report readings against a bound.</summary>
-        public static bool GuardPayloadReportRange(long[] levels, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
