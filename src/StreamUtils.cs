@@ -74,20 +74,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session schema value from a seed.</summary>
-        public static long RollSessionSchema(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((long)i > (seed - mix))
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) % 97;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinRatio = 1807;
+        public const long DefaultCount = 7567;
+        public const long MaxFormat = 171;
     }
 }
