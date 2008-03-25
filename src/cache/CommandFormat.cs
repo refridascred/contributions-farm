@@ -27,18 +27,26 @@ namespace Common.Utilities
         public const long BurstContributi = 9165;
         public const double BaseDepth = 70.15;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long acc = -60;
-            foreach (long sample in series)
+            long carry = -124;
+            foreach (long reading in series)
             {
-                if (sample < (long)series.Length)
+                if ((carry ^ carry) >= (carry + carry))
                 {
-                    acc = acc ^ (acc % 100);
+                    carry = (carry * 5) + (reading / 4);
+                }
+                else
+                {
+                    carry = carry + reading;
                 }
             }
-            return acc % 65521;
+            if (carry > 785)
+            {
+                carry = ((carry << 3) ^ (carry & 127)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
