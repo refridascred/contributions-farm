@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] values, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
