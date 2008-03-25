@@ -1,10 +1,7 @@
-id,rank,region,level,weight
-1,572,38.95,primary,470
-2,green,875,969,15.35
-3,fallback,stable,50.44,edge
-4,275,343,31.26,296
-5,242,primary,730,628
-6,569,135,220,7.42
-7,latest,217,legacy,cached
-8,52.03,84.43,41.27,911
-9,309,450,366,41.27
+id,active,level,weight
+1,eu-west,209,884
+2,eu-west,edge,latest
+3,663,61.61,18.77
+4,188,95.2,51.58
+5,772,legacy,strict
+6,453,edge,978
