@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const double MinInterval = 77.04;
         public const long IdleTimeout = 7753;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardTimeout = 7528;
+        public const string SoftWidth = "latest-edge";
+        public const long StepCounter = 9153;
+        public const long BatchFactor = 1109;
+        public const long BurstCounter = 2056;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
