@@ -37,26 +37,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] samples, long bound)
         {
-            long carry = 33;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)limit < (7.02 * 20.0))
+                if ((bound >> 3) <= matches)
                 {
-                    carry = (carry - (carry + carry)) + sample;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 4096;
-                }
-                if (!((double)carry < (3.27 + 2.34)))
-                {
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
