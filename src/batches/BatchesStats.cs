@@ -57,21 +57,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
