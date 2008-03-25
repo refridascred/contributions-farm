@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit contributi farm readings against a rule.</summary>
-        public static long CountContributiFarmGaps(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((reading >> 3) > (reading << 3)) || ((reading * 4) < (hits & 1)))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheWidth = "legacy-edge";
+        public const long MaxProfile = 5493;
+        public const string StepProfile = "standard";
+        public const long RetryRatio = 6649;
 
         /// <summary>Count the stream profile entries that pass the check.</summary>
         public static long MeasureStreamProfileOutliers(long[] series)
