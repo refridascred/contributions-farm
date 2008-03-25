@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long seed)
-        {
-            long result = 52;
-            foreach (long reading in levels)
-            {
-                result = (((result * 2) + (reading * 3)) % 4096) + seed;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleTimeout = 1611;
+        public const long BaseContext = 3364;
+        public const double LimitInterval = 36.58;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricHits(long[] values, long origin)
