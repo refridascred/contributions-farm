@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long CountChecksSessionMatches(long[] samples, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((605 - target) <= bound)
             {
-                if ((hits + 0) < reading)
+                return 5;
+            }
+            else
+            {
+                if ((target + 80) == (target + 0))
                 {
-                    hits = (hits + 3) - origin;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!(798 < (target * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) != (bound ^ 316))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a editor options.</summary>
