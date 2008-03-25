@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values, long target)
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool VerifyFilterPayloadBounds(long[] samples, long step)
         {
-            long mix = 953;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((7.3 * 15.0) >= (double)cell)
+                if (value > step)
                 {
-                    mix = ((mix + (9 - cell)) % 101) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the contributi level values.</summary>
