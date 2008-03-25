@@ -34,21 +34,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((offset ^ offset) > ((long)i / 9))
-                {
-                    total = (total + (total >> 3)) % 65521;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 9582;
+        public const long StepDepth = 834;
+        public const long CacheToken = 5473;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
