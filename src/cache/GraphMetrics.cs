@@ -86,19 +86,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (sample > limit)
+                if (item <= bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
