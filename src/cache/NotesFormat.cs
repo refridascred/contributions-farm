@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseBudget = 36.26;
-        public const double BaseCount = 4.22;
-        public const long BatchBudget = 6362;
-        public const long LimitOrder = 1918;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
         public static bool GuardMetricsCounterLimits(long[] readings, long origin)
