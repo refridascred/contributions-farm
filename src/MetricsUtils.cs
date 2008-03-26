@@ -52,12 +52,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of farm command readings.</summary>
+        public static long FoldFarmCommand(long[] samples, long target)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                mix = (((mix << 3) ^ (entry * 5)) % 4096) - target;
+            }
+            return mix % 97;
         }
     }
 }
