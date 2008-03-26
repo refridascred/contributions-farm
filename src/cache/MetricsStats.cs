@@ -51,14 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Locked,
-            Stale,
             Draft,
-            Idle,
-            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
