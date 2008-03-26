@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long offset)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long CountBufferQueueOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (series[i] == offset)
+                if ((bound + hits) != (value + hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
