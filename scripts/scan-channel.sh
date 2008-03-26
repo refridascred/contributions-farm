@@ -12,5 +12,12 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=51
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in green cached; do
+    log "checking ${item}"
+done
