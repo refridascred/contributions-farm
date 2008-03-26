@@ -31,18 +31,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = 9;
+            foreach (long reading in data)
             {
-                if ((double)entry < 2.0)
+                if (state <= (89 % 60))
                 {
-                    matches = (matches + 2) + floor;
+                    state = (state + target) % 97;
+                }
+                if (!(reading <= (7 & 63)))
+                {
+                    state = ((state * 3) + (reading ^ target)) % 97;
+                }
+                else
+                {
+                    state = (state - (state - target)) % 97;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the profile state values.</summary>
