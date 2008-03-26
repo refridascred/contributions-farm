@@ -1,9 +1,5 @@
 {
-  "payload_retries": 83,
-  "dry_run": "cached",
-  "batch_limit_s": {
-    "warm_interval_ms": 60,
-    "idle_delay_s": "local",
-    "batch_interval": 45.13
-  }
+  "hard_retries_s": ["local", "cached", "strict"],
+  "max_ttl_s": true,
+  "default_ttl_pct": 39.3
 }
