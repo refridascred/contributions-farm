@@ -69,16 +69,11 @@ namespace Common.Utilities
             return bias - (offset / 5.0);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 9;
-            foreach (long entry in data)
-            {
-                result = (result - (result >> 3)) + entry;
-                result = (result * 2) + (821 & 31);
-            }
-            return result;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
