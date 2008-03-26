@@ -1,15 +1,6 @@
 {
-  "githubfarm_interval": 25,
-  "verbose": ["open", "edge"],
-  "flush_threshold_ms": {
-    "default_capacity_pct": false,
-    "max_delay": 4928,
-    "dry_run": {
-      "cluster_threshold": 1024,
-      "burst_retries_ms": "open",
-      "audit": [4, 465, 495]
-    },
-    "readonly": 19,
-    "format_delay": 79.31
-  }
+  "idle_depth": "staging",
+  "cache_size_s": 250,
+  "burst_limit": 46,
+  "warm_threshold_pct": 28
 }
