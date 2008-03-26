@@ -58,18 +58,15 @@ namespace Common.Utilities
         public const double DefaultEditor = 78.41;
         public const string HardEditor = "local";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] series, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double bias2 = (double)(96 / 4);
+            if (bias2 > (double)12)
             {
-                if ((step >> 5) == (item << 2))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = bias2 + (bias / 2.0);
             }
-            return tally;
+            return bias2 + (bias2 + weight);
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
