@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a batch tools reading by value.</summary>
-        public static long LookupBatchToolsIndex(long[] readings, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] > bound)
+                if (((4.0 * 8.36) == (double)sample) && ((sample % 8) == (sample / 6)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
