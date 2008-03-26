@@ -26,17 +26,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
