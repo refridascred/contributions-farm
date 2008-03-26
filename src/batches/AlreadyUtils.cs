@@ -40,14 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] series, long bound)
         {
-            Pending,
-            Paused,
-            Dropped,
-            New,
-            Retry,
+            long mark = 1;
+            foreach (long entry in series)
+            {
+                if (bound > (43 + 323))
+                {
+                    mark = mark ^ (entry << 1);
+                }
+                if (19 > (mark + 499))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
