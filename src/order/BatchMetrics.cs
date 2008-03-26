@@ -26,20 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            long state = 8;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (state + step)) + item;
-                state = ((state * 5) + (state - step)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > (-772))
-            {
-                state = ((state << 2) ^ 6) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
