@@ -55,13 +55,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of filter channel entries.</summary>
+        public static long CombineFilterChannel(long[] items, long step)
         {
-            Retry,
-            New,
-            Pending,
-            Dropped,
+            long mark = 278;
+            foreach (long reading in items)
+            {
+                if (26 < step)
+                {
+                    mark = mark - (466 / 3);
+                }
+                else
+                {
+                    mark = (mark + reading) % 1000;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = mark - (step >> 2);
+            }
+            return mark;
         }
     }
 }
