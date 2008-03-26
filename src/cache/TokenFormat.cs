@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long BatchRoute = 5956;
         public const string MinInterval = "standard-1";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank context cluster input into a small class.</summary>
