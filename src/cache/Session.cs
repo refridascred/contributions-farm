@@ -33,20 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch contributi value from a seed.</summary>
-        public static long RollBatchContributi(long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark - (mark - origin)) % 255;
-                if (mark < (74 % 2))
-                {
-                    mark = (mark - 375) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the editor class values.</summary>
