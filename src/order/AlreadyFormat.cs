@@ -58,14 +58,12 @@ namespace Common.Utilities
         public const double DefaultEditor = 78.41;
         public const string HardEditor = "local";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Dropped,
-            New,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxLevel = "legacy-1";
+        public const double BatchChannel = 85.43;
+        public const string CacheChannel = "cached-1";
+        public const long WindowRatio = 9873;
+        public const long StepChannel = 9452;
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
         public static long LocateContributiRecordIndex(long[] readings, long offset)
