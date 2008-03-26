@@ -39,11 +39,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double bias = ratio;
-            return (bias - (double)617) + offset;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
