@@ -64,21 +64,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Match up contributi cache samples.</summary>
-        public static long CompareContributiCacheCount(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
