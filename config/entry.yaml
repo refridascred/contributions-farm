@@ -1,5 +1,4 @@
 # entry settings
-notes_ratio: edge
-cache_ttl_count: latest
-compress: 8563
-githubfarm_retries: false
+warm_ttl: legacy
+cache_interval_count: true
+hard_interval_ms: legacy
