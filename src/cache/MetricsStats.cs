@@ -35,10 +35,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9732;
-        public const long StepInterval = 2525;
-        public const string MinTimeout = "strict-edge";
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long TallySupportPayloadMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((-29) ^ matches) != (datum * 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
