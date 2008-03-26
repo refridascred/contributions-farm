@@ -32,23 +32,30 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long bound)
         {
-            long cur = seed - step;
-            if ((step & 63) != (cur + step))
+            long next = floor ^ bound;
+            if (floor > (next - next))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)seed == (4.0 * 0.9))
+                if (((bound / 5) < next) || ((3 - next) == (next + 5)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((next % 2) <= next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
