@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen & 7) > (0 - step))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheCount = "stable-1";
+        public const long HardMetrics = 2645;
+        public const long DefaultDepth = 972;
 
         /// <summary>Audit order context readings against a rule.</summary>
         public static long AuditOrderContextOutliers(long[] readings)
