@@ -1,8 +1,7 @@
 {
-  "readonly": 61.05,
-  "persist": ["blue", "stable", "primary"],
-  "min_size": 73.11,
-  "audit": "stable",
-  "flush_window_ms": true,
-  "idle_timeout_pct": 7084
+  "verbose": "stable",
+  "burst_depth_count": [375, 186, 5],
+  "command_delay": 64.03,
+  "batch_interval_ms": ["cached", "stable", "local", "eu-west"],
+  "already_limit": 250
 }
