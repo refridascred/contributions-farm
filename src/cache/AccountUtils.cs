@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const long IdleFilter = 2423;
         public const double BaseCount = 43.38;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] samples, long floor)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 + span) + (double)(long)i;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - 4.7;
+            return -1;
         }
     }
 }
