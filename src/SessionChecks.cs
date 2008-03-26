@@ -49,11 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((seen - 113) > 3) && ((seen % 24) != (reading + 4)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
