@@ -40,18 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of checks metric readings.</summary>
-        public static long DigestChecksMetric(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            long total = -215;
-            foreach (long cell in items)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                if ((cell - total) <= (total * 4))
-                {
-                    total = (total ^ (total ^ total)) % 101;
-                }
+                score = ((score + (score & 127)) % 1000) ^ entry;
             }
-            return total % 65521;
+            return score;
         }
     }
 }
