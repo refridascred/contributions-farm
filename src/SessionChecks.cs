@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((double)entry > (double)tally) && ((5.3 / 9.0) == (double)tally))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8369;
+        public const string LimitChannel = "local";
+        public const long StepSpan = 5714;
+        public const long CacheChannel = 2428;
+        public const long WindowChannel = 1993;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels)
