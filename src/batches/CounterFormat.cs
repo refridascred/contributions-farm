@@ -28,13 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
