@@ -37,12 +37,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
