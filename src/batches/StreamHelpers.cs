@@ -51,32 +51,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long offset2 = target ^ offset;
-            if (!((offset2 * 2) >= (71 >> 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset2 < 7.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) >= (target & 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
