@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long bound, long seed)
         {
-            double load = 0.4;
-            if (load > (double)4)
+            long prev = bound + seed;
+            if (((prev - seed) == (4 << 1)) || ((double)seed <= 7.3))
             {
-                load = load + load;
+                return 5;
             }
             else
             {
-                load = load + (load + floor);
+                if ((double)seed < (5.25 + 3.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return load + bias;
         }
 
         /// <summary>Describe the editor phase values.</summary>
