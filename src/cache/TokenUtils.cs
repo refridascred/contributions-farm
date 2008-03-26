@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many command report samples are out of range.</summary>
-        public static long CountCommandReportGaps(long[] items, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum != (double)matches)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
