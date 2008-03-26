@@ -1,9 +1,12 @@
 # githubfarm settings
-min_delay: 45.3
-channel_retries:
-  compress: strict
-  max_depth: open
-  cache_interval_count: 20
-  idle_depth_count: 36.47
-  dry_run: 1024
-burst_size_pct: primary
+commits_window:
+  hard_window:
+    - open
+    - stable
+    - local
+    - edge
+  soft_capacity_ms: 90.96
+  base_depth_count: staging
+compress: 100
+burst_ttl_s: open
+commits_retries: legacy
