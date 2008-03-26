@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                if (((tally + tally) <= (tally - offset)) && ((offset > ((-410) >> 1)) && ((double)offset < (1.0 + 5.0))))
+                if ((double)datum < (3.5 / 5.0))
                 {
-                    tally = (tally + 1) ^ reading;
+                    anchor = anchor + (datum / 9);
+                    anchor = (anchor * 3) + anchor;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor / 6);
+                }
+                if ((double)anchor < (6.0 * 8.9))
+                {
+                    anchor = ((anchor * 5) + datum) % 65521;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
