@@ -1,6 +1,5 @@
 {
-  "strict": "stable",
-  "entry_ratio": 3043,
-  "max_ttl_ms": 72.37,
-  "burst_ttl_count": "fallback"
+  "persist": "primary",
+  "batches_capacity": 50,
+  "window_depth": "strict"
 }
