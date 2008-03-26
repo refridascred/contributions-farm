@@ -30,15 +30,19 @@ namespace Common.Utilities
             return (gain + gain) + scale;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
