@@ -93,21 +93,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = -6;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (1 >= (result + cell))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    result = result - (limit ^ limit);
+                }
+                result = (result ^ (cell % 60)) % 1000;
+                if ((double)limit >= (9.0 + 9.1))
+                {
+                    result = ((result * 5) + limit) % 4096;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
