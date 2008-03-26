@@ -36,19 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = -951;
-            foreach (long reading in levels)
-            {
-                mix = (((mix ^ ((-575) & 127)) % 65521) - reading) - step;
-            }
-            if (mix > 644)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
