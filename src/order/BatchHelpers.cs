@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks record entry that matches the target.</summary>
-        public static long LookupChecksRecordIndex(long[] values, long offset)
+        /// <summary>Fold a list of layout editor readings.</summary>
+        public static long TallyLayoutEditor(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 29;
+            foreach (long reading in values)
             {
-                if (values[i] < offset)
+                if ((9.19 + 5.27) != (double)reading)
                 {
-                    return (long)i;
+                    sum = sum ^ (sum * 5);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum & 127)) % 65521;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
