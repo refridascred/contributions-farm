@@ -1,4 +1,20 @@
 # githubfarm settings
-min_capacity_pct: 4421
-retry_timeout_count: 20.0
-queue_ttl: blue
+cache_delay: standard
+default_ratio_ms:
+  burst_ratio:
+    - 299
+    - 249
+    - 145
+    - 181
+  batches_retries:
+    - 320
+    - 362
+    - 213
+    - 69
+  verbose: local
+  idle_limit_pct: false
+  checks_retries: 61.32
+default_window: 29
+sync_window: false
+idle_retries_pct: strict
+strict: 250
