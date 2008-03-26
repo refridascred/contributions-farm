@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((double)tally <= (17.0 / 7.0))
+                if (datum >= floor)
                 {
-                    tally = (tally + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
