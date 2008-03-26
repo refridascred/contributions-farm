@@ -1,6 +1,10 @@
 # entry settings
-schema_ttl:
-  - 183
-  - 124
-channel_delay: 6
-base_window: 3144
+max_window_count:
+  - 78
+  - 410
+  - 118
+burst_depth: cached
+retry_threshold:
+  verbose: staging
+  enabled: blue
+  poll_timeout_count: green
