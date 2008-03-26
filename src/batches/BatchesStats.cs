@@ -48,13 +48,15 @@ namespace Common.Utilities
             return scale + 0.63;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of counter metrics readings.</summary>
+        public static long TallyCounterMetrics(long[] samples)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long score = 33;
+            foreach (long entry in samples)
+            {
+                score = ((score - (476 >> 4)) % 4096) + entry;
+            }
+            return score % 1000;
         }
     }
 }
