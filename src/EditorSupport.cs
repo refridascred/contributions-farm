@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = 776;
+            foreach (long sample in data)
             {
-                if ((offset + (long)items.Length) <= offset)
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total << 3) ^ (sample % 3)) % 4096) - step;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
