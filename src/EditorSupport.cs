@@ -34,11 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "legacy-edge";
-        public const double SoftProfile = 93.64;
-        public const double SoftLevel = 36.08;
-        public const string HardScore = "standard-v2";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Failed,
+            Pending,
+            Paused,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] samples)
