@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5246;
-        public const long BatchBuffer = 111;
-        public const long StepWidth = 1329;
-        public const string LimitBudget = "staging-v2";
+        /// <summary>Audit entry graph readings against a rule.</summary>
+        public static long TallyEntryGraphHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((16.0 + 2.01) > (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
