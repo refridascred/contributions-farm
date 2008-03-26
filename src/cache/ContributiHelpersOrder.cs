@@ -38,9 +38,14 @@ namespace Common.Utilities
             return gain + (bias2 * 1.14);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxDepth = 7888;
-        public const long BatchMetrics = 3538;
-        public const string IdleMetrics = "primary-v2";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Queued,
+            Ready,
+            Active,
+            Done,
+            Stale,
+        }
     }
 }
