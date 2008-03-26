@@ -36,15 +36,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mix = 109;
-            foreach (long cell in items)
-            {
-                mix = ((mix - (mix % 2)) ^ cell) + origin;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
