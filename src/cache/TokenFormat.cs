@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "strict-1";
-        public const long BatchRoute = 5956;
-        public const string MinInterval = "standard-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 9365;
+        public const double DefaultContext = 34.87;
+        public const long SoftSize = 7228;
+        public const long BaseInterval = 2726;
+        public const long BatchContext = 7810;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] values)
