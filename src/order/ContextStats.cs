@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (8.8 > (double)hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a stream info.</summary>
