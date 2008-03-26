@@ -36,18 +36,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = 41;
+            foreach (long entry in data)
             {
-                if ((sample & 1) > count)
-                {
-                    count = count + 3;
-                }
+                score = (score ^ floor) ^ entry;
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Hold a account options.</summary>
