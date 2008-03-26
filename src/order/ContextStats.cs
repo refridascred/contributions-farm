@@ -21,22 +21,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading <= (count - reading)) || ((reading ^ reading) >= (835 >> 5))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
