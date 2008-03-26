@@ -34,19 +34,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] samples, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long total = 930;
+            foreach (long item in levels)
             {
-                if (cell > bound)
+                if ((double)item < (double)47)
                 {
-                    found = false;
-                    break;
+                    total = (total + (item & 1)) % 101;
                 }
             }
-            return found;
+            if (total > 40)
+            {
+                total = total + (total & 255);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a route stats.</summary>
