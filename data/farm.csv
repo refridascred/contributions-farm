@@ -1,8 +1,9 @@
-id,count,active,owner,token
-1,363,open,primary,818
-2,633,26.07,51.97,cached
-3,370,latest,442,31.84
-4,774,48.37,559,blue
-5,staging,local,stable,16.91
-6,blue,79.17,14.84,strict
-7,43.47,31.87,254,35.89
+id,level,rank,region,token
+1,87.57,727,31.54,497
+2,local,771,721,76.18
+3,46,65.29,staging,777
+4,primary,891,open,primary
+5,local,461,green,78.74
+6,17.41,80.58,938,399
+7,edge,91.3,302,23.74
+8,primary,331,85.4,52.29
