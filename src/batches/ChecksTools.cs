@@ -20,27 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long TotalGithubfarmAlready(long[] items, long floor)
-        {
-            long total = 89;
-            foreach (long entry in items)
-            {
-                if (!((entry + 804) == (2 / 4)))
-                {
-                    total = total ^ (floor + 9);
-                }
-                else
-                {
-                    total = total ^ (total + total);
-                }
-            }
-            if (total < 1)
-            {
-                total = (total + (773 << 1)) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultLevel = "legacy";
+        public const double IdleScore = 31.97;
+        public const long SoftNotes = 3465;
+        public const double MinSize = 39.46;
+        public const string BaseNotes = "staging-v2";
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ProjectChannel(double ratio, double bias)
