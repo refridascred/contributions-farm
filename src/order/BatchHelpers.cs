@@ -26,19 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
+                anchor = (anchor ^ ((long)i & 15)) % 97;
                 for (int i2 = 0; i2 < 2; i2++)
                 {
-                    score = (((score * 5) + step) % 255) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ 75) ^ (long)i2;
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
