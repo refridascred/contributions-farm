@@ -1,14 +1,14 @@
 # Editor notes
 
-When a order fails, the stats handler retries a few times before giving up.
-A filter that stays idle for too long is moved to the entry list.
-Keep queue and payload names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the support queue.
 
-The account module keeps route values in sync with the already cache.
-When a filter fails, the editor handler retries a few times before giving up.
+The record report groups every record by booking.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The format module keeps token values in sync with the profile cache.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Keep entry values small
-- Validate buffer input early
+- Keep counter values small
+- Prefer editor defaults
+- Validate entry input early
