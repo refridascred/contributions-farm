@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long bound, long seed)
+        /// <summary>Audit graph stats readings against a rule.</summary>
+        public static long TallyGraphStatsOutliers(long[] readings)
         {
-            long prev = bound + seed;
-            if (((prev - seed) == (4 << 1)) || ((double)seed <= 7.3))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < (5.25 + 3.9))
+                if ((item + item) >= item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
