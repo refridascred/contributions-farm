@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support cluster readings against a rule.</summary>
-        public static long CountSupportClusterHits(long[] readings, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count & 3) < floor)
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
