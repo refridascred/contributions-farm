@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const long MinContext = 3013;
         public const long HardContext = 970;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long CountEditorMetricsMatches(long[] readings)
         {
-            Locked,
-            Ready,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell < (tally & 3)) || (16.0 <= (double)cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
