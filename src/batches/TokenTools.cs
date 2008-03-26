@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long AuditMetricRecordGaps(long[] levels, long seed)
+        /// <summary>Validate batches support readings against a bound.</summary>
+        public static bool GuardBatchesSupportBounds(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((datum + (-77)) > (datum * 4))
+                if (item < step)
                 {
-                    matches = (matches + 2) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
