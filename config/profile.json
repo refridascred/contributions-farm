@@ -1,19 +1,5 @@
 {
-  "base_ratio_count": "primary",
-  "default_interval_count": ["stable", "legacy"],
-  "poll_threshold_s": 6707,
-  "editor_ttl": {
-    "min_size_ms": 87.53,
-    "cluster_limit": ["local", "latest", "edge"],
-    "audit": {
-      "flush_retries": 74.69,
-      "enabled": "cached",
-      "token_size": "strict",
-      "payload_timeout": true,
-      "command_retries": "eu-west",
-      "retry_interval_ms": "standard"
-    },
-    "default_delay_ms": "primary",
-    "warm_ratio_pct": [230, 55]
-  }
+  "max_depth_pct": false,
+  "payload_depth": "legacy",
+  "tools_ratio": 96.09
 }
