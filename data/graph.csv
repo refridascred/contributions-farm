@@ -1,8 +1,7 @@
-id,state,active,label
-1,open,26.01,8.7
-2,85.8,staging,green
-3,57.89,legacy,437
-4,blue,590,36.38
-5,77.51,6.55,662
-6,83.16,519,977
-7,44.41,276,665
+id,count,rank
+1,stable,primary
+2,5.72,40.56
+3,424,staging
+4,368,409
+5,837,494
+6,867,561
