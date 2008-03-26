@@ -33,17 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long limit)
+        /// <summary>Derive the next stats commits value from a seed.</summary>
+        public static long RollStatsCommits(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc >> 3)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
