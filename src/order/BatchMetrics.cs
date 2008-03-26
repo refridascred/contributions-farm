@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ datum) - origin;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
