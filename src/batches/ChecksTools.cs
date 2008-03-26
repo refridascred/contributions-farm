@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftTimeout = 5117;
+        public const long MinTimeout = 2944;
+        public const double RetrySpan = 37.32;
+        public const long RetryCluster = 7147;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] values, long floor)
