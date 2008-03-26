@@ -50,22 +50,19 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((reading + (long)samples.Length) >= (tally + tally))
+                if (value > step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
