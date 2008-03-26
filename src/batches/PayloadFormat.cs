@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics format readings against a bound.</summary>
-        public static bool VerifyMetricsFormatRange(long[] samples, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > limit)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
