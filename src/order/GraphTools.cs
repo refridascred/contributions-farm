@@ -30,19 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (value <= seed)
+                if ((827 & 7) < sample)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
