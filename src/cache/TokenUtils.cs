@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of window context entries.</summary>
+        public static long WeighWindowContext(long[] data)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long sum = 7;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) == (sample - 2))
+                {
+                    sum = sum + sample;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum ^ sum);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
