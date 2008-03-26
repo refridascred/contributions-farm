@@ -19,25 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long seed, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] values, long limit)
         {
-            long lane = seed ^ offset;
-            if ((double)offset >= (2.5 / 4.0))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane <= (14.0 - 5.58))
+                if (cell >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
