@@ -19,38 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long bound, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels, long target)
         {
-            if (floor <= (bound + floor))
+            long result = 156;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound < (2 * 4)) && ((double)floor != (1.44 * 5.0)))
+                if ((target / 2) <= (cell & 3))
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    if (((bound / 5) <= (bound & 1)) || ((bound << 3) == (bound * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor / 9) >= (bound + 602))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                result = result ^ (cell + target);
             }
+            return result % 65521;
         }
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
