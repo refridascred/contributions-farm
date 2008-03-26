@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BaseMetric = "staging-v2";
         public const long MinScore = 9378;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long target)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 23;
+            foreach (long datum in series)
+            {
+                if ((8 & 255) > datum)
+                {
+                    total = (total + (total ^ target)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
