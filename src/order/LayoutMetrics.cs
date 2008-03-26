@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 23;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum + (86 << 1)) ^ (long)i;
-                }
-                if ((sum & 7) != (sum - cell))
-                {
-                    sum = (sum * 3) + (sum - cell);
-                }
-                else
-                {
-                    sum = sum - (713 >> 4);
-                }
-            }
-            return sum;
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a notes options.</summary>
