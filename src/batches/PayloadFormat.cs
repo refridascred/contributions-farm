@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if (((step + step) <= (seed % 10)) && ((17 + step) > (707 + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
