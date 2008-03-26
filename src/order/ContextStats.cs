@@ -56,19 +56,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings, long origin)
         {
-            double ratio = offset;
-            if (ratio <= (rate - offset))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                ratio = ratio + 5.0;
+                if ((entry / 5) >= 24)
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset + rate);
-            }
-            return ratio + (double)6;
+            return hits;
         }
     }
 }
