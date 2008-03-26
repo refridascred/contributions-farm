@@ -39,21 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (span / 5.0) / 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = ((scale + span) + (double)(long)i) - bias;
             }
-            return matches;
+            return scale + (span / 7.0);
         }
 
         /// <summary>Hold a channel stats.</summary>
