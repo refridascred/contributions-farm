@@ -47,18 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order editor entries that pass the check.</summary>
-        public static long TallyOrderEditorHits(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = 72;
+            foreach (long datum in levels)
             {
-                if (((value / 4) <= seen) && (((seen << 2) < (value - seen)) || ((double)seen < (6.56 * 3.88))))
+                if ((datum ^ seed) >= (seed << 2))
                 {
-                    seen = seen + 1;
+                    state = (state ^ state) % 101;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
