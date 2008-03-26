@@ -33,15 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double span)
+        /// <summary>Count format checks pairs that satisfy a relation.</summary>
+        public static long OverlapFormatChecksCount(long[] levels)
         {
-            double load = ratio;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load - (ratio * 7.28)) - (double)(long)i) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (ratio / 8.0);
+            return count;
         }
     }
 }
