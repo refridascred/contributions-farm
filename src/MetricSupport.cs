@@ -40,23 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items, long step)
+        /// <summary>Roll a window batches counter forward.</summary>
+        public static long IterateWindowBatches(long limit)
         {
-            long total = -39;
-            foreach (long cell in items)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total ^ (total & 255)) % 65521;
-                for (int i = 0; i < 9; i++)
-                {
-                    total = ((total + step) % 4096) + (long)i;
-                }
-                if (cell < (step - total))
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
+                carry = (carry << 3) ^ limit;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return total % 4096;
+            return carry;
         }
     }
 }
