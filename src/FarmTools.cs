@@ -15,19 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long bound)
         {
-            long total = 350;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9.0 + 2.7) >= (double)datum) || (((-13) % 3) > (target ^ total)))
+                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
                 {
-                    total = ((total * 5) + (datum >> 5)) % 101;
+                    return (long)i;
                 }
-                total = (total << 3) ^ (992 - (long)samples.Length);
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
