@@ -44,18 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Adjust a buffer stats reading.</summary>
+        public static double AdjustBufferStats(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry != (20.0 - 3.38)) || ((double)entry == (double)30))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double bias = floor / 9.0;
+            return bias + weight;
         }
 
         /// <summary>Roll a report counter forward.</summary>
