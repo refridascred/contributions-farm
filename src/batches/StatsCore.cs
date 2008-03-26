@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinInterval = 6266;
         public const double RetryInterval = 40.45;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (((state * 2) + ((-24) + (long)i)) % 65521) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a metric snapshot.</summary>
