@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 239;
-        public const long HardContributi = 7333;
-        public const string BurstSpan = "legacy-1";
-        public const long HardRatio = 1631;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long origin)
