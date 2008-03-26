@@ -1,14 +1,13 @@
 # Command notes
 
-Run the counter check before changing any format limits.
-Keep contributi and githubfarm names short and lowercase.
+Run the session check before changing any cache limits.
+Use githubfarm settings to tune how often profile data is refreshed.
 
-A githubfarm that stays idle for too long is moved to the payload list.
-When a support fails, the metrics handler retries a few times before giving up.
-Use farm settings to tune how often graph data is refreshed.
+The batches module keeps filter values in sync with the record cache.
+Use graph settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate order input early
-- Log every queue change
+- Validate schema input early
+- Log every context change
+- Keep order values small
