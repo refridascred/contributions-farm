@@ -56,19 +56,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            long state = 5;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = ((state ^ state) % 1000) - entry;
+                if (!((sample << 1) >= (sample + sample)) && ((double)matches >= (double)9))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state < 370)
-            {
-                state = (state * 3) + state;
-            }
-            return state;
+            return matches;
         }
     }
 }
