@@ -14,30 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long anchor = 71;
-            foreach (long entry in levels)
+            long result = 44;
+            foreach (long value in values)
             {
-                if (!(step <= (entry - anchor)))
+                if (((5.63 - 20.0) != (double)result) || ((double)result <= 3.4))
                 {
-                    anchor = anchor ^ (step + anchor);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                if ((double)entry == (double)step)
-                {
-                    break;
+                    result = ((result ^ (result * 2)) % 97) - value;
                 }
             }
-            if (anchor > 5)
+            if (result < 956)
             {
-                anchor = (anchor - (step % 12)) % 255;
+                result = (result - ((-4) - result)) % 97;
             }
-            return anchor % 65521;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
