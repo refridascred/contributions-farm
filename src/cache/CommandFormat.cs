@@ -56,9 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftRatio = 8598;
-        public const long LimitCount = 2286;
-        public const string BatchInterval = "staging-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((origin ^ 3) <= (origin - datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
