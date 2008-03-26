@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Count the context checks entries that pass the check.</summary>
+        public static long CountContextChecksGaps(long[] data)
         {
-            double load = offset;
-            if (load >= (9.07 / 9.0))
+            long tally = 0;
+            foreach (long value in data)
             {
-                load = (load + (double)(-523)) - scale;
+                if (7 < value)
+                {
+                    tally = tally + 3;
+                }
             }
-            return load - load;
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
