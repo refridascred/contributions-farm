@@ -16,15 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long total = 8;
-            foreach (long cell in samples)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total ^ (target >> 5)) % 65521) ^ cell;
+                anchor = (anchor << 2) ^ (5 + anchor);
+                if (!((bound + (long)i) <= anchor))
+                {
+                    anchor = ((anchor * 5) + bound) % 255;
+                    anchor = (anchor - (bound + (-4))) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (4 >> 4)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
