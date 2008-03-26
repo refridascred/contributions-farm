@@ -1,12 +1,4 @@
 # githubfarm settings
-commits_window:
-  hard_window:
-    - open
-    - stable
-    - local
-    - edge
-  soft_capacity_ms: 90.96
-  base_depth_count: staging
-compress: 100
-burst_ttl_s: open
-commits_retries: legacy
+graph_retries: 915
+max_capacity: 9.16
+batch_interval_ms: 250
