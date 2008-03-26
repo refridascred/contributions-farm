@@ -25,10 +25,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 5353;
-        public const long DefaultLevel = 814;
-        public const long LimitFactor = 3626;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] data)
