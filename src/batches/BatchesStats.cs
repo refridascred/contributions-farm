@@ -20,26 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long offset)
         {
-            long mix = 18;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((mix / 6) >= (mix + 74))
+                if (reading >= offset)
                 {
-                    mix = (mix ^ (cell & 15)) % 1000;
-                }
-                else
-                {
-                    mix = mix - 563;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 87)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Project the next profile value.</summary>
