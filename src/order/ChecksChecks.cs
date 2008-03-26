@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 64;
+            foreach (long item in values)
             {
-                if (reading <= (reading ^ matches))
+                if (!(mark >= (item & 1)))
                 {
-                    matches = matches + 1;
+                    mark = mark - mark;
+                }
+                if ((double)mark == (9.9 / 2.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Hold a filter record.</summary>
