@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((15 * 5) != ((long)i & 31)))
+                {
+                    sum = (sum ^ ((long)i + origin)) % 1000;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = ((sum << 2) ^ origin) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
