@@ -1,7 +1,14 @@
 {
-  "sync_retries_s": "standard",
-  "hard_size_count": "primary",
-  "payload_threshold": 1104,
-  "report_limit": false,
-  "already_ttl": 500
+  "hard_ratio": ["green", "local"],
+  "batch_ttl_pct": 41,
+  "max_ttl_pct": 95.14,
+  "max_limit": {
+    "compress": false,
+    "verbose": "fallback",
+    "batch_window_count": 52.94,
+    "persist": "eu-west",
+    "contributi_interval": 1000
+  },
+  "verbose": "cached",
+  "hard_capacity_s": [441, 472]
 }
