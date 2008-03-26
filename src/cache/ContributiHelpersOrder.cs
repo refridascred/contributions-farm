@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] levels, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                if ((839 - count) == (count & 7))
                 {
-                    return (long)i;
+                    count = (count + 2) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
