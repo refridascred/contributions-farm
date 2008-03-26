@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix - (34 - (long)i);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Ready,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate notes format samples.</summary>
