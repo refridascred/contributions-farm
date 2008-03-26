@@ -52,17 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long cell in values)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ cell) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
