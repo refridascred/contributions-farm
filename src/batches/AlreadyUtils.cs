@@ -47,13 +47,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
