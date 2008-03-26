@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches tools entry that matches the target.</summary>
-        public static long SeekBatchesToolsIndex(long[] data, long limit)
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long WeighGithubfarmStats(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 32;
+            foreach (long cell in data)
             {
-                if (data[i] == limit)
+                if (cell <= (90 % 10))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum * 2);
                 }
             }
-            return -1;
+            if (sum > 6)
+            {
+                sum = (sum - (sum * 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter graph series from a seed.</summary>
