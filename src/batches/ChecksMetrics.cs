@@ -33,11 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Find the first profile stats entry that matches the target.</summary>
+        public static long LookupProfileStatsIndex(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
