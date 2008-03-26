@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((origin / 7) != (42 << 3))
+                if ((1.4 / 3.0) > (double)tally)
                 {
-                    acc = ((acc << 3) ^ (origin + (-686))) % 1000;
+                    tally = ((tally + 1) ^ datum) + seed;
                 }
-                acc = (acc ^ acc) % 1000;
-                if (((double)origin != (12.0 * 1.6)) && ((double)acc <= (3.4 - 3.0)))
+                else
                 {
-                    acc = (acc << 3) ^ origin;
-                    break;
+                    tally = tally - 1;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
