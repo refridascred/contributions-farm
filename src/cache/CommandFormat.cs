@@ -19,13 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            New,
-            Pending,
-            Ready,
-            Locked,
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state * 3) + (long)i;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
