@@ -1,4 +1,4 @@
 # githubfarm settings
-graph_retries: 915
-max_capacity: 9.16
-batch_interval_ms: 250
+record_retries: green
+burst_delay_count: 63.17
+warm_retries_ms: 13
