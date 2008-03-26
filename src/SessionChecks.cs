@@ -24,10 +24,12 @@ namespace Common.Utilities
             return scale - (ratio / 7.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftCount = 87.09;
-        public const long BaseSupport = 504;
-        public const long DefaultSupport = 8767;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsGaps(long[] series, long floor)
