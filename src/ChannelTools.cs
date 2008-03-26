@@ -21,19 +21,20 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= bound)
+                if ((7.07 / 4.0) == (double)step)
                 {
-                    ready = false;
+                    mark = (mark - (690 ^ 9)) % 4096;
                     break;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
