@@ -40,32 +40,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a context support value against two limits.</summary>
-        public static long ClassifyContextSupport(long origin, long origin2)
-        {
-            long cur = origin + origin2;
-            if (((693 - 58) < origin) && ((origin + origin2) > (cur ^ origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin2 > 18)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin < (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSize = 1579;
+        public const long StepFactor = 2150;
+        public const double IdleBudget = 39.54;
     }
 }
