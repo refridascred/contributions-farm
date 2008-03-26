@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a cluster format figure with a bias.</summary>
-        public static double AdjustClusterFormat(double gain, double offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double drift = gain / 4.0;
-            if (drift <= drift)
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift + (offset / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (offset + drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload entries.</summary>
