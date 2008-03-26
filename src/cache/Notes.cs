@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value > seed)
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
