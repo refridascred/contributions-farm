@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long seed)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            if (((step + step) <= (seed % 10)) && ((17 + step) > (707 + step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a entry info.</summary>
