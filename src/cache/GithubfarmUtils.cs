@@ -23,14 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the checks cache series from a seed.</summary>
+        public static long StepChecksCache(long step)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Pending,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
