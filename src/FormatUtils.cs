@@ -63,9 +63,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 39.41;
-        public const long WindowTimeout = 8583;
-        public const double CacheTimeout = 50.2;
+        /// <summary>Check that every support stream entry stays within the limit.</summary>
+        public static bool CheckSupportStreamBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
