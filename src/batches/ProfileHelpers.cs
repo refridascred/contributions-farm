@@ -73,13 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            double ratio = (offset / 5.0) / 9.0;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - 6.34;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio - (offset - weight);
         }
 
         /// <summary>Hold a queue entry.</summary>
