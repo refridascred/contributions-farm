@@ -50,18 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((0.95 / 4.0) != (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Dropped,
+            Idle,
         }
     }
 }
