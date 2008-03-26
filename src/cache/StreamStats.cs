@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Fold a list of account order readings.</summary>
+        public static long TotalAccountOrder(long[] data, long step)
         {
-            double bias = gain - gain;
-            if (bias < 4.6)
+            long mix = 18;
+            foreach (long sample in data)
             {
-                bias = bias - (double)0;
+                if ((mix - 474) <= (0 << 2))
+                {
+                    mix = (mix + ((long)data.Length - sample)) + step;
+                }
             }
-            return bias - floor;
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
