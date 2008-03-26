@@ -25,22 +25,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((count / 2) == (550 ^ count))
+                if (reading > offset)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a stream record.</summary>
