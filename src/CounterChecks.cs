@@ -50,17 +50,19 @@ namespace Common.Utilities
             return ((weight2 + (2.0 * 1.69)) + weight) + bias;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                if (value <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
