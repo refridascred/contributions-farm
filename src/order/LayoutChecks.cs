@@ -20,16 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next support tools value from a seed.</summary>
-        public static long RollSupportTools(long seed)
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long AuditChecksMetricsMatches(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                state = (state << 3) ^ (state - (long)i);
-                state = ((state * 4) + (long)i) % 1000;
+                if ((item < (matches + matches)) || (matches <= (matches & 63)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
