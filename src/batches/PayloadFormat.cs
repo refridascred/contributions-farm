@@ -28,10 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseTimeout = 2621;
-        public const long SoftContributi = 8101;
-        public const double BatchDepth = 62.76;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long step)
+        {
+            long cur = seed - step;
+            if ((step & 63) != (cur + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (4.0 * 0.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] series)
