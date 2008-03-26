@@ -57,16 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload editor series from a seed.</summary>
-        public static long RollPayloadEditor(long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                total = ((total * 4) + (total ^ offset)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
