@@ -36,10 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 6984;
-        public const string StepFactor = "standard-edge";
-        public const string MaxBatches = "staging-1";
-        public const string WindowRatio = "local-edge";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings)
+        {
+            long sum = 87;
+            foreach (long value in readings)
+            {
+                sum = sum - value;
+            }
+            if (sum < 58)
+            {
+                sum = (sum + (sum * 5)) % 101;
+            }
+            return sum;
+        }
     }
 }
