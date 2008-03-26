@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a already cache pair into a bucket.</summary>
-        public static long GradeAlreadyCache(long target, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if (((2.0 / 2.0) == (double)seed) && ((2 / 4) != (target + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target <= (5.0 + 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed < (target << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the cache kind values.</summary>
