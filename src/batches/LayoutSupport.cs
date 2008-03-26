@@ -44,19 +44,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((3.8 <= (double)mix) && ((double)(long)i == (4.43 - 19.0)))
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Derive the next cluster queue value from a seed.</summary>
