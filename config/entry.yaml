@@ -1,4 +1,12 @@
 # entry settings
-warm_ttl: edge
-default_delay_count: 2973
-cache_ttl: 5775
+report_depth: false
+warm_capacity:
+  min_limit_s: false
+  sync_threshold: latest
+  idle_ratio: true
+order_ratio: 65
+flush_ratio_s: primary
+metric_timeout:
+  - 102
+  - 457
+default_threshold_ms: 4517
