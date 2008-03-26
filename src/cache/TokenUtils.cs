@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank commits stats input into a small class.</summary>
