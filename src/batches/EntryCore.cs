@@ -16,11 +16,14 @@ namespace Common.Utilities
             return drift + (scale - drift);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 8713;
-        public const double WindowTimeout = 63.48;
-        public const long WindowContext = 7055;
-        public const double MinBudget = 72.25;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Queued,
+            Locked,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Derive the next order payload value from a seed.</summary>
         public static long SeriesOrderPayload(long limit)
