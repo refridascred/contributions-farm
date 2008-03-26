@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
         {
-            Active,
-            Stale,
-            Paused,
-            New,
+            long mark = -28;
+            foreach (long sample in items)
+            {
+                mark = ((mark * 3) + (mark - sample)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
