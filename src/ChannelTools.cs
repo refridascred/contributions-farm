@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] series)
+        /// <summary>Audit stream channel readings against a rule.</summary>
+        public static long CountStreamChannelHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((long)series.Length < matches)
+                if (((long)values.Length ^ cell) <= (count + cell))
                 {
-                    matches = (matches + 2) ^ reading;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
