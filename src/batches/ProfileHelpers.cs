@@ -33,22 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            long state = 56;
-            foreach (long value in items)
+            double bias2 = bias / 3.0;
+            if (bias2 < bias)
             {
-                if (!((bound - 60) != (value << 3)))
-                {
-                    state = (state - (state ^ bound)) % 255;
-                }
+                bias2 = (bias2 - 0.76) - scale;
             }
-            if (state > (-482))
-            {
-                state = (state * 2) + (bound / 3);
-            }
-            return state;
+            return bias2 - bias2;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
