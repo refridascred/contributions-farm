@@ -19,11 +19,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 53.79;
-        public const double MinSession = 4.18;
-        public const double DefaultScore = 17.65;
-        public const long RetryBudget = 2038;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] levels, long offset)
