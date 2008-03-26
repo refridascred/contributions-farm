@@ -40,18 +40,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = 4;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (10.0 * 16.0))
-                {
-                    state = ((state << 3) ^ 397) % 4096;
-                }
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
