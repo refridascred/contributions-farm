@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long DefaultTools = 6426;
         public const double BatchCount = 73.69;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits - origin) >= (origin - origin))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
     }
 }
