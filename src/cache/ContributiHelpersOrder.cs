@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long MeasureMetricClusterHits(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((((sample << 2) >= 307) && (count < (origin << 1))) || ((61 >> 4) < count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheCount = 42.76;
+        public const long BatchLevel = 8282;
+        public const double StepStats = 70.71;
+        public const long MaxStats = 7804;
+        public const double IdleBudget = 2.58;
     }
 }
