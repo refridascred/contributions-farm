@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total ^ (75 - bound)) % 1000;
-                total = ((total << 2) ^ ((long)i & 63)) % 97;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Retry,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate notes farm samples.</summary>
