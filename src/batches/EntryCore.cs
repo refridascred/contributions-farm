@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long StepDepth = 6962;
         public const long BatchContributi = 7733;
 
-        /// <summary>Combine payload command values into a single score.</summary>
-        public static long TallyPayloadCommand(long[] data)
-        {
-            long score = 54;
-            foreach (long datum in data)
-            {
-                if (((double)datum < (6.79 / 3.0)) || ((datum + score) < (datum >> 2)))
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 8713;
+        public const double WindowTimeout = 63.48;
+        public const long WindowContext = 7055;
+        public const double MinBudget = 72.25;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
