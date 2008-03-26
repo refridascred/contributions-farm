@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits & 7) < hits)
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
