@@ -1,9 +1,6 @@
 # entry settings
-flush_window: 1024
-window_limit: true
-cache_interval_ms:
-  - strict
-  - primary
-  - standard
-  - fallback
-burst_depth_ms: true
+audit: legacy
+sync_ttl: legacy
+min_ttl_pct: 3944
+readonly: 3685
+strict: legacy
