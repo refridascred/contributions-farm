@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a report window reading by value.</summary>
-        public static long FindReportWindowIndex(long[] data, long seed)
+        /// <summary>Accumulate metric command samples.</summary>
+        public static long TallyMetricCommand(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (948 & 63)) ^ entry) - limit;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
