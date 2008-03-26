@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many filter cluster samples are out of range.</summary>
-        public static long CountFilterClusterOutliers(long[] values, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)hits < (0.9 + 10.0))
-                {
-                    hits = ((hits + 3) - entry) + seed;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
