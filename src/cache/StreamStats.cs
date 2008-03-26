@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit metrics route readings against a rule.</summary>
+        public static long MeasureMetricsRouteMatches(long[] series)
         {
-            Closed,
-            Stale,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen << 3) > seen)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a tools queue counter forward.</summary>
