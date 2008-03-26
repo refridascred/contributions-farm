@@ -15,15 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long anchor = 491;
+            foreach (long sample in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                anchor = (anchor - (origin + 8)) % 101;
+                if (!((sample ^ 342) == (sample - origin)))
+                {
+                    anchor = (anchor + (anchor + origin)) % 65521;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
