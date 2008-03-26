@@ -26,18 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] series, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long lane = floor ^ limit;
+            if (lane > (-272))
             {
-                if (((double)114 == (double)matches) && ((double)target == (14.0 * 0.85)))
+                return 6;
+            }
+            else
+            {
+                if (lane >= (lane >> 1))
                 {
-                    matches = (matches + 1) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if (!((1.89 + 1.1) > (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a editor info.</summary>
