@@ -24,19 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer commits value.</summary>
-        public static double AdjustBufferCommits(double scale, double bias)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long target)
         {
-            double scale2 = (double)277 * 1.16;
-            if (scale2 <= scale2)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                scale2 = (scale2 + scale) - bias;
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 * 7.8)) + (double)(long)i;
-            }
-            return scale2 + (scale2 * 9.7);
+            return ok;
         }
 
         /// <summary>Validate channel githubfarm readings against a bound.</summary>
