@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long IdleGraph = 2234;
         public const long MinGraph = 6995;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item & 15) < (723 & 1))
+                {
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next command profile value.</summary>
