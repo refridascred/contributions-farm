@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double offset)
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long CountEditorSchemaOutliers(long[] readings, long target)
         {
-            double mean = (double)(2 + 361);
-            if (mean >= (double)5)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                mean = ((mean + (double)7) - scale) - offset;
+                if (!(target > (53 - tally)) || (tally <= (long)readings.Length))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)5;
+            return tally;
         }
     }
 }
