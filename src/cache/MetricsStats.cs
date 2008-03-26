@@ -53,11 +53,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 26.16;
-        public const long RetryTimeout = 5330;
-        public const string HardSize = "local-v2";
-        public const long LimitMetrics = 4839;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + (8 % 7)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
