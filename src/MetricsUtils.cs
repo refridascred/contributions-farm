@@ -66,18 +66,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 5451;
         public const long MaxStream = 8039;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Measure how many context account samples are out of range.</summary>
+        public static long MeasureContextAccountHits(long[] values, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((limit ^ 4) < (limit * 4)) || ((double)seen < 11.0))
                 {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
             return seen;
