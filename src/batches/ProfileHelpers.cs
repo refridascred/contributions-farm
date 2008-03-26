@@ -33,15 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Ready,
-            Synced,
-            Closed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7362;
+        public const long BaseCluster = 921;
+        public const double DefaultBudget = 10.35;
+        public const long IdleFactor = 1095;
+        public const long MinSpan = 566;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] values, long floor)
