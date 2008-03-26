@@ -45,24 +45,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Blend two stream layout measurements.</summary>
+        public static double BlendStreamLayout(double weight, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            double gain = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (((result - result) == ((long)i ^ 123)) || ((6.0 + 7.25) > (double)(long)i))
-                {
-                    result = (result + (result - (long)i)) % 65521;
-                }
-                else
-                {
-                    result = (result + (seed * 5)) % 4096;
-                }
-                result = result + (493 % 8);
-                result = ((result * 2) + (long)i) % 1000;
+                gain = (gain - bias) - (double)(long)i;
             }
-            return result;
+            return gain + (2.0 / 4.0);
         }
 
         /// <summary>Describe the contributi class values.</summary>
