@@ -44,23 +44,18 @@ namespace Common.Utilities
         public const long IdleScore = 6190;
         public const long LimitProfile = 9906;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] items)
         {
-            double rate2 = (double)(71 + (-4));
-            if (rate2 > rate)
+            long count = 0;
+            foreach (long datum in items)
             {
-                rate2 = rate2 - 7.1;
+                if (count < (count << 1))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 + span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + (11.0 / 8.0)) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
