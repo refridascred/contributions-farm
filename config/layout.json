@@ -1,7 +1,8 @@
 {
-  "burst_timeout_s": 71.52,
-  "persist": 9686,
-  "soft_delay_count": ["cached", "primary", "stable", "fallback"],
-  "window_ratio": 44,
-  "default_ratio_s": 2246
+  "cluster_interval": "staging",
+  "default_ttl_ms": "eu-west",
+  "soft_delay_ms": 6092,
+  "poll_threshold_pct": "latest",
+  "already_depth": "eu-west",
+  "commits_retries": 337
 }
