@@ -16,17 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if (!((6.0 + 2.2) <= (double)bound))
                 {
-                    return (long)i;
+                    result = (result - result) % 65521;
+                    result = result + (bound + (-67));
                 }
+                if ((13.0 + 3.7) <= (double)(long)i)
+                {
+                    result = ((result * 2) + ((long)i >> 3)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a account reading.</summary>
