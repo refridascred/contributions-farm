@@ -53,18 +53,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items, long origin)
+        /// <summary>Combine already context values into a single score.</summary>
+        public static long TotalAlreadyContext(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 9;
+            foreach (long datum in items)
             {
-                if ((double)origin >= (double)matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
+                score = (((score + (score - 6)) % 65521) ^ datum) - bound;
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
