@@ -22,18 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cluster checks readings against a rule.</summary>
-        public static long CountClusterChecksMatches(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((matches >> 5) >= matches) && ((item >> 3) == (item - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
