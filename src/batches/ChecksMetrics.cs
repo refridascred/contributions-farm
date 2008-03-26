@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long DigestBatchesCluster(long[] items, long floor)
+        /// <summary>Locate a context window reading by value.</summary>
+        public static long SeekContextWindowIndex(long[] samples, long origin)
         {
-            long result = 5;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (4 - datum)) - floor;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
