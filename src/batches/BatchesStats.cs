@@ -54,15 +54,18 @@ namespace Common.Utilities
             return scale + 0.63;
         }
 
-        /// <summary>Fold a list of counter metrics readings.</summary>
-        public static long TallyCounterMetrics(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long step)
         {
-            long score = 33;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                score = ((score - (476 >> 4)) % 4096) + entry;
+                if (594 < (cell ^ cell))
+                {
+                    matches = (matches + 2) - step;
+                }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
