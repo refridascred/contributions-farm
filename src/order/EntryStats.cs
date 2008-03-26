@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit context farm readings against a rule.</summary>
-        public static long CountContextFarmGaps(long[] series)
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long MeasureChannelTokenOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((double)datum < (2.0 + 8.0))
+                if ((double)(-33) > (double)datum)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
