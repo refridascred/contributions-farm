@@ -43,9 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 3464;
-        public const double MaxRatio = 48.94;
-        public const string StepTimeout = "standard-edge";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (floor < 887)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
