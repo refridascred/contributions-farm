@@ -37,17 +37,12 @@ namespace Common.Utilities
             return gain2 - (gain - gain);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
