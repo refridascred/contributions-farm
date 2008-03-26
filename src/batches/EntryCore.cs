@@ -22,13 +22,17 @@ namespace Common.Utilities
         public const long WindowContext = 7055;
         public const double MinBudget = 72.25;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] values, long origin)
         {
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
