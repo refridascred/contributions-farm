@@ -25,21 +25,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -462;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state << 3) != (50 - step))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ (sample / 8)) % 4096;
+                    state = (state + step) % 1000;
+                }
+                state = (state + (step - sample)) % 255;
+                if (((double)sample <= (double)89) || ((sample << 3) > (95 - sample)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up batches samples.</summary>
