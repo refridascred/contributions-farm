@@ -52,17 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long FindCommandRecordIndex(long[] values, long offset)
+        /// <summary>Count the contributi commits entries that pass the check.</summary>
+        public static long MeasureContributiCommitsMatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((values[i] == offset) && ((values[i] % 5) != 0))
+                if (((limit - seen) > (item - item)) || (16.0 <= (double)limit))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
