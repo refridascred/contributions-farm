@@ -71,15 +71,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cluster queue value from a seed.</summary>
-        public static long IterateClusterQueue(long bound)
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long TallyFarmCommandOutliers(long[] items, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((hits + hits) > (bound & 1))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
