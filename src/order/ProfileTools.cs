@@ -43,19 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double mean = (offset / 8.0) / 9.0;
-            if (mean > 7.0)
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 0.41) + (double)(long)i;
-            }
-            return mean + (rate * 19.0);
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
