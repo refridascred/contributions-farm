@@ -44,14 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Failed,
-            Pending,
-            Paused,
-            Synced,
-            Draft,
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
