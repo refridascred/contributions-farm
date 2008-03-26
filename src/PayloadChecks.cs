@@ -59,12 +59,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Stale,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a metrics summary.</summary>
