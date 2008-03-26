@@ -13,40 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank session command input into a small class.</summary>
-        public static long GradeSessionCommand(long origin, long seed)
-        {
-            long cur = origin + seed;
-            if (((cur ^ origin) > (740 / 7)) && ((origin + cur) <= origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (0.34 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (cur > (origin * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin < (cur << 2)) || ((4.69 + 7.7) < (0.5 * 2.19)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheWidth = 88.42;
+        public const long DefaultNotes = 9665;
+        public const string MinTimeout = "open-1";
+        public const string IdleNotes = "cached";
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
