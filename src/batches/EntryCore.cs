@@ -46,36 +46,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long bound)
+        /// <summary>Classify a batch account pair into a bucket.</summary>
+        public static long GradeBatchAccount(long seed, long origin)
         {
-            if ((2 < floor) || (floor > bound))
+            if (46 > (seed & 31))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (53 >= (floor / 2))
+                if ((double)origin == (2.5 / 5.0))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((bound - floor) <= (floor + floor)) || (floor > (bound * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor > 285) || (floor < (80 % 64)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
