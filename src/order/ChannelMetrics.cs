@@ -19,17 +19,18 @@ namespace Common.Utilities
             return ((load - (double)0) + scale) + floor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long acc = 73;
+            foreach (long entry in levels)
             {
-                acc = acc + target;
-                acc = (acc + acc) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((acc + 723) >= acc)
+                {
+                    acc = ((acc - ((long)levels.Length + entry)) % 65521) - offset;
+                }
             }
-            return acc;
+            return acc % 1000;
         }
     }
 }
