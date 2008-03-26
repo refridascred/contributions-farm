@@ -41,21 +41,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of account support readings.</summary>
-        public static long MatchAccountSupportCount(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
