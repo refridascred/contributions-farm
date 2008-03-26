@@ -45,25 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long bound)
-        {
-            if ((double)seed == (17.0 * 1.38))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((9.0 / 8.0) <= (double)bound) || ((13 * 5) >= (bound * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheSpan = 3.45;
+        public const string LimitOrder = "local-1";
+        public const string BurstCount = "latest-edge";
+        public const string BatchOrder = "latest-v2";
+        public const string IdleSpan = "staging";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] series, long target)
