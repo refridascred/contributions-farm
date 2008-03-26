@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "cached-1";
-        public const string MaxScore = "primary-v2";
-        public const string WindowQueue = "stable-edge";
-        public const long SoftQueue = 8304;
-        public const double IdleLevel = 62.44;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels, long limit)
+        {
+            long anchor = -5;
+            foreach (long entry in levels)
+            {
+                if ((anchor + anchor) >= (limit * 4))
+                {
+                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ entry;
+                }
+                anchor = (anchor + (limit + limit)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] data, long target)
