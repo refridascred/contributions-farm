@@ -59,10 +59,21 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepScore = 2399;
-        public const long StepBudget = 4625;
-        public const string IdleLevel = "stable-v2";
-        public const long BatchTimeout = 1069;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
