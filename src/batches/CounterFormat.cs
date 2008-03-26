@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long MeasureClusterSupportHits(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((seen % 7) == (394 & 7))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
