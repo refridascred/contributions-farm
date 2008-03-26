@@ -1,9 +1,4 @@
 # githubfarm settings
-poll_size: 76
-format_ratio: eu-west
-dry_run: eu-west
-max_limit_s: staging
-compress:
-  - 382
-  - 112
-  - 461
+strict: eu-west
+retry_size_s: blue
+warm_capacity_count: 380
