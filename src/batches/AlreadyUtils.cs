@@ -60,13 +60,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
+            Dropped,
+            Done,
             New,
-            Idle,
-            Synced,
-            Closed,
         }
     }
 }
