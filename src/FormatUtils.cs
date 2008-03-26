@@ -36,12 +36,20 @@ namespace Common.Utilities
             return (rate2 + 1.6) + offset;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardRatio = 1321;
-        public const double SoftTimeout = 67.55;
-        public const double HardDepth = 38.81;
-        public const long LimitEntry = 3441;
-        public const long LimitSpan = 2344;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
+        {
+            long total = 9;
+            foreach (long datum in data)
+            {
+                total = (total + datum) % 1000;
+            }
+            if (total < 9)
+            {
+                total = (total * 3) + (total + 353);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long target, long origin)
