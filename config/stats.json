@@ -1,13 +1,7 @@
 {
-  "cluster_ratio": 6971,
-  "base_threshold_s": {
-    "soft_depth_pct": 41,
-    "base_timeout": 6081,
-    "strict": [43, 299],
-    "payload_ttl": "open",
-    "batch_threshold_s": 4257
-  },
-  "batch_ttl": "cached",
-  "verbose": "green",
-  "batches_depth": true
+  "persist": "green",
+  "poll_ratio_ms": [5, 270, 274],
+  "command_capacity": "cached",
+  "flush_threshold": 1.53,
+  "warm_interval": "open"
 }
