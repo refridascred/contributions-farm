@@ -40,12 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            double ratio = floor;
+            if (ratio < floor)
+            {
+                ratio = (ratio - floor) + bias;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
