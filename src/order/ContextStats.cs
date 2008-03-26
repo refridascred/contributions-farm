@@ -21,12 +21,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = offset;
+            if (bias2 > (double)58)
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (double)432;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
