@@ -49,13 +49,17 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Look up the position of a commits checks sample.</summary>
+        public static long SeekCommitsChecksIndex(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
