@@ -1,13 +1,5 @@
 # entry settings
-burst_timeout_count: latest
-default_limit_pct: 8315
-cache_limit:
-  warm_limit_s: 57
-  token_ttl: 90.34
-  commits_ttl: green
-  payload_threshold: 61.13
-window_limit:
-  - 175
-  - 187
-  - 40
-  - 68
+idle_ratio_pct: 1024
+support_capacity: 250
+window_limit: 3096
+max_delay_s: false
