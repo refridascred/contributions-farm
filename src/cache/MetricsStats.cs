@@ -16,18 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command already entries that pass the check.</summary>
-        public static long MeasureCommandAlreadyMatches(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = -65;
+            foreach (long value in data)
             {
-                if ((hits + hits) > (4 / 8))
+                score = (score - (value + value)) % 65521;
+                if ((double)score > (6.99 / 7.0))
                 {
-                    hits = (hits + 3) + reading;
+                    score = (score ^ (score % 8)) % 255;
                 }
             }
-            return hits;
+            if (score < 11)
+            {
+                score = (score << 3) ^ (score >> 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
