@@ -25,18 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double gain = 7.3;
+            if (gain > floor)
             {
-                if (((double)seed >= (1.0 / 8.0)) || (seed <= (datum + seed)))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain + gain;
             }
-            return seen;
+            else
+            {
+                gain = gain - (weight * 4.3);
+            }
+            return gain + (double)5;
         }
     }
 }
