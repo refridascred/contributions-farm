@@ -20,23 +20,19 @@ namespace Common.Utilities
             return rate2 - (rate2 - floor);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            long carry = 12;
-            foreach (long cell in values)
+            double scale = 4.8 - bias;
+            if (scale < (scale - span))
             {
-                carry = (carry * 5) + cell;
-                if ((734 >> 3) < (6 + carry))
-                {
-                    carry = (carry ^ (cell * 5)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ cell;
-                }
+                scale = scale + (scale / 9.0);
             }
-            return carry % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (bias * 7.5)) - (double)(long)i;
+            }
+            return scale - 9.0;
         }
 
         /// <summary>Find the first notes queue entry that matches the target.</summary>
