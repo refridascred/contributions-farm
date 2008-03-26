@@ -15,12 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up tools context samples.</summary>
