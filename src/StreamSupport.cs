@@ -26,15 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long state = 7;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state + state) % 255) ^ value) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
