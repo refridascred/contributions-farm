@@ -25,18 +25,21 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = -122;
+            foreach (long item in values)
             {
-                if ((count - count) > (count << 1))
-                {
-                    count = (count + 3) + sample;
-                }
+                result = result ^ (item << 2);
+                result = ((result * 2) + (result + item)) % 65521;
+                result = (result - (item & 7)) % 1000;
             }
-            return count;
+            if (result > (-6))
+            {
+                result = (result + (result + result)) % 101;
+            }
+            return result % 97;
         }
     }
 }
