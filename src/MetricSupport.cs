@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long RetryCluster = 952;
         public const string WindowFactor = "stable-edge";
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double floor)
         {
-            Draft,
-            Failed,
-            Stale,
-            Synced,
-            Pending,
+            double load = (double)(5 / 8);
+            return ((load - load) + rate) + floor;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
