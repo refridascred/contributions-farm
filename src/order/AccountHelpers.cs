@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 9125;
-        public const long DefaultGraph = 9424;
-        public const double IdleRatio = 10.98;
-        public const double BaseScore = 90.58;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+                if ((limit / 4) >= mix)
+                {
+                    mix = (mix << 3) ^ (mix - mix);
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first report stream entry that matches the target.</summary>
         public static long LookupReportStreamIndex(long[] values, long limit)
