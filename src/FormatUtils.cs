@@ -23,15 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long acc = 0;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                acc = acc - (step ^ cell);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
