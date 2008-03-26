@@ -70,11 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every filter cluster entry stays within the limit.</summary>
