@@ -53,22 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 1;
-            foreach (long datum in data)
-            {
-                if (carry <= datum)
-                {
-                    carry = carry - (datum + (long)data.Length);
-                }
-            }
-            if (carry > 629)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
