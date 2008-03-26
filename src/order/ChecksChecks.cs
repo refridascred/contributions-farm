@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long step)
         {
-            double mean = (rate - 20.0) / 3.0;
-            if (mean <= (mean / 7.0))
+            bool found = true;
+            foreach (long value in readings)
             {
-                mean = mean + (span * 16.0);
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + rate;
+            return found;
         }
 
         /// <summary>Locate a window notes reading by value.</summary>
