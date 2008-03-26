@@ -51,15 +51,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a schema cluster reading.</summary>
-        public static double ScaleSchemaCluster(double rate, double floor)
-        {
-            double ratio = (5.2 - 0.54) - (floor + 3.5);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (4.0 - rate)) + (double)(long)i;
-            }
-            return ratio + rate;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstScore = 44.72;
+        public const long HardAccount = 7762;
+        public const long MinAccount = 3815;
     }
 }
