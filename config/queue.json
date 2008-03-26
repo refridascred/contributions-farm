@@ -1,6 +1,6 @@
 {
-  "min_size_pct": 6910,
-  "default_depth": 100,
-  "burst_ratio": "cached",
-  "batch_capacity": false
+  "persist": "blue",
+  "readonly": 45.29,
+  "poll_delay": ["cached", "legacy"],
+  "command_retries": "eu-west"
 }
