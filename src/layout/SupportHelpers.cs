@@ -46,19 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
