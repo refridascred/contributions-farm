@@ -17,11 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
