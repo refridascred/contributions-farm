@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long offset)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (tally + offset))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
