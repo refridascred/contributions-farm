@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 8825;
-        public const double BaseSize = 88.49;
-        public const double MinFactor = 97.87;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long bound, long floor)
+        {
+            if (floor <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor > (floor >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((18.0 - 6.5) != (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] data, long floor)
