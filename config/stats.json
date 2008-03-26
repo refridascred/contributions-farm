@@ -1,5 +1,6 @@
 {
-  "soft_depth_count": "edge",
-  "schema_ttl": 1266,
-  "retry_ttl_s": "staging"
+  "entry_window": false,
+  "poll_ratio_s": "fallback",
+  "burst_retries_pct": "primary",
+  "soft_threshold_s": 92.85
 }
