@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string MaxScore = "local";
         public const long RetryChecks = 5062;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = 27;
-            foreach (long value in data)
-            {
-                if (value < (bound + 22))
-                {
-                    anchor = anchor ^ (anchor - 77);
-                }
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a batches options.</summary>
