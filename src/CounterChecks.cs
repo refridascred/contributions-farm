@@ -73,11 +73,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long seed)
         {
-            double ratio = (double)((-8) + 8);
-            return ((ratio + 1.0) + bias) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
