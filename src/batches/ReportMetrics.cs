@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] series, long target)
+        /// <summary>Count the stats entry entries that pass the check.</summary>
+        public static long MeasureStatsEntryGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (reading != target)
+                if (!((double)value == (5.55 - 11.0)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
