@@ -55,13 +55,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((((-406) ^ count) < floor) && (count < (floor & 3)))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
