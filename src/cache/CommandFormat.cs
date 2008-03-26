@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != floor)
+                if (readings[i] < seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
