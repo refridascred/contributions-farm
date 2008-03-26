@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "cached-1";
+        public const string MaxScore = "primary-v2";
+        public const string WindowQueue = "stable-edge";
+        public const long SoftQueue = 8304;
+        public const double IdleLevel = 62.44;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] data, long target)
