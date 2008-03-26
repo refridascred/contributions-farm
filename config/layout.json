@@ -1,5 +1,9 @@
 {
-  "metrics_limit": 34.45,
-  "notes_limit": "strict",
-  "entry_window": 16.99
+  "payload_retries": 83,
+  "dry_run": "cached",
+  "batch_limit_s": {
+    "warm_interval_ms": 60,
+    "idle_delay_s": "local",
+    "batch_interval": 45.13
+  }
 }
