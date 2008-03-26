@@ -15,19 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 491;
-            foreach (long sample in data)
-            {
-                anchor = (anchor - (origin + 8)) % 101;
-                if (!((sample ^ 342) == (sample - origin)))
-                {
-                    anchor = (anchor + (anchor + origin)) % 65521;
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
