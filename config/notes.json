@@ -1,18 +1,7 @@
 {
-  "min_size_pct": 100,
-  "entry_interval": false,
-  "cache_ttl_s": "fallback",
-  "strict": {
-    "persist": "cached",
-    "order_limit": 4875,
-    "default_interval_ms": {
-      "flush_depth_ms": 94.23,
-      "idle_delay_pct": "strict",
-      "cache_ttl_s": ["staging", "legacy", "latest"]
-    },
-    "max_depth_ms": "edge",
-    "layout_window": 58.92
-  },
-  "min_delay_count": false,
-  "readonly": 1960
+  "sync_retries_s": "standard",
+  "hard_size_count": "primary",
+  "payload_threshold": 1104,
+  "report_limit": false,
+  "already_ttl": 500
 }
