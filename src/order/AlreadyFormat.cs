@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long step)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long span = floor - step;
-            if ((5.25 - 5.33) == (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor <= (double)step) && (((-89) - floor) <= (6 & 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (6.7 <= (double)span)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4 + step) >= (60 ^ span))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
