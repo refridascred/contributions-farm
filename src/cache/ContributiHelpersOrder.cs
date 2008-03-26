@@ -23,25 +23,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank record window input into a small class.</summary>
-        public static long ClassifyRecordWindow(long step, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels, long step)
         {
-            long diff = step - seed;
-            if (!((diff & 1) == (diff + seed)))
+            long anchor = -943;
+            foreach (long sample in levels)
             {
-                return 2;
+                anchor = ((anchor << 2) ^ (step >> 3)) ^ sample;
             }
-            else
+            if (anchor < 375)
             {
-                if ((2.0 + 8.44) == (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                anchor = (anchor << 3) ^ (anchor ^ 12);
             }
+            return anchor;
         }
     }
 }
