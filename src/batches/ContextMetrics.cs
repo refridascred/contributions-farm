@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 1360;
+        public const string MinMetric = "local-v2";
+        public const long IdleSpan = 3505;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] values)
