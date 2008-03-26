@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long IdleGraph = 2234;
         public const long MinGraph = 6995;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long AuditNotesReportHits(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long sample in readings)
             {
-                if ((-9) > (sample / 5))
+                if ((double)sample <= (4.5 + 6.58))
                 {
                     seen = seen + 1;
                 }
