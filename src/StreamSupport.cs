@@ -42,10 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6423;
-        public const long CacheEditor = 3494;
-        public const string RetryBudget = "stable-v2";
-        public const double StepTimeout = 74.35;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftLevel = 999;
+        public const long StepRatio = 4241;
+        public const long BurstCounter = 3683;
+        public const long RetryRatio = 9772;
+        public const string StepCounter = "staging";
     }
 }
