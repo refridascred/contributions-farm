@@ -1,8 +1,5 @@
 {
-  "session_limit": 8,
-  "sync_size_s": 89,
-  "metric_interval": 85,
-  "batch_ratio_s": "green",
-  "min_size_s": 89.23,
-  "burst_size_ms": 60
+  "flush_ratio": "fallback",
+  "enabled": 1024,
+  "burst_ratio": "legacy"
 }
