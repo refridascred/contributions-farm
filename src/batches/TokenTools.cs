@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long AuditMetricRecordGaps(long[] levels, long seed)
         {
-            long acc = 878;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (7.0 < (double)cell)
+                if ((datum + (-77)) > (datum * 4))
                 {
-                    acc = ((acc * 2) + 55) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (504 - cell)) % 101;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
