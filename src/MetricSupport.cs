@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long diff = target - limit;
-            if ((4 / 5) <= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((937 - diff) < limit) && ((target << 1) != (target / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Iterate the command githubfarm series from a seed.</summary>
