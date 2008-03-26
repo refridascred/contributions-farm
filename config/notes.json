@@ -1,7 +1,5 @@
 {
-  "dry_run": "edge",
-  "burst_delay_s": 100,
-  "cache_size": "open",
-  "entry_depth": 2.99,
-  "readonly": "primary"
+  "max_threshold_count": ["legacy", "open", "local", "standard"],
+  "cache_threshold_ms": "open",
+  "base_timeout_count": 5418
 }
