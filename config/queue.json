@@ -1,12 +1,5 @@
 {
-  "layout_window": "local",
-  "record_threshold": {
-    "flush_window_count": 22.59,
-    "burst_size_pct": false,
-    "flush_ratio_count": ["fallback", "latest", "legacy"]
-  },
-  "retry_timeout": [110, 72, 64],
-  "batch_ttl": ["legacy", "open", "legacy", "edge"],
-  "idle_delay_count": 100,
-  "cache_timeout_pct": "edge"
+  "route_limit": "local",
+  "warm_timeout_count": 57.84,
+  "account_capacity": 60
 }
