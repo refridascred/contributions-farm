@@ -32,11 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheCount = 42.76;
-        public const long BatchLevel = 8282;
-        public const double StepStats = 70.71;
-        public const long MaxStats = 7804;
-        public const double IdleBudget = 2.58;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
