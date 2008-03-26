@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const long BurstInterval = 381;
         public const long DefaultDepth = 440;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
