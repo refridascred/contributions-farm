@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 384;
-        public const string BaseRatio = "legacy-edge";
-        public const long StepRatio = 388;
-        public const string LimitPayload = "stable-edge";
-        public const string SoftBudget = "primary-1";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (4 / 5))
+                {
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double ratio, double offset)
