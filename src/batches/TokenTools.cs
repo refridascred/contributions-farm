@@ -52,18 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long CombineChannelBatches(long[] series, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            long score = 753;
-            foreach (long sample in series)
+            double bias = weight + (9.2 + 15.0);
+            if (bias < (6.1 - bias))
             {
-                if ((score >> 1) >= (sample * 5))
-                {
-                    score = ((score + (sample % 7)) % 1000) - target;
-                }
+                bias = (bias + bias) - span;
             }
-            return score;
+            return bias + bias;
         }
     }
 }
