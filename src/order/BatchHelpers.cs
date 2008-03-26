@@ -36,15 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] series, long limit)
         {
-            double mean = (double)(4 - (-4));
-            if (mean < mean)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = (mean - mean) - bias;
+                if ((hits >> 3) < (item - limit))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + (floor - 6.25);
+            return hits;
         }
     }
 }
