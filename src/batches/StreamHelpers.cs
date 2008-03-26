@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first token support entry that matches the target.</summary>
-        public static long LookupTokenSupportIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleRatio = 9743;
+        public const string CacheLayout = "open";
+        public const string RetryLayout = "fallback-1";
+        public const long WindowRatio = 5036;
 
         /// <summary>Iterate the route batch series from a seed.</summary>
         public static long SeriesRouteBatch(long step)
