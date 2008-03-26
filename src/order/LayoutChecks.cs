@@ -74,11 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Check that every tools session entry stays within the limit.</summary>
+        public static bool VerifyToolsSessionLimits(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
