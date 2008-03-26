@@ -13,22 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + seen) == (entry + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
