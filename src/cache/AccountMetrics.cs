@@ -61,17 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleBudget = "staging";
+        public const long IdleReport = 9380;
+        public const long BaseReport = 1411;
+        public const double HardReport = 14.95;
     }
 }
