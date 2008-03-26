@@ -20,22 +20,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Blend two buffer filter measurements.</summary>
+        public static double BlendBufferFilter(double ratio, double floor)
         {
-            long acc = -81;
-            foreach (long datum in levels)
-            {
-                if ((acc - datum) != (acc * 2))
-                {
-                    acc = acc ^ datum;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = acc - (acc & 7);
-            }
-            return acc;
+            double bias = ratio;
+            return bias + floor;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
