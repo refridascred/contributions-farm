@@ -47,15 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
-        public static long RollPayloadGithubfarm(long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
