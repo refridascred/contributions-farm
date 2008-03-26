@@ -99,21 +99,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Stale,
         }
     }
 }
