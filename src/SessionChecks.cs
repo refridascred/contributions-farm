@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Active,
-            Done,
-            Synced,
-            Queued,
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next account value.</summary>
