@@ -1,8 +1,6 @@
 {
-  "batch_ttl_ms": ["blue", "eu-west", "latest"],
-  "max_depth_ms": 3.51,
-  "idle_retries_ms": false,
-  "verbose": 40,
-  "payload_threshold": 4298,
-  "account_size": "open"
+  "soft_timeout_count": 79,
+  "contributi_size": "green",
+  "window_timeout": 4571,
+  "max_retries_count": ["green", "fallback"]
 }
