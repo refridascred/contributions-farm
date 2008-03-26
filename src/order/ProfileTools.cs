@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
+            double mean = (offset / 8.0) / 9.0;
+            if (mean > 7.0)
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 0.41) + (double)(long)i;
+            }
+            return mean + (rate * 19.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
