@@ -61,24 +61,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long target)
         {
-            if (origin <= floor)
+            long result = 87;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((61 - origin) <= (origin + origin)) && ((floor + floor) > (floor ^ origin)))
+                if (651 <= (item + target))
                 {
-                    return 4;
+                    result = ((result << 3) ^ (target >> 4)) % 65521;
                 }
                 else
                 {
-                    return 2;
+                    result = ((result << 2) ^ 1) % 4096;
+                }
+                if ((item + target) >= (target & 7))
+                {
+                    break;
                 }
             }
+            return result;
         }
     }
 }
