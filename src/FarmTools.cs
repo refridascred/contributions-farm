@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            double drift = 11.0;
-            if (drift > 3.0)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + bias;
+                if ((((count * 3) < count) || ((5.2 - 0.7) < (double)cell)) && (cell < (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (bias / 5.0)) + (double)(long)i;
-            }
-            return drift + (weight + bias);
+            return count;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
