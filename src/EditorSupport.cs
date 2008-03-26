@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry * 2) + (long)i) ^ (long)i2;
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    carry = (((carry << 2) ^ (407 % 60)) % 255) - (long)i3;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
