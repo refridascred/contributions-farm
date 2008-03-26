@@ -26,15 +26,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Combine window token values into a single score.</summary>
+        public static long DigestWindowToken(long[] samples)
         {
-            double weight = (scale + span) - (double)3;
-            if (weight > 9.5)
+            long result = -323;
+            foreach (long value in samples)
             {
-                weight = weight + span;
+                if ((result + result) < ((long)samples.Length % 60))
+                {
+                    result = ((result + (result >> 5)) % 255) + value;
+                }
+                else
+                {
+                    result = (result - (result - (-29))) % 65521;
+                }
             }
-            return weight + (double)757;
+            return result % 65521;
         }
     }
 }
