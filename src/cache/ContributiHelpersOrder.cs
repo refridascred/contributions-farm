@@ -32,19 +32,9 @@ namespace Common.Utilities
             return gain + (bias2 * 1.14);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels, long step)
-        {
-            long anchor = -943;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor << 2) ^ (step >> 3)) ^ sample;
-            }
-            if (anchor < 375)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ 12);
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxDepth = 7888;
+        public const long BatchMetrics = 3538;
+        public const string IdleMetrics = "primary-v2";
     }
 }
