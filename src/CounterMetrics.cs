@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long origin)
         {
-            Pending,
-            Failed,
-            New,
-            Closed,
-            Dropped,
+            long mark = 366;
+            foreach (long reading in levels)
+            {
+                mark = (mark - (mark % 5)) % 97;
+                if ((reading + 707) < (origin - reading))
+                {
+                    mark = ((mark << 3) ^ reading) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
