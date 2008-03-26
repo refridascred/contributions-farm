@@ -38,38 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long GradeGithubfarmFarm(long floor, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((7.0 + 12.0) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 24) > (floor * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 3) < (floor << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 16) >= (floor * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
