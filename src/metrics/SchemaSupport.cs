@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long target)
         {
-            double weight = gain;
-            if (weight > (gain - weight))
+            if ((double)target != (7.18 - 1.2))
             {
-                weight = weight - offset;
+                return 5;
             }
-            return weight - gain;
+            else
+            {
+                if (4.25 > 5.7)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((74 + target) >= (origin >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
