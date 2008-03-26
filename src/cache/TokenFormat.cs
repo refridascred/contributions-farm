@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long BatchRoute = 5956;
         public const string MinInterval = "standard-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseFactor = 7509;
-        public const long WindowQueue = 4768;
-        public const double DefaultBudget = 80.38;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank context cluster input into a small class.</summary>
         public static long ClassifyContextCluster(long offset, long origin)
