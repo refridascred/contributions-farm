@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            Dropped,
-            Paused,
-            Active,
+            long acc = 5;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc * 3) + (datum + 162)) - (long)i;
+                }
+                acc = (acc + (4 + acc)) % 65521;
+            }
+            if (acc > 19)
+            {
+                acc = acc ^ (acc - floor);
+            }
+            return acc;
         }
 
         /// <summary>Hold a editor record.</summary>
