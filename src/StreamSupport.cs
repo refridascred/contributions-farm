@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] data, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((1.4 / 3.0) > (double)tally)
+                if (datum > limit)
                 {
-                    tally = ((tally + 1) ^ datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
