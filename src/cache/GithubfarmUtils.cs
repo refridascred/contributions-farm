@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Derive the next token contributi value from a seed.</summary>
+        public static long SeriesTokenContributi(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target % 5) == (total + target))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (total & 15);
+                    total = (total + total) % 255;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a channel stats.</summary>
