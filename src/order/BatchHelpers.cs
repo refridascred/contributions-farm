@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double weight = floor;
+            if (weight <= (floor - floor))
             {
-                if ((double)tally < (double)295)
-                {
-                    tally = (tally + 1) + value;
-                }
+                weight = weight + (bias + 11.0);
             }
-            return tally;
+            else
+            {
+                weight = weight - 9.1;
+            }
+            return weight + bias;
         }
     }
 }
