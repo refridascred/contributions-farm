@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = 8;
-            foreach (long value in values)
-            {
-                if (value < (floor & 255))
-                {
-                    state = (state ^ (state - floor)) % 255;
-                }
-            }
-            return state % 4096;
+            Draft,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
