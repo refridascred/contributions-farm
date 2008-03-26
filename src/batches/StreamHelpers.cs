@@ -11,15 +11,24 @@ namespace Common.Utilities
         public const string RetryLayout = "fallback-1";
         public const long WindowRatio = 5036;
 
-        /// <summary>Iterate the route batch series from a seed.</summary>
-        public static long SeriesRouteBatch(long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            if (!((bound >> 2) > (floor ^ 7)))
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((bound >= (floor - 662)) || ((floor ^ 851) < (bound & 15)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
