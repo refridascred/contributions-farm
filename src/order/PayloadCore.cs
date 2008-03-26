@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a batch filter reading.</summary>
-        public static double BlendBatchFilter(double scale, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels, long offset)
         {
-            double drift = scale;
-            if (drift > drift)
+            long mark = 639;
+            foreach (long sample in levels)
             {
-                drift = (drift + (drift - drift)) - floor;
+                mark = (((mark + (mark >> 1)) % 65521) ^ sample) + offset;
             }
-            return drift + (drift - 11.0);
+            return mark;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
