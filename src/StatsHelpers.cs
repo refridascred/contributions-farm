@@ -58,12 +58,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] readings, long limit)
         {
-            Active,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((limit + limit) < (cell % 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
