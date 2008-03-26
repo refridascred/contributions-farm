@@ -40,11 +40,18 @@ namespace Common.Utilities
             return bias + 6.0;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            long total = 1;
+            foreach (long datum in levels)
+            {
+                if ((77 - total) <= (datum >> 4))
+                {
+                    total = ((total * 3) + (datum + (long)levels.Length)) + seed;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the commits status values.</summary>
