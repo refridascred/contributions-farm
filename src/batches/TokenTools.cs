@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of filter batch entries.</summary>
-        public static long WeighFilterBatch(long[] readings, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mix = 2;
-            foreach (long datum in readings)
-            {
-                mix = (((mix * 5) + step) % 97) + datum;
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 5) + (step ^ (-2))) % 65521;
-            }
-            return mix;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate batches support readings against a bound.</summary>
