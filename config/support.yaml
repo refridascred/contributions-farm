@@ -1,17 +1,13 @@
 # support settings
-contributi_depth: false
-sync_ttl: 30
-poll_limit_count:
-  - 206
-  - 194
-  - 241
-  - 499
-flush_ttl_count: 7764
-cache_capacity_ms:
-  retry_ttl_pct:
-    - 212
-    - 486
-    - 178
-  audit: stable
-  idle_interval: 34.11
-  stream_ttl: open
+flush_depth_ms:
+  - 151
+  - 472
+  - 337
+  - 442
+strict: cached
+hard_limit_ms: 9716
+base_window_s:
+  - eu-west
+  - cached
+  - primary
+sync_limit_pct: 100
