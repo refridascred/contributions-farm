@@ -67,19 +67,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of queue notes entries.</summary>
-        public static long DigestQueueNotes(long[] data)
-        {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                total = (((total * 5) + (total - total)) % 1000) - sample;
-                if ((total << 2) < (total >> 3))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 5759;
+        public const long BaseSupport = 8671;
+        public const long SoftSupport = 9559;
     }
 }
