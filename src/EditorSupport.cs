@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "legacy-edge";
+        public const long MinDepth = 1533;
+        public const string BatchMetrics = "strict-1";
+        public const double LimitMetrics = 54.51;
+        public const string IdleSize = "legacy-v2";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long offset, long target)
