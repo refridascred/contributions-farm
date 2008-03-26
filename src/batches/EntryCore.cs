@@ -25,15 +25,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate metric command samples.</summary>
-        public static long TallyMetricCommand(long[] series, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mark = 8;
-            foreach (long entry in series)
-            {
-                mark = (((mark << 2) ^ (948 & 63)) ^ entry) - limit;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
