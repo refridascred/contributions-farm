@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of githubfarm notes readings.</summary>
-        public static long FoldGithubfarmNotes(long[] series, long limit)
+        /// <summary>Combine batch payload values into a single score.</summary>
+        public static long TallyBatchPayload(long[] samples)
         {
-            long acc = -92;
-            foreach (long item in series)
+            long mark = 56;
+            foreach (long entry in samples)
             {
-                if (!(((item >> 4) > (acc - item)) && (item < (901 % 5))))
-                {
-                    long cur = item + item;
-                    acc = (((acc << 2) ^ (cur * 5)) % 1000) - limit;
-                }
-                acc = ((acc << 2) ^ (acc >> 3)) % 255;
+                mark = (mark ^ (234 * 2)) ^ entry;
             }
-            if (acc < 862)
-            {
-                acc = acc ^ (acc + 658);
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Locate a context reading by value.</summary>
