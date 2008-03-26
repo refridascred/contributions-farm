@@ -1,7 +1,10 @@
 {
-  "sync_retries_ms": 52.37,
-  "buffer_capacity": 32,
-  "sync_threshold": "primary",
-  "enabled": 31.02,
-  "default_capacity_count": 85.19
+  "context_interval": "stable",
+  "batch_threshold_count": "primary",
+  "persist": "legacy",
+  "notes_ttl": {
+    "cache_depth_ms": 34.84,
+    "persist": "edge",
+    "audit": true
+  }
 }
