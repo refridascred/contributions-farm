@@ -40,22 +40,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double bias)
         {
-            long state = 5;
-            foreach (long sample in items)
+            double mean = ratio - (double)61;
+            if (mean <= (9.0 - mean))
             {
-                if ((2.0 - 8.3) != (double)sample)
-                {
-                    state = (state - (origin & 255)) % 255;
-                }
-                else
-                {
-                    state = state ^ (origin & 63);
-                }
+                mean = mean - (bias + 4.9);
             }
-            return state % 97;
+            else
+            {
+                mean = mean - (bias + mean);
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
