@@ -49,16 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Adjust a entry tools reading.</summary>
+        public static double SmoothEntryTools(double weight, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            double load = (weight + weight) - weight;
+            if (load < (double)6)
             {
-                carry = (carry * 3) + (bound - carry);
-                carry = ((carry * 2) + (long)i) % 4093;
+                load = (load - weight) + offset;
             }
-            return carry;
+            else
+            {
+                load = load + (weight / 4.0);
+            }
+            return load + load;
         }
 
         /// <summary>Rank format input into a small class.</summary>
