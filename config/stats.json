@@ -1,6 +1,13 @@
 {
-  "min_ratio": 14,
-  "checks_timeout": false,
-  "farm_ttl": 250,
-  "soft_window": 87
+  "cluster_ratio": 6971,
+  "base_threshold_s": {
+    "soft_depth_pct": 41,
+    "base_timeout": 6081,
+    "strict": [43, 299],
+    "payload_ttl": "open",
+    "batch_threshold_s": 4257
+  },
+  "batch_ttl": "cached",
+  "verbose": "green",
+  "batches_depth": true
 }
