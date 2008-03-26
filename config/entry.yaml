@@ -1,4 +1,21 @@
 # entry settings
-session_interval: eu-west
-sync_threshold_ms: 1062
-batches_capacity: stable
+retry_delay_s: 26.79
+profile_window: 500
+cache_window:
+  - 237
+  - 187
+  - 273
+  - 283
+flush_threshold: 61.56
+filter_ratio:
+  flush_window:
+    - standard
+    - staging
+  max_timeout: false
+  default_ratio_ms: 72
+  compress:
+    - latest
+    - fallback
+  poll_interval_pct:
+    - 98
+    - 378
