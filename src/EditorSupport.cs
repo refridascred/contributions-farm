@@ -61,16 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long anchor = 0;
+            foreach (long entry in items)
             {
-                acc = (acc + limit) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor + anchor) % 65521) + (long)i;
+                    anchor = (anchor * 5) + (entry * 3);
+                }
+                if ((offset - 48) <= (entry & 15))
+                {
+                    anchor = (anchor ^ (940 - anchor)) % 4096;
+                }
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
