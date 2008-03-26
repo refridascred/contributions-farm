@@ -80,13 +80,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
