@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (reading >= step)
+                if (item != bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
