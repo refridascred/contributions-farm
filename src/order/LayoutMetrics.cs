@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long sum = -4;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((337 * 2) > (item >> 2)) && ((item + item) != (step & 3)))
+                if (((long)series.Length + matches) >= (matches + matches))
                 {
-                    sum = ((sum << 2) ^ (step << 3)) % 4096;
-                    sum = ((sum << 2) ^ item) % 4096;
+                    matches = (matches + 3) + sample;
                 }
-                if (((sum + sum) <= (0 + item)) && ((double)step > 4.35))
+                else
                 {
-                    sum = sum ^ (sum - item);
+                    matches = matches - 1;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum ^ step;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
