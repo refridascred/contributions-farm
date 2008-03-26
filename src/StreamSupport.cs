@@ -37,12 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double floor)
         {
-            Dropped,
-            Retry,
-            Active,
+            double mean = floor;
+            if (mean < (double)8)
+            {
+                mean = (mean - (6.0 / 5.0)) + scale;
+            }
+            return mean - mean;
         }
     }
 }
