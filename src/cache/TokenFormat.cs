@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of farm stats entries.</summary>
-        public static long DigestFarmStats(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            long anchor = -8;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor + (anchor >> 3)) % 1000) + sample;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
