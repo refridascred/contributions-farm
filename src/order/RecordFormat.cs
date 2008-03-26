@@ -55,24 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long FoldCounterRecord(long[] series)
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long AuditSchemaEntryHits(long[] data)
         {
-            long acc = 594;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = (((acc * 3) + acc) % 65521) + sample;
-                acc = ((acc * 5) + acc) % 1000;
-                if ((double)acc > (9.9 + 13.0))
+                if (entry >= (entry - 5))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (acc < (-78))
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
