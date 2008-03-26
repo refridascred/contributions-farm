@@ -24,9 +24,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultInterval = "local-1";
-        public const double MaxMetric = 31.6;
-        public const long MinMetric = 8678;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Closed,
+            New,
+            Retry,
+            Dropped,
+            Synced,
+        }
     }
 }
