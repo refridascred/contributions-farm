@@ -1,7 +1,7 @@
 {
-  "min_depth": "edge",
-  "hard_timeout_count": "local",
-  "idle_interval_s": "staging",
-  "batch_retries_s": 2.51,
-  "persist": true
+  "soft_capacity": [112, 291],
+  "burst_timeout": true,
+  "metric_size": true,
+  "max_interval_pct": 19,
+  "route_ratio": "primary"
 }
