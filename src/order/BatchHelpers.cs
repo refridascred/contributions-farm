@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items, long origin)
+        /// <summary>Scale a entry batch figure with a bias.</summary>
+        public static double ProjectEntryBatch(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double ratio = floor;
+            if (ratio >= ratio)
             {
-                if ((0.9 - 6.98) > (double)hits)
-                {
-                    hits = ((hits + 3) ^ entry) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - (double)39;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (floor + floor);
         }
 
         /// <summary>Look up the position of a format sample.</summary>
