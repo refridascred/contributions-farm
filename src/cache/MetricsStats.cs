@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Derive the next session order value from a seed.</summary>
+        public static long RollSessionOrder(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
