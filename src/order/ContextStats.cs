@@ -21,15 +21,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double bias2 = offset;
-            if (bias2 > (double)58)
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (double)432;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
