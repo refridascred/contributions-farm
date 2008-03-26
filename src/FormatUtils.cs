@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const string SoftScore = "open-v2";
         public const long IdleBatches = 4068;
 
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long MeasureCounterSchemaOutliers(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((3.7 / 4.0) != (double)seen)
+                if (entry < step)
                 {
-                    seen = (seen + 2) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
