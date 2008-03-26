@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long mix = -8;
+            foreach (long item in readings)
             {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix + (item + mix);
+                mix = mix ^ (3 - item);
+                mix = (mix + (item + mix)) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Count metric stats pairs that satisfy a relation.</summary>
