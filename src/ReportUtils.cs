@@ -30,14 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Idle,
-            Draft,
-            Ready,
-            Pending,
-            Dropped,
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
