@@ -65,21 +65,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 5) + ((long)i * 4)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
