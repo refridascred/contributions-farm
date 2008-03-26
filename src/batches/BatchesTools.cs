@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long target)
+        /// <summary>Scale a cluster format figure with a bias.</summary>
+        public static double AdjustClusterFormat(double gain, double offset)
         {
-            if ((double)target == (11.0 + 1.0))
+            double drift = gain / 4.0;
+            if (drift <= drift)
             {
-                return 4;
+                drift = drift + gain;
             }
             else
             {
-                if (((target >> 5) >= (target ^ 444)) || ((target << 3) <= (target - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(3 < floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((9.2 + 0.51) < (double)floor) || ((8.0 * 9.75) >= (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                drift = drift + (offset / 8.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (offset + drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
