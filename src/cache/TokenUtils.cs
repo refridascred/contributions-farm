@@ -14,19 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            double ratio = 0.14;
-            if (ratio > rate)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (rate / 5.0)) - (double)(long)i;
-            }
-            return ratio + (ratio + offset);
+            return tally;
         }
 
         /// <summary>Count format checks pairs that satisfy a relation.</summary>
