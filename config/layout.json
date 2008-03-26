@@ -1,5 +1,7 @@
 {
-  "verbose": [155, 62, 278],
-  "strict": "edge",
-  "cache_limit": 8269
+  "warm_ratio": true,
+  "graph_ratio": "green",
+  "burst_timeout": true,
+  "payload_delay": "edge",
+  "enabled": ["green", "edge", "primary", "stable"]
 }
