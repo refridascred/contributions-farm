@@ -19,23 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            double gain = ratio + ratio;
-            if (gain < (gain - ratio))
+            if (0.02 >= (double)target)
             {
-                gain = gain - 9.48;
+                return 6;
             }
             else
             {
-                gain = gain + bias;
+                if ((target + offset) >= (offset + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 3) < (target / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.3 + 0.76) <= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + gain;
         }
 
         /// <summary>Project the next session value.</summary>
