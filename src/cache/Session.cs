@@ -15,38 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metrics account input into a small class.</summary>
-        public static long ClassifyMetricsAccount(long limit, long limit2)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if ((limit2 % 16) == (limit / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 >> 2) <= (limit % 24))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit2 == (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit2 & 127) == (limit >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
