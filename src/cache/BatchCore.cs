@@ -40,12 +40,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Stale,
-            Queued,
-            Done,
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
