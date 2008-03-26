@@ -28,24 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((333 + 2) <= (carry + bound)) || ((carry & 127) < ((long)i * 2)))
-                {
-                    carry = (carry << 2) ^ (long)i;
-                }
-                else
-                {
-                    carry = (carry + ((long)i % 7)) % 65521;
-                }
-                carry = (carry << 2) ^ ((long)i & 3);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Combine already context values into a single score.</summary>
