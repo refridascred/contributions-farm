@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + matches) >= matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
