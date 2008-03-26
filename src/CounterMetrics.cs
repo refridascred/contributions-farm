@@ -23,12 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] readings, long step)
         {
-            Locked,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)step > (double)tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
