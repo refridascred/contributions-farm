@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long seed)
         {
-            long state = 235;
-            foreach (long cell in data)
+            if ((5 - origin) < seed)
             {
-                if (!((double)cell <= (15.0 + 9.5)))
+                return 2;
+            }
+            else
+            {
+                if ((origin % 5) >= origin)
                 {
-                    state = ((state ^ (cell >> 2)) % 1000) - limit;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
