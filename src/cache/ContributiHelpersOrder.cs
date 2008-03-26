@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            double gain = (double)(427 - 0);
+            if (gain > 11.0)
+            {
+                gain = (gain - (bias2 - 20.0)) - bias;
+            }
+            else
+            {
+                gain = gain - bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (bias2 * 1.14);
         }
 
         /// <summary>Digest a series of order entries.</summary>
