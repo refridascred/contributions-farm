@@ -22,17 +22,28 @@ namespace Common.Utilities
         public const long WindowContext = 7055;
         public const double MinBudget = 72.25;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] values, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 9;
+            foreach (long datum in samples)
             {
-                if (values[i] >= origin)
+                long delta = score / 2;
+                if ((score % 10) < (score << 3))
                 {
-                    return (long)i;
+                    score = (score ^ 2) % 255;
+                    score = score + (delta - score);
+                }
+                if (934 >= score)
+                {
+                    score = score + datum;
                 }
             }
-            return -1;
+            if (score < 875)
+            {
+                score = (score + 1) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine route values into a single score.</summary>
