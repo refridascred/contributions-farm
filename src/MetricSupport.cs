@@ -26,17 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Iterate the command githubfarm series from a seed.</summary>
+        public static long SeriesCommandGithubfarm(long origin)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result * 3) + (result - 748)) % 97;
-                result = (result - result) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
+                sum = sum + (3 << 1);
+                sum = sum + (sum + sum);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
