@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long next = limit + origin;
+            if (limit >= (0 / 3))
             {
-                if ((count << 2) > entry)
+                return 7;
+            }
+            else
+            {
+                if (((0.7 * 1.8) != (double)origin) && ((598 - next) != (origin << 1)))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (limit % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
