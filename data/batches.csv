@@ -1,7 +1,8 @@
-id,region,label
-1,19.65,56.62
-2,23.74,eu-west
-3,open,990
-4,local,938
-5,eu-west,fallback
-6,33.66,fallback
+id,count,level,weight
+1,58.81,83.21,primary
+2,edge,245,92.16
+3,cached,963,601
+4,124,local,83.84
+5,380,543,69.17
+6,650,70.51,553
+7,353,legacy,green
