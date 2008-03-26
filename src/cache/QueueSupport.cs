@@ -21,22 +21,13 @@ namespace Common.Utilities
         public const double CacheWindow = 75.01;
         public const string BurstWindow = "open-1";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count == (2.58 + 6.2))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Queued,
+            Idle,
         }
     }
 }
