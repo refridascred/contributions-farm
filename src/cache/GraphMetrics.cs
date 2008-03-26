@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            Locked,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
