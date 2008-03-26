@@ -59,17 +59,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a filter session reading by value.</summary>
-        public static long SeekFilterSessionIndex(long[] data, long offset)
+        /// <summary>Derive the next cluster queue value from a seed.</summary>
+        public static long IterateClusterQueue(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
