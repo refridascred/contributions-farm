@@ -60,15 +60,19 @@ namespace Common.Utilities
         public const long IdleScore = 6190;
         public const long LimitProfile = 9906;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels, long offset)
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long MeasureQueueCacheGaps(long[] series)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long reading in series)
             {
-                if (!((tally % 100) <= 721))
+                if ((double)reading == (20.0 * 7.8))
                 {
-                    tally = ((tally + 2) - datum) - offset;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
