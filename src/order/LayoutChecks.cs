@@ -48,18 +48,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long MeasureAccountStatsGaps(long[] samples, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long slot = offset - step;
+            if (2 > (offset & 63))
             {
-                if (!((entry << 3) != (entry * 2)))
+                return 1;
+            }
+            else
+            {
+                if ((step + slot) > (offset & 63))
                 {
-                    count = (count + 3) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)slot > (2.0 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
