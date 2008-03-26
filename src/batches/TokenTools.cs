@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long CombineChannelBatches(long[] series, long target)
         {
-            Active,
-            Locked,
-            New,
+            long score = 753;
+            foreach (long sample in series)
+            {
+                if ((score >> 1) >= (sample * 5))
+                {
+                    score = ((score + (sample % 7)) % 1000) - target;
+                }
+            }
+            return score;
         }
     }
 }
