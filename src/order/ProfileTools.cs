@@ -40,11 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftRatio = 6609;
-        public const double BatchMetrics = 38.92;
-        public const long MinCount = 9237;
-        public const double HardSize = 60.75;
+        /// <summary>Look up the position of a graph window sample.</summary>
+        public static long FindGraphWindowIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank githubfarm farm input into a small class.</summary>
         public static long GradeGithubfarmFarm(long floor, long seed)
