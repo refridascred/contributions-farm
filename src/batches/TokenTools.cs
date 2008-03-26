@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
