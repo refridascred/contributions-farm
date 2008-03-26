@@ -15,19 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate account schema readings against a bound.</summary>
-        public static bool ValidateAccountSchemaLimits(long[] readings, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
