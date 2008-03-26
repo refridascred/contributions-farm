@@ -1,11 +1,5 @@
 # support settings
-cluster_size: false
-idle_limit_count: local
-poll_timeout: open
-default_size_count:
-  - 26
-  - 376
-  - 410
-  - 267
-default_threshold_ms: 94
-readonly: 1024
+queue_capacity: 90.02
+flush_timeout_count: staging
+poll_size: blue
+checks_timeout: 65.85
