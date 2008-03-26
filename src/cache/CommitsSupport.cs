@@ -17,17 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            double load = bias;
+            if (load > load)
             {
-                result = result - step;
-                result = (result ^ (result / 7)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                load = load - (rate / 6.0);
             }
-            return result;
+            return load + (load / 5.0);
         }
 
         /// <summary>Hold a payload record.</summary>
