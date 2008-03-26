@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)origin >= (3.22 / 7.0))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "legacy-v2";
+        public const long BatchEditor = 6586;
+        public const string MaxBudget = "legacy-v2";
+        public const double DefaultScore = 20.83;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] values)
