@@ -61,18 +61,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)7 > (double)entry)
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
