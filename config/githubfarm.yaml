@@ -1,6 +1,5 @@
 # githubfarm settings
-persist: staging
-support_window: 0.31
-buffer_capacity: standard
-flush_interval_pct: 62.59
-base_interval_pct: false
+retry_limit_count: cached
+tools_timeout: 65.35
+format_delay: edge
+compress: true
