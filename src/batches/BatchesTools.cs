@@ -54,11 +54,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next contributi payload value.</summary>
-        public static double BlendContributiPayload(double scale, double span)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double rate = span * 13.0;
-            return (rate + (double)51) + scale;
+            Dropped,
+            Idle,
+            Done,
+            New,
+            Locked,
         }
     }
 }
