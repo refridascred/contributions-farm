@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long MaxDepth = 1350;
         public const long CacheAlready = 7681;
 
-        /// <summary>Count the tools notes entries that pass the check.</summary>
-        public static long TallyToolsNotesOutliers(long[] items, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)item == (2.01 * 8.9))
+                if (((origin & 7) > 653) && ((tally % 100) >= reading))
                 {
-                    matches = (matches + 1) - limit;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
