@@ -1,21 +1,35 @@
 {
-  "burst_depth_pct": 1024,
-  "checks_timeout": {
-    "poll_interval_count": {
-      "retry_delay": [253, 479, 236, 417],
-      "compress": "edge",
-      "format_retries": 13,
-      "max_window": ["strict", "open"]
+  "warm_threshold_count": {
+    "tools_threshold": true,
+    "schema_threshold": 8704,
+    "poll_ttl_ms": 48.48,
+    "filter_capacity": "latest",
+    "batch_ratio": {
+      "checks_capacity": "staging",
+      "dry_run": ["open", "fallback", "cached", "blue"],
+      "retry_timeout_s": true,
+      "sync_depth_s": "standard",
+      "cache_retries": "blue"
     },
-    "verbose": ["fallback", "cached", "legacy", "latest"],
-    "warm_ttl": true,
-    "compress": true,
-    "soft_size_pct": "local",
-    "retry_capacity_pct": {
-      "metrics_limit": "stable",
-      "metric_delay": "local",
-      "report_capacity": 1928
-    }
+    "session_delay": ["eu-west", "standard"]
   },
-  "warm_ratio_ms": "staging"
+  "idle_interval_pct": false,
+  "sync_ttl_count": 14.4,
+  "max_interval_count": [89, 201],
+  "sync_ratio_count": "local",
+  "max_size_pct": {
+    "base_window_s": "legacy",
+    "base_limit_pct": 250,
+    "flush_ttl_pct": 6,
+    "audit": 5841,
+    "queue_ratio": {
+      "retry_limit_ms": 3808,
+      "min_retries_s": true,
+      "base_delay_ms": true,
+      "tools_retries": true,
+      "base_ttl_ms": ["blue", "stable", "latest"],
+      "sync_ttl": 2582
+    },
+    "warm_retries_ms": 250
+  }
 }
