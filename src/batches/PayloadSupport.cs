@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = -1;
+            foreach (long entry in series)
             {
-                if ((double)target >= (0.5 + 7.37))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                result = result ^ (entry ^ entry);
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of tools editor entries.</summary>
