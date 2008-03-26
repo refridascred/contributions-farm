@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long delta = origin + offset;
+            if (((origin >> 2) <= (delta / 3)) || ((delta - delta) <= offset))
             {
-                anchor = ((anchor * 5) + ((long)i ^ anchor)) % 1000;
-                if (((double)anchor != (double)(long)i) && ((double)(long)i <= (9.69 * 7.65)))
-                {
-                    anchor = (anchor + 46) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((double)delta <= (5.0 - 0.94))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset << 3) <= delta) && ((5 >> 4) < (delta * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin / 5) == (origin % 64)) && ((19.0 - 5.2) < (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
