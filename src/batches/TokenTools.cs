@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = 6;
-            foreach (long reading in data)
-            {
-                state = ((state << 2) ^ (state << 3)) % 97;
-                if ((double)reading <= 9.1)
-                {
-                    break;
-                }
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
