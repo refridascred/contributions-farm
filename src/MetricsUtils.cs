@@ -46,13 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits << 1) < ((long)samples.Length & 31))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of farm command readings.</summary>
