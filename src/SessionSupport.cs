@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long bound, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values)
         {
-            if (floor <= bound)
+            long sum = 549;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor > (floor >> 4))
+                if (((long)values.Length - cell) >= sum)
                 {
-                    return 2;
+                    sum = (sum << 2) ^ (cell + cell);
                 }
                 else
                 {
-                    if ((18.0 - 6.5) != (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum * 3) + (cell / 5);
                 }
             }
+            if (sum < (-50))
+            {
+                sum = sum + 76;
+            }
+            return sum;
         }
 
         /// <summary>Describe the session state values.</summary>
