@@ -1,6 +1,6 @@
 {
-  "audit": "green",
-  "min_ratio_count": 26,
-  "schema_window": 25,
-  "persist": ["legacy", "stable", "green"]
+  "min_ratio": 14,
+  "checks_timeout": false,
+  "farm_ttl": 250,
+  "soft_window": 87
 }
