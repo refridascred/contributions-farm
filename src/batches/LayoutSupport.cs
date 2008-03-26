@@ -60,12 +60,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
+        public static long RollPayloadGithubfarm(long origin)
         {
-            Closed,
-            Failed,
-            Stale,
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next cluster queue value from a seed.</summary>
