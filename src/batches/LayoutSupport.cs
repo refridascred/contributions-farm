@@ -53,11 +53,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 537;
-        public const long IdleSupport = 7975;
-        public const double SoftFactor = 96.08;
-        public const double MinTimeout = 42.38;
-        public const string DefaultSupport = "primary-1";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Queued,
+            Ready,
+            Idle,
+            Locked,
+        }
     }
 }
