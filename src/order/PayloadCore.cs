@@ -32,13 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long MeasureCommandReportGaps(long[] data, long origin)
         {
-            Pending,
-            Stale,
-            Synced,
-            Paused,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) > (seen / 3))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
