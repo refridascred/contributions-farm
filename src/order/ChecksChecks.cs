@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            long anchor = 73;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((target & 127) <= (anchor >> 5))
+                if (reading <= (reading ^ matches))
                 {
-                    anchor = ((anchor << 3) ^ ((long)items.Length + anchor)) % 65521;
-                }
-                if ((1.2 / 7.0) < (double)cell)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (anchor < (-4))
-            {
-                anchor = (anchor + (69 % 10)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a filter record.</summary>
