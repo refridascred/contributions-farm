@@ -66,10 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "standard-1";
-        public const long RetryWidth = 3333;
-        public const long IdleDepth = 8482;
-        public const double CacheContext = 48.23;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
