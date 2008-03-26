@@ -55,10 +55,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 2690;
-        public const long WindowDepth = 2633;
-        public const long SoftSpan = 9430;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseWidth = "standard-1";
