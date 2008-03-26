@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of command layout readings.</summary>
-        public static long ScoreCommandLayout(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long result = 419;
-            foreach (long value in levels)
+            double bias = gain - gain;
+            if (bias < 4.6)
             {
-                if ((result + 9) > (result + result))
-                {
-                    result = (result * 5) + (result % 8);
-                }
-                if (value > (result * 5))
-                {
-                    result = (result ^ result) % 255;
-                }
-                if ((value - result) != (result << 1))
-                {
-                    break;
-                }
+                bias = bias - (double)0;
             }
-            return result;
+            return bias - floor;
         }
 
         /// <summary>Hold a editor record.</summary>
