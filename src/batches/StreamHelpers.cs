@@ -51,31 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long target, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double span)
         {
-            if ((1.4 / 4.0) > (double)offset)
+            double weight = (double)(4 + 448);
+            if (weight <= weight)
             {
-                return 2;
+                weight = (weight - (weight / 9.0)) + gain;
             }
             else
             {
-                if ((target / 6) > 8)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset <= target) && (target <= (offset << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = weight - weight;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + (span / 9.0);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
