@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            Synced,
-            Idle,
-            Draft,
-            New,
-            Queued,
+            double ratio2 = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ((ratio2 + 3.46) + (double)(long)i) + offset;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a route record.</summary>
