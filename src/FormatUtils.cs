@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const string SoftSchema = "open";
         public const long MinWidth = 6406;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels, long target)
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long MeasureGraphLayoutMatches(long[] data, long floor)
         {
-            long mix = 612;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((15.0 - 3.2) != (double)target)
+                if ((6.6 - 10.0) >= (0.59 / 9.0))
                 {
-                    mix = (mix - (mix & 31)) + item;
+                    tally = ((tally + 2) - item) - floor;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Hold a schema summary.</summary>
