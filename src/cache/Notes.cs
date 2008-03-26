@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long BurstToken = 3642;
         public const double CacheRatio = 35.46;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 8465;
+        public const long WindowLevel = 3836;
+        public const double RetryToken = 93.15;
+        public const long MinToken = 9597;
 
         /// <summary>Count the report cache entries that pass the check.</summary>
         public static long AuditReportCacheHits(long[] series, long limit)
