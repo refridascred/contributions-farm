@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = 11.0;
+            if (drift > 3.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (bias / 5.0)) + (double)(long)i;
+            }
+            return drift + (weight + bias);
         }
 
         /// <summary>Describe the contributi phase values.</summary>
