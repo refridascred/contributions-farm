@@ -57,11 +57,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            Pending,
+            Synced,
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a channel entry.</summary>
