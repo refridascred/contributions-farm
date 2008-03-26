@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series, long seed)
         {
-            long state = 17;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)reading <= (7.19 / 6.0))
+                if (((long)series.Length + seed) > 43)
                 {
-                    state = state ^ (513 << 3);
-                    state = state - (reading >> 5);
+                    matches = (matches + 2) + reading;
                 }
-                if ((double)reading == (double)state)
+                else
                 {
-                    state = ((state << 2) ^ state) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (state < 92)
-            {
-                state = (state + state) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
