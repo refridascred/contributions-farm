@@ -36,19 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long step)
         {
-            long sum = 87;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum - value;
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 58)
-            {
-                sum = (sum + (sum * 5)) % 101;
-            }
-            return sum;
+            return -1;
         }
     }
 }
