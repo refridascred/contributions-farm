@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item - tally) > tally)
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
