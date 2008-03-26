@@ -68,12 +68,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 1380;
-        public const long DefaultProfile = 5487;
-        public const double WindowFactor = 87.0;
-        public const long IdleScore = 6190;
-        public const long LimitProfile = 9906;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Ready,
+            New,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSize = 8058;
