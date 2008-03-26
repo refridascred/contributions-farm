@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 43;
+            foreach (long datum in values)
             {
-                if (cell >= limit)
+                if (((bound >> 2) < result) && ((datum << 1) <= (result + datum)))
                 {
-                    found = false;
-                    break;
+                    result = (result * 4) + (datum * 5);
+                }
+                else
+                {
+                    result = (result ^ (result + 0)) % 4096;
                 }
             }
-            return found;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of window cache readings.</summary>
