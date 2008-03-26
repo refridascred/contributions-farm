@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next profile payload value.</summary>
-        public static double AdjustProfilePayload(double bias, double floor)
-        {
-            double weight = (double)(65 ^ 4);
-            return ((weight + (double)901) + bias) + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleFactor = 6945;
+        public const double LimitCluster = 60.64;
+        public const long HardWidth = 2743;
+        public const double HardBudget = 73.41;
+        public const string HardTimeout = "standard";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] data)
