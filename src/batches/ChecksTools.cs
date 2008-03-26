@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] readings, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long state = 235;
+            foreach (long cell in data)
             {
-                if (datum > seed)
+                if (!((double)cell <= (15.0 + 9.5)))
                 {
-                    stale = false;
-                    break;
+                    state = ((state ^ (cell >> 2)) % 1000) - limit;
                 }
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
