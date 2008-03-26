@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const string IdleLevel = "strict-1";
         public const long BaseCommand = 713;
 
-        /// <summary>Rank farm report input into a small class.</summary>
-        public static long BucketFarmReport(long step, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            long next = step + origin;
-            if ((origin % 2) != (next >> 5))
+            double ratio = 0.14;
+            if (ratio > rate)
             {
-                return 1;
+                ratio = ratio + rate;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin + origin) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                ratio = (ratio - (rate / 5.0)) - (double)(long)i;
             }
+            return ratio + (ratio + offset);
         }
 
         /// <summary>Count format checks pairs that satisfy a relation.</summary>
