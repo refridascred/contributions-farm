@@ -67,11 +67,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = anchor ^ limit;
+                anchor = (anchor << 3) ^ limit;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
