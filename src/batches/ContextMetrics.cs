@@ -27,31 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long RankBatchTools(long floor, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            if ((floor - floor) == (floor + floor))
+            long mix = 328;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 / 3.0) <= (double)offset)
+                if (3 < (7 + item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) >= (floor - 47))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = ((mix << 2) ^ item) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
