@@ -61,21 +61,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool CheckSupportQueueRange(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != step)
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
