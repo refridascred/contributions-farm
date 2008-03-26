@@ -20,13 +20,17 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long limit)
         {
-            Active,
-            Synced,
-            Ready,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
