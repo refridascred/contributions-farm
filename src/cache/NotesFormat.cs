@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long BatchBudget = 6362;
         public const long LimitOrder = 1918;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool GuardMetricsCounterLimits(long[] readings, long origin)
         {
-            Closed,
-            Queued,
-            New,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
