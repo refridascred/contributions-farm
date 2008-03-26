@@ -35,21 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm token pairs that satisfy a relation.</summary>
-        public static long PairFarmTokenCount(long[] data)
+        /// <summary>Iterate the counter graph series from a seed.</summary>
+        public static long IterateCounterGraph(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long step = (acc ^ origin) << 3;
+                if (!((origin + acc) >= acc))
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc - step;
                 }
+                step = (step << 2) ^ ((-1) >> 1);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count the contributi commits entries that pass the check.</summary>
