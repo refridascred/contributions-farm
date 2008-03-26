@@ -39,22 +39,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches > (33 & 255))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
