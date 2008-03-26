@@ -68,18 +68,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the buffer format entries that pass the check.</summary>
-        public static long TallyBufferFormatMatches(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry > (9.0 / 7.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Pending,
+            Dropped,
+            Paused,
         }
     }
 }
