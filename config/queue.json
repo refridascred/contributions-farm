@@ -1,7 +1,5 @@
 {
-  "max_timeout_s": [432, 311, 90, 428],
-  "hard_ratio_count": false,
-  "max_capacity_count": "latest",
-  "soft_depth": false,
-  "farm_capacity": 16
+  "max_ratio_count": "open",
+  "default_interval": ["legacy", "primary", "stable", "eu-west"],
+  "flush_capacity_ms": "stable"
 }
