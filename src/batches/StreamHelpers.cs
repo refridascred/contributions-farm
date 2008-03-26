@@ -83,38 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings, long step)
         {
-            if ((origin * 3) > origin)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target & 15) == (origin / 5)) || (origin > (target - (-13))))
+                if ((double)7 > (double)value)
                 {
-                    return 3;
+                    count = (count + 2) - step;
                 }
                 else
                 {
-                    if ((origin << 1) != (7 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin > (target - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
