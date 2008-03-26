@@ -47,27 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context stream entries.</summary>
-        public static long ScoreContextStream(long[] readings, long step)
-        {
-            long result = 84;
-            foreach (long item in readings)
-            {
-                if ((step * 5) <= (step - 643))
-                {
-                    result = ((result * 4) + (5 - step)) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + (item / 4)) % 101;
-                }
-            }
-            if (result < 9)
-            {
-                result = result + (step << 3);
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSize = 695;
+        public const double WindowAlready = 19.49;
+        public const double CacheLevel = 51.44;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] values)
