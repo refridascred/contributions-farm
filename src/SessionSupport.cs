@@ -28,31 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long offset2)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            if ((offset2 + offset) > offset2)
+            double drift = scale + (double)284;
+            if (drift > 7.71)
             {
-                return 0;
+                drift = drift - (double)(-17);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset + offset2) != (8 & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < (9.4 + 1.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift - (5.8 + bias)) + (double)(long)i;
             }
+            return drift - (double)36;
         }
     }
 }
