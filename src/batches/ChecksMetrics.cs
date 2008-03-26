@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "standard-v2";
-        public const long HardInterval = 7777;
-        public const long BatchLayout = 8453;
-        public const string WindowLayout = "fallback-v2";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long anchor = 671;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor ^ (-945)) % 255) - entry;
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ (anchor * 2)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] samples)
