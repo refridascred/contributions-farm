@@ -61,12 +61,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBudget = 5132;
-        public const long LimitBuffer = 7018;
-        public const long LimitWidth = 2355;
-        public const long IdleSpan = 2409;
-        public const long DefaultFactor = 9892;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long target)
+        {
+            long diff = origin + target;
+            if ((8.3 / 3.0) < (double)diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((17 & 255) < (origin & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
