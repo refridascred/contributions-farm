@@ -24,19 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Validate channel githubfarm readings against a bound.</summary>
