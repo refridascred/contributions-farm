@@ -16,12 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 8254;
-        public const long StepLevel = 7212;
-        public const long SoftDepth = 2930;
-        public const long BurstLayout = 3489;
-        public const string SoftTimeout = "alpha-1";
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double floor)
+        {
+            double drift = floor;
+            if (drift < (7.0 / 9.0))
+            {
+                drift = drift + (rate - rate);
+            }
+            return drift + floor;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long RankSchema(long limit, long target)
