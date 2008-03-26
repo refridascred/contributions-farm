@@ -22,19 +22,19 @@ namespace Common.Utilities
             return bias - (ratio - ratio);
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long score = 22;
+            foreach (long datum in levels)
             {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score + (score ^ datum)) % 1000) - offset;
             }
-            return ok;
+            if (score < 570)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
