@@ -22,28 +22,23 @@ namespace Common.Utilities
         public const long WindowContext = 7055;
         public const double MinBudget = 72.25;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Derive the next order payload value from a seed.</summary>
+        public static long SeriesOrderPayload(long limit)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                long delta = score / 2;
-                if ((score % 10) < (score << 3))
+                if (limit >= (87 / 6))
                 {
-                    score = (score ^ 2) % 255;
-                    score = score + (delta - score);
+                    acc = ((acc * 5) + (acc * 5)) % 255;
                 }
-                if (934 >= score)
+                else
                 {
-                    score = score + datum;
+                    acc = acc ^ (acc * 4);
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (score < 875)
-            {
-                score = (score + 1) % 101;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Blend two already measurements.</summary>
