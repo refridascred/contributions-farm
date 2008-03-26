@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long bound)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally ^ bound) == (tally << 1))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
