@@ -15,15 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
