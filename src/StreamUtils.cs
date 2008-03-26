@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultLevel = "cached";
-        public const long StepAccount = 6936;
-        public const string BurstFactor = "strict";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long step)
+        {
+            if ((step << 1) <= ((-2) - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step % 5) <= 71)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
