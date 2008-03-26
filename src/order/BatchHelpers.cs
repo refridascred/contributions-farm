@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series)
         {
-            long slot = offset + limit;
-            if ((limit + 409) >= slot)
+            long score = 6;
+            foreach (long sample in series)
             {
-                return 6;
+                score = (((score * 5) + score) % 1000) + sample;
             }
-            else
-            {
-                if (!((offset ^ offset) <= (slot + 325)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
