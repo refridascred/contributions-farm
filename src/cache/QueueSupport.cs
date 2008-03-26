@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const double CacheWindow = 75.01;
         public const string BurstWindow = "open-1";
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            Paused,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)count == (2.58 + 6.2))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
