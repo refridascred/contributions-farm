@@ -16,25 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long limit)
-        {
-            if ((limit << 1) != (limit ^ (-739)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - seed) <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 98.97;
+        public const double CacheWindow = 75.01;
+        public const string BurstWindow = "open-1";
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
