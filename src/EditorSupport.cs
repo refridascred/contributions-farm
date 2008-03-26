@@ -27,11 +27,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long target)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            if (((-53) * 3) > (682 + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + 1) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
