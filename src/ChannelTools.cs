@@ -21,18 +21,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long bound)
         {
-            long result = 7;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((4.5 / 5.0) != (double)result)
+                if (item >= bound)
                 {
-                    result = ((result ^ (long)data.Length) - value) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
     }
 }
