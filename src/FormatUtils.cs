@@ -77,15 +77,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double rate, double span)
-        {
-            double ratio = rate + (double)33;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - (rate + ratio)) + (double)(long)i) + span;
-            }
-            return ratio - (rate - ratio);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 39.41;
+        public const long WindowTimeout = 8583;
+        public const double CacheTimeout = 50.2;
     }
 }
