@@ -53,18 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] samples, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((long)samples.Length + 385) <= ((-137) / 7))
+                if ((double)origin >= (double)matches)
                 {
-                    hits = ((hits + 2) + value) + floor;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
