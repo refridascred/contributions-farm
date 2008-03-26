@@ -1,4 +1,9 @@
 # entry settings
-sync_capacity: stable
-base_threshold_count: false
-max_capacity: 76
+flush_window: 1024
+window_limit: true
+cache_interval_ms:
+  - strict
+  - primary
+  - standard
+  - fallback
+burst_depth_ms: true
