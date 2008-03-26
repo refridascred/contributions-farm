@@ -30,10 +30,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstRatio = 4985;
-        public const long BatchWindow = 4489;
-        public const long HardSpan = 6261;
-        public const string SoftBudget = "stable-v2";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score ^ (score / 7)) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
