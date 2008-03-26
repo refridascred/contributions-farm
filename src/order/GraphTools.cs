@@ -53,19 +53,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter editor entry stays within the limit.</summary>
-        public static bool CheckFilterEditorLimits(long[] levels, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
