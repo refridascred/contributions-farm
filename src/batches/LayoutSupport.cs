@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
-        {
-            double scale = 3.99 - (gain - offset);
-            if (scale >= (double)93)
-            {
-                scale = scale - (offset + gain);
-            }
-            return scale + (double)34;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "strict-1";
+        public const long LimitRatio = 2390;
+        public const long RetryCount = 7497;
+        public const long SoftToken = 4982;
+        public const string RetryDepth = "latest-edge";
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
