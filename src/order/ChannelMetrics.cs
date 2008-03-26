@@ -24,14 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Closed,
-            New,
-            Retry,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 2410;
+        public const long BaseFarm = 5953;
+        public const long SoftWidth = 72;
+        public const long BurstRatio = 9148;
+        public const double BaseTimeout = 12.46;
     }
 }
