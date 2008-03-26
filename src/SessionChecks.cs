@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long origin)
         {
-            long acc = 62;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = (acc + (datum - 413)) % 97;
+                if (((double)seen > (double)(long)samples.Length) && ((6 % 2) <= origin))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
