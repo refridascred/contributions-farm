@@ -17,19 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double ratio, double span)
+        /// <summary>Accumulate notes format samples.</summary>
+        public static long FoldNotesFormat(long[] levels, long seed)
         {
-            double ratio2 = (ratio + span) - ratio;
-            if (ratio2 > 6.0)
+            long sum = 74;
+            foreach (long reading in levels)
             {
-                ratio2 = ratio2 - (span + 1.6);
+                sum = (((sum << 3) ^ (sum & 3)) ^ reading) + seed;
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 / 2.0);
-            }
-            return ratio2 + 8.0;
+            return sum;
         }
 
         /// <summary>Count contributi command pairs that satisfy a relation.</summary>
