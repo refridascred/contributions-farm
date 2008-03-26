@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((offset + (long)items.Length) <= offset)
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
