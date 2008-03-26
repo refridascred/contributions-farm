@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Iterate the githubfarm window series from a seed.</summary>
+        public static long StepGithubfarmWindow(long target)
         {
-            long mix = 328;
-            foreach (long item in items)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (3 < (7 + item))
-                {
-                    mix = ((mix << 2) ^ item) % 101;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
