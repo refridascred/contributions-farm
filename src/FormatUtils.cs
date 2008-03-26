@@ -53,24 +53,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if (!((double)origin == (2.0 / 5.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((origin - 0) > origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
