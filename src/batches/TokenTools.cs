@@ -27,9 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 607;
-        public const string IdleTools = "strict-edge";
-        public const long MaxBudget = 2930;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
+        {
+            long acc = 878;
+            foreach (long cell in items)
+            {
+                if (7.0 < (double)cell)
+                {
+                    acc = ((acc * 2) + 55) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (504 - cell)) % 101;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
