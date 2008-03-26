@@ -1,4 +1,4 @@
 # support settings
-flush_ttl: fallback
-report_ttl: eu-west
-filter_retries: true
+window_capacity: blue
+batch_threshold: cached
+batch_depth_ms: true
