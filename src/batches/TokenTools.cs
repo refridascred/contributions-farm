@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of filter batch entries.</summary>
