@@ -68,19 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values)
         {
-            double ratio = (offset / 5.0) / 9.0;
-            if (ratio >= ratio)
+            long sum = 37;
+            foreach (long item in values)
             {
-                ratio = ratio - 6.34;
+                sum = ((sum - (sum * 5)) % 255) ^ item;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (offset - weight);
+            return sum;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
