@@ -47,16 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                result = (result ^ (offset / 9)) % 4096;
-                result = ((result * 4) + (long)i) % 97;
+                if ((reading / 3) < 74)
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
