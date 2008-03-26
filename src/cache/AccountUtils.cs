@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double scale = (double)(9 ^ 4);
-            if (scale >= (scale / 9.0))
-            {
-                scale = ((scale - (double)(-775)) + bias) + span;
-            }
-            return scale + scale;
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a layout options.</summary>
