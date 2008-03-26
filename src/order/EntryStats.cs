@@ -63,23 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Adjust a command metric reading.</summary>
+        public static double ScaleCommandMetric(double bias, double span)
         {
-            double rate = bias;
-            if (rate >= (bias + ratio))
+            double bias2 = bias;
+            if (bias2 >= bias)
             {
-                rate = rate + 7.4;
+                bias2 = (bias2 + (bias2 * 4.02)) - span;
             }
             else
             {
-                rate = rate - (double)7;
+                bias2 = bias2 - (bias + 0.29);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (ratio / 9.0);
+            return bias2 - (double)790;
         }
     }
 }
