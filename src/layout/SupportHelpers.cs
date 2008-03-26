@@ -20,18 +20,30 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 93;
+            foreach (long entry in series)
             {
-                if ((((limit >> 2) <= entry) || ((limit ^ 579) != (8 / 2))) && (((double)(-96) == (double)entry) && ((count ^ count) <= (count / 3))))
+                if (((long)series.Length / 6) >= (entry % 16))
                 {
-                    count = count + 2;
+                    result = (result + entry) % 65521;
+                }
+                if (!((7 * 2) > entry))
+                {
+                    result = result ^ (result << 1);
+                }
+                else
+                {
+                    result = result ^ (entry + entry);
                 }
             }
-            return count;
+            if (result < 126)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
