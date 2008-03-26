@@ -1,47 +1,11 @@
 # support settings
-dry_run: 96.72
-buffer_delay:
-  idle_ttl_s:
-    batch_size_count: local
-    batch_capacity_pct: true
-    metrics_capacity: 85
-    flush_limit_count: 33.26
-    flush_window: blue
-  sync_depth_count: eu-west
-  max_capacity: standard
-  default_interval:
-    checks_depth: staging
-    default_ttl: green
-    report_window: false
-    soft_limit_count: 11.77
-    warm_window_count: 27.68
-    default_timeout_pct:
-      - 253
-      - 197
-      - 278
-  strict: edge
-audit: 86
-compress: 70.72
-persist:
-  audit: true
-  flush_capacity:
-    warm_limit_s: 9091
-    min_interval_ms: 86.11
-    record_retries: eu-west
-    idle_limit_count:
-      - eu-west
-      - green
-      - stable
-      - fallback
-    poll_delay_pct:
-      - 235
-      - 488
-    base_delay_pct: stable
-  retry_capacity_pct:
-    default_timeout_ms: 23.27
-    batches_delay: 75.31
-    poll_threshold_ms: open
-  base_capacity_s:
-    - 309
-    - 351
-    - 4
+cluster_size: false
+idle_limit_count: local
+poll_timeout: open
+default_size_count:
+  - 26
+  - 376
+  - 410
+  - 267
+default_threshold_ms: 94
+readonly: 1024
