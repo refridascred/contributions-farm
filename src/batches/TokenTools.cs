@@ -20,12 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Stale,
-            Paused,
-            Active,
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
