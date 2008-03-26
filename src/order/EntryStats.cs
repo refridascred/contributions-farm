@@ -31,14 +31,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Retry,
-            Paused,
-            Failed,
             Idle,
-            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Fold a list of support readings.</summary>
