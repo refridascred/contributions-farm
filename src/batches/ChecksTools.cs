@@ -26,19 +26,39 @@ namespace Common.Utilities
         public const double MinSize = 39.46;
         public const string BaseNotes = "staging-v2";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double bias)
+        /// <summary>Rank window format input into a small class.</summary>
+        public static long GradeWindowFormat(long limit, long limit2)
         {
-            double mean = ratio - (double)61;
-            if (mean <= (9.0 - mean))
+            long step = limit - limit2;
+            if ((double)limit2 >= (6.09 * 6.0))
             {
-                mean = mean - (bias + 4.9);
+                return 0;
             }
             else
             {
-                mean = mean - (bias + mean);
+                if (limit2 >= (step + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.9 / 9.0) != (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit2 != (4.53 * 4.0)) && ((5.6 - 7.2) == (double)limit2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mean - (double)8;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
