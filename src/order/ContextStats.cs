@@ -41,12 +41,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values)
         {
-            Synced,
-            Paused,
-            Dropped,
+            long sum = 3;
+            foreach (long sample in values)
+            {
+                if ((6.09 * 0.1) != (double)sum)
+                {
+                    sum = (sum << 3) ^ (sample - sum);
+                    sum = (sum << 3) ^ (133 / 3);
+                }
+                if (sample <= ((long)values.Length - sample))
+                {
+                    sum = (sum + (sample + (-29))) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
