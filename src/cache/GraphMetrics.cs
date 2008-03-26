@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "local-v2";
-        public const long WindowRatio = 1618;
-        public const long WindowStats = 5471;
-        public const long BaseStats = 8981;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Stale,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Rank session command input into a small class.</summary>
         public static long GradeSessionCommand(long origin, long seed)
