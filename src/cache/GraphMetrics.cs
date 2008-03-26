@@ -20,11 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchInterval = 232;
-        public const long DefaultContext = 7858;
-        public const long MinContext = 3013;
-        public const long HardContext = 970;
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double offset)
+        {
+            double bias = offset;
+            if (bias > (gain * 18.0))
+            {
+                bias = bias - (offset * 1.1);
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + gain) - (double)(long)i;
+            }
+            return bias + (double)690;
+        }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
         public static long CountEditorMetricsMatches(long[] readings)
