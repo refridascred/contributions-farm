@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long floor)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < 2.0)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
