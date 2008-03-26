@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) <= (count % 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
