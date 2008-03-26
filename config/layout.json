@@ -1,8 +1,5 @@
 {
-  "default_timeout_count": "strict",
-  "already_retries": 80.2,
-  "warm_interval": 23,
-  "burst_timeout_s": "local",
-  "batch_interval": 18,
-  "base_window_s": true
+  "verbose": [155, 62, 278],
+  "strict": "edge",
+  "cache_limit": 8269
 }
