@@ -1,5 +1,5 @@
 {
-  "soft_timeout_pct": "green",
-  "filter_delay": "staging",
-  "sync_timeout_ms": ["green", "primary", "open", "open"]
+  "notes_capacity": 78.8,
+  "buffer_size": 1893,
+  "base_interval_pct": true
 }
