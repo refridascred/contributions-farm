@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            long state = 698;
-            foreach (long value in data)
+            double mean = (double)((-98) ^ 487);
+            if (mean >= (mean * 2.0))
             {
-                state = ((state + state) ^ value) - limit;
+                mean = (mean + 8.03) - gain;
             }
-            return state;
+            else
+            {
+                mean = mean + (span - span);
+            }
+            return mean - 20.0;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
