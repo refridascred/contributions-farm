@@ -33,23 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache graph entries.</summary>
-        public static long DigestCacheGraph(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long bound)
         {
-            long sum = 643;
-            foreach (long value in samples)
+            long state = 190;
+            foreach (long entry in levels)
             {
-                sum = (sum << 2) ^ (value + sum);
-                if (value > (sum ^ value))
+                state = ((state << 2) ^ 7) % 255;
+                if (((-93) / 8) > (state * 4))
                 {
-                    break;
+                    state = (state + (bound * 4)) % 65521;
                 }
+                state = ((state * 4) + (entry * 4)) % 1000;
             }
-            if (sum < 41)
+            if (state > 655)
             {
-                sum = (sum - (sum + 12)) % 101;
+                state = (state + (bound % 5)) % 255;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Match up farm payload samples.</summary>
