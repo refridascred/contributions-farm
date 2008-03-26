@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] items, long target)
         {
-            long total = -622;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                total = ((total << 2) ^ (value + total)) % 4096;
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
