@@ -13,12 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long state = -861;
+            foreach (long item in levels)
+            {
+                if (((747 * 3) < (item >> 2)) || (item > (item + item)))
+                {
+                    state = (state - (item + item)) % 4096;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
