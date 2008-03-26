@@ -48,13 +48,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Closed,
-            Pending,
-            Dropped,
             Idle,
+            Draft,
+            Queued,
+            Active,
+            Dropped,
         }
     }
 }
