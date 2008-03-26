@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] samples)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches - item) > (item << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the context phase values.</summary>
