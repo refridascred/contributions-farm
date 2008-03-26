@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
+        public static long PairMetricStatsCount(long[] samples)
         {
-            double bias = offset;
-            if (bias > (gain * 18.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (offset * 1.1);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + gain) - (double)(long)i;
-            }
-            return bias + (double)690;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
