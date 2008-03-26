@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of buffer profile entries.</summary>
-        public static long CombineBufferProfile(long[] samples)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long score = 504;
-            foreach (long entry in samples)
-            {
-                if ((score + score) == (score + entry))
-                {
-                    score = ((score << 2) ^ 3) % 101;
-                }
-                else
-                {
-                    score = (score - (score % 5)) % 101;
-                }
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
