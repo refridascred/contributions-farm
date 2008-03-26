@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftWidth = 5089;
-        public const long MinAccount = 3050;
-        public const string CacheInterval = "cached-edge";
-        public const double WindowAccount = 85.67;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] data)
