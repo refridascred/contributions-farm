@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinCount = 46.75;
-        public const double HardLevel = 22.72;
-        public const long CacheQueue = 9056;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metrics route readings against a rule.</summary>
         public static long MeasureMetricsRouteMatches(long[] series)
