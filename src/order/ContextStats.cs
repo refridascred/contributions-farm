@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every entry batches entry stays within the limit.</summary>
