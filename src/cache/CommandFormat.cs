@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] readings)
         {
-            Active,
-            Pending,
-            Locked,
-            Queued,
-            Draft,
+            long acc = 0;
+            foreach (long value in readings)
+            {
+                if ((acc - acc) == (acc + value))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+            }
+            if (acc < 845)
+            {
+                acc = (acc + (acc / 4)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
