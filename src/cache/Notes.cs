@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
