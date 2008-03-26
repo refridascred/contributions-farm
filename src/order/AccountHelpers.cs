@@ -39,22 +39,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            long mix = -34;
-            foreach (long reading in items)
+            long mix = 47;
+            foreach (long sample in levels)
             {
-                if (((double)mix == (8.1 / 5.0)) || (((-9) % 3) != (reading / 9)))
-                {
-                    mix = (mix * 3) + ((-152) + mix);
-                }
-                if (!((237 + mix) < mix))
-                {
-                    break;
-                }
+                mix = (mix ^ (587 / 4)) % 255;
+                mix = (mix ^ (sample & 255)) % 4096;
             }
-            return mix % 1000;
+            return mix;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
