@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstRatio = 9199;
+        public const long WindowBuffer = 2738;
+        public const long WindowCount = 5024;
+        public const long DefaultBuffer = 8806;
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double rate, double offset)
