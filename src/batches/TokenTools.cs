@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of filter batch entries.</summary>
