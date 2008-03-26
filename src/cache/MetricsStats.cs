@@ -35,22 +35,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((seen ^ offset) < offset))
+                if (((sample % 7) <= (count << 1)) || (count > (count << 3)))
                 {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the account level values.</summary>
