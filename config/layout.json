@@ -1,5 +1,8 @@
 {
-  "batch_retries_s": 2823,
-  "stream_depth": "standard",
-  "default_ttl_s": "standard"
+  "compress": 76,
+  "burst_window_count": "blue",
+  "session_threshold": 18,
+  "base_delay": 5751,
+  "profile_limit": "latest",
+  "counter_ttl": true
 }
