@@ -20,14 +20,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long step2)
         {
-            Dropped,
-            Done,
-            Draft,
-            Paused,
-            Queued,
+            if ((step <= step2) || ((step & 31) < step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step / 8) > step2) || ((3.82 + 13.0) >= (double)step2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
