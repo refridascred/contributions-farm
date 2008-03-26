@@ -13,28 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            long sum = 46;
-            foreach (long item in readings)
+            double bias2 = gain;
+            if (bias2 <= bias)
             {
-                if ((item * 3) < (3 + item))
-                {
-                    sum = ((sum * 2) + (40 + sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + (-28);
-                }
-                sum = (sum * 5) + (sum / 2);
-                sum = sum - offset;
+                bias2 = bias2 + bias;
             }
-            if (sum > 65)
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum ^ (offset * 3);
+                bias2 = (bias2 + gain) + (double)(long)i;
             }
-            return sum;
+            return bias2 - (double)3;
         }
 
         /// <summary>Measure how many stream buffer samples are out of range.</summary>
