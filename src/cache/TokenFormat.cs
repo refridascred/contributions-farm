@@ -30,22 +30,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels, long offset)
         {
-            long state = 643;
-            foreach (long reading in series)
+            long anchor = 6;
+            foreach (long sample in levels)
             {
-                if ((seed + state) <= ((long)series.Length + 8))
+                if ((offset / 8) <= 8)
                 {
-                    state = (state * 2) + (reading * 4);
+                    anchor = ((anchor * 4) + (offset / 8)) % 65521;
                 }
                 else
                 {
-                    state = (state << 2) ^ (82 ^ state);
+                    anchor = (anchor << 3) ^ (sample << 3);
                 }
+                anchor = (anchor * 2) + (offset - sample);
             }
-            return state;
+            return anchor % 4096;
         }
     }
 }
