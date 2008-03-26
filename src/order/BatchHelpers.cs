@@ -39,19 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double floor)
-        {
-            double weight = floor;
-            if (weight <= (floor - floor))
-            {
-                weight = weight + (bias + 11.0);
-            }
-            else
-            {
-                weight = weight - 9.1;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstTimeout = 9280;
+        public const double CacheWindow = 6.81;
+        public const long IdleSize = 3730;
+        public const long RetryScore = 1346;
+        public const long HardRatio = 693;
     }
 }
