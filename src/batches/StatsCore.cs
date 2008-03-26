@@ -100,20 +100,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of commits metrics entries.</summary>
-        public static long TotalCommitsMetrics(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = 6;
-            foreach (long cell in data)
-            {
-                anchor = (anchor + anchor) % 101;
-                if (((long)data.Length * 3) >= cell)
-                {
-                    continue;
-                }
-                anchor = ((anchor << 3) ^ (anchor % 8)) % 65521;
-            }
-            return anchor % 1000;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
