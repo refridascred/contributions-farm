@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples, long bound)
         {
-            if ((2.8 + 5.0) > (double)offset)
+            long state = 88;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 7) > bound)
+                if (sample < (7 + sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + bound) > (offset >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset < (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state - (state + sample)) % 101) - bound;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Count already channel pairs that satisfy a relation.</summary>
