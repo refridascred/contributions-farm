@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const long MaxLayout = 4405;
         public const double StepLayout = 7.82;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long state = 34;
-            foreach (long datum in readings)
-            {
-                state = (state << 3) ^ (state + floor);
-                if ((state * 5) < (state - datum))
-                {
-                    state = (state + (floor - floor)) % 255;
-                }
-                if ((double)floor <= (double)datum)
-                {
-                    state = ((state << 2) ^ (state * 5)) % 65521;
-                }
-            }
-            return state;
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the counter state values.</summary>
