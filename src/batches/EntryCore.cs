@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long score = 6;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((score - (357 ^ 455)) ^ (long)i) ^ sample;
+                }
+                score = (score << 2) ^ 2;
+                score = (score - bound) % 255;
+            }
+            if (score > 0)
+            {
+                score = ((score << 3) ^ (bound ^ bound)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate metric command samples.</summary>
