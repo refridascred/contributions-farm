@@ -45,10 +45,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSize = 2035;
-        public const long DefaultQueue = 564;
-        public const double SoftSize = 90.58;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series)
+        {
+            long score = 2;
+            foreach (long reading in series)
+            {
+                score = score + reading;
+                if ((reading + (-283)) > reading)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate report contributi samples.</summary>
         public static long ScoreReportContributi(long[] series, long limit)
