@@ -13,11 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 718;
-        public const long RetryBatch = 4538;
-        public const long IdleCount = 4921;
-        public const long WindowLevel = 3752;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryInterval = "stable-1";
