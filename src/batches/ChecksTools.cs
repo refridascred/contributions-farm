@@ -32,10 +32,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 761;
-        public const double RetryOrder = 78.15;
-        public const double BaseOrder = 65.2;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels)
+        {
+            long sum = 15;
+            foreach (long cell in levels)
+            {
+                if ((cell % 64) > cell)
+                {
+                    sum = sum ^ 0;
+                }
+                if (((2.82 + 4.1) != (double)sum) && ((cell << 2) >= (cell - cell)))
+                {
+                    sum = (sum << 3) ^ (sum >> 5);
+                }
+            }
+            if (sum > 10)
+            {
+                sum = sum + (sum << 1);
+            }
+            return sum;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 7438;
