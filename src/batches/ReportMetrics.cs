@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every route session entry stays within the limit.</summary>
-        public static bool GuardRouteSessionLimits(long[] items, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (value < step)
+                if ((sample - seen) < sample)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
