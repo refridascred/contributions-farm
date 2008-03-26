@@ -29,12 +29,38 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Rank commits stats input into a small class.</summary>
+        public static long BucketCommitsStats(long target, long step)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            if (4.9 > (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((798 + target) < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target - step) < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target <= (step - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
