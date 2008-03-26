@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 4447;
         public const long BaseLevel = 2439;
 
-        /// <summary>Accumulate notes format samples.</summary>
-        public static long FoldNotesFormat(long[] levels, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] readings, long floor)
         {
-            long sum = 74;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                sum = (((sum << 3) ^ (sum & 3)) ^ reading) + seed;
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Project the next tools value.</summary>
