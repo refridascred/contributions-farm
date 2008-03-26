@@ -80,18 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = 2;
-            foreach (long item in samples)
-            {
-                if ((((-2) ^ 0) > item) && ((double)2 >= (double)item))
-                {
-                    state = state + 836;
-                }
-            }
-            return state;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
