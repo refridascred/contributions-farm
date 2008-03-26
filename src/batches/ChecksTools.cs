@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftTimeout = 5117;
-        public const long MinTimeout = 2944;
-        public const double RetrySpan = 37.32;
-        public const long RetryCluster = 7147;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + ((long)i ^ anchor)) % 1000;
+                if (((double)anchor != (double)(long)i) && ((double)(long)i <= (9.69 * 7.65)))
+                {
+                    anchor = (anchor + 46) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] values, long floor)
