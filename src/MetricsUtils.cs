@@ -28,19 +28,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate layout schema readings against a bound.</summary>
-        public static bool ValidateLayoutSchemaRange(long[] levels, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if (limit > offset)
             {
-                if (entry > offset)
+                return 7;
+            }
+            else
+            {
+                if ((limit - offset) < 87)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a tools summary.</summary>
