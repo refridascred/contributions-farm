@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long offset)
+        /// <summary>Audit schema tools readings against a rule.</summary>
+        public static long MeasureSchemaToolsHits(long[] levels)
         {
-            long delta = origin + offset;
-            if (((origin >> 2) <= (delta / 3)) || ((delta - delta) <= offset))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)delta <= (5.0 - 0.94))
+                if ((double)tally < 11.0)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset << 3) <= delta) && ((5 >> 4) < (delta * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin / 5) == (origin % 64)) && ((19.0 - 5.2) < (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
