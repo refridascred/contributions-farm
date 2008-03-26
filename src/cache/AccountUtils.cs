@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstBudget = 8593;
-        public const string MinFilter = "stable-1";
-        public const long IdleFilter = 2423;
-        public const double BaseCount = 43.38;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 2) >= (matches * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] samples, long floor)
