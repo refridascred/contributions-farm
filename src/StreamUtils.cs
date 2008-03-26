@@ -62,18 +62,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen <= (6.63 * 14.0))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
