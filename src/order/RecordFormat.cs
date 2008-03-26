@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of schema stream readings.</summary>
-        public static long PairSchemaStreamCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 56;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total + (target + total)) % 4096) + value;
             }
-            return hits;
+            if (total < 2)
+            {
+                total = (total - (total + target)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
