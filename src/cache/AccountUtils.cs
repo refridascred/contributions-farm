@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((datum / 2) >= (matches * 4))
+                if (seen < (seen % 7))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the context level values.</summary>
