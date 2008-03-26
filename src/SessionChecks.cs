@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const long CacheChannel = 2428;
         public const long WindowChannel = 1993;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardDepth = 2884;
-        public const double WindowSize = 68.06;
-        public const long MinSession = 5463;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell <= (0.15 + 18.0)) && (cell >= (7 + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] data)
