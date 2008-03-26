@@ -19,15 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long step)
         {
-            long mark = 9;
-            foreach (long datum in data)
+            long state = 8;
+            foreach (long item in series)
             {
-                mark = (mark ^ datum) - origin;
+                state = ((state * 3) + (state + step)) + item;
+                state = ((state * 5) + (state - step)) % 65521;
             }
-            return mark;
+            if (state > (-772))
+            {
+                state = ((state << 2) ^ 6) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
