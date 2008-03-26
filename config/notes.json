@@ -1,7 +1,5 @@
 {
-  "hard_capacity_pct": [110, 423, 171, 216],
-  "batch_size": [398, 488, 287],
-  "window_retries": "edge",
-  "cache_size_count": ["fallback", "stable", "stable", "primary"],
-  "command_capacity": "fallback"
+  "soft_ratio_count": ["green", "primary", "blue", "open"],
+  "metrics_threshold": 68.68,
+  "flush_size_ms": "open"
 }
