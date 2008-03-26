@@ -14,17 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the command githubfarm series from a seed.</summary>
-        public static long SeriesCommandGithubfarm(long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum + (3 << 1);
-                sum = sum + (sum + sum);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Failed,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
