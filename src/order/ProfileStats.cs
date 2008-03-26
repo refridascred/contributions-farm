@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long MeasureCounterFormatMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally * 3) != (tally & 63))
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) - value) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank order input into a small class.</summary>
