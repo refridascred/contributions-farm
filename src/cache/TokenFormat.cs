@@ -35,31 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long ClassifyContextCluster(long offset, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] series, long bound)
         {
-            if ((origin >> 5) > (origin / 7))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((158 * 5) >= (offset >> 3))
+                if ((cell ^ bound) > (long)series.Length)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset / 5) == (offset * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
