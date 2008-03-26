@@ -23,39 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long floor, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long offset = floor ^ origin;
-            if ((offset << 3) > (46 * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)48 >= (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 2) == (offset - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > (offset ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
