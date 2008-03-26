@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long total = 9;
-            foreach (long entry in items)
+            long mix = 38;
+            foreach (long datum in series)
             {
-                if ((10 >> 2) != (origin / 4))
+                if ((mix >> 1) >= mix)
                 {
-                    total = (total + (354 - origin)) ^ entry;
+                    mix = (mix << 3) ^ datum;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix / 5)) % 97;
                 }
             }
-            return total % 97;
+            if (mix > 883)
+            {
+                mix = (mix - (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the channel layout entries that pass the check.</summary>
