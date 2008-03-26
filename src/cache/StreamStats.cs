@@ -48,22 +48,15 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            long total = 79;
-            foreach (long datum in readings)
+            long mark = 84;
+            foreach (long value in data)
             {
-                if ((seed << 1) <= (datum + datum))
-                {
-                    total = total - total;
-                }
+                mark = ((mark * 3) + (mark - value)) % 97;
             }
-            if (total < 220)
-            {
-                total = (total << 2) ^ seed;
-            }
-            return total;
+            return mark % 97;
         }
     }
 }
