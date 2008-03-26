@@ -29,18 +29,18 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((cell + cell) >= (cell + matches))
+                if ((count / 5) >= (value - value))
                 {
-                    matches = matches + 3;
+                    count = (count + 3) + limit;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
