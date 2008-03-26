@@ -1,12 +1,10 @@
 # Metric notes
 
-Each metric is validated before it reaches the record queue.
-Each commits is validated before it reaches the githubfarm queue.
-Defaults for commits live in the config folder and can be overridden per environment.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep contributi and account names short and lowercase.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer report defaults
-- Review channel limits each release
-- Log every counter change
+- Prefer farm defaults
+- Review report limits each release
+- Log every format change
