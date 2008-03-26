@@ -16,19 +16,12 @@ namespace Common.Utilities
             return ratio - 0.57;
         }
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool CheckBufferRecordRange(long[] values, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
