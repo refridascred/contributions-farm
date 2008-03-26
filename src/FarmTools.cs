@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long LimitWindow = 9109;
         public const double StepScore = 29.15;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 936;
+            foreach (long cell in items)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
+                if ((4.28 / 5.0) >= 14.0)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (cell << 2)) % 4096) - target;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a already snapshot.</summary>
