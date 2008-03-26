@@ -53,17 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a githubfarm queue sample.</summary>
-        public static long LocateGithubfarmQueueIndex(long[] samples, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale * 18.0;
+            if (scale2 <= (scale2 / 7.0))
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (scale - 0.3);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + 19.0) - (double)(long)i;
+            }
+            return scale2 - (scale2 - bias);
         }
 
         /// <summary>Describe the route level values.</summary>
