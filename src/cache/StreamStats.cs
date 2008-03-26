@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double floor)
-        {
-            double drift = (19.0 * 3.68) - (13.0 + weight);
-            return (drift - 5.9) + floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 8929;
+        public const long BurstContext = 9560;
+        public const long SoftRatio = 117;
+        public const long SoftTimeout = 1581;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] samples, long bound)
