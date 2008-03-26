@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long MeasureClusterSupportHits(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen % 7) == (394 & 7))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
