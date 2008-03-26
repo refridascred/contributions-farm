@@ -47,12 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            long carry = 7;
+            foreach (long value in data)
+            {
+                carry = (carry + (limit + 59)) - value;
+            }
+            if (carry > 9)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
     }
 }
