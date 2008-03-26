@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] series, long target)
         {
-            double gain = bias * 4.0;
-            return (gain + gain) + scale;
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
