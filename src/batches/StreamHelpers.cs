@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine contributi session values into a single score.</summary>
-        public static long DigestContributiSession(long[] samples)
+        /// <summary>Find the first token support entry that matches the target.</summary>
+        public static long LookupTokenSupportIndex(long[] series, long target)
         {
-            long score = 70;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (cell >> 5)) % 101;
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the route batch series from a seed.</summary>
