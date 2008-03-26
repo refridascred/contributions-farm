@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Failed,
-            Idle,
-            Closed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstSpan = "cached-v2";
+        public const long IdleGithubfarm = 1840;
+        public const long HardGithubfarm = 36;
+        public const long BatchGithubfarm = 1087;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
