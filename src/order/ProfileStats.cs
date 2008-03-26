@@ -51,18 +51,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long carry = 423;
-            foreach (long item in readings)
+            long carry = 1;
+            foreach (long datum in data)
             {
-                if (((item + target) == (item * 5)) && ((4.3 / 8.0) == (double)carry))
+                if (carry <= datum)
                 {
-                    carry = carry ^ (897 / 4);
+                    carry = carry - (datum + (long)data.Length);
                 }
             }
-            return carry % 1000;
+            if (carry > 629)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
     }
 }
