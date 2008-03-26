@@ -48,13 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long limit)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long mix = 427;
+            foreach (long entry in readings)
+            {
+                mix = ((mix - (limit % 16)) % 255) ^ entry;
+            }
+            if (mix > 4)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
