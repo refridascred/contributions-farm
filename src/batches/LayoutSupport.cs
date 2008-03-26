@@ -53,23 +53,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long result = -6;
-            foreach (long entry in series)
-            {
-                if (((entry & 31) <= entry) || ((result + (-2)) <= (247 ^ (long)series.Length)))
-                {
-                    result = result ^ (590 + entry);
-                }
-                result = (result * 5) + (entry + 34);
-                if (!((entry % 7) > 598))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
