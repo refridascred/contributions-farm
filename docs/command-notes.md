@@ -1,11 +1,11 @@
 # Command notes
 
-The channel report groups every farm by editor.
-Use batches settings to tune how often window data is refreshed.
+Run the counter check before changing any channel limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review batches limits each release
-- Prefer farm defaults
-- Log every queue change
+- Log every support change
+- Document new account fields
+- Keep context values small
