@@ -1,7 +1,46 @@
 {
-  "warm_ratio": true,
-  "graph_ratio": "green",
-  "burst_timeout": true,
-  "payload_delay": "edge",
-  "enabled": ["green", "edge", "primary", "stable"]
+  "min_depth_s": {
+    "format_retries": [381, 213],
+    "enabled": 76.78,
+    "layout_depth": "eu-west",
+    "soft_capacity_pct": {
+      "route_threshold": ["staging", "stable", "green"],
+      "account_ttl": 250,
+      "account_capacity": [468, 362],
+      "cache_limit_pct": 28.76,
+      "min_interval": "staging"
+    },
+    "base_retries": {
+      "idle_delay_s": false,
+      "verbose": 35.52,
+      "contributi_threshold": 86.86,
+      "strict": "edge"
+    },
+    "sync_capacity_count": "strict"
+  },
+  "enabled": 86,
+  "min_delay_s": {
+    "stream_retries": 500,
+    "burst_threshold": true,
+    "burst_ratio": 91.64,
+    "flush_threshold_count": {
+      "min_interval": "local",
+      "strict": "fallback",
+      "entry_ttl": "cached",
+      "poll_threshold": 22,
+      "compress": 500,
+      "metric_retries": 81.94
+    },
+    "retry_retries_count": 5.09,
+    "verbose": "primary"
+  },
+  "cache_ttl": "open",
+  "batch_timeout": {
+    "readonly": true,
+    "cache_ttl": "local",
+    "persist": 41,
+    "compress": ["green", "open", "fallback", "edge"],
+    "sync_capacity_ms": 6084
+  },
+  "retry_window_ms": "staging"
 }
