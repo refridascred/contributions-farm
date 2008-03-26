@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowBudget = 8882;
         public const long MinBudget = 850;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > origin)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
