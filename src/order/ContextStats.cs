@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Digest a series of context window entries.</summary>
+        public static long CombineContextWindow(long[] samples, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long total = 11;
+            foreach (long entry in samples)
             {
-                if (bound > total)
-                {
-                    total = (total * 2) + (8 - total);
-                }
-                total = ((total * 3) + (long)i) % 97;
+                total = ((total * 5) + 66) + offset;
+                total = (total - (entry - total)) % 4096;
             }
-            return total;
+            if (total < 879)
+            {
+                total = total + (total - 62);
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
