@@ -1,21 +1,5 @@
 {
-  "max_depth_s": 26,
-  "buffer_retries": "green",
-  "default_timeout_s": {
-    "warm_threshold_s": 13,
-    "batch_ratio": ["standard", "cached", "blue"],
-    "support_retries": true,
-    "flush_window_pct": 90.35
-  },
-  "strict": "fallback",
-  "batch_delay": {
-    "batch_depth": "eu-west",
-    "poll_limit_ms": 250,
-    "retry_threshold_count": {
-      "poll_threshold": "fallback",
-      "editor_retries": [370, 440, 248],
-      "cache_ttl": "blue",
-      "sync_timeout_s": false
-    }
-  }
+  "burst_interval_count": ["green", "eu-west"],
+  "token_depth": 4294,
+  "hard_interval": true
 }
