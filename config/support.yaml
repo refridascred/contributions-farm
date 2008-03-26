@@ -1,12 +1,20 @@
 # support settings
-max_ratio:
-  - 396
-  - 8
-  - 239
-max_capacity_ms: blue
-readonly: green
-already_delay: 3.36
-poll_interval:
-  - 136
-  - 262
-  - 281
+batch_threshold_ms: false
+idle_size: primary
+min_depth_count: 29.1
+window_retries:
+  schema_ttl: 250
+  max_window_pct:
+    - standard
+    - local
+  idle_limit:
+    max_interval: cached
+    dry_run: 60
+    strict: eu-west
+    tools_limit:
+      - latest
+      - staging
+    burst_size_count:
+      - staging
+      - standard
+      - edge
