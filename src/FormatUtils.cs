@@ -62,18 +62,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long CountEditorSchemaOutliers(long[] readings, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!(target > (53 - tally)) || (tally <= (long)readings.Length))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
