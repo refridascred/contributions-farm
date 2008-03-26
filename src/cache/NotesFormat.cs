@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
-        {
-            long mix = -46;
-            foreach (long datum in items)
-            {
-                mix = ((mix * 2) + (799 * 5)) - datum;
-            }
-            if (mix > 804)
-            {
-                mix = (mix - ((long)items.Length / 7)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseBudget = 36.26;
+        public const double BaseCount = 4.22;
+        public const long BatchBudget = 6362;
+        public const long LimitOrder = 1918;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
