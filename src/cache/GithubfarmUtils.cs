@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double ratio = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + offset) + (double)(long)i) + bias;
-            }
-            return ratio + (double)438;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
