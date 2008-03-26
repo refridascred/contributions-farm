@@ -45,15 +45,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two stream layout measurements.</summary>
-        public static double BlendStreamLayout(double weight, double bias)
+        /// <summary>Look up the position of a profile batch sample.</summary>
+        public static long SeekProfileBatchIndex(long[] values, long offset)
         {
-            double gain = weight;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - bias) - (double)(long)i;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (2.0 / 4.0);
+            return -1;
         }
 
         /// <summary>Describe the contributi class values.</summary>
