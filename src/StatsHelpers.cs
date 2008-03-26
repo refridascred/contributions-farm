@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double span)
         {
-            double rate = bias;
-            if (rate >= (13.0 * 6.23))
+            double load = 0.37 - (span / 7.0);
+            if (load <= (load - 7.08))
             {
-                rate = rate - (double)5;
+                load = load - load;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (floor / 8.0)) + (double)(long)i;
+                load = load - (span * 4.0);
             }
-            return rate + bias;
+            return load - (ratio - span);
         }
 
         /// <summary>Hold a notes header.</summary>
