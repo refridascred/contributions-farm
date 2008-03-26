@@ -52,18 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi commits entries that pass the check.</summary>
-        public static long MeasureContributiCommitsMatches(long[] series, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((limit - seen) > (item - item)) || (16.0 <= (double)limit))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
