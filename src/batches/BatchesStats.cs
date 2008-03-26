@@ -31,10 +31,10 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3571;
-        public const double BurstBudget = 94.04;
-        public const long RetryDepth = 991;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepTimeout = 21.64;
+        public const long BurstInterval = 2678;
+        public const double BaseSpan = 79.75;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
