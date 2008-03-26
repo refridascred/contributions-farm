@@ -40,19 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            double scale2 = scale * 18.0;
-            if (scale2 <= (scale2 / 7.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (scale - 0.3);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + 19.0) - (double)(long)i;
-            }
-            return scale2 - (scale2 - bias);
+            return hits;
         }
 
         /// <summary>Blend two farm measurements.</summary>
