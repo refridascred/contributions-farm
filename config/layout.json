@@ -1,5 +1,5 @@
 {
-  "hard_retries_s": ["local", "cached", "strict"],
-  "max_ttl_s": true,
-  "default_ttl_pct": 39.3
+  "window_retries": "stable",
+  "channel_interval": "edge",
+  "default_ttl_ms": 5415
 }
