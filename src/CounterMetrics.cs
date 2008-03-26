@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine record window values into a single score.</summary>
-        public static long TotalRecordWindow(long[] data, long bound)
+        /// <summary>Look up the position of a account editor sample.</summary>
+        public static long LocateAccountEditorIndex(long[] readings, long origin)
         {
-            long result = 89;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result << 2) ^ (bound >> 2)) % 4096) ^ sample;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
