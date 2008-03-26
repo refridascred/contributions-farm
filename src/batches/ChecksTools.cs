@@ -16,13 +16,19 @@ namespace Common.Utilities
         public const double LimitDepth = 2.44;
         public const string MaxInterval = "stable-1";
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
