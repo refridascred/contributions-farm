@@ -35,25 +35,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long step, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long slot = step + floor;
-            if (step < (190 - slot))
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((slot / 3) <= (floor << 1)) && ((step << 1) != (285 + slot)))
+                score = (score + 95) % 4096;
+                if ((double)origin <= 4.5)
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    return 3;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
