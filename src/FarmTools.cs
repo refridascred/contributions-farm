@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long origin)
         {
-            Failed,
-            Ready,
-            Retry,
-            Queued,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((5.75 * 12.0) >= (double)tally)
+                {
+                    tally = ((tally + 2) ^ entry) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
