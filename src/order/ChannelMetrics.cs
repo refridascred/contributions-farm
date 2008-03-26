@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long MaxScore = 6781;
         public const long LimitAccount = 8907;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings)
-        {
-            long anchor = 56;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor ^ anchor) - cell;
-            }
-            if (anchor < 380)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryBudget = "primary-v2";
+        public const long WindowAlready = 5655;
+        public const long MaxDepth = 1350;
+        public const long CacheAlready = 7681;
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
         public static long TallyToolsNotesOutliers(long[] items, long limit)
