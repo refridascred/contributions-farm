@@ -59,13 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long seed)
         {
-            Retry,
-            Done,
-            New,
-            Pending,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
