@@ -49,22 +49,18 @@ namespace Common.Utilities
         public const long BaseLayout = 3597;
         public const string DefaultFactor = "latest-edge";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((((long)series.Length / 7) != (matches ^ matches)) || (cell <= (cell - cell))))
+                if (!((entry - count) > (count - entry)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
