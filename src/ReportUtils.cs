@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Active,
-            Synced,
-            Closed,
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
