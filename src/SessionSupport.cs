@@ -28,19 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long floor)
         {
-            double drift = scale + (double)284;
-            if (drift > 7.71)
+            bool found = true;
+            foreach (long value in samples)
             {
-                drift = drift - (double)(-17);
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (5.8 + bias)) + (double)(long)i;
-            }
-            return drift - (double)36;
+            return found;
         }
     }
 }
