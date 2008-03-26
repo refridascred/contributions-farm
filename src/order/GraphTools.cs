@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long DigestGraphMetric(long[] values)
+        /// <summary>Iterate the queue format series from a seed.</summary>
+        public static long IterateQueueFormat(long floor)
         {
-            long score = 82;
-            foreach (long item in values)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                double rate = (7.89 - 3.0) * 5.3;
-                if ((double)score < (rate + rate))
-                {
-                    score = score - (score << 2);
-                    break;
-                }
-                if ((double)item == (6.0 + 4.8))
-                {
-                    score = (score * 4) + (item & 1);
-                }
-                else
-                {
-                    score = ((score * 2) + item) % 65521;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (score > (-58))
-            {
-                score = (score - score) % 4096;
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Accumulate support samples.</summary>
