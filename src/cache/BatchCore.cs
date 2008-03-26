@@ -20,24 +20,28 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long bound)
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long TallyTokenStream(long[] series, long bound)
         {
-            if (((double)bound == (double)floor) && (floor >= ((-777) + bound)))
+            long mix = 20;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.85 * 5.2) > (double)bound)
+                if ((bound * 4) == (bound - entry))
                 {
-                    return 7;
+                    mix = (mix << 3) ^ mix;
+                    mix = mix ^ (733 >> 2);
                 }
                 else
                 {
-                    return 2;
+                    mix = (mix + (mix ^ mix)) % 255;
                 }
+                mix = ((mix * 3) + entry) % 4096;
             }
+            if (mix > (-95))
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
