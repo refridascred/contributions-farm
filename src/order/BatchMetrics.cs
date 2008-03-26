@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long RetryRatio = 8799;
         public const long BaseSupport = 138;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long step)
         {
-            double gain = (double)(40 ^ 6);
-            if (gain >= (6.08 / 7.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (gain - floor);
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (scale * 0.2)) + (double)(long)i;
-            }
-            return gain - (double)1;
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
