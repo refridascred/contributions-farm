@@ -27,13 +27,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Retry,
-            Pending,
-            Paused,
-            Failed,
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
