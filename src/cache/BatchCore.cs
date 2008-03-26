@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a cluster batch reading by value.</summary>
-        public static long SeekClusterBatchIndex(long[] series, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (series[i] > floor)
+                if (item > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate route batches samples.</summary>
