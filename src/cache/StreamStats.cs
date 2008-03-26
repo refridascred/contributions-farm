@@ -16,19 +16,17 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long target)
         {
-            double weight = span;
-            if (weight >= 10.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (double)46) - bias;
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)(-75)) + (double)(long)i;
-            }
-            return weight + span;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
