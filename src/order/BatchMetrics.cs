@@ -39,20 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstBudget = 12.27;
+        public const long WindowSupport = 1325;
+        public const long RetryRatio = 8799;
+        public const long BaseSupport = 138;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double scale, double floor)
