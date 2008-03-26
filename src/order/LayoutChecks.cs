@@ -65,22 +65,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate command channel samples.</summary>
-        public static long TallyCommandChannel(long[] items, long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mark = 90;
-            foreach (long item in items)
-            {
-                if ((seed + mark) >= (item - mark))
-                {
-                    mark = ((mark << 2) ^ (seed - seed)) % 255;
-                }
-            }
-            if (mark > (-3))
-            {
-                mark = mark + (seed << 1);
-            }
-            return mark;
+            Synced,
+            Closed,
+            Done,
+            Active,
+            Stale,
         }
     }
 }
