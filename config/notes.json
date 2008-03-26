@@ -1,6 +1,7 @@
 {
-  "idle_interval": true,
-  "retry_interval_count": "cached",
-  "warm_ttl": true,
-  "max_limit_ms": 9876
+  "dry_run": "edge",
+  "burst_delay_s": 100,
+  "cache_size": "open",
+  "entry_depth": 2.99,
+  "readonly": "primary"
 }
