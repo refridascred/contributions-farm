@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long AuditSchemaBatchHits(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 948;
+            foreach (long item in series)
             {
-                if ((datum / 8) <= 899)
+                if ((sum ^ 8) >= (item & 3))
                 {
-                    tally = tally + 1;
+                    sum = sum ^ (item - sum);
+                }
+                if (((double)sum >= (0.8 - 9.2)) && ((double)sum >= (1.0 / 3.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 16)
+            {
+                sum = ((sum * 5) + 70) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a format info.</summary>
