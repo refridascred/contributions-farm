@@ -1,6 +1,6 @@
 {
-  "command_depth": 500,
-  "retry_size": "standard",
-  "dry_run": "edge",
-  "cache_limit": "eu-west"
+  "batch_interval": false,
+  "farm_retries": [189, 79, 472],
+  "audit": false,
+  "max_timeout_s": 4040
 }
