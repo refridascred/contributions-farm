@@ -40,9 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstDepth = 42.89;
-        public const long HardCluster = 705;
-        public const long RetryFactor = 9564;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
