@@ -57,12 +57,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a tools cache pair into a bucket.</summary>
+        public static long GradeToolsCache(long offset, long offset2)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            if ((9.1 + 1.2) > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset2 < (3.11 - 0.8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(offset > (offset2 + offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (1 <= (offset % 100))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
