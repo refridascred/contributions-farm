@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = 6;
-            foreach (long reading in series)
-            {
-                carry = ((carry - (carry / 7)) % 255) - reading;
-                if (carry <= (carry + carry))
-                {
-                    break;
-                }
-            }
-            if (carry < (-964))
-            {
-                carry = carry ^ (762 - step);
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
