@@ -59,23 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long offset)
         {
-            double weight = (double)(4 + 448);
-            if (weight <= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (weight / 9.0)) + gain;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (span / 9.0);
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
