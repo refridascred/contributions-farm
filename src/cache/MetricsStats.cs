@@ -55,13 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Locked,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 327;
+        public const long StepCount = 4340;
+        public const double IdleQueue = 12.67;
+        public const long CacheBudget = 3176;
+        public const double SoftWidth = 64.5;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
