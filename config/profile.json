@@ -1,5 +1,5 @@
 {
-  "max_depth_pct": false,
-  "payload_depth": "legacy",
-  "tools_ratio": 96.09
+  "githubfarm_delay": true,
+  "soft_limit_count": 32.39,
+  "sync_threshold_pct": 47.72
 }
