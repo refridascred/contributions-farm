@@ -23,25 +23,39 @@ namespace Common.Utilities
         public const long BurstLayout = 3489;
         public const string SoftTimeout = "alpha-1";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long limit, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long step = limit - target;
+            if ((0.88 / 8.0) < (double)target)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry - (long)i2) % 65521;
-                }
-                if ((floor + floor) <= ((-32) * 5))
-                {
-                    carry = carry - (carry + carry);
-                    carry = ((carry * 5) + ((long)i / 9)) % 4096;
-                }
-                carry = carry + ((long)i >> 3);
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((double)step >= 4.1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step <= (limit - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(0.5 >= (double)step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
