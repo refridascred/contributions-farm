@@ -39,18 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long state = 930;
-            foreach (long entry in items)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.73 * 4.68) != (double)state)
+                if (!(sum <= (step + step)))
                 {
-                    state = (state ^ (bound % 64)) ^ entry;
+                    sum = (sum ^ (step / 5)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
