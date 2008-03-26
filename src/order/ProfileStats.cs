@@ -22,21 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
-        public static long PairContributiCommandCount(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias = ratio;
+            return (bias - (double)617) + offset;
         }
 
         /// <summary>Describe the token class values.</summary>
