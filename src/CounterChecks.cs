@@ -44,21 +44,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Project the next record checks value.</summary>
+        public static double ProjectRecordChecks(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight2 = 13.0;
+            return ((weight2 + (2.0 * 1.69)) + weight) + bias;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
