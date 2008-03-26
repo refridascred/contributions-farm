@@ -67,24 +67,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long step, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((step >> 4) == (step + 435))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((3.21 * 3.04) <= (double)step) && ((offset << 2) < step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
