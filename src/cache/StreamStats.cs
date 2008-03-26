@@ -37,15 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + ratio;
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
