@@ -1,5 +1,11 @@
 {
-  "route_limit": "local",
-  "warm_timeout_count": 57.84,
-  "account_capacity": 60
+  "burst_capacity_ms": [423, 164, 107],
+  "poll_retries_s": 1024,
+  "retry_limit_s": {
+    "poll_delay_pct": "standard",
+    "strict": true,
+    "warm_delay": "stable",
+    "persist": 100,
+    "contributi_size": "green"
+  }
 }
