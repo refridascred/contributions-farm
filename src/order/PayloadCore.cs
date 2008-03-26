@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Digest a series of entry farm entries.</summary>
+        public static long CombineEntryFarm(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 63;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + sample) % 4096;
+                acc = (acc ^ (acc + acc)) % 255;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
