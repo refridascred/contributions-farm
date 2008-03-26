@@ -59,19 +59,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 8754;
         public const double BatchRatio = 36.18;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (value <= limit)
+                if ((seed - value) <= (value - seed))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
