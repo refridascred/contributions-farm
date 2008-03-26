@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long state = 88;
-            foreach (long sample in samples)
-            {
-                if (sample < (7 + sample))
-                {
-                    state = ((state - (state + sample)) % 101) - bound;
-                }
-            }
-            return state % 65521;
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
