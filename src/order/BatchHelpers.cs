@@ -25,19 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry batch figure with a bias.</summary>
-        public static double ProjectEntryBatch(double bias, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long target)
         {
-            double ratio = floor;
-            if (ratio >= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (double)39;
+                if ((data[i] < target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (floor + floor);
+            return -1;
         }
 
         /// <summary>Match up channel buffer samples.</summary>
