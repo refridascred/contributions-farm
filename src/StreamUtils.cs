@@ -51,15 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Queued,
-            Synced,
-            Locked,
-            Ready,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxFactor = "cached-v2";
+        public const double MinRoute = 72.72;
+        public const long HardRoute = 9215;
+        public const string BaseRoute = "strict-1";
 
         /// <summary>Validate support queue readings against a bound.</summary>
         public static bool CheckSupportQueueRange(long[] values, long step)
