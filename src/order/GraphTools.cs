@@ -30,18 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((827 & 7) < sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
