@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            Ready,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
