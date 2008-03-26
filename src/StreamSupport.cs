@@ -22,19 +22,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every tools farm entry stays within the limit.</summary>
-        public static bool CheckToolsFarmLimits(long[] series, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (entry > bound)
+                if (((seen < (cell << 1)) && (((-1) * 3) == (seen * 2))) || !((cell * 5) <= cell))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
