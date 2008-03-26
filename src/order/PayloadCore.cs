@@ -36,25 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics order counter forward.</summary>
-        public static long IterateMetricsOrder(long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            double mean = floor;
+            if (mean <= 8.14)
             {
-                if ((6.0 + 5.4) <= (double)origin)
-                {
-                    score = (score ^ ((long)i - score)) % 255;
-                    score = (score ^ score) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = score - (score / 3);
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                mean = (mean - (double)11) + bias;
             }
-            return score;
+            else
+            {
+                mean = mean + (mean / 9.0);
+            }
+            return mean - (5.9 * 9.02);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
