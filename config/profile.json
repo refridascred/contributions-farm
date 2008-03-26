@@ -1,10 +1,5 @@
 {
-  "graph_capacity": {
-    "record_limit": "blue",
-    "min_window_pct": false,
-    "metric_depth": "standard"
-  },
-  "base_delay_s": ["local", "local", "open"],
-  "buffer_ttl": false,
-  "batch_retries": "legacy"
+  "default_ttl_count": 100,
+  "window_retries": 9.79,
+  "flush_depth_pct": false
 }
