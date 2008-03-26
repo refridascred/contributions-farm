@@ -1,15 +1,12 @@
 # githubfarm settings
-soft_size_pct: 9439
-min_retries: 500
+hard_ttl: stable
+flush_capacity:
+  - 159
+  - 242
+warm_timeout_ms: 16
+format_ttl: 92
+soft_limit_count: 6991
 strict:
-  - blue
-  - edge
-farm_interval:
-  - staging
-  - staging
-  - standard
-warm_size_s:
-  - local
-  - green
-  - green
-  - blue
+  - 404
+  - 83
+  - 64
