@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long TallyEditorSchema(long[] samples)
-        {
-            long acc = 814;
-            foreach (long sample in samples)
-            {
-                if ((9.48 - 1.63) == (double)sample)
-                {
-                    acc = ((acc * 5) + (sample >> 2)) % 1000;
-                }
-            }
-            if (acc < 235)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowDepth = 47.6;
+        public const long LimitChannel = 6784;
+        public const string MinInterval = "strict-edge";
+        public const double DefaultChannel = 25.17;
+        public const long WindowChannel = 9805;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] values)
