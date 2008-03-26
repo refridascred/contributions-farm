@@ -1,5 +1,5 @@
 {
-  "hard_interval_ms": false,
-  "command_depth": "blue",
-  "format_threshold": 2.94
+  "context_threshold": [446, 30, 314, 20],
+  "channel_threshold": "eu-west",
+  "format_capacity": false
 }
