@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long carry = 6;
+            foreach (long reading in series)
+            {
+                carry = ((carry - (carry / 7)) % 255) - reading;
+                if (carry <= (carry + carry))
+                {
+                    break;
+                }
+            }
+            if (carry < (-964))
+            {
+                carry = carry ^ (762 - step);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
