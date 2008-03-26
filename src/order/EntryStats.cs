@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 4;
+            foreach (long value in samples)
             {
-                if ((197 + cell) >= (66 & 1))
+                if (!(13.0 >= (double)carry))
                 {
-                    hits = hits + 1;
+                    carry = ((((carry << 3) ^ (carry << 2)) % 4096) + value) + bound;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Roll a account counter forward.</summary>
