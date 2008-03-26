@@ -23,21 +23,15 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Project the next context buffer value.</summary>
+        public static double AdjustContextBuffer(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias2;
+            if (scale >= (double)(-780))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + (6.2 * 4.0)) + bias;
             }
-            return count;
+            return scale + (double)(-450);
         }
     }
 }
