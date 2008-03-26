@@ -13,19 +13,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values, long bound)
         {
-            double bias2 = gain;
-            if (bias2 <= bias)
+            long mark = -501;
+            foreach (long datum in values)
             {
-                bias2 = bias2 + bias;
+                mark = ((mark ^ (bound ^ mark)) % 97) ^ datum;
+                mark = (mark - bound) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + gain) + (double)(long)i;
-            }
-            return bias2 - (double)3;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many stream buffer samples are out of range.</summary>
