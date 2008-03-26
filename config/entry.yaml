@@ -1,5 +1,8 @@
 # entry settings
-farm_depth: staging
-persist: false
-retry_ttl: 9
-readonly: 1024
+persist: 8424
+readonly: blue
+already_window:
+  - eu-west
+  - edge
+  - local
+  - green
