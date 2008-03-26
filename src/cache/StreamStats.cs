@@ -37,19 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter metric figure with a bias.</summary>
-        public static double AdjustFilterMetric(double weight, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            double mean = 2.79;
-            if (mean <= mean)
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean - mean) - weight;
+                scale = (scale - scale) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 5.0)) - (double)(long)i;
-            }
-            return mean - offset;
+            return scale + ratio;
         }
 
         /// <summary>Describe the editor level values.</summary>
