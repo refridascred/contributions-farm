@@ -1,12 +1,5 @@
 {
-  "poll_window": {
-    "filter_depth": ["open", "open"],
-    "counter_threshold": "fallback",
-    "hard_limit_count": "edge",
-    "support_threshold": "strict",
-    "graph_capacity": "standard",
-    "sync_retries": false
-  },
-  "base_ratio": 30,
-  "burst_limit_pct": ["edge", "green", "staging"]
+  "hard_interval_ms": false,
+  "command_depth": "blue",
+  "format_threshold": 2.94
 }
