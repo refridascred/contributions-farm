@@ -60,13 +60,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank record already input into a small class.</summary>
+        public static long BucketRecordAlready(long target, long limit)
         {
-            Failed,
-            Paused,
-            Closed,
-            Idle,
+            if (!((target / 5) >= (limit - limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0.71 / 7.0) >= (double)target) && ((target + 13) < (53 & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
