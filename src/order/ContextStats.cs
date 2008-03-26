@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long acc = 58;
+            foreach (long sample in levels)
+            {
+                acc = ((acc - sample) % 101) + seed;
+                acc = ((acc * 3) + acc) % 255;
+                if (acc < (acc & 1))
+                {
+                    acc = (acc + sample) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
