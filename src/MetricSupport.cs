@@ -26,12 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload stats reading by value.</summary>
-        public static long FindPayloadStatsIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
