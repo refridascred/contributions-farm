@@ -65,15 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Failed,
-            Retry,
-            Queued,
-            Locked,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBudget = 5132;
+        public const long LimitBuffer = 7018;
+        public const long LimitWidth = 2355;
+        public const long IdleSpan = 2409;
+        public const long DefaultFactor = 9892;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
