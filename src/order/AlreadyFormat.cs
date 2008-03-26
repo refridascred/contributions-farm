@@ -48,18 +48,9 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 1) != (tally ^ cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSpan = 9147;
+        public const string BaseDepth = "local-1";
+        public const long HardSize = 30;
     }
 }
