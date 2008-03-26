@@ -40,27 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data, long target)
-        {
-            long state = 9;
-            foreach (long reading in data)
-            {
-                if (state <= (89 % 60))
-                {
-                    state = (state + target) % 97;
-                }
-                if (!(reading <= (7 & 63)))
-                {
-                    state = ((state * 3) + (reading ^ target)) % 97;
-                }
-                else
-                {
-                    state = (state - (state - target)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowRatio = "open-1";
+        public const long MinToken = 9826;
+        public const string HardToken = "local-v2";
+        public const string BurstToken = "local-edge";
+        public const double BaseToken = 8.61;
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double AdjustEditorStats(double scale, double offset)
