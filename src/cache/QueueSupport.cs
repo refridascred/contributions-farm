@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinTimeout = 6326;
-        public const long IdleTimeout = 5273;
-        public const long BatchLevel = 8138;
-        public const long HardQueue = 9229;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] levels)
