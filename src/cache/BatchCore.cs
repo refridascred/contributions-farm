@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Locate a cluster batch reading by value.</summary>
+        public static long SeekClusterBatchIndex(long[] series, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate route batches samples.</summary>
