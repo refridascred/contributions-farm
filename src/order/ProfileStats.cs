@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "stable-1";
-        public const long StepSpan = 3956;
-        public const long DefaultWidth = 4447;
-        public const long BaseLevel = 2439;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((carry + 714) >= (long)i)
+                {
+                    carry = ((carry << 2) ^ (step - step)) % 97;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamRange(long[] readings, long floor)
