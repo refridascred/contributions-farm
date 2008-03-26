@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long step)
+        /// <summary>Classify a already cache pair into a bucket.</summary>
+        public static long GradeAlreadyCache(long target, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            if (((2.0 / 2.0) == (double)seed) && ((2 / 4) != (target + seed)))
             {
-                if (datum >= step)
+                return 3;
+            }
+            else
+            {
+                if ((double)target <= (5.0 + 9.0))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (target > (target + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed < (target << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the cache kind values.</summary>
