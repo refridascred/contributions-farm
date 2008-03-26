@@ -31,12 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph window sample.</summary>
-        public static long FindGraphWindowIndex(long[] series, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= origin)
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
