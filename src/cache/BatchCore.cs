@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long acc = 5;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 3) + (datum + 162)) - (long)i;
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc + (4 + acc)) % 65521;
             }
-            if (acc > 19)
-            {
-                acc = acc ^ (acc - floor);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a editor record.</summary>
