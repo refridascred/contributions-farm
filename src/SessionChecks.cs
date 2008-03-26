@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((1.0 - 4.62) <= (double)tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Roll a already counter forward.</summary>
