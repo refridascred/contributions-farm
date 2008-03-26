@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] values, long target)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
