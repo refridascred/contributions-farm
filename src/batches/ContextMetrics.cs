@@ -39,18 +39,21 @@ namespace Common.Utilities
         public const double RetrySpan = 79.22;
         public const string WindowChannel = "legacy-edge";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] data, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= (value ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + step;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
