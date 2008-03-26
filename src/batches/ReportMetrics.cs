@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = 95;
-            foreach (long cell in data)
-            {
-                carry = ((((carry * 3) + carry) % 65521) - cell) - bound;
-            }
-            return carry;
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the counter kind values.</summary>
