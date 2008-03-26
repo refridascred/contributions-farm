@@ -1,6 +1,6 @@
 {
-  "enabled": true,
-  "contributi_ratio": true,
-  "max_capacity_pct": "legacy",
-  "hard_window_pct": ["standard", "staging"]
+  "readonly": "staging",
+  "order_window": [45, 495, 283, 104],
+  "command_window": 30,
+  "cluster_interval": 79.79
 }
