@@ -1,14 +1,7 @@
 {
-  "hard_ratio": ["green", "local"],
-  "batch_ttl_pct": 41,
-  "max_ttl_pct": 95.14,
-  "max_limit": {
-    "compress": false,
-    "verbose": "fallback",
-    "batch_window_count": 52.94,
-    "persist": "eu-west",
-    "contributi_interval": 1000
-  },
-  "verbose": "cached",
-  "hard_capacity_s": [441, 472]
+  "route_threshold": "stable",
+  "dry_run": [162, 3, 42, 440],
+  "soft_delay_s": "stable",
+  "graph_depth": 71.92,
+  "cache_retries_s": 87.55
 }
