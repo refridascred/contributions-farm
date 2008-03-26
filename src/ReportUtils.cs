@@ -20,11 +20,11 @@ namespace Common.Utilities
             return gain - (double)921;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            double scale2 = (double)(-6) + (double)(-9);
+            return ((scale2 - (scale2 / 9.0)) + scale) + offset;
         }
 
         /// <summary>Hold a payload header.</summary>
