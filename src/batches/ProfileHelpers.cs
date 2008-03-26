@@ -61,15 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] values, long floor)
         {
-            long state = 61;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = ((state ^ (state + floor)) % 101) - cell;
+                if (value > (301 - value))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
