@@ -99,22 +99,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Roll a buffer order counter forward.</summary>
+        public static long IterateBufferOrder(long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((-353) > (tally - tally))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 1) + cell;
+                    total = (total - (487 % 100)) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total + (total - (long)i)) % 97;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
