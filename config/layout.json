@@ -1,8 +1,8 @@
 {
-  "max_retries_pct": false,
-  "metric_limit": true,
-  "verbose": "blue",
-  "persist": [27, 473],
-  "idle_size_ms": 16,
-  "enabled": ["cached", "blue", "open", "edge"]
+  "soft_size_count": [205, 89],
+  "idle_retries_ms": true,
+  "farm_retries": ["staging", "blue"],
+  "token_depth": 1024,
+  "soft_retries_count": false,
+  "account_timeout": "open"
 }
