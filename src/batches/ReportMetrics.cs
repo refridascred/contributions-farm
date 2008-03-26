@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const double RetryPayload = 17.95;
         public const long BatchInterval = 1894;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Blend two token checks measurements.</summary>
+        public static double BlendTokenChecks(double weight, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double gain = (span - span) + span;
+            if (gain <= span)
             {
-                if ((matches << 2) > (matches + value))
-                {
-                    matches = matches + 3;
-                }
+                gain = (gain - (span / 8.0)) - weight;
             }
-            return matches;
+            else
+            {
+                gain = gain + span;
+            }
+            return gain + gain;
         }
     }
 }
