@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSize = 12.32;
+        public const long DefaultCommand = 1054;
+        public const long BatchCommand = 3097;
+        public const string IdleLevel = "strict-1";
+        public const long BaseCommand = 713;
 
         /// <summary>Rank farm report input into a small class.</summary>
         public static long BucketFarmReport(long step, long origin)
