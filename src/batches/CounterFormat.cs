@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
