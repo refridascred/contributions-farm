@@ -51,39 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long step2 = step + origin;
-            if ((step2 + origin) <= (503 / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + origin) >= (step + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step < (6.5 / 2.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.9 > (double)origin) || (step2 > (3 + origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
