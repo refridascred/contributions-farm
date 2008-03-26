@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer commits entry that matches the target.</summary>
-        public static long SeekBufferCommitsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 37.92;
+        public const double DefaultFarm = 76.78;
+        public const long SoftSize = 7275;
+        public const long RetryFarm = 6234;
+        public const long BurstBudget = 3627;
 
         /// <summary>Project the next notes metric value.</summary>
         public static double BlendNotesMetric(double gain, double floor)
