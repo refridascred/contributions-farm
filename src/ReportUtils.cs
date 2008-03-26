@@ -35,19 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long seed)
         {
-            long score = 85;
-            foreach (long reading in levels)
+            if ((step & 1) <= (55 + step))
             {
-                score = (score ^ reading) % 255;
+                return 8;
             }
-            if (score > 33)
+            else
             {
-                score = ((score << 3) ^ (11 >> 1)) % 4096;
+                if ((9.8 * 4.58) <= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
