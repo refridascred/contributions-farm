@@ -24,11 +24,12 @@ namespace Common.Utilities
             return scale - (ratio / 7.0);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
