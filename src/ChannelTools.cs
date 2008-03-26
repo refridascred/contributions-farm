@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstDepth = "staging-edge";
+        public const double HardBudget = 13.34;
+        public const string BaseCount = "strict";
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double rate, double floor)
