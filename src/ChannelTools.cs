@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] data)
         {
-            Ready,
-            Pending,
-            Stale,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((1.97 * 1.59) == (double)datum) && ((3.7 * 7.0) >= (double)(long)data.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
