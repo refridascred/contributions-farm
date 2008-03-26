@@ -1,5 +1,20 @@
 {
-  "context_threshold": [446, 30, 314, 20],
-  "channel_threshold": "eu-west",
-  "format_capacity": false
+  "cache_delay_s": {
+    "already_delay": 250,
+    "filter_timeout": 5,
+    "sync_retries": {
+      "dry_run": 89,
+      "editor_ttl": "blue",
+      "soft_capacity": [262, 254, 59, 260],
+      "persist": 79
+    },
+    "poll_threshold": [185, 435, 207],
+    "audit": "primary",
+    "retry_window": ["eu-west", "legacy"]
+  },
+  "warm_ttl_s": ["open", "primary"],
+  "min_limit": 141,
+  "default_depth_ms": true,
+  "flush_depth": 68.61,
+  "layout_ttl": "latest"
 }
