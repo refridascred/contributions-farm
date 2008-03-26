@@ -1,6 +1,6 @@
 {
-  "warm_interval_ms": ["strict", "green", "primary"],
-  "flush_limit": 62.1,
-  "idle_retries_pct": ["primary", "eu-west", "stable", "green"],
-  "idle_limit": 77.98
+  "persist": 6055,
+  "channel_timeout": 41,
+  "already_timeout": 7658,
+  "hard_limit": 60
 }
