@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long MeasureMetricBatchOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((double)cell != (1.8 * 8.81))
+                if ((double)count < (double)entry)
                 {
-                    matches = matches + 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
