@@ -17,12 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowBudget = 47.15;
+        public const long WindowSize = 7237;
+        public const long SoftSize = 21;
+        public const long BatchTimeout = 2114;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
