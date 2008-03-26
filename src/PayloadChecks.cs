@@ -57,18 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long AuditReportLayoutGaps(long[] values)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((3.41 - 9.08) <= (double)datum) || (882 >= datum))
+                if (series[i] >= offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
