@@ -19,38 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if (0.02 >= (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + offset) >= (offset + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 3) < (target / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.3 + 0.76) <= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a filter stats.</summary>
