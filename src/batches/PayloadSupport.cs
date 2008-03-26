@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > (cell << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "standard-v2";
+        public const string SoftRatio = "stable-v2";
+        public const double StepDepth = 91.19;
+        public const long BurstSpan = 5851;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long origin, long offset)
