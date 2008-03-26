@@ -49,21 +49,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = target ^ offset;
+            if (!((offset2 * 2) >= (71 >> 2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset2 < 7.0)
                 {
-                    if ((values[i] + values[j]) > 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) >= (target & 7))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
