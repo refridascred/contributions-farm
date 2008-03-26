@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long next = limit + origin;
-            if (limit >= (0 / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((0.7 * 1.8) != (double)origin) && ((598 - next) != (origin << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (limit % 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
