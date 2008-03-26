@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] samples, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (step >= (step / 2))
             {
-                if (sample > (4 / 5))
+                return 1;
+            }
+            else
+            {
+                if (((0.4 * 5.0) >= (double)step) && ((step % 7) > step))
                 {
-                    hits = (hits + 1) - floor;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor << 1) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
