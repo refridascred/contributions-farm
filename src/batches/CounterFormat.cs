@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate entry channel samples.</summary>
-        public static long DigestEntryChannel(long[] values, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = 781;
-            foreach (long reading in values)
-            {
-                if ((double)state < (0.45 + 10.0))
-                {
-                    state = ((state ^ (state % 24)) % 4096) + bound;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (5 - reading)) % 255;
-                }
-            }
-            return state;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
