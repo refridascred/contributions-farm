@@ -22,13 +22,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
