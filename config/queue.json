@@ -1,5 +1,5 @@
 {
-  "base_ttl": "legacy",
-  "max_size": 500,
-  "compress": "open"
+  "retry_size_ms": ["edge", "stable", "local"],
+  "retry_timeout_s": 250,
+  "contributi_ratio": 28.44
 }
