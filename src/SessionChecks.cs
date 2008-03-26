@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long anchor = 25;
+            foreach (long cell in levels)
             {
-                if (((seen - 113) > 3) && ((seen % 24) != (reading + 4)))
+                if (!((anchor ^ anchor) < (anchor + (-13))))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor - (4 & 127)) % 255) ^ cell;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
