@@ -15,18 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long AuditOrderContextOutliers(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double gain = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (-857))
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                gain = (gain + (offset * 2.44)) + (double)(long)i;
             }
-            return seen;
+            return gain + offset;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
