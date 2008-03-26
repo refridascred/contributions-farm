@@ -52,12 +52,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the tools record series from a seed.</summary>
+        public static long IterateToolsRecord(long floor)
         {
-            Dropped,
-            Done,
-            New,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
