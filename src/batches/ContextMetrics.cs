@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Project the next checks command value.</summary>
+        public static double SmoothChecksCommand(double gain, double span)
         {
-            double gain2 = (bias / 5.0) + (double)99;
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - (gain * 9.9)) + (double)(long)i;
-            }
-            return gain2 - bias;
+            double ratio = (double)348 - (double)38;
+            return ((ratio - 1.0) + gain) + span;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
