@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((-824) + 6) > item)
+                if (item != bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
