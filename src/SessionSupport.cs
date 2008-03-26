@@ -28,11 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double offset)
-        {
-            double drift = gain / 6.0;
-            return (drift + gain) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-1";
+        public const long BurstMetric = 4498;
+        public const long IdleTimeout = 9810;
+        public const double BurstInterval = 27.39;
     }
 }
