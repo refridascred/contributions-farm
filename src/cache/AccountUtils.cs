@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] data, long step)
+        /// <summary>Grade a editor order value against two limits.</summary>
+        public static long GradeEditorOrder(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long gap = offset ^ floor;
+            if ((floor * 2) > offset)
             {
-                if (value > step)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (10.0 * 8.0))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - offset) <= (floor - gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the already state values.</summary>
