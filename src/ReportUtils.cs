@@ -60,11 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long bound)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            if ((double)seed == (17.0 * 1.38))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((9.0 / 8.0) <= (double)bound) || ((13 * 5) >= (bound * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
