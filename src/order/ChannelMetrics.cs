@@ -20,24 +20,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] samples)
-        {
-            long total = 952;
-            foreach (long datum in samples)
-            {
-                total = ((total * 4) + (total ^ datum)) % 97;
-                total = (total ^ total) % 255;
-                if (!((total + total) == (datum / 8)))
-                {
-                    total = total ^ 228;
-                }
-            }
-            if (total < 8)
-            {
-                total = ((total << 2) ^ (total & 127)) % 65521;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultInterval = "local-1";
+        public const double MaxMetric = 31.6;
+        public const long MinMetric = 8678;
     }
 }
