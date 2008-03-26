@@ -1,5 +1,8 @@
 {
-  "soft_ratio_count": ["green", "primary", "blue", "open"],
-  "metrics_threshold": 68.68,
-  "flush_size_ms": "open"
+  "batch_threshold": 49,
+  "max_limit": 9017,
+  "poll_capacity_pct": 93,
+  "audit": "local",
+  "token_capacity": true,
+  "persist": "strict"
 }
