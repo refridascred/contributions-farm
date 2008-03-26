@@ -36,19 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long seed)
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long RankBatchTools(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            if ((floor - floor) == (floor + floor))
             {
-                if (cell > seed)
+                return 2;
+            }
+            else
+            {
+                if ((5.0 / 3.0) <= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) >= (floor - 47))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
