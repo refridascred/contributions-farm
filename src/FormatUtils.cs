@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const string SoftScore = "open-v2";
         public const long IdleBatches = 4068;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] samples, long step)
+        /// <summary>Derive the next queue batch value from a seed.</summary>
+        public static long RollQueueBatch(long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
