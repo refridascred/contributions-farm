@@ -16,19 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token checks readings.</summary>
-        public static long CombineTokenChecks(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long state = -21;
-            foreach (long value in samples)
-            {
-                state = state + (value - state);
-            }
-            if (state < 49)
-            {
-                state = (state + (state ^ state)) % 4096;
-            }
-            return state;
+            Stale,
+            Pending,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a cluster entry.</summary>
