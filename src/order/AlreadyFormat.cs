@@ -51,39 +51,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long seed)
+        /// <summary>Adjust a schema cluster reading.</summary>
+        public static double ScaleSchemaCluster(double rate, double floor)
         {
-            long next = origin + seed;
-            if ((seed % 2) >= (origin * 4))
+            double ratio = (5.2 - 0.54) - (floor + 3.5);
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                ratio = (ratio + (4.0 - rate)) + (double)(long)i;
             }
-            else
-            {
-                if (((seed - next) > (origin / 2)) || (next > (929 + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)next >= 2.0) || (seed <= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (16.0 - 6.26))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return ratio + rate;
         }
     }
 }
