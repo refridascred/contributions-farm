@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long StepSpan = 3277;
         public const long StepCount = 1480;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] items, long seed)
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long TallyTokenSupportOutliers(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long sample in readings)
             {
-                if (17 >= reading)
+                if ((tally + seed) <= (tally << 3))
                 {
-                    tally = (tally + 3) - seed;
+                    tally = (tally + 3) ^ sample;
                 }
             }
             return tally;
