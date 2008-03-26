@@ -51,19 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long origin)
+        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
+        public static long PairContributiCommandCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the token class values.</summary>
