@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit report batches readings against a rule.</summary>
-        public static long AuditReportBatchesHits(long[] items, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed < (16.0 - 2.81))
+                if (items[i] <= step)
                 {
-                    hits = (hits + 3) - datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
