@@ -39,19 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!(sum <= (step + step)))
+                if (matches > (33 & 255))
                 {
-                    sum = (sum ^ (step / 5)) % 97;
+                    matches = (matches + 2) - sample;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
