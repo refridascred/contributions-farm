@@ -37,17 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] levels, long seed)
+        /// <summary>Roll a commits queue counter forward.</summary>
+        public static long SeriesCommitsQueue(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
