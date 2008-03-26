@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(item > (matches + matches)))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a schema summary.</summary>
