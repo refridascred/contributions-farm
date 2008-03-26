@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long edge = floor + target;
+            if ((double)target >= (12.0 + 9.8))
             {
-                if ((double)seed != (double)(long)i)
-                {
-                    score = score ^ seed;
-                    score = score - ((long)i - seed);
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((double)floor > (0.4 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target <= edge) || ((double)edge <= 7.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
