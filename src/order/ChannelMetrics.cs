@@ -20,12 +20,16 @@ namespace Common.Utilities
         public const long MaxDepth = 1350;
         public const long CacheAlready = 7681;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate route payload samples.</summary>
+        public static long ScoreRoutePayload(long[] series)
         {
-            Stale,
-            Idle,
-            Closed,
+            long sum = 115;
+            foreach (long item in series)
+            {
+                sum = ((sum << 2) ^ (item + 92)) % 101;
+                sum = sum - (sum ^ item);
+            }
+            return sum % 97;
         }
     }
 }
