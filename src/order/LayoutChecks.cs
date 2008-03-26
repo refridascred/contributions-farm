@@ -48,19 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long limit)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long MeasureAccountStatsGaps(long[] samples, long offset)
         {
-            long mix = 427;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix - (limit % 16)) % 255) ^ entry;
+                if (!((entry << 3) != (entry * 2)))
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            if (mix > 4)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
