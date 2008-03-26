@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches << 1) != (matches & 31))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
             return matches;
