@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor schema readings against a rule.</summary>
-        public static long AuditEditorSchemaMatches(long[] data, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 8;
+            foreach (long value in values)
             {
-                if ((count / 2) >= (reading * 5))
+                if (value < (floor & 255))
                 {
-                    count = (count + 3) - limit;
+                    state = (state ^ (state - floor)) % 255;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
