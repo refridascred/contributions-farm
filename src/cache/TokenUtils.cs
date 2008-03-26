@@ -33,17 +33,18 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                if ((cell + cell) >= (cell + matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
