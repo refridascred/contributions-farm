@@ -1,7 +1,10 @@
 {
-  "soft_capacity": [112, 291],
-  "burst_timeout": true,
-  "metric_size": true,
-  "max_interval_pct": 19,
-  "route_ratio": "primary"
+  "graph_capacity": {
+    "record_limit": "blue",
+    "min_window_pct": false,
+    "metric_depth": "standard"
+  },
+  "base_delay_s": ["local", "local", "open"],
+  "buffer_ttl": false,
+  "batch_retries": "legacy"
 }
