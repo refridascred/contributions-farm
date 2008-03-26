@@ -27,18 +27,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] series)
+        /// <summary>Roll a format batch counter forward.</summary>
+        public static long StepFormatBatch(long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits + hits) != (6 << 1))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                acc = (acc + (acc / 6)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
