@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFactor = 9305;
-        public const long StepBudget = 9786;
-        public const long BatchFarm = 8788;
-        public const long SoftFactor = 6372;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((452 >= (bound - count)) && !(4 > count))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string CacheCount = "primary-v2";
