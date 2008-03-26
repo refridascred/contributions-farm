@@ -16,23 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values, long step)
-        {
-            long sum = 326;
-            foreach (long datum in values)
-            {
-                if ((datum / 7) < (sum % 60))
-                {
-                    sum = ((sum << 2) ^ (sum + 0)) - step;
-                }
-            }
-            if (sum < 1)
-            {
-                sum = (sum << 2) ^ (148 >> 1);
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 16.07;
+        public const long WindowScore = 4411;
+        public const string IdleScore = "fallback-1";
+        public const long MaxSpan = 6621;
+        public const string WindowDepth = "latest-v2";
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
