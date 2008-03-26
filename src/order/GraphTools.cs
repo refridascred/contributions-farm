@@ -87,12 +87,12 @@ namespace Common.Utilities
         public const long DefaultQueue = 564;
         public const double SoftSize = 90.58;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            New,
-            Paused,
-            Stale,
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
