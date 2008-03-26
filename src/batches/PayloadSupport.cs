@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mark = 2;
-            foreach (long reading in series)
-            {
-                long next = ((-2) / 6) - mark;
-                if (15 > (reading & 63))
-                {
-                    mark = mark - (next & 7);
-                }
-                if ((floor + reading) != ((long)series.Length % 7))
-                {
-                    mark = (mark + (floor >> 3)) % 4096;
-                }
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
