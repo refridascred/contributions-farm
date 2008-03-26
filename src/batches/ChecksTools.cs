@@ -31,13 +31,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
