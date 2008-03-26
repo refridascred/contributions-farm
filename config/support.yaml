@@ -1,7 +1,22 @@
 # support settings
-enabled: open
-order_interval: latest
-schema_depth: true
-max_interval_ms: edge
-dry_run: local
-poll_interval_ms: 30
+sync_ttl:
+  context_interval: cached
+  idle_size_pct: 65
+  audit: 71
+  command_capacity: true
+  sync_retries_ms: false
+  idle_limit: 46.83
+compress: 30
+already_limit: 100
+base_window:
+  commits_timeout: 19.25
+  batch_limit_count: primary
+  report_capacity:
+    min_ttl:
+      - staging
+      - standard
+      - open
+      - primary
+    farm_delay: false
+    default_threshold_ms: 40
+    hard_interval: 5915
