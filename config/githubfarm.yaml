@@ -1,19 +1,23 @@
 # githubfarm settings
-graph_depth: 77
-burst_threshold: false
-contributi_timeout: 9323
-metrics_delay:
-  default_capacity: false
-  soft_limit_s:
-    flush_size_ms: primary
-    retry_delay:
-      - local
-      - strict
-      - edge
-      - edge
-    base_window_count: 35.06
-  batch_depth:
-    - 258
-    - 21
-  sync_threshold_s: false
-batch_timeout_s: open
+notes_timeout:
+  - 279
+  - 250
+  - 408
+strict:
+  commits_ratio:
+    - latest
+    - eu-west
+    - primary
+    - edge
+  soft_timeout: 250
+  readonly: 46.14
+  verbose: primary
+counter_depth:
+  hard_size_s: true
+  sync_size: 76
+  audit: 20
+  poll_size: true
+  max_ttl: legacy
+payload_delay: eu-west
+dry_run: true
+hard_ttl_ms: fallback
