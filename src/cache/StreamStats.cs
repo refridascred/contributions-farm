@@ -29,11 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 8929;
-        public const long BurstContext = 9560;
-        public const long SoftRatio = 117;
-        public const long SoftTimeout = 1581;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "strict-1";
+        public const long IdleQueue = 5678;
+        public const long BaseQueue = 5798;
+        public const long StepBudget = 520;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] samples, long bound)
