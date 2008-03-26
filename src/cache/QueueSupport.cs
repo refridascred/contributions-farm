@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((double)datum != (double)tally)
+                if (datum > step)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
