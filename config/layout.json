@@ -1,21 +1,7 @@
 {
-  "max_window": false,
-  "burst_delay_ms": 674,
-  "compress": ["local", "legacy", "green", "legacy"],
-  "cache_interval_ms": {
-    "retry_delay": "blue",
-    "warm_window": 1,
-    "persist": {
-      "poll_size_ms": "staging",
-      "base_limit_s": 75.99,
-      "readonly": 1
-    },
-    "soft_ratio_pct": {
-      "hard_delay_ms": false,
-      "cache_size": 62,
-      "readonly": true,
-      "hard_size": 31
-    }
-  },
-  "default_retries_count": 42.35
+  "channel_limit": true,
+  "cluster_size": "open",
+  "session_size": 60,
+  "queue_window": "primary",
+  "buffer_retries": 20.3
 }
