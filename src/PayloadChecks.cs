@@ -86,12 +86,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((sample & 1) <= (matches + 86)) && ((matches + sample) < matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
