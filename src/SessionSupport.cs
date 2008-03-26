@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] data, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
