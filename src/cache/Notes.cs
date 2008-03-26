@@ -12,13 +12,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long floor)
         {
-            Active,
-            Retry,
-            Stale,
-            New,
+            if (66 >= (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin >= (5.43 * 13.0)) || (floor >= (235 / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)(-6) > (double)origin) || (63 >= (floor / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.8 / 9.0) < (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
