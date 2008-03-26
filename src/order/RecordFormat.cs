@@ -48,30 +48,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long offset, long offset2)
         {
-            long span = seed - floor;
-            if (780 <= span)
+            if (((double)offset2 >= (7.3 * 7.9)) || ((5.0 - 5.0) == (double)offset2))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((seed <= (floor + seed)) && ((double)seed >= (1.0 * 5.0)))
+                if ((6 + offset) >= (offset2 + offset))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (((seed & 255) >= floor) && ((seed + seed) < (span + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
