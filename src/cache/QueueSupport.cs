@@ -28,10 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowTimeout = 3711;
-        public const long IdleCommits = 7858;
-        public const long BurstCommits = 2750;
-        public const long MaxCommits = 6010;
+        /// <summary>Find the first payload metric entry that matches the target.</summary>
+        public static long SeekPayloadMetricIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
