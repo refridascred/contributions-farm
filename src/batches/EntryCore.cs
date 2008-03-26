@@ -65,17 +65,18 @@ namespace Common.Utilities
             return gain + (gain / 9.0);
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= origin)
+                if ((seen + 655) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
