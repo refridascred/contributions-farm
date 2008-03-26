@@ -37,11 +37,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            Failed,
+            Draft,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Adjust a stats reading.</summary>
