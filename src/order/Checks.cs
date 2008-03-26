@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Digest a series of profile graph entries.</summary>
+        public static long CombineProfileGraph(long[] samples, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = 880;
+            foreach (long entry in samples)
             {
-                if ((offset & 255) <= (87 >> 5))
+                if ((bound + 918) == (anchor % 60))
                 {
-                    total = total - (offset >> 2);
+                    anchor = ((anchor << 3) ^ 66) - entry;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 4096;
+                }
             }
-            return total;
+            if (anchor > 97)
+            {
+                anchor = ((anchor << 2) ^ (bound ^ (-918))) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
