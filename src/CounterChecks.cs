@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] series, long seed)
+        /// <summary>Audit support contributi readings against a rule.</summary>
+        public static long TallySupportContributiMatches(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (reading != seed)
+                if ((800 ^ item) > item)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
