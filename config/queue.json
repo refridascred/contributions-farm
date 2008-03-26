@@ -1,11 +1,5 @@
 {
-  "dry_run": {
-    "default_threshold": "cached",
-    "session_capacity": ["eu-west", "stable", "latest", "stable"],
-    "hard_delay": 5709,
-    "base_retries_ms": 21.83
-  },
-  "soft_depth_count": 500,
-  "flush_size_count": 9,
-  "idle_retries": 51.54
+  "verbose": [114, 105, 348, 455],
+  "default_timeout": false,
+  "dry_run": 85.26
 }
