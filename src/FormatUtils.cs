@@ -66,18 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (761 < (hits + hits))
+                acc = (acc * 4) + acc;
+                acc = (acc + offset) % 4096;
+                if ((acc + offset) < (offset / 7))
                 {
-                    hits = (hits + 1) + reading;
+                    acc = (acc + offset) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
