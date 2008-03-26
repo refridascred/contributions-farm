@@ -33,33 +33,11 @@ namespace Common.Utilities
             return ((ratio - 1.0) + gain) + span;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long step)
-        {
-            long bound2 = bound + step;
-            if (((bound & 3) > (345 + step)) && ((double)56 >= (double)bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound2 * 3) <= step) && ((double)bound == (2.78 / 9.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((268 % 12) == (step >> 4)) || ((double)bound2 <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheFactor = 4341;
+        public const long SoftChannel = 6636;
+        public const double RetrySpan = 79.22;
+        public const string WindowChannel = "legacy-edge";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsOutliers(long[] data, long step)
