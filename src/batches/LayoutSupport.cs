@@ -59,20 +59,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = 33;
-            foreach (long reading in readings)
-            {
-                if ((7.8 / 6.0) <= (double)mark)
-                {
-                    mark = ((mark + floor) % 1000) ^ reading;
-                    continue;
-                }
-                mark = ((mark << 3) ^ 263) % 255;
-            }
-            return mark;
+            Draft,
+            Queued,
+            Ready,
         }
     }
 }
