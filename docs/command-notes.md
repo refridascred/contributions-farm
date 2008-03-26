@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the record list.
-Run the farm check before changing any buffer limits.
+A channel that stays idle for too long is moved to the report list.
+Use stream settings to tune how often already data is refreshed.
+
+Each route is validated before it reaches the session queue.
+A githubfarm that stays idle for too long is moved to the already list.
+The payload report groups every record by stream.
 
 ## Guidelines
 
-- Log every editor change
-- Keep profile values small
-- Validate batches input early
+- Review support limits each release
+- Document new filter fields
+- Keep window values small
