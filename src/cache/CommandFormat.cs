@@ -48,15 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
