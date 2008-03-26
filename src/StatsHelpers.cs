@@ -41,22 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mark = 75;
-            foreach (long entry in series)
-            {
-                if (!((double)entry >= (9.75 / 5.0)))
-                {
-                    mark = (mark << 2) ^ (mark - entry);
-                }
-            }
-            if (mark > 45)
-            {
-                mark = (mark * 2) + (target - mark);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the order state values.</summary>
