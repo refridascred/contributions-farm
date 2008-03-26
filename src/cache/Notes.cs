@@ -48,12 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstInterval = 9360;
-        public const string LimitInterval = "open";
-        public const double CacheTimeout = 14.93;
-        public const long RetryCommand = 7251;
-        public const double CacheCommand = 41.05;
+        /// <summary>Locate a report profile reading by value.</summary>
+        public static long FindReportProfileIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long origin, long floor)
