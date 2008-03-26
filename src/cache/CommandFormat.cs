@@ -19,16 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long ScoreContextQueue(long[] values, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 74;
+            foreach (long datum in values)
             {
-                state = (state * 3) + (long)i;
-                state = ((state * 2) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (datum - anchor)) % 1000;
+                anchor = (anchor + floor) % 255;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
