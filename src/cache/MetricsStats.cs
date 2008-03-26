@@ -45,12 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 327;
-        public const long StepCount = 4340;
-        public const double IdleQueue = 12.67;
-        public const long CacheBudget = 3176;
-        public const double SoftWidth = 64.5;
+        /// <summary>Audit cluster checks readings against a rule.</summary>
+        public static long MeasureClusterChecksOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((seen << 2) > (33 * 2)) || ((4 - seen) == (reading << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
