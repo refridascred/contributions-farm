@@ -35,10 +35,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheWidth = 6290;
-        public const string StepCommand = "strict-1";
-        public const long RetryCommand = 3821;
-        public const long BurstTimeout = 4930;
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double floor)
+        {
+            double weight = floor;
+            return (weight + (floor * 9.0)) + rate;
+        }
     }
 }
