@@ -45,15 +45,18 @@ namespace Common.Utilities
             return weight2 - (offset - 4.83);
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double scale, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long floor)
         {
-            double weight = (bias + scale) + 0.3;
-            if (weight <= scale)
+            long mark = 535;
+            foreach (long item in readings)
             {
-                weight = weight + bias;
+                if ((mark <= (long)readings.Length) && ((item << 3) == (floor * 3)))
+                {
+                    mark = (mark ^ (floor >> 3)) % 1000;
+                }
             }
-            return weight + (weight / 7.0);
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
