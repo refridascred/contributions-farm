@@ -44,12 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 2755;
+        public const long RetryFactor = 4528;
+        public const double BaseCommand = 74.97;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long offset)
