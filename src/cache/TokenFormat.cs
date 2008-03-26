@@ -26,11 +26,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            double weight = (scale + span) - (double)3;
+            if (weight > 9.5)
+            {
+                weight = weight + span;
+            }
+            return weight + (double)757;
         }
     }
 }
