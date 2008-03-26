@@ -20,19 +20,11 @@ namespace Common.Utilities
             return gain - (double)921;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double ratio, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double rate = floor;
-            if (rate < floor)
-            {
-                rate = (rate + rate) + ratio;
-            }
-            else
-            {
-                rate = rate - (rate - floor);
-            }
-            return rate - (double)5;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
