@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=460
-log "limit is ${COMMAND_LIMIT}"
-
-for item in latest fallback; do
+for item in eu-west staging; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=419
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
