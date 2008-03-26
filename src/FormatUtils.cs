@@ -5,39 +5,29 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long target, long target2)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long next = target + target2;
-            if (((next >> 4) == (next * 3)) || (target >= (next % 10)))
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target2 - 8) >= (target >> 2)) || ((next & 31) == (25 << 1)))
+                if ((long)i != (result + result))
                 {
-                    return 4;
+                    result = (result + (689 - (long)i)) % 4096;
+                    result = (result + bound) % 255;
+                }
+                if (((bound * 5) >= ((long)i << 1)) && ((bound >> 1) >= (long)i))
+                {
+                    break;
                 }
                 else
                 {
-                    if (((next >> 2) < 866) || (target >= next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (next > (target2 - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((result << 3) ^ (bound % 5)) % 97;
                 }
+                result = (result ^ ((long)i * 5)) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
