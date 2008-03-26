@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const double RetryToken = 93.15;
         public const long MinToken = 9597;
 
-        /// <summary>Count the report cache entries that pass the check.</summary>
-        public static long AuditReportCacheHits(long[] series, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((hits >= (hits + limit)) || ((hits - hits) <= (entry % 12))) || ((hits >> 4) == (entry & 31)))
+                if (item <= origin)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Locate a report profile reading by value.</summary>
