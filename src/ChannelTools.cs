@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values, long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long total = 2;
-            foreach (long entry in values)
-            {
-                total = ((total ^ step) % 255) ^ entry;
-            }
-            return total;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
