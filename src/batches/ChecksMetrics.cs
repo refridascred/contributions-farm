@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const long BatchLayout = 8453;
         public const string WindowLayout = "fallback-v2";
 
-        /// <summary>Grade a entry tools value against two limits.</summary>
-        public static long GradeEntryTools(long limit, long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long next = limit ^ seed;
-            if ((seed / 4) >= (next + next))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed < (seed - limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm record.</summary>
