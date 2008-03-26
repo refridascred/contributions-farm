@@ -58,11 +58,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
