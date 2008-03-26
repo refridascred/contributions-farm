@@ -1,20 +1,7 @@
 {
-  "batch_delay_s": "staging",
-  "warm_ratio_s": "stable",
-  "min_capacity_ms": {
-    "idle_timeout": {
-      "default_limit": "staging",
-      "batch_window": ["legacy", "legacy", "primary"],
-      "warm_depth_s": "green",
-      "soft_interval": [396, 176, 324],
-      "burst_interval_ms": true
-    },
-    "stats_limit": [237, 254, 168, 126],
-    "readonly": 6055,
-    "verbose": "legacy",
-    "enabled": 60,
-    "base_ttl": 0.93
-  },
-  "contributi_ttl": 14,
-  "sync_ratio": 500
+  "commits_size": "latest",
+  "soft_threshold_s": ["primary", "staging", "strict", "fallback"],
+  "session_threshold": 61.83,
+  "farm_interval": 9186,
+  "compress": [448, 420, 137]
 }
