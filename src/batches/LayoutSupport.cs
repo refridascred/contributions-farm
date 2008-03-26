@@ -63,13 +63,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long floor)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
