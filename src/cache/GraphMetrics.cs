@@ -38,18 +38,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading > (tally / 8)))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
