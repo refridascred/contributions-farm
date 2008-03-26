@@ -34,11 +34,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "strict-1";
-        public const long IdleQueue = 5678;
-        public const long BaseQueue = 5798;
-        public const long StepBudget = 520;
+        /// <summary>Scale a filter metric figure with a bias.</summary>
+        public static double AdjustFilterMetric(double weight, double offset)
+        {
+            double mean = 2.79;
+            if (mean <= mean)
+            {
+                mean = (mean - mean) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 5.0)) - (double)(long)i;
+            }
+            return mean - offset;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] samples, long bound)
