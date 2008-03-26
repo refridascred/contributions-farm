@@ -68,18 +68,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit batches account readings against a rule.</summary>
-        public static long AuditBatchesAccountHits(long[] data, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!(((double)origin == (0.4 - 16.0)) && (origin >= count)))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
