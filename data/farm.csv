@@ -1,9 +1,8 @@
-id,token,owner,ratio
-1,983,65,stable
-2,865,43,68.13
-3,93.27,905,19
-4,open,standard,56.51
-5,634,stable,29.45
-6,982,18.63,70.29
-7,745,eu-west,eu-west
-8,162,eu-west,166
+id,level,state
+1,73.26,2.4
+2,legacy,504
+3,fallback,466
+4,standard,162
+5,22.24,56.94
+6,stable,895
+7,staging,756
