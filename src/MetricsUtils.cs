@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowDepth = 47.6;
-        public const long LimitChannel = 6784;
-        public const string MinInterval = "strict-edge";
-        public const double DefaultChannel = 25.17;
-        public const long WindowChannel = 9805;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double rate, double offset)
