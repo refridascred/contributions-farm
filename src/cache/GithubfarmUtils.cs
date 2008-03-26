@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool ValidateChecksRouteLimits(long[] items, long step)
         {
-            long score = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                score = ((score + (score & 127)) % 1000) ^ entry;
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
