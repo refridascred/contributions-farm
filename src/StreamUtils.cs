@@ -76,25 +76,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            long diff = origin + target;
-            if ((8.3 / 3.0) < (double)diff)
+            double gain2 = gain;
+            if (gain2 > floor)
             {
-                return 6;
+                gain2 = gain2 - (double)97;
             }
             else
             {
-                if ((17 & 255) < (origin & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                gain2 = gain2 + (double)53;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + (double)9;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
