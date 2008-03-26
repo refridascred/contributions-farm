@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double scale, double floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double mean = (5.22 - floor) * 4.7;
-            if (mean > 4.45)
-            {
-                mean = mean + scale;
-            }
-            else
-            {
-                mean = mean + (floor / 7.0);
-            }
-            return mean - 6.66;
+            Failed,
+            Synced,
+            Active,
         }
     }
 }
