@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long target2)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long bound)
         {
-            if (((target + target2) < (77 / 6)) || ((target2 << 3) < (target & 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target & 63) <= (71 * 2)) || ((739 ^ 640) <= (target2 & 255)))
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)6 == (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine payload command values into a single score.</summary>
