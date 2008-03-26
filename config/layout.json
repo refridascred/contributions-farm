@@ -1,8 +1,10 @@
 {
-  "retry_threshold": "green",
-  "dry_run": true,
-  "compress": 65.99,
-  "verbose": [269, 145, 306, 281],
-  "warm_limit": 1.22,
-  "entry_delay": [412, 135, 388]
+  "graph_ttl": "local",
+  "tools_limit": "edge",
+  "warm_size_ms": {
+    "max_delay_count": [40, 459],
+    "burst_depth": true,
+    "verbose": 8595,
+    "flush_window_ms": 33.55
+  }
 }
