@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long AuditAlreadyWindowOutliers(long[] items)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell % 16) >= (3 + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer state values.</summary>
