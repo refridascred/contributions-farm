@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSize = 6507;
-        public const string BatchDepth = "standard";
-        public const long HardSchema = 4619;
-        public const string SoftSchema = "cached";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio >= ratio)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (offset / 7.0);
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long origin)
