@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long seed)
         {
-            New,
-            Locked,
-            Done,
-            Queued,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
