@@ -16,21 +16,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Find the first profile stats entry that matches the target.</summary>
