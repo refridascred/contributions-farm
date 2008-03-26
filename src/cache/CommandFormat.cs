@@ -43,18 +43,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values, long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] readings, long bound)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed > (13.0 + 6.12))
+                if (readings[i] > bound)
                 {
-                    anchor = anchor - (seed + sample);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
