@@ -26,18 +26,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long score = -8;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((1.0 - 20.0) == (double)floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 3) ^ (sample + 216)) % 65521;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 97;
+            return seen;
         }
     }
 }
