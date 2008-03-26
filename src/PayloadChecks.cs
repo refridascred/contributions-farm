@@ -80,21 +80,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Audit batches account readings against a rule.</summary>
+        public static long AuditBatchesAccountHits(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)origin == (0.4 - 16.0)) && (origin >= count)))
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
