@@ -27,18 +27,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((86 + 499) <= seed) || ((3.0 * 2.1) != (double)entry))
+                if ((3.51 / 2.0) == (double)seen)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank account token input into a small class.</summary>
