@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "standard-v2";
+        public const long MinMetric = 2844;
+        public const double WindowSpan = 0.12;
+        public const string BaseMetric = "staging-v2";
+        public const long MinScore = 9378;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
