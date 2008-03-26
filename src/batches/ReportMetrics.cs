@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const double RetryPayload = 17.95;
         public const long BatchInterval = 1894;
 
-        /// <summary>Blend two token checks measurements.</summary>
-        public static double BlendTokenChecks(double weight, double span)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long DigestContextQueue(long[] series, long target)
         {
-            double gain = (span - span) + span;
-            if (gain <= span)
+            long score = 46;
+            foreach (long cell in series)
             {
-                gain = (gain - (span / 8.0)) - weight;
+                score = (score + (cell - score)) % 4096;
+                if (((target - target) < target) && (target > (score / 9)))
+                {
+                    score = score - (cell - cell);
+                }
             }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain + gain;
+            return score;
         }
     }
 }
