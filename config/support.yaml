@@ -1,10 +1,24 @@
 # support settings
-burst_timeout_count: true
-queue_limit:
-  - 49
-  - 286
-  - 155
-counter_limit: legacy
-burst_timeout: 2322
-default_threshold: 32.05
-readonly: fallback
+batch_delay:
+  queue_window: cached
+  readonly: eu-west
+  order_ttl:
+    - blue
+    - legacy
+sync_interval_count: latest
+flush_window_ms:
+  - eu-west
+  - latest
+  - standard
+stats_size: cached
+verbose:
+  soft_capacity: 500
+  verbose: local
+  max_delay_pct: fallback
+payload_size:
+  flush_threshold_pct: 500
+  filter_delay: 28
+  audit: primary
+  route_size: 7560
+  default_delay_s: 30
+  layout_threshold: 4206
