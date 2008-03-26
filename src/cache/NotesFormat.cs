@@ -34,12 +34,10 @@ namespace Common.Utilities
             return mean - (bias2 - bias2);
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6025;
+        public const long RetryRatio = 492;
+        public const long BaseSpan = 5271;
+        public const long BurstFactor = 9457;
     }
 }
