@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long MinMetric = 8810;
         public const double IdleMetric = 24.97;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches <= 1) && (((double)matches != (2.04 - 3.0)) || (((long)samples.Length ^ matches) < matches)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
