@@ -1,6 +1,6 @@
-id,region,level,owner
-1,948,blue,425
-2,803,59.0,48.27
-3,edge,89.0,62.19
-4,214,4.93,latest
-5,green,461,36.28
+id,score,label
+1,88.19,blue
+2,68.7,850
+3,staging,865
+4,blue,438
+5,441,799
