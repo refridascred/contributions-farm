@@ -40,15 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Validate window record readings against a bound.</summary>
+        public static bool CheckWindowRecordRange(long[] data, long floor)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                ratio = (ratio - floor) + bias;
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + floor;
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
