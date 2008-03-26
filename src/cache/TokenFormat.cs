@@ -16,22 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long target)
         {
-            long mark = 93;
-            foreach (long item in items)
+            long total = 8;
+            foreach (long cell in samples)
             {
-                if ((double)origin <= (1.5 + 6.1))
-                {
-                    mark = ((mark + (mark + mark)) % 65521) + item;
-                }
-                else
-                {
-                    mark = mark + (mark % 12);
-                }
+                total = ((total ^ (target >> 5)) % 65521) ^ cell;
             }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
