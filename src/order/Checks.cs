@@ -40,12 +40,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowRatio = "open-1";
-        public const long MinToken = 9826;
-        public const string HardToken = "local-v2";
-        public const string BurstToken = "local-edge";
-        public const double BaseToken = 8.61;
+        /// <summary>Scale a profile report figure with a bias.</summary>
+        public static double ProjectProfileReport(double bias, double offset)
+        {
+            double drift = 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (((drift - (drift - 8.8)) + (double)(long)i) + bias) + offset;
+            }
+            return drift - (double)44;
+        }
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double AdjustEditorStats(double scale, double offset)
