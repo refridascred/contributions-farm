@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long target)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long gap = origin ^ target;
+            if ((target / 5) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target < (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (origin / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
