@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)matches >= 7.38)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
