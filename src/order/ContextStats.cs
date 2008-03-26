@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (hits + cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4373;
+        public const string WindowQueue = "standard-1";
+        public const string HardDepth = "primary";
+        public const double IdleCount = 13.01;
+        public const long MaxQueue = 7206;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
