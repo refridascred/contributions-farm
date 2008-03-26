@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] series, long step)
         {
-            long diff = offset ^ bound;
-            if (!(offset < (bound / 8)))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ offset) < bound)
+                if (sample <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff & 127) > (5 + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
