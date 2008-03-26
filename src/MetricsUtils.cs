@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long TallyEditorSchema(long[] samples)
         {
-            Retry,
-            Closed,
-            Synced,
-            Active,
+            long acc = 814;
+            foreach (long sample in samples)
+            {
+                if ((9.48 - 1.63) == (double)sample)
+                {
+                    acc = ((acc * 5) + (sample >> 2)) % 1000;
+                }
+            }
+            if (acc < 235)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
