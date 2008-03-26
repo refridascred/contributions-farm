@@ -16,20 +16,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor ^ ((long)i & 15)) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((0.9 - 6.98) > (double)hits)
                 {
-                    anchor = ((anchor << 3) ^ 75) ^ (long)i2;
+                    hits = ((hits + 3) ^ entry) + origin;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
