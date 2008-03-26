@@ -80,12 +80,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of context stats readings.</summary>
