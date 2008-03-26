@@ -1,5 +1,6 @@
 {
-  "sync_limit": "green",
-  "retry_ratio_ms": "eu-west",
-  "base_limit_ms": "open"
+  "editor_delay": 40.74,
+  "max_interval_pct": 18.98,
+  "base_retries": 96.84,
+  "dry_run": [96, 321, 173]
 }
