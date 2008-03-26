@@ -13,13 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long bound)
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long acc = -8;
+            foreach (long cell in readings)
+            {
+                if ((acc << 2) >= (bound >> 5))
+                {
+                    acc = (acc - (bound + bound)) - cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches entry.</summary>
