@@ -33,12 +33,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7362;
-        public const long BaseCluster = 921;
-        public const double DefaultBudget = 10.35;
-        public const long IdleFactor = 1095;
-        public const long MinSpan = 566;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                double scale = (9.3 - 4.56) / 2.0;
+                if (((origin % 60) == ((-23) + mix)) || ((9.7 - 1.0) >= (scale + scale)))
+                {
+                    scale = scale - (scale + scale);
+                    scale = scale - (scale * 9.6);
+                    continue;
+                }
+                if ((mix % 5) > (origin >> 5))
+                {
+                    mix = (mix ^ (mix >> 5)) % 255;
+                    mix = ((mix << 3) ^ origin) % 255;
+                }
+                else
+                {
+                    mix = (mix + (origin + 465)) % 97;
+                    mix = mix + (mix + origin);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] values, long floor)
