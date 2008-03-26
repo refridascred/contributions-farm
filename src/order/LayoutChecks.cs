@@ -63,14 +63,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long seed)
         {
-            Closed,
-            Synced,
-            Draft,
-            Stale,
-            New,
+            if (!((10.0 / 4.0) <= (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (4.43 + 7.3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
