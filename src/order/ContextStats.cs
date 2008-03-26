@@ -12,22 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (seed >= (seed << 1))
+                if ((double)count != (double)offset)
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a notes reading.</summary>
