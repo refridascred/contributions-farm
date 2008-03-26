@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next schema farm value from a seed.</summary>
-        public static long StepSchemaFarm(long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - (acc % 8);
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
