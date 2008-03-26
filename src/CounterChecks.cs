@@ -36,11 +36,22 @@ namespace Common.Utilities
         public const double RetryBuffer = 45.67;
         public const long IdleBuffer = 4900;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] items)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long score = 5;
+            foreach (long entry in items)
+            {
+                if ((score * 2) >= score)
+                {
+                    score = (score + (score << 3)) ^ entry;
+                }
+            }
+            if (score < 5)
+            {
+                score = (score - score) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Project the next record checks value.</summary>
