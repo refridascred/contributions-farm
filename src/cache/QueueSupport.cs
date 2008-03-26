@@ -15,12 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] series)
         {
-            New,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((3 >> 1) >= value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up tools context samples.</summary>
