@@ -18,20 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Grade a entry tools value against two limits.</summary>
+        public static long GradeEntryTools(long limit, long seed)
         {
-            long carry = 539;
-            foreach (long cell in readings)
+            long next = limit ^ seed;
+            if ((seed / 4) >= (next + next))
             {
-                carry = carry + (cell - cell);
-                carry = (carry ^ (carry / 2)) % 65521;
+                return 2;
             }
-            if (carry > 501)
+            else
             {
-                carry = ((carry << 3) ^ (146 - 2)) % 97;
+                if (seed < (seed - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Hold a farm record.</summary>
