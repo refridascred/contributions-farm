@@ -38,32 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long offset)
+        /// <summary>Check that every metric queue entry stays within the limit.</summary>
+        public static bool VerifyMetricQueueLimits(long[] series, long step)
         {
-            long prev = bound - offset;
-            if ((prev + offset) <= (170 ^ offset))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (double)offset)
+                if (sample > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound & 127) == (83 * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the tools level values.</summary>
