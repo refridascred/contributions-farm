@@ -48,16 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter format reading.</summary>
-        public static double SmoothFilterFormat(double bias, double span)
-        {
-            double drift = span;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift + (10.0 / 4.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstInterval = 9360;
+        public const string LimitInterval = "open";
+        public const double CacheTimeout = 14.93;
+        public const long RetryCommand = 7251;
+        public const double CacheCommand = 41.05;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string DefaultEntry = "fallback-v2";
