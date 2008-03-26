@@ -32,18 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!((value + hits) == (value >> 4)) && (limit >= (value + limit)))
+                if (datum <= offset)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
