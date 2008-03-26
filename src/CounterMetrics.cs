@@ -27,22 +27,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((3.51 / 2.0) == (double)seen)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
