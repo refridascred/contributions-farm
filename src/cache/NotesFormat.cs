@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
         {
-            Dropped,
-            Failed,
-            Synced,
+            long mix = -46;
+            foreach (long datum in items)
+            {
+                mix = ((mix * 2) + (799 * 5)) - datum;
+            }
+            if (mix > 804)
+            {
+                mix = (mix - ((long)items.Length / 7)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the account kind values.</summary>
