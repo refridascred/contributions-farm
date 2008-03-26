@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultLevel = "legacy";
-        public const double IdleScore = 31.97;
-        public const long SoftNotes = 3465;
-        public const double MinSize = 39.46;
-        public const string BaseNotes = "staging-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheBudget = 126;
+        public const double HardTimeout = 32.87;
+        public const long RetryLevel = 7400;
+        public const long BaseCache = 2471;
 
         /// <summary>Rank window format input into a small class.</summary>
         public static long GradeWindowFormat(long limit, long limit2)
