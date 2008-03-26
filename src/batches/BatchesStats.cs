@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values, long floor)
+        /// <summary>Adjust a githubfarm command reading.</summary>
+        public static double ProjectGithubfarmCommand(double rate, double bias)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double scale = (double)(81 + 199);
+            if (scale <= 3.63)
             {
-                if ((floor + sample) < sample)
-                {
-                    count = count + 3;
-                }
+                scale = (scale + bias) - rate;
             }
-            return count;
+            return scale - (double)7;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
