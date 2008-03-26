@@ -61,18 +61,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit notes order readings against a rule.</summary>
-        public static long AuditNotesOrderOutliers(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count - value) <= (value >> 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            Dropped,
+            Pending,
         }
     }
 }
