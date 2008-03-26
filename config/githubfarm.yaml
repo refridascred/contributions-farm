@@ -1,6 +1,8 @@
 # githubfarm settings
-batch_retries_ms: 42
-channel_delay: 27.0
-max_retries: 100
-max_threshold_ms: true
-hard_delay_pct: 9162
+verbose: 500
+batch_capacity_ms: 500
+enabled: 30
+base_retries:
+  - edge
+  - eu-west
+compress: 5369
