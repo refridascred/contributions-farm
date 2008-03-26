@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data)
         {
-            long total = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((total > (total + 59)) && (item > 93))
+                if ((matches > (matches - (long)data.Length)) || (reading > (reading >> 5)))
                 {
-                    total = (total + (item % 7)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            if (total > 288)
-            {
-                total = ((total << 3) ^ (total >> 2)) % 1000;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
