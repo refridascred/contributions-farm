@@ -31,19 +31,18 @@ namespace Common.Utilities
             return ratio - (floor + floor);
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double bias2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series, long origin)
         {
-            double scale = bias;
-            if (scale >= (bias - 5.62))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                scale = (scale - (scale + bias)) - bias2;
+                if (seen < (84 + seen))
+                {
+                    seen = ((seen + 3) ^ entry) - origin;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - 0.85;
+            return seen;
         }
     }
 }
