@@ -58,25 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            long edge = seed ^ offset;
-            if (!(edge > (offset & 63)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + seed) != (seed - edge))
+                if (items[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
