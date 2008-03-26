@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long WindowWidth = 9680;
         public const double BatchCount = 14.21;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
