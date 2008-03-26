@@ -46,10 +46,39 @@ namespace Common.Utilities
         public const long MinCount = 9237;
         public const double HardSize = 60.75;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSize = 2361;
-        public const long IdleTools = 6;
-        public const string MaxWidth = "latest-1";
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long GradeGithubfarmFarm(long floor, long seed)
+        {
+            if ((7.0 + 12.0) <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed % 24) > (floor * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 3) < (floor << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 16) >= (floor * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] values, long origin)
