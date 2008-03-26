@@ -47,13 +47,31 @@ namespace Common.Utilities
         public const long SoftToken = 4982;
         public const string RetryDepth = "latest-edge";
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long floor)
         {
-            Stale,
-            Paused,
-            Idle,
-            Active,
+            if ((1.7 * 5.28) != (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)seed >= (2.0 * 0.74)) && ((674 + seed) > 606))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) < (seed * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next payload githubfarm value from a seed.</summary>
