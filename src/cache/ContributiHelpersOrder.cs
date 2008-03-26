@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] data, long offset)
+        /// <summary>Project the next profile payload value.</summary>
+        public static double AdjustProfilePayload(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (seen > (offset - seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double weight = (double)(65 ^ 4);
+            return ((weight + (double)901) + bias) + floor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
