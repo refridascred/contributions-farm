@@ -1,11 +1,11 @@
 {
-  "batches_depth": [304, 142],
-  "compress": 52.51,
-  "contributi_capacity": true,
-  "session_interval": {
-    "sync_delay_ms": "legacy",
-    "base_timeout_pct": false,
-    "warm_limit_s": 2287
+  "layout_delay": "primary",
+  "audit": {
+    "strict": 676,
+    "metrics_ttl": true,
+    "cache_threshold_ms": false
   },
-  "cache_retries_s": 8432
+  "verbose": 20.45,
+  "filter_ratio": false,
+  "sync_size": "staging"
 }
