@@ -16,12 +16,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Scale a buffer order figure with a bias.</summary>
+        public static double AdjustBufferOrder(double scale, double floor)
         {
-            Queued,
-            Synced,
-            Ready,
+            double load = (double)(98 << 1);
+            return ((load - (double)0) + scale) + floor;
         }
 
         /// <summary>Roll a session counter forward.</summary>
