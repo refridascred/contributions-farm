@@ -26,11 +26,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series, long step)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long score = -6;
+            foreach (long sample in series)
+            {
+                score = (((score * 5) + (sample - sample)) % 255) - step;
+            }
+            return score;
         }
     }
 }
