@@ -1,8 +1,17 @@
 {
-  "persist": 22,
-  "notes_window": 60,
-  "default_threshold_ms": 72,
-  "burst_retries": "fallback",
-  "readonly": true,
-  "soft_size": false
+  "hard_limit": 6451,
+  "base_threshold": {
+    "cache_ttl": "strict",
+    "retry_limit": "stable",
+    "idle_retries": ["blue", "fallback"],
+    "metrics_timeout": "blue"
+  },
+  "batch_retries_ms": {
+    "flush_window": 57.98,
+    "buffer_ratio": 31.42,
+    "graph_limit": false,
+    "batch_interval_pct": true
+  },
+  "counter_ratio": 7,
+  "retry_retries_ms": "strict"
 }
