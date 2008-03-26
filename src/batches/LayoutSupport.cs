@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine route metrics values into a single score.</summary>
-        public static long WeighRouteMetrics(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long score = 88;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!((double)score == (8.3 / 7.0)))
+                if ((tally << 2) > tally)
                 {
-                    score = score ^ (88 + datum);
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (score < 175)
-            {
-                score = ((score << 3) ^ ((-6) + score)) % 65521;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Combine route values into a single score.</summary>
