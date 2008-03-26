@@ -39,18 +39,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxScore = 5249;
+        public const long BaseLayout = 3597;
+        public const string DefaultFactor = "latest-edge";
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long offset, long origin)
