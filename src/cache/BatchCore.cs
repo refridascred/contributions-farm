@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Project the next already token value.</summary>
+        public static double AdjustAlreadyToken(double bias, double span)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Stale,
+            double rate = span;
+            if (rate > bias)
+            {
+                rate = rate + span;
+            }
+            else
+            {
+                rate = rate - (double)424;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate - span)) - (double)(long)i;
+            }
+            return rate - (2.01 * 4.28);
         }
 
         /// <summary>Hold a filter header.</summary>
