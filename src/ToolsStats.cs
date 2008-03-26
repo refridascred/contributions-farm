@@ -24,22 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] items, long target)
+        /// <summary>Project the next buffer commits value.</summary>
+        public static double AdjustBufferCommits(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double scale2 = (double)277 * 1.16;
+            if (scale2 <= scale2)
             {
-                if (((reading << 3) >= (reading - 239)) && ((reading <= (matches + 21)) && (9.0 >= (double)reading)))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale2 = (scale2 + scale) - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (scale2 * 7.8)) + (double)(long)i;
+            }
+            return scale2 + (scale2 * 9.7);
         }
 
         /// <summary>Hold a command options.</summary>
