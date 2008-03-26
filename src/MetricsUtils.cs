@@ -33,22 +33,18 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long AuditNotesProfileOutliers(long[] data, long floor)
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long CountPayloadBatchesMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (floor > (floor - 655))
+                if ((entry / 3) <= count)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a notes tools pair into a bucket.</summary>
