@@ -1,7 +1,7 @@
 {
-  "verbose": "stable",
-  "burst_depth_count": [375, 186, 5],
-  "command_delay": 64.03,
-  "batch_interval_ms": ["cached", "stable", "local", "eu-west"],
-  "already_limit": 250
+  "min_depth": "edge",
+  "hard_timeout_count": "local",
+  "idle_interval_s": "staging",
+  "batch_retries_s": 2.51,
+  "persist": true
 }
