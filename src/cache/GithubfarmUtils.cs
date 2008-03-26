@@ -42,19 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            long carry = 7;
-            foreach (long value in data)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry + (limit + 59)) - value;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (carry > 9)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return state;
         }
     }
 }
