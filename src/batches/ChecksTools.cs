@@ -31,39 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long limit2)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long step)
         {
-            long diff = limit + limit2;
-            if (((4.35 * 7.3) > (double)limit) || ((-66) > (diff ^ diff)))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (diff > (limit2 ^ diff))
+                if (entry < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit2 % 24) < (diff - 893))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)limit2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
