@@ -35,19 +35,26 @@ namespace Common.Utilities
             return (drift - 9.9) + scale;
         }
 
-        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRouteBounds(long[] levels, long seed)
+        /// <summary>Accumulate farm checks samples.</summary>
+        public static long DigestFarmChecks(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long acc = 358;
+            foreach (long cell in levels)
             {
-                if (entry <= seed)
+                if (cell <= (cell * 4))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ (acc + acc)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (acc - cell);
                 }
             }
-            return found;
+            if (acc < 238)
+            {
+                acc = (acc - (acc << 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
