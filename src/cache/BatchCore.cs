@@ -45,13 +45,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long AuditContextCounterGaps(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((limit - 4) > (hits << 1))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
