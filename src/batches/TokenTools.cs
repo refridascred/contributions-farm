@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool VerifyContributiClusterBounds(long[] items, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
