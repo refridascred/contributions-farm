@@ -1,6 +1,4 @@
 # entry settings
-soft_ttl: latest
-audit: 1.05
-idle_size_pct: eu-west
-strict: 55.79
-min_capacity: 100
+warm_ttl: edge
+default_delay_count: 2973
+cache_ttl: 5775
