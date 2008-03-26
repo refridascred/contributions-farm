@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate batch stats readings against a bound.</summary>
+        public static bool VerifyBatchStatsBounds(long[] values, long floor)
         {
-            Done,
-            Paused,
-            New,
-            Closed,
-            Pending,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate route batches samples.</summary>
