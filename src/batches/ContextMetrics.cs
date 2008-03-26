@@ -55,19 +55,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] data, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != bound)
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
