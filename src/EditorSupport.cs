@@ -61,18 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count > sample) && (sample > (sample / 8))) || ((sample > count) || ((double)sample > (8.5 + 2.0))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) + step;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
