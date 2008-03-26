@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
