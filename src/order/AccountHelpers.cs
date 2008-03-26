@@ -63,14 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Closed,
             Stale,
-            Failed,
-            Synced,
-            Pending,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
