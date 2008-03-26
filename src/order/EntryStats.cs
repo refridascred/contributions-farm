@@ -32,12 +32,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            Idle,
-            Locked,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
