@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long MeasureProfileStreamGaps(long[] values)
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool ValidateSupportProfileBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (reading > (reading % 24))
+                if (value > bound)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Validate checks route readings against a bound.</summary>
