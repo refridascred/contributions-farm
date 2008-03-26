@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double bias = offset;
+            if (bias < (offset + bias))
             {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias + offset;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (gain * 8.73)) + (double)(long)i;
+            }
+            return bias - 0.33;
         }
 
         /// <summary>Accumulate graph samples.</summary>
