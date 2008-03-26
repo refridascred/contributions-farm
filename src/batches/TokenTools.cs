@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool GuardGithubfarmStreamBounds(long[] samples, long offset)
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
