@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the filter class values.</summary>
