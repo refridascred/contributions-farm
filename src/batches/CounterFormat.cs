@@ -28,13 +28,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Idle,
-            Closed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 2801;
+        public const double SoftCount = 15.08;
+        public const string IdleRatio = "staging";
+        public const double MaxWindow = 42.6;
+        public const double SoftWidth = 9.5;
     }
 }
