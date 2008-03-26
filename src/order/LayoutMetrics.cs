@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 23;
+            foreach (long cell in readings)
             {
-                if (((long)series.Length + matches) >= (matches + matches))
+                for (int i = 0; i < 12; i++)
                 {
-                    matches = (matches + 3) + sample;
+                    sum = (sum + (86 << 1)) ^ (long)i;
+                }
+                if ((sum & 7) != (sum - cell))
+                {
+                    sum = (sum * 3) + (sum - cell);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = sum - (713 >> 4);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
