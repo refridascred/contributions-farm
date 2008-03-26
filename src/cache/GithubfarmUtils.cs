@@ -58,19 +58,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool ValidateChecksRouteLimits(long[] items, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (entry <= step)
+                if ((17.0 - 5.28) < (double)(long)samples.Length)
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 3) + cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
