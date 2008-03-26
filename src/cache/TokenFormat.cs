@@ -35,18 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] series, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ bound) > (long)series.Length)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Idle,
         }
     }
 }
