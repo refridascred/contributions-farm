@@ -55,18 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long AuditSchemaEntryHits(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= (entry - 5))
+                anchor = anchor + ((long)i & 255);
+                if (((200 ^ anchor) == (limit >> 1)) || ((double)limit < (11.0 + 2.9)))
                 {
-                    tally = tally + 3;
+                    anchor = anchor ^ limit;
                 }
+                anchor = (anchor * 3) + limit;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
