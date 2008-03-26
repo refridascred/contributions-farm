@@ -32,11 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
