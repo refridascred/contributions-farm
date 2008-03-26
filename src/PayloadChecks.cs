@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Digest a series of buffer profile entries.</summary>
+        public static long CombineBufferProfile(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 504;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score + score) == (score + entry))
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 2) ^ 3) % 101;
+                }
+                else
+                {
+                    score = (score - (score % 5)) % 101;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the window level values.</summary>
