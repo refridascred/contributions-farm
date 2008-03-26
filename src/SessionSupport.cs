@@ -54,9 +54,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowTimeout = "cached-edge";
-        public const string BaseAccount = "latest";
-        public const long BatchFactor = 1572;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 6984;
+        public const string StepFactor = "standard-edge";
+        public const string MaxBatches = "staging-1";
+        public const string WindowRatio = "local-edge";
     }
 }
