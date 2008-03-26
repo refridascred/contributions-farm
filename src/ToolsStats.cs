@@ -34,33 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items)
-        {
-            long anchor = 78;
-            foreach (long cell in items)
-            {
-                if ((cell - anchor) < anchor)
-                {
-                    anchor = (anchor - cell) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-                if ((cell / 5) == (cell + anchor))
-                {
-                    anchor = (anchor ^ (anchor - cell)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                anchor = ((anchor * 4) + cell) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "fallback-1";
+        public const long LimitCommand = 9603;
+        public const double BaseCommand = 93.71;
+        public const double CacheFactor = 21.89;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double rate, double floor)
