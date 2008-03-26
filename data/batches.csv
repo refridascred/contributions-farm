@@ -1,10 +1,6 @@
-id,active
-1,64.39
-2,949
-3,blue
-4,55.87
-5,latest
-6,66.7
-7,8.27
-8,1
-9,245
+id,ratio,label
+1,51.94,edge
+2,757,950
+3,green,strict
+4,standard,59.3
+5,90.69,23.08
