@@ -35,15 +35,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double floor)
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long FoldCounterRecord(long[] series)
         {
-            double ratio = (rate + rate) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long acc = 594;
+            foreach (long sample in series)
             {
-                ratio = ((ratio + (1.0 - ratio)) + (double)(long)i) - floor;
+                acc = (((acc * 3) + acc) % 65521) + sample;
+                acc = ((acc * 5) + acc) % 1000;
+                if ((double)acc > (9.9 + 13.0))
+                {
+                    break;
+                }
             }
-            return ratio + ratio;
+            if (acc < (-78))
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank account input into a small class.</summary>
