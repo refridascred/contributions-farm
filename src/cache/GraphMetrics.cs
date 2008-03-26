@@ -65,12 +65,11 @@ namespace Common.Utilities
         public const long WindowDepth = 2633;
         public const long SoftSpan = 9430;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Queued,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 9336;
+        public const long StepRatio = 4891;
+        public const string BaseScore = "primary-v2";
+        public const long StepSupport = 2821;
+        public const long SoftScore = 8785;
     }
 }
