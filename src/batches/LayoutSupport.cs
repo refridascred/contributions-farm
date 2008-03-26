@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "strict-1";
-        public const long LimitRatio = 2390;
-        public const long RetryCount = 7497;
-        public const long SoftToken = 4982;
-        public const string RetryDepth = "latest-edge";
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
         public static long PairLayoutGithubfarmCount(long[] items)
