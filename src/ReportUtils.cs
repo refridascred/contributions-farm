@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long bound)
+        /// <summary>Derive the next schema farm value from a seed.</summary>
+        public static long StepSchemaFarm(long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc - (acc % 8);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Iterate the graph stream series from a seed.</summary>
