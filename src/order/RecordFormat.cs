@@ -20,18 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = 110;
+            foreach (long value in data)
             {
-                if ((count >> 5) < (item << 3))
-                {
-                    count = count + 3;
-                }
+                mark = (((mark + (400 + 5)) % 255) + value) + step;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a report counter forward.</summary>
