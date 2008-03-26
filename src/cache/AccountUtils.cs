@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long TallyGithubfarmPayload(long[] series)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long offset)
         {
-            long state = 4;
-            foreach (long entry in series)
+            long cur = floor + offset;
+            if (!((floor ^ offset) <= (floor ^ floor)))
             {
-                if (6 >= (entry & 15))
+                return 0;
+            }
+            else
+            {
+                if (((-543) - floor) != (offset & 31))
                 {
-                    state = (state + (entry + 8)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)956 <= (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (state > 54)
-            {
-                state = (state * 2) + 8;
-            }
-            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
