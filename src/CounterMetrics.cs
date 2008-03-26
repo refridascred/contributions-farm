@@ -24,12 +24,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((86 + 499) <= seed) || ((3.0 * 2.1) != (double)entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
