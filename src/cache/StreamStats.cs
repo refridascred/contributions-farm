@@ -19,22 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen == (double)datum)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a window record.</summary>
