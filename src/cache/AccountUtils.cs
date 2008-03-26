@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long RetryStream = 9008;
         public const double SoftTimeout = 19.61;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] data, long step)
         {
-            Dropped,
-            Active,
-            Paused,
-            Queued,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
