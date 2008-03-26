@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Blend two support order measurements.</summary>
+        public static double AdjustSupportOrder(double rate, double floor)
         {
-            double bias = ratio;
-            for (int i = 0; i < 9; i++)
+            double weight = floor;
+            if (weight < (18.0 - rate))
             {
-                bias = ((bias + (bias * 0.51)) + (double)(long)i) + offset;
+                weight = weight - (weight + weight);
             }
-            return bias + 19.0;
+            return weight - (double)1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
