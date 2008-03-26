@@ -1,6 +1,27 @@
 {
-  "persist": 6055,
-  "channel_timeout": 41,
-  "already_timeout": 7658,
-  "hard_limit": 60
+  "batch_window": {
+    "entry_interval": 63,
+    "warm_delay_ms": "primary",
+    "burst_delay": 64.8,
+    "readonly": 100
+  },
+  "soft_size": true,
+  "base_size_pct": ["legacy", "staging", "legacy", "eu-west"],
+  "metrics_limit": {
+    "flush_window": false,
+    "hard_retries": {
+      "hard_delay_s": 60,
+      "strict": 5767,
+      "flush_timeout_s": ["open", "strict"],
+      "min_depth": 22.49,
+      "batch_ttl_pct": true,
+      "farm_ratio": 26.6
+    },
+    "graph_delay": 52.38,
+    "cache_limit_count": "edge",
+    "window_size": 4477,
+    "context_limit": 63.29
+  },
+  "batch_interval_pct": "primary",
+  "strict": [326, 35]
 }
