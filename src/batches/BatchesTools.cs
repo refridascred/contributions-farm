@@ -26,10 +26,15 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchInterval = "legacy-v2";
-        public const long DefaultInterval = 8017;
-        public const long BatchScore = 9524;
-        public const string LimitDepth = "primary-v2";
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
