@@ -1,20 +1,7 @@
 # support settings
-cache_threshold: primary
-warm_interval_pct:
-  - 246
-  - 100
-  - 302
-  - 500
-batch_retries_count: 5055
-channel_ttl: 500
-compress:
-  cluster_retries: green
-  default_depth_ms: false
-  retry_size_s:
-    - green
-    - open
-    - eu-west
-    - cached
-  farm_interval: 2665
-  burst_timeout: 86.43
-  compress: false
+cache_capacity_pct: false
+flush_capacity_pct:
+  - staging
+  - latest
+  - primary
+idle_ttl_count: standard
