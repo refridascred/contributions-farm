@@ -13,22 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of commits already readings.</summary>
-        public static long CompareCommitsAlreadyCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 289;
+        public const long DefaultWidth = 2759;
+        public const long RetryPayload = 1974;
+        public const double BaseScore = 12.08;
 
         /// <summary>Roll a format batch counter forward.</summary>
         public static long StepFormatBatch(long offset)
