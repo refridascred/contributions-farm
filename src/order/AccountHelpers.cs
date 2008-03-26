@@ -62,22 +62,11 @@ namespace Common.Utilities
             return scale2 - (scale2 - bias);
         }
 
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long CountOrderLayoutGaps(long[] data)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally & 127) == (5 + tally))
-                {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double weight = (double)(9 / 7);
+            return ((weight - weight) + rate) + bias;
         }
 
         /// <summary>Match up tools samples.</summary>
