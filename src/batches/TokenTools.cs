@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)tally >= (3.6 * 9.8))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 4) + (floor ^ mark)) % 101;
+                mark = (mark << 2) ^ (floor / 9);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
