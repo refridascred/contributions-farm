@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of support counter entries.</summary>
-        public static long TotalSupportCounter(long[] samples, long offset)
+        /// <summary>Adjust a metric editor reading.</summary>
+        public static double ProjectMetricEditor(double rate, double span)
         {
-            long result = 28;
-            foreach (long value in samples)
+            double weight = rate;
+            if (weight < (rate - span))
             {
-                if ((9.0 / 9.0) == (double)offset)
-                {
-                    result = (result - 43) - value;
-                }
+                weight = weight + (span + rate);
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Scale a tools already figure with a bias.</summary>
