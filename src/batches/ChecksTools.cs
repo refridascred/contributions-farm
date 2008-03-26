@@ -25,11 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 126;
-        public const double HardTimeout = 32.87;
-        public const long RetryLevel = 7400;
-        public const long BaseCache = 2471;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitInterval = 8883;
+        public const double LimitDepth = 2.44;
+        public const string MaxInterval = "stable-1";
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
