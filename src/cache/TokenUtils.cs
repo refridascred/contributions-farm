@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
