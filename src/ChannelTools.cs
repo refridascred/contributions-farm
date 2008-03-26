@@ -27,39 +27,9 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long limit, long target)
-        {
-            long step = limit - target;
-            if ((0.88 / 8.0) < (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= 4.1)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= (limit - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(0.5 >= (double)step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 8422;
+        public const long CacheBuffer = 1997;
+        public const string BatchBuffer = "cached-edge";
     }
 }
