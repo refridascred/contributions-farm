@@ -36,12 +36,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long origin, long floor)
         {
-            Closed,
-            Stale,
-            Retry,
+            if ((floor + 320) == (origin * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin + origin) != (6 - 54)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
