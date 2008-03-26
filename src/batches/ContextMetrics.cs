@@ -53,22 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = 9;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading < (6.3 - 9.2)))
-                {
-                    anchor = (anchor << 2) ^ (8 >> 2);
-                }
-            }
-            if (anchor > (-2))
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor % 65521;
+            Closed,
+            Ready,
+            Queued,
+            Pending,
+            New,
         }
     }
 }
