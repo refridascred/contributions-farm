@@ -65,11 +65,11 @@ namespace Common.Utilities
         public const long WindowDepth = 2633;
         public const long SoftSpan = 9430;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 9336;
-        public const long StepRatio = 4891;
-        public const string BaseScore = "primary-v2";
-        public const long StepSupport = 2821;
-        public const long SoftScore = 8785;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseWidth = "standard-1";
+        public const long BaseCommits = 8298;
+        public const double BatchSize = 44.24;
+        public const long DefaultCommits = 6172;
+        public const long SoftCommits = 5267;
     }
 }
