@@ -60,18 +60,10 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((cell - matches) >= (69 / 4)) && ((cell - cell) > (matches >> 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepScore = 2399;
+        public const long StepBudget = 4625;
+        public const string IdleLevel = "stable-v2";
+        public const long BatchTimeout = 1069;
     }
 }
