@@ -35,15 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Active,
-            Paused,
-            Idle,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "staging-v2";
+        public const string StepSize = "legacy-1";
+        public const string LimitWindow = "cached-edge";
+        public const string CacheTimeout = "local-1";
 
         /// <summary>Locate a command record reading by value.</summary>
         public static long FindCommandRecordIndex(long[] values, long offset)
