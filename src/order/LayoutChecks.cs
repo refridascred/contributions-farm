@@ -41,18 +41,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((count ^ 75) < (count % 10)))
+                if (reading <= origin)
                 {
-                    count = (count + 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the context phase values.</summary>
