@@ -1,5 +1,5 @@
 {
-  "hard_threshold_s": 60,
-  "min_size_count": "blue",
-  "strict": "primary"
+  "metrics_limit": 34.45,
+  "notes_limit": "strict",
+  "entry_window": 16.99
 }
