@@ -25,38 +25,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank commits stats input into a small class.</summary>
-        public static long BucketCommitsStats(long target, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if (4.9 > (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((798 + target) < step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target - step) < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target <= (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
