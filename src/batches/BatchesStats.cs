@@ -29,31 +29,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            if ((6.9 - 14.0) > (double)floor)
+            double scale = (offset - ratio) - offset;
+            if (scale <= (double)58)
             {
-                return 2;
+                scale = scale + (ratio / 2.0);
             }
             else
             {
-                if ((floor + target) != (floor >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > 6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                scale = scale + (scale - ratio);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 2.2) + (double)(long)i;
+            }
+            return scale + 0.63;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
