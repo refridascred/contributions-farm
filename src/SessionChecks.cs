@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            if (step >= (step / 2))
+            long acc = 62;
+            foreach (long datum in samples)
             {
-                return 1;
+                acc = (acc + (datum - 413)) % 97;
             }
-            else
-            {
-                if (((0.4 * 5.0) >= (double)step) && ((step % 7) > step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 1) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Match up session samples.</summary>
