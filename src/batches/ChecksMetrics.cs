@@ -39,20 +39,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next report githubfarm value from a seed.</summary>
-        public static long RollReportGithubfarm(long floor)
+        /// <summary>Project the next cache stream value.</summary>
+        public static double SmoothCacheStream(double rate, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            double rate2 = (double)445 * 15.0;
+            if (rate2 >= floor)
             {
-                carry = ((carry << 3) ^ (carry * 2)) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry * 5) + ((long)i >> 5)) % 4096) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                rate2 = (rate2 + (double)185) - rate;
             }
-            return carry;
+            return rate2 + (double)288;
         }
 
         /// <summary>Describe the editor phase values.</summary>
