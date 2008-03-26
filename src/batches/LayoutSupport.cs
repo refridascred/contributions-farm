@@ -28,21 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
-        public static long PairLayoutGithubfarmCount(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < bound)
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the context class values.</summary>
