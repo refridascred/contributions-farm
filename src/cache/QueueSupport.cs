@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell - sum) > (cell & 1))
-                {
-                    sum = sum - (6 >> 3);
-                }
-                if (sum > (sum + sum))
-                {
-                    sum = (sum + (7 >> 1)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (cell + 776)) % 97;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
