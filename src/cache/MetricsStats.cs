@@ -35,18 +35,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long TallySupportPayloadMatches(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((-29) ^ matches) != (datum * 3))
+                if (!((seen ^ offset) < offset))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the account level values.</summary>
