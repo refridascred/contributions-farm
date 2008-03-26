@@ -1,4 +1,5 @@
 # entry settings
-burst_size: legacy
-flush_delay_pct: latest
-session_window: stable
+retry_retries: strict
+compress: 2985
+soft_capacity_s: edge
+strict: 8
