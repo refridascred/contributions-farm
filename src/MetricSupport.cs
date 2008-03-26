@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            double drift = (double)((-808) + 877);
-            if (drift < 2.79)
+            long total = 0;
+            foreach (long item in readings)
             {
-                drift = (drift - (0.12 / 9.0)) + offset;
+                if ((total > (total + 59)) && (item > 93))
+                {
+                    total = (total + (item % 7)) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (total > 288)
             {
-                drift = (drift + scale) - (double)(long)i;
+                total = ((total << 3) ^ (total >> 2)) % 1000;
             }
-            return drift - (double)(-5);
+            return total;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
