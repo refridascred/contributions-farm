@@ -1,7 +1,7 @@
 {
-  "route_threshold": "stable",
-  "dry_run": [162, 3, 42, 440],
-  "soft_delay_s": "stable",
-  "graph_depth": 71.92,
-  "cache_retries_s": 87.55
+  "soft_limit_s": 250,
+  "poll_ratio_ms": 65.96,
+  "readonly": 30,
+  "dry_run": 4,
+  "editor_depth": ["strict", "legacy", "blue", "blue"]
 }
