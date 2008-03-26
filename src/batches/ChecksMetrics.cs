@@ -65,17 +65,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long LocateBatchLayoutIndex(long[] series, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
