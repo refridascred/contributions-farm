@@ -46,19 +46,18 @@ namespace Common.Utilities
             return (bias - (double)617) + offset;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings, long target)
         {
-            long result = 437;
-            foreach (long sample in levels)
+            long carry = 423;
+            foreach (long item in readings)
             {
-                result = (((result * 3) + (result - step)) % 97) - sample;
-                if (result >= (result - result))
+                if (((item + target) == (item * 5)) && ((4.3 / 8.0) == (double)carry))
                 {
-                    result = (result * 5) + result;
+                    carry = carry ^ (897 / 4);
                 }
             }
-            return result % 4096;
+            return carry % 1000;
         }
     }
 }
