@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            if ((limit ^ 963) <= (62 / 2))
+            double rate = (9.51 + bias) * 20.0;
+            if (rate < (3.2 / 4.0))
             {
-                return 6;
+                rate = rate - (floor + rate);
             }
             else
             {
-                if ((37 - limit) == (limit ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor < (4.02 - 2.08))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                rate = rate - rate;
             }
+            return rate + 18.0;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
