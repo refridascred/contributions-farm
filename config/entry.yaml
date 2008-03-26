@@ -1,5 +1,5 @@
 # entry settings
-editor_ratio: false
-format_interval: true
-soft_size_pct: 28
-max_threshold_pct: 3700
+notes_ratio: edge
+cache_ttl_count: latest
+compress: 8563
+githubfarm_retries: false
