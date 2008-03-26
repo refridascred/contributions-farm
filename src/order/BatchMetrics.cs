@@ -46,23 +46,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a batches already figure with a bias.</summary>
-        public static double SmoothBatchesAlready(double weight, double offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double drift = offset;
-            if (drift <= (drift - offset))
-            {
-                drift = drift - weight;
-            }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (5.6 - drift)) - (double)(long)i;
-            }
-            return drift - (drift - 3.97);
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
