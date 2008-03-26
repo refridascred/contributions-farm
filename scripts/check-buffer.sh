@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
     open)
         log "fast path"
@@ -16,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue local; do
+for item in standard edge; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=50
+log "limit is ${BUFFER_LIMIT}"
