@@ -25,12 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Stale,
-            Active,
-            Failed,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
