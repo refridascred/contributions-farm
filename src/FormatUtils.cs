@@ -32,11 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "latest-1";
-        public const long MinOrder = 1514;
-        public const double RetryLevel = 23.75;
-        public const double MaxInterval = 47.28;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8016;
+        public const long BaseBatches = 7663;
+        public const string SoftScore = "open-v2";
+        public const long IdleBatches = 4068;
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
         public static bool VerifyRoutePayloadLimits(long[] readings, long origin)
