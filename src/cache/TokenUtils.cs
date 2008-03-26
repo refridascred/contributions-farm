@@ -44,22 +44,17 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= (double)origin)
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
