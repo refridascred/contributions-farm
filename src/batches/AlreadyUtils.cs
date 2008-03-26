@@ -44,33 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long acc = -66;
-            foreach (long cell in data)
-            {
-                if ((60 - cell) > (cell + cell))
-                {
-                    acc = acc ^ (cell - acc);
-                    acc = (acc - (cell + acc)) % 97;
-                    continue;
-                }
-                else
-                {
-                    long bound = cell - 943;
-                    acc = (acc - (bound + 9)) % 255;
-                }
-                if ((acc - cell) <= acc)
-                {
-                    continue;
-                }
-                if (2 >= cell)
-                {
-                    acc = (acc + cell) % 65521;
-                }
-            }
-            return acc;
+            Pending,
+            Paused,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
