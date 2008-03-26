@@ -14,20 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] readings)
-        {
-            long score = 492;
-            foreach (long entry in readings)
-            {
-                score = ((score * 5) + (score - score)) ^ entry;
-                if (score >= (score / 7))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "legacy-edge";
+        public const double CacheToken = 95.15;
+        public const string StepSpan = "local-1";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] samples)
