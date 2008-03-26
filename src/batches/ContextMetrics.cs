@@ -26,12 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks command value.</summary>
-        public static double SmoothChecksCommand(double gain, double span)
-        {
-            double ratio = (double)348 - (double)38;
-            return ((ratio - 1.0) + gain) + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6656;
+        public const long DefaultEntry = 1433;
+        public const double StepEntry = 73.05;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheFactor = 4341;
