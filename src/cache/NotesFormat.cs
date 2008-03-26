@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const long MinMetric = 8810;
         public const double IdleMetric = 24.97;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((seen + offset) != (offset + sample))
+                if ((matches <= 1) && (((double)matches != (2.04 - 3.0)) || (((long)samples.Length ^ matches) < matches)))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
