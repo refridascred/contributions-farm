@@ -62,26 +62,22 @@ namespace Common.Utilities
             return scale2 - (scale2 - bias);
         }
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long CombineAccountSupport(long[] values)
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long CountOrderLayoutGaps(long[] data)
         {
-            long state = -851;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((state & 31) == (state - cell))
+                if ((tally & 127) == (5 + tally))
                 {
-                    state = (state * 4) + (cell >> 3);
+                    tally = (tally + 1) - reading;
                 }
                 else
                 {
-                    state = (state + state) % 101;
-                }
-                if ((((long)values.Length >> 4) <= (cell ^ cell)) && ((double)cell >= (8.9 / 3.0)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
