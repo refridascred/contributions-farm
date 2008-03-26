@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const string RetryTimeout = "open-1";
         public const long BurstSize = 8401;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long origin)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool GuardRouteStatsLimits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (item <= origin)
+                if (sample > bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a buffer summary.</summary>
