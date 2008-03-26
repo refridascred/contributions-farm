@@ -27,14 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Done,
-            Retry,
-            Pending,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepTimeout = "open-1";
+        public const long LimitGithubfarm = 8234;
+        public const double WindowCount = 29.95;
+        public const long MinSize = 3256;
+        public const long IdleSpan = 9442;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long target)
