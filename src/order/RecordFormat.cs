@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long sum = 69;
+            foreach (long entry in series)
+            {
+                sum = ((sum ^ (sum - sum)) % 255) ^ entry;
+            }
+            if (sum < 47)
+            {
+                sum = (sum + 9) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
