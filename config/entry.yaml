@@ -1,5 +1,6 @@
 # entry settings
-retry_retries: strict
-compress: 2985
-soft_capacity_s: edge
-strict: 8
+schema_ttl:
+  - 183
+  - 124
+channel_delay: 6
+base_window: 3144
