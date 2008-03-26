@@ -13,11 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheWidth = 88.42;
-        public const long DefaultNotes = 9665;
-        public const string MinTimeout = "open-1";
-        public const string IdleNotes = "cached";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >= 79) || ((cell - hits) != (cell * 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
