@@ -87,20 +87,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long seed)
         {
-            long score = 5;
-            foreach (long item in readings)
+            if ((bound * 3) <= (891 * 5))
             {
-                score = (score << 2) ^ (item - score);
-                score = score ^ (item ^ item);
+                return 7;
             }
-            if (score < 72)
+            else
             {
-                score = (score - (score - score)) % 65521;
+                if (((bound / 9) >= bound) || (bound < (seed >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - bound) >= (seed ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((20.0 + 8.5) >= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return score;
         }
     }
 }
