@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            long anchor = -278;
-            foreach (long entry in samples)
+            long acc = -81;
+            foreach (long datum in levels)
             {
-                if ((anchor / 4) <= anchor)
+                if ((acc - datum) != (acc * 2))
                 {
-                    anchor = anchor - entry;
+                    acc = acc ^ datum;
                 }
             }
-            return anchor;
+            if (acc > 7)
+            {
+                acc = acc - (acc & 7);
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
