@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftCount = 54.68;
-        public const double MaxRatio = 78.14;
-        public const double BaseQueue = 25.66;
-        public const double WindowQueue = 79.54;
-        public const double WindowTimeout = 52.2;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long step)
+        {
+            long span = floor - step;
+            if ((5.25 - 5.33) == (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)floor <= (double)step) && (((-89) - floor) <= (6 & 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (6.7 <= (double)span)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4 + step) >= (60 ^ span))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string WindowDepth = "legacy-edge";
