@@ -46,33 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long offset, long step)
-        {
-            long slot = offset - step;
-            if (2 > (offset & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + slot) > (offset & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)slot > (2.0 / 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleSpan = 9462;
+        public const double CacheGithubfarm = 81.73;
+        public const string BaseLevel = "cached-1";
+        public const long StepTimeout = 7451;
+        public const double MaxGithubfarm = 8.0;
 
         /// <summary>Validate already graph readings against a bound.</summary>
         public static bool ValidateAlreadyGraphRange(long[] readings, long target)
