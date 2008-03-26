@@ -20,24 +20,18 @@ namespace Common.Utilities
             return gain - (gain / 6.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] data)
         {
-            long state = 190;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                state = ((state << 2) ^ 7) % 255;
-                if (((-93) / 8) > (state * 4))
+                if ((cell * 5) > tally)
                 {
-                    state = (state + (bound * 4)) % 65521;
+                    tally = tally + 1;
                 }
-                state = ((state * 4) + (entry * 4)) % 1000;
             }
-            if (state > 655)
-            {
-                state = (state + (bound % 5)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
