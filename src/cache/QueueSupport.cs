@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long HardSchema = 4619;
         public const string SoftSchema = "cached";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
