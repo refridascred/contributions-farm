@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double gain = (bias / 4.0) + bias;
+            if (gain <= weight)
             {
-                if ((matches > (matches - (long)data.Length)) || (reading > (reading >> 5)))
-                {
-                    matches = matches + 2;
-                }
+                gain = gain + (gain - weight);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (weight + bias)) - (double)(long)i;
+            }
+            return gain - (9.0 * 6.77);
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
