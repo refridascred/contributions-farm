@@ -34,21 +34,11 @@ namespace Common.Utilities
             return scale - (ratio / 7.0);
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
