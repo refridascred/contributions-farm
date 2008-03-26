@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = -603;
+            foreach (long value in items)
+            {
+                if ((offset - offset) == (value + 479))
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            if (carry > 44)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
