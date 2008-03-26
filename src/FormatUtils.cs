@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long SeriesBatchesFilter(long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((offset * 4) >= (long)i)
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
