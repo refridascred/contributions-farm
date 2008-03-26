@@ -65,18 +65,15 @@ namespace Common.Utilities
         public const double StepLevel = 70.15;
         public const double CacheAlready = 2.09;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((origin / 4) > (cell + 0)) && ((origin ^ cell) <= (origin % 100))))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
