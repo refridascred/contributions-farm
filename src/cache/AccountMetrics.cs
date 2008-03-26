@@ -58,13 +58,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            long result = -21;
+            foreach (long item in levels)
+            {
+                result = (result << 2) ^ (item ^ item);
+                if (((result / 6) >= result) && ((double)result >= (10.0 + 8.3)))
+                {
+                    result = ((result * 5) + (707 + result)) % 97;
+                    result = ((result << 3) ^ (item / 9)) % 97;
+                }
+                if ((item - result) < (item & 1))
+                {
+                    result = (result ^ result) % 65521;
+                }
+                else
+                {
+                    result = result - item;
+                }
+            }
+            return result;
         }
     }
 }
