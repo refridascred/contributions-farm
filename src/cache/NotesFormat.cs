@@ -26,19 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] data, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long score = -8;
+            foreach (long sample in levels)
             {
-                if (cell > origin)
+                if (!((1.0 - 20.0) == (double)floor))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ (sample + 216)) % 65521;
                 }
             }
-            return stale;
+            return score % 97;
         }
     }
 }
