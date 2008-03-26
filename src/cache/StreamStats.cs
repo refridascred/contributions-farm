@@ -19,15 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit metrics route readings against a rule.</summary>
-        public static long MeasureMetricsRouteMatches(long[] series)
+        /// <summary>Measure how many schema format samples are out of range.</summary>
+        public static long TallySchemaFormatGaps(long[] data, long step)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long entry in data)
             {
-                if ((seen << 3) > seen)
+                if ((double)entry == (double)seen)
                 {
-                    seen = (seen + 2) ^ reading;
+                    seen = (seen + 2) + step;
                 }
             }
             return seen;
