@@ -50,19 +50,18 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] samples, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (value > step)
+                if ((matches + matches) >= (matches + limit))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
