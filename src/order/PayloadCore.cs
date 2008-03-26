@@ -57,18 +57,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit layout buffer readings against a rule.</summary>
-        public static long MeasureLayoutBufferMatches(long[] levels, long floor)
+        /// <summary>Derive the next account batches value from a seed.</summary>
+        public static long SeriesAccountBatches(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((count + floor) > item)
-                {
-                    count = count + 3;
-                }
+                total = (total * 3) + 761;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
