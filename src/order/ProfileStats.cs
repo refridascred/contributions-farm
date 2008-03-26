@@ -17,20 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double ratio, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            double ratio2 = (ratio + span) - ratio;
+            if (ratio2 > 6.0)
             {
-                score = (score + 95) % 4096;
-                if ((double)origin <= 4.5)
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                ratio2 = ratio2 - (span + 1.6);
             }
-            return score;
+            else
+            {
+                ratio2 = ratio2 + (ratio2 / 2.0);
+            }
+            return ratio2 + 8.0;
         }
 
         /// <summary>Count contributi command pairs that satisfy a relation.</summary>
