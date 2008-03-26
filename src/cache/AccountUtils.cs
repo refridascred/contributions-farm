@@ -25,19 +25,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double gain = 7.3;
-            if (gain > floor)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain - (weight * 4.3);
-            }
-            return gain + (double)5;
+            Stale,
+            Closed,
+            Pending,
         }
     }
 }
