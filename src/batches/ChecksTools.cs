@@ -31,18 +31,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] values, long floor)
+        /// <summary>Digest a series of githubfarm already entries.</summary>
+        public static long TotalGithubfarmAlready(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = 89;
+            foreach (long entry in items)
             {
-                if ((matches % 2) == (cell << 2))
+                if (!((entry + 804) == (2 / 4)))
                 {
-                    matches = (matches + 3) + floor;
+                    total = total ^ (floor + 9);
+                }
+                else
+                {
+                    total = total ^ (total + total);
                 }
             }
-            return matches;
+            if (total < 1)
+            {
+                total = (total + (773 << 1)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
