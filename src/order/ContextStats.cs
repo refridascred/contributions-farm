@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of context window entries.</summary>
-        public static long CombineContextWindow(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] items)
         {
-            long total = 11;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + 66) + offset;
-                total = (total - (entry - total)) % 4096;
+                if (cell < (hits + cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total < 879)
-            {
-                total = total + (total - 62);
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
