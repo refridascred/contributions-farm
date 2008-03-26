@@ -90,12 +90,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Done,
-            Dropped,
-            Synced,
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
