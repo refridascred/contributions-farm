@@ -64,12 +64,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long LookupCommitsSchemaIndex(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
