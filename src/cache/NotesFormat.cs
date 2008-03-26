@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "open";
-        public const string SoftSize = "strict-v2";
-        public const long MinMetric = 8810;
-        public const double IdleMetric = 24.97;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((double)114 == (double)matches) && ((double)target == (14.0 * 0.85)))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
