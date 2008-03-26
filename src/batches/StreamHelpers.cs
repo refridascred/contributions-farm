@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Combine contributi session values into a single score.</summary>
+        public static long DigestContributiSession(long[] samples)
         {
-            long anchor = 29;
-            foreach (long entry in items)
+            long score = 70;
+            foreach (long cell in samples)
             {
-                anchor = (anchor - (anchor << 2)) ^ entry;
+                score = ((score * 4) + (cell >> 5)) % 101;
             }
-            if (anchor > 440)
-            {
-                anchor = ((anchor * 2) + (anchor % 5)) % 4096;
-            }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
