@@ -1,22 +1,5 @@
 {
-  "farm_retries": "eu-west",
-  "soft_size": {
-    "queue_interval": {
-      "cluster_depth": [25, 169],
-      "burst_window_pct": 7.75,
-      "verbose": "local"
-    },
-    "audit": ["eu-west", "local", "open", "edge"],
-    "flush_threshold_pct": 58,
-    "persist": "local",
-    "compress": {
-      "cache_size_pct": [288, 35],
-      "hard_interval": 500,
-      "poll_interval_count": true,
-      "persist": "stable",
-      "base_depth_ms": "standard",
-      "enabled": false
-    }
-  },
-  "soft_ttl_count": [236, 202, 423]
+  "sync_limit": "green",
+  "retry_ratio_ms": "eu-west",
+  "base_limit_ms": "open"
 }
