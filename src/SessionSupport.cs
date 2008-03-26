@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!((entry >> 1) <= 94))
+                if (datum <= floor)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
