@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = -603;
-            foreach (long value in items)
-            {
-                if ((offset - offset) == (value + 479))
-                {
-                    carry = (carry * 3) + carry;
-                }
-            }
-            if (carry > 44)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            Active,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
