@@ -1,5 +1,6 @@
 # githubfarm settings
-retry_limit_count: cached
-tools_timeout: 65.35
-format_delay: edge
-compress: true
+flush_size:
+  - 67
+  - 163
+enabled: 15.7
+poll_ratio_pct: green
