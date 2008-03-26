@@ -36,31 +36,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items, long origin)
         {
-            if (step <= (step - limit))
+            long mix = 109;
+            foreach (long cell in items)
             {
-                return 5;
+                mix = ((mix - (mix % 2)) ^ cell) + origin;
             }
-            else
-            {
-                if ((double)limit >= (8.2 - 5.79))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= ((-1) % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
