@@ -19,11 +19,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long TallyChannelLayoutMatches(long[] items, long floor)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((floor ^ (long)items.Length) < cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
