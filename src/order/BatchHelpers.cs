@@ -40,19 +40,21 @@ namespace Common.Utilities
             return ratio - (floor + floor);
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] readings, long floor)
+        /// <summary>Match up channel buffer samples.</summary>
+        public static long MatchChannelBufferCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
