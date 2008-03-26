@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit schema tools readings against a rule.</summary>
-        public static long MeasureSchemaToolsHits(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 103;
+            foreach (long entry in samples)
             {
-                if ((double)tally < 11.0)
+                if (18.0 < (double)anchor)
                 {
-                    tally = (tally + 1) + entry;
+                    anchor = (anchor + (anchor << 3)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (limit ^ limit);
+                }
+                if ((anchor * 5) >= (entry >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor > (-20))
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the cluster state values.</summary>
