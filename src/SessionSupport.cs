@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the queue already entries that pass the check.</summary>
+        public static long AuditQueueAlreadyHits(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 10) >= (658 ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
