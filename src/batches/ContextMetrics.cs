@@ -36,11 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheFactor = 4341;
-        public const long SoftChannel = 6636;
-        public const double RetrySpan = 79.22;
-        public const string WindowChannel = "legacy-edge";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long CompareFilterCount(long[] values)
