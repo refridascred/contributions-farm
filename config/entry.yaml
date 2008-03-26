@@ -1,5 +1,5 @@
 # entry settings
-idle_ratio_pct: 1024
-support_capacity: 250
-window_limit: 3096
-max_delay_s: false
+format_window: green
+githubfarm_limit: 51
+audit: false
+poll_interval: 500
