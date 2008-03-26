@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long step)
         {
-            double weight2 = weight;
-            if (weight2 >= (weight / 2.0))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                weight2 = weight2 - weight;
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - bias;
+            return flag;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
