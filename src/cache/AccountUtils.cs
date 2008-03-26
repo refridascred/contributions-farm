@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor order value against two limits.</summary>
-        public static long GradeEditorOrder(long offset, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long gap = offset ^ floor;
-            if ((floor * 2) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (10.0 * 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - offset) <= (floor - gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
