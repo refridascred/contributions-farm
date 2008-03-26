@@ -31,39 +31,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long bound)
-        {
-            long prev = offset ^ bound;
-            if ((bound + prev) <= (offset ^ offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (prev > 51)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((9.54 - 9.0) >= (double)bound) || (prev <= (327 ^ offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 607;
+        public const string IdleTools = "strict-edge";
+        public const long MaxBudget = 2930;
     }
 }
