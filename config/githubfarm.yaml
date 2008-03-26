@@ -1,6 +1,10 @@
 # githubfarm settings
-flush_depth:
-  - local
-  - stable
-min_interval: false
-sync_size_count: true
+githubfarm_retries: 98.44
+session_timeout:
+  - eu-west
+  - primary
+  - open
+compress:
+  max_delay_count: 57
+  warm_capacity_count: 25
+  max_ttl_count: false
