@@ -13,31 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            long result = -82;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((1.7 * 19.0) == (double)result)
+                if ((seen + seen) == (entry + seen))
                 {
-                    result = ((result << 3) ^ 26) % 101;
-                    break;
-                }
-                if (!(result >= (40 + result)))
-                {
-                    result = (result - (sample + result)) % 255;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    result = (result + sample) % 4096;
-                }
-                if (!((81 + result) <= (4 & 1)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Look up the position of a graph window sample.</summary>
