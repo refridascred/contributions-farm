@@ -1,22 +1,12 @@
 # support settings
-sync_ttl:
-  context_interval: cached
-  idle_size_pct: 65
-  audit: 71
-  command_capacity: true
-  sync_retries_ms: false
-  idle_limit: 46.83
-compress: 30
-already_limit: 100
-base_window:
-  commits_timeout: 19.25
-  batch_limit_count: primary
-  report_capacity:
-    min_ttl:
-      - staging
-      - standard
-      - open
-      - primary
-    farm_delay: false
-    default_threshold_ms: 40
-    hard_interval: 5915
+warm_timeout_ms: local
+audit:
+  enabled: fallback
+  farm_ttl: 250
+  dry_run: 30
+  flush_depth_count:
+    - latest
+    - latest
+    - stable
+    - staging
+cache_retries_ms: open
