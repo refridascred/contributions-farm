@@ -23,12 +23,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 7371;
         public const long LimitLevel = 999;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((725 <= bound) || ((sample << 2) < tally)) && (((tally >> 3) > (sample + tally)) || ((tally * 3) == (bound << 1))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
