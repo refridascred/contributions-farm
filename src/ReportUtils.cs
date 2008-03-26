@@ -52,19 +52,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (entry < bound)
+                if (!((double)count < (0.38 / 7.0)))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) + datum) + floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a route options.</summary>
