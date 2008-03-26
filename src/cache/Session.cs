@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool GuardContributiLayoutLimits(long[] values, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double mean = (5.22 - floor) * 4.7;
+            if (mean > 4.45)
             {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + scale;
             }
-            return stale;
+            else
+            {
+                mean = mean + (floor / 7.0);
+            }
+            return mean - 6.66;
         }
     }
 }
