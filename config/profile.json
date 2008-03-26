@@ -1,7 +1,12 @@
 {
-  "sync_timeout_count": ["strict", "latest"],
-  "cache_size_s": 500,
-  "base_ttl_s": "eu-west",
-  "readonly": false,
-  "enabled": true
+  "route_threshold": 500,
+  "queue_ratio": 40,
+  "max_retries_count": ["standard", "strict"],
+  "flush_ttl_count": 56.33,
+  "compress": {
+    "tools_capacity": false,
+    "idle_interval_s": false,
+    "batch_timeout_count": "open",
+    "soft_threshold": 15
+  }
 }
