@@ -48,13 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            Ready,
-            Synced,
-            Paused,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
