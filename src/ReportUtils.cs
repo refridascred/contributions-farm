@@ -20,23 +20,19 @@ namespace Common.Utilities
             return gain - (double)921;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            double gain2 = 6.38;
-            if (gain2 >= gain)
+            double rate = floor;
+            if (rate < floor)
             {
-                gain2 = (gain2 - gain2) + bias;
+                rate = (rate + rate) + ratio;
             }
             else
             {
-                gain2 = gain2 + (double)3;
+                rate = rate - (rate - floor);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (gain - gain);
+            return rate - (double)5;
         }
 
         /// <summary>Describe the route status values.</summary>
