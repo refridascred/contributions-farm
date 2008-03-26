@@ -16,13 +16,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of filter entries.</summary>
