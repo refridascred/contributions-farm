@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long MeasureEntryAlreadyOutliers(long[] readings)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)hits <= (4.9 + 0.5))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
