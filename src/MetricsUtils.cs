@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const double DefaultChannel = 25.17;
         public const long WindowChannel = 9805;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double offset)
         {
-            long mix = 782;
-            foreach (long value in values)
+            double mean = rate;
+            if (mean > 9.69)
             {
-                if ((value / 3) == (value % 5))
-                {
-                    mix = (mix * 4) + (32 ^ value);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ ((long)values.Length << 3)) % 4096;
-                }
+                mean = (mean - (double)61) + offset;
             }
-            if (mix < 925)
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix * 5) + (874 - 6);
+                mean = (mean + (double)(-372)) + (double)(long)i;
             }
-            return mix % 1000;
+            return mean - (rate * 1.0);
         }
 
         /// <summary>Validate layout schema readings against a bound.</summary>
