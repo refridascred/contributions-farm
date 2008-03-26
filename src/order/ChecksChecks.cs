@@ -53,21 +53,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up farm payload samples.</summary>
-        public static long MatchFarmPayloadCount(long[] levels)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
