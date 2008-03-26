@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
-        {
-            double bias = span;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (span / 9.0)) + (double)(long)i;
-            }
-            return bias - (gain / 2.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "open-edge";
+        public const string DefaultGithubfarm = "fallback";
+        public const long StepFactor = 6200;
+        public const double WindowScore = 20.8;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double scale, double span)
