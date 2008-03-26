@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)40 < (double)count)
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSize = 6507;
+        public const string BatchDepth = "standard";
+        public const long HardSchema = 4619;
+        public const string SoftSchema = "cached";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
