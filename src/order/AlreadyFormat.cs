@@ -25,21 +25,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the counter graph series from a seed.</summary>
-        public static long IterateCounterGraph(long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                long step = (acc ^ origin) << 3;
-                if (!((origin + acc) >= acc))
+                if ((count / 2) == (550 ^ count))
                 {
-                    acc = acc - step;
+                    count = (count + 2) + datum;
                 }
-                step = (step << 2) ^ ((-1) >> 1);
-                acc = ((acc * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
