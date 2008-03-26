@@ -67,21 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowTimeout = 95.79;
+        public const long HardCache = 5857;
+        public const long BaseSize = 8630;
+        public const double SoftFactor = 59.57;
+        public const string CacheWidth = "strict-1";
     }
 }
