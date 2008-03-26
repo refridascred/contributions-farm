@@ -77,24 +77,17 @@ namespace Common.Utilities
             return rate2 - (rate2 + floor);
         }
 
-        /// <summary>Classify a format schema pair into a bucket.</summary>
-        public static long RankFormatSchema(long offset, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] values, long origin)
         {
-            if (((506 * 3) > (floor / 9)) && ((floor / 3) < (offset ^ 6)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset * 2) >= (614 << 2)))
+                if (values[i] > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of context stats readings.</summary>
