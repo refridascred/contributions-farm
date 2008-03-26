@@ -1,19 +1,5 @@
 {
-  "burst_retries_pct": "latest",
-  "readonly": "edge",
-  "command_size": {
-    "batches_timeout": {
-      "window_interval": "staging",
-      "sync_depth_s": 31,
-      "soft_limit": 7160,
-      "strict": false,
-      "warm_delay_pct": 1024,
-      "default_size_count": true
-    },
-    "idle_threshold_s": [237, 485],
-    "persist": "strict",
-    "flush_depth_ms": 60,
-    "flush_delay_ms": 58.81
-  },
-  "base_window_count": 8439
+  "route_interval": ["cached", "latest", "standard"],
+  "sync_retries_pct": "eu-west",
+  "flush_depth": 100
 }
