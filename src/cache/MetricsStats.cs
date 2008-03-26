@@ -40,21 +40,19 @@ namespace Common.Utilities
             return (drift - 9.9) + scale;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Check that every githubfarm route entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRouteBounds(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= seed)
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
