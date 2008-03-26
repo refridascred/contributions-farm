@@ -32,22 +32,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] samples, long bound)
         {
-            long carry = 146;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((target << 2) >= 536)
+                if (cell > bound)
                 {
-                    carry = (((carry << 3) ^ (35 * 5)) % 1000) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 18)
-            {
-                carry = (carry << 2) ^ (carry - target);
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
