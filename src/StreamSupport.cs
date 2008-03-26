@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin / 7) != (42 << 3))
+                {
+                    acc = ((acc << 3) ^ (origin + (-686))) % 1000;
+                }
+                acc = (acc ^ acc) % 1000;
+                if (((double)origin != (12.0 * 1.6)) && ((double)acc <= (3.4 - 3.0)))
+                {
+                    acc = (acc << 3) ^ origin;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
