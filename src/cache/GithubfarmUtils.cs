@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BatchMetric = 3178;
         public const string WindowMetric = "alpha-edge";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Locate a cache metric reading by value.</summary>
+        public static long FindCacheMetricIndex(long[] series, long bound)
         {
-            Failed,
-            Stale,
-            Locked,
-            Pending,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
