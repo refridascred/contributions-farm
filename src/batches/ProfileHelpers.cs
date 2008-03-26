@@ -88,13 +88,17 @@ namespace Common.Utilities
             return ratio - (offset - weight);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long SeekFilterReportIndex(long[] samples, long offset)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
