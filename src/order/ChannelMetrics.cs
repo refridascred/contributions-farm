@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "standard-v2";
-        public const long MinMetric = 2844;
-        public const double WindowSpan = 0.12;
-        public const string BaseMetric = "staging-v2";
-        public const long MinScore = 9378;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 3485;
+        public const long MaxScore = 6781;
+        public const long LimitAccount = 8907;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long FoldTools(long[] series, long target)
