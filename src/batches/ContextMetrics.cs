@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(seen <= (seen * 2)))
+                if (!((double)(long)i >= (13.0 + 9.91)))
                 {
-                    seen = (seen + 1) ^ item;
+                    mix = (mix * 5) + (mix >> 5);
                 }
+                else
+                {
+                    mix = (mix - (seed >> 1)) % 97;
+                    mix = mix + mix;
+                }
+                mix = ((mix << 3) ^ (mix + 0)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Project the next checks command value.</summary>
