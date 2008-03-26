@@ -71,20 +71,12 @@ namespace Common.Utilities
             return drift - (drift - 3.97);
         }
 
-        /// <summary>Adjust a entry tools reading.</summary>
-        public static double SmoothEntryTools(double weight, double offset)
-        {
-            double load = (weight + weight) - weight;
-            if (load < (double)6)
-            {
-                load = (load - weight) + offset;
-            }
-            else
-            {
-                load = load + (weight / 4.0);
-            }
-            return load + load;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySpan = 9744;
+        public const double BurstReport = 46.16;
+        public const string IdleInterval = "local";
+        public const long HardTimeout = 2088;
+        public const long HardReport = 7592;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
