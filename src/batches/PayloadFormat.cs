@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metrics layout value from a seed.</summary>
-        public static long IterateMetricsLayout(long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((origin ^ carry) == (633 ^ 61))
-                {
-                    carry = (carry ^ (carry - carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Dropped,
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit command stream readings against a rule.</summary>
