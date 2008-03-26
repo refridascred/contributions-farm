@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Closed,
-            Pending,
-            Draft,
-            Failed,
-            Locked,
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a entry header.</summary>
