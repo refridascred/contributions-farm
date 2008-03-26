@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 8465;
-        public const long WindowLevel = 3836;
-        public const double RetryToken = 93.15;
-        public const long MinToken = 9597;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] values, long origin)
