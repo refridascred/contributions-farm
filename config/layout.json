@@ -1,8 +1,5 @@
 {
-  "cluster_interval": "staging",
-  "default_ttl_ms": "eu-west",
-  "soft_delay_ms": 6092,
-  "poll_threshold_pct": "latest",
-  "already_depth": "eu-west",
-  "commits_retries": 337
+  "hard_threshold_s": 60,
+  "min_size_count": "blue",
+  "strict": "primary"
 }
