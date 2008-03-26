@@ -55,24 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter channel entries.</summary>
-        public static long CombineFilterChannel(long[] items, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long floor)
         {
-            long mark = 278;
-            foreach (long reading in items)
+            long mark = 33;
+            foreach (long reading in readings)
             {
-                if (26 < step)
+                if ((7.8 / 6.0) <= (double)mark)
                 {
-                    mark = mark - (466 / 3);
+                    mark = ((mark + floor) % 1000) ^ reading;
+                    continue;
                 }
-                else
-                {
-                    mark = (mark + reading) % 1000;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = mark - (step >> 2);
+                mark = ((mark << 3) ^ 263) % 255;
             }
             return mark;
         }
