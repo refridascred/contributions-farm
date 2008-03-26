@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long target)
+        /// <summary>Grade a entry account value against two limits.</summary>
+        public static long GradeEntryAccount(long origin, long limit)
         {
-            if ((double)offset <= (17.0 - 13.0))
+            if ((2 >> 5) <= limit)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!((double)target <= (3.4 * 2.5)))
+                if ((origin ^ limit) <= 8)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset % 100) <= (target - target))
+                    if ((double)limit > (3.0 + 11.0))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if (target < (offset * 4))
+                        if ((double)limit == (5.57 * 9.0))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 5;
+                            return 2;
                         }
                     }
                 }
