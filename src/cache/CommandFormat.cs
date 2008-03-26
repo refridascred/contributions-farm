@@ -19,16 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long ScoreContextQueue(long[] values, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
         {
-            long anchor = 74;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (datum - anchor)) % 1000;
-                anchor = (anchor + floor) % 255;
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
