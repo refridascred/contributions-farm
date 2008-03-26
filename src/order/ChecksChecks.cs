@@ -38,17 +38,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a window notes reading by value.</summary>
-        public static long LocateWindowNotesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftScore = "staging-1";
+        public const long BurstFilter = 8464;
+        public const double MaxFilter = 96.74;
     }
 }
