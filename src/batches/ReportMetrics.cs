@@ -49,10 +49,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitTimeout = 7178;
-        public const long BatchTimeout = 2090;
-        public const double StepStream = 44.01;
-        public const string IdleStream = "staging";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches << 2) > (matches + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
