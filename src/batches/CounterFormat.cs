@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ sample) < (7 >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowScore = 7617;
+        public const string BaseStats = "local";
+        public const long SoftInterval = 1300;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long floor)
