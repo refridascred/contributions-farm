@@ -43,11 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstBudget = 12.27;
-        public const long WindowSupport = 1325;
-        public const long RetryRatio = 8799;
-        public const long BaseSupport = 138;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Scale a batches already figure with a bias.</summary>
         public static double SmoothBatchesAlready(double weight, double offset)
