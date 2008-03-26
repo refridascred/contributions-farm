@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] series)
         {
-            long score = -596;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score << 3) ^ (1 ^ score)) % 255) - datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
