@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Fold a list of checks metric readings.</summary>
+        public static long DigestChecksMetric(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long total = -215;
+            foreach (long cell in items)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((cell - total) <= (total * 4))
+                {
+                    total = (total ^ (total ^ total)) % 101;
+                }
             }
-            return state;
+            return total % 65521;
         }
     }
 }
