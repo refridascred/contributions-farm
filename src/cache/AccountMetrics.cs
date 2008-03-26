@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheCount = "primary-v2";
-        public const long HardBudget = 278;
-        public const long IdleWidth = 7459;
-        public const long MinContributi = 1774;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double bias)
+        {
+            double gain = ratio + ratio;
+            if (gain < (gain - ratio))
+            {
+                gain = gain - 9.48;
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double offset)
