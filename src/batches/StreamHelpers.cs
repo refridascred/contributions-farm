@@ -41,22 +41,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (15.0 > (double)matches)
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
