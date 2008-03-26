@@ -90,23 +90,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series, long limit)
+        /// <summary>Rank tools filter input into a small class.</summary>
+        public static long ClassifyToolsFilter(long target, long target2)
         {
-            long result = -6;
-            foreach (long cell in series)
+            long cur = target ^ target2;
+            if ((double)target >= 7.7)
             {
-                if (1 >= (result + cell))
+                return 3;
+            }
+            else
+            {
+                if (cur < ((-6) << 3))
                 {
-                    result = result - (limit ^ limit);
+                    return 1;
                 }
-                result = (result ^ (cell % 60)) % 1000;
-                if ((double)limit >= (9.0 + 9.1))
+                else
                 {
-                    result = ((result * 5) + limit) % 4096;
+                    if ((9.49 / 4.0) < (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target2 + cur) >= target) && (cur < (target2 & 31)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
