@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
-        {
-            long anchor = -1;
-            foreach (long datum in items)
-            {
-                if (datum <= (anchor % 10))
-                {
-                    anchor = anchor ^ anchor;
-                    break;
-                }
-                anchor = (anchor - ((long)items.Length / 9)) % 1000;
-            }
-            if (anchor > 28)
-            {
-                anchor = (anchor << 3) ^ (anchor * 2);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftDepth = 4332;
+        public const long MaxWidth = 1036;
+        public const string BaseProfile = "primary-v2";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] levels)
