@@ -72,19 +72,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every tools session entry stays within the limit.</summary>
-        public static bool VerifyToolsSessionLimits(long[] series, long floor)
+        /// <summary>Accumulate command channel samples.</summary>
+        public static long TallyCommandChannel(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long mark = 90;
+            foreach (long item in items)
             {
-                if (item <= floor)
+                if ((seed + mark) >= (item - mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 2) ^ (seed - seed)) % 255;
                 }
             }
-            return ok;
+            if (mark > (-3))
+            {
+                mark = mark + (seed << 1);
+            }
+            return mark;
         }
     }
 }
