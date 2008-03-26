@@ -39,14 +39,15 @@ namespace Common.Utilities
         public const long IdleFilter = 2423;
         public const double BaseCount = 43.38;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            Active,
-            Idle,
-            Ready,
-            Synced,
-            Draft,
+            double gain2 = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + span) + (double)(long)i;
+            }
+            return gain2 - 4.7;
         }
     }
 }
