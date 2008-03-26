@@ -23,10 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "cached";
-        public const long RetryWidth = 9051;
-        public const string LimitStream = "stable-1";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + entry) >= entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a contributi stats reading.</summary>
         public static double ScaleContributiStats(double gain, double offset)
