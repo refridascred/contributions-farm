@@ -16,14 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long limit)
         {
-            Idle,
-            Queued,
-            Closed,
-            Draft,
-            Paused,
+            if ((limit << 1) != (limit ^ (-739)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - seed) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
