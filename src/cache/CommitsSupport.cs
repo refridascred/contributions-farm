@@ -17,15 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double load = bias;
-            if (load > load)
-            {
-                load = load - (rate / 6.0);
-            }
-            return load + (load / 5.0);
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
