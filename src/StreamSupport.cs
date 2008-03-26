@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] items, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (datum > limit)
+                if (!!((matches << 1) <= (matches + (-1))))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 1) - item) - floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
