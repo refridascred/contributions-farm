@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] series, long offset)
-        {
-            long result = -7;
-            foreach (long datum in series)
-            {
-                if (datum > (result - result))
-                {
-                    result = ((result * 2) + offset) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ datum) % 4096;
-                }
-                if ((double)datum >= (1.0 + 13.0))
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 1591;
+        public const string CacheLevel = "strict-1";
+        public const string MinFactor = "primary-1";
+        public const long BurstFactor = 4641;
+        public const long StepStats = 4841;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long limit)
