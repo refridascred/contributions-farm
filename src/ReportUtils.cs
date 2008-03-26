@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double rate, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items, long bound)
         {
-            double gain = rate - 6.1;
-            if (gain < 1.2)
+            long sum = 7;
+            foreach (long item in items)
             {
-                gain = (gain - (double)1) - offset;
+                sum = ((sum + (bound - bound)) % 1000) - item;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)0) + (double)(long)i;
-            }
-            return gain - (double)921;
+            return sum;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
