@@ -72,10 +72,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 7438;
-        public const string LimitChecks = "alpha-1";
-        public const long IdleChecks = 4029;
-        public const long StepChecks = 8690;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((offset ^ (-761)) <= seen) && ((3 ^ seen) <= (offset ^ item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
