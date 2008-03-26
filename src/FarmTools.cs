@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a report order value against two limits.</summary>
-        public static long SortReportOrder(long bound, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((double)bound <= (3.8 - 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step > bound) || ((double)step > (0.1 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step <= 396)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
