@@ -31,14 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Failed,
-            Draft,
-            Stale,
-            Active,
-            New,
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
