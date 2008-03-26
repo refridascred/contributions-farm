@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a already options.</summary>
