@@ -49,12 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "latest-edge";
-        public const double RetrySize = 91.73;
-        public const long MaxNotes = 6031;
-        public const long BatchNotes = 2840;
-        public const long DefaultWidth = 1967;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 4656;
+        public const long BaseSize = 8307;
+        public const long WindowFarm = 4358;
+        public const long BurstFarm = 4237;
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double AdjustEditorStats(double scale, double offset)
