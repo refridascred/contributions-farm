@@ -16,11 +16,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Iterate the route batch series from a seed.</summary>
+        public static long SeriesRouteBatch(long step)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
