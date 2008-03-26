@@ -22,13 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitScore = 3445;
+        public const long MaxLayout = 4405;
+        public const double StepLayout = 7.82;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] readings, long limit)
