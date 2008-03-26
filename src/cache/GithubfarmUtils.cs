@@ -5,21 +5,35 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next token contributi value from a seed.</summary>
-        public static long SeriesTokenContributi(long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long target)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            long state = 36;
+            foreach (long value in readings)
             {
-                if ((target % 5) == (total + target))
+                if (target >= (value + value))
                 {
-                    total = total + (total & 15);
-                    total = (total + total) % 255;
-                    break;
+                    state = (state ^ 3) % 101;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    state = (state << 3) ^ (state >> 2);
+                }
+                state = state + (4 - target);
+                if (((value + (long)readings.Length) >= ((long)readings.Length % 2)) && (state <= (state + state)))
+                {
+                    state = (state * 5) + (value & 255);
+                }
+                else
+                {
+                    state = (state * 2) + (long)readings.Length;
+                }
             }
-            return total;
+            if (state < 4)
+            {
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a channel stats.</summary>
