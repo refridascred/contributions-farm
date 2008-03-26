@@ -35,15 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double bias)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            double bias2 = bias / 3.0;
-            if (bias2 < bias)
-            {
-                bias2 = (bias2 - 0.76) - scale;
-            }
-            return bias2 - bias2;
+            Ready,
+            Synced,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
