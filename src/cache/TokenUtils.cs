@@ -27,12 +27,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8417;
+        public const long SoftScore = 5042;
+        public const long RetryCount = 8310;
     }
 }
