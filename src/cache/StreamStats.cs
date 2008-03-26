@@ -33,25 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools queue counter forward.</summary>
-        public static long RollToolsQueue(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((double)0 <= (double)offset) && ((offset + offset) >= offset))
-                {
-                    acc = (acc - 12) % 101;
-                    acc = (acc - (acc + (long)i)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ ((long)i + offset);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 85.44;
+        public const long IdleFormat = 7171;
+        public const long SoftFormat = 744;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long bound, long limit)
