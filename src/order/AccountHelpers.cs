@@ -66,15 +66,18 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + bias;
         }
 
-        /// <summary>Iterate the report notes series from a seed.</summary>
-        public static long IterateReportNotes(long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (!((2.0 + 0.1) <= (double)count))
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
