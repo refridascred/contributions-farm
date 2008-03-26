@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ sample) < (7 >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
