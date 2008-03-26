@@ -1,10 +1,6 @@
-id,level,region
-1,53.29,540
-2,primary,open
-3,177,latest
-4,798,staging
-5,edge,stable
-6,690,599
-7,fallback,40.86
-8,863,61.87
-9,970,139
+id,count,token
+1,83.49,75.35
+2,21.2,32.4
+3,24.96,edge
+4,127,84.05
+5,40.92,471
