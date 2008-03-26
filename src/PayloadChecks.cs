@@ -91,18 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((sample & 1) <= (matches + 86)) && ((matches + sample) < matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
