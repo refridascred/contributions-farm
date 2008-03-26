@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            Closed,
-            Locked,
-            Done,
-            Retry,
+            long next = limit ^ bound;
+            if (((double)limit >= (1.5 / 6.0)) || ((0 >> 4) >= (bound / 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next / 8) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.2 * 2.7) <= (double)next)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes level values.</summary>
