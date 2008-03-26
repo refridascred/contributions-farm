@@ -19,15 +19,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the checks cache series from a seed.</summary>
-        public static long StepChecksCache(long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Done,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate checks route readings against a bound.</summary>
