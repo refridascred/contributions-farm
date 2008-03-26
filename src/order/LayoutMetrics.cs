@@ -36,10 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseWidth = 5310;
-        public const long WindowAccount = 3376;
-        public const long HardAccount = 3740;
-        public const long StepAccount = 7022;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long step)
+        {
+            long mix = -951;
+            foreach (long reading in levels)
+            {
+                mix = (((mix ^ ((-575) & 127)) % 65521) - reading) - step;
+            }
+            if (mix > 644)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
+        }
     }
 }
