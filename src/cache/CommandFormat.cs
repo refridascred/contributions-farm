@@ -56,10 +56,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryDepth = 50.83;
-        public const long WindowBudget = 2612;
-        public const string HardRatio = "alpha-edge";
-        public const string BaseFarm = "local-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftRatio = 8598;
+        public const long LimitCount = 2286;
+        public const string BatchInterval = "staging-v2";
     }
 }
