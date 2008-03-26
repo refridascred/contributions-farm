@@ -51,24 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long offset)
         {
-            if ((step + step) <= step)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < 20.0)
+                if ((3.8 <= (double)mix) && ((double)(long)i == (4.43 - 19.0)))
                 {
-                    return 0;
+                    mix = ((mix * 4) + mix) % 97;
                 }
-                else
-                {
-                    return 7;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a notes summary.</summary>
