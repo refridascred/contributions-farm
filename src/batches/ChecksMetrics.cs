@@ -57,12 +57,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a channel entry.</summary>
