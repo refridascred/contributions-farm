@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((double)sample >= 3.3))
+                if ((mark << 2) > ((long)i / 5))
                 {
-                    hits = hits + 1;
+                    mark = (mark ^ 71) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
