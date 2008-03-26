@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const double SoftLevel = 36.08;
         public const string HardScore = "standard-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] items, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (78 >= (count - 805))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 2) ^ entry) - seed;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
