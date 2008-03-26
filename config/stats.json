@@ -1,6 +1,6 @@
 {
-  "batch_interval": false,
-  "farm_retries": [189, 79, 472],
-  "audit": false,
-  "max_timeout_s": 4040
+  "poll_interval_s": 7599,
+  "verbose": [76, 191, 149],
+  "idle_ratio_count": 34.89,
+  "strict": false
 }
