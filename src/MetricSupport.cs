@@ -26,22 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long target)
+        /// <summary>Locate a payload stats reading by value.</summary>
+        public static long FindPayloadStatsIndex(long[] levels, long floor)
         {
-            long state = 586;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)state >= (1.2 - 1.4)))
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    state = (((state * 2) + (target + 271)) % 1000) + reading;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + state)) % 101;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
