@@ -1,7 +1,7 @@
 # support settings
-cache_capacity_pct: false
-flush_capacity_pct:
-  - staging
-  - latest
-  - primary
-idle_ttl_count: standard
+enabled: open
+order_interval: latest
+schema_depth: true
+max_interval_ms: edge
+dry_run: local
+poll_interval_ms: 30
