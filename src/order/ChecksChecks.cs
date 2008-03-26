@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long limit)
         {
-            long mark = 64;
-            foreach (long item in values)
+            long state = 698;
+            foreach (long value in data)
             {
-                if (!(mark >= (item & 1)))
-                {
-                    mark = mark - mark;
-                }
-                if ((double)mark == (9.9 / 2.0))
-                {
-                    break;
-                }
+                state = ((state + state) ^ value) - limit;
             }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
