@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a context window reading by value.</summary>
-        public static long SeekContextWindowIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "standard-v2";
+        public const long HardInterval = 7777;
+        public const long BatchLayout = 8453;
+        public const string WindowLayout = "fallback-v2";
 
         /// <summary>Grade a entry tools value against two limits.</summary>
         public static long GradeEntryTools(long limit, long seed)
