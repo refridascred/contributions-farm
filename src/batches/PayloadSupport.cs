@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data, long target)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)target >= (0.5 + 7.37))
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
             return tally;
