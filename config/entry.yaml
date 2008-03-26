@@ -1,10 +1,5 @@
 # entry settings
-format_depth: standard
-command_retries: 71
-compress:
-  - 330
-  - 331
-  - 177
-  - 74
-flush_interval_pct: strict
-soft_ttl_count: 589
+editor_ratio: false
+format_interval: true
+soft_size_pct: 28
+max_threshold_pct: 3700
