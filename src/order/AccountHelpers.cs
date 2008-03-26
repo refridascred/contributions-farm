@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Find the first report stream entry that matches the target.</summary>
+        public static long LookupReportStreamIndex(long[] values, long limit)
         {
-            Closed,
-            Retry,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
