@@ -1,4 +1,10 @@
 # support settings
-window_capacity: blue
-batch_threshold: cached
-batch_depth_ms: true
+audit: false
+soft_depth_s: 12
+batch_interval_s: 25.44
+burst_limit: 46.09
+verbose:
+  - fallback
+  - fallback
+  - standard
+  - strict
