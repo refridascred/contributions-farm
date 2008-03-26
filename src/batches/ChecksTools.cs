@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long seed)
-        {
-            if ((5 - origin) < seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 5) >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardBudget = 8.32;
+        public const long StepGithubfarm = 2886;
+        public const long MinGithubfarm = 2157;
+        public const long BatchGithubfarm = 1161;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitInterval = 8883;
