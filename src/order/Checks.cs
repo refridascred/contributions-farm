@@ -22,13 +22,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of support entries.</summary>
