@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] < floor)
+                state = state - (state + (long)i);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    state = ((state ^ (long)i) % 1000) - (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a stats summary.</summary>
