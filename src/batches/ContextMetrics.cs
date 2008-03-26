@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(seen <= (seen * 2)))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
