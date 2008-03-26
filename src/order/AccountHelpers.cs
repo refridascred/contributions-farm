@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Match up payload cluster samples.</summary>
+        public static long OverlapPayloadClusterCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix << 2) ^ (mix + mix);
-                if ((limit / 4) >= mix)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 3) ^ (mix - mix);
-                    continue;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first report stream entry that matches the target.</summary>
