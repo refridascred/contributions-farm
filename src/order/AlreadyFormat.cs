@@ -59,17 +59,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first contributi record entry that matches the target.</summary>
-        public static long LocateContributiRecordIndex(long[] readings, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
