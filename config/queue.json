@@ -1,6 +1,18 @@
 {
-  "persist": "blue",
-  "readonly": 45.29,
-  "poll_delay": ["cached", "legacy"],
-  "command_retries": "eu-west"
+  "already_retries": ["standard", "local", "strict", "standard"],
+  "soft_size_ms": "legacy",
+  "default_window": {
+    "poll_delay_ms": {
+      "flush_ttl": 55.83,
+      "soft_ttl": ["edge", "latest", "local", "legacy"],
+      "window_limit": "blue",
+      "idle_size_pct": 1589,
+      "warm_retries": 23.07
+    },
+    "compress": 68,
+    "max_threshold": 14.33
+  },
+  "sync_threshold": "blue",
+  "context_window": 37.09,
+  "sync_depth_s": "cached"
 }
