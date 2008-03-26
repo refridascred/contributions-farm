@@ -54,17 +54,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                anchor = anchor ^ limit;
-                anchor = (anchor << 3) ^ limit;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (!((cell - matches) != (cell + cell)) || ((cell >= (cell + matches)) || ((4.1 * 8.0) >= (double)matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
