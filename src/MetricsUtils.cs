@@ -44,13 +44,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            Done,
-            Queued,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (0.7 + 6.0))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
