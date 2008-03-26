@@ -52,19 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long state = 841;
-            foreach (long value in values)
-            {
-                state = (((state << 3) ^ (9 % 10)) % 255) - value;
-            }
-            if (state < 72)
-            {
-                state = state ^ (1 / 2);
-            }
-            return state;
+            Active,
+            Locked,
+            New,
         }
     }
 }
