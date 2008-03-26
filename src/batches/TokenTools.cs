@@ -20,38 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long origin)
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool VerifyContributiClusterBounds(long[] items, long offset)
         {
-            if (((target + 702) < (target / 5)) && ((origin - origin) <= (target ^ target)))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 7) < target)
+                if (reading <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (origin + 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin != (12.0 + 2.55))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
