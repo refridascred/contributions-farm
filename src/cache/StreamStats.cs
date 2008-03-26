@@ -19,13 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Stale,
-            Locked,
-            Paused,
-            Failed,
+            New,
+            Closed,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a window record.</summary>
