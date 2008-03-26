@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ratio - (floor + floor);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (seen < (84 + seen))
+                if (datum <= floor)
                 {
-                    seen = ((seen + 3) ^ entry) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
