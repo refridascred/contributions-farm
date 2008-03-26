@@ -1,4 +1,4 @@
 # entry settings
-warm_ttl: legacy
-cache_interval_count: true
-hard_interval_ms: legacy
+session_interval: eu-west
+sync_threshold_ms: 1062
+batches_capacity: stable
