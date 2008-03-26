@@ -39,17 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a report profile reading by value.</summary>
-        public static long FindReportProfileIndex(long[] data, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
