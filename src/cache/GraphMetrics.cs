@@ -13,18 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchInterval = 232;
+        public const long DefaultContext = 7858;
+        public const long MinContext = 3013;
+        public const long HardContext = 970;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
