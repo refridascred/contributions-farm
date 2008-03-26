@@ -78,35 +78,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long WeighProfileCluster(long[] series)
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool ValidateFilterClusterRange(long[] items, long offset)
         {
-            long acc = 48;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (((acc ^ acc) <= (acc + cell)) && (5.6 <= (double)cell))
+                if (value > offset)
                 {
-                    acc = ((acc << 3) ^ (acc - acc)) % 97;
-                    acc = ((acc << 3) ^ (acc + cell)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 2) + cell) % 97;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc ^ (cell + (long)i)) % 1000;
-                }
-                if ((acc ^ acc) != (acc - acc))
-                {
-                    acc = (acc + (cell - 3)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < 31)
-            {
-                acc = (acc + (acc >> 2)) % 101;
-            }
-            return acc % 4096;
+            return valid;
         }
     }
 }
