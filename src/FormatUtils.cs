@@ -34,11 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSize = 38.52;
-        public const long HardSchema = 1770;
-        public const string SoftSchema = "open";
-        public const long MinWidth = 6406;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "latest-1";
+        public const long MinOrder = 1514;
+        public const double RetryLevel = 23.75;
+        public const double MaxInterval = 47.28;
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
         public static bool VerifyRoutePayloadLimits(long[] readings, long origin)
