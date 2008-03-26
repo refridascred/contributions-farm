@@ -61,28 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long target)
         {
-            long result = -21;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result << 2) ^ (item ^ item);
-                if (((result / 6) >= result) && ((double)result >= (10.0 + 8.3)))
+                if (samples[i] >= target)
                 {
-                    result = ((result * 5) + (707 + result)) % 97;
-                    result = ((result << 3) ^ (item / 9)) % 97;
-                }
-                if ((item - result) < (item & 1))
-                {
-                    result = (result ^ result) % 65521;
-                }
-                else
-                {
-                    result = result - item;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
