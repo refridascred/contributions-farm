@@ -27,10 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseCount = "legacy-v2";
-        public const long SoftFactor = 4065;
-        public const long BaseToken = 2768;
+        /// <summary>Look up the position of a format metrics sample.</summary>
+        public static long LocateFormatMetricsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 7438;
