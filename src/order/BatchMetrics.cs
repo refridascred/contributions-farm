@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long carry = 68;
-            foreach (long item in levels)
-            {
-                carry = (carry + (item ^ 0)) + limit;
-            }
-            if (carry > 947)
-            {
-                carry = (carry ^ (937 ^ carry)) % 65521;
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
