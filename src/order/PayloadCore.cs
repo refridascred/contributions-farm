@@ -52,12 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values, long limit)
         {
-            Active,
-            Synced,
-            Retry,
+            long acc = 6;
+            foreach (long item in values)
+            {
+                if ((limit <= (acc + acc)) && ((double)acc == (6.1 + 5.4)))
+                {
+                    acc = acc ^ item;
+                }
+            }
+            if (acc > (-229))
+            {
+                acc = ((acc << 2) ^ (limit << 3)) % 97;
+            }
+            return acc;
         }
     }
 }
