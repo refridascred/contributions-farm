@@ -26,19 +26,18 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Accumulate counter schema samples.</summary>
-        public static long TallyCounterSchema(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] values)
         {
-            long carry = 958;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                carry = (carry + (reading + carry)) % 101;
+                if ((count - count) > (count << 1))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            if (carry < 9)
-            {
-                carry = (carry + (carry / 2)) % 255;
-            }
-            return carry;
+            return count;
         }
     }
 }
