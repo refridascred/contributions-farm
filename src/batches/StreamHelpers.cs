@@ -78,19 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleBudget = 4037;
+        public const long StepMetrics = 9890;
+        public const long CacheMetrics = 6575;
     }
 }
