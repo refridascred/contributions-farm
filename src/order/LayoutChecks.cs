@@ -34,16 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats commits value from a seed.</summary>
-        public static long RollStatsCommits(long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                acc = (acc - (acc >> 3)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (!(3 > (cell % 5)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
