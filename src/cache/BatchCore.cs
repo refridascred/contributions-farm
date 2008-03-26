@@ -34,18 +34,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value % 100) >= (tally + 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Done,
         }
     }
 }
