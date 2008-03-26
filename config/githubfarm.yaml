@@ -1,23 +1,13 @@
 # githubfarm settings
-notes_timeout:
-  - 279
-  - 250
-  - 408
-strict:
-  commits_ratio:
-    - latest
-    - eu-west
-    - primary
-    - edge
-  soft_timeout: 250
-  readonly: 46.14
-  verbose: primary
-counter_depth:
-  hard_size_s: true
-  sync_size: 76
-  audit: 20
-  poll_size: true
-  max_ttl: legacy
-payload_delay: eu-west
-dry_run: true
-hard_ttl_ms: fallback
+hard_retries_s:
+  counter_ttl: 30
+  warm_interval_ms: 7902
+  base_ratio: 64.61
+  min_depth: 1024
+  max_interval: 250
+  warm_threshold_s: 100
+default_retries: 2619
+idle_threshold_s:
+  - stable
+  - cached
+  - latest
