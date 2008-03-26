@@ -68,13 +68,19 @@ namespace Common.Utilities
             return scale2 - (scale2 - bias);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long seed)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Draft,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
