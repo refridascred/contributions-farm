@@ -41,10 +41,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSize = 695;
-        public const double WindowAlready = 19.49;
-        public const double CacheLevel = 51.44;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long limit, long step)
+        {
+            if ((step << 2) > 3)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step < (2.0 + 5.0)) || ((9.3 + 12.0) > (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (3.67 < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] values)
