@@ -43,26 +43,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels, long target)
+        /// <summary>Project the next stats command value.</summary>
+        public static double BlendStatsCommand(double scale, double floor)
         {
-            long acc = 985;
-            foreach (long datum in levels)
+            double weight = (double)((-6) + 271);
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum / 9) >= (target + 73))
-                {
-                    acc = (acc + (1 / 2)) % 255;
-                }
-                if (datum > (target ^ datum))
-                {
-                    break;
-                }
+                weight = (weight - (8.0 - floor)) - (double)(long)i;
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 3) ^ (acc ^ (-9))) % 97;
-            }
-            return acc;
+            return weight - (weight + scale);
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
