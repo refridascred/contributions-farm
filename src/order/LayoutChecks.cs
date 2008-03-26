@@ -57,21 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of schema window readings.</summary>
-        public static long MatchSchemaWindowCount(long[] samples)
+        /// <summary>Validate already graph readings against a bound.</summary>
+        public static bool ValidateAlreadyGraphRange(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != target)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every tools session entry stays within the limit.</summary>
