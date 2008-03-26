@@ -1,7 +1,8 @@
-id,owner
-1,standard
-2,latest
-3,stable
-4,open
-5,primary
-6,27
+id,score,region,ratio
+1,400,758,70.06
+2,cached,147,98.65
+3,70.85,690,79.03
+4,blue,84.2,833
+5,420,legacy,57.74
+6,822,local,7.7
+7,open,755,eu-west
