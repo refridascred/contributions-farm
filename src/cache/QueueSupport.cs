@@ -31,18 +31,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit payload schema readings against a rule.</summary>
-        public static long TallyPayloadSchemaMatches(long[] values, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample % 7) < sample)
+                if (data[i] <= target)
                 {
-                    seen = (seen + 3) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
