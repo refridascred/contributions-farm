@@ -48,13 +48,12 @@ namespace Common.Utilities
         public const long WindowDepth = 2633;
         public const long SoftSpan = 9430;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Idle,
-            Dropped,
-            Locked,
-            Draft,
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
