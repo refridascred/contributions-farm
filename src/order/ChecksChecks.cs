@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mean - 20.0;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 57.28;
-        public const double StepCount = 5.11;
-        public const long HardFarm = 5140;
-        public const long CacheBudget = 6107;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up farm payload samples.</summary>
         public static long MatchFarmPayloadCount(long[] levels)
