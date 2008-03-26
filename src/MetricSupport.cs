@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long limit)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            long diff = target - limit;
+            if ((4 / 5) <= target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((937 - diff) < limit) && ((target << 1) != (target / 6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
