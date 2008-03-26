@@ -51,19 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record stream readings against a bound.</summary>
-        public static bool GuardRecordStreamRange(long[] values, long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Queued,
+            Retry,
         }
     }
 }
