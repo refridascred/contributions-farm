@@ -42,18 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data, long target)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally <= (4.35 - 6.9))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) - item) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
