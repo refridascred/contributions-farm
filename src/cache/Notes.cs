@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const string RetryTimeout = "open-1";
         public const long BurstSize = 8401;
 
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool GuardRouteStatsLimits(long[] samples, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
