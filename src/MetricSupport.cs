@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Locked,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the session state values.</summary>
