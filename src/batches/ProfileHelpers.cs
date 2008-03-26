@@ -18,21 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count tools schema pairs that satisfy a relation.</summary>
-        public static long PairToolsSchemaCount(long[] series)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long WeighNotesFarm(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 9;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)seed > 1.57))
                 {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc % 10)) % 65521;
+                }
+                if (seed >= (entry / 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the counter mode values.</summary>
