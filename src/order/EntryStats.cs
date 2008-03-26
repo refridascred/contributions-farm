@@ -39,10 +39,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8256;
-        public const string CacheInterval = "primary";
-        public const long CacheChannel = 9391;
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double scale, double bias)
+        {
+            double weight = (bias + scale) + 0.3;
+            if (weight <= scale)
+            {
+                weight = weight + bias;
+            }
+            return weight + (weight / 7.0);
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] samples)
