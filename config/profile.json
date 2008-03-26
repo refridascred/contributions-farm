@@ -1,5 +1,7 @@
 {
-  "githubfarm_delay": true,
-  "soft_limit_count": 32.39,
-  "sync_threshold_pct": 47.72
+  "soft_threshold_count": 365,
+  "flush_timeout": 65,
+  "poll_timeout_count": true,
+  "buffer_limit": 77,
+  "retry_timeout": 500
 }
