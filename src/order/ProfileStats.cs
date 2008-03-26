@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every account already entry stays within the limit.</summary>
-        public static bool CheckAccountAlreadyRange(long[] series, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (cell <= seed)
+                if (8 >= (count << 2))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) ^ sample) + offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
