@@ -33,15 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data, long bound)
         {
-            double drift = offset;
-            if (drift > ratio)
+            long anchor = 27;
+            foreach (long value in data)
             {
-                drift = drift + drift;
+                if (value < (bound + 22))
+                {
+                    anchor = anchor ^ (anchor - 77);
+                }
             }
-            return drift + offset;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
