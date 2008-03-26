@@ -23,18 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "cached";
+        public const long RetryWidth = 9051;
+        public const string LimitStream = "stable-1";
 
         /// <summary>Adjust a contributi stats reading.</summary>
         public static double ScaleContributiStats(double gain, double offset)
