@@ -90,19 +90,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long target)
+        /// <summary>Compare every pair of filter batches readings.</summary>
+        public static long CompareFilterBatchesCount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
