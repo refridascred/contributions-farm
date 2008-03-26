@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 326;
+            foreach (long datum in values)
+            {
+                if ((datum / 7) < (sum % 60))
+                {
+                    sum = ((sum << 2) ^ (sum + 0)) - step;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum << 2) ^ (148 >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
