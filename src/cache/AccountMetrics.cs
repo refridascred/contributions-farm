@@ -78,15 +78,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
