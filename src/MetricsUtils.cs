@@ -23,23 +23,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values)
         {
-            double rate = (ratio + bias) / 2.0;
-            if (rate >= ratio)
+            long mix = 782;
+            foreach (long value in values)
             {
-                rate = rate + (4.0 + 5.08);
+                if ((value / 3) == (value % 5))
+                {
+                    mix = (mix * 4) + (32 ^ value);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((long)values.Length << 3)) % 4096;
+                }
             }
-            else
+            if (mix < 925)
             {
-                rate = rate - ratio;
+                mix = (mix * 5) + (874 - 6);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (10.0 - 2.5)) + (double)(long)i;
-            }
-            return rate + (rate - rate);
+            return mix % 1000;
         }
 
         /// <summary>Count the payload batches entries that pass the check.</summary>
