@@ -57,17 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (series[i] >= offset)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a route summary.</summary>
