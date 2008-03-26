@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long WindowBudget = 8882;
         public const long MinBudget = 850;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftLevel = 1778;
-        public const long BurstTimeout = 6887;
-        public const double BaseFactor = 90.64;
-        public const long DefaultLevel = 1117;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
