@@ -19,21 +19,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count already channel pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyChannelCount(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((entry >> 1) <= 94))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
