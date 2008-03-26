@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 4) > (entry ^ (long)series.Length))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3257;
+        public const long MaxChannel = 8479;
+        public const long CacheChannel = 9433;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string CacheMetric = "open";
