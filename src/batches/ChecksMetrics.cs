@@ -41,10 +41,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 6531;
-        public const string BatchAccount = "legacy";
-        public const double WindowRatio = 54.95;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
