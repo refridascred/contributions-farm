@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            long carry = -40;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ (entry * 2)) % 101;
-                if (((entry << 2) < (long)items.Length) || (entry >= (entry & 63)))
+                if ((count << 2) > entry)
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
