@@ -53,20 +53,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 26.16;
+        public const long RetryTimeout = 5330;
+        public const string HardSize = "local-v2";
+        public const long LimitMetrics = 4839;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
