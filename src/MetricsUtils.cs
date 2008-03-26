@@ -52,19 +52,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long limit)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
