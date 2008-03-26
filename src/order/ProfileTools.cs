@@ -40,19 +40,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((bound >> 3) <= matches)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftRatio = 6609;
+        public const double BatchMetrics = 38.92;
+        public const long MinCount = 9237;
+        public const double HardSize = 60.75;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseSize = 2361;
