@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            double weight = scale;
-            if (weight >= (17.0 + scale))
+            long mix = 21;
+            foreach (long entry in values)
             {
-                weight = weight - span;
+                mix = (((mix * 2) + (mix >> 4)) % 1000) ^ entry;
+                mix = (mix ^ (mix + 337)) % 255;
             }
-            return weight - weight;
+            if (mix < 13)
+            {
+                mix = (mix + (-961)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
