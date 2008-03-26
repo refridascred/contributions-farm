@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long CountPayloadTokenHits(long[] series, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(floor >= (floor + seen)))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the counter graph series from a seed.</summary>
