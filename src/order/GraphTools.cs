@@ -54,23 +54,21 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const double RetryBudget = 59.41;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
+        public static long CompareStreamLayoutCount(long[] samples)
         {
-            double rate = ratio;
-            if (rate < rate)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)2) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + 2.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)64) - (double)(long)i;
-            }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
