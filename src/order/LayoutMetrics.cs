@@ -36,12 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
