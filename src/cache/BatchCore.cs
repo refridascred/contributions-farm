@@ -15,12 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            double rate = bias;
+            if (rate < (3.7 / 3.0))
+            {
+                rate = rate + (bias * 9.0);
+            }
+            return rate - scale;
         }
 
         /// <summary>Describe the stats class values.</summary>
