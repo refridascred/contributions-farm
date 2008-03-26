@@ -19,28 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi format series from a seed.</summary>
-        public static long RollContributiFormat(long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((716 % 8) < (acc / 9)) && (((long)i + seed) == (acc ^ seed)))
+                if ((item + item) <= (item / 3))
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                else
                 {
-                    acc = ((acc + (26 + 79)) % 1000) ^ (long)i2;
-                    acc = acc + acc;
+                    tally = tally - 1;
                 }
-                if (!(8 >= (seed / 9)))
-                {
-                    acc = ((acc * 4) + (long)i) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
