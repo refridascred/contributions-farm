@@ -62,21 +62,15 @@ namespace Common.Utilities
             return ((weight - weight) + rate) + bias;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Iterate the report notes series from a seed.</summary>
+        public static long IterateReportNotes(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
