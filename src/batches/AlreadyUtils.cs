@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long MaxLayout = 4405;
         public const double StepLayout = 7.82;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] data, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long state = 34;
+            foreach (long datum in readings)
             {
-                if (cell >= seed)
+                state = (state << 3) ^ (state + floor);
+                if ((state * 5) < (state - datum))
                 {
-                    flag = false;
-                    break;
+                    state = (state + (floor - floor)) % 255;
+                }
+                if ((double)floor <= (double)datum)
+                {
+                    state = ((state << 2) ^ (state * 5)) % 65521;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the counter state values.</summary>
