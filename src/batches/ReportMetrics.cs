@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!(((matches * 3) != (matches - matches)) && (matches < (item + 14))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = bias * 4.0;
+            return (gain + gain) + scale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
