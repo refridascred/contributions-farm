@@ -46,19 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long step)
         {
-            long score = 2;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                score = score + reading;
-                if ((reading + (-283)) > reading)
+                if (value > step)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
