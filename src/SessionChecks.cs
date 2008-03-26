@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Pending,
-            Retry,
-            Idle,
+            Active,
+            Done,
+            Synced,
+            Queued,
         }
 
         /// <summary>Project the next account value.</summary>
