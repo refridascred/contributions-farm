@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample % 7) <= (count << 1)) || (count > (count << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = floor;
+            return (drift - 9.9) + scale;
         }
 
         /// <summary>Describe the command mode values.</summary>
