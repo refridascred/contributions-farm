@@ -68,31 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            if ((step - step) <= (step * 4))
+            double drift = bias / 9.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                drift = (drift - scale) + (double)(long)i;
             }
-            else
-            {
-                if ((9.0 / 2.0) >= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift - (double)19;
         }
     }
 }
