@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long seed)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long reading in series)
             {
-                if (sample > origin)
+                if (reading != seed)
                 {
                     flag = false;
                     break;
