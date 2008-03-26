@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Failed,
-            Pending,
-            New,
             Dropped,
-            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the account kind values.</summary>
