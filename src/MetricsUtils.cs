@@ -64,18 +64,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context account samples are out of range.</summary>
-        public static long MeasureContextAccountHits(long[] values, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((limit ^ 4) < (limit * 4)) || ((double)seen < 11.0))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
