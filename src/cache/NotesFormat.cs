@@ -26,15 +26,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long step)
+        /// <summary>Match up graph filter samples.</summary>
+        public static long OverlapGraphFilterCount(long[] levels)
         {
-            long score = -6;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score * 5) + (sample - sample)) % 255) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
