@@ -50,12 +50,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Stale,
-            Done,
-            Dropped,
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
