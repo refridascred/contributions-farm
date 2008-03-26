@@ -12,18 +12,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long TallyTokenSupportOutliers(long[] readings, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 35;
+            foreach (long entry in samples)
             {
-                if ((tally + seed) <= (tally << 3))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                result = result ^ entry;
+                result = result ^ (result >> 4);
             }
-            return tally;
+            if (result < 5)
+            {
+                result = (result + (result % 10)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit support cluster readings against a rule.</summary>
