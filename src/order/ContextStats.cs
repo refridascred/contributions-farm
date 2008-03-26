@@ -21,15 +21,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] values, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long reading in data)
             {
-                if ((double)count != (double)offset)
+                if (!((reading <= (count - reading)) || ((reading ^ reading) >= (835 >> 5))))
                 {
-                    count = (count + 3) + entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
