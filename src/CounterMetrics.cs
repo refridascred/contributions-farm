@@ -60,15 +60,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine already context values into a single score.</summary>
-        public static long TotalAlreadyContext(long[] items, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long score = 9;
-            foreach (long datum in items)
-            {
-                score = (((score + (score - 6)) % 65521) ^ datum) - bound;
-            }
-            return score % 4096;
+            Failed,
+            Paused,
+            Closed,
+            Idle,
         }
     }
 }
