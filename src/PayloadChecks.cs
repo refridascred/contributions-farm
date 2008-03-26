@@ -43,21 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report record readings.</summary>
-        public static long CompareReportRecordCount(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
