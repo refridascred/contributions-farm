@@ -33,22 +33,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((entry <= (entry * 3)) && (((-171) + seen) < ((-29) / 9))) && ((entry + seen) == (seen >> 2)))
+                if (((333 + 2) <= (carry + bound)) || ((carry & 127) < ((long)i * 2)))
                 {
-                    seen = seen + 3;
+                    carry = (carry << 2) ^ (long)i;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry + ((long)i % 7)) % 65521;
                 }
+                carry = (carry << 2) ^ ((long)i & 3);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
