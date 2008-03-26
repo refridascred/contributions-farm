@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batch stats readings against a bound.</summary>
-        public static bool VerifyBatchStatsBounds(long[] values, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Accumulate route batches samples.</summary>
