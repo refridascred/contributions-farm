@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
