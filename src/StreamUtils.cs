@@ -38,18 +38,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long MeasureAccountSupportHits(long[] levels, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long prev = bound - offset;
+            if ((prev + offset) <= (170 ^ offset))
             {
-                if ((entry >> 4) <= (3 + entry))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (double)offset)
                 {
-                    tally = (tally + 2) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound & 127) == (83 * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
