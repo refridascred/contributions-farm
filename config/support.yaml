@@ -1,8 +1,10 @@
 # support settings
-base_retries_ms: 9280
-sync_ratio_count: cached
-hard_depth_s: 42.81
-counter_ratio: false
-profile_delay:
-  - 163
-  - 224
+burst_ratio_count: open
+verbose: standard
+cache_timeout_pct: 500
+farm_window:
+  cache_depth: true
+  stream_timeout: false
+  persist: 3002
+soft_interval: 79.89
+idle_threshold_count: edge
