@@ -1,6 +1,11 @@
-id,state,score
-1,38.0,570
-2,cached,legacy
-3,fallback,49.14
-4,693,eu-west
-5,11.14,18.35
+id,ratio,state
+1,943,587
+2,976,84.44
+3,141,800
+4,70.59,open
+5,920,standard
+6,635,748
+7,200,89.6
+8,46.4,staging
+9,625,green
+10,2.67,822
