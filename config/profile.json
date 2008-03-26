@@ -1,5 +1,5 @@
 {
-  "default_ttl_count": 100,
-  "window_retries": 9.79,
-  "flush_depth_pct": false
+  "strict": 82,
+  "base_depth_count": 2747,
+  "window_retries": false
 }
