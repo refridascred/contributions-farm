@@ -71,12 +71,10 @@ namespace Common.Utilities
             return drift - (drift - 3.97);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySpan = 9744;
-        public const double BurstReport = 46.16;
-        public const string IdleInterval = "local";
-        public const long HardTimeout = 2088;
-        public const long HardReport = 7592;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySpan = 23.45;
+        public const double LimitTimeout = 66.56;
+        public const string DefaultSupport = "staging";
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
