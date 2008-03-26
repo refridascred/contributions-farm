@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
