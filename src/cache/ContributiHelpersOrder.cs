@@ -26,15 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi stats reading.</summary>
-        public static double ScaleContributiStats(double gain, double offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double drift = (double)(18 ^ 973);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - 3.39) + (double)(long)i) - offset;
-            }
-            return drift + (gain * 3.3);
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
