@@ -1,7 +1,19 @@
 {
-  "context_threshold": 74.83,
-  "flush_delay_count": 22.43,
-  "hard_ttl_pct": [24, 354, 434],
-  "metrics_ratio": "edge",
-  "persist": 37
+  "burst_retries_pct": "latest",
+  "readonly": "edge",
+  "command_size": {
+    "batches_timeout": {
+      "window_interval": "staging",
+      "sync_depth_s": 31,
+      "soft_limit": 7160,
+      "strict": false,
+      "warm_delay_pct": 1024,
+      "default_size_count": true
+    },
+    "idle_threshold_s": [237, 485],
+    "persist": "strict",
+    "flush_depth_ms": 60,
+    "flush_delay_ms": 58.81
+  },
+  "base_window_count": 8439
 }
