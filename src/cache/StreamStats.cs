@@ -49,20 +49,18 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            long sum = 388;
-            foreach (long reading in samples)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((4.8 / 8.0) < (double)bound)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = ((sum * 2) + ((-3) - sum)) - reading;
+                    sum = ((sum ^ offset) % 4096) ^ (long)i2;
                 }
-            }
-            if (sum < 53)
-            {
-                sum = (sum - (sum ^ sum)) % 97;
+                sum = sum ^ ((long)i + 637);
+                sum = ((sum * 4) + (long)i) % 97;
             }
             return sum;
         }
