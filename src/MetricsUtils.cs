@@ -43,18 +43,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the editor layout entries that pass the check.</summary>
-        public static long MeasureEditorLayoutGaps(long[] readings)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - hits) >= (reading >> 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
