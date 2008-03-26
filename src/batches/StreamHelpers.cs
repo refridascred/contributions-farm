@@ -34,11 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
