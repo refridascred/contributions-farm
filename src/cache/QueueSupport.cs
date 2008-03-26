@@ -27,15 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Queued,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
