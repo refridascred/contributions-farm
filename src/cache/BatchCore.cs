@@ -40,15 +40,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two queue layout measurements.</summary>
-        public static double BlendQueueLayout(double gain, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            double drift = gain;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                drift = ((drift + drift) + (double)(long)i) + offset;
+                if ((value % 100) >= (tally + 7))
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift + (drift - drift);
+            return tally;
         }
     }
 }
