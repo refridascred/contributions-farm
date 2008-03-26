@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            double scale = (double)(9 ^ 4);
+            if (scale >= (scale / 9.0))
             {
-                state = state - (state + (long)i);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ (long)i) % 1000) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                scale = ((scale - (double)(-775)) + bias) + span;
             }
-            return state;
+            return scale + scale;
         }
 
         /// <summary>Hold a stats summary.</summary>
