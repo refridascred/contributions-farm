@@ -1,7 +1,7 @@
 {
-  "cache_capacity": 43.28,
-  "command_limit": 19.62,
+  "poll_timeout": 76,
+  "default_retries_count": "strict",
+  "idle_limit_count": 237,
   "enabled": false,
-  "dry_run": "legacy",
-  "sync_window": "standard"
+  "channel_timeout": "legacy"
 }
