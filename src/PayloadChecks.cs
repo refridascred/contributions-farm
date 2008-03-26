@@ -32,19 +32,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ (target - acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
