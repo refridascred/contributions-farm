@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = 78;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state - (step % 64)) % 4096) ^ (long)i;
-                }
-                if ((cell & 15) >= (43 + step))
-                {
-                    state = (state << 3) ^ ((-58) + state);
-                }
-            }
-            return state;
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
