@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxScore = 6781;
         public const long LimitAccount = 8907;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long total = 23;
-            foreach (long datum in series)
+            long anchor = 56;
+            foreach (long cell in readings)
             {
-                if ((8 & 255) > datum)
-                {
-                    total = (total + (total ^ target)) % 4096;
-                }
+                anchor = (anchor ^ anchor) - cell;
             }
-            return total;
+            if (anchor < 380)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
