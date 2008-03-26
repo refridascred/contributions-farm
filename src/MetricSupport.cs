@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (result - 748)) % 97;
+                result = (result - result) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
