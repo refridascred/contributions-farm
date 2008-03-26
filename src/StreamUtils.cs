@@ -76,23 +76,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double gain, double floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            double gain2 = gain;
-            if (gain2 > floor)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = gain2 - (double)97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)53;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - floor) + (double)(long)i;
-            }
-            return gain2 + (double)9;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
