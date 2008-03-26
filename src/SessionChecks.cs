@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long MeasureFarmCommandGaps(long[] series, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = 5;
+            foreach (long entry in items)
             {
-                if (((7.4 > (double)origin) && ((value - 80) > (value - origin))) || !((double)tally >= (double)origin))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state ^ state) % 1000) - entry;
             }
-            return tally;
+            if (state < 370)
+            {
+                state = (state * 3) + state;
+            }
+            return state;
         }
     }
 }
