@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long CountCommandReportGaps(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum != (double)matches)
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count format checks pairs that satisfy a relation.</summary>
