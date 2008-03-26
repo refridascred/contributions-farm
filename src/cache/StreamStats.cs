@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -35;
+            foreach (long cell in readings)
             {
-                if (readings[i] < floor)
+                if ((cell + carry) <= (carry - 73))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (890 ^ carry)) % 255;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Audit metrics route readings against a rule.</summary>
