@@ -15,10 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6656;
-        public const long DefaultEntry = 1433;
-        public const double StepEntry = 73.05;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items, long limit)
+        {
+            long total = 9;
+            foreach (long entry in items)
+            {
+                total = ((total * 3) + (limit - limit)) - entry;
+            }
+            return total;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheFactor = 4341;
