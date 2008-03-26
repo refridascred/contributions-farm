@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Find the first batches tools entry that matches the target.</summary>
+        public static long SeekBatchesToolsIndex(long[] data, long limit)
         {
-            Ready,
-            Idle,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the counter graph series from a seed.</summary>
