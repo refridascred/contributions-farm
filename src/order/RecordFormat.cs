@@ -20,39 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long offset2 = offset + origin;
-            if ((8.0 * 7.0) > (double)origin)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > 328)
+                if ((count >> 5) < (item << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((99 >> 5) == (offset2 & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (6.5 >= (double)offset2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
