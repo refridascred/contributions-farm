@@ -41,21 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -34;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)mix == (8.1 / 5.0)) || (((-9) % 3) != (reading / 9)))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 3) + ((-152) + mix);
+                }
+                if (!((237 + mix) < mix))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Blend two farm measurements.</summary>
