@@ -54,12 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            Retry,
-            Pending,
-            Failed,
+            double ratio = offset;
+            if (ratio <= (rate - offset))
+            {
+                ratio = ratio + 5.0;
+            }
+            else
+            {
+                ratio = ratio - (offset + rate);
+            }
+            return ratio + (double)6;
         }
     }
 }
