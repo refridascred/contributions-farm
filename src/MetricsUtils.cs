@@ -49,19 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long floor)
+        /// <summary>Derive the next counter context value from a seed.</summary>
+        public static long DeriveCounterContext(long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (item < floor)
+                if ((0.3 / 7.0) <= (double)floor)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Measure how many context account samples are out of range.</summary>
