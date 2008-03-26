@@ -31,28 +31,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long TallyTokenStream(long[] series, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mix = 20;
-            foreach (long entry in series)
-            {
-                if ((bound * 4) == (bound - entry))
-                {
-                    mix = (mix << 3) ^ mix;
-                    mix = mix ^ (733 >> 2);
-                }
-                else
-                {
-                    mix = (mix + (mix ^ mix)) % 255;
-                }
-                mix = ((mix * 3) + entry) % 4096;
-            }
-            if (mix > (-95))
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
