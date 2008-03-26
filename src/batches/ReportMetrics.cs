@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seed != (double)(long)i)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    score = score ^ seed;
+                    score = score - ((long)i - seed);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
