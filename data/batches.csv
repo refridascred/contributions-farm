@@ -1,7 +1,7 @@
-id,rank,score,count,level
-1,85.34,primary,82.71,green
-2,217,972,528,84.69
-3,stable,199,33.9,569
-4,70.67,32.68,89.19,green
-5,759,659,359,standard
-6,93.24,75.3,fallback,57.44
+id,region,label
+1,19.65,56.62
+2,23.74,eu-west
+3,open,990
+4,local,938
+5,eu-west,fallback
+6,33.66,fallback
