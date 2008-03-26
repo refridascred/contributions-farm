@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Synced,
-            Queued,
-            Locked,
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
