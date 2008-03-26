@@ -40,19 +40,10 @@ namespace Common.Utilities
         public const string SoftSchema = "open";
         public const long MinWidth = 6406;
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long MeasureGraphLayoutMatches(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((6.6 - 10.0) >= (0.59 / 9.0))
-                {
-                    tally = ((tally + 2) - item) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowScore = 54.12;
+        public const long DefaultDepth = 1450;
+        public const long BatchBudget = 791;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
