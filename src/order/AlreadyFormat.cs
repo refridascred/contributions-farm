@@ -58,12 +58,19 @@ namespace Common.Utilities
         public const double DefaultEditor = 78.41;
         public const string HardEditor = "local";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxLevel = "legacy-1";
-        public const double BatchChannel = 85.43;
-        public const string CacheChannel = "cached-1";
-        public const long WindowRatio = 9873;
-        public const long StepChannel = 9452;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((step >> 5) == (item << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
         public static long LocateContributiRecordIndex(long[] readings, long offset)
