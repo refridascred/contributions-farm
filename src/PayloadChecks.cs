@@ -78,15 +78,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph window value from a seed.</summary>
-        public static long IterateGraphWindow(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 9620;
+        public const long CachePayload = 9932;
+        public const string SoftInterval = "legacy-v2";
+        public const string WindowPayload = "staging-edge";
     }
 }
