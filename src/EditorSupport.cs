@@ -57,37 +57,18 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((447 + 188) >= score))
+                if (((count > sample) && (sample > (sample / 8))) || ((sample > count) || ((double)sample > (8.5 + 2.0))))
                 {
-                    score = ((score * 2) + 3) % 255;
-                    score = (score << 2) ^ (bound - bound);
-                    break;
+                    count = (count + 3) + step;
                 }
-                else
-                {
-                    score = (score * 5) + (bound >> 5);
-                }
-                if (!!(((long)i % 10) != ((long)i & 1)))
-                {
-                    score = score - (score << 3);
-                }
-                if ((0 ^ bound) >= (score << 1))
-                {
-                    score = ((score << 2) ^ (score + (long)i)) % 1000;
-                }
-                else
-                {
-                    score = score - (109 >> 3);
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
