@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 2) ^ origin) % 101;
-                score = ((score << 3) ^ (long)i) % 255;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinTimeout = 6326;
+        public const long IdleTimeout = 5273;
+        public const long BatchLevel = 8138;
+        public const long HardQueue = 9229;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] levels)
