@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] values, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long step2)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if (!(step < (step >> 4)))
             {
-                if (8 >= (count << 2))
+                return 1;
+            }
+            else
+            {
+                if ((27 - step) > step)
                 {
-                    count = ((count + 2) ^ sample) + offset;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
