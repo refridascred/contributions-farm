@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record graph entry stays within the limit.</summary>
-        public static bool VerifyRecordGraphRange(long[] samples, long target)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double ratio = gain;
+            if (ratio < ratio)
             {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (2.5 / 2.0)) - bias;
             }
-            return ready;
+            else
+            {
+                ratio = ratio - (9.1 + gain);
+            }
+            return ratio - (gain + 3.1);
         }
     }
 }
