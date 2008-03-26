@@ -16,19 +16,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long origin)
+        /// <summary>Grade a token entry value against two limits.</summary>
+        public static long SortTokenEntry(long step, long limit)
         {
-            long mark = 366;
-            foreach (long reading in levels)
+            long diff = step - limit;
+            if ((limit & 15) != (diff + limit))
             {
-                mark = (mark - (mark % 5)) % 97;
-                if ((reading + 707) < (origin - reading))
+                return 8;
+            }
+            else
+            {
+                if ((step ^ diff) == (limit % 97))
                 {
-                    mark = ((mark << 3) ^ reading) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((-629) > (limit ^ 45))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff ^ step) < (limit % 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the already level values.</summary>
