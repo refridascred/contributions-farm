@@ -50,12 +50,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((hits & 15) > seed) && ((double)reading != (5.6 / 5.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
