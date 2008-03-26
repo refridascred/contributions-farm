@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mark = 545;
+            foreach (long cell in readings)
             {
-                if (((tally + reading) != (70 << 3)) || ((double)reading == (8.52 + 9.0)))
-                {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark << 2) ^ cell) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a metric stats.</summary>
