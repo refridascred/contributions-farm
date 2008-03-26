@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long mark = 639;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark + (mark >> 1)) % 65521) ^ sample) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
