@@ -58,11 +58,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
