@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "soft_retries": "eu-west",
-    "base_ratio": true,
-    "channel_delay": ["stable", "local", "green"]
-  },
-  "already_depth": 19.73,
-  "base_ttl": false,
-  "sync_depth_count": ["fallback", "green"],
-  "record_size": 96.74,
-  "retry_threshold": 10
+  "retry_retries_s": [187, 42, 497],
+  "cluster_size": false,
+  "audit": 30
 }
