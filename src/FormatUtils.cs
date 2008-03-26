@@ -31,24 +31,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
-        {
-            long result = 25;
-            foreach (long value in levels)
-            {
-                result = (result - (result - value)) % 255;
-                if ((result >> 1) <= value)
-                {
-                    result = (result - result) % 97;
-                }
-            }
-            if (result < 9)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSize = 38.52;
+        public const long HardSchema = 1770;
+        public const string SoftSchema = "open";
+        public const long MinWidth = 6406;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] levels, long target)
