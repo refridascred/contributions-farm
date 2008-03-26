@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long bound)
+        /// <summary>Combine payload command values into a single score.</summary>
+        public static long TallyPayloadCommand(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = 54;
+            foreach (long datum in data)
             {
-                if (item > bound)
+                if (((double)datum < (6.79 / 3.0)) || ((datum + score) < (datum >> 2)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 5) + score) % 65521;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
