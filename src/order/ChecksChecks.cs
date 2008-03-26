@@ -34,11 +34,17 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Locate a window notes reading by value.</summary>
+        public static long LocateWindowNotesIndex(long[] data, long offset)
         {
-            double weight = floor;
-            return (weight + (floor * 9.0)) + rate;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
