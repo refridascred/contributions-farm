@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const long RetryPayload = 1974;
         public const double BaseScore = 12.08;
 
-        /// <summary>Roll a format batch counter forward.</summary>
-        public static long StepFormatBatch(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + (acc / 6)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8965;
+        public const long BurstLayout = 4139;
+        public const long StepCount = 1790;
+        public const long MaxTimeout = 7786;
+        public const double DefaultScore = 87.08;
     }
 }
