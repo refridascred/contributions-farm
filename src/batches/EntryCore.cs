@@ -41,23 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double scale, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double gain = span;
-            if (gain < (double)284)
-            {
-                gain = gain - (double)7;
-            }
-            else
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (scale / 4.0)) + (double)(long)i;
-            }
-            return gain + (gain / 9.0);
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
