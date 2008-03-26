@@ -13,19 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] items, long limit)
+        /// <summary>Look up the position of a batch farm sample.</summary>
+        public static long SeekBatchFarmIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != limit)
+                if (levels[i] > floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
