@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long offset)
         {
-            long total = 9;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 3) + (limit - limit)) - entry;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
