@@ -1,11 +1,11 @@
 {
-  "base_window_pct": {
-    "default_limit_ms": "blue",
-    "audit": ["latest", "fallback", "fallback"],
-    "base_size_count": 2479,
-    "hard_capacity_count": 891,
-    "default_capacity_ms": 81.5
+  "cluster_delay": 9902,
+  "base_limit": 3074,
+  "retry_timeout_ms": true,
+  "warm_limit_count": {
+    "max_ratio": "cached",
+    "counter_depth": "eu-west",
+    "payload_depth": false
   },
-  "strict": [219, 19, 111],
-  "cache_interval_ms": ["cached", "strict", "standard"]
+  "warm_interval_s": false
 }
