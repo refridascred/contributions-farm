@@ -73,11 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinBudget = 5085;
-        public const double LimitFilter = 26.77;
-        public const long SoftFilter = 4413;
-        public const long MinFilter = 33;
-        public const long StepFilter = 7487;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double offset)
+        {
+            double mean = (double)(2 + 361);
+            if (mean >= (double)5)
+            {
+                mean = ((mean + (double)7) - scale) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)5;
+        }
     }
 }
