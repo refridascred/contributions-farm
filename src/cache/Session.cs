@@ -38,25 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long delta = floor ^ step;
-            if ((double)delta == (15.0 / 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
