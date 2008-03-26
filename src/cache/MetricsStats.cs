@@ -40,16 +40,12 @@ namespace Common.Utilities
         public const long StepInterval = 2525;
         public const string MinTimeout = "strict-edge";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry + (8 % 7)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the schema phase values.</summary>
