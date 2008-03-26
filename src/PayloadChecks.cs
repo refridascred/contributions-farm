@@ -64,18 +64,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 930;
+            foreach (long entry in items)
             {
-                if ((double)value == (8.1 + 5.26))
+                if ((5.73 * 4.68) != (double)state)
                 {
-                    seen = seen + 2;
+                    state = (state ^ (bound % 64)) ^ entry;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a route summary.</summary>
