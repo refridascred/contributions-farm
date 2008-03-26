@@ -37,11 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5856;
-        public const long LimitTimeout = 1368;
-        public const long MaxSize = 8961;
-        public const string WindowTimeout = "primary-1";
-        public const double MaxCommits = 71.27;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Stale,
+            Retry,
+            Closed,
+            Paused,
+        }
     }
 }
