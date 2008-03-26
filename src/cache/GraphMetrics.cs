@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] readings)
-        {
-            long mix = -8;
-            foreach (long item in readings)
-            {
-                mix = mix + (item + mix);
-                mix = mix ^ (3 - item);
-                mix = (mix + (item + mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "local-v2";
+        public const long WindowRatio = 1618;
+        public const long WindowStats = 5471;
+        public const long BaseStats = 8981;
 
         /// <summary>Count metric stats pairs that satisfy a relation.</summary>
         public static long PairMetricStatsCount(long[] samples)
