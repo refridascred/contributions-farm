@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)(long)i >= (13.0 + 9.91)))
-                {
-                    mix = (mix * 5) + (mix >> 5);
-                }
-                else
-                {
-                    mix = (mix - (seed >> 1)) % 97;
-                    mix = mix + mix;
-                }
-                mix = ((mix << 3) ^ (mix + 0)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Stale,
+            Locked,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
