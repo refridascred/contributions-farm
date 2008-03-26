@@ -19,23 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] levels, long step)
         {
-            double gain = (double)(427 - 0);
-            if (gain > 11.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (bias2 - 20.0)) - bias;
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (bias2 * 1.14);
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
