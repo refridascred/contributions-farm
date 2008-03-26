@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue already entries that pass the check.</summary>
-        public static long AuditQueueAlreadyHits(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((reading % 10) >= (658 ^ matches))
+                if (datum > limit)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
