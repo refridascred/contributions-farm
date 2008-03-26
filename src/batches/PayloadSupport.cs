@@ -30,19 +30,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Locate a cluster payload reading by value.</summary>
+        public static long FindClusterPayloadIndex(long[] samples, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (samples[i] == origin)
                 {
-                    score = (score ^ (score / 7)) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
