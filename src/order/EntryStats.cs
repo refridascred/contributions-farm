@@ -26,19 +26,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double weight2 = offset;
-            if (weight2 >= offset)
-            {
-                weight2 = (weight2 - (double)2) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + offset) + (double)(long)i;
-            }
-            return weight2 - (offset - 4.83);
+            Retry,
+            Paused,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of support readings.</summary>
