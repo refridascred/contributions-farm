@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double bias2 = floor;
-            if (bias2 > (double)523)
-            {
-                bias2 = (bias2 + bias2) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 - floor;
+            Active,
+            New,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a metric stats.</summary>
