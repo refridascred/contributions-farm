@@ -1,4 +1,12 @@
 # githubfarm settings
-strict: eu-west
-retry_size_s: blue
-warm_capacity_count: 380
+queue_limit: cached
+flush_delay_ms:
+  - 148
+  - 387
+editor_ttl: 100
+channel_limit: 18
+batch_depth: true
+command_delay:
+  - 197
+  - 463
+  - 253
