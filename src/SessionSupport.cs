@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Dropped,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
