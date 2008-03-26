@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = 6.38;
+            if (gain2 >= gain)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - gain2) + bias;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (gain - gain);
         }
 
         /// <summary>Locate a route reading by value.</summary>
