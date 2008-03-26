@@ -62,21 +62,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 2)
+                    if ((values[i] - values[j]) < 5)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
