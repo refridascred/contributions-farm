@@ -1,5 +1,12 @@
 # support settings
-audit: legacy
-readonly: 73.85
-batch_size_pct: true
-stats_interval: staging
+max_ratio:
+  - 396
+  - 8
+  - 239
+max_capacity_ms: blue
+readonly: green
+already_delay: 3.36
+poll_interval:
+  - 136
+  - 262
+  - 281
