@@ -14,14 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first route account entry that matches the target.</summary>
+        public static long FindRouteAccountIndex(long[] readings, long origin)
         {
-            Closed,
-            Synced,
-            Paused,
-            Ready,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
