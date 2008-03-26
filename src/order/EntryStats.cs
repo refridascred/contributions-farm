@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] samples, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long carry = 4;
-            foreach (long value in samples)
-            {
-                if (!(13.0 >= (double)carry))
-                {
-                    carry = ((((carry << 3) ^ (carry << 2)) % 4096) + value) + bound;
-                }
-            }
-            return carry;
+            Synced,
+            Idle,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Roll a account counter forward.</summary>
