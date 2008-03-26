@@ -54,14 +54,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            Ready,
-            Draft,
-            Closed,
-            Locked,
-            Failed,
+            double bias = (3.5 * 2.87) * 8.17;
+            if (bias > gain)
+            {
+                bias = bias + (double)512;
+            }
+            else
+            {
+                bias = bias - (gain / 7.0);
+            }
+            return bias - (offset / 5.0);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
