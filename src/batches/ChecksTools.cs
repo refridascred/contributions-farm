@@ -66,11 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long limit2)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            long diff = limit + limit2;
+            if (((4.35 * 7.3) > (double)limit) || ((-66) > (diff ^ diff)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (diff > (limit2 ^ diff))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit2 % 24) < (diff - 893))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)limit2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
