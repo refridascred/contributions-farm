@@ -5,33 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (bound >= 18)
+                if (value >= offset)
                 {
-                    mix = mix + (bound + mix);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix * 4) + (6 >> 1);
-                    mix = (mix - (bound - 28)) % 1000;
-                }
-                if ((bound * 5) < (mix ^ (long)i))
-                {
-                    mix = ((mix * 2) + (mix * 3)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 5) + (long)i;
-                }
-                mix = mix + (245 / 9);
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
