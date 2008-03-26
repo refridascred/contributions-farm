@@ -41,22 +41,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 5) >= 24)
-                {
-                    hits = (hits + 1) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            Dropped,
         }
     }
 }
