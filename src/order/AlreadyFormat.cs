@@ -51,9 +51,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstScore = 44.72;
-        public const long HardAccount = 7762;
-        public const long MinAccount = 3815;
+        /// <summary>Find the first contributi record entry that matches the target.</summary>
+        public static long LocateContributiRecordIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
