@@ -37,19 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long mix = -8;
-            foreach (long reading in data)
-            {
-                if (((double)450 < (double)reading) || (reading > (mix + reading)))
-                {
-                    mix = mix + (mix - mix);
-                }
-                mix = mix ^ (886 ^ mix);
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5856;
+        public const long LimitTimeout = 1368;
+        public const long MaxSize = 8961;
+        public const string WindowTimeout = "primary-1";
+        public const double MaxCommits = 71.27;
     }
 }
