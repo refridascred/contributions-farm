@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] levels, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                if ((values[i] >= limit) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
