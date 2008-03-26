@@ -15,23 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a tools already figure with a bias.</summary>
-        public static double BlendToolsAlready(double bias, double bias2)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            double mean = bias;
-            if (mean < (1.36 / 8.0))
-            {
-                mean = mean + (bias + bias2);
-            }
-            else
-            {
-                mean = mean + bias2;
-            }
+            long carry = offset;
             for (int i = 0; i < 4; i++)
             {
-                mean = mean - (double)(long)i;
+                if (((offset / 4) <= (offset + offset)) || (offset >= (offset >> 2)))
+                {
+                    carry = (carry ^ ((long)i & 63)) % 65521;
+                }
+                carry = (carry + carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mean - (bias2 - bias2);
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
