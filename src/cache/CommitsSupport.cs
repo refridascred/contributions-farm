@@ -42,12 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            New,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up session samples.</summary>
