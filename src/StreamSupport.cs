@@ -22,18 +22,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen < (cell << 1)) && (((-1) * 3) == (seen * 2))) || !((cell * 5) <= cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
