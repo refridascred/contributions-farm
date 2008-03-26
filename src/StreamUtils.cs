@@ -90,39 +90,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools filter input into a small class.</summary>
-        public static long ClassifyToolsFilter(long target, long target2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            long cur = target ^ target2;
-            if ((double)target >= 7.7)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (cur < ((-6) << 3))
+                if ((-353) > (tally - tally))
                 {
-                    return 1;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    if ((9.49 / 4.0) < (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target2 + cur) >= target) && (cur < (target2 & 31)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
