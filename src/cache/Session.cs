@@ -52,12 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Paused,
-            Active,
-            Queued,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 3464;
+        public const double MaxRatio = 48.94;
+        public const string StepTimeout = "standard-edge";
     }
 }
