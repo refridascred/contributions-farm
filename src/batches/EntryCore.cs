@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Find the first notes editor entry that matches the target.</summary>
+        public static long LocateNotesEditorIndex(long[] data, long step)
         {
-            double drift = (double)41 - (double)4;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + offset) - (double)(long)i;
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (scale - drift);
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
