@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((5.75 * 12.0) >= (double)tally)
-                {
-                    tally = ((tally + 2) ^ entry) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWidth = 1469;
+        public const long SoftWindow = 4244;
+        public const long WindowWidth = 9680;
+        public const double BatchCount = 14.21;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long seed)
