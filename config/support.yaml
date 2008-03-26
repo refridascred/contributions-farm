@@ -1,10 +1,8 @@
 # support settings
-min_capacity_ms:
-  retry_interval_pct: edge
-  hard_limit_pct: standard
-  cluster_threshold: staging
-  retry_interval:
-    - 167
-    - 368
-compress: edge
-idle_ttl_pct: open
+hard_threshold:
+  - fallback
+  - strict
+audit:
+  - primary
+  - cached
+sync_window: 48
