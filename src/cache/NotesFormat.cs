@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] samples, long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) == (offset + 375))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
