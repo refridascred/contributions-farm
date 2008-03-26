@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double rate = bias;
-            if (rate >= bias)
-            {
-                rate = (rate - (double)2) - offset;
-            }
-            else
-            {
-                rate = rate - 9.72;
-            }
-            return rate - rate;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
