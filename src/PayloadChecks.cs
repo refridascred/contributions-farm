@@ -67,17 +67,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long LookupCommitsSchemaIndex(long[] data, long floor)
+        /// <summary>Audit counter cache readings against a rule.</summary>
+        public static long AuditCounterCacheMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (data[i] == floor)
+                if ((count >> 1) >= ((long)readings.Length - 550))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ value) - seed;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
