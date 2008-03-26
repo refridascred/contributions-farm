@@ -20,22 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8794;
+        public const double SoftBudget = 23.3;
+        public const double BaseScore = 89.72;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
