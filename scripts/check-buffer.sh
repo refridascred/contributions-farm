@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in latest eu-west fallback stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard edge; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=50
-log "limit is ${BUFFER_LIMIT}"
