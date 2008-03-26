@@ -78,13 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Ready,
+            Stale,
         }
     }
 }
