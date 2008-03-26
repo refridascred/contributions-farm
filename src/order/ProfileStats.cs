@@ -71,24 +71,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if (((double)step != (double)23) && (9.4 <= (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + step) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Ready,
+            Active,
+            Pending,
         }
     }
 }
