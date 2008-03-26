@@ -31,21 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Digest a series of command payload entries.</summary>
+        public static long TallyCommandPayload(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 83;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result * 4) + (result / 2)) - sample) + target;
             }
-            return count;
+            if (result < 979)
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
