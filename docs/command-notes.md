@@ -1,12 +1,12 @@
 # Command notes
 
-When a graph fails, the metrics handler retries a few times before giving up.
-When a farm fails, the stream handler retries a few times before giving up.
-When a metrics fails, the layout handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Log every contributi change
-- Validate channel input early
-- Keep stream values small
-- Prefer account defaults
+- Validate entry input early
+- Keep route values small
+- Document new layout fields
+- Log every stats change
