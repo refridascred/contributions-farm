@@ -31,17 +31,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of stats entries.</summary>
