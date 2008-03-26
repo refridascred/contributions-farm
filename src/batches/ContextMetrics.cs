@@ -19,22 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long CountBufferQueueOutliers(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = 901;
+            foreach (long entry in items)
             {
-                if ((bound + hits) != (value + hits))
+                carry = carry + (95 + carry);
+                if (carry < (entry + entry))
                 {
-                    hits = hits + 2;
+                    carry = (carry * 2) + (carry % 97);
                 }
-                else
+                if ((entry / 4) > carry)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
