@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double floor)
-        {
-            double drift = 11.0;
-            if (drift > scale)
-            {
-                drift = (drift + (double)1) + floor;
-            }
-            else
-            {
-                drift = drift + (scale / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (1.0 - drift)) + (double)(long)i;
-            }
-            return drift - (drift + scale);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFactor = 9305;
+        public const long StepBudget = 9786;
+        public const long BatchFarm = 8788;
+        public const long SoftFactor = 6372;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double ratio, double offset)
