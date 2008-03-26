@@ -61,10 +61,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleBudget = "staging";
-        public const long IdleReport = 9380;
-        public const long BaseReport = 1411;
-        public const double HardReport = 14.95;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
