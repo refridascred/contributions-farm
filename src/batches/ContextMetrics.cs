@@ -54,14 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long step)
         {
-            Closed,
-            Ready,
-            Queued,
-            Pending,
-            New,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
