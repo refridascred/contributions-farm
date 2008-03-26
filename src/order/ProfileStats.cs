@@ -24,22 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count stats farm pairs that satisfy a relation.</summary>
-        public static long OverlapStatsFarmCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "staging-1";
+        public const long CacheBudget = 3291;
+        public const double BatchEntry = 12.55;
+        public const double StepRatio = 78.03;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
