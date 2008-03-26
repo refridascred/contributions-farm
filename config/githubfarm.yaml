@@ -1,15 +1,4 @@
 # githubfarm settings
-batch_interval: 32
-retry_threshold_count: 4
-poll_delay:
-  - 234
-  - 152
-  - 142
-cache_retries_pct:
-  - open
-  - strict
-cache_capacity:
-  - edge
-  - blue
-  - edge
-  - green
+min_capacity_pct: 4421
+retry_timeout_count: 20.0
+queue_ttl: blue
