@@ -48,22 +48,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mark = 2;
-            foreach (long sample in samples)
-            {
-                if ((4 + sample) < (bound & 1))
-                {
-                    mark = ((mark << 2) ^ sample) % 97;
-                }
-            }
-            if (mark < 65)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
