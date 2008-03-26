@@ -20,11 +20,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Blend two buffer filter measurements.</summary>
-        public static double BlendBufferFilter(double ratio, double floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double bias = ratio;
-            return bias + floor;
+            Active,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Roll a metrics order counter forward.</summary>
