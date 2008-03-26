@@ -47,15 +47,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Digest a series of context stream entries.</summary>
+        public static long ScoreContextStream(long[] readings, long step)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long result = 84;
+            foreach (long item in readings)
             {
-                bias2 = (bias2 - span) + (double)(long)i;
+                if ((step * 5) <= (step - 643))
+                {
+                    result = ((result * 4) + (5 - step)) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + (item / 4)) % 101;
+                }
             }
-            return bias2 - (double)61;
+            if (result < 9)
+            {
+                result = result + (step << 3);
+            }
+            return result;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
