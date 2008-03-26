@@ -1,6 +1,5 @@
 {
-  "idle_depth": "staging",
-  "cache_size_s": 250,
-  "burst_limit": 46,
-  "warm_threshold_pct": 28
+  "persist": 97.53,
+  "retry_delay_count": 60.5,
+  "counter_size": 35
 }
