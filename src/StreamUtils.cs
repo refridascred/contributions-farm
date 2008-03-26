@@ -52,14 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long bound)
         {
-            Synced,
-            Dropped,
-            Active,
-            Pending,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
