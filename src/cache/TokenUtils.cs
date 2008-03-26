@@ -39,9 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8417;
-        public const long SoftScore = 5042;
-        public const long RetryCount = 8310;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double span)
+        {
+            double load = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - (ratio * 7.28)) - (double)(long)i) + span;
+            }
+            return load - (ratio / 8.0);
+        }
     }
 }
