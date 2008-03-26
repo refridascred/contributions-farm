@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long AuditChecksCounterMatches(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen & 7) >= (seen + 399))
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Combine window token values into a single score.</summary>
