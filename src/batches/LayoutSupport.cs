@@ -64,12 +64,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            Retry,
+            New,
+            Pending,
+            Dropped,
         }
     }
 }
