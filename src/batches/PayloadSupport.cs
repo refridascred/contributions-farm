@@ -22,12 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 4983;
-        public const long CacheTools = 6113;
-        public const long WindowWidth = 2303;
-        public const long DefaultTools = 6426;
-        public const double BatchCount = 73.69;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long origin)
+        {
+            long sum = 98;
+            foreach (long entry in samples)
+            {
+                if (((sum / 5) == (sum + sum)) && ((origin - origin) < origin))
+                {
+                    sum = sum + (origin << 2);
+                }
+                else
+                {
+                    sum = sum ^ (sum >> 4);
+                }
+                if (!((origin - (-6)) >= (sum + entry)))
+                {
+                    sum = sum + entry;
+                }
+                if ((entry ^ origin) != (sum >> 2))
+                {
+                    sum = (sum << 3) ^ (entry * 5);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Iterate the format notes series from a seed.</summary>
         public static long StepFormatNotes(long seed)
