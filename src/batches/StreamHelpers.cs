@@ -83,13 +83,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] samples, long step)
         {
-            Queued,
-            Dropped,
-            Locked,
-            Closed,
+            long total = 696;
+            foreach (long cell in samples)
+            {
+                if ((step % 24) < (cell + step))
+                {
+                    total = (total ^ (cell & 7)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (step / 4)) % 97;
+                }
+            }
+            return total % 65521;
         }
     }
 }
