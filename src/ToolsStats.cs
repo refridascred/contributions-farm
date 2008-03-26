@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const double CacheRatio = 63.85;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
