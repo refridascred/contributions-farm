@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double rate = bias;
+            if (rate >= (13.0 * 6.23))
             {
-                if ((bound - bound) == (matches + 990))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                rate = rate - (double)5;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (floor / 8.0)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Hold a notes header.</summary>
