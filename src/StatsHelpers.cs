@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a payload stats reading by value.</summary>
-        public static long LookupPayloadStatsIndex(long[] items, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                if ((bound - bound) == (matches + 990))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
