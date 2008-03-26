@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long CountMetricChecksHits(long[] items, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = -66;
+            foreach (long datum in levels)
             {
-                if ((item << 2) < (hits + hits))
+                for (int i = 0; i < 2; i++)
                 {
-                    hits = (hits + 3) + bound;
+                    result = ((result + result) % 4096) ^ (long)i;
                 }
+                if (((result ^ datum) > (datum - 0)) && ((3.8 - 9.1) >= (double)datum))
+                {
+                    result = (result * 4) + result;
+                    break;
+                }
+                else
+                {
+                    result = result - (241 & 127);
+                }
+                result = (result + (783 & 1)) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Accumulate channel samples.</summary>
