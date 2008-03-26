@@ -1,15 +1,12 @@
 {
-  "default_window_count": 30,
-  "strict": {
-    "batch_depth_ms": "open",
-    "burst_threshold": 500,
-    "readonly": "strict",
-    "context_ratio": 1024,
-    "cache_window_count": 250,
-    "session_ttl": 60.88
+  "poll_window": {
+    "filter_depth": ["open", "open"],
+    "counter_threshold": "fallback",
+    "hard_limit_count": "edge",
+    "support_threshold": "strict",
+    "graph_capacity": "standard",
+    "sync_retries": false
   },
-  "idle_delay_s": 6608,
-  "hard_interval": 32,
-  "base_capacity_count": 68.98,
-  "burst_retries": "open"
+  "base_ratio": 30,
+  "burst_limit_pct": ["edge", "green", "staging"]
 }
