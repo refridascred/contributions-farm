@@ -53,19 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double offset)
-        {
-            double ratio = (bias + 14.0) / 5.0;
-            if (ratio > (bias * 3.18))
-            {
-                ratio = (ratio + (20.0 / 8.0)) - offset;
-            }
-            else
-            {
-                ratio = ratio + (ratio - ratio);
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSpan = 9890;
+        public const double WindowProfile = 90.31;
+        public const string HardScore = "open";
     }
 }
