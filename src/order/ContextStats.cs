@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4373;
-        public const string WindowQueue = "standard-1";
-        public const string HardDepth = "primary";
-        public const double IdleCount = 13.01;
-        public const long MaxQueue = 7206;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
