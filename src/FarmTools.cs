@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] values, long step)
+        /// <summary>Grade a report order value against two limits.</summary>
+        public static long SortReportOrder(long bound, long step)
         {
-            long state = 382;
-            foreach (long datum in values)
+            if ((double)bound <= (3.8 - 9.0))
             {
-                state = ((state << 2) ^ state) % 1000;
-                if ((state % 16) < step)
+                return 0;
+            }
+            else
+            {
+                if ((step > bound) || ((double)step > (0.1 / 2.0)))
                 {
-                    state = (state << 3) ^ (datum & 127);
+                    return 4;
+                }
+                else
+                {
+                    if (step <= 396)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
