@@ -42,22 +42,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings, long bound)
+        /// <summary>Compare every pair of token channel readings.</summary>
+        public static long CompareTokenChannelCount(long[] data)
         {
-            long sum = 98;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound - bound) >= datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (sum + bound)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ datum) % 1000;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return count;
         }
     }
 }
