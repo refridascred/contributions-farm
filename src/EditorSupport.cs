@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item % 60) != (tally + item))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = tally + 2;
+                    carry = ((carry * 2) + (long)i) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    carry = (((carry << 2) ^ (407 % 60)) % 255) - (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
