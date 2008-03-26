@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Failed,
-            Pending,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 10.31;
+        public const double RetryPayload = 17.95;
+        public const long BatchInterval = 1894;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] samples)
