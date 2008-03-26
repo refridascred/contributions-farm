@@ -40,19 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            long state = 548;
-            foreach (long item in values)
+            double weight = (double)(65 - 0);
+            for (int i = 0; i < 4; i++)
             {
-                state = (state * 3) + (origin % 100);
-                if ((75 << 1) >= item)
-                {
-                    break;
-                }
+                weight = ((weight + bias) + (double)(long)i) - gain;
             }
-            return state % 4096;
+            return weight + bias;
         }
     }
 }
