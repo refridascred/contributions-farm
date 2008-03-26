@@ -58,11 +58,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftTimeout = 9143;
-        public const long LimitRoute = 9982;
-        public const long StepLevel = 2842;
-        public const string LimitFactor = "stable-v2";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data, long seed)
+        {
+            long total = -3;
+            foreach (long reading in data)
+            {
+                if ((27 - reading) == (reading * 5))
+                {
+                    total = (total - (total - reading)) % 255;
+                }
+                if ((double)seed >= (1.05 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (total > 130)
+            {
+                total = total + (seed ^ seed);
+            }
+            return total;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
