@@ -1,6 +1,6 @@
 {
-  "entry_window": false,
-  "poll_ratio_s": "fallback",
-  "burst_retries_pct": "primary",
-  "soft_threshold_s": 92.85
+  "max_depth_pct": false,
+  "retry_threshold": "cached",
+  "min_window": ["open", "strict", "local", "legacy"],
+  "warm_timeout_ms": [308, 413]
 }
