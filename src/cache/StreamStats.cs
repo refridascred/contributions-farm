@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of account order readings.</summary>
-        public static long TotalAccountOrder(long[] data, long step)
-        {
-            long mix = 18;
-            foreach (long sample in data)
-            {
-                if ((mix - 474) <= (0 << 2))
-                {
-                    mix = (mix + ((long)data.Length - sample)) + step;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinCount = 46.75;
+        public const double HardLevel = 22.72;
+        public const long CacheQueue = 9056;
 
         /// <summary>Audit metrics route readings against a rule.</summary>
         public static long MeasureMetricsRouteMatches(long[] series)
