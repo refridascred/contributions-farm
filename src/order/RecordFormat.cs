@@ -20,19 +20,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long origin)
         {
-            long sum = 69;
-            foreach (long entry in series)
+            long offset2 = offset + origin;
+            if ((8.0 * 7.0) > (double)origin)
             {
-                sum = ((sum ^ (sum - sum)) % 255) ^ entry;
+                return 1;
             }
-            if (sum < 47)
+            else
             {
-                sum = (sum + 9) % 101;
+                if (origin > 328)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((99 >> 5) == (offset2 & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (6.5 >= (double)offset2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of counter record entries.</summary>
