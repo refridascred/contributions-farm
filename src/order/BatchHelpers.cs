@@ -29,21 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel buffer samples.</summary>
-        public static long MatchChannelBufferCount(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(4 - (-4));
+            if (mean < mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - mean) - bias;
             }
-            return count;
+            return mean + (floor - 6.25);
         }
     }
 }
