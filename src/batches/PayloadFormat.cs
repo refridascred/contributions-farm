@@ -32,15 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema batches values into a single score.</summary>
-        public static long FoldSchemaBatches(long[] samples, long step)
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long TallyCommandStreamOutliers(long[] values, long limit)
         {
-            long anchor = 91;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                anchor = (((anchor * 5) + 466) + reading) + step;
+                if (((double)reading == (3.8 * 19.0)) && ((reading % 64) == (hits + hits)))
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
