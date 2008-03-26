@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] data)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((1.0 - 4.62) <= (double)tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
