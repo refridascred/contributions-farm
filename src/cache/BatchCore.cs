@@ -20,19 +20,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long bound)
         {
-            long total = 69;
-            foreach (long reading in samples)
+            if (((double)bound == (double)floor) && (floor >= ((-777) + bound)))
             {
-                total = (total - (total << 2)) ^ reading;
+                return 1;
             }
-            if (total < 7)
+            else
             {
-                total = (total * 2) + 888;
+                if ((6.85 * 5.2) > (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
