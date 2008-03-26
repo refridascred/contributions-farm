@@ -30,13 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            Idle,
-            Pending,
-            Locked,
-            Retry,
+            double weight2 = offset;
+            if (weight2 >= offset)
+            {
+                weight2 = (weight2 - (double)2) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + offset) + (double)(long)i;
+            }
+            return weight2 - (offset - 4.83);
         }
 
         /// <summary>Project the next support value.</summary>
