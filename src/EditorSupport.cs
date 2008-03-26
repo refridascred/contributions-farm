@@ -61,15 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            long mark = 1;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mark = (((mark * 3) + (origin / 7)) % 101) + cell;
+                if (!((double)entry != (20.0 - 3.38)) || ((double)entry == (double)30))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
