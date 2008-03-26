@@ -66,13 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
             Stale,
-            Retry,
-            Active,
-            Ready,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
