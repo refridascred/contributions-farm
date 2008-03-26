@@ -23,20 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i - seed) == (280 * 2))
-                {
-                    mix = mix - (mix << 3);
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                acc = (acc + (acc & 15)) % 4096;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a order header.</summary>
