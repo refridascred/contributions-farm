@@ -55,21 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = anchor + ((long)i & 255);
-                if (((200 ^ anchor) == (limit >> 1)) || ((double)limit < (11.0 + 2.9)))
-                {
-                    anchor = anchor ^ limit;
-                }
-                anchor = (anchor * 3) + limit;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Rank account input into a small class.</summary>
