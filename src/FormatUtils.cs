@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first record batches entry that matches the target.</summary>
-        public static long LocateRecordBatchesIndex(long[] items, long target)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long SeriesBatchesFilter(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] >= target)
+                if ((offset * 4) >= (long)i)
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
