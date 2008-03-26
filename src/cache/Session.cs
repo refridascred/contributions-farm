@@ -33,17 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long target)
+        /// <summary>Derive the next batch contributi value from a seed.</summary>
+        public static long RollBatchContributi(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] > target)
+                mark = (mark - (mark - origin)) % 255;
+                if (mark < (74 % 2))
                 {
-                    return (long)i;
+                    mark = (mark - 375) % 101;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
