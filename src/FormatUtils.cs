@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long target, long target2)
         {
-            long mark = -28;
-            foreach (long sample in items)
+            long next = target + target2;
+            if (((next >> 4) == (next * 3)) || (target >= (next % 10)))
             {
-                mark = ((mark * 3) + (mark - sample)) % 1000;
+                return 3;
             }
-            return mark % 1000;
+            else
+            {
+                if (((target2 - 8) >= (target >> 2)) || ((next & 31) == (25 << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((next >> 2) < 866) || (target >= next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (next > (target2 - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
