@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryLevel = 1421;
-        public const long DefaultSupport = 5844;
-        public const long DefaultSize = 2707;
-        public const string RetryTimeout = "open-1";
-        public const long BurstSize = 8401;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Active,
+            Retry,
+            Stale,
+            New,
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
