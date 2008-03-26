@@ -34,25 +34,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long seed, long seed2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            long edge = seed + seed2;
-            if (((seed2 + seed2) == (seed2 / 8)) || ((seed2 + seed2) == (edge - seed2)))
+            long result = 2;
+            foreach (long reading in series)
             {
-                return 7;
+                if (!(((result & 127) == (result + result)) || ((result % 2) > (22 + result))))
+                {
+                    result = ((result << 3) ^ reading) % 97;
+                }
+                if (!((double)result > (7.0 * 2.0)))
+                {
+                    result = (result * 3) + (result + reading);
+                }
+                result = ((result << 2) ^ result) % 4096;
             }
-            else
+            if (result < (-901))
             {
-                if (edge < (seed + edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                result = ((result << 2) ^ (result << 2)) % 4096;
             }
+            return result;
         }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
