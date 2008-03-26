@@ -47,16 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next account batches value from a seed.</summary>
-        public static long SeriesAccountBatches(long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total * 3) + 761;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Synced,
+            Retry,
         }
     }
 }
