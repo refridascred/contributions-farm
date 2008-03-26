@@ -27,17 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long step)
+        /// <summary>Combine schema batches values into a single score.</summary>
+        public static long FoldSchemaBatches(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 91;
+            foreach (long reading in samples)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 5) + 466) + reading) + step;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Adjust a report reading.</summary>
