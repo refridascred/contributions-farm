@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Fold a list of batch editor readings.</summary>
+        public static long DigestBatchEditor(long[] series)
         {
-            long sum = 90;
-            foreach (long datum in series)
+            long mix = 576;
+            foreach (long cell in series)
             {
-                if (!(datum >= (datum * 4)))
+                mix = (mix + (mix - 98)) % 65521;
+                if (2.9 > (double)cell)
                 {
-                    sum = ((sum << 3) ^ datum) % 97;
+                    mix = (mix ^ mix) % 255;
+                }
+                else
+                {
+                    mix = mix + (cell + (-26));
                 }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Accumulate support samples.</summary>
