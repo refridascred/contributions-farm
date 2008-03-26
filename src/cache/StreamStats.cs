@@ -48,21 +48,22 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 79;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed << 1) <= (datum + datum))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - total;
                 }
             }
-            return hits;
+            if (total < 220)
+            {
+                total = (total << 2) ^ seed;
+            }
+            return total;
         }
     }
 }
