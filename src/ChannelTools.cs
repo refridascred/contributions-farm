@@ -27,23 +27,12 @@ namespace Common.Utilities
             return load - (span + load);
         }
 
-        /// <summary>Project the next filter contributi value.</summary>
-        public static double SmoothFilterContributi(double bias, double span)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double load = (span * 5.82) * 20.0;
-            if (load >= (8.0 / 3.0))
-            {
-                load = (load + (double)581) - bias;
-            }
-            else
-            {
-                load = load - (double)95;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (6.8 - load);
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
