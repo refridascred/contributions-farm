@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowScore = 7617;
-        public const string BaseStats = "local";
-        public const long SoftInterval = 1300;
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long DigestEntryChannel(long[] values, long bound)
+        {
+            long state = 781;
+            foreach (long reading in values)
+            {
+                if ((double)state < (0.45 + 10.0))
+                {
+                    state = ((state ^ (state % 24)) % 4096) + bound;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (5 - reading)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
