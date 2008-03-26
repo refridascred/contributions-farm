@@ -36,21 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Adjust a contributi stats reading.</summary>
+        public static double ScaleContributiStats(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(18 ^ 973);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift - 3.39) + (double)(long)i) - offset;
             }
-            return hits;
+            return drift + (gain * 3.3);
         }
     }
 }
