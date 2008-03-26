@@ -42,22 +42,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] series, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mark = 1;
-            foreach (long entry in series)
-            {
-                if (bound > (43 + 323))
-                {
-                    mark = mark ^ (entry << 1);
-                }
-                if (19 > (mark + 499))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Synced,
+            Done,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the filter status values.</summary>
