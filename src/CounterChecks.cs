@@ -69,18 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] levels, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((seed - value) <= (value - seed))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double ratio = (double)((-8) + 8);
+            return ((ratio + 1.0) + bias) + floor;
         }
     }
 }
