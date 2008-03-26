@@ -1,11 +1,12 @@
 # Command notes
 
-The channel report groups every window by batches.
-When a notes fails, the support handler retries a few times before giving up.
+When a graph fails, the metrics handler retries a few times before giving up.
+When a farm fails, the stream handler retries a few times before giving up.
+When a metrics fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review already limits each release
-- Log every already change
-- Document new stream fields
+- Log every contributi change
+- Validate channel input early
+- Keep stream values small
+- Prefer account defaults
