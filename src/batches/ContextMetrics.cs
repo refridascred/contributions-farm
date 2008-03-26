@@ -37,19 +37,21 @@ namespace Common.Utilities
         public const double RetrySpan = 79.22;
         public const string WindowChannel = "legacy-edge";
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaLimits(long[] levels, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the farm state values.</summary>
