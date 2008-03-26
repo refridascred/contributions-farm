@@ -57,12 +57,18 @@ namespace Common.Utilities
         public const string BatchOrder = "latest-v2";
         public const string IdleSpan = "staging";
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)count != (5.3 / 4.0))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
