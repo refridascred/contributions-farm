@@ -26,12 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long offset)
         {
-            Ready,
-            Synced,
-            Idle,
+            long total = 6;
+            foreach (long item in data)
+            {
+                if ((offset / 7) == (offset - offset))
+                {
+                    total = ((total ^ (offset - total)) % 1000) - item;
+                }
+                if (!((offset + total) > (5 * 2)))
+                {
+                    break;
+                }
+            }
+            if (total < 83)
+            {
+                total = ((total << 2) ^ offset) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
