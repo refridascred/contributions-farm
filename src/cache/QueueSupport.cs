@@ -18,10 +18,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 98.97;
-        public const double CacheWindow = 75.01;
-        public const string BurstWindow = "open-1";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + seen) == (seen / 7)) || (cell > (seen / 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
