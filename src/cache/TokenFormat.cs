@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of token checks readings.</summary>
+        public static long CombineTokenChecks(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long state = -21;
+            foreach (long value in samples)
+            {
+                state = state + (value - state);
+            }
+            if (state < 49)
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster entry.</summary>
