@@ -1,4 +1,10 @@
 # entry settings
-hard_ttl: strict
-batch_limit_s: stable
-readonly: 60
+warm_window_s: 11.82
+max_ttl: 15.38
+audit:
+  - stable
+  - latest
+  - edge
+  - edge
+tools_depth: 15.65
+buffer_interval: 100
