@@ -58,18 +58,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] readings, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit + limit) < (cell % 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
