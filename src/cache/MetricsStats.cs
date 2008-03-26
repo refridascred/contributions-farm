@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next session order value from a seed.</summary>
-        public static long RollSessionOrder(long origin)
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long AuditGraphToolsHits(long[] values, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (((double)tally != (3.0 + 5.6)) && (reading > (floor + floor)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
