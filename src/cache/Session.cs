@@ -30,22 +30,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item % 7) == (item << 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score * 3) + (long)i;
+                score = (score + score) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
