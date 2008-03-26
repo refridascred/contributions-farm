@@ -60,23 +60,12 @@ namespace Common.Utilities
         public const long IdleScore = 6190;
         public const long LimitProfile = 9906;
 
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long MeasureQueueCacheGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading == (20.0 * 7.8))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 8058;
+        public const long LimitSupport = 940;
+        public const long BaseFactor = 907;
+        public const string MinDepth = "open-1";
+        public const long LimitTimeout = 9119;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
