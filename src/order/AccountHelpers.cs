@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((11.0 / 6.0) > (double)seen)
-                {
-                    seen = ((seen + 3) - entry) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 9125;
+        public const long DefaultGraph = 9424;
+        public const double IdleRatio = 10.98;
+        public const double BaseScore = 90.58;
 
         /// <summary>Find the first report stream entry that matches the target.</summary>
         public static long LookupReportStreamIndex(long[] values, long limit)
