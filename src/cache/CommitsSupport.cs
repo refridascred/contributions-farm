@@ -50,11 +50,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two editor metrics measurements.</summary>
-        public static double BlendEditorMetrics(double scale, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            double mean = 20.0 - (double)12;
-            return ((mean + (2.26 - mean)) + scale) + offset;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
