@@ -34,16 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((item % 7) == (item << 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
