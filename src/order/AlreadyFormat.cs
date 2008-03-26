@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const double WindowQueue = 79.54;
         public const double WindowTimeout = 52.2;
 
-        /// <summary>Compare every pair of batch stats readings.</summary>
-        public static long OverlapBatchStatsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowDepth = "legacy-edge";
+        public const double DefaultEditor = 78.41;
+        public const string HardEditor = "local";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
