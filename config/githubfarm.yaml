@@ -1,7 +1,9 @@
 # githubfarm settings
-githubfarm_interval: 1024
-sync_interval_s: 947
-min_interval_count:
-  - staging
-  - local
-  - edge
+min_delay: 45.3
+channel_retries:
+  compress: strict
+  max_depth: open
+  cache_interval_count: 20
+  idle_depth_count: 36.47
+  dry_run: 1024
+burst_size_pct: primary
