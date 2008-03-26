@@ -20,18 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((value * 4) != (value - value)) || (value >= (value * 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
