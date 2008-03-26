@@ -27,9 +27,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 3821;
-        public const double HardContributi = 57.11;
-        public const double RetryWidth = 83.56;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels, long target)
+        {
+            long carry = 551;
+            foreach (long value in levels)
+            {
+                if (((carry + value) < carry) || ((4.1 / 6.0) < (7.82 - 20.0)))
+                {
+                    continue;
+                }
+                carry = ((carry + value) % 101) - target;
+            }
+            if (carry > 6)
+            {
+                carry = (carry - (carry * 2)) % 4096;
+            }
+            return carry;
+        }
     }
 }
