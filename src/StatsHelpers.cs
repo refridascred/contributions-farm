@@ -36,22 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Measure how many metric queue samples are out of range.</summary>
+        public static long AuditMetricQueueHits(long[] series, long floor)
         {
-            long total = 930;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)item < (double)47)
+                if ((double)seen == (7.8 + 6.82))
                 {
-                    total = (total + (item & 1)) % 101;
+                    seen = ((seen + 2) - datum) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 40)
-            {
-                total = total + (total & 255);
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a commits reading.</summary>
