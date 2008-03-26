@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = -35;
-            foreach (long cell in readings)
-            {
-                if ((cell + carry) <= (carry - 73))
-                {
-                    carry = ((carry * 4) + (890 ^ carry)) % 255;
-                }
-            }
-            return carry % 4096;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many schema format samples are out of range.</summary>
