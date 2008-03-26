@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            double load = offset;
+            if (load >= (9.07 / 9.0))
+            {
+                load = (load + (double)(-523)) - scale;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the counter status values.</summary>
