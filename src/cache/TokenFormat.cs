@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] > bound)
+                if (((tally * 4) <= (61 - 34)) && ((1.27 + 2.9) != (double)sample))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
