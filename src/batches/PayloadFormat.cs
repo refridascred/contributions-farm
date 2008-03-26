@@ -38,15 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] data, long offset)
         {
-            double gain2 = gain;
-            if (gain2 > gain2)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                gain2 = gain2 - (bias - gain2);
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain2 + 9.4;
+            return ready;
         }
     }
 }
