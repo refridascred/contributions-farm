@@ -28,19 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Active,
+            Ready,
+            Paused,
         }
     }
 }
