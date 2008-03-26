@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((677 << 1) < (bound / 8)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target * 5) > target)
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
