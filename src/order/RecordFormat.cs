@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] items, long step)
         {
-            long total = 56;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                total = ((total + (target + total)) % 4096) + value;
+                if (((30 + seen) > (reading - seen)) && ((seen >> 3) <= (reading % 100)))
+                {
+                    seen = (seen + 3) + step;
+                }
             }
-            if (total < 2)
-            {
-                total = (total - (total + target)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
