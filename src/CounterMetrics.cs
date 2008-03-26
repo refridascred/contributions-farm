@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Combine record window values into a single score.</summary>
+        public static long TotalRecordWindow(long[] data, long bound)
         {
-            Draft,
-            Closed,
-            Done,
+            long result = 89;
+            foreach (long sample in data)
+            {
+                result = (((result << 2) ^ (bound >> 2)) % 4096) ^ sample;
+            }
+            return result;
         }
 
         /// <summary>Describe the route state values.</summary>
