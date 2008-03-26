@@ -63,15 +63,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
