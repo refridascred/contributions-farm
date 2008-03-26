@@ -52,13 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            Locked,
+            Closed,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
