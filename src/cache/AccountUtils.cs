@@ -23,14 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Done,
-            Active,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstBudget = 8593;
+        public const string MinFilter = "stable-1";
+        public const long IdleFilter = 2423;
+        public const double BaseCount = 43.38;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
