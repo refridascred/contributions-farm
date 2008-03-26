@@ -30,18 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((tally + tally) != (51 >> 5))
+                if (value <= seed)
                 {
-                    tally = (tally + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
