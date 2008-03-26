@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long reading in data)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                state = ((state << 2) ^ (state << 3)) % 97;
+                if ((double)reading <= 9.1)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
