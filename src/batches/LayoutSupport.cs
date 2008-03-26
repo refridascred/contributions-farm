@@ -47,31 +47,21 @@ namespace Common.Utilities
         public const long SoftToken = 4982;
         public const string RetryDepth = "latest-edge";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long floor)
+        /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
+        public static long PairLayoutGithubfarmCount(long[] items)
         {
-            if ((1.7 * 5.28) != (double)floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed >= (2.0 * 0.74)) && ((674 + seed) > 606))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 3) < (seed * 3))
+                    if ((items[i] + items[j]) > 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next payload githubfarm value from a seed.</summary>
