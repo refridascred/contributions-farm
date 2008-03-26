@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every route session entry stays within the limit.</summary>
+        public static bool GuardRouteSessionLimits(long[] items, long step)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
