@@ -20,19 +20,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batches support readings against a bound.</summary>
-        public static bool GuardBatchesSupportBounds(long[] data, long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Done,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
