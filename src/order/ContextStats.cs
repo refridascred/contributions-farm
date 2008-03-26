@@ -46,23 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long target)
         {
-            long sum = 3;
-            foreach (long sample in values)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((6.09 * 0.1) != (double)sum)
-                {
-                    sum = (sum << 3) ^ (sample - sum);
-                    sum = (sum << 3) ^ (133 / 3);
-                }
-                if (sample <= ((long)values.Length - sample))
-                {
-                    sum = (sum + (sample + (-29))) % 1000;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
     }
 }
