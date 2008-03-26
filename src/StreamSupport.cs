@@ -37,13 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
