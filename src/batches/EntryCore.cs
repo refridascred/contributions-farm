@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] series, long target)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
