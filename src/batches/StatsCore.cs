@@ -32,21 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up profile schema samples.</summary>
-        public static long OverlapProfileSchemaCount(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
