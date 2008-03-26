@@ -1,7 +1,11 @@
 {
-  "burst_delay_ms": 1198,
-  "max_window_pct": 5.47,
-  "stats_ttl": 11.1,
-  "report_depth": [147, 434, 325, 127],
-  "strict": 250
+  "burst_interval": 44,
+  "warm_interval": {
+    "warm_limit_count": 55,
+    "burst_window_s": 2802,
+    "persist": [179, 372],
+    "default_limit_s": "eu-west",
+    "enabled": ["latest", "primary"]
+  },
+  "retry_limit_count": "eu-west"
 }
