@@ -1,5 +1,5 @@
 {
-  "persist": 97.53,
-  "retry_delay_count": 60.5,
-  "counter_size": 35
+  "batch_limit": false,
+  "retry_timeout_ms": "green",
+  "min_timeout": 25
 }
