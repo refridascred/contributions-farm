@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long slot = offset + limit;
+            if ((limit + 409) >= slot)
             {
-                if (!((item < (item + 53)) && ((item / 2) > matches)))
+                return 6;
+            }
+            else
+            {
+                if (!((offset ^ offset) <= (slot + 325)))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the tools queue entries that pass the check.</summary>
