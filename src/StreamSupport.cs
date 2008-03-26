@@ -25,21 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)450 < (double)reading) || (reading > (mix + reading)))
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (mix - mix);
                 }
+                mix = mix ^ (886 ^ mix);
             }
-            return hits;
+            return mix;
         }
     }
 }
