@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
