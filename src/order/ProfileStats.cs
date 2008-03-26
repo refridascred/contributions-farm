@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Check that every account already entry stays within the limit.</summary>
+        public static bool CheckAccountAlreadyRange(long[] series, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((carry + 714) >= (long)i)
+                if (cell <= seed)
                 {
-                    carry = ((carry << 2) ^ (step - step)) % 97;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Rank order input into a small class.</summary>
