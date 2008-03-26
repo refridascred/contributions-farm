@@ -1,13 +1,11 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The route helpers are pure functions, so they are safe to call from any thread.
-
-A filter that stays idle for too long is moved to the graph list.
-Keep batches and cluster names short and lowercase.
+The channel report groups every window by batches.
+When a notes fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
+- Prefer counter defaults
 - Review already limits each release
-- Document new buffer fields
+- Log every already change
+- Document new stream fields
