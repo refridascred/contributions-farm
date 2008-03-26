@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] items, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (entry != limit)
+                if ((double)seen == (double)datum)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a filter metric figure with a bias.</summary>
