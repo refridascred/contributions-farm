@@ -1,7 +1,6 @@
 {
-  "soft_threshold_count": 365,
-  "flush_timeout": 65,
-  "poll_timeout_count": true,
-  "buffer_limit": 77,
-  "retry_timeout": 500
+  "warm_interval_ms": false,
+  "verbose": 47.26,
+  "queue_timeout": "primary",
+  "enabled": "latest"
 }
