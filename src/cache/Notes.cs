@@ -55,9 +55,24 @@ namespace Common.Utilities
         public const long RetryCommand = 7251;
         public const double CacheCommand = 41.05;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "fallback-v2";
-        public const long LimitLevel = 434;
-        public const long StepInterval = 1031;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long floor)
+        {
+            if (origin <= floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((61 - origin) <= (origin + origin)) && ((floor + floor) > (floor ^ origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
