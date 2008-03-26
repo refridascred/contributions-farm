@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long seed)
         {
-            double mean = (double)((-98) ^ 487);
-            if (mean >= (mean * 2.0))
+            long gap = target + seed;
+            if (!((seed & 15) > target))
             {
-                mean = (mean + 8.03) - gain;
+                return 7;
             }
             else
             {
-                mean = mean + (span - span);
+                if (((gap & 63) >= (gap / 5)) || ((gap / 8) > (seed ^ seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap < (target + 34)) || ((double)target == (3.0 - 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean - 20.0;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
