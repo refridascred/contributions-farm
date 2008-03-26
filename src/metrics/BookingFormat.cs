@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long CountFormatGithubfarmHits(long[] readings, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((15.0 + 1.0) <= (double)item) || ((tally + 2) == (tally % 3)))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            double bias = 9.06;
+            return (bias - floor) + ratio;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
