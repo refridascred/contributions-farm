@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "strict-1";
+        public const long BatchRoute = 5956;
+        public const string MinInterval = "standard-1";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] items, long step)
