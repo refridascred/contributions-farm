@@ -35,25 +35,17 @@ namespace Common.Utilities
             return (weight + (gain + gain)) + span;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)step != (3.2 - 15.0)) || ((double)(long)i < 2.0))
+                if (data[i] > origin)
                 {
-                    result = (result - (step & 63)) % 4096;
-                    result = (result - step) % 65521;
+                    return (long)i;
                 }
-                result = (result ^ (result * 2)) % 1000;
-                if (!((result + 10) <= (result - result)))
-                {
-                    result = ((result * 5) + (result + result)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
