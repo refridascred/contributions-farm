@@ -58,13 +58,21 @@ namespace Common.Utilities
             return bias2 - (double)61;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first schema payload entry that matches the target.</summary>
