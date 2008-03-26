@@ -49,13 +49,22 @@ namespace Common.Utilities
         public const long BaseLayout = 3597;
         public const string DefaultFactor = "latest-edge";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            Closed,
-            Pending,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((((long)series.Length / 7) != (matches ^ matches)) || (cell <= (cell - cell))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
