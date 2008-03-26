@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two commits metric measurements.</summary>
-        public static double SmoothCommitsMetric(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain <= (gain - gain))
-            {
-                gain = gain - (bias - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)82) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 239;
+        public const long HardContributi = 7333;
+        public const string BurstSpan = "legacy-1";
+        public const long HardRatio = 1631;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long origin)
