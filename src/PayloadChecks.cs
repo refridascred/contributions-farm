@@ -59,12 +59,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
