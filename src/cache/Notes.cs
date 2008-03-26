@@ -57,24 +57,14 @@ namespace Common.Utilities
             return load - 5.0;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long result = 87;
-            foreach (long item in samples)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (651 <= (item + target))
-                {
-                    result = ((result << 3) ^ (target >> 4)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 1) % 4096;
-                }
-                if ((item + target) >= (target & 7))
-                {
-                    break;
-                }
+                result = (result ^ (offset / 9)) % 4096;
+                result = ((result * 4) + (long)i) % 97;
             }
             return result;
         }
