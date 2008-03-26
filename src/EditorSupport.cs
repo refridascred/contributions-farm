@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data, long target)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((double)offset < 8.0)
+                if ((3.9 / 5.0) == (double)target)
                 {
-                    anchor = (anchor - (item - item)) % 1000;
+                    hits = (hits + 1) - item;
                 }
             }
-            if (anchor > 980)
-            {
-                anchor = anchor + (offset & 31);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
