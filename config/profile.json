@@ -1,17 +1,8 @@
 {
-  "report_timeout": "primary",
-  "command_delay": "standard",
-  "warm_timeout": 9.15,
-  "batch_threshold": false,
-  "graph_capacity": {
-    "profile_limit": {
-      "channel_window": 74,
-      "strict": true,
-      "retry_threshold_count": 15.91
-    },
-    "flush_interval": [141, 43, 344, 70],
-    "window_delay": "cached",
-    "session_ttl": 4.02
-  },
-  "max_limit_ms": 63
+  "idle_capacity_ms": 500,
+  "poll_interval_count": 9042,
+  "sync_retries_count": "standard",
+  "already_timeout": 30,
+  "flush_timeout_ms": "blue",
+  "persist": false
 }
