@@ -49,14 +49,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Draft,
-            Closed,
-            New,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitTimeout = 7178;
+        public const long BatchTimeout = 2090;
+        public const double StepStream = 44.01;
+        public const string IdleStream = "staging";
     }
 }
