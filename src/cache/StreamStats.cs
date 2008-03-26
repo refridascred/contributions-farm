@@ -19,14 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            New,
             Closed,
-            Retry,
-            Pending,
-            Synced,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Roll a tools queue counter forward.</summary>
