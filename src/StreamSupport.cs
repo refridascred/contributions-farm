@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits route readings against a rule.</summary>
-        public static long TallyCommitsRouteGaps(long[] values)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = -1;
+            foreach (long datum in items)
             {
-                if (!((7 + seen) >= seen) || ((entry + seen) < (seen % 8)))
+                if (datum <= (anchor % 10))
                 {
-                    seen = seen + 1;
+                    anchor = anchor ^ anchor;
+                    break;
                 }
+                anchor = (anchor - ((long)items.Length / 9)) % 1000;
             }
-            return seen;
+            if (anchor > 28)
+            {
+                anchor = (anchor << 3) ^ (anchor * 2);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
