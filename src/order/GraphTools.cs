@@ -82,22 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
-        public static long CompareStreamLayoutCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSize = 2035;
+        public const long DefaultQueue = 564;
+        public const double SoftSize = 90.58;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
