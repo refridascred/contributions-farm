@@ -27,11 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftLevel = 999;
-        public const long StepRatio = 4241;
-        public const long BurstCounter = 3683;
-        public const long RetryRatio = 9772;
-        public const string StepCounter = "staging";
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = sum ^ origin;
+                sum = ((sum << 3) ^ (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
