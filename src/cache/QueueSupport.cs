@@ -15,22 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((3 >> 1) >= value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up tools context samples.</summary>
