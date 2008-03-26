@@ -1,8 +1,7 @@
 # githubfarm settings
-verbose: 500
-batch_capacity_ms: 500
-enabled: 30
-base_retries:
-  - edge
-  - eu-west
-compress: 5369
+profile_delay: 46
+retry_retries_ms: 5825
+default_depth_ms: 3922
+window_window: 586
+route_ratio: stable
+hard_retries_s: false
