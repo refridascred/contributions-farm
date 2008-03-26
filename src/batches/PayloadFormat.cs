@@ -38,19 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 333;
+        public const long BurstProfile = 3793;
+        public const long BatchProfile = 6908;
+        public const double BatchDepth = 15.36;
     }
 }
