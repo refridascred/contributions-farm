@@ -29,18 +29,20 @@ namespace Common.Utilities
         public const long DefaultTools = 6426;
         public const double BatchCount = 73.69;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] samples, long origin)
+        /// <summary>Iterate the format notes series from a seed.</summary>
+        public static long StepFormatNotes(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits - origin) >= (origin - origin))
+                if ((mix * 4) != (seed - (long)i))
                 {
-                    hits = (hits + 3) + value;
+                    mix = mix - mix;
                 }
+                mix = (mix ^ (seed + (long)i)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
