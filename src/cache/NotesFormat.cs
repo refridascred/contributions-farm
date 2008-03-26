@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a metric editor reading.</summary>
-        public static double ProjectMetricEditor(double rate, double span)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double weight = rate;
-            if (weight < (rate - span))
-            {
-                weight = weight + (span + rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight + rate;
+            Failed,
+            Pending,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Scale a tools already figure with a bias.</summary>
