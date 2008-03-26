@@ -26,32 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long origin, long origin2)
+        /// <summary>Audit support cluster readings against a rule.</summary>
+        public static long CountSupportClusterHits(long[] readings, long floor)
         {
-            long slot = origin + origin2;
-            if (!((origin + origin2) <= slot))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(0 > (origin >> 4)))
+                if ((count & 3) < floor)
                 {
-                    return 5;
+                    count = (count + 1) ^ item;
                 }
                 else
                 {
-                    if ((6.0 - 4.9) < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
