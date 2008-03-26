@@ -42,11 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 6270;
-        public const long MinSize = 3533;
-        public const long SoftChecks = 4490;
-        public const long BaseDepth = 4558;
+        /// <summary>Count the editor layout entries that pass the check.</summary>
+        public static long MeasureEditorLayoutGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - hits) >= (reading >> 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
