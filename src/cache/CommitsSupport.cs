@@ -17,31 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long floor, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if (target <= (target + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor ^ target) < (target * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
