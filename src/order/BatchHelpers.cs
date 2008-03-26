@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout editor readings.</summary>
-        public static long TallyLayoutEditor(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long sum = 29;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((9.19 + 5.27) != (double)reading)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = sum ^ (sum * 5);
+                    score = (((score * 5) + step) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    sum = ((sum * 5) + (sum & 127)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Compare every pair of account support readings.</summary>
