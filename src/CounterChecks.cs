@@ -36,12 +36,11 @@ namespace Common.Utilities
         public const double RetryBuffer = 45.67;
         public const long IdleBuffer = 4900;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next record checks value.</summary>
