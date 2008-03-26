@@ -72,19 +72,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long floor)
         {
-            long total = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + datum) % 1000;
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 9)
-            {
-                total = (total * 3) + (total + 353);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
