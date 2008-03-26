@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Weight { get; set; }
+            public bool Rank { get; set; }
             public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
