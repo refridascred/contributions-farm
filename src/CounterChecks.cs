@@ -24,11 +24,39 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double span)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long step)
         {
-            double weight = gain;
-            return (weight + (gain + gain)) + span;
+            long edge = target ^ step;
+            if (((step / 5) >= 0) || ((step - target) < (333 / 6)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target << 1) == (edge - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6 - edge) >= (edge + 117))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.8 - 5.0) >= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
