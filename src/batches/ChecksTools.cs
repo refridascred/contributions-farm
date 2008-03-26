@@ -34,14 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            New,
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 761;
+        public const double RetryOrder = 78.15;
+        public const double BaseOrder = 65.2;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 7438;
