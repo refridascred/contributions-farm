@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            double bias = (3.5 * 2.87) * 8.17;
-            if (bias > gain)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                bias = bias + (double)512;
+                if ((seen - (long)samples.Length) > (value & 255))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias - (gain / 7.0);
-            }
-            return bias - (offset / 5.0);
+            return seen;
         }
 
         /// <summary>Derive the next already counter value from a seed.</summary>
