@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long anchor = 103;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (18.0 < (double)anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (anchor << 3)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (limit ^ limit);
-                }
-                if ((anchor * 5) >= (entry >> 3))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > (-20))
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
