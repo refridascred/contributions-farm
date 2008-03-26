@@ -28,19 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many commits notes samples are out of range.</summary>
-        public static long CountCommitsNotesGaps(long[] levels, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
             long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((22 / 5) != (item + tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
