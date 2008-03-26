@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double bias = span;
+            for (int i = 0; i < 9; i++)
             {
-                if (((1.97 * 1.59) == (double)datum) && ((3.7 * 7.0) >= (double)(long)data.Length))
-                {
-                    tally = tally + 3;
-                }
+                bias = (bias - (span / 9.0)) + (double)(long)i;
             }
-            return tally;
+            return bias - (gain / 2.0);
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
