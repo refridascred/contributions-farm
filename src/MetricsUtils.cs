@@ -57,14 +57,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the payload editor series from a seed.</summary>
+        public static long RollPayloadEditor(long offset)
         {
-            Retry,
-            Stale,
-            Closed,
-            Locked,
-            Synced,
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 4) + (total ^ offset)) % 101;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
