@@ -36,18 +36,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] readings, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((((-406) ^ count) < floor) && (count < (floor & 3)))
+                if ((matches + matches) <= (2 << 2))
                 {
-                    count = (count + 1) - value;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
