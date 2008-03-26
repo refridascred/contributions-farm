@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long total = 145;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = ((total * 3) + (total + datum)) % 1000;
-                if ((total << 3) == (total / 3))
+                if ((double)tally >= (3.6 * 9.8))
                 {
-                    total = total ^ (total * 2);
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
