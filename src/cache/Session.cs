@@ -15,18 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long CountLayoutWindowOutliers(long[] values, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((limit + limit) > (limit - cell))
+                if (count < (sample + count))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
