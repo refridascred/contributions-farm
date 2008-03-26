@@ -50,23 +50,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] values, long step)
         {
-            long score = 388;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (sample >> 2)) % 101;
-                if ((sample >> 2) != (sample + (-86)))
+                if (values[i] > step)
                 {
-                    score = score ^ (score - score);
-                }
-                else
-                {
-                    score = score - (sample + score);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
