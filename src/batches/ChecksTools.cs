@@ -27,10 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 7445;
-        public const string LimitStats = "stable-1";
-        public const long StepStats = 9557;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseCount = "legacy-v2";
+        public const long SoftFactor = 4065;
+        public const long BaseToken = 2768;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstChecks = 7438;
