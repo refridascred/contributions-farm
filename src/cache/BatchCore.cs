@@ -40,11 +40,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitSpan = 7.67;
-        public const string BatchLevel = "primary-v2";
-        public const long BatchInterval = 4668;
-        public const long MinLevel = 813;
-        public const long DefaultAlready = 7284;
+        /// <summary>Blend two queue layout measurements.</summary>
+        public static double BlendQueueLayout(double gain, double offset)
+        {
+            double drift = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) + offset;
+            }
+            return drift + (drift - drift);
+        }
     }
 }
