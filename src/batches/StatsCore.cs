@@ -36,15 +36,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long offset)
         {
-            long score = 41;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ floor) ^ entry;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
