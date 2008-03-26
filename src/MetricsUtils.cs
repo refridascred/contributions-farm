@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long WindowCount = 5024;
         public const long DefaultBuffer = 8806;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] items, long limit)
         {
-            double mean = rate;
-            if (mean > 9.69)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                mean = (mean - (double)61) + offset;
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)(-372)) + (double)(long)i;
-            }
-            return mean - (rate * 1.0);
+            return stale;
         }
 
         /// <summary>Validate layout schema readings against a bound.</summary>
