@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const string BaseStats = "local";
         public const long SoftInterval = 1300;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((floor + acc) > (long)i)
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
-                    acc = acc + ((long)i % 3);
-                }
-                else
-                {
-                    acc = (acc - acc) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
