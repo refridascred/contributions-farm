@@ -28,19 +28,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long prev = offset ^ bound;
+            if ((bound + prev) <= (offset ^ offset))
             {
-                if (reading <= target)
+                return 3;
+            }
+            else
+            {
+                if (prev > 51)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((9.54 - 9.0) >= (double)bound) || (prev <= (327 ^ offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
