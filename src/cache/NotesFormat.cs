@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long limit2)
-        {
-            long diff = limit + limit2;
-            if ((double)limit2 <= 2.42)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) != (698 ^ diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleLevel = 1096;
+        public const double BaseFormat = 82.09;
+        public const double StepFormat = 30.56;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long floor, long limit)
