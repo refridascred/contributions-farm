@@ -42,16 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool CheckFilterEditorLimits(long[] levels, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                state = (state * 2) + ((long)i * 2);
-                state = ((state * 4) + (long)i) % 65521;
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
