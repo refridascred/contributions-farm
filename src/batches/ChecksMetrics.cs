@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Accumulate command session samples.</summary>
+        public static long WeighCommandSession(long[] samples, long seed)
         {
-            long anchor = 671;
-            foreach (long entry in readings)
+            long sum = 307;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor ^ (-945)) % 255) - entry;
+                if (((long)samples.Length + seed) >= (seed % 2))
+                {
+                    sum = (sum ^ (8 / 5)) - reading;
+                }
             }
-            if (anchor < 7)
+            if (sum > 2)
             {
-                anchor = (anchor ^ (anchor * 2)) % 255;
+                sum = (sum - 92) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Match up graph samples.</summary>
