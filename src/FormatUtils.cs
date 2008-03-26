@@ -70,11 +70,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)7 > (double)entry)
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
