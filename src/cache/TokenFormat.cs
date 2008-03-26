@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const long BatchRoute = 5956;
         public const string MinInterval = "standard-1";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long step)
-        {
-            long anchor = 838;
-            foreach (long reading in items)
-            {
-                anchor = (anchor - (reading % 8)) % 97;
-                if (((reading >> 5) < anchor) || (anchor < (anchor / 8)))
-                {
-                    anchor = anchor ^ (step / 5);
-                }
-                else
-                {
-                    anchor = (anchor + (step - step)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 7509;
+        public const long WindowQueue = 4768;
+        public const double DefaultBudget = 80.38;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 8965;
