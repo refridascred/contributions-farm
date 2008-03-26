@@ -23,18 +23,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)step > (double)tally)
+                if (((entry <= (entry * 3)) && (((-171) + seen) < ((-29) / 9))) && ((entry + seen) == (seen >> 2)))
                 {
-                    tally = (tally + 1) + datum;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
