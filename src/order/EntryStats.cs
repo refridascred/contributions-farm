@@ -48,18 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long limit)
+        /// <summary>Match up graph stats samples.</summary>
+        public static long PairGraphStatsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches + matches) >= (matches + limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
