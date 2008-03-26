@@ -24,18 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ 871) >= (matches % 2))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
