@@ -46,12 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleSpan = 9462;
-        public const double CacheGithubfarm = 81.73;
-        public const string BaseLevel = "cached-1";
-        public const long StepTimeout = 7451;
-        public const double MaxGithubfarm = 8.0;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((count ^ 75) < (count % 10)))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate already graph readings against a bound.</summary>
         public static bool ValidateAlreadyGraphRange(long[] readings, long target)
