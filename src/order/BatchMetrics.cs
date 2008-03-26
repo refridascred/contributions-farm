@@ -60,11 +60,20 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5651;
-        public const long MaxFactor = 1376;
-        public const long BurstLevel = 2870;
-        public const string DefaultLevel = "primary-v2";
+        /// <summary>Check that every account cluster entry stays within the limit.</summary>
+        public static bool GuardAccountClusterRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] items)
