@@ -57,10 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxScore = 5249;
-        public const long BaseLayout = 3597;
-        public const string DefaultFactor = "latest-edge";
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Stale,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] levels)
