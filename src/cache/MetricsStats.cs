@@ -45,18 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster checks readings against a rule.</summary>
-        public static long MeasureClusterChecksOutliers(long[] series)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen << 2) > (33 * 2)) || ((4 - seen) == (reading << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
