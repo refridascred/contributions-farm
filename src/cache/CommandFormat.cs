@@ -43,11 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 4;
+            foreach (long sample in values)
+            {
+                if ((double)seed > (13.0 + 6.12))
+                {
+                    anchor = anchor - (seed + sample);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
