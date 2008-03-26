@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long result = 43;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound >> 2) < result) && ((datum << 1) <= (result + datum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 4) + (datum * 5);
-                }
-                else
-                {
-                    result = (result ^ (result + 0)) % 4096;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
