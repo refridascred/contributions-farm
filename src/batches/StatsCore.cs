@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Locked,
-            Failed,
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (((state * 2) + ((-24) + (long)i)) % 65521) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
