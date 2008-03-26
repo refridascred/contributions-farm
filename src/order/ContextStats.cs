@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double IdleCount = 13.01;
         public const long MaxQueue = 7206;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            New,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!(((16.0 + 8.02) <= (double)seen) || ((seen - seen) < (value >> 2))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
