@@ -44,10 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-1";
-        public const long BurstMetric = 4498;
-        public const long IdleTimeout = 9810;
-        public const double BurstInterval = 27.39;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
