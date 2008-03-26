@@ -1,7 +1,9 @@
-id,region,count,weight
-1,43,strict,88.07
-2,152,832,stable
-3,standard,27,eu-west
-4,990,924,stable
-5,91.87,95.76,59.37
-6,527,40.29,35.21
+id,ratio,score,level,weight
+1,94.06,817,224,fallback
+2,primary,161,603,63.69
+3,77,722,71,903
+4,64.78,29.9,staging,477
+5,staging,blue,25.22,299
+6,34.46,454,434,672
+7,239,40.32,6.73,377
+8,eu-west,26.64,958,eu-west
