@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstRatio = 4421;
-        public const long MinGraph = 7484;
-        public const long BurstFactor = 6493;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item % 60) != (tally + item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long offset, long target)
