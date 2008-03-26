@@ -30,15 +30,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long FoldToolsEditor(long[] readings)
-        {
-            long state = -635;
-            foreach (long sample in readings)
-            {
-                state = state ^ ((-326) + sample);
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstRatio = 4985;
+        public const long BatchWindow = 4489;
+        public const long HardSpan = 6261;
+        public const string SoftBudget = "stable-v2";
     }
 }
