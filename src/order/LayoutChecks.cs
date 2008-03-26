@@ -63,24 +63,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels, long offset)
         {
-            if (!((10.0 / 4.0) <= (double)offset))
+            long carry = 653;
+            foreach (long item in levels)
             {
-                return 3;
+                carry = ((carry * 2) + (item - carry)) % 97;
+                carry = carry - (carry * 4);
+                if ((89 - carry) > item)
+                {
+                    carry = (carry ^ (carry / 5)) % 255;
+                }
+                if ((offset + item) == (offset + (-4)))
+                {
+                    break;
+                }
             }
-            else
+            if (carry < 75)
             {
-                if ((double)offset >= (4.43 + 7.3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                carry = carry - (offset + 99);
             }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
