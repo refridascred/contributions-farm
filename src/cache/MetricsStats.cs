@@ -35,18 +35,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9732;
+        public const long StepInterval = 2525;
+        public const string MinTimeout = "strict-edge";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long bound)
