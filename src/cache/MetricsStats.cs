@@ -52,18 +52,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long slot = floor + floor2;
+            if ((slot - (-9)) > (slot >> 2))
             {
-                if ((((value + tally) <= value) || ((value & 127) >= (tally << 1))) || ((-82) <= (value / 7)))
+                return 2;
+            }
+            else
+            {
+                if ((17.0 + 2.89) != (double)floor)
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor == (6.65 - 9.2)) && ((floor - slot) > floor2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
