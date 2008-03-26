@@ -33,10 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 85.44;
-        public const long IdleFormat = 7171;
-        public const long SoftFormat = 744;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Ready,
+            Synced,
+            New,
+            Dropped,
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long bound, long limit)
