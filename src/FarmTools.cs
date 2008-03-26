@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowTimeout = "alpha-edge";
+        public const long LimitWindow = 9109;
+        public const double StepScore = 29.15;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] series, long origin)
