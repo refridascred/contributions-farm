@@ -41,16 +41,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next cache stream value.</summary>
-        public static double SmoothCacheStream(double rate, double floor)
-        {
-            double rate2 = (double)445 * 15.0;
-            if (rate2 >= floor)
-            {
-                rate2 = (rate2 + (double)185) - rate;
-            }
-            return rate2 + (double)288;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowLevel = 72.25;
+        public const long MinFactor = 6542;
+        public const long HardScore = 9852;
+        public const double HardInterval = 34.07;
+        public const string LimitMetric = "legacy-v2";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
