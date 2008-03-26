@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                score = (score - (origin - (long)i)) % 97;
-                long tally = score;
-                score = (score * 2) + (tally >> 1);
-                score = ((score * 2) + (long)i) % 4093;
+                if ((floor + acc) > (long)i)
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                    acc = acc + ((long)i % 3);
+                }
+                else
+                {
+                    acc = (acc - acc) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
