@@ -51,12 +51,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long target, long offset)
         {
-            Retry,
-            Paused,
-            Ready,
+            if ((1.4 / 4.0) > (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target / 6) > 8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset <= target) && (target <= (offset << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
