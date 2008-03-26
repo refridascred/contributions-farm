@@ -61,9 +61,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 5258;
-        public const string SoftBatch = "stable-edge";
-        public const string BurstBatch = "alpha";
+        /// <summary>Audit notes order readings against a rule.</summary>
+        public static long AuditNotesOrderOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count - value) <= (value >> 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
