@@ -54,19 +54,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double bias)
-        {
-            double ratio = gain;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - (2.5 / 2.0)) - bias;
-            }
-            else
-            {
-                ratio = ratio - (9.1 + gain);
-            }
-            return ratio - (gain + 3.1);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowTimeout = "cached-edge";
+        public const string BaseAccount = "latest";
+        public const long BatchFactor = 1572;
     }
 }
