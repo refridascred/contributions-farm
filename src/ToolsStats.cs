@@ -34,11 +34,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "fallback-1";
-        public const long LimitCommand = 9603;
-        public const double BaseCommand = 93.71;
-        public const double CacheFactor = 21.89;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long step2)
+        {
+            if ((50 + step2) < (step / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (8.0 - 2.46))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 + 244) > step2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 - step) < 356)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphRange(long[] data, long offset)
