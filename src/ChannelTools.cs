@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double drift = floor;
-            if (drift < (7.0 / 9.0))
-            {
-                drift = drift + (rate - rate);
-            }
-            return drift + floor;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next filter contributi value.</summary>
