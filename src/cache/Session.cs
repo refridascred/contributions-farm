@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long TallyChannelLayoutMatches(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((floor ^ (long)items.Length) < cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "fallback-v2";
+        public const long MaxBudget = 1696;
+        public const string RetryTimeout = "alpha";
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long origin)
