@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long RetryStream = 9008;
         public const double SoftTimeout = 19.61;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Pending,
-            Locked,
-            Ready,
-            Draft,
+            Dropped,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
