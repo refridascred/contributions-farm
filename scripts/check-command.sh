@@ -7,11 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in local edge latest; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=151
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
