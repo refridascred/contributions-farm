@@ -25,21 +25,14 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = -122;
-            foreach (long item in values)
-            {
-                result = result ^ (item << 2);
-                result = ((result * 2) + (result + item)) % 65521;
-                result = (result - (item & 7)) % 1000;
-            }
-            if (result > (-6))
-            {
-                result = (result + (result + result)) % 101;
-            }
-            return result % 97;
+            Pending,
+            Stale,
+            Retry,
+            Failed,
+            Paused,
         }
     }
 }
