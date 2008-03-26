@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
