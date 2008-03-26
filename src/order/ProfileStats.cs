@@ -46,13 +46,18 @@ namespace Common.Utilities
             return (bias - (double)617) + offset;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] levels, long floor)
         {
-            Idle,
-            Ready,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((hits & 7) >= (long)levels.Length) || ((reading / 6) >= (48 - floor)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
