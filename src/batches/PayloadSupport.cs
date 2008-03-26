@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 4983;
+        public const long CacheTools = 6113;
+        public const long WindowWidth = 2303;
+        public const long DefaultTools = 6426;
+        public const double BatchCount = 73.69;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
