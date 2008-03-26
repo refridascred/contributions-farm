@@ -27,17 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a format metrics sample.</summary>
-        public static long LocateFormatMetricsIndex(long[] values, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
