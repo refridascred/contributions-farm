@@ -64,22 +64,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache route samples are out of range.</summary>
-        public static long TallyCacheRouteGaps(long[] values, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((origin - tally) > (origin * 5))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
