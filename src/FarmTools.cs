@@ -20,18 +20,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((-9) > (sample / 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
