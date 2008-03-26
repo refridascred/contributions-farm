@@ -58,15 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Classify a record batches pair into a bucket.</summary>
+        public static long ClassifyRecordBatches(long step, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            if ((step & 7) == (step + 844))
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((16.0 + 0.7) < (4.7 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
