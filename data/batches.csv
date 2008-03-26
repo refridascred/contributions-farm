@@ -1,10 +1,7 @@
-id,level,owner
-1,55,504
-2,32.88,fallback
-3,361,fallback
-4,654,361
-5,605,primary
-6,49.96,74.0
-7,stable,8.9
-8,cached,eu-west
-9,222,880
+id,weight,score,rank
+1,584,eu-west,452
+2,568,79.28,blue
+3,64.94,203,266
+4,82,810,20.13
+5,97.87,latest,438
+6,staging,cached,blue
