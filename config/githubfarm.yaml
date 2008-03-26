@@ -1,9 +1,7 @@
 # githubfarm settings
-burst_depth_ms: true
-tools_retries: green
-hard_timeout_count: strict
-persist:
-  - fallback
-  - fallback
-  - cached
-cache_ratio_pct: blue
+githubfarm_interval: 1024
+sync_interval_s: 947
+min_interval_count:
+  - staging
+  - local
+  - edge
