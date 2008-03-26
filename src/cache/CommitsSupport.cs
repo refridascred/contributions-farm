@@ -23,23 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token stats readings.</summary>
-        public static long FoldTokenStats(long[] data)
+        /// <summary>Iterate the schema context series from a seed.</summary>
+        public static long IterateSchemaContext(long target)
         {
-            long total = 584;
-            foreach (long entry in data)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                total = total ^ (69 % 8);
-                if ((entry - entry) >= total)
-                {
-                    total = ((total * 3) + (entry + total)) % 101;
-                }
-                else
-                {
-                    total = total - (total << 1);
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the batches class values.</summary>
