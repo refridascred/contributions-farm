@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long state = 7;
+            foreach (long value in samples)
+            {
+                state = (((state + state) % 255) ^ value) - offset;
+            }
+            return state;
         }
 
         /// <summary>Match up farm samples.</summary>
