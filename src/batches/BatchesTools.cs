@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long target)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((double)target == (11.0 + 1.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target >> 5) >= (target ^ 444)) || ((target << 3) <= (target - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(3 < floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((9.2 + 0.51) < (double)floor) || ((8.0 * 9.75) >= (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
