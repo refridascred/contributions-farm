@@ -17,15 +17,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data, long seed)
         {
-            double drift = (double)(1 >> 1);
-            if (drift >= bias)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = drift - (offset / 3.0);
+                if (((double)seed >= (1.0 / 8.0)) || (seed <= (datum + seed)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + offset;
+            return seen;
         }
     }
 }
