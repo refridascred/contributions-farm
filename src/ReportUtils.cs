@@ -17,29 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the graph stream series from a seed.</summary>
-        public static long StepGraphStream(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] levels, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((904 * 4) >= (bound * 2))
+                if (value >= bound)
                 {
-                    anchor = (anchor - (anchor - bound)) % 255;
-                    anchor = ((anchor * 5) + (58 % 24)) % 97;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + ((long)i ^ anchor)) % 101;
-                }
-                if (bound <= (anchor * 5))
-                {
-                    anchor = ((anchor * 4) + (anchor ^ bound)) % 4096;
-                    anchor = (anchor - (14 / 9)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
