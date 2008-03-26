@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits / 2) < (hits >> 2))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
