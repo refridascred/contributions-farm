@@ -41,18 +41,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (target >= hits)
+                if (15.0 > (double)matches)
                 {
-                    hits = (hits + 2) - reading;
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
