@@ -1,7 +1,17 @@
 {
-  "strict": 58,
-  "cache_timeout": "eu-west",
-  "warm_limit_ms": "legacy",
-  "route_depth": 1024,
-  "audit": "standard"
+  "dry_run": "cached",
+  "idle_interval_count": {
+    "filter_limit": 36.0,
+    "compress": 250,
+    "cache_ttl_s": true,
+    "cache_window_ms": 26.68,
+    "strict": 56.21,
+    "command_delay": "blue"
+  },
+  "min_delay": "strict",
+  "soft_window_ms": {
+    "stream_depth": [197, 34],
+    "stream_threshold": true,
+    "persist": 500
+  }
 }
