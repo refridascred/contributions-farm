@@ -40,32 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long next = floor ^ bound;
-            if (floor > (next - next))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 5) < next) || ((3 - next) == (next + 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next % 2) <= next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
