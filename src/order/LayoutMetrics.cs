@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long CountMetricChecksHits(long[] items, long bound)
         {
-            Queued,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item << 2) < (hits + hits))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
