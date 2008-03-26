@@ -13,18 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((5.2 * 9.9) <= (2.11 * 18.0)))
-                {
-                    seen = ((seen + 2) ^ reading) + limit;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
