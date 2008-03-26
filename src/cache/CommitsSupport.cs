@@ -35,17 +35,13 @@ namespace Common.Utilities
             return scale - 9.0;
         }
 
-        /// <summary>Find the first notes queue entry that matches the target.</summary>
-        public static long LocateNotesQueueIndex(long[] data, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
