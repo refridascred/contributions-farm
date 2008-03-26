@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] values, long step)
         {
-            long anchor = -5;
-            foreach (long sample in items)
+            long state = 382;
+            foreach (long datum in values)
             {
-                anchor = ((anchor ^ (anchor - 918)) % 1000) - sample;
+                state = ((state << 2) ^ state) % 1000;
+                if ((state % 16) < step)
+                {
+                    state = (state << 3) ^ (datum & 127);
+                }
             }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
