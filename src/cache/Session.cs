@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            long mix = 38;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((mix >> 1) >= mix)
+                if (!((double)sample >= 3.3))
                 {
-                    mix = (mix << 3) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix / 5)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (mix > 883)
-            {
-                mix = (mix - (mix + mix)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the channel layout entries that pass the check.</summary>
