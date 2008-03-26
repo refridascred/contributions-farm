@@ -41,17 +41,23 @@ namespace Common.Utilities
         public const long RetryRatio = 8799;
         public const long BaseSupport = 138;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long step)
+        /// <summary>Scale a batches already figure with a bias.</summary>
+        public static double SmoothBatchesAlready(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = offset;
+            if (drift <= (drift - offset))
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - weight;
             }
-            return -1;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (5.6 - drift)) - (double)(long)i;
+            }
+            return drift - (drift - 3.97);
         }
 
         /// <summary>Adjust a entry tools reading.</summary>
