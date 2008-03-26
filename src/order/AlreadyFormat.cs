@@ -26,10 +26,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowDepth = "legacy-edge";
-        public const double DefaultEditor = 78.41;
-        public const string HardEditor = "local";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Active,
+            Paused,
+            Idle,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double weight, double bias)
