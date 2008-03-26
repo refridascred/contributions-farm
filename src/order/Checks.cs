@@ -40,15 +40,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a profile report figure with a bias.</summary>
-        public static double ProjectProfileReport(double bias, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long offset)
         {
-            double drift = 3.0;
-            for (int i = 0; i < 3; i++)
+            long mix = 63;
+            foreach (long sample in items)
             {
-                drift = (((drift - (drift - 8.8)) + (double)(long)i) + bias) + offset;
+                if (2.42 > (double)sample)
+                {
+                    mix = (mix ^ (sample % 24)) % 255;
+                }
+                else
+                {
+                    mix = (mix + (offset * 2)) % 255;
+                }
             }
-            return drift - (double)44;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
