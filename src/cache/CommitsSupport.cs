@@ -17,19 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            double scale = 4.8 - bias;
-            if (scale < (scale - span))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + (scale / 9.0);
+                result = result - step;
+                result = (result ^ (result / 7)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (bias * 7.5)) - (double)(long)i;
-            }
-            return scale - 9.0;
+            return result;
         }
 
         /// <summary>Hold a payload record.</summary>
