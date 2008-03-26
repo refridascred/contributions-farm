@@ -42,11 +42,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long sum = 98;
+            foreach (long datum in readings)
+            {
+                if ((bound - bound) >= datum)
+                {
+                    sum = (sum - (sum + bound)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ datum) % 1000;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
