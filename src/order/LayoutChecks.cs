@@ -34,18 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!(3 > (cell % 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
