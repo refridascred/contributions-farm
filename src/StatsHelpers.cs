@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen - (long)samples.Length) > (value & 255))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Derive the next already counter value from a seed.</summary>
