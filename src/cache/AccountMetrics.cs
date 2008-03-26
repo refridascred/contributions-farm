@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long BatchFarm = 8788;
         public const long SoftFactor = 6372;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double offset)
-        {
-            double bias = (double)47 * 1.7;
-            if (bias > (bias - bias))
-            {
-                bias = (bias + bias) - offset;
-            }
-            return bias - (ratio - ratio);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheCount = "primary-v2";
+        public const long HardBudget = 278;
+        public const long IdleWidth = 7459;
+        public const long MinContributi = 1774;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] levels, long offset)
