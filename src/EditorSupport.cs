@@ -30,18 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((3.97 + 8.89) < (double)entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a buffer stats reading.</summary>
