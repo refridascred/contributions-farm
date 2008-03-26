@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long carry = -87;
+            foreach (long reading in levels)
+            {
+                carry = carry ^ (reading & 127);
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
