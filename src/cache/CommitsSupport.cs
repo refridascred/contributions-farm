@@ -34,22 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Locate a route record reading by value.</summary>
+        public static long LookupRouteRecordIndex(long[] items, long seed)
         {
-            long anchor = 53;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(cell <= (cell - 3)))
+                if (items[i] < seed)
                 {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor % 24)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
