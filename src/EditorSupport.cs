@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                if (7 <= (entry + entry))
+                if ((double)offset < 8.0)
                 {
-                    matches = matches + 1;
+                    anchor = (anchor - (item - item)) % 1000;
                 }
             }
-            return matches;
+            if (anchor > 980)
+            {
+                anchor = anchor + (offset & 31);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor level values.</summary>
