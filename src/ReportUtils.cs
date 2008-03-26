@@ -60,18 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)count < (0.38 / 7.0)))
-                {
-                    count = ((count + 3) + datum) + floor;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
