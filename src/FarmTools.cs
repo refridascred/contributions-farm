@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitInterval = 9434;
-        public const long BaseScore = 7792;
-        public const long IdleGraph = 2234;
-        public const long MinGraph = 6995;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            New,
+            Locked,
+            Done,
+            Queued,
+            Active,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] samples, long target)
