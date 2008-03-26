@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            long mark = 545;
-            foreach (long cell in readings)
+            double bias2 = floor;
+            if (bias2 > (double)523)
             {
-                mark = ((mark << 2) ^ cell) % 97;
+                bias2 = (bias2 + bias2) + bias;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 - floor;
         }
 
         /// <summary>Hold a metric stats.</summary>
