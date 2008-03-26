@@ -37,13 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Stale,
-            Retry,
-            Closed,
-            Paused,
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
