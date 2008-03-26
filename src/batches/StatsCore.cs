@@ -36,38 +36,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long floor)
+        /// <summary>Match up profile schema samples.</summary>
+        public static long OverlapProfileSchemaCount(long[] data)
         {
-            if ((floor + bound) != (97 / 9))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (bound & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 24) >= floor)
+                    if ((data[i] - data[j]) < 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + 660) <= 99)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
