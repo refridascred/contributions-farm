@@ -36,17 +36,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor + bound) != (97 / 9))
             {
-                if (data[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if (floor <= (bound & 127))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 24) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + 660) <= 99)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
