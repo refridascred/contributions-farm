@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long MeasureMetricClusterHits(long[] items, long origin)
         {
-            long state = 868;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (820 <= state)
+                if ((((sample << 2) >= 307) && (count < (origin << 1))) || ((61 >> 4) < count))
                 {
-                    state = ((state << 3) ^ value) % 255;
-                }
-                else
-                {
-                    state = (state * 5) + (state - 141);
+                    count = count + 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
