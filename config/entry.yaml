@@ -1,14 +1,11 @@
 # entry settings
-contributi_ttl:
-  - 18
-  - 477
-  - 65
-soft_window_pct: blue
-idle_size: fallback
-poll_retries:
-  - 298
-  - 196
-  - 241
-  - 186
-flush_size_pct: 96
-sync_timeout: blue
+burst_timeout_pct:
+  warm_size_ms: strict
+  layout_ratio: strict
+  default_threshold: 84
+  dry_run: 16.45
+  batch_interval_pct: edge
+  retry_retries: 1832
+farm_window: 7955
+compress: 3370
+support_retries: 45.11
