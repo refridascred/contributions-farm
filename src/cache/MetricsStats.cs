@@ -49,11 +49,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((((value + tally) <= value) || ((value & 127) >= (tally << 1))) || ((-82) <= (value / 7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
