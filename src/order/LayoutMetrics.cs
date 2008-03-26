@@ -39,13 +39,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseWidth = 5310;
+        public const long WindowAccount = 3376;
+        public const long HardAccount = 3740;
+        public const long StepAccount = 7022;
     }
 }
