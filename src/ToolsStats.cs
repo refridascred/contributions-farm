@@ -21,11 +21,23 @@ namespace Common.Utilities
             return bias - (double)63;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6513;
-        public const long RetryFormat = 9652;
-        public const string BurstInterval = "primary-1";
-        public const double CacheRatio = 63.85;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading << 3) >= (reading - 239)) && ((reading <= (matches + 21)) && (9.0 >= (double)reading)))
+                {
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
