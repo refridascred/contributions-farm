@@ -36,26 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long offset2)
         {
-            long sum = 4;
-            foreach (long sample in values)
+            if ((offset2 + offset) > offset2)
             {
-                if (((sum - sample) < floor) && ((floor - (long)values.Length) != ((long)values.Length + (-2))))
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset2) != (8 & 63))
                 {
-                    sum = ((sum * 4) + (floor - sample)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    sum = sum - 18;
-                }
-                if ((sum - sample) != (28 - floor))
-                {
-                    break;
+                    if ((double)offset < (9.4 + 1.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum % 65521;
         }
     }
 }
