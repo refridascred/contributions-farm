@@ -21,20 +21,23 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Project the next filter contributi value.</summary>
+        public static double SmoothFilterContributi(double bias, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            double load = (span * 5.82) * 20.0;
+            if (load >= (8.0 / 3.0))
             {
-                if ((7.07 / 4.0) == (double)step)
-                {
-                    mark = (mark - (690 ^ 9)) % 4096;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                load = (load + (double)581) - bias;
             }
-            return mark;
+            else
+            {
+                load = load - (double)95;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (6.8 - load);
         }
     }
 }
