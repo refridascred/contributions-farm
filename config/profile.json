@@ -1,5 +1,7 @@
 {
-  "persist": "primary",
-  "batches_capacity": 50,
-  "window_depth": "strict"
+  "audit": ["strict", "eu-west", "cached", "legacy"],
+  "sync_retries_pct": 70.77,
+  "layout_limit": "standard",
+  "retry_retries_s": "stable",
+  "base_capacity_s": 89.63
 }
