@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Dropped,
-            Done,
-            Ready,
-            Active,
-            Failed,
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
