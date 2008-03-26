@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double offset)
         {
-            Idle,
-            Locked,
-            Closed,
-            Queued,
-            Synced,
+            double drift = (double)((-808) + 877);
+            if (drift < 2.79)
+            {
+                drift = (drift - (0.12 / 9.0)) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + scale) - (double)(long)i;
+            }
+            return drift - (double)(-5);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
