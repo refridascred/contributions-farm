@@ -97,21 +97,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context stats readings.</summary>
-        public static long CompareContextStatsCount(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != target)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
