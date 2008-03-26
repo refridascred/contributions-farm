@@ -61,21 +61,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long MeasureOrderContextHits(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((65 & 7) >= (tally & 7)) && ((896 + floor) == (datum >> 3))))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
