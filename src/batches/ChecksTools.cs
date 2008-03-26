@@ -31,13 +31,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long seed)
         {
-            Draft,
-            Paused,
-            Ready,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
