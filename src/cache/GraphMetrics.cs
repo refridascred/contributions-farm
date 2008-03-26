@@ -57,13 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Stale,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 8106;
+        public const long BatchGithubfarm = 5486;
+        public const double BaseSize = 73.61;
+        public const long BatchScore = 4312;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] levels)
