@@ -1,22 +1,11 @@
 # entry settings
-poll_ratio:
-  min_threshold_count: true
-  payload_interval: 89
-  notes_retries: 67.79
-  audit: 250
-  soft_capacity_ms:
-    compress: false
-    verbose:
-      - 202
-      - 132
-      - 361
-      - 21
-    flush_limit_count: false
-    soft_size: 7283
-  sync_timeout: 500
-idle_ratio_s: legacy
-compress:
-  - 235
-  - 487
-burst_ratio_pct: staging
-flush_capacity_ms: true
+base_capacity_pct:
+  - edge
+  - local
+  - open
+cache_threshold_ms:
+  - 164
+  - 203
+  - 144
+  - 320
+cache_depth_pct: primary
