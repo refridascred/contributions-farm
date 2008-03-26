@@ -1,8 +1,6 @@
 {
-  "readonly": 9448,
-  "cache_delay": [209, 128],
-  "verbose": 26,
-  "min_timeout_count": 90,
-  "max_retries_pct": "eu-west",
-  "metric_size": [5, 194, 167]
+  "command_depth": 500,
+  "retry_size": "standard",
+  "dry_run": "edge",
+  "cache_limit": "eu-west"
 }
