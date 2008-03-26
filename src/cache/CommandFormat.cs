@@ -19,20 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Iterate the contributi format series from a seed.</summary>
+        public static long RollContributiFormat(long seed)
         {
-            long acc = 0;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc - acc) == (acc + value))
+                if (((716 % 8) < (acc / 9)) && (((long)i + seed) == (acc ^ seed)))
                 {
-                    acc = (acc - acc) % 4096;
+                    continue;
                 }
-            }
-            if (acc < 845)
-            {
-                acc = (acc + (acc / 4)) % 97;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc + (26 + 79)) % 1000) ^ (long)i2;
+                    acc = acc + acc;
+                }
+                if (!(8 >= (seed / 9)))
+                {
+                    acc = ((acc * 4) + (long)i) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
             return acc;
         }
