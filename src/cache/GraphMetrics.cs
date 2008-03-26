@@ -60,18 +60,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry - count) > (count - entry)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Locked,
+            Draft,
         }
     }
 }
