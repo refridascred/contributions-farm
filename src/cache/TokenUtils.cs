@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepSize = 12.32;
-        public const long DefaultCommand = 1054;
-        public const long BatchCommand = 3097;
-        public const string IdleLevel = "strict-1";
-        public const long BaseCommand = 713;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Paused,
+            New,
+            Active,
+            Ready,
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double offset)
