@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
