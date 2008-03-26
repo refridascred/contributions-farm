@@ -58,18 +58,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((offset ^ (-761)) <= seen) && ((3 ^ seen) <= (offset ^ item)))
+                if (((cell - matches) >= (69 / 4)) && ((cell - cell) > (matches >> 3)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
