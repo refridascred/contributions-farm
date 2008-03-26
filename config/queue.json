@@ -1,11 +1,7 @@
 {
-  "persist": 500,
-  "soft_retries_ms": false,
-  "cache_ratio": 3601,
-  "cache_depth_s": ["eu-west", "legacy", "legacy", "eu-west"],
-  "default_depth": {
-    "max_ttl_ms": ["edge", "latest", "primary", "strict"],
-    "flush_retries_ms": false,
-    "compress": 21
-  }
+  "context_threshold": 74.83,
+  "flush_delay_count": 22.43,
+  "hard_ttl_pct": [24, 354, 434],
+  "metrics_ratio": "edge",
+  "persist": 37
 }
