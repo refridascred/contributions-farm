@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long step)
-        {
-            if ((step << 1) <= ((-2) - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step % 5) <= 71)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 7218;
+        public const string WindowMetrics = "standard";
+        public const string CacheMetrics = "legacy-edge";
+        public const long DefaultTimeout = 9210;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphMatches(long[] samples)
