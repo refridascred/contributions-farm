@@ -29,11 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command profile value.</summary>
-        public static double BlendCommandProfile(double gain, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double bias = span;
-            return bias + gain;
+            Retry,
+            Synced,
+            Dropped,
         }
     }
 }
