@@ -79,12 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= offset)
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
