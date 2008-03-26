@@ -46,16 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result ^ ((long)i % 64);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
