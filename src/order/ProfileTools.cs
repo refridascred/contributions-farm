@@ -17,13 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheTimeout = 9424;
+        public const string IdleWidth = "strict-1";
+        public const string HardChecks = "open-1";
+        public const long SoftChecks = 7118;
+        public const long DefaultChecks = 4445;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long seed)
