@@ -1,14 +1,11 @@
 {
-  "batches_capacity": {
-    "batch_window_pct": 1024,
-    "readonly": "fallback",
-    "filter_interval": "blue"
+  "flush_interval": [402, 358, 305],
+  "sync_depth": {
+    "burst_interval_ms": ["eu-west", "open", "open", "latest"],
+    "support_capacity": "stable",
+    "soft_ttl_s": false,
+    "readonly": "green",
+    "account_timeout": false
   },
-  "burst_limit_ms": {
-    "hard_depth": 100,
-    "soft_window_ms": 20.39,
-    "batch_threshold": 752,
-    "sync_size_pct": "eu-west"
-  },
-  "verbose": "staging"
+  "batch_delay": 91
 }
