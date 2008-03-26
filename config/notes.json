@@ -1,8 +1,6 @@
 {
-  "strict": "green",
-  "flush_interval_pct": "stable",
-  "default_retries": "standard",
-  "max_window_ms": 60,
-  "profile_interval": false,
-  "audit": [410, 273]
+  "idle_interval": true,
+  "retry_interval_count": "cached",
+  "warm_ttl": true,
+  "max_limit_ms": 9876
 }
