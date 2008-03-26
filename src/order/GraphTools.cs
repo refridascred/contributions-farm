@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the queue format series from a seed.</summary>
-        public static long IterateQueueFormat(long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long sum = 90;
+            foreach (long datum in series)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (!(datum >= (datum * 4)))
+                {
+                    sum = ((sum << 3) ^ datum) % 97;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
