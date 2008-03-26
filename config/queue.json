@@ -1,5 +1,8 @@
 {
-  "warm_depth_ms": "legacy",
-  "max_retries_s": 88,
-  "burst_timeout_pct": "stable"
+  "context_threshold": "legacy",
+  "readonly": [320, 256, 428],
+  "max_limit": "open",
+  "batch_limit": 19,
+  "hard_window_pct": 67.2,
+  "dry_run": 250
 }
