@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long acc = -8;
-            foreach (long cell in readings)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((acc << 2) >= (bound >> 5))
-                {
-                    acc = (acc - (bound + bound)) - cell;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
