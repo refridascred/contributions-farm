@@ -50,13 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Validate record stream readings against a bound.</summary>
+        public static bool GuardRecordStreamRange(long[] values, long offset)
         {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
