@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Fold a list of githubfarm notes readings.</summary>
+        public static long FoldGithubfarmNotes(long[] series, long limit)
         {
-            long score = 6;
-            foreach (long sample in series)
+            long acc = -92;
+            foreach (long item in series)
             {
-                score = (((score * 5) + score) % 1000) + sample;
+                if (!(((item >> 4) > (acc - item)) && (item < (901 % 5))))
+                {
+                    long cur = item + item;
+                    acc = (((acc << 2) ^ (cur * 5)) % 1000) - limit;
+                }
+                acc = ((acc << 2) ^ (acc >> 3)) % 255;
             }
-            return score % 4096;
+            if (acc < 862)
+            {
+                acc = acc ^ (acc + 658);
+            }
+            return acc;
         }
 
         /// <summary>Scale a entry batch figure with a bias.</summary>
