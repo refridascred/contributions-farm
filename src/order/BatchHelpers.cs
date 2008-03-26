@@ -16,24 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Count the metric notes entries that pass the check.</summary>
+        public static long CountMetricNotesGaps(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((6.0 + 2.2) <= (double)bound))
+                if ((double)matches < (7.15 - 15.0))
                 {
-                    result = (result - result) % 65521;
-                    result = result + (bound + (-67));
+                    matches = (matches + 2) - sample;
                 }
-                if ((13.0 + 3.7) <= (double)(long)i)
+                else
                 {
-                    result = ((result * 2) + ((long)i >> 3)) % 4096;
+                    matches = matches - 1;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
