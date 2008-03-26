@@ -52,11 +52,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
