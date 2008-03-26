@@ -1,5 +1,17 @@
 {
-  "max_ratio_count": "open",
-  "default_interval": ["legacy", "primary", "stable", "eu-west"],
-  "flush_capacity_ms": "stable"
+  "payload_size": true,
+  "command_limit": {
+    "poll_timeout_ms": {
+      "compress": [48, 474, 365, 367],
+      "enabled": 500,
+      "batch_delay_count": ["open", "local", "latest"]
+    },
+    "max_size": "staging",
+    "strict": 85.14,
+    "githubfarm_interval": false,
+    "verbose": true,
+    "session_depth": false
+  },
+  "poll_window": false,
+  "verbose": 8357
 }
