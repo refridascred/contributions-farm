@@ -28,17 +28,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long seed, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = seed + target;
+            if ((5 - target) > (7 + 8))
             {
-                if (values[i] > limit)
+                return 0;
+            }
+            else
+            {
+                if ((seed >> 1) > target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 9) <= (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed < target) && ((double)seed > 16.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
