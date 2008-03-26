@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally + 0) > sample)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
