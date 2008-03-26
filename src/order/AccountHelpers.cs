@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long AuditAlreadyWindowOutliers(long[] items)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 16) >= (3 + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the buffer state values.</summary>
