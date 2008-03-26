@@ -13,18 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            long state = 64;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((double)origin == (double)8)
+                if (!!((7 + reading) != (reading / 7)))
                 {
-                    state = ((state ^ (origin - 1)) % 97) ^ reading;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Roll a format batch counter forward.</summary>
