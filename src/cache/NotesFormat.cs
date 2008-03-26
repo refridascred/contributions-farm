@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleLevel = 1096;
-        public const double BaseFormat = 82.09;
-        public const double StepFormat = 30.56;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheInterval = 8696;
+        public const long MinRecord = 7812;
+        public const string SoftWidth = "local";
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long floor, long limit)
