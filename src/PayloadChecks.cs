@@ -15,13 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a cluster queue pair into a bucket.</summary>
+        public static long BucketClusterQueue(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            if (((floor2 ^ floor) >= (floor + 73)) && ((2.6 - 0.26) != (double)floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 5) < floor2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (5 <= (792 + floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor2 + (-3)) <= (1 ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
