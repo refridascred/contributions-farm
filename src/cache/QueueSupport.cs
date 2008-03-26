@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long gap = origin ^ target;
-            if ((target / 5) > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target > (origin / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
