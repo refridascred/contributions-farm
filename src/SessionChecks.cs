@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample << 1) >= (sample + sample)) && ((double)matches >= (double)9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
