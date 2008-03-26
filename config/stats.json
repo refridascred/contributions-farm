@@ -1,12 +1,6 @@
 {
-  "soft_ttl_count": "cached",
-  "support_size": 1875,
-  "account_depth": [291, 446, 91, 258],
-  "default_size_count": {
-    "flush_depth": ["stable", "open", "staging", "eu-west"],
-    "base_size_s": 30.28,
-    "sync_window": "staging",
-    "dry_run": 21.58,
-    "stats_depth": "latest"
-  }
+  "audit": "green",
+  "min_ratio_count": 26,
+  "schema_window": 25,
+  "persist": ["legacy", "stable", "green"]
 }
