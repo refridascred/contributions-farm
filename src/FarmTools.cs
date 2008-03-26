@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Project the next command profile value.</summary>
+        public static double BlendCommandProfile(double gain, double span)
         {
-            long anchor = 4;
-            foreach (long item in levels)
-            {
-                if ((8 ^ item) > (511 % 60))
-                {
-                    anchor = (anchor + item) % 255;
-                }
-            }
-            return anchor % 65521;
+            double bias = span;
+            return bias + gain;
         }
     }
 }
