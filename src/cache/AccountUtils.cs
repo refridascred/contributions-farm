@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long RetryStream = 9008;
         public const double SoftTimeout = 19.61;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
+            Pending,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
