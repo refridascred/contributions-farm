@@ -17,24 +17,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long offset, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            if (((-53) * 3) > (682 + offset))
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 1) <= offset)
+                if (((long)i - seed) == (280 * 2))
                 {
-                    return 6;
+                    mix = mix - (mix << 3);
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Describe the profile class values.</summary>
