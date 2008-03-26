@@ -23,11 +23,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "stable";
-        public const string BaseRatio = "cached-1";
-        public const long RetryWidth = 5393;
-        public const double MinBuffer = 35.57;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series)
+        {
+            long mix = 801;
+            foreach (long datum in series)
+            {
+                if ((mix >> 4) > (datum >> 3))
+                {
+                    mix = mix - (datum + datum);
+                }
+                else
+                {
+                    mix = (mix + 37) % 255;
+                }
+                if (!(((-968) % 12) != (datum % 100)))
+                {
+                    mix = mix ^ (mix + mix);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
