@@ -41,12 +41,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowLevel = 72.25;
-        public const long MinFactor = 6542;
-        public const long HardScore = 9852;
-        public const double HardInterval = 34.07;
-        public const string LimitMetric = "legacy-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 6531;
+        public const string BatchAccount = "legacy";
+        public const double WindowRatio = 54.95;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
