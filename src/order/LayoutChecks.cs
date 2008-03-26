@@ -74,11 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
