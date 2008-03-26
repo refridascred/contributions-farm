@@ -25,22 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mark = 0;
-            foreach (long reading in data)
-            {
-                if (!((mark ^ 2) < (mark * 3)))
-                {
-                    mark = ((mark * 4) + (mark + 861)) % 255;
-                }
-                if ((reading ^ mark) == (reading % 97))
-                {
-                    mark = (mark + reading) % 255;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
