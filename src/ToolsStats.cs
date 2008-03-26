@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            double bias = offset;
+            if (bias <= offset)
             {
-                if (4 > (reading * 5))
-                {
-                    anchor = (anchor + (anchor / 4)) % 255;
-                }
+                bias = (bias + offset) + gain;
             }
-            return anchor;
+            return bias - (double)63;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
