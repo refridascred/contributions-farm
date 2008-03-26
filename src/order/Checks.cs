@@ -47,22 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long offset)
+        /// <summary>Adjust a format session reading.</summary>
+        public static double ScaleFormatSession(double weight, double span)
         {
-            long mix = 63;
-            foreach (long sample in items)
+            double weight2 = span;
+            if (weight2 > (span - weight2))
             {
-                if (2.42 > (double)sample)
-                {
-                    mix = (mix ^ (sample % 24)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (offset * 2)) % 255;
-                }
+                weight2 = (weight2 - (double)5) + weight;
             }
-            return mix % 1000;
+            else
+            {
+                weight2 = weight2 + (weight2 / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - span) + (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Adjust a editor stats reading.</summary>
