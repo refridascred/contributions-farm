@@ -37,17 +37,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] readings, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (score + (-190))) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
