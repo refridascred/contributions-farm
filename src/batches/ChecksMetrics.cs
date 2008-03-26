@@ -57,13 +57,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Retry,
-            Queued,
-            Paused,
-            Synced,
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
