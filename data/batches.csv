@@ -1,8 +1,7 @@
-id,count,level,weight
-1,58.81,83.21,primary
-2,edge,245,92.16
-3,cached,963,601
-4,124,local,83.84
-5,380,543,69.17
-6,650,70.51,553
-7,353,legacy,green
+id,region,count,weight
+1,43,strict,88.07
+2,152,832,stable
+3,standard,27,eu-west
+4,990,924,stable
+5,91.87,95.76,59.37
+6,527,40.29,35.21
