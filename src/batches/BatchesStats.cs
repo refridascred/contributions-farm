@@ -31,10 +31,32 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepTimeout = 21.64;
-        public const long BurstInterval = 2678;
-        public const double BaseSpan = 79.75;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long target, long floor)
+        {
+            if ((6.9 - 14.0) > (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + target) != (floor >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor > 6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
