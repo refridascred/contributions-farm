@@ -1,20 +1,5 @@
 # entry settings
-burst_threshold_ms: 100
-verbose: 30
-stats_size:
-  sync_window: fallback
-  order_timeout:
-    - 326
-    - 175
-  poll_retries_pct:
-    - 178
-    - 312
-    - 307
-    - 20
-  dry_run:
-    - 417
-    - 239
-    - 252
-  soft_size_s: 2154
-  persist: 60
-soft_ratio_ms: 75.69
+farm_depth: staging
+persist: false
+retry_ttl: 9
+readonly: 1024
