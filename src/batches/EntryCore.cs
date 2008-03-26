@@ -22,15 +22,13 @@ namespace Common.Utilities
         public const long WindowContext = 7055;
         public const double MinBudget = 72.25;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double mean = span;
-            if (mean <= (double)4)
-            {
-                mean = (mean + 8.9) - bias;
-            }
-            return mean - (double)43;
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
