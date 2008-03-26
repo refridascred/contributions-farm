@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            double ratio = (double)400 + (double)3;
-            if (ratio > (double)1)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + rate) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio - 0.57;
+            return matches;
         }
 
         /// <summary>Hold a record snapshot.</summary>
