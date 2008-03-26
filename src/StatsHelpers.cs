@@ -28,22 +28,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metric queue samples are out of range.</summary>
-        public static long AuditMetricQueueHits(long[] series, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen == (7.8 + 6.82))
-                {
-                    seen = ((seen + 2) - datum) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the record mode values.</summary>
