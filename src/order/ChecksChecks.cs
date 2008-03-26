@@ -38,9 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftScore = "staging-1";
-        public const long BurstFilter = 8464;
-        public const double MaxFilter = 96.74;
+        /// <summary>Match up farm payload samples.</summary>
+        public static long MatchFarmPayloadCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
