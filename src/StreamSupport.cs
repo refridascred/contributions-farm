@@ -27,17 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = sum ^ origin;
-                sum = ((sum << 3) ^ (long)i) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5704;
+        public const long CacheGithubfarm = 5739;
+        public const long WindowGithubfarm = 3057;
+        public const long DefaultRatio = 5307;
     }
 }
