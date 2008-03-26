@@ -15,12 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 2.24;
-        public const long HardToken = 3117;
-        public const double StepCount = 83.94;
-        public const long MinToken = 350;
-        public const string SoftSize = "open-v2";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] samples)
