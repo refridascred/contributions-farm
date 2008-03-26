@@ -45,38 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            if (20.0 <= (double)origin)
+            long score = 85;
+            foreach (long reading in levels)
             {
-                return 0;
+                score = (score ^ reading) % 255;
             }
-            else
+            if (score > 33)
             {
-                if (((origin - origin) > 422) && ((661 ^ origin) == (target ^ target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 1) >= (origin + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (768 >= (origin - 77))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score << 3) ^ (11 >> 1)) % 4096;
             }
+            return score;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
