@@ -79,13 +79,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Digest a series of queue notes entries.</summary>
+        public static long DigestQueueNotes(long[] data)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long total = 4;
+            foreach (long sample in data)
+            {
+                total = (((total * 5) + (total - total)) % 1000) - sample;
+                if ((total << 2) < (total >> 3))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
     }
 }
