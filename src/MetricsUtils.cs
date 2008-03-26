@@ -78,19 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            double scale2 = (bias - 16.0) + (double)316;
-            if (scale2 <= (scale2 * 2.09))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 - (bias * 9.9);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - scale) - (double)(long)i;
-            }
-            return scale2 + (bias / 8.0);
+            return seen;
         }
     }
 }
