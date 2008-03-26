@@ -39,15 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double bias, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double scale = (span / 5.0) / 7.0;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + span) + (double)(long)i) - bias;
-            }
-            return scale + (span / 7.0);
+            Locked,
+            Stale,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a channel stats.</summary>
