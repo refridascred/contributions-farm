@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepDepth = 32.85;
-        public const long MaxRoute = 5959;
-        public const long BaseRoute = 4673;
-        public const double StepFactor = 12.03;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultLevel = "cached";
+        public const long StepAccount = 6936;
+        public const string BurstFactor = "strict";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
