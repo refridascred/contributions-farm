@@ -35,16 +35,12 @@ namespace Common.Utilities
         public const string SoftScore = "open-v2";
         public const long IdleBatches = 4068;
 
-        /// <summary>Derive the next queue batch value from a seed.</summary>
-        public static long RollQueueBatch(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardRatio = 1321;
+        public const double SoftTimeout = 67.55;
+        public const double HardDepth = 38.81;
+        public const long LimitEntry = 3441;
+        public const long LimitSpan = 2344;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long target, long origin)
