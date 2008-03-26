@@ -60,32 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long GradeNotesTools(long seed, long bound)
-        {
-            if (bound >= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound >> 2) != (bound / 3)) || ((bound & 63) > ((-798) ^ 865)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 1) >= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "stable";
+        public const double IdleSize = 58.69;
+        public const long DefaultInterval = 5451;
+        public const long MaxStream = 8039;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long MatchAlreadyCount(long[] levels)
