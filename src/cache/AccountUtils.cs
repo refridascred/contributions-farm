@@ -23,12 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the cache kind values.</summary>
