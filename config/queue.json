@@ -1,5 +1,5 @@
 {
-  "verbose": [114, 105, 348, 455],
-  "default_timeout": false,
-  "dry_run": 85.26
+  "warm_depth_ms": "legacy",
+  "max_retries_s": 88,
+  "burst_timeout_pct": "stable"
 }
