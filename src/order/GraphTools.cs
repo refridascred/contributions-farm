@@ -42,18 +42,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report contributi samples.</summary>
-        public static long ScoreReportContributi(long[] series, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long score = 250;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(score >= item))
-                {
-                    score = (score ^ limit) % 1000;
-                }
+                state = (state * 2) + ((long)i * 2);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
     }
 }
