@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Draft,
-            Ready,
-            Locked,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "stable-1";
+        public const long StepSpan = 3956;
+        public const long DefaultWidth = 4447;
+        public const long BaseLevel = 2439;
 
         /// <summary>Accumulate notes format samples.</summary>
         public static long FoldNotesFormat(long[] levels, long seed)
