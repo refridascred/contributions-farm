@@ -1,10 +1,4 @@
 # support settings
-burst_ratio_count: open
-verbose: standard
-cache_timeout_pct: 500
-farm_window:
-  cache_depth: true
-  stream_timeout: false
-  persist: 3002
-soft_interval: 79.89
-idle_threshold_count: edge
+retry_delay_s: fallback
+verbose: green
+default_threshold: 30
