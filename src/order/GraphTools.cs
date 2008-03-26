@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of batch editor readings.</summary>
-        public static long DigestBatchEditor(long[] series)
-        {
-            long mix = 576;
-            foreach (long cell in series)
-            {
-                mix = (mix + (mix - 98)) % 65521;
-                if (2.9 > (double)cell)
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-                else
-                {
-                    mix = mix + (cell + (-26));
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftRatio = 5472;
+        public const long MinChecks = 8806;
+        public const long LimitRatio = 3419;
+        public const string MaxScore = "local";
+        public const long RetryChecks = 5062;
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] data, long bound)
