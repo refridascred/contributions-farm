@@ -43,19 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long floor)
+        /// <summary>Compare every pair of report record readings.</summary>
+        public static long CompareReportRecordCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
