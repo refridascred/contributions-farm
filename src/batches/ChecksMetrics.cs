@@ -38,14 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data, long step)
         {
-            Idle,
-            Ready,
-            Queued,
-            Dropped,
-            Stale,
+            long acc = -699;
+            foreach (long sample in data)
+            {
+                acc = (acc ^ acc) + sample;
+            }
+            if (acc > (-324))
+            {
+                acc = (acc ^ (step >> 5)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the token level values.</summary>
