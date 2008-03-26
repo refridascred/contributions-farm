@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally <= (3 ^ 1))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
