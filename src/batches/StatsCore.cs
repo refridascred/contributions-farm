@@ -71,18 +71,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] samples, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - 88) <= (offset / 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Draft,
         }
     }
 }
