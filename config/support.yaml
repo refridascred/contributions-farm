@@ -1,4 +1,5 @@
 # support settings
-max_size_ms: 94.87
-default_window: 95
-burst_interval_pct: 92.71
+audit: legacy
+readonly: 73.85
+batch_size_pct: true
+stats_interval: staging
