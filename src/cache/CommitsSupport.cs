@@ -34,14 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] series)
         {
-            Synced,
-            New,
-            Idle,
-            Dropped,
-            Paused,
+            long anchor = 53;
+            foreach (long cell in series)
+            {
+                if (!(cell <= (cell - 3)))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor % 24)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up session samples.</summary>
