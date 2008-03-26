@@ -46,18 +46,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the tools commits entries that pass the check.</summary>
-        public static long AuditToolsCommitsHits(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double ratio = (floor * 1.0) - gain;
+            for (int i = 0; i < 5; i++)
             {
-                if (((((long)samples.Length ^ cell) == (cell ^ hits)) || ((2.6 - 7.44) >= (double)hits)) && ((7.0 / 2.0) >= (double)cell))
-                {
-                    hits = hits + 3;
-                }
+                ratio = ratio + (double)(long)i;
             }
-            return hits;
+            return ratio + gain;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
