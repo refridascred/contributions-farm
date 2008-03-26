@@ -23,26 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long mix = 801;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix >> 4) > (datum >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - (datum + datum);
-                }
-                else
-                {
-                    mix = (mix + 37) % 255;
-                }
-                if (!(((-968) % 12) != (datum % 100)))
-                {
-                    mix = mix ^ (mix + mix);
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
