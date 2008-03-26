@@ -47,18 +47,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels, long seed)
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long RankQueueReport(long offset, long origin)
         {
-            long state = 72;
-            foreach (long datum in levels)
+            long span = offset + origin;
+            if ((1 < (origin % 12)) && ((double)offset == (double)origin))
             {
-                if ((datum ^ seed) >= (seed << 2))
+                return 4;
+            }
+            else
+            {
+                if ((origin - span) > span)
                 {
-                    state = (state ^ state) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((span >> 5) != (offset - span))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((4.1 - 4.8) >= (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
