@@ -1,11 +1,6 @@
 # entry settings
-burst_timeout_pct:
-  warm_size_ms: strict
-  layout_ratio: strict
-  default_threshold: 84
-  dry_run: 16.45
-  batch_interval_pct: edge
-  retry_retries: 1832
-farm_window: 7955
-compress: 3370
-support_retries: 45.11
+sync_ratio_pct: fallback
+poll_ttl: 2.11
+command_size:
+  - latest
+  - local
