@@ -20,20 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long seed)
+        /// <summary>Check that every entry batches entry stays within the limit.</summary>
+        public static bool VerifyEntryBatchesRange(long[] series, long step)
         {
-            long acc = 58;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                acc = ((acc - sample) % 101) + seed;
-                acc = ((acc * 3) + acc) % 255;
-                if (acc < (acc & 1))
+                if (datum >= step)
                 {
-                    acc = (acc + sample) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
