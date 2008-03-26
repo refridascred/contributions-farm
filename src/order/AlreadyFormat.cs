@@ -16,22 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long WeighGithubfarmStats(long[] data)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long sum = 32;
-            foreach (long cell in data)
-            {
-                if (cell <= (90 % 10))
-                {
-                    sum = sum ^ (sum * 2);
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum - (sum * 3)) % 255;
-            }
-            return sum;
+            Queued,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Iterate the counter graph series from a seed.</summary>
