@@ -47,21 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 - span) + (double)(long)i;
             }
-            return tally;
+            return bias2 - (double)61;
         }
 
         /// <summary>Hold a command summary.</summary>
