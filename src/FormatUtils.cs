@@ -69,19 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support stream entry stays within the limit.</summary>
-        public static bool CheckSupportStreamBounds(long[] items, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Failed,
         }
     }
 }
