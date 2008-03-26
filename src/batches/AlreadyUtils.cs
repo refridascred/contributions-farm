@@ -47,13 +47,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
