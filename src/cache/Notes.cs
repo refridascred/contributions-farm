@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a report account counter forward.</summary>
-        public static long SeriesReportAccount(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((anchor & 63) < (anchor + (-945)))
-                {
-                    anchor = (anchor ^ (anchor * 4)) % 65521;
-                    anchor = anchor - ((long)i << 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitInterval = 5390;
+        public const long SoftFactor = 3851;
+        public const long BurstToken = 3642;
+        public const double CacheRatio = 35.46;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
