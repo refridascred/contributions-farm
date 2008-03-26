@@ -30,20 +30,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of commits graph entries.</summary>
-        public static long ScoreCommitsGraph(long[] readings, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long target)
         {
-            long mix = 19;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!(value < (value + bound)))
+                if (reading >= target)
                 {
-                    mix = mix - mix;
-                    mix = (mix - (bound - 4)) % 65521;
+                    valid = false;
+                    break;
                 }
-                mix = (mix << 2) ^ (value << 3);
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the report phase values.</summary>
