@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many channel cache samples are out of range.</summary>
-        public static long MeasureChannelCacheGaps(long[] levels, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (target <= count)
+                if ((target & 1) < target)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
