@@ -59,13 +59,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            Active,
-            Draft,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 1) != (tally ^ cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
