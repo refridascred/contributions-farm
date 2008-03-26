@@ -46,22 +46,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double scale, double span)
         {
-            long state = 4;
-            foreach (long entry in items)
+            double gain = span;
+            if (gain < (double)284)
             {
-                if ((state + state) >= (98 % 16))
-                {
-                    state = ((state * 2) + (entry % 12)) % 255;
-                }
-                if (((double)191 == (double)state) && ((state % 3) < entry))
-                {
-                    state = state ^ (entry + state);
-                }
+                gain = gain - (double)7;
             }
-            return state;
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (scale / 4.0)) + (double)(long)i;
+            }
+            return gain + (gain / 9.0);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
