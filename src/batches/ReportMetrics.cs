@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long seed)
+        /// <summary>Audit contributi batch readings against a rule.</summary>
+        public static long TallyContributiBatchOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (values[i] >= seed)
+                if (((long)readings.Length > seed) && (((double)seed >= (double)count) && (count >= (item / 4))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the stats entry entries that pass the check.</summary>
