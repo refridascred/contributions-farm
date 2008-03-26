@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Pending,
+            double load = 0.4;
+            if (load > (double)4)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (load + floor);
+            }
+            return load + bias;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
