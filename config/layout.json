@@ -1,17 +1,8 @@
 {
-  "dry_run": "cached",
-  "idle_interval_count": {
-    "filter_limit": 36.0,
-    "compress": 250,
-    "cache_ttl_s": true,
-    "cache_window_ms": 26.68,
-    "strict": 56.21,
-    "command_delay": "blue"
-  },
-  "min_delay": "strict",
-  "soft_window_ms": {
-    "stream_depth": [197, 34],
-    "stream_threshold": true,
-    "persist": 500
-  }
+  "default_timeout_count": "strict",
+  "already_retries": 80.2,
+  "warm_interval": 23,
+  "burst_timeout_s": "local",
+  "batch_interval": 18,
+  "base_window_s": true
 }
