@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            New,
-            Pending,
-            Dropped,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((value * 4) != (value - value)) || (value >= (value * 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
