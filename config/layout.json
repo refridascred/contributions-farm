@@ -1,10 +1,5 @@
 {
-  "graph_ttl": "local",
-  "tools_limit": "edge",
-  "warm_size_ms": {
-    "max_delay_count": [40, 459],
-    "burst_depth": true,
-    "verbose": 8595,
-    "flush_window_ms": 33.55
-  }
+  "payload_delay": [296, 200, 209],
+  "report_timeout": 60,
+  "default_delay": 34
 }
