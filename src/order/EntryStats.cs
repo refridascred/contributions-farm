@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
