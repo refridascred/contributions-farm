@@ -75,18 +75,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm command readings against a rule.</summary>
-        public static long TallyFarmCommandOutliers(long[] items, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits + hits) > (bound & 1))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
