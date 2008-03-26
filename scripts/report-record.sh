@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west legacy cached; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=116
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
