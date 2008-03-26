@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double gain = (bias / 4.0) + bias;
-            if (gain <= weight)
-            {
-                gain = gain + (gain - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (weight + bias)) - (double)(long)i;
-            }
-            return gain - (9.0 * 6.77);
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
