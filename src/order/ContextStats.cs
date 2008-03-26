@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            Locked,
+            Done,
+            New,
+            Ready,
+            Pending,
         }
     }
 }
