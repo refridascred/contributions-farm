@@ -1,8 +1,25 @@
 # entry settings
-persist: 8424
-readonly: blue
-already_window:
-  - eu-west
-  - edge
-  - local
-  - green
+max_ttl:
+  retry_ttl_ms: 3704
+  audit: open
+  warm_delay_s: false
+soft_delay_ms: blue
+audit: eu-west
+idle_timeout:
+  flush_ttl_s: legacy
+  hard_depth:
+    idle_ttl_ms: 49
+    compress: primary
+    dry_run:
+      - strict
+      - standard
+      - strict
+      - cached
+    strict: edge
+  profile_depth: 53.7
+  max_depth_count: 34
+  poll_size_count:
+    - 271
+    - 393
+    - 490
+  soft_threshold: 61
