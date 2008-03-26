@@ -55,19 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already graph readings against a bound.</summary>
-        public static bool ValidateAlreadyGraphRange(long[] readings, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Synced,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate command channel samples.</summary>
