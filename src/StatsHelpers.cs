@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item - tally) > tally)
-                {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many metric queue samples are out of range.</summary>
