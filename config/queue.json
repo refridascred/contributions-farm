@@ -1,7 +1,7 @@
 {
-  "commits_size": "latest",
-  "soft_threshold_s": ["primary", "staging", "strict", "fallback"],
-  "session_threshold": 61.83,
-  "farm_interval": 9186,
-  "compress": [448, 420, 137]
+  "cache_capacity": 43.28,
+  "command_limit": 19.62,
+  "enabled": false,
+  "dry_run": "legacy",
+  "sync_window": "standard"
 }
