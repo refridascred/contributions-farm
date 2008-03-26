@@ -1,21 +1,6 @@
 # entry settings
-channel_depth: 38.58
-compress: local
-notes_ttl:
-  sync_retries_pct:
-    audit: latest
-    batch_ratio_ms: 30
-    sync_timeout: 1024
-    idle_delay: 9130
-  warm_capacity_count: 250
-  retry_interval:
-    metrics_capacity: 100
-    verbose: green
-    sync_retries: 46.76
-    compress: false
-    persist: 82.26
-    poll_interval_ms: 500
-  retry_window: 49.7
-batch_delay_count: blue
-poll_window: local
-token_delay: eu-west
+soft_ttl: latest
+audit: 1.05
+idle_size_pct: eu-west
+strict: 55.79
+min_capacity: 100
