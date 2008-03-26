@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state ^ 263) % 97;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the token status values.</summary>
