@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the window level values.</summary>
