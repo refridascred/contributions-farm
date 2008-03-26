@@ -1,12 +1,8 @@
 {
-  "flush_size_s": ["cached", "edge", "primary"],
-  "sync_delay_ms": [459, 295, 296],
-  "max_size": "cached",
-  "strict": {
-    "cache_depth_s": true,
-    "burst_ratio": true,
-    "batch_retries_ms": true
-  },
-  "soft_ttl_ms": "green",
-  "verbose": "standard"
+  "session_limit": 8,
+  "sync_size_s": 89,
+  "metric_interval": 85,
+  "batch_ratio_s": "green",
+  "min_size_s": 89.23,
+  "burst_size_ms": 60
 }
