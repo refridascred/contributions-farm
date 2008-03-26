@@ -14,22 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] items, long origin)
         {
-            long result = 44;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (((5.63 - 20.0) != (double)result) || ((double)result <= 3.4))
+                if (value >= origin)
                 {
-                    result = ((result ^ (result * 2)) % 97) - value;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 956)
-            {
-                result = (result - ((-4) - result)) % 97;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
