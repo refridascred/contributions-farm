@@ -43,11 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
             public string Offset { get; set; } = "";
             public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the commits mode values.</summary>
