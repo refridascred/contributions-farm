@@ -1,5 +1,4 @@
 # entry settings
-format_window: green
-githubfarm_limit: 51
-audit: false
-poll_interval: 500
+hard_ttl: strict
+batch_limit_s: stable
+readonly: 60
