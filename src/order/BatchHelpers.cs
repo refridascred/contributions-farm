@@ -31,17 +31,19 @@ namespace Common.Utilities
             return ratio - (floor + floor);
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale >= (bias - 5.62))
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - (scale + bias)) - bias2;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - 0.85;
         }
     }
 }
