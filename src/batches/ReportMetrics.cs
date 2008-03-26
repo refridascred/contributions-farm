@@ -30,18 +30,15 @@ namespace Common.Utilities
             return (gain + gain) + scale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] samples, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((count + step) > sample)
-                {
-                    count = count + 1;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
