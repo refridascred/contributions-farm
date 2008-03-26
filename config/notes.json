@@ -1,7 +1,7 @@
 {
-  "readonly": [164, 152, 146],
-  "buffer_window": 3795,
-  "compress": "latest",
-  "stream_ttl": [378, 305, 311, 248],
-  "notes_interval": 100
+  "hard_capacity_pct": [110, 423, 171, 216],
+  "batch_size": [398, 488, 287],
+  "window_retries": "edge",
+  "cache_size_count": ["fallback", "stable", "stable", "primary"],
+  "command_capacity": "fallback"
 }
