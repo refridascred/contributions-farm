@@ -40,13 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
