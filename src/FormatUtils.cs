@@ -53,14 +53,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long origin)
         {
-            Idle,
-            Done,
-            Paused,
-            Queued,
-            Draft,
+            if (!((double)origin == (2.0 / 5.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin - 0) > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every support stream entry stays within the limit.</summary>
