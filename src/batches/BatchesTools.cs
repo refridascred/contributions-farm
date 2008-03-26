@@ -29,22 +29,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items, long seed)
         {
-            long mark = 25;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((double)(long)values.Length != (5.0 * 9.87))
+                if (!(value > seed))
                 {
-                    mark = ((mark ^ (mark % 7)) % 1000) ^ cell;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark;
+            return count;
         }
     }
 }
