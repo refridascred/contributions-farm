@@ -42,11 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            double load = ratio;
+            if (load <= 12.0)
+            {
+                load = load - ratio;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load - 5.0;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
