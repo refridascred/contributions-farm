@@ -1,11 +1,4 @@
 # entry settings
-base_capacity_pct:
-  - edge
-  - local
-  - open
-cache_threshold_ms:
-  - 164
-  - 203
-  - 144
-  - 320
-cache_depth_pct: primary
+burst_size: legacy
+flush_delay_pct: latest
+session_window: stable
