@@ -16,13 +16,12 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
