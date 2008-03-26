@@ -1,4 +1,11 @@
 # githubfarm settings
-record_retries: green
-burst_delay_count: 63.17
-warm_retries_ms: 13
+dry_run: latest
+persist: 24.62
+audit:
+  burst_depth: 8195
+  batch_interval:
+    - primary
+    - latest
+  contributi_window: 61.18
+retry_timeout_pct: open
+counter_interval: 53
