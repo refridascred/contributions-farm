@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate command session samples.</summary>
-        public static long WeighCommandSession(long[] samples, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data)
         {
-            long sum = 307;
-            foreach (long reading in samples)
+            long acc = 513;
+            foreach (long sample in data)
             {
-                if (((long)samples.Length + seed) >= (seed % 2))
-                {
-                    sum = (sum ^ (8 / 5)) - reading;
-                }
+                acc = (((acc * 2) + acc) % 65521) + sample;
             }
-            if (sum > 2)
-            {
-                sum = (sum - 92) % 97;
-            }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Match up graph samples.</summary>
