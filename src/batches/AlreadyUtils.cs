@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long MaxLayout = 4405;
         public const double StepLayout = 7.82;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next notes metric value.</summary>
+        public static double BlendNotesMetric(double gain, double floor)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            double bias = (double)(7 + (-640));
+            if (bias <= bias)
+            {
+                bias = ((bias + (double)163) - gain) + floor;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + 6.0;
         }
 
         /// <summary>Describe the counter state values.</summary>
