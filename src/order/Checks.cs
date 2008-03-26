@@ -46,12 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCount = "primary-v2";
-        public const string MaxCache = "legacy-v2";
-        public const long MaxRatio = 3995;
-        public const long WindowCache = 7876;
-        public const long RetryCache = 2868;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
