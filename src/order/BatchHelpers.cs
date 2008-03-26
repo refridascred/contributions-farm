@@ -26,22 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools queue entries that pass the check.</summary>
-        public static long CountToolsQueueMatches(long[] data)
+        /// <summary>Find the first checks record entry that matches the target.</summary>
+        public static long LookupChecksRecordIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value <= 2.9)
+                if (values[i] < offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
