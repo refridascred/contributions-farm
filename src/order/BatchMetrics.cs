@@ -46,11 +46,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseSize = "legacy-edge";
-        public const long HardSpan = 5742;
-        public const long MaxBuffer = 3400;
-        public const long DefaultTimeout = 9898;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftInterval = "standard-edge";
+        public const long DefaultFactor = 7469;
+        public const string RetryBatch = "local-1";
+        public const long IdleLevel = 7045;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetrySpan = 23.45;
