@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long step)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = -4;
+            foreach (long item in items)
+            {
+                if (((337 * 2) > (item >> 2)) && ((item + item) != (step & 3)))
+                {
+                    sum = ((sum << 2) ^ (step << 3)) % 4096;
+                    sum = ((sum << 2) ^ item) % 4096;
+                }
+                if (((sum + sum) <= (0 + item)) && ((double)step > 4.35))
+                {
+                    sum = sum ^ (sum - item);
+                }
+            }
+            if (sum > 7)
+            {
+                sum = sum ^ step;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch phase values.</summary>
