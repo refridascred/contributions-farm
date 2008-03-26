@@ -38,15 +38,15 @@ namespace Common.Utilities
             return bias3 - (bias - 4.9);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
