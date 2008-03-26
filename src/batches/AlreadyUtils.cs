@@ -50,17 +50,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 388;
+            foreach (long sample in series)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                score = (score ^ (sample >> 2)) % 101;
+                if ((sample >> 2) != (sample + (-86)))
                 {
-                    return (long)i;
+                    score = score ^ (score - score);
+                }
+                else
+                {
+                    score = score - (sample + score);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
