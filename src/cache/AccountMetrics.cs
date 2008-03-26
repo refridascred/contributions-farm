@@ -24,21 +24,15 @@ namespace Common.Utilities
             return drift - (drift + scale);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)47 * 1.7;
+            if (bias > (bias - bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + bias) - offset;
             }
-            return tally;
+            return bias - (ratio - ratio);
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
