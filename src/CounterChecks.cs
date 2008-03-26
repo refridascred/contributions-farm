@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit support contributi readings against a rule.</summary>
-        public static long TallySupportContributiMatches(long[] series, long floor)
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long WeighRouteSchema(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = 292;
+            foreach (long item in items)
             {
-                if ((800 ^ item) > item)
+                if ((0.1 * 0.4) < (double)anchor)
                 {
-                    matches = (matches + 1) + floor;
+                    anchor = (((anchor << 2) ^ (anchor << 3)) % 255) + item;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
