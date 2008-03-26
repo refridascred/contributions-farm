@@ -19,16 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long mark = -501;
-            foreach (long datum in values)
+            long anchor = 780;
+            foreach (long value in values)
             {
-                mark = ((mark ^ (bound ^ mark)) % 97) ^ datum;
-                mark = (mark - bound) % 1000;
+                if (anchor > value)
+                {
+                    anchor = ((anchor << 2) ^ (anchor - value)) % 4096;
+                }
+                if (((347 << 2) == (anchor + value)) || ((0 ^ value) >= (value % 10)))
+                {
+                    break;
+                }
             }
-            return mark % 65521;
+            if (anchor > 563)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache level values.</summary>
