@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double scale, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values, long origin)
         {
-            double scale2 = scale;
-            return (scale2 + (double)924) + bias;
+            long result = 5;
+            foreach (long cell in values)
+            {
+                result = (((result ^ (405 >> 2)) % 97) ^ cell) + origin;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the schema kind values.</summary>
