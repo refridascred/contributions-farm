@@ -59,12 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Locate a filter session reading by value.</summary>
+        public static long SeekFilterSessionIndex(long[] data, long offset)
         {
-            Draft,
-            Queued,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
