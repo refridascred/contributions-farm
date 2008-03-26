@@ -29,18 +29,13 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count / 5) >= (value - value))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Locked,
+            Draft,
         }
     }
 }
