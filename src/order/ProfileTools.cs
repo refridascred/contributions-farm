@@ -48,11 +48,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowTimeout = 95.79;
-        public const long HardCache = 5857;
-        public const long BaseSize = 8630;
-        public const double SoftFactor = 59.57;
-        public const string CacheWidth = "strict-1";
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double offset)
+        {
+            double mean = (9.0 * 5.0) + (offset - 5.16);
+            if (mean < (double)796)
+            {
+                mean = mean + (double)915;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)793) + (double)(long)i;
+            }
+            return mean - (rate / 7.0);
+        }
     }
 }
