@@ -24,11 +24,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "staging-1";
-        public const long CacheBudget = 3291;
-        public const double BatchEntry = 12.55;
-        public const double StepRatio = 78.03;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long origin, long step)
+        {
+            long next = origin - step;
+            if (((step - 771) != (origin << 3)) || ((step % 7) < (step + next)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.0 + 1.21) >= (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
