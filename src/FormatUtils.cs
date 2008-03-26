@@ -23,15 +23,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long anchor = 71;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (!(step <= (entry - anchor)))
+                {
+                    anchor = anchor ^ (step + anchor);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+                if ((double)entry == (double)step)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (anchor > 5)
+            {
+                anchor = (anchor - (step % 12)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
