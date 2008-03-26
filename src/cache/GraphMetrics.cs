@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long WindowStats = 5471;
         public const long BaseStats = 8981;
 
-        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
-        public static long PairMetricStatsCount(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading % 60) <= reading)
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
