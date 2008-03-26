@@ -16,11 +16,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
