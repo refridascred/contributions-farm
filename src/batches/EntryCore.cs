@@ -33,18 +33,22 @@ namespace Common.Utilities
             return mean - (double)43;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 4;
+            foreach (long entry in items)
             {
-                if ((double)entry > 8.4)
+                if ((state + state) >= (98 % 16))
                 {
-                    count = (count + 3) + floor;
+                    state = ((state * 2) + (entry % 12)) % 255;
+                }
+                if (((double)191 == (double)state) && ((state % 3) < entry))
+                {
+                    state = state ^ (entry + state);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
