@@ -23,15 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema context series from a seed.</summary>
-        public static long IterateSchemaContext(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long carry = 12;
+            foreach (long cell in values)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = (carry * 5) + cell;
+                if ((734 >> 3) < (6 + carry))
+                {
+                    carry = (carry ^ (cell * 5)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ cell;
+                }
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Find the first notes queue entry that matches the target.</summary>
