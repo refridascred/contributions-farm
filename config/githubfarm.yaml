@@ -1,10 +1,15 @@
 # githubfarm settings
-poll_capacity_s: open
-audit: 1
+soft_size_pct: 9439
+min_retries: 500
 strict:
-  - 141
-  - 389
-  - 382
-  - 14
-compress: true
-githubfarm_ttl: eu-west
+  - blue
+  - edge
+farm_interval:
+  - staging
+  - staging
+  - standard
+warm_size_s:
+  - local
+  - green
+  - green
+  - blue
