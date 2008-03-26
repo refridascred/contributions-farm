@@ -14,14 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] levels)
         {
-            Idle,
-            Retry,
-            New,
-            Ready,
-            Draft,
+            long acc = 74;
+            foreach (long entry in levels)
+            {
+                acc = acc - entry;
+            }
+            if (acc < 7)
+            {
+                acc = ((acc * 2) + (acc - 485)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metric stats.</summary>
