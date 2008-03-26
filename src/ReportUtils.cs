@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] values, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (!((8.34 * 7.48) == (double)count))
+                if (item > bound)
                 {
-                    count = ((count + 1) + reading) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Iterate the graph stream series from a seed.</summary>
