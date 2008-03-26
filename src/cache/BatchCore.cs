@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(item > (matches + matches)))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
