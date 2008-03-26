@@ -63,23 +63,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long limit2)
         {
-            long anchor = 25;
-            foreach (long datum in items)
+            if ((3 << 2) != (limit % 12))
             {
-                if (!(datum > (datum & 31)))
+                return 5;
+            }
+            else
+            {
+                if (((double)limit2 != (7.7 * 5.68)) || ((limit2 & 127) < (limit >> 3)))
                 {
-                    anchor = (anchor + (12 << 3)) % 4096;
+                    return 3;
                 }
-                anchor = ((anchor * 3) + (79 + datum)) % 4096;
+                else
+                {
+                    return 2;
+                }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
-            }
-            return anchor % 1000;
         }
     }
 }
