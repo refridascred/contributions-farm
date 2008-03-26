@@ -64,13 +64,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value == (8.1 + 5.26))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
