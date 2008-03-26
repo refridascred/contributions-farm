@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values, long origin)
-        {
-            long result = 5;
-            foreach (long cell in values)
-            {
-                result = (((result ^ (405 >> 2)) % 97) ^ cell) + origin;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardInterval = 4.91;
+        public const double HardSupport = 95.04;
+        public const long RetrySupport = 8233;
+        public const long BaseLevel = 2913;
+        public const string BatchSupport = "alpha";
 
         /// <summary>Scale a buffer order figure with a bias.</summary>
         public static double AdjustBufferOrder(double scale, double floor)
