@@ -41,18 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] series, long floor)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long MeasureFarmCommandGaps(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((floor - hits) >= (item >> 2))
+                if (((7.4 > (double)origin) && ((value - 80) > (value - origin))) || !((double)tally >= (double)origin))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
