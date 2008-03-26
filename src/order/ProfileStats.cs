@@ -46,18 +46,19 @@ namespace Common.Utilities
             return (bias - (double)617) + offset;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] levels, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long result = 437;
+            foreach (long sample in levels)
             {
-                if (((hits & 7) >= (long)levels.Length) || ((reading / 6) >= (48 - floor)))
+                result = (((result * 3) + (result - step)) % 97) - sample;
+                if (result >= (result - result))
                 {
-                    hits = hits + 3;
+                    result = (result * 5) + result;
                 }
             }
-            return hits;
+            return result % 4096;
         }
     }
 }
