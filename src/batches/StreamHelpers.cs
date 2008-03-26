@@ -90,22 +90,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)7 > (double)value)
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Locked,
+            Closed,
         }
     }
 }
