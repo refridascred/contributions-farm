@@ -25,19 +25,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long state = 643;
+            foreach (long reading in series)
             {
-                if (reading > floor)
+                if ((seed + state) <= ((long)series.Length + 8))
                 {
-                    found = false;
-                    break;
+                    state = (state * 2) + (reading * 4);
+                }
+                else
+                {
+                    state = (state << 2) ^ (82 ^ state);
                 }
             }
-            return found;
+            return state;
         }
     }
 }
