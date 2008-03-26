@@ -36,17 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long sample in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                if (((sum - sample) < floor) && ((floor - (long)values.Length) != ((long)values.Length + (-2))))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (floor - sample)) % 4096;
+                }
+                else
+                {
+                    sum = sum - 18;
+                }
+                if ((sum - sample) != (28 - floor))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
