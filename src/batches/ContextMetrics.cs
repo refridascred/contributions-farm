@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long carry = 901;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + (95 + carry);
-                if (carry < (entry + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry * 2) + (carry % 97);
-                }
-                if ((entry / 4) > carry)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
