@@ -1,7 +1,8 @@
 {
-  "readonly": 60,
-  "window_ratio": 250,
-  "min_capacity": [209, 319, 1, 140],
-  "burst_limit_count": "local",
-  "idle_limit_count": ["eu-west", "edge", "stable", "local"]
+  "persist": 22,
+  "notes_window": 60,
+  "default_threshold_ms": 72,
+  "burst_retries": "fallback",
+  "readonly": true,
+  "soft_size": false
 }
