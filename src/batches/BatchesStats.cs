@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
+            public long Owner { get; set; }
             public long Size { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
