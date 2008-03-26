@@ -26,15 +26,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Accumulate counter schema samples.</summary>
+        public static long TallyCounterSchema(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long carry = 958;
+            foreach (long reading in readings)
             {
-                result = ((result * 5) + (long)i) % 101;
+                carry = (carry + (reading + carry)) % 101;
             }
-            return result;
+            if (carry < 9)
+            {
+                carry = (carry + (carry / 2)) % 255;
+            }
+            return carry;
         }
     }
 }
