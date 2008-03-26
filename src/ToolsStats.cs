@@ -77,17 +77,12 @@ namespace Common.Utilities
             return rate2 - (rate2 + floor);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of context stats readings.</summary>
