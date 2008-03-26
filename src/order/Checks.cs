@@ -13,38 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long limit, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if ((limit / 6) >= (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) != (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-450) ^ limit) != (floor << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor + limit) != (floor >> 4)) || ((0 * 3) <= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
