@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Dropped,
-            Pending,
-            Stale,
-            Done,
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every tools farm entry stays within the limit.</summary>
