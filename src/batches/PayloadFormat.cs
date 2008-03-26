@@ -53,29 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 20;
-            foreach (long datum in readings)
-            {
-                if (origin <= (sum << 1))
-                {
-                    sum = ((sum * 4) + sum) % 65521;
-                    sum = ((sum << 2) ^ (sum & 3)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = sum + 0;
-                    sum = (sum ^ (datum - (-2))) % 255;
-                }
-                if ((double)origin < (8.0 - 9.0))
-                {
-                    sum = sum ^ (sum ^ sum);
-                }
-            }
-            return sum % 97;
+            Pending,
+            Paused,
+            Queued,
+            Draft,
+            Ready,
         }
     }
 }
