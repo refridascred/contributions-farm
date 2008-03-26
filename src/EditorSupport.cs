@@ -61,21 +61,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + limit) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate farm samples.</summary>
