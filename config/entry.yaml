@@ -1,6 +1,10 @@
 # entry settings
-audit: legacy
-sync_ttl: legacy
-min_ttl_pct: 3944
-readonly: 3685
-strict: legacy
+format_depth: standard
+command_retries: 71
+compress:
+  - 330
+  - 331
+  - 177
+  - 74
+flush_interval_pct: strict
+soft_ttl_count: 589
