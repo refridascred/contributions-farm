@@ -26,12 +26,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Done,
+            Queued,
+            Dropped,
+            Synced,
             Locked,
-            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
