@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes report readings against a bound.</summary>
-        public static bool GuardNotesReportBounds(long[] items, long limit)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
