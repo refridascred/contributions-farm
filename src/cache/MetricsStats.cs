@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally ^ bound) == (tally << 1))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a session reading.</summary>
