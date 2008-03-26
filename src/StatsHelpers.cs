@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Locate a payload stats reading by value.</summary>
+        public static long LookupPayloadStatsIndex(long[] items, long bound)
         {
-            long sum = 948;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum ^ 8) >= (item & 3))
+                if ((items[i] <= bound) && ((items[i] % 2) != 0))
                 {
-                    sum = sum ^ (item - sum);
-                }
-                if (((double)sum >= (0.8 - 9.2)) && ((double)sum >= (1.0 / 3.0)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 16)
-            {
-                sum = ((sum * 5) + 70) % 101;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
