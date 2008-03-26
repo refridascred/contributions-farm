@@ -29,21 +29,12 @@ namespace Common.Utilities
             return weight - (double)1;
         }
 
-        /// <summary>Match up metric window samples.</summary>
-        public static long MatchMetricWindowCount(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
