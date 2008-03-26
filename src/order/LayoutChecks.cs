@@ -73,18 +73,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = 5;
+            foreach (long item in readings)
             {
-                if ((origin + origin) > origin)
-                {
-                    count = (count + 2) + entry;
-                }
+                score = (score << 2) ^ (item - score);
+                score = score ^ (item ^ item);
             }
-            return count;
+            if (score < 72)
+            {
+                score = (score - (score - score)) % 65521;
+            }
+            return score;
         }
     }
 }
