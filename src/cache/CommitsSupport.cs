@@ -68,21 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 413;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(sample > (sample << 2)))
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (298 ^ sample)) % 4096;
                 }
+                mix = ((mix * 3) + mix) % 101;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Find the first schema payload entry that matches the target.</summary>
