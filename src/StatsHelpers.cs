@@ -52,13 +52,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long step)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long diff = bound + step;
+            if ((bound - step) <= (step * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound & 63) > (step / 6)) || (diff <= bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= diff)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 4) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
