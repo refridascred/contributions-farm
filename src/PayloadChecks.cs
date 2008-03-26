@@ -64,38 +64,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a tools cache pair into a bucket.</summary>
-        public static long GradeToolsCache(long offset, long offset2)
+        /// <summary>Measure how many cache route samples are out of range.</summary>
+        public static long TallyCacheRouteGaps(long[] values, long origin)
         {
-            if ((9.1 + 1.2) > (double)offset)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)offset2 < (3.11 - 0.8)))
+                if ((origin - tally) > (origin * 5))
                 {
-                    return 5;
+                    tally = (tally + 3) + sample;
                 }
                 else
                 {
-                    if (!(offset > (offset2 + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (1 <= (offset % 100))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
