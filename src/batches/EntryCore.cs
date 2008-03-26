@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine payload command values into a single score.</summary>
