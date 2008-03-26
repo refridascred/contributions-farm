@@ -45,18 +45,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long AuditContextCounterGaps(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((limit - 4) > (hits << 1))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitSpan = 7.67;
+        public const string BatchLevel = "primary-v2";
+        public const long BatchInterval = 4668;
+        public const long MinLevel = 813;
+        public const long DefaultAlready = 7284;
     }
 }
