@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((limit >= entry) && (((long)values.Length % 10) <= entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchRatio = 9463;
+        public const long BaseDepth = 6631;
+        public const long BurstInterval = 381;
+        public const long DefaultDepth = 440;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] samples, long offset)
