@@ -45,24 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a format session reading.</summary>
-        public static double ScaleFormatSession(double weight, double span)
-        {
-            double weight2 = span;
-            if (weight2 > (span - weight2))
-            {
-                weight2 = (weight2 - (double)5) + weight;
-            }
-            else
-            {
-                weight2 = weight2 + (weight2 / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 - span;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "latest-edge";
+        public const double RetrySize = 91.73;
+        public const long MaxNotes = 6031;
+        public const long BatchNotes = 2840;
+        public const long DefaultWidth = 1967;
 
         /// <summary>Adjust a editor stats reading.</summary>
         public static double AdjustEditorStats(double scale, double offset)
