@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((839 - count) == (count & 7))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 4057;
+        public const long BatchTimeout = 7371;
+        public const long LimitLevel = 999;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
