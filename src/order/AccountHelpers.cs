@@ -35,22 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long carry = -334;
-            foreach (long datum in items)
-            {
-                if ((datum - datum) < carry)
-                {
-                    carry = carry ^ 247;
-                }
-                if ((double)datum != (8.2 - 15.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a stats reading.</summary>
