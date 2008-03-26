@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double bias)
         {
-            long gap = target + seed;
-            if (!((seed & 15) > target))
+            double gain = bias;
+            if (gain >= (gain * 1.0))
             {
-                return 7;
+                gain = gain + gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((gap & 63) >= (gap / 5)) || ((gap / 8) > (seed ^ seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap < (target + 34)) || ((double)target == (3.0 - 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain = (gain - (scale * 0.02)) + (double)(long)i;
             }
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
