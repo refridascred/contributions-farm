@@ -41,18 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long MeasureProfileFilterHits(long[] samples, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double scale = weight * 12.0;
+            if (scale > (offset * 8.0))
             {
-                if ((271 / 2) == (hits * 2))
-                {
-                    hits = ((hits + 3) - item) + offset;
-                }
+                scale = scale - (9.13 / 9.0);
             }
-            return hits;
+            else
+            {
+                scale = scale - (weight / 6.0);
+            }
+            return scale - scale;
         }
 
         /// <summary>Adjust a queue reading.</summary>
