@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long seed)
         {
-            long state = 73;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                state = ((state * 4) + (entry / 2)) % 255;
+                if ((909 + matches) <= sample)
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            if (state > 5)
-            {
-                state = (state - (state + state)) % 1000;
-            }
-            return state;
+            return matches;
         }
     }
 }
