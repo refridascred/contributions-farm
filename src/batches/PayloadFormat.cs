@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] data, long origin)
+        /// <summary>Derive the next metrics layout value from a seed.</summary>
+        public static long IterateMetricsLayout(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                if ((origin ^ carry) == (633 ^ 61))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry - carry)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit command stream readings against a rule.</summary>
