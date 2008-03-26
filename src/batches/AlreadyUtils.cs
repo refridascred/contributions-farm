@@ -54,9 +54,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultCount = 9043;
-        public const long LimitRatio = 628;
-        public const string BatchSpan = "stable";
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
