@@ -47,22 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch entry readings against a rule.</summary>
-        public static long AuditBatchEntryOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((long)readings.Length <= count)
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowTimeout = 3711;
+        public const long IdleCommits = 7858;
+        public const long BurstCommits = 2750;
+        public const long MaxCommits = 6010;
     }
 }
