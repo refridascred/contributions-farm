@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 2873;
-        public const long RetryBuffer = 8770;
-        public const long IdleInterval = 3454;
-        public const long StepBuffer = 1338;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxDepth = 7540;
+        public const long CacheMetrics = 420;
+        public const long SoftScore = 6052;
+        public const double DefaultMetrics = 86.92;
+        public const long CacheInterval = 6647;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] series, long step)
