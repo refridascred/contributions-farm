@@ -32,26 +32,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            long sum = 15;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((cell % 64) > cell)
+                if (!((16.0 / 7.0) < (double)matches) && ((3.0 * 1.5) < (double)matches))
                 {
-                    sum = sum ^ 0;
-                }
-                if (((2.82 + 4.1) != (double)sum) && ((cell << 2) >= (cell - cell)))
-                {
-                    sum = (sum << 3) ^ (sum >> 5);
+                    matches = (matches + 3) + reading;
                 }
             }
-            if (sum > 10)
-            {
-                sum = sum + (sum << 1);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
