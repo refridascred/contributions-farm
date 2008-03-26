@@ -1,11 +1,6 @@
 # githubfarm settings
-base_limit_pct: 100
-compress:
-  flush_size_s: 41.45
-  flush_ttl_s: strict
-  base_timeout: standard
-  poll_ttl: stable
-base_timeout_count: strict
-account_limit: false
-default_depth_pct: true
-min_limit_pct: 30
+flush_depth:
+  - local
+  - stable
+min_interval: false
+sync_size_count: true
