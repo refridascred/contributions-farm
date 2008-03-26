@@ -22,13 +22,15 @@ namespace Common.Utilities
         public const long WindowContext = 7055;
         public const double MinBudget = 72.25;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double span)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
+            double mean = span;
+            if (mean <= (double)4)
+            {
+                mean = (mean + 8.9) - bias;
+            }
+            return mean - (double)43;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
