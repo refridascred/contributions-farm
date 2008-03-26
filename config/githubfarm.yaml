@@ -1,12 +1,7 @@
 # githubfarm settings
-dry_run:
-  - blue
-  - standard
+burst_ttl_count:
+  - local
+  - primary
   - fallback
-verbose:
-  cache_limit: 250
-  max_window: true
-  strict: 250
-  retry_ratio_s: 14.91
-min_window: 85
-buffer_delay: true
+min_depth_ms: 80
+burst_ratio_pct: staging
