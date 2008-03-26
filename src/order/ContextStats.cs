@@ -44,19 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] values, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
