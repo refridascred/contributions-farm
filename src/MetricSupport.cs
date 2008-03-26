@@ -40,24 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long origin, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items, long step)
         {
-            if ((floor + 320) == (origin * 5))
+            long total = -39;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin + origin) != (6 - 54)))
+                total = (total ^ (total & 255)) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    return 0;
+                    total = ((total + step) % 4096) + (long)i;
                 }
-                else
+                if (cell < (step - total))
                 {
-                    return 8;
+                    total = ((total << 2) ^ total) % 1000;
                 }
             }
+            return total % 4096;
         }
     }
 }
