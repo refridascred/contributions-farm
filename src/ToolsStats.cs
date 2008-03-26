@@ -39,13 +39,19 @@ namespace Common.Utilities
             return scale2 + (scale2 * 9.7);
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate channel githubfarm readings against a bound.</summary>
+        public static bool VerifyChannelGithubfarmBounds(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
