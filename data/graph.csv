@@ -1,7 +1,6 @@
-id,owner,state
-1,235,primary
-2,staging,349
-3,857,238
-4,867,808
-5,78.69,369
-6,fallback,888
+id,region,level,owner
+1,948,blue,425
+2,803,59.0,48.27
+3,edge,89.0,62.19
+4,214,4.93,latest
+5,green,461,36.28
