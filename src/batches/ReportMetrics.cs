@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
