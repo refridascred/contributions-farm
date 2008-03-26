@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=406
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+RECORD_LIMIT=405
+log "limit is ${RECORD_LIMIT}"
