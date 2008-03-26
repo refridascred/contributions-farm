@@ -11,22 +11,39 @@ namespace Common.Utilities
         public const long WindowStats = 5471;
         public const long BaseStats = 8981;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Rank session command input into a small class.</summary>
+        public static long GradeSessionCommand(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long cur = origin + seed;
+            if (((cur ^ origin) > (740 / 7)) && ((origin + cur) <= origin))
             {
-                if ((reading % 60) <= reading)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (0.34 / 9.0))
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (cur > (origin * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin < (cur << 2)) || ((4.69 + 7.7) < (0.5 * 2.19)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
