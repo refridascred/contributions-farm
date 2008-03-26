@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a profile buffer counter forward.</summary>
-        public static long IterateProfileBuffer(long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 3) + (sum % 24)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Closed,
+            Failed,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit order context readings against a rule.</summary>
