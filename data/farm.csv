@@ -1,7 +1,9 @@
-id,owner,token,weight,rank
-1,40.49,17.14,14.97,standard
-2,legacy,22.03,20.42,863
-3,138,588,local,59.58
-4,legacy,538,cached,227
-5,open,local,25.54,3.58
-6,50.21,42,green,862
+id,token,owner,ratio
+1,983,65,stable
+2,865,43,68.13
+3,93.27,905,19
+4,open,standard,56.51
+5,634,stable,29.45
+6,982,18.63,70.29
+7,745,eu-west,eu-west
+8,162,eu-west,166
