@@ -15,22 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series)
+        /// <summary>Rank metrics account input into a small class.</summary>
+        public static long ClassifyMetricsAccount(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((limit2 % 16) == (limit / 7))
             {
-                if (count < (sample + count))
+                return 3;
+            }
+            else
+            {
+                if ((limit2 >> 2) <= (limit % 24))
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)limit2 == (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit2 & 127) == (limit >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
