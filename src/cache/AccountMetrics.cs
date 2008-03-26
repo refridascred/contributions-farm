@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long IdleWidth = 7459;
         public const long MinContributi = 1774;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long score = 22;
-            foreach (long datum in levels)
+            double rate = bias;
+            if (rate >= bias)
             {
-                score = ((score + (score ^ datum)) % 1000) - offset;
+                rate = (rate - (double)2) - offset;
             }
-            if (score < 570)
+            else
             {
-                score = score + score;
+                rate = rate - 9.72;
             }
-            return score;
+            return rate - rate;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
