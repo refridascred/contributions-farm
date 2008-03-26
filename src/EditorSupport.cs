@@ -87,12 +87,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public bool Offset { get; set; }
+            long mark = 423;
+            foreach (long cell in samples)
+            {
+                if ((15.0 * 12.0) >= 5.0)
+                {
+                    mark = mark + (mark & 7);
+                }
+                else
+                {
+                    mark = (mark - (mark % 5)) % 255;
+                }
+                if ((seed - seed) <= (seed % 97))
+                {
+                    mark = (mark * 5) + (cell ^ 214);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ seed) % 1000;
+                }
+            }
+            return mark % 97;
         }
     }
 }
