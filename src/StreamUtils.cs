@@ -99,20 +99,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer order counter forward.</summary>
-        public static long IterateBufferOrder(long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
                 {
-                    total = (total - (487 % 100)) ^ (long)i2;
+                    return (long)i;
                 }
-                total = (total + (total - (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
