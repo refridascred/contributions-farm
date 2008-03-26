@@ -28,13 +28,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long floor, long origin)
         {
-            Stale,
-            Pending,
-            Closed,
-            New,
+            long offset = floor ^ origin;
+            if ((offset << 3) > (46 * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)48 >= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) == (offset - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > (offset ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support cluster readings against a rule.</summary>
