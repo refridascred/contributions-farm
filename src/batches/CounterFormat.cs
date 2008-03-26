@@ -24,16 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 5) + (limit + limit)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
