@@ -67,13 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long state = 2;
+            foreach (long item in samples)
+            {
+                if ((((-2) ^ 0) > item) && ((double)2 >= (double)item))
+                {
+                    state = state + 836;
+                }
+            }
+            return state;
         }
     }
 }
