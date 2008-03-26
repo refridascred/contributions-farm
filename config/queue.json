@@ -1,5 +1,5 @@
 {
-  "retry_retries_s": [187, 42, 497],
-  "cluster_size": false,
-  "audit": 30
+  "base_ttl": "legacy",
+  "max_size": 500,
+  "compress": "open"
 }
