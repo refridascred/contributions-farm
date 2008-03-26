@@ -42,39 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long step)
-        {
-            long lane = floor ^ step;
-            if ((lane - floor) < (step - lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((605 ^ step) < ((-30) + 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((lane + lane) <= (step + lane)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step >= (lane << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6423;
+        public const long CacheEditor = 3494;
+        public const string RetryBudget = "stable-v2";
+        public const double StepTimeout = 74.35;
     }
 }
