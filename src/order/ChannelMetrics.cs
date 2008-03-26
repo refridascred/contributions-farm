@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardInterval = 4.91;
-        public const double HardSupport = 95.04;
-        public const long RetrySupport = 8233;
-        public const long BaseLevel = 2913;
-        public const string BatchSupport = "alpha";
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double floor)
+        {
+            double bias = (double)6 / 9.0;
+            return ((bias - (7.94 - 11.0)) + scale) + floor;
+        }
 
         /// <summary>Scale a buffer order figure with a bias.</summary>
         public static double AdjustBufferOrder(double scale, double floor)
