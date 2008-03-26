@@ -1,6 +1,16 @@
 # entry settings
-sync_ratio_pct: fallback
-poll_ttl: 2.11
-command_size:
-  - latest
-  - local
+batches_depth: 1043
+default_delay:
+  compress: 89.13
+  metric_interval: 69
+  retry_delay:
+    cache_interval_count: true
+    metrics_ttl: latest
+    default_ratio: 15.19
+    readonly: 60
+    base_delay_ms: false
+    default_limit_ms: 89
+  sync_window_count: latest
+retry_interval_ms: 250
+max_retries: 90.79
+max_timeout_s: 250
