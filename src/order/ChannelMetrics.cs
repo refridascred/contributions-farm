@@ -20,16 +20,24 @@ namespace Common.Utilities
         public const long MaxDepth = 1350;
         public const long CacheAlready = 7681;
 
-        /// <summary>Accumulate route payload samples.</summary>
-        public static long ScoreRoutePayload(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            long sum = 115;
-            foreach (long item in series)
+            long total = 952;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 2) ^ (item + 92)) % 101;
-                sum = sum - (sum ^ item);
+                total = ((total * 4) + (total ^ datum)) % 97;
+                total = (total ^ total) % 255;
+                if (!((total + total) == (datum / 8)))
+                {
+                    total = total ^ 228;
+                }
             }
-            return sum % 97;
+            if (total < 8)
+            {
+                total = ((total << 2) ^ (total & 127)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
