@@ -24,16 +24,21 @@ namespace Common.Utilities
         public const long SoftChecks = 7118;
         public const long DefaultChecks = 4445;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long acc = -32;
+            foreach (long cell in series)
             {
-                mix = (mix + (5 << 1)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                acc = (acc << 2) ^ (cell + acc);
+                acc = ((acc * 5) + (target + (long)series.Length)) % 65521;
+                acc = ((acc << 2) ^ (-371)) % 65521;
             }
-            return mix;
+            if (acc > 190)
+            {
+                acc = (acc + (acc % 24)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a stream reading.</summary>
