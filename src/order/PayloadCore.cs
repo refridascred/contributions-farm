@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const long CacheBudget = 2186;
         public const string DefaultEditor = "legacy-v2";
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Audit layout buffer readings against a rule.</summary>
+        public static long MeasureLayoutBufferMatches(long[] levels, long floor)
         {
-            double scale = span - (bias / 5.0);
-            if (scale <= (span / 6.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                scale = scale + scale;
+                if ((count + floor) > item)
+                {
+                    count = count + 3;
+                }
             }
-            return scale + (1.01 + span);
+            return count;
         }
     }
 }
