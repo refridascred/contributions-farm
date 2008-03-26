@@ -20,13 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long mix = 18;
+            foreach (long cell in series)
+            {
+                if ((mix / 6) >= (mix + 74))
+                {
+                    mix = (mix ^ (cell & 15)) % 1000;
+                }
+                else
+                {
+                    mix = mix - 563;
+                }
+            }
+            if (mix > 87)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Project the next profile value.</summary>
