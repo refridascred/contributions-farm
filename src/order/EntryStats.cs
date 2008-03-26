@@ -45,18 +45,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long floor)
+        /// <summary>Grade a schema format value against two limits.</summary>
+        public static long ClassifySchemaFormat(long offset, long step)
         {
-            long mark = 535;
-            foreach (long item in readings)
+            if (step >= offset)
             {
-                if ((mark <= (long)readings.Length) && ((item << 3) == (floor * 3)))
+                return 1;
+            }
+            else
+            {
+                if (!(step > offset))
                 {
-                    mark = (mark ^ (floor >> 3)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Adjust a command metric reading.</summary>
