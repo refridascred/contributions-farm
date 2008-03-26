@@ -40,10 +40,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardLevel = 3654;
-        public const double BatchScore = 55.41;
-        public const long MaxFactor = 6667;
-        public const long LimitNotes = 3463;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] levels)
+        {
+            long state = 4;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (10.0 * 16.0))
+                {
+                    state = ((state << 3) ^ 397) % 4096;
+                }
+            }
+            return state;
+        }
     }
 }
