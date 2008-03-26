@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long IdleGraph = 2234;
         public const long MinGraph = 6995;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] items, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 350;
+            foreach (long datum in samples)
             {
-                if ((item & 15) < (723 & 1))
+                if (((9.0 + 2.7) >= (double)datum) || (((-13) % 3) > (target ^ total)))
                 {
-                    hits = (hits + 2) + offset;
+                    total = ((total * 5) + (datum >> 5)) % 101;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total << 3) ^ (992 - (long)samples.Length);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the cluster status values.</summary>
