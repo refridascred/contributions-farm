@@ -31,18 +31,11 @@ namespace Common.Utilities
             return (weight + (gain + gain)) + span;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardScore = "local-edge";
+        public const long MinSize = 499;
+        public const double StepLevel = 70.15;
+        public const double CacheAlready = 2.09;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] readings)
