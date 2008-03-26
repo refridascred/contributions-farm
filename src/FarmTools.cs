@@ -33,23 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] levels, long target)
+        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
+        public static long MatchToolsCommitsCount(long[] items)
         {
-            long carry = 551;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((carry + value) < carry) || ((4.1 / 6.0) < (7.82 - 20.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry + value) % 101) - target;
             }
-            if (carry > 6)
-            {
-                carry = (carry - (carry * 2)) % 4096;
-            }
-            return carry;
+            return seen;
         }
     }
 }
