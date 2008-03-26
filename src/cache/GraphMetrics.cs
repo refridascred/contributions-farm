@@ -43,13 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2690;
+        public const long WindowDepth = 2633;
+        public const long SoftSpan = 9430;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
