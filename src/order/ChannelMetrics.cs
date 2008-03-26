@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const long MaxDepth = 1350;
         public const long CacheAlready = 7681;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] samples, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((origin & 7) > 653) && ((tally % 100) >= reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Closed,
         }
     }
 }
