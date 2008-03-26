@@ -1,17 +1,12 @@
 {
-  "hard_limit": 6451,
-  "base_threshold": {
-    "cache_ttl": "strict",
-    "retry_limit": "stable",
-    "idle_retries": ["blue", "fallback"],
-    "metrics_timeout": "blue"
+  "flush_size_s": ["cached", "edge", "primary"],
+  "sync_delay_ms": [459, 295, 296],
+  "max_size": "cached",
+  "strict": {
+    "cache_depth_s": true,
+    "burst_ratio": true,
+    "batch_retries_ms": true
   },
-  "batch_retries_ms": {
-    "flush_window": 57.98,
-    "buffer_ratio": 31.42,
-    "graph_limit": false,
-    "batch_interval_pct": true
-  },
-  "counter_ratio": 7,
-  "retry_retries_ms": "strict"
+  "soft_ttl_ms": "green",
+  "verbose": "standard"
 }
