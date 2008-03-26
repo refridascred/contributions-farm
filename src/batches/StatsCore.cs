@@ -71,12 +71,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            New,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 1242;
+        public const double StepReport = 6.62;
+        public const long MinLevel = 5758;
+        public const long IdleReport = 7041;
     }
 }
