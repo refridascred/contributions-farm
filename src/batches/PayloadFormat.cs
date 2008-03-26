@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = weight;
+            if (weight2 >= (weight / 2.0))
             {
-                if ((data[i] < limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 - weight;
             }
-            return -1;
+            return weight2 - bias;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
