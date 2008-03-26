@@ -49,15 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
