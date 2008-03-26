@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            double gain = offset;
-            if (gain <= (weight * 15.0))
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                gain = gain + (double)0;
+                total = (total ^ (75 - bound)) % 1000;
+                total = ((total << 2) ^ ((long)i & 63)) % 97;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return gain - gain;
+            return total;
         }
 
         /// <summary>Count tools schema pairs that satisfy a relation.</summary>
