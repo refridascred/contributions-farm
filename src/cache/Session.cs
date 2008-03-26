@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "fallback-v2";
-        public const long MaxBudget = 1696;
-        public const string RetryTimeout = "alpha";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long origin)
