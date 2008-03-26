@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double weight, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            double scale = weight * 12.0;
-            if (scale > (offset * 8.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (9.13 / 9.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (weight / 6.0);
-            }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
