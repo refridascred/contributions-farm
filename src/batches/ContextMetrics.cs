@@ -80,12 +80,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            Dropped,
-            New,
-            Paused,
+            long carry = 8;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry + (item << 2)) % 97) + (long)i;
+                }
+                if ((double)item >= (4.0 - 2.0))
+                {
+                    carry = (carry - (carry / 4)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (494 >> 5)) % 1000;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
