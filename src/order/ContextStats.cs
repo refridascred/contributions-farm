@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            long anchor = -5;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((anchor + anchor) >= (limit * 4))
+                if (8.8 > (double)hits)
                 {
-                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ entry;
+                    hits = (hits + 2) + cell;
                 }
-                anchor = (anchor + (limit + limit)) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
