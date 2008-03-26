@@ -1,12 +1,4 @@
 # support settings
-warm_timeout_ms: local
-audit:
-  enabled: fallback
-  farm_ttl: 250
-  dry_run: 30
-  flush_depth_count:
-    - latest
-    - latest
-    - stable
-    - staging
-cache_retries_ms: open
+flush_ttl: fallback
+report_ttl: eu-west
+filter_retries: true
