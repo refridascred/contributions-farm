@@ -47,12 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepCount = 6181;
-        public const long SoftInterval = 1452;
-        public const long WindowFactor = 1861;
-        public const string HardScore = "alpha-edge";
-        public const double RetryBudget = 59.41;
+        /// <summary>Count the order editor entries that pass the check.</summary>
+        public static long TallyOrderEditorHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((value / 4) <= seen) && (((seen << 2) < (value - seen)) || ((double)seen < (6.56 * 3.88))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
         public static long CompareStreamLayoutCount(long[] samples)
