@@ -67,15 +67,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = 37;
-            foreach (long item in values)
-            {
-                sum = ((sum - (sum * 5)) % 255) ^ item;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first filter report entry that matches the target.</summary>
