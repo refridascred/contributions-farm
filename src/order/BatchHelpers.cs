@@ -44,11 +44,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstTimeout = 9280;
-        public const double CacheWindow = 6.81;
-        public const long IdleSize = 3730;
-        public const long RetryScore = 1346;
-        public const long HardRatio = 693;
+        /// <summary>Compare every pair of account support readings.</summary>
+        public static long MatchAccountSupportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
