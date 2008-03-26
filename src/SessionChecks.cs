@@ -24,13 +24,10 @@ namespace Common.Utilities
             return scale - (ratio / 7.0);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Ready,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftCount = 87.09;
+        public const long BaseSupport = 504;
+        public const long DefaultSupport = 8767;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsGaps(long[] series, long floor)
