@@ -38,11 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((72 % 12) < matches)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
