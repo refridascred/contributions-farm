@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool GuardMetricsCounterLimits(long[] readings, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
