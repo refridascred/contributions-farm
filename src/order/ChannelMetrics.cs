@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long StepWidth = 1329;
         public const string LimitBudget = "staging-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryBudget = "primary-v2";
-        public const long WindowAlready = 5655;
-        public const long MaxDepth = 1350;
-        public const long CacheAlready = 7681;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Queued,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] samples)
