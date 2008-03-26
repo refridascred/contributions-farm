@@ -1,24 +1,6 @@
 # githubfarm settings
-soft_ratio_pct: open
-poll_threshold:
-  - 71
-  - 122
-  - 349
-  - 83
-githubfarm_size: fallback
-soft_retries_s:
-  channel_limit:
-    channel_limit: 92.7
-    batch_ttl_ms: true
-    min_window_pct: 333
-  token_threshold:
-    - standard
-    - latest
-  base_timeout_count:
-    buffer_timeout: true
-    retry_depth_count: local
-    compress: false
-    enabled: 15.72
-    dry_run: 1816
-    strict: 34
-  compress: true
+persist: staging
+support_window: 0.31
+buffer_capacity: standard
+flush_interval_pct: 62.59
+base_interval_pct: false
