@@ -86,12 +86,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long SeekFilterReportIndex(long[] samples, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) == 0))
+                if ((values[i] == step) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
