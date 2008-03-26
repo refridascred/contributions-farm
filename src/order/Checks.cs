@@ -22,17 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long offset)
+        /// <summary>Audit cluster checks readings against a rule.</summary>
+        public static long CountClusterChecksMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] >= offset)
+                if (((matches >> 5) >= matches) && ((item >> 3) == (item - matches)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
