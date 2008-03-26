@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -596;
+            foreach (long datum in levels)
             {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score << 3) ^ (1 ^ score)) % 255) - datum;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate githubfarm stats samples.</summary>
