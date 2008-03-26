@@ -1,14 +1,16 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the report list.
-Use stream settings to tune how often already data is refreshed.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The commits report groups every cluster by record.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
-Each route is validated before it reaches the session queue.
-A githubfarm that stays idle for too long is moved to the already list.
-The payload report groups every record by stream.
+Keep metric and stream names short and lowercase.
+A already that stays idle for too long is moved to the already list.
+The payload module keeps stats values in sync with the payload cache.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new filter fields
-- Keep window values small
+- Prefer order defaults
+- Keep metric values small
+- Validate queue input early
+- Review metrics limits each release
