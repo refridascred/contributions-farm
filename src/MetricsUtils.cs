@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstRatio = 9199;
-        public const long WindowBuffer = 2738;
-        public const long WindowCount = 5024;
-        public const long DefaultBuffer = 8806;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] series, long offset)
+        {
+            long result = -7;
+            foreach (long datum in series)
+            {
+                if (datum > (result - result))
+                {
+                    result = ((result * 2) + offset) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ datum) % 4096;
+                }
+                if ((double)datum >= (1.0 + 13.0))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long limit)
