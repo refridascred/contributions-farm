@@ -60,23 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] readings, long step)
         {
-            long anchor = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (reading <= step)
                 {
-                    anchor = ((anchor + anchor) % 65521) + (long)i;
-                    anchor = (anchor * 5) + (entry * 3);
-                }
-                if ((offset - 48) <= (entry & 15))
-                {
-                    anchor = (anchor ^ (940 - anchor)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
