@@ -16,17 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks stream reading by value.</summary>
-        public static long LocateChecksStreamIndex(long[] items, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 93;
+            foreach (long item in items)
             {
-                if (items[i] > seed)
+                if ((double)origin <= (1.5 + 6.1))
                 {
-                    return (long)i;
+                    mark = ((mark + (mark + mark)) % 65521) + item;
+                }
+                else
+                {
+                    mark = mark + (mark % 12);
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
