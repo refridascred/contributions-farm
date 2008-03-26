@@ -89,17 +89,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score + (long)samples.Length) % 65521) + reading) + target;
             }
-            return -1;
+            return score;
         }
     }
 }
