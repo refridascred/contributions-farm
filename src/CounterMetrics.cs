@@ -38,18 +38,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values)
+        /// <summary>Rank account token input into a small class.</summary>
+        public static long RankAccountToken(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long slot = origin + seed;
+            if (!(slot < (origin + seed)))
             {
-                if ((72 % 12) < matches)
+                return 2;
+            }
+            else
+            {
+                if ((origin > (origin & 1)) && ((double)origin > (0.13 / 7.0)))
                 {
-                    matches = (matches + 1) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (origin & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((slot + slot) >= (seed + slot))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
