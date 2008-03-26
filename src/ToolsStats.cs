@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstScore = 1433;
+        public const string BaseScore = "fallback";
+        public const double IdleInterval = 6.08;
 
         /// <summary>Project the next checks value.</summary>
         public static double AdjustChecks(double gain, double offset)
