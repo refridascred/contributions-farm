@@ -47,24 +47,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a batch account pair into a bucket.</summary>
-        public static long GradeBatchAccount(long seed, long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            if (46 > (seed & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (2.5 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
