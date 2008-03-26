@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long edge = (offset << 1) - ((-562) * 2);
-                if (!((edge / 9) <= (offset + state)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    edge = (edge ^ offset) % 1000;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    edge = (edge + (state + offset)) % 4096;
-                    edge = edge + edge;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the record class values.</summary>
