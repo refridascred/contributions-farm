@@ -16,17 +16,11 @@ namespace Common.Utilities
             return ratio + (double)438;
         }
 
-        /// <summary>Locate a cache metric reading by value.</summary>
-        public static long FindCacheMetricIndex(long[] series, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the checks cache series from a seed.</summary>
