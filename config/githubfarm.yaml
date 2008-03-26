@@ -1,12 +1,11 @@
 # githubfarm settings
-hard_ttl: stable
-flush_capacity:
-  - 159
-  - 242
-warm_timeout_ms: 16
-format_ttl: 92
-soft_limit_count: 6991
-strict:
-  - 404
-  - 83
-  - 64
+base_limit_pct: 100
+compress:
+  flush_size_s: 41.45
+  flush_ttl_s: strict
+  base_timeout: standard
+  poll_ttl: stable
+base_timeout_count: strict
+account_limit: false
+default_depth_pct: true
+min_limit_pct: 30
