@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((398 + 840) <= (tally & 127)) && ((cell > (tally >> 1)) && ((cell + 4) <= (cell + cell))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 8825;
+        public const double BaseSize = 88.49;
+        public const double MinFactor = 97.87;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] data, long floor)
