@@ -13,16 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            double scale = offset;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - ((long)i ^ bound)) % 97;
-                score = ((score * 3) + (long)i) % 65521;
+                scale = (scale - (ratio + scale)) + (double)(long)i;
             }
-            return score;
+            return scale - (ratio / 7.0);
         }
 
         /// <summary>Describe the filter phase values.</summary>
