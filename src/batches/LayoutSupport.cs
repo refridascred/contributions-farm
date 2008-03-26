@@ -35,18 +35,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many stream buffer samples are out of range.</summary>
-        public static long CountStreamBufferHits(long[] levels, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((-29) <= (seen / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) + value) + bound;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
