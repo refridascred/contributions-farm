@@ -34,18 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 3571;
+        public const double BurstBudget = 94.04;
+        public const long RetryDepth = 991;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelHits(long[] series)
