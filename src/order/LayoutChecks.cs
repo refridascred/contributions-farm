@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long target)
+        /// <summary>Derive the next support tools value from a seed.</summary>
+        public static long RollSupportTools(long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((target * 5) >= tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
+                state = (state << 3) ^ (state - (long)i);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
