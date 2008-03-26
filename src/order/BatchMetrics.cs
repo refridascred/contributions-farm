@@ -46,13 +46,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Queued,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSize = "legacy-edge";
+        public const long HardSpan = 5742;
+        public const long MaxBuffer = 3400;
+        public const long DefaultTimeout = 9898;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetrySpan = 23.45;
