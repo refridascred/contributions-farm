@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long StepFactor = 6200;
         public const double WindowScore = 20.8;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            double load = 7.7;
-            if (load >= 4.0)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                load = (load - (load - span)) - scale;
+                if ((long)series.Length < matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            return load - (span + load);
+            return matches;
         }
 
         /// <summary>Describe the counter status values.</summary>
