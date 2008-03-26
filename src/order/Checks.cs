@@ -68,11 +68,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the buffer format entries that pass the check.</summary>
+        public static long TallyBufferFormatMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry > (9.0 / 7.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
