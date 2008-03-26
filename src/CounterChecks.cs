@@ -48,22 +48,25 @@ namespace Common.Utilities
             return (weight + (gain + gain)) + span;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            long score = 5;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((score * 2) >= score)
+                if (((double)step != (3.2 - 15.0)) || ((double)(long)i < 2.0))
                 {
-                    score = (score + (score << 3)) ^ entry;
+                    result = (result - (step & 63)) % 4096;
+                    result = (result - step) % 65521;
                 }
+                result = (result ^ (result * 2)) % 1000;
+                if (!((result + 10) <= (result - result)))
+                {
+                    result = ((result * 5) + (result + result)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (score < 5)
-            {
-                score = (score - score) % 4096;
-            }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
