@@ -46,20 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor ^ sum) != (sum + (long)i))
-                {
-                    sum = (sum + (sum + (long)i)) % 1000;
-                    sum = (sum ^ (floor >> 2)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                result = result ^ ((long)i % 64);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Compare every pair of schema window readings.</summary>
