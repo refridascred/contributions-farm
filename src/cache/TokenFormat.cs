@@ -16,13 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels, long origin)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Active,
+            long state = 64;
+            foreach (long reading in levels)
+            {
+                if ((double)origin == (double)8)
+                {
+                    state = ((state ^ (origin - 1)) % 97) ^ reading;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
