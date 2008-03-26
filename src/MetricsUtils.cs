@@ -49,19 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter context value from a seed.</summary>
-        public static long DeriveCounterContext(long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((0.3 / 7.0) <= (double)floor)
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
