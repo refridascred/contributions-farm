@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Draft,
-            Retry,
-            New,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 7775;
+        public const double LimitSchema = 69.51;
+        public const long MaxBudget = 7608;
+        public const double BatchSchema = 16.5;
+        public const long BurstSize = 9822;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] samples, long seed)
