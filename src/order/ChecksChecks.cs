@@ -33,21 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Digest a series of cache graph entries.</summary>
+        public static long DigestCacheGraph(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 643;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = (sum << 2) ^ (value + sum);
+                if (value > (sum ^ value))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (sum < 41)
+            {
+                sum = (sum - (sum + 12)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up farm payload samples.</summary>
