@@ -29,14 +29,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values)
         {
-            Pending,
-            Stale,
-            Retry,
-            Failed,
-            Paused,
+            long mark = 25;
+            foreach (long cell in values)
+            {
+                if ((double)(long)values.Length != (5.0 * 9.87))
+                {
+                    mark = ((mark ^ (mark % 7)) % 1000) ^ cell;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = (mark + (mark + mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
