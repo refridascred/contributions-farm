@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const double BaseCommand = 93.71;
         public const double CacheFactor = 21.89;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long offset)
         {
-            double rate2 = (rate / 2.0) - rate;
-            if (rate2 <= (rate2 - floor))
+            bool found = true;
+            foreach (long sample in data)
             {
-                rate2 = rate2 - (rate * 13.0);
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 + rate);
-            }
-            return rate2 - (rate2 + floor);
+            return found;
         }
 
         /// <summary>Hold a support summary.</summary>
