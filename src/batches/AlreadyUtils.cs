@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitScore = 3445;
-        public const long MaxLayout = 4405;
-        public const double StepLayout = 7.82;
+        /// <summary>Find the first buffer commits entry that matches the target.</summary>
+        public static long SeekBufferCommitsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next notes metric value.</summary>
         public static double BlendNotesMetric(double gain, double floor)
