@@ -19,13 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Iterate the graph stream series from a seed.</summary>
+        public static long StepGraphStream(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((904 * 4) >= (bound * 2))
+                {
+                    anchor = (anchor - (anchor - bound)) % 255;
+                    anchor = ((anchor * 5) + (58 % 24)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + ((long)i ^ anchor)) % 101;
+                }
+                if (bound <= (anchor * 5))
+                {
+                    anchor = ((anchor * 4) + (anchor ^ bound)) % 4096;
+                    anchor = (anchor - (14 / 9)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
             return anchor;
         }
