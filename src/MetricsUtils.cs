@@ -42,14 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 6270;
+        public const long MinSize = 3533;
+        public const long SoftChecks = 4490;
+        public const long BaseDepth = 4558;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
