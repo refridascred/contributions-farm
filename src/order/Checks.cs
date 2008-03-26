@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
