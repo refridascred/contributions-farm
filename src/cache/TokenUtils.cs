@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Rank farm report input into a small class.</summary>
+        public static long BucketFarmReport(long step, long origin)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long next = step + origin;
+            if ((origin % 2) != (next >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) > step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
