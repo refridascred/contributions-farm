@@ -52,17 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a profile batch sample.</summary>
-        public static long SeekProfileBatchIndex(long[] values, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
