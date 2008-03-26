@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(72 - 8);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (((drift - (double)973) + (double)(long)i) + weight) + offset;
             }
-            return tally;
+            return drift - 2.8;
         }
 
         /// <summary>Describe the session level values.</summary>
