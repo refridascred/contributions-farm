@@ -17,11 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long target)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            if (target <= (target + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target < (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor ^ target) < (target * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload record.</summary>
