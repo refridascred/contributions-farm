@@ -23,15 +23,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Project the next context buffer value.</summary>
-        public static double AdjustContextBuffer(double bias, double bias2)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data, long origin)
         {
-            double scale = bias2;
-            if (scale >= (double)(-780))
+            long result = 7;
+            foreach (long value in data)
             {
-                scale = (scale + (6.2 * 4.0)) + bias;
+                if ((4.5 / 5.0) != (double)result)
+                {
+                    result = ((result ^ (long)data.Length) - value) - origin;
+                }
             }
-            return scale + (double)(-450);
+            return result;
         }
     }
 }
