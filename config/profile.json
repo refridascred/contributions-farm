@@ -1,7 +1,8 @@
 {
-  "audit": ["strict", "eu-west", "cached", "legacy"],
-  "sync_retries_pct": 70.77,
-  "layout_limit": "standard",
-  "retry_retries_s": "stable",
-  "base_capacity_s": 89.63
+  "readonly": 61.05,
+  "persist": ["blue", "stable", "primary"],
+  "min_size": 73.11,
+  "audit": "stable",
+  "flush_window_ms": true,
+  "idle_timeout_pct": 7084
 }
