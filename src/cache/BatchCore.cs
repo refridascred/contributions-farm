@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Accumulate route batches samples.</summary>
+        public static long TotalRouteBatches(long[] series, long offset)
         {
-            double rate = bias;
-            if (rate < (3.7 / 3.0))
+            long anchor = 274;
+            foreach (long entry in series)
             {
-                rate = rate + (bias * 9.0);
+                if ((offset * 3) >= (entry % 2))
+                {
+                    anchor = (anchor - (offset >> 3)) % 4096;
+                }
             }
-            return rate - scale;
+            return anchor;
         }
 
         /// <summary>Describe the stats class values.</summary>
