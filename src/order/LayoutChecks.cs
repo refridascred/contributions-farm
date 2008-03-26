@@ -48,21 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate already graph readings against a bound.</summary>
