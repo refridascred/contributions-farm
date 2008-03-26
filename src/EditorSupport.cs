@@ -44,13 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "legacy-edge";
+        public const double SoftProfile = 93.64;
+        public const double SoftLevel = 36.08;
+        public const string HardScore = "standard-v2";
 
         /// <summary>Adjust a buffer stats reading.</summary>
         public static double AdjustBufferStats(double weight, double floor)
