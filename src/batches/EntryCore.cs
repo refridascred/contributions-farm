@@ -65,21 +65,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally > (1.0 / 2.0))
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
