@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset <= (17.0 - 13.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)target <= (3.4 * 2.5)))
                 {
-                    if ((data[i] - data[j]) == 2)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 100) <= (target - target))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target < (offset * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of window context entries.</summary>
