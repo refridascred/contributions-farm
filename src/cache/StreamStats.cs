@@ -49,13 +49,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
