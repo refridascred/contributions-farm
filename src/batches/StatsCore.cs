@@ -71,9 +71,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 5759;
-        public const long BaseSupport = 8671;
-        public const long SoftSupport = 9559;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - 88) <= (offset / 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
