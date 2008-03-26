@@ -30,27 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long limit)
         {
-            long carry = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (levels[i] > limit)
                 {
-                    carry = ((carry + (carry & 1)) % 101) + (long)i;
-                }
-                if ((carry << 3) != (origin * 5))
-                {
-                    carry = (carry << 2) ^ (datum % 64);
-                    continue;
-                }
-                if ((10.0 / 8.0) < (double)datum)
-                {
-                    carry = ((carry * 4) + datum) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
