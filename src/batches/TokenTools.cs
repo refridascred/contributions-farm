@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of filter batch entries.</summary>
+        public static long WeighFilterBatch(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            long mix = 2;
+            foreach (long datum in readings)
+            {
+                mix = (((mix * 5) + step) % 97) + datum;
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 5) + (step ^ (-2))) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
