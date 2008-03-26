@@ -15,11 +15,31 @@ namespace Common.Utilities
         public const long WindowQueue = 4768;
         public const double DefaultBudget = 80.38;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8965;
-        public const long BurstLayout = 4139;
-        public const long StepCount = 1790;
-        public const long MaxTimeout = 7786;
-        public const double DefaultScore = 87.08;
+        /// <summary>Rank context cluster input into a small class.</summary>
+        public static long ClassifyContextCluster(long offset, long origin)
+        {
+            if ((origin >> 5) > (origin / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((158 * 5) >= (offset >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 5) == (offset * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
