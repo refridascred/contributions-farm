@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 7371;
         public const long LimitLevel = 999;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] data, long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((725 <= bound) || ((sample << 2) < tally)) && (((tally >> 3) > (sample + tally)) || ((tally * 3) == (bound << 1))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
