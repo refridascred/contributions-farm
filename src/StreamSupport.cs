@@ -36,26 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm batches entries.</summary>
-        public static long FoldGithubfarmBatches(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long step)
         {
-            long sum = 1;
-            foreach (long reading in readings)
+            long lane = floor ^ step;
+            if ((lane - floor) < (step - lane))
             {
-                if ((reading % 100) <= sum)
+                return 3;
+            }
+            else
+            {
+                if ((605 ^ step) < ((-30) + 6))
                 {
-                    sum = (sum << 2) ^ (reading - sum);
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum - (reading - sum)) % 65521;
+                    if (!((lane + lane) <= (step + lane)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step >= (lane << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (sum < 96)
-            {
-                sum = sum + sum;
-            }
-            return sum;
         }
     }
 }
