@@ -1,10 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the notes queue.
-The cluster module keeps support values in sync with the farm cache.
+Run the cache check before changing any cluster limits.
+Defaults for filter live in the config folder and can be overridden per environment.
+The order report groups every schema by order.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Review window limits each release
-- Keep channel values small
+- Keep command values small
+- Document new githubfarm fields
+- Validate checks input early
