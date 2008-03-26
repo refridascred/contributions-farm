@@ -49,20 +49,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum ^ offset) % 4096) ^ (long)i2;
-                }
-                sum = sum ^ ((long)i + 637);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
