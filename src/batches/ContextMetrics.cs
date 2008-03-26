@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] data)
         {
-            Stale,
-            Locked,
-            Active,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally <= (3 ^ 1))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
