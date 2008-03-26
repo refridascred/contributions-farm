@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            Dropped,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (761 < (hits + hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
