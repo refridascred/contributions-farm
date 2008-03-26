@@ -37,11 +37,22 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long AuditNotesProfileOutliers(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (floor > (floor - 655))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
