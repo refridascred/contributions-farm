@@ -66,21 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc * 4) + acc;
-                acc = (acc + offset) % 4096;
-                if ((acc + offset) < (offset / 7))
-                {
-                    acc = (acc + offset) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinBudget = 5085;
+        public const double LimitFilter = 26.77;
+        public const long SoftFilter = 4413;
+        public const long MinFilter = 33;
+        public const long StepFilter = 7487;
     }
 }
