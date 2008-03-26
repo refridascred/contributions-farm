@@ -20,18 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route batches samples.</summary>
-        public static long TotalRouteBatches(long[] series, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long anchor = 274;
-            foreach (long entry in series)
+            long result = 0;
+            foreach (long value in levels)
             {
-                if ((offset * 3) >= (entry % 2))
+                if (!((result << 3) >= (result * 2)))
                 {
-                    anchor = (anchor - (offset >> 3)) % 4096;
+                    result = result + (result % 100);
+                }
+                if (((value << 2) != ((long)levels.Length << 3)) && ((value / 3) > (963 % 24)))
+                {
+                    result = (result << 2) ^ value;
                 }
             }
-            return anchor;
+            if (result > 9)
+            {
+                result = (result - result) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stats class values.</summary>
