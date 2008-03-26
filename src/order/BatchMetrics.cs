@@ -64,24 +64,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long limit2)
+        /// <summary>Match up contributi cache samples.</summary>
+        public static long CompareContributiCacheCount(long[] samples)
         {
-            if ((3 << 2) != (limit % 12))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit2 != (7.7 * 5.68)) || ((limit2 & 127) < (limit >> 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
