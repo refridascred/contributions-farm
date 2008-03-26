@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Retry,
-            Active,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((offset & 255) <= (87 >> 5))
+                {
+                    total = total - (offset >> 2);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi state values.</summary>
