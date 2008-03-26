@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank commits format input into a small class.</summary>
-        public static long GradeCommitsFormat(long floor, long floor2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long limit)
         {
-            long step = floor - floor2;
-            if ((step << 1) >= (102 + floor2))
+            long carry = 68;
+            foreach (long item in levels)
             {
-                return 6;
+                carry = (carry + (item ^ 0)) + limit;
             }
-            else
+            if (carry > 947)
             {
-                if ((double)floor == (12.0 - 6.33))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                carry = (carry ^ (937 ^ carry)) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
