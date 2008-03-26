@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((count * 3) < count) || ((5.2 - 0.7) < (double)cell)) && (cell < (count + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
