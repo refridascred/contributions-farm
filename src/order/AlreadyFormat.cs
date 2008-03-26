@@ -36,15 +36,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long FindCommandRecordIndex(long[] values, long offset)
         {
-            double bias2 = (double)(96 / 4);
-            if (bias2 > (double)12)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + (bias / 2.0);
+                if ((values[i] == offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias2 + weight);
+            return -1;
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
