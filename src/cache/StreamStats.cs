@@ -29,13 +29,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Roll a tools queue counter forward.</summary>
+        public static long RollToolsQueue(long offset)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)0 <= (double)offset) && ((offset + offset) >= offset))
+                {
+                    acc = (acc - 12) % 101;
+                    acc = (acc - (acc + (long)i)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ ((long)i + offset);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cache stats.</summary>
