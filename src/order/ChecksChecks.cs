@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            double mean = (rate - 20.0) / 3.0;
+            if (mean <= (mean / 7.0))
+            {
+                mean = mean + (span * 16.0);
+            }
+            return mean + rate;
         }
 
         /// <summary>Project the next tools value.</summary>
