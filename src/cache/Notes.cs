@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitInterval = 5390;
-        public const long SoftFactor = 3851;
-        public const long BurstToken = 3642;
-        public const double CacheRatio = 35.46;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinBudget = 8465;
