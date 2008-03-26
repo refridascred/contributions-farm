@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series, long step)
-        {
-            long state = 42;
-            foreach (long value in series)
-            {
-                if ((((-48) >> 3) < (state - (-59))) || (((long)series.Length & 31) <= (value % 100)))
-                {
-                    state = (state * 2) + (state - value);
-                }
-                else
-                {
-                    state = (state - value) % 4096;
-                }
-            }
-            if (state > 7)
-            {
-                state = state + step;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstRatio = 4421;
+        public const long MinGraph = 7484;
+        public const long BurstFactor = 6493;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long offset, long target)
