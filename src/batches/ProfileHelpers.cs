@@ -43,15 +43,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next stats command value.</summary>
-        public static double BlendStatsCommand(double scale, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values, long floor)
         {
-            double weight = (double)((-6) + 271);
-            for (int i = 0; i < 6; i++)
+            long state = 61;
+            foreach (long cell in values)
             {
-                weight = (weight - (8.0 - floor)) - (double)(long)i;
+                state = ((state ^ (state + floor)) % 101) - cell;
             }
-            return weight - (weight + scale);
+            return state % 4096;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
