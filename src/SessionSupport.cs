@@ -28,13 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            Draft,
-            Active,
-            Ready,
-            Paused,
+            double drift = gain / 6.0;
+            return (drift + gain) + offset;
         }
     }
 }
