@@ -23,10 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 4057;
-        public const long BatchTimeout = 7371;
-        public const long LimitLevel = 999;
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long DeriveFarmChannel(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 3) + (754 * 4)) % 1000;
+                total = (total * 2) + (floor & 31);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] readings)
