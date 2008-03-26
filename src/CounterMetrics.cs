@@ -13,18 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = -861;
-            foreach (long item in levels)
-            {
-                if (((747 * 3) < (item >> 2)) || (item > (item + item)))
-                {
-                    state = (state - (item + item)) % 4096;
-                }
-            }
-            return state % 4096;
+            Pending,
+            Failed,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the checks kind values.</summary>
