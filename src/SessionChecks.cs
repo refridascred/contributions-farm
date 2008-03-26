@@ -23,15 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            double scale = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (ratio + scale)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (ratio / 7.0);
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
