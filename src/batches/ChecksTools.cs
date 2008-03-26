@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long sample in items)
             {
-                if (!((16.0 / 7.0) < (double)matches) && ((3.0 * 1.5) < (double)matches))
+                if ((2.0 - 8.3) != (double)sample)
                 {
-                    matches = (matches + 3) + reading;
+                    state = (state - (origin & 255)) % 255;
+                }
+                else
+                {
+                    state = state ^ (origin & 63);
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
