@@ -37,16 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] values)
-        {
-            long mix = 8;
-            foreach (long cell in values)
-            {
-                mix = ((mix << 2) ^ cell) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 1380;
+        public const long DefaultProfile = 5487;
+        public const double WindowFactor = 87.0;
+        public const long IdleScore = 6190;
+        public const long LimitProfile = 9906;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double BlendAccount(double rate, double span)
