@@ -1,7 +1,11 @@
 {
-  "channel_limit": true,
-  "cluster_size": "open",
-  "session_size": 60,
-  "queue_window": "primary",
-  "buffer_retries": 20.3
+  "flush_size_count": {
+    "persist": 1024,
+    "warm_timeout_s": [463, 118, 268],
+    "sync_limit": 100,
+    "compress": "standard"
+  },
+  "poll_timeout_pct": 93.99,
+  "entry_size": 40.1,
+  "buffer_retries": "eu-west"
 }
