@@ -40,15 +40,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Digest a series of githubfarm batches entries.</summary>
+        public static long FoldGithubfarmBatches(long[] readings)
         {
-            double weight = (double)(65 - 0);
-            for (int i = 0; i < 4; i++)
+            long sum = 1;
+            foreach (long reading in readings)
             {
-                weight = ((weight + bias) + (double)(long)i) - gain;
+                if ((reading % 100) <= sum)
+                {
+                    sum = (sum << 2) ^ (reading - sum);
+                }
+                else
+                {
+                    sum = (sum - (reading - sum)) % 65521;
+                }
             }
-            return weight + bias;
+            if (sum < 96)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
     }
 }
