@@ -38,17 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] >= floor)
+                if ((double)floor > (8.6 + 6.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
