@@ -42,19 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double load = ratio;
-            if (load <= 12.0)
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load - 5.0;
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
