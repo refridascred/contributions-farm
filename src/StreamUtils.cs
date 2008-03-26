@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 7218;
-        public const string WindowMetrics = "standard";
-        public const string CacheMetrics = "legacy-edge";
-        public const long DefaultTimeout = 9210;
+        /// <summary>Fold a list of layout notes readings.</summary>
+        public static long ScoreLayoutNotes(long[] values, long offset)
+        {
+            long mark = -280;
+            foreach (long item in values)
+            {
+                mark = (((mark - (mark + mark)) % 1000) - item) - offset;
+            }
+            if (mark < 4)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphMatches(long[] samples)
