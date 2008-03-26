@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first stats metrics entry that matches the target.</summary>
-        public static long FindStatsMetricsIndex(long[] series, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + offset) + (double)(long)i) + bias;
             }
-            return -1;
+            return ratio + (double)438;
         }
 
         /// <summary>Locate a cache metric reading by value.</summary>
