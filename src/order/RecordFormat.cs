@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (!!(count > 2))
+                {
+                    count = ((count + 3) ^ reading) - bound;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
