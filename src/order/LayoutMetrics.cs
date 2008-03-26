@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long result = -66;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result + result) % 4096) ^ (long)i;
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((result ^ datum) > (datum - 0)) && ((3.8 - 9.1) >= (double)datum))
-                {
-                    result = (result * 4) + result;
-                    break;
-                }
-                else
-                {
-                    result = result - (241 & 127);
-                }
-                result = (result + (783 & 1)) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
