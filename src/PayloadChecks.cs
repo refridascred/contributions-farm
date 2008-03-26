@@ -80,10 +80,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 9620;
-        public const long CachePayload = 9932;
-        public const string SoftInterval = "legacy-v2";
-        public const string WindowPayload = "staging-edge";
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
