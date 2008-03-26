@@ -80,15 +80,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double span)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long target)
         {
-            double load = weight;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                load = (load + (double)(-78)) + (double)(long)i;
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load + span;
+            return stale;
         }
     }
 }
