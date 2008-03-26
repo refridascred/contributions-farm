@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit support stream readings against a rule.</summary>
-        public static long MeasureSupportStreamMatches(long[] levels, long bound)
+        /// <summary>Rank commits format input into a small class.</summary>
+        public static long GradeCommitsFormat(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long step = floor - floor2;
+            if ((step << 1) >= (102 + floor2))
             {
-                if ((hits >= ((-1) ^ 220)) || !((hits & 1) > (hits << 3)))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor == (12.0 - 6.33))
                 {
-                    hits = ((hits + 1) - reading) - bound;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
