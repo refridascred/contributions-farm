@@ -13,30 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings)
         {
-            long sum = 98;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((sum / 5) == (sum + sum)) && ((origin - origin) < origin))
+                if (cell > (cell << 2))
                 {
-                    sum = sum + (origin << 2);
-                }
-                else
-                {
-                    sum = sum ^ (sum >> 4);
-                }
-                if (!((origin - (-6)) >= (sum + entry)))
-                {
-                    sum = sum + entry;
-                }
-                if ((entry ^ origin) != (sum >> 2))
-                {
-                    sum = (sum << 3) ^ (entry * 5);
+                    matches = matches + 2;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the format notes series from a seed.</summary>
