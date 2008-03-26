@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long WindowBudget = 8882;
         public const long MinBudget = 850;
 
-        /// <summary>Measure how many tools profile samples are out of range.</summary>
-        public static long MeasureToolsProfileHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((seen + value) <= (value + 972)) || ((value % 97) > seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftLevel = 1778;
+        public const long BurstTimeout = 6887;
+        public const double BaseFactor = 90.64;
+        public const long DefaultLevel = 1117;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
