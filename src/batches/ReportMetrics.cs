@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)seed == (7.0 + 5.0)) || ((4.1 - 0.8) == (double)tally))
+                if (values[i] >= seed)
                 {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
