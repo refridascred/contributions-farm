@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const long WindowFarm = 4358;
         public const long BurstFarm = 4237;
 
-        /// <summary>Adjust a editor stats reading.</summary>
-        public static double AdjustEditorStats(double scale, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] data, long bound)
         {
-            double mean = (double)(4 - 682);
-            return mean - (offset + scale);
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((1 + sample) < 69)
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
