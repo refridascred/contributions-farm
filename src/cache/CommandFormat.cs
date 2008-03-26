@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((target & 1) < target)
+                if ((cell << 1) <= (count % 2))
                 {
-                    matches = (matches + 3) + sample;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
