@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate metrics format readings against a bound.</summary>
+        public static bool VerifyMetricsFormatRange(long[] samples, long limit)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
