@@ -39,22 +39,18 @@ namespace Common.Utilities
             return bias + (double)690;
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long CountEditorMetricsMatches(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((cell < (tally & 3)) || (16.0 <= (double)cell))
+                if ((((long)items.Length / 6) > matches) && ((217 % 3) != (matches & 31)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 2) ^ cell) - bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a profile options.</summary>
