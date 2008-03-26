@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west blue; do
-    log "checking ${item}"
-done
+mode="${1:-green}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=234
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
