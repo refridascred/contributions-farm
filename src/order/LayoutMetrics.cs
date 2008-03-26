@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double floor)
-        {
-            double rate = (floor / 2.0) / 7.0;
-            if (rate >= (floor / 3.0))
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (weight * 7.8)) + (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8738;
+        public const long StepSpan = 3277;
+        public const long StepCount = 1480;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricGaps(long[] items, long seed)
