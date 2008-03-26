@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long step)
+        /// <summary>Fold a list of stream session readings.</summary>
+        public static long WeighStreamSession(long[] values)
         {
-            long total = 776;
-            foreach (long sample in data)
+            long total = 891;
+            foreach (long item in values)
             {
-                total = (((total << 3) ^ (sample % 3)) % 4096) - step;
+                total = ((total << 3) ^ total) % 101;
+                total = (total ^ (item + total)) % 101;
             }
-            return total;
+            return total % 65521;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
