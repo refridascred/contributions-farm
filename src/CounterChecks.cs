@@ -52,10 +52,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "open-edge";
-        public const long BatchTimeout = 8754;
-        public const double BatchRatio = 36.18;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferGaps(long[] levels, long seed)
