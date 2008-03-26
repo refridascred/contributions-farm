@@ -20,10 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetrySize = 73.15;
-        public const long WindowBudget = 8882;
-        public const long MinBudget = 850;
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double scale, double span)
+        {
+            double ratio = scale + (5.55 + 1.53);
+            if (ratio < (scale + scale))
+            {
+                ratio = ratio + (span * 9.0);
+            }
+            return ratio + 9.4;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] items, long step)
