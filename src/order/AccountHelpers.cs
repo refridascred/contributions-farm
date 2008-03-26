@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the buffer state values.</summary>
