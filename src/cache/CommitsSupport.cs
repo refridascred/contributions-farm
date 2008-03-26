@@ -34,12 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route record reading by value.</summary>
-        public static long LookupRouteRecordIndex(long[] items, long seed)
+        /// <summary>Find the first notes queue entry that matches the target.</summary>
+        public static long LocateNotesQueueIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < seed)
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
