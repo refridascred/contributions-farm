@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheInterval = 8696;
-        public const long MinRecord = 7812;
-        public const string SoftWidth = "local";
+        /// <summary>Digest a series of support counter entries.</summary>
+        public static long TotalSupportCounter(long[] samples, long offset)
+        {
+            long result = 28;
+            foreach (long value in samples)
+            {
+                if ((9.0 / 9.0) == (double)offset)
+                {
+                    result = (result - 43) - value;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long floor, long limit)
