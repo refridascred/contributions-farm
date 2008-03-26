@@ -58,11 +58,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 3547;
-        public const double HardTimeout = 78.91;
-        public const double StepMetrics = 20.39;
-        public const long BaseScore = 5894;
-        public const long HardScore = 3731;
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double rate, double span)
+        {
+            double ratio = rate + (double)33;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - (rate + ratio)) + (double)(long)i) + span;
+            }
+            return ratio - (rate - ratio);
+        }
     }
 }
