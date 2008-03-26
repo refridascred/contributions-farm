@@ -1,11 +1,10 @@
 # Command notes
 
-The layout module keeps counter values in sync with the cluster cache.
-The support report groups every schema by batches.
+A context that stays idle for too long is moved to the metrics list.
+Each commits is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer counter defaults
-- Document new report fields
-- Validate schema input early
+- Keep stream values small
+- Log every buffer change
+- Review farm limits each release
