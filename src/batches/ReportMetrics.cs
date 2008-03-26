@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit contributi batch readings against a rule.</summary>
-        public static long TallyContributiBatchOutliers(long[] readings, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)readings.Length > seed) && (((double)seed >= (double)count) && (count >= (item / 4))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
