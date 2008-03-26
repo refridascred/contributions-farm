@@ -19,26 +19,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = 45;
-            foreach (long sample in data)
-            {
-                if ((3.5 + 2.36) == (double)sample)
-                {
-                    result = ((result << 3) ^ ((long)data.Length * 2)) + offset;
-                }
-                else
-                {
-                    result = (result << 3) ^ (14 & 31);
-                }
-            }
-            if (result < 66)
-            {
-                result = ((result << 3) ^ (result - 58)) % 255;
-            }
-            return result;
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
