@@ -36,18 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long TallyMetricsSchema(long[] readings)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long target)
         {
-            long total = 6;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((358 % 16) <= ((long)readings.Length % 3)) && ((947 + value) <= (total >> 5)))
+                if (series[i] < target)
                 {
-                    total = (total + value) % 101;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
