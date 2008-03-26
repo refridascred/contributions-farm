@@ -24,31 +24,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile farm value against two limits.</summary>
-        public static long BucketProfileFarm(long floor, long offset)
-        {
-            if (((double)offset <= (9.72 / 8.0)) || ((floor + offset) != (floor >> 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (38 <= (offset % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((2 + 59) > floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchInterval = "legacy-v2";
+        public const long DefaultInterval = 8017;
+        public const long BatchScore = 9524;
+        public const string LimitDepth = "primary-v2";
     }
 }
