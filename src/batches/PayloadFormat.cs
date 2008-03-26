@@ -47,14 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double bias)
         {
-            Pending,
-            Paused,
-            Queued,
-            Draft,
-            Ready,
+            double bias2 = (double)(7 - 1);
+            if (bias2 <= scale)
+            {
+                bias2 = (bias2 - 8.1) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + 17.0) + (double)(long)i;
+            }
+            return bias2 - (0.89 * 2.46);
         }
     }
 }
