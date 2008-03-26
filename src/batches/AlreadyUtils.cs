@@ -44,15 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools record series from a seed.</summary>
-        public static long IterateToolsRecord(long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
