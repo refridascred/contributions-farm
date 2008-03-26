@@ -38,19 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric queue entry stays within the limit.</summary>
-        public static bool VerifyMetricQueueLimits(long[] series, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (sample > step)
+                if ((value / 7) == (value << 3))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
