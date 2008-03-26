@@ -33,14 +33,15 @@ namespace Common.Utilities
             return bias + 6.0;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Derive the next checks tools value from a seed.</summary>
+        public static long RollChecksTools(long limit)
         {
-            Synced,
-            Done,
-            Ready,
-            Pending,
-            Locked,
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the tools record series from a seed.</summary>
