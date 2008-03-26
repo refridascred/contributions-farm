@@ -34,26 +34,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            long total = 6;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset / 7) == (offset - offset))
+                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
                 {
-                    total = ((total ^ (offset - total)) % 1000) - item;
-                }
-                if (!((offset + total) > (5 * 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 83)
-            {
-                total = ((total << 2) ^ offset) % 101;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
