@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long offset)
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool GuardContributiLayoutLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (cell < (tally + offset))
+                if (sample < offset)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
