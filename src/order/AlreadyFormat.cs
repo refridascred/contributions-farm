@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long CountPayloadTokenHits(long[] series, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(floor >= (floor + seen)))
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
