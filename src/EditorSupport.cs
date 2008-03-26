@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const double SoftLevel = 36.08;
         public const string HardScore = "standard-v2";
 
-        /// <summary>Adjust a buffer stats reading.</summary>
-        public static double AdjustBufferStats(double weight, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] items, long seed)
         {
-            double bias = floor / 9.0;
-            return bias + weight;
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (78 >= (count - 805))
+                {
+                    count = ((count + 2) ^ entry) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
