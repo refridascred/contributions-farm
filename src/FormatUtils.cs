@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const string SoftScore = "open-v2";
         public const long IdleBatches = 4068;
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool VerifyRoutePayloadLimits(long[] readings, long origin)
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long MeasureCounterSchemaOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum <= origin)
+                if ((3.7 / 4.0) != (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
