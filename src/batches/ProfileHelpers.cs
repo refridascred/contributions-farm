@@ -61,18 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] values, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (value > (301 - value))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
