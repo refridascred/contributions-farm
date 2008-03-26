@@ -66,14 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Locked,
-            Closed,
-            Done,
-            Active,
             Draft,
+            Synced,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
