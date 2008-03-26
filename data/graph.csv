@@ -1,6 +1,8 @@
-id,rank,level,score,ratio
-1,green,standard,140,50.33
-2,21.25,31.26,28.01,719
-3,145,standard,358,cached
-4,legacy,local,57.9,261
-5,534,920,11,local
+id,weight,region,rank,count
+1,56.76,11.85,25.08,42.45
+2,strict,812,green,561
+3,edge,green,stable,79.56
+4,81.02,eu-west,primary,fallback
+5,local,647,52.85,37.94
+6,319,edge,local,19.76
+7,staging,52.9,356,eu-west
