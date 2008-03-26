@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 1591;
-        public const string CacheLevel = "strict-1";
-        public const string MinFactor = "primary-1";
-        public const long BurstFactor = 4641;
-        public const long StepStats = 4841;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Dropped,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] items, long limit)
