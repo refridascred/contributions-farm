@@ -40,12 +40,21 @@ namespace Common.Utilities
             return (drift - 9.9) + scale;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            Draft,
-            Closed,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
