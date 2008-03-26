@@ -27,12 +27,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepTimeout = "open-1";
-        public const long LimitGithubfarm = 8234;
-        public const double WindowCount = 29.95;
-        public const long MinSize = 3256;
-        public const long IdleSpan = 9442;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double bias2)
+        {
+            double bias3 = bias2;
+            if (bias3 <= (bias2 - bias2))
+            {
+                bias3 = bias3 + bias;
+            }
+            return bias3 - (bias - 4.9);
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long target)
