@@ -58,12 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a metrics summary.</summary>
