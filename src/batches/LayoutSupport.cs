@@ -19,26 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            long anchor = 780;
-            foreach (long value in values)
+            double scale = 3.99 - (gain - offset);
+            if (scale >= (double)93)
             {
-                if (anchor > value)
-                {
-                    anchor = ((anchor << 2) ^ (anchor - value)) % 4096;
-                }
-                if (((347 << 2) == (anchor + value)) || ((0 ^ value) >= (value % 10)))
-                {
-                    break;
-                }
+                scale = scale - (offset + gain);
             }
-            if (anchor > 563)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            return scale + (double)34;
         }
 
         /// <summary>Describe the cache level values.</summary>
