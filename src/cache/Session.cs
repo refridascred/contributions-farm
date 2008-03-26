@@ -43,18 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (floor < 887)
+                if (levels[i] >= floor)
                 {
-                    seen = (seen + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
