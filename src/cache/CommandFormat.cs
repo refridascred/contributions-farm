@@ -13,22 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((item + item) <= (item / 3))
+                if (!((5.2 * 9.9) <= (2.11 * 18.0)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = ((seen + 2) ^ reading) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
