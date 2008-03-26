@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count window counter pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCounterCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ step) % 255) ^ entry;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
