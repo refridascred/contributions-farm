@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstDepth = "staging-edge";
-        public const double HardBudget = 13.34;
-        public const string BaseCount = "strict";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryLevel = 36.83;
+        public const long BaseToken = 3901;
+        public const double StepInterval = 15.77;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double rate, double floor)
