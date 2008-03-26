@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - seen) < sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
