@@ -26,12 +26,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
