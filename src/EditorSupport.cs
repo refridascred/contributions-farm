@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of stream session readings.</summary>
-        public static long WeighStreamSession(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long total = 891;
-            foreach (long item in values)
+            long state = 17;
+            foreach (long reading in levels)
             {
-                total = ((total << 3) ^ total) % 101;
-                total = (total ^ (item + total)) % 101;
+                if ((double)reading <= (7.19 / 6.0))
+                {
+                    state = state ^ (513 << 3);
+                    state = state - (reading >> 5);
+                }
+                if ((double)reading == (double)state)
+                {
+                    state = ((state << 2) ^ state) % 101;
+                }
             }
-            return total % 65521;
+            if (state < 92)
+            {
+                state = (state + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
