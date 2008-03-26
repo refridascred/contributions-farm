@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long IdleScore = 6190;
         public const long LimitProfile = 9906;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (count < (count << 1))
+                if (!((tally % 100) <= 721))
                 {
-                    count = (count + 2) + datum;
+                    tally = ((tally + 2) - datum) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
