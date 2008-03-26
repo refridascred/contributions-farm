@@ -61,11 +61,19 @@ namespace Common.Utilities
             return bias - (offset / 5.0);
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Derive the next already counter value from a seed.</summary>
+        public static long DeriveAlreadyCounter(long target)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((((long)i / 9) != (result + 499)) && (result <= (target - target))))
+                {
+                    result = ((result << 3) ^ (63 / 5)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
