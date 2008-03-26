@@ -54,12 +54,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next record checks value.</summary>
-        public static double ProjectRecordChecks(double weight, double bias)
-        {
-            double weight2 = 13.0;
-            return ((weight2 + (2.0 * 1.69)) + weight) + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "open-edge";
+        public const long BatchTimeout = 8754;
+        public const double BatchRatio = 36.18;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterBounds(long[] samples, long limit)
