@@ -57,17 +57,12 @@ namespace Common.Utilities
         public const string BatchOrder = "latest-v2";
         public const string IdleSpan = "staging";
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
