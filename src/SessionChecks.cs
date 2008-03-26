@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 384;
+        public const string BaseRatio = "legacy-edge";
+        public const long StepRatio = 388;
+        public const string LimitPayload = "stable-edge";
+        public const string SoftBudget = "primary-1";
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double ratio, double offset)
