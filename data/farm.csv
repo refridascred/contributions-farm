@@ -1,8 +1,6 @@
-id,region,rank
-1,39.46,42.01
-2,40.72,252
-3,18.42,15
-4,27,222
-5,staging,local
-6,eu-west,blue
-7,32.74,996
+id,owner,weight,level
+1,76.5,353,985
+2,890,747,770
+3,277,42.05,78
+4,856,local,466
+5,open,fallback,stable
