@@ -26,10 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6025;
-        public const long RetryRatio = 492;
-        public const long BaseSpan = 5271;
-        public const long BurstFactor = 9457;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
