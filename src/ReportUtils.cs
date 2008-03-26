@@ -45,12 +45,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            if (20.0 <= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin - origin) > 422) && ((661 ^ origin) == (target ^ target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 1) >= (origin + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (768 >= (origin - 77))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
