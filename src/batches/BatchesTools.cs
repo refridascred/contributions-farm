@@ -29,22 +29,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items, long seed)
+        /// <summary>Project the next contributi payload value.</summary>
+        public static double BlendContributiPayload(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!(value > seed))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double rate = span * 13.0;
+            return (rate + (double)51) + scale;
         }
     }
 }
