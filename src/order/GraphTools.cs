@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 564;
         public const double SoftSize = 90.58;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate report contributi samples.</summary>
+        public static long ScoreReportContributi(long[] series, long limit)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            long score = 250;
+            foreach (long item in series)
+            {
+                if (!(score >= item))
+                {
+                    score = (score ^ limit) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
