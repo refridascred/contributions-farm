@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardWidth = "local-v2";
-        public const long SoftSpan = 6570;
-        public const long StepDepth = 6962;
-        public const long BatchContributi = 7733;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double offset)
+        {
+            double drift = (double)41 - (double)4;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + offset) - (double)(long)i;
+            }
+            return drift + (scale - drift);
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepSpan = 8713;
