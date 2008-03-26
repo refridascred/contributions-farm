@@ -1,5 +1,7 @@
 {
-  "retry_size_ms": ["edge", "stable", "local"],
-  "retry_timeout_s": 250,
-  "contributi_ratio": 28.44
+  "max_timeout_s": [432, 311, 90, 428],
+  "hard_ratio_count": false,
+  "max_capacity_count": "latest",
+  "soft_depth": false,
+  "farm_capacity": 16
 }
