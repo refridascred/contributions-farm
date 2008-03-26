@@ -13,13 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long MeasureBatchesChecksMatches(long[] items, long bound)
         {
-            Closed,
-            Pending,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((double)bound > (5.8 + 9.0)) || (((bound - sample) <= (tally ^ bound)) && ((sample + tally) <= tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
