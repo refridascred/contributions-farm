@@ -1,12 +1,29 @@
 # githubfarm settings
-queue_limit: cached
-flush_delay_ms:
-  - 148
-  - 387
-editor_ttl: 100
-channel_limit: 18
-batch_depth: true
-command_delay:
-  - 197
-  - 463
-  - 253
+layout_retries:
+  - legacy
+  - latest
+  - blue
+dry_run: true
+batch_interval_ms: true
+hard_threshold:
+  schema_limit:
+    default_ttl_count: latest
+    dry_run: false
+    batch_timeout: 38.52
+    batch_window:
+      - 122
+      - 488
+      - 123
+  payload_depth:
+    - stable
+    - strict
+    - legacy
+    - staging
+  audit: stable
+  persist:
+    cache_threshold_count: primary
+    default_depth_s: 37.44
+    githubfarm_capacity: 66.18
+    max_ratio: true
+    default_retries_s: stable
+soft_timeout: edge
