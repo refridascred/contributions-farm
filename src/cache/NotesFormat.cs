@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] samples, long offset)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) == (offset + 375))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
