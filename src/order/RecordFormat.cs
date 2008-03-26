@@ -65,22 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long ScoreEditorFormat(long[] series, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long target)
         {
-            long result = 6;
-            foreach (long sample in series)
+            if ((step - step) <= (step * 4))
             {
-                if (!(sample >= (sample * 4)))
+                return 6;
+            }
+            else
+            {
+                if ((9.0 / 2.0) >= (double)target)
                 {
-                    result = (result - (688 ^ 268)) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    if (step >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (result > 85)
-            {
-                result = (result + (step - 90)) % 4096;
-            }
-            return result;
         }
     }
 }
