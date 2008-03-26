@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const long SoftContributi = 8101;
         public const double BatchDepth = 62.76;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 73;
+            foreach (long entry in series)
+            {
+                state = ((state * 4) + (entry / 2)) % 255;
+            }
+            if (state > 5)
+            {
+                state = (state - (state + state)) % 1000;
+            }
+            return state;
         }
     }
 }
