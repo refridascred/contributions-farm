@@ -14,18 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stream channel readings against a rule.</summary>
-        public static long CountStreamChannelHits(long[] values)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length ^ cell) <= (count + cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
