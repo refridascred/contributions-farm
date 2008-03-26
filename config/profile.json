@@ -1,8 +1,6 @@
 {
-  "idle_capacity_ms": 500,
-  "poll_interval_count": 9042,
-  "sync_retries_count": "standard",
-  "already_timeout": 30,
-  "flush_timeout_ms": "blue",
-  "persist": false
+  "strict": "stable",
+  "entry_ratio": 3043,
+  "max_ttl_ms": 72.37,
+  "burst_ttl_count": "fallback"
 }
