@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Audit support stream readings against a rule.</summary>
+        public static long MeasureSupportStreamMatches(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits >= ((-1) ^ 220)) || !((hits & 1) > (hits << 3)))
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 1) - reading) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
