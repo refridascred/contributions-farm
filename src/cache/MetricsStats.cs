@@ -57,14 +57,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of metric format readings.</summary>
+        public static long FoldMetricFormat(long[] readings, long origin)
         {
-            Stale,
-            Closed,
-            Pending,
-            New,
-            Idle,
+            long carry = -4;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (171 & 15)) + reading;
+                carry = ((carry << 3) ^ (carry >> 4)) % 101;
+            }
+            if (carry > 479)
+            {
+                carry = (carry ^ (carry + origin)) % 4096;
+            }
+            return carry;
         }
     }
 }
