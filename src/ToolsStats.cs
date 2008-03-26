@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string BaseScore = "fallback";
         public const double IdleInterval = 6.08;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data, long step)
         {
-            double bias = offset;
-            if (bias <= offset)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                bias = (bias + offset) + gain;
+                if (((tally >> 5) == (step - cell)) && ((step / 6) < tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias - (double)63;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
