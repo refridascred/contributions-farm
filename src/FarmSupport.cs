@@ -56,11 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a booking entry.</summary>
-        public sealed class BookingEntry
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 15;
+            foreach (long sample in series)
+            {
+                if (sample < (sample - sum))
+                {
+                    sum = (sum + (sample - origin)) % 101;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = ((sum * 4) + (sum - origin)) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
