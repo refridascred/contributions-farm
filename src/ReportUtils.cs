@@ -58,18 +58,11 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count != (5.3 / 4.0))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            double bias = (double)(988 ^ 11);
+            return ((bias + bias) + ratio) + floor;
         }
     }
 }
