@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series, long origin)
         {
-            long acc = 74;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                acc = acc - entry;
+                if (((tally + reading) != (70 << 3)) || ((double)reading == (8.52 + 9.0)))
+                {
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc < 7)
-            {
-                acc = ((acc * 2) + (acc - 485)) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
