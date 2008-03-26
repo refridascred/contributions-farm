@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool GuardGithubfarmStreamBounds(long[] samples, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long state = 841;
+            foreach (long value in values)
             {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (((state << 3) ^ (9 % 10)) % 255) - value;
             }
-            return stale;
+            if (state < 72)
+            {
+                state = state ^ (1 / 2);
+            }
+            return state;
         }
     }
 }
