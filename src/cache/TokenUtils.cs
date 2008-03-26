@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long seed)
+        /// <summary>Count batches window pairs that satisfy a relation.</summary>
+        public static long CompareBatchesWindowCount(long[] samples)
         {
-            long bound = floor + seed;
-            if ((seed * 2) == (bound >> 4))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed > floor) || ((seed + floor) > (floor % 60)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (seed << 3))
+                    if ((samples[i] + samples[j]) != 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two support order measurements.</summary>
