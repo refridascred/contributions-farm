@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - (1 * 5)) % 255) ^ (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Audit checks metrics readings against a rule.</summary>
