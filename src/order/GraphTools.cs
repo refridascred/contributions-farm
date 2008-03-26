@@ -47,10 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheSize = 11.59;
-        public const double HardAlready = 28.68;
-        public const long StepAlready = 1986;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepCount = 6181;
+        public const long SoftInterval = 1452;
+        public const long WindowFactor = 1861;
+        public const string HardScore = "alpha-edge";
+        public const double RetryBudget = 59.41;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ProjectBatch(double ratio, double span)
