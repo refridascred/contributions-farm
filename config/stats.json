@@ -1,11 +1,7 @@
 {
-  "layout_delay": "primary",
-  "audit": {
-    "strict": 676,
-    "metrics_ttl": true,
-    "cache_threshold_ms": false
-  },
-  "verbose": 20.45,
-  "filter_ratio": false,
-  "sync_size": "staging"
+  "order_ratio": true,
+  "default_ttl": 1469,
+  "token_ttl": false,
+  "min_capacity": 96.91,
+  "burst_ttl_count": "primary"
 }
