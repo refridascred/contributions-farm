@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Match up route samples.</summary>
