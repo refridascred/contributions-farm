@@ -83,9 +83,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleBudget = 4037;
-        public const long StepMetrics = 9890;
-        public const long CacheMetrics = 6575;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long origin)
+        {
+            if ((origin * 3) > origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target & 15) == (origin / 5)) || (origin > (target - (-13))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 1) != (7 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin > (target - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
