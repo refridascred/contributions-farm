@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 8982;
-        public const long MinInterval = 6266;
-        public const double RetryInterval = 40.45;
+        /// <summary>Compare every pair of farm profile readings.</summary>
+        public static long OverlapFarmProfileCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
