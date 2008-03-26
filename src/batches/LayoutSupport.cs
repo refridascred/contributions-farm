@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long seed)
         {
-            double rate = (bias * 0.94) + (8.15 + bias);
-            if (rate >= offset)
+            long next = offset - seed;
+            if (((offset ^ seed) != (next + 59)) && (seed <= (seed ^ next)))
             {
-                rate = rate + (offset + bias);
+                return 2;
             }
             else
             {
-                rate = rate + offset;
+                if (((19.0 - 4.8) >= (double)seed) || ((double)offset < 5.68))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (next * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.1 - 1.6) != (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - 2.0;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
