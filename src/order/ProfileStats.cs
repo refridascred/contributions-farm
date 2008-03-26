@@ -40,12 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] readings, long bound)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
