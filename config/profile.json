@@ -1,5 +1,5 @@
 {
-  "batch_limit": false,
-  "retry_timeout_ms": "green",
-  "min_timeout": 25
+  "soft_timeout_pct": "green",
+  "filter_delay": "staging",
+  "sync_timeout_ms": ["green", "primary", "open", "open"]
 }
