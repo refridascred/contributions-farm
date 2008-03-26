@@ -38,11 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long MeasureAccountSupportHits(long[] levels, long bound)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 4) <= (3 + entry))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a profile batch sample.</summary>
