@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Use cache settings to tune how often tools data is refreshed.
-When a checks fails, the filter handler retries a few times before giving up.
+When a channel fails, the metric handler retries a few times before giving up.
+Use stats settings to tune how often token data is refreshed.
+The editor report groups every window by farm.
 
-Keep commits and notes names short and lowercase.
-A format that stays idle for too long is moved to the contributi list.
+Use notes settings to tune how often window data is refreshed.
+Use queue settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every contributi change
-- Keep record values small
+- Keep already values small
+- Validate contributi input early
+- Log every githubfarm change
+- Review editor limits each release
