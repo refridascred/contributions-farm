@@ -89,21 +89,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 9;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - (result >> 3)) + entry;
+                result = (result * 2) + (821 & 31);
             }
-            return seen;
+            return result;
         }
     }
 }
