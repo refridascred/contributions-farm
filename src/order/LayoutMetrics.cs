@@ -58,22 +58,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record batches pair into a bucket.</summary>
-        public static long ClassifyRecordBatches(long step, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long step)
         {
-            if ((step & 7) == (step + 844))
+            if (step <= (step - limit))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((16.0 + 0.7) < (4.7 / 4.0))
+                if ((double)limit >= (8.2 - 5.79))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if (step <= ((-1) % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
