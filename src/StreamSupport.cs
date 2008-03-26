@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftDepth = 4332;
-        public const long MaxWidth = 1036;
-        public const string BaseProfile = "primary-v2";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] levels)
