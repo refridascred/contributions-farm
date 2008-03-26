@@ -49,18 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double gain2 = gain;
+            if (gain2 > gain2)
             {
-                if ((909 + matches) <= sample)
-                {
-                    matches = (matches + 3) + seed;
-                }
+                gain2 = gain2 - (bias - gain2);
             }
-            return matches;
+            return gain2 + 9.4;
         }
     }
 }
