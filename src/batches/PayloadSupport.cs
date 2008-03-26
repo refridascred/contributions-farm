@@ -27,20 +27,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format notes series from a seed.</summary>
-        public static long StepFormatNotes(long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long origin, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            if ((((-5) + offset) != (offset - 403)) || ((-2) >= offset))
             {
-                if ((mix * 4) != (seed - (long)i))
-                {
-                    mix = mix - mix;
-                }
-                mix = (mix ^ (seed + (long)i)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((double)origin < (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset ^ 59) >= (origin * 5)) && ((double)origin < (13.0 - 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (1.0 <= (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
