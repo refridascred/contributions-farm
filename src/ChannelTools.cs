@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            double load = 7.7;
+            if (load >= 4.0)
+            {
+                load = (load - (load - span)) - scale;
+            }
+            return load - (span + load);
         }
 
         /// <summary>Project the next filter contributi value.</summary>
