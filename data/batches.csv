@@ -1,8 +1,6 @@
-id,score,region,ratio
-1,400,758,70.06
-2,cached,147,98.65
-3,70.85,690,79.03
-4,blue,84.2,833
-5,420,legacy,57.74
-6,822,local,7.7
-7,open,755,eu-west
+id,count,label,region
+1,green,36.87,288
+2,62.19,752,legacy
+3,67.62,green,eu-west
+4,27.29,589,724
+5,768,46.25,47.33
