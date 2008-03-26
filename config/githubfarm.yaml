@@ -1,13 +1,12 @@
 # githubfarm settings
-hard_retries_s:
-  counter_ttl: 30
-  warm_interval_ms: 7902
-  base_ratio: 64.61
-  min_depth: 1024
-  max_interval: 250
-  warm_threshold_s: 100
-default_retries: 2619
-idle_threshold_s:
-  - stable
-  - cached
-  - latest
+dry_run:
+  - blue
+  - standard
+  - fallback
+verbose:
+  cache_limit: 250
+  max_window: true
+  strict: 250
+  retry_ratio_s: 14.91
+min_window: 85
+buffer_delay: true
