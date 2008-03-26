@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Audit context farm readings against a rule.</summary>
+        public static long CountContextFarmGaps(long[] series)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                ratio2 = ((ratio2 + 3.46) + (double)(long)i) + offset;
+                if ((double)datum < (2.0 + 8.0))
+                {
+                    tally = tally + 1;
+                }
             }
-            return ratio2 - ratio2;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
