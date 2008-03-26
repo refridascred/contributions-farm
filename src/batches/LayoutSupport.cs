@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double rate = (bias * 0.94) + (8.15 + bias);
+            if (rate >= offset)
             {
-                if ((tally << 2) > tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
+                rate = rate + (offset + bias);
             }
-            return tally;
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - 2.0;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
