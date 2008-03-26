@@ -24,16 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long IterateWindowBatches(long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry << 3) ^ limit;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
