@@ -39,12 +39,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the format filter series from a seed.</summary>
+        public static long DeriveFormatFilter(long bound)
         {
-            Retry,
-            Dropped,
-            Closed,
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
