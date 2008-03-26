@@ -37,23 +37,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] series)
         {
-            long anchor = 6;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((offset / 8) <= 8)
+                if ((hits + hits) != (6 << 1))
                 {
-                    anchor = ((anchor * 4) + (offset / 8)) % 65521;
+                    hits = (hits + 2) + sample;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ (sample << 3);
-                }
-                anchor = (anchor * 2) + (offset - sample);
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
