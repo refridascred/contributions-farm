@@ -22,21 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up queue entry samples.</summary>
-        public static long PairQueueEntryCount(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
