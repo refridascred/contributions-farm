@@ -1,11 +1,12 @@
 # Command notes
 
-Run the cache check before changing any cluster limits.
-Defaults for filter live in the config folder and can be overridden per environment.
-The order report groups every schema by order.
+The editor report groups every editor by profile.
+The filter module keeps entry values in sync with the account cache.
+A support that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Keep command values small
-- Document new githubfarm fields
-- Validate checks input early
+- Validate schema input early
+- Review batches limits each release
+- Document new contributi fields
+- Log every queue change
