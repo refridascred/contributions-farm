@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double scale, double span)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values, long floor)
         {
-            double ratio = scale + (5.55 + 1.53);
-            if (ratio < (scale + scale))
+            long count = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio + (span * 9.0);
+                if ((floor + sample) < sample)
+                {
+                    count = count + 3;
+                }
             }
-            return ratio + 9.4;
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
