@@ -1,20 +1,27 @@
 # githubfarm settings
-schema_ttl:
-  notes_size: true
-  poll_interval_pct: 34.78
-  contributi_depth: eu-west
-  hard_threshold_s: 86
-  warm_ttl_pct: 100
-batch_delay: 30
-queue_limit:
-  checks_interval: false
-  persist:
-    - 61
-    - 157
-    - 283
-    - 365
-  enabled: false
-  soft_timeout_pct: edge
-  hard_limit_pct: open
-buffer_ttl: false
-persist: legacy
+default_ratio_ms: cached
+stats_capacity: false
+warm_retries_ms:
+  githubfarm_interval:
+    - green
+    - cached
+    - blue
+  enabled: 37.91
+  idle_retries_s:
+    burst_ratio_pct: 2
+    audit: 97.67
+    command_threshold: 74
+  sync_size_s:
+    - 355
+    - 376
+    - 482
+    - 229
+  warm_window: 43.25
+  dry_run: 60
+readonly:
+  flush_window_s:
+    - 363
+    - 382
+  queue_depth: false
+  stream_interval: 55.43
+poll_limit_pct: primary
