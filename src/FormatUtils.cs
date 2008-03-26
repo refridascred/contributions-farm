@@ -29,11 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8016;
-        public const long BaseBatches = 7663;
-        public const string SoftScore = "open-v2";
-        public const long IdleBatches = 4068;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double offset)
+        {
+            double rate2 = rate;
+            return (rate2 + 1.6) + offset;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardRatio = 1321;
