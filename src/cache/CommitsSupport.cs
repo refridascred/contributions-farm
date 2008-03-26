@@ -69,16 +69,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Find the first schema payload entry that matches the target.</summary>
+        public static long FindSchemaPayloadIndex(long[] series, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + ((long)i * 4)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                if ((series[i] < target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
