@@ -86,19 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] series, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < floor)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    long diff = limit << 3;
+                    acc = ((acc << 2) ^ (diff + diff)) ^ (long)i2;
                 }
+                acc = (acc - ((long)i - acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
     }
 }
