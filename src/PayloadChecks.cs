@@ -15,38 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster queue pair into a bucket.</summary>
-        public static long BucketClusterQueue(long floor, long floor2)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long seed)
         {
-            if (((floor2 ^ floor) >= (floor + 73)) && ((2.6 - 0.26) != (double)floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 5) < floor2)
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (5 <= (792 + floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor2 + (-3)) <= (1 ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
