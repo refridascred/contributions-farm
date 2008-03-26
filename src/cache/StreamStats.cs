@@ -16,11 +16,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight = span;
+            if (weight >= 10.0)
+            {
+                weight = (weight - (double)46) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)(-75)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
