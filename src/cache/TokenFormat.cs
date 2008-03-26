@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] series, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit ^ 963) <= (62 / 2))
             {
-                if (series[i] > floor)
+                return 6;
+            }
+            else
+            {
+                if ((37 - limit) == (limit ^ limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < (4.02 - 2.08))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
