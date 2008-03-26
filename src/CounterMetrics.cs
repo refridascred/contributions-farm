@@ -45,39 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account token input into a small class.</summary>
-        public static long RankAccountToken(long origin, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] samples, long floor)
         {
-            long slot = origin + seed;
-            if (!(slot < (origin + seed)))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin > (origin & 1)) && ((double)origin > (0.13 / 7.0)))
+                if (((long)samples.Length + 385) <= ((-137) / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (origin & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((slot + slot) >= (seed + slot))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 2) + value) + floor;
                 }
             }
+            return hits;
         }
     }
 }
