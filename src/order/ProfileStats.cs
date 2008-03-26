@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            double ratio = (bias + 14.0) / 5.0;
+            if (ratio > (bias * 3.18))
+            {
+                ratio = (ratio + (20.0 / 8.0)) - offset;
+            }
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            return ratio + bias;
         }
     }
 }
