@@ -1,18 +1,6 @@
 {
-  "persist": false,
-  "audit": "cached",
-  "readonly": [318, 283, 432],
-  "already_retries": {
-    "min_window": "fallback",
-    "poll_capacity_count": {
-      "already_ttl": "local",
-      "compress": "green",
-      "poll_threshold_ms": 58.81,
-      "max_depth_pct": 100,
-      "flush_depth": [342, 374, 390],
-      "command_ttl": 30
-    },
-    "sync_ttl": 31
-  },
-  "base_interval_s": "stable"
+  "enabled": true,
+  "contributi_ratio": true,
+  "max_capacity_pct": "legacy",
+  "hard_window_pct": ["standard", "staging"]
 }
