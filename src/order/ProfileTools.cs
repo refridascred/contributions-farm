@@ -17,12 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheTimeout = 9424;
-        public const string IdleWidth = "strict-1";
-        public const string HardChecks = "open-1";
-        public const long SoftChecks = 7118;
-        public const long DefaultChecks = 4445;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Stale,
+            Synced,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long ScoreNotes(long[] series, long target)
