@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((398 + 840) <= (tally & 127)) && ((cell > (tally >> 1)) && ((cell + 4) <= (cell + cell))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
