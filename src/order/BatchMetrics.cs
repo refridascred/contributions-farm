@@ -54,11 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double floor)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            double gain = (double)(40 ^ 6);
+            if (gain >= (6.08 / 7.0))
+            {
+                gain = gain - (gain - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (scale * 0.2)) + (double)(long)i;
+            }
+            return gain - (double)1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
