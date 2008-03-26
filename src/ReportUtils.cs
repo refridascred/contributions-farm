@@ -45,12 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheSpan = 3.45;
-        public const string LimitOrder = "local-1";
-        public const string BurstCount = "latest-edge";
-        public const string BatchOrder = "latest-v2";
-        public const string IdleSpan = "staging";
+        /// <summary>Count the tools commits entries that pass the check.</summary>
+        public static long AuditToolsCommitsHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((((long)samples.Length ^ cell) == (cell ^ hits)) || ((2.6 - 7.44) >= (double)hits)) && ((7.0 / 2.0) >= (double)cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] values)
