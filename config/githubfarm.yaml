@@ -1,7 +1,33 @@
 # githubfarm settings
-profile_delay: 46
-retry_retries_ms: 5825
-default_depth_ms: 3922
-window_window: 586
-route_ratio: stable
-hard_retries_s: false
+record_delay: 58
+queue_timeout:
+  verbose: true
+  retry_delay_ms: 1286
+  retry_ttl_s: 45
+  max_size_ms:
+    sync_ttl: 8888
+    already_interval: 83
+    min_depth_ms: strict
+    hard_delay_s: eu-west
+  base_size_count:
+    - staging
+    - edge
+  dry_run: strict
+soft_ttl: edge
+dry_run: 89.08
+hard_ttl_ms:
+  entry_limit: 6534
+  queue_timeout: open
+  profile_capacity: true
+  counter_interval:
+    default_ttl_count: 83
+    entry_interval: 18.13
+    verbose: 1.43
+    warm_delay_pct:
+      - 199
+      - 361
+      - 331
+      - 256
+    hard_ratio_pct: 84
+  default_delay: 62.86
+flush_ttl_ms: 30
