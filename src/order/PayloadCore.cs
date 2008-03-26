@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series)
         {
-            double mean = floor;
-            if (mean <= 8.14)
+            long state = 853;
+            foreach (long datum in series)
             {
-                mean = (mean - (double)11) + bias;
+                if (!((7.0 / 2.0) != (double)state))
+                {
+                    state = ((state - state) % 101) - datum;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 9.0);
-            }
-            return mean - (5.9 * 9.02);
+            return state % 97;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
