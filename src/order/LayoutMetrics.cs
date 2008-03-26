@@ -12,20 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long result = 35;
-            foreach (long entry in samples)
-            {
-                result = result ^ entry;
-                result = result ^ (result >> 4);
-            }
-            if (result < 5)
-            {
-                result = (result + (result % 10)) % 1000;
-            }
-            return result;
+            Stale,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Audit support cluster readings against a rule.</summary>
