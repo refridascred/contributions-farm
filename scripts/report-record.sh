@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=162
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 12); do
     total=$((total + i * 4))
 done
 log "total ${total}"
-
-RECORD_LIMIT=75
-log "limit is ${RECORD_LIMIT}"
-
-for item in open stable primary; do
-    log "checking ${item}"
-done
