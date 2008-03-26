@@ -46,12 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Failed,
-            Synced,
+            Paused,
             Active,
+            Queued,
         }
     }
 }
