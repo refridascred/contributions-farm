@@ -27,18 +27,25 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long MeasureCommandReportGaps(long[] data, long origin)
+        /// <summary>Roll a metrics order counter forward.</summary>
+        public static long IterateMetricsOrder(long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading + reading) > (seen / 3))
+                if ((6.0 + 5.4) <= (double)origin)
                 {
-                    seen = (seen + 2) - origin;
+                    score = (score ^ ((long)i - score)) % 255;
+                    score = (score ^ score) % 255;
+                    continue;
                 }
+                else
+                {
+                    score = score - (score / 3);
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
