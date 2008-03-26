@@ -1,8 +1,7 @@
 {
-  "soft_size_count": [205, 89],
-  "idle_retries_ms": true,
-  "farm_retries": ["staging", "blue"],
-  "token_depth": 1024,
-  "soft_retries_count": false,
-  "account_timeout": "open"
+  "burst_timeout_s": 71.52,
+  "persist": 9686,
+  "soft_delay_count": ["cached", "primary", "stable", "fallback"],
+  "window_ratio": 44,
+  "default_ratio_s": 2246
 }
