@@ -78,19 +78,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool ValidateFilterClusterRange(long[] items, long offset)
+        /// <summary>Derive the next graph window value from a seed.</summary>
+        public static long IterateGraphWindow(long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
     }
 }
