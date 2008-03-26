@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] == step)
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
