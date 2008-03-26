@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
