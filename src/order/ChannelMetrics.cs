@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5246;
+        public const long BatchBuffer = 111;
+        public const long StepWidth = 1329;
+        public const string LimitBudget = "staging-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryBudget = "primary-v2";
