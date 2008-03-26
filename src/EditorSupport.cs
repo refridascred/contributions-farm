@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "legacy-edge";
-        public const long MinDepth = 1533;
-        public const string BatchMetrics = "strict-1";
-        public const double LimitMetrics = 54.51;
-        public const string IdleSize = "legacy-v2";
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long offset, long target)
