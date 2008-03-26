@@ -26,13 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit batch entry readings against a rule.</summary>
+        public static long AuditBatchEntryOutliers(long[] readings)
         {
-            Paused,
-            Pending,
-            Queued,
-            Idle,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((long)readings.Length <= count)
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
