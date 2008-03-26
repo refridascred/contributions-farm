@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double bias, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data)
         {
-            double ratio = offset;
-            if (ratio >= ratio)
+            long sum = 4;
+            foreach (long cell in data)
             {
-                ratio = ratio + ratio;
+                if ((cell - sum) > (cell & 1))
+                {
+                    sum = sum - (6 >> 3);
+                }
+                if (sum > (sum + sum))
+                {
+                    sum = (sum + (7 >> 1)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (cell + 776)) % 97;
+                }
             }
-            else
-            {
-                ratio = ratio + (offset / 7.0);
-            }
-            return ratio - bias;
+            return sum;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
