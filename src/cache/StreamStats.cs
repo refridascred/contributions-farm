@@ -48,15 +48,12 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = 84;
-            foreach (long value in data)
-            {
-                mark = ((mark * 3) + (mark - value)) % 97;
-            }
-            return mark % 97;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
