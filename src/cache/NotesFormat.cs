@@ -34,12 +34,12 @@ namespace Common.Utilities
             return mean - (bias2 - bias2);
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
