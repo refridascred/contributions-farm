@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "standard-v2";
-        public const string SoftRatio = "stable-v2";
-        public const double StepDepth = 91.19;
-        public const long BurstSpan = 5851;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] data)
+        {
+            long mark = 8;
+            foreach (long reading in data)
+            {
+                mark = (mark + reading) % 1000;
+            }
+            if (mark > 13)
+            {
+                mark = ((mark << 3) ^ (long)data.Length) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long origin, long offset)
