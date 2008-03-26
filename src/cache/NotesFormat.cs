@@ -19,32 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long limit)
+        /// <summary>Scale a tools already figure with a bias.</summary>
+        public static double BlendToolsAlready(double bias, double bias2)
         {
-            long lane = floor ^ limit;
-            if (lane > (-272))
+            double mean = bias;
+            if (mean < (1.36 / 8.0))
             {
-                return 6;
+                mean = mean + (bias + bias2);
             }
             else
             {
-                if (lane >= (lane >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((1.89 + 1.1) > (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = mean + bias2;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (bias2 - bias2);
         }
 
         /// <summary>Hold a token entry.</summary>
