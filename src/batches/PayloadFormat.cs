@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] data, long limit)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum < (3.5 / 5.0))
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
                 {
-                    anchor = anchor + (datum / 9);
-                    anchor = (anchor * 3) + anchor;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor / 6);
-                }
-                if ((double)anchor < (6.0 * 8.9))
-                {
-                    anchor = ((anchor * 5) + datum) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
