@@ -32,19 +32,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Dropped,
+            Pending,
+            Ready,
         }
 
         /// <summary>Accumulate queue samples.</summary>
