@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const long CacheChannel = 2428;
         public const long WindowChannel = 1993;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
-        {
-            long anchor = 25;
-            foreach (long cell in levels)
-            {
-                if (!((anchor ^ anchor) < (anchor + (-13))))
-                {
-                    anchor = ((anchor - (4 & 127)) % 255) ^ cell;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardDepth = 2884;
+        public const double WindowSize = 68.06;
+        public const long MinSession = 5463;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] data)
