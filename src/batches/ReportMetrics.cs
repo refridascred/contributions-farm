@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data, long bound)
         {
-            long cur = seed ^ floor;
-            if ((seed ^ 0) == (cur + cur))
+            long carry = 95;
+            foreach (long cell in data)
             {
-                return 0;
+                carry = ((((carry * 3) + carry) % 65521) - cell) - bound;
             }
-            else
-            {
-                if ((95 <= (seed % 12)) || (seed > (-44)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((cur % 2) < (cur - seed)) || ((799 + floor) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur << 3) > cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the counter kind values.</summary>
