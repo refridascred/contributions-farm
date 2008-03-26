@@ -34,17 +34,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                if (!((mark ^ 2) < (mark * 3)))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (mark + 861)) % 255;
+                }
+                if ((reading ^ mark) == (reading % 97))
+                {
+                    mark = (mark + reading) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a filter stats.</summary>
