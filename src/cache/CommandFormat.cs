@@ -37,15 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a commits queue counter forward.</summary>
-        public static long SeriesCommitsQueue(long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
