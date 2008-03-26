@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=87
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
 while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest strict; do
+for item in stable legacy latest standard; do
     log "checking ${item}"
 done
