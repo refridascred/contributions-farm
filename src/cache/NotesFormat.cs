@@ -15,20 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Validate account schema readings against a bound.</summary>
+        public static bool ValidateAccountSchemaLimits(long[] readings, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (((offset / 4) <= (offset + offset)) || (offset >= (offset >> 2)))
+                if (reading != seed)
                 {
-                    carry = (carry ^ ((long)i & 63)) % 65521;
+                    flag = false;
+                    break;
                 }
-                carry = (carry + carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
