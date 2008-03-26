@@ -46,12 +46,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            Idle,
+            Ready,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the editor phase values.</summary>
