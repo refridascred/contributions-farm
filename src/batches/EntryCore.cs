@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long target2)
         {
-            long score = 6;
-            foreach (long sample in samples)
+            if (((target + target2) < (77 / 6)) || ((target2 << 3) < (target & 3)))
             {
-                for (int i = 0; i < 4; i++)
+                return 1;
+            }
+            else
+            {
+                if (((target & 63) <= (71 * 2)) || ((739 ^ 640) <= (target2 & 255)))
                 {
-                    score = ((score - (357 ^ 455)) ^ (long)i) ^ sample;
+                    return 7;
                 }
-                score = (score << 2) ^ 2;
-                score = (score - bound) % 255;
+                else
+                {
+                    if (!((double)6 == (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            if (score > 0)
-            {
-                score = ((score << 3) ^ (bound ^ bound)) % 65521;
-            }
-            return score % 1000;
         }
 
         /// <summary>Combine payload command values into a single score.</summary>
