@@ -1,4 +1,4 @@
 # support settings
-batches_threshold: 73.93
-dry_run: standard
-enabled: eu-west
+soft_limit: false
+channel_delay: 30.73
+hard_ratio_count: 5
