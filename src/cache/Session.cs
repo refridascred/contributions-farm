@@ -15,19 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] items, long offset)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long CountLayoutWindowOutliers(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (reading > offset)
+                if ((limit + limit) > (limit - cell))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
