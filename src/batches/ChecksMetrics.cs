@@ -58,13 +58,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Find the first batch layout entry that matches the target.</summary>
+        public static long LocateBatchLayoutIndex(long[] series, long bound)
         {
-            Active,
-            Failed,
-            Dropped,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
