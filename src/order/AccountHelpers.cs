@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload githubfarm readings.</summary>
-        public static long CombinePayloadGithubfarm(long[] data, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mix = 942;
-            foreach (long datum in data)
-            {
-                mix = ((mix << 2) ^ (target + mix)) % 65521;
-                if ((9.1 > (double)target) && ((double)datum <= 14.0))
-                {
-                    mix = (mix + target) % 101;
-                }
-                else
-                {
-                    mix = (mix - target) % 255;
-                }
-                mix = ((mix * 2) + datum) % 4096;
-            }
-            return mix;
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of session entries.</summary>
