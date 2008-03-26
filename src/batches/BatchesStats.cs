@@ -36,22 +36,13 @@ namespace Common.Utilities
         public const double BurstBudget = 94.04;
         public const long RetryDepth = 991;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)(long)series.Length < (7.9 / 2.0))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
