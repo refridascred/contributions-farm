@@ -1,10 +1,4 @@
 # entry settings
-max_window_count:
-  - 78
-  - 410
-  - 118
-burst_depth: cached
-retry_threshold:
-  verbose: staging
-  enabled: blue
-  poll_timeout_count: green
+sync_capacity: stable
+base_threshold_count: false
+max_capacity: 76
