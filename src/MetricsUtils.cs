@@ -49,11 +49,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "stable";
-        public const double IdleSize = 58.69;
-        public const long DefaultInterval = 5451;
-        public const long MaxStream = 8039;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many context account samples are out of range.</summary>
         public static long MeasureContextAccountHits(long[] values, long limit)
