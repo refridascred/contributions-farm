@@ -52,13 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
