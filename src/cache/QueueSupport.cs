@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            long mark = bound;
+            long score = origin;
             for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                score = ((score << 2) ^ origin) % 101;
+                score = ((score << 3) ^ (long)i) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
