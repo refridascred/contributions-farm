@@ -66,22 +66,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit editor token readings against a rule.</summary>
-        public static long CountEditorTokenGaps(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((6 + seen) != (504 >> 1))
+                if ((origin + origin) > origin)
                 {
-                    seen = ((seen + 2) + item) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
