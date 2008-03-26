@@ -54,39 +54,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long diff = bound + step;
-            if ((bound - step) <= (step * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound & 63) > (step / 6)) || (diff <= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 4) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
