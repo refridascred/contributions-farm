@@ -38,14 +38,22 @@ namespace Common.Utilities
             return gain + (bias2 * 1.14);
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            Queued,
-            Ready,
-            Active,
-            Done,
-            Stale,
+            long state = 868;
+            foreach (long value in levels)
+            {
+                if (820 <= state)
+                {
+                    state = ((state << 3) ^ value) % 255;
+                }
+                else
+                {
+                    state = (state * 5) + (state - 141);
+                }
+            }
+            return state;
         }
     }
 }
