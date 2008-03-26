@@ -1,8 +1,6 @@
-id,weight,state
-1,25.54,73.04
-2,389,legacy
-3,fallback,651
-4,665,253
-5,31.99,79.78
-6,cached,stable
-7,latest,252
+id,region,label
+1,48.07,16.26
+2,legacy,685
+3,315,60.9
+4,15.86,local
+5,96.9,562
