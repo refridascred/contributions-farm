@@ -35,11 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "staging-v2";
-        public const string StepSize = "legacy-1";
-        public const string LimitWindow = "cached-edge";
-        public const string CacheTimeout = "local-1";
+        /// <summary>Count farm token pairs that satisfy a relation.</summary>
+        public static long PairFarmTokenCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a command record reading by value.</summary>
         public static long FindCommandRecordIndex(long[] values, long offset)
