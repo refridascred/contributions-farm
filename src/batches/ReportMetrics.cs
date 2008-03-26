@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long floor)
         {
-            long edge = floor + target;
-            if ((double)target >= (12.0 + 9.8))
+            long cur = seed ^ floor;
+            if ((seed ^ 0) == (cur + cur))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((double)floor > (0.4 / 2.0))
+                if ((95 <= (seed % 12)) || (seed > (-44)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((target <= edge) || ((double)edge <= 7.8))
+                    if (((cur % 2) < (cur - seed)) || ((799 + floor) >= floor))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        if ((cur << 3) > cur)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
