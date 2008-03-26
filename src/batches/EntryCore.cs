@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate metric command samples.</summary>
