@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long floor)
         {
-            long result = 156;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((target / 2) <= (cell & 3))
+                if (datum != floor)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                result = result ^ (cell + target);
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Measure how many commits notes samples are out of range.</summary>
