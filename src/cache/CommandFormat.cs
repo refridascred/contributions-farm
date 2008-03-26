@@ -44,14 +44,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Idle,
-            Draft,
-            Queued,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryDepth = 50.83;
+        public const long WindowBudget = 2612;
+        public const string HardRatio = "alpha-edge";
+        public const string BaseFarm = "local-v2";
     }
 }
