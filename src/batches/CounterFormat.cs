@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            Active,
-            New,
-            Pending,
-            Done,
-            Retry,
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score - (origin - (long)i)) % 97;
+                long tally = score;
+                score = (score * 2) + (tally >> 1);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a metric stats.</summary>
