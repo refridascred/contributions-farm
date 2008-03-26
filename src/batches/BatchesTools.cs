@@ -39,14 +39,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
-            Dropped,
-            Idle,
-            Done,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((reading / 6) > tally) && ((double)tally >= (3.8 / 6.0))) && !((reading - (-7)) > (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
