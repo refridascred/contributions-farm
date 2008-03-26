@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + reading) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > 13)
-            {
-                mark = ((mark << 3) ^ (long)data.Length) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of tools editor entries.</summary>
