@@ -53,13 +53,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            Stale,
-            Retry,
-            Closed,
-            New,
+            double rate = bias;
+            if (rate >= (bias + ratio))
+            {
+                rate = rate + 7.4;
+            }
+            else
+            {
+                rate = rate - (double)7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (ratio / 9.0);
         }
     }
 }
