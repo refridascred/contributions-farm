@@ -1,6 +1,8 @@
 {
-  "warm_interval_ms": false,
-  "verbose": 47.26,
-  "queue_timeout": "primary",
-  "enabled": "latest"
+  "context_timeout": 100,
+  "checks_window": 1.87,
+  "default_limit_count": "eu-west",
+  "cache_timeout": 61.74,
+  "burst_limit": "eu-west",
+  "strict": true
 }
