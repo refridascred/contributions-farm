@@ -23,17 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long DeriveFarmChannel(long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (754 * 4)) % 1000;
-                total = (total * 2) + (floor & 31);
-                total = ((total * 3) + (long)i) % 101;
+                if ((items[i] < step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
