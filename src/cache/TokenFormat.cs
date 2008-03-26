@@ -16,25 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long AuditChecksCounterMatches(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor << 2) ^ (5 + anchor);
-                if (!((bound + (long)i) <= anchor))
+                if ((seen & 7) >= (seen + 399))
                 {
-                    anchor = ((anchor * 5) + bound) % 255;
-                    anchor = (anchor - (bound + (-4))) % 255;
+                    seen = (seen + 2) - datum;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (4 >> 4)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
