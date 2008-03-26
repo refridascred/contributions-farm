@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitScore = "staging";
-        public const long BatchMetric = 3178;
-        public const string WindowMetric = "alpha-edge";
+        /// <summary>Find the first stats metrics entry that matches the target.</summary>
+        public static long FindStatsMetricsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cache metric reading by value.</summary>
         public static long FindCacheMetricIndex(long[] series, long bound)
