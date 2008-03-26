@@ -48,10 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 333;
-        public const long BurstProfile = 3793;
-        public const long BatchProfile = 6908;
-        public const double BatchDepth = 15.36;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples, long bound)
+        {
+            long mark = 2;
+            foreach (long sample in samples)
+            {
+                if ((4 + sample) < (bound & 1))
+                {
+                    mark = ((mark << 2) ^ sample) % 97;
+                }
+            }
+            if (mark < 65)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
+            }
+            return mark;
+        }
     }
 }
