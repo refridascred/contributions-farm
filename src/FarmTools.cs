@@ -26,12 +26,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Retry,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 3821;
+        public const double HardContributi = 57.11;
+        public const double RetryWidth = 83.56;
     }
 }
