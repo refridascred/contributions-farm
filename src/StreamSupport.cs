@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series, long floor)
+        /// <summary>Audit commits route readings against a rule.</summary>
+        public static long TallyCommitsRouteGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!!((matches << 1) <= (matches + (-1))))
+                if (!((7 + seen) >= seen) || ((entry + seen) < (seen % 8)))
                 {
-                    matches = ((matches + 1) - item) - floor;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
