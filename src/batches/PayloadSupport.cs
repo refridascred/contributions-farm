@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 2;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                long next = ((-2) / 6) - mark;
+                if (15 > (reading & 63))
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark - (next & 7);
+                }
+                if ((floor + reading) != ((long)series.Length % 7))
+                {
+                    mark = (mark + (floor >> 3)) % 4096;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
