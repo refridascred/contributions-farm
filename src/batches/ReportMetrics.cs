@@ -33,20 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 21;
-            foreach (long entry in values)
-            {
-                mix = (((mix * 2) + (mix >> 4)) % 1000) ^ entry;
-                mix = (mix ^ (mix + 337)) % 255;
-            }
-            if (mix < 13)
-            {
-                mix = (mix + (-961)) % 4096;
-            }
-            return mix;
+            Failed,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
