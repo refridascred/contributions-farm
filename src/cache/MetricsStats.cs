@@ -62,19 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] samples, long seed)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
