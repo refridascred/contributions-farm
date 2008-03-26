@@ -30,19 +30,18 @@ namespace Common.Utilities
             return (gain + gain) + scale;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long step)
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long TallyMetricsSchema(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long total = 6;
+            foreach (long value in readings)
             {
-                if (cell != step)
+                if (((358 % 16) <= ((long)readings.Length % 3)) && ((947 + value) <= (total >> 5)))
                 {
-                    stale = false;
-                    break;
+                    total = (total + value) % 101;
                 }
             }
-            return stale;
+            return total % 65521;
         }
     }
 }
