@@ -66,19 +66,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double bias)
-        {
-            double bias2 = (double)(7 - 1);
-            if (bias2 <= scale)
-            {
-                bias2 = (bias2 - 8.1) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + 17.0) + (double)(long)i;
-            }
-            return bias2 - (0.89 * 2.46);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitLevel = 3352;
+        public const long MinWindow = 9083;
+        public const long BurstWindow = 5491;
     }
 }
