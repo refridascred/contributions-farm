@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entry entries that pass the check.</summary>
-        public static long MeasureStatsEntryGaps(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double weight = scale;
+            if (weight >= (17.0 + scale))
             {
-                if (!((double)value == (5.55 - 11.0)))
-                {
-                    count = count + 1;
-                }
+                weight = weight - span;
             }
-            return count;
+            return weight - weight;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
