@@ -1,9 +1,6 @@
-id,rank,score,active
-1,2.82,75.53,86.28
-2,blue,70.56,407
-3,572,58.77,eu-west
-4,green,542,fallback
-5,green,203,green
-6,blue,eu-west,146
-7,primary,primary,671
-8,595,715,47.04
+id,rank,owner,region,active
+1,991,23.75,936,332
+2,18.27,86.99,438,1.13
+3,legacy,local,425,942
+4,88.73,881,239,111
+5,763,eu-west,84.31,21.3
