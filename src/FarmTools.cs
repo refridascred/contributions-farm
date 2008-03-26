@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 9434;
+        public const long BaseScore = 7792;
+        public const long IdleGraph = 2234;
+        public const long MinGraph = 6995;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] items)
