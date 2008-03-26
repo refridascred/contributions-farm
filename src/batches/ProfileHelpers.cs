@@ -44,13 +44,31 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long step, long offset)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            if ((offset + offset) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 4) < 16)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= (8.4 - 5.36))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
