@@ -1,11 +1,7 @@
 {
-  "burst_interval": 44,
-  "warm_interval": {
-    "warm_limit_count": 55,
-    "burst_window_s": 2802,
-    "persist": [179, 372],
-    "default_limit_s": "eu-west",
-    "enabled": ["latest", "primary"]
-  },
-  "retry_limit_count": "eu-west"
+  "burst_ttl_ms": 9295,
+  "poll_limit_count": "open",
+  "soft_retries": "local",
+  "githubfarm_capacity": true,
+  "format_capacity": 93
 }
