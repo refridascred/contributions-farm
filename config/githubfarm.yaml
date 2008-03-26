@@ -1,6 +1,9 @@
 # githubfarm settings
-flush_size:
-  - 67
-  - 163
-enabled: 15.7
-poll_ratio_pct: green
+poll_size: 76
+format_ratio: eu-west
+dry_run: eu-west
+max_limit_s: staging
+compress:
+  - 382
+  - 112
+  - 461
