@@ -31,12 +31,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] values, long floor)
         {
-            Ready,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches % 2) == (cell << 2))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
