@@ -40,10 +40,20 @@ namespace Common.Utilities
         public const string SoftSchema = "open";
         public const long MinWidth = 6406;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowScore = 54.12;
-        public const long DefaultDepth = 1450;
-        public const long BatchBudget = 791;
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool VerifyRoutePayloadLimits(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
