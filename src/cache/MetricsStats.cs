@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftWidth = 5089;
+        public const long MinAccount = 3050;
+        public const string CacheInterval = "cached-edge";
+        public const double WindowAccount = 85.67;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] data)
