@@ -1,11 +1,12 @@
 # Command notes
 
-Run the counter check before changing any channel limits.
-The session helpers are pure functions, so they are safe to call from any thread.
-Each account is validated before it reaches the checks queue.
+A buffer that stays idle for too long is moved to the support list.
+Use tools settings to tune how often metrics data is refreshed.
+Use session settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Log every support change
+- Prefer stream defaults
 - Document new account fields
-- Keep context values small
+- Validate format input early
+- Review graph limits each release
