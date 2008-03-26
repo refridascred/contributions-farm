@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long target)
         {
-            double bias = weight + (9.2 + 15.0);
-            if (bias < (6.1 - bias))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                bias = (bias + bias) - span;
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + bias;
+            return ok;
         }
     }
 }
