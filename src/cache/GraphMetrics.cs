@@ -40,24 +40,13 @@ namespace Common.Utilities
         public const long BaseLayout = 3597;
         public const string DefaultFactor = "latest-edge";
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if (offset > (13 & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset ^ 781) != (offset * 4)) || (offset > (offset - 101)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Pending,
+            Paused,
+            Active,
         }
     }
 }
