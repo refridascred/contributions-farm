@@ -1,7 +1,12 @@
 {
-  "metrics_capacity": false,
-  "batch_interval_pct": 72,
-  "flush_interval": 250,
-  "max_size_ms": [366, 195, 456, 192],
-  "min_delay": 30
+  "soft_ttl_count": "cached",
+  "support_size": 1875,
+  "account_depth": [291, 446, 91, 258],
+  "default_size_count": {
+    "flush_depth": ["stable", "open", "staging", "eu-west"],
+    "base_size_s": 30.28,
+    "sync_window": "staging",
+    "dry_run": 21.58,
+    "stats_depth": "latest"
+  }
 }
