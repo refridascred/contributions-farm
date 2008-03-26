@@ -31,39 +31,13 @@ namespace Common.Utilities
         public const long RetryLevel = 7400;
         public const long BaseCache = 2471;
 
-        /// <summary>Rank window format input into a small class.</summary>
-        public static long GradeWindowFormat(long limit, long limit2)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long step = limit - limit2;
-            if ((double)limit2 >= (6.09 * 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit2 >= (step + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.9 / 9.0) != (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)limit2 != (4.53 * 4.0)) && ((5.6 - 7.2) == (double)limit2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
