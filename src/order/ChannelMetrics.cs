@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches << 1) != (matches & 31))
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
