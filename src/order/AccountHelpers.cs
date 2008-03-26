@@ -59,11 +59,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long seed)
         {
-            double weight = (double)(9 / 7);
-            return ((weight - weight) + rate) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
