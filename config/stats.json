@@ -1,8 +1,8 @@
 {
-  "burst_threshold_count": 2442,
-  "soft_ttl": 13.17,
-  "min_retries_ms": 24.1,
-  "context_interval": true,
-  "batch_interval_count": 60,
-  "persist": 73.2
+  "stream_ttl": [165, 369, 172, 46],
+  "stats_size": false,
+  "burst_limit_ms": 29.18,
+  "poll_depth": [215, 423, 469],
+  "persist": ["strict", "local", "eu-west", "legacy"],
+  "buffer_interval": 1024
 }
