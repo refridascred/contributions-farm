@@ -62,21 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long diff = limit << 3;
-                    acc = ((acc << 2) ^ (diff + diff)) ^ (long)i2;
-                }
-                acc = (acc - ((long)i - acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepBudget = 86.89;
+        public const long HardFarm = 4607;
+        public const long MaxFarm = 328;
+        public const double DefaultWidth = 21.83;
     }
 }
