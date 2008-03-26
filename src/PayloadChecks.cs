@@ -26,21 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > step)
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a stream options.</summary>
