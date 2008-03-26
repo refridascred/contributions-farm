@@ -1,20 +1,5 @@
 {
-  "batch_capacity_ms": {
-    "session_limit": "latest",
-    "audit": "latest",
-    "readonly": {
-      "tools_size": "open",
-      "verbose": false,
-      "persist": "cached",
-      "hard_limit_count": 80,
-      "cache_delay": "fallback",
-      "max_window_count": 100
-    },
-    "max_interval_s": 80.63,
-    "githubfarm_capacity": 83,
-    "burst_timeout_ms": ["standard", "cached", "local", "primary"]
-  },
-  "filter_ttl": false,
-  "payload_window": "strict",
-  "flush_retries": 74
+  "soft_depth_count": "edge",
+  "schema_ttl": 1266,
+  "retry_ttl_s": "staging"
 }
