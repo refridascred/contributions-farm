@@ -34,19 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] series, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (item >= target)
+                if ((double)entry > 8.4)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
