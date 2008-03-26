@@ -1,12 +1,13 @@
 # entry settings
-report_depth: false
-warm_capacity:
-  min_limit_s: false
-  sync_threshold: latest
-  idle_ratio: true
-order_ratio: 65
-flush_ratio_s: primary
-metric_timeout:
-  - 102
-  - 457
-default_threshold_ms: 4517
+burst_timeout_count: latest
+default_limit_pct: 8315
+cache_limit:
+  warm_limit_s: 57
+  token_ttl: 90.34
+  commits_ttl: green
+  payload_threshold: 61.13
+window_limit:
+  - 175
+  - 187
+  - 40
+  - 68
