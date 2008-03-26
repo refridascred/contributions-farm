@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 58.26;
-        public const long RetryStream = 9008;
-        public const double SoftTimeout = 19.61;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] data, long step)
