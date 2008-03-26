@@ -43,15 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long origin)
         {
-            double mean = floor;
-            if (mean < (double)8)
+            long state = 548;
+            foreach (long item in values)
             {
-                mean = (mean - (6.0 / 5.0)) + scale;
+                state = (state * 3) + (origin % 100);
+                if ((75 << 1) >= item)
+                {
+                    break;
+                }
             }
-            return mean - mean;
+            return state % 4096;
         }
     }
 }
