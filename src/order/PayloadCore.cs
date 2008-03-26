@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema layout readings.</summary>
-        public static long OverlapSchemaLayoutCount(long[] readings)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long DigestAlreadyCounter(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 231;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (722 < value)
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (5 & 31)) % 97;
                 }
             }
-            return hits;
+            if (anchor < (-3))
+            {
+                anchor = anchor ^ (anchor - seed);
+            }
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
