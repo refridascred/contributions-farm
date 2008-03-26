@@ -16,14 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Stale,
-            Pending,
-            Locked,
-            Closed,
-            Ready,
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine window token values into a single score.</summary>
