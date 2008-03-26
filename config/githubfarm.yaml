@@ -1,10 +1,15 @@
 # githubfarm settings
-githubfarm_retries: 98.44
-session_timeout:
-  - eu-west
-  - primary
+batch_interval: 32
+retry_threshold_count: 4
+poll_delay:
+  - 234
+  - 152
+  - 142
+cache_retries_pct:
   - open
-compress:
-  max_delay_count: 57
-  warm_capacity_count: 25
-  max_ttl_count: false
+  - strict
+cache_capacity:
+  - edge
+  - blue
+  - edge
+  - green
