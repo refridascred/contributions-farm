@@ -1,27 +1,11 @@
 # githubfarm settings
-default_ratio_ms: cached
-stats_capacity: false
-warm_retries_ms:
-  githubfarm_interval:
-    - green
-    - cached
-    - blue
-  enabled: 37.91
-  idle_retries_s:
-    burst_ratio_pct: 2
-    audit: 97.67
-    command_threshold: 74
-  sync_size_s:
-    - 355
-    - 376
-    - 482
-    - 229
-  warm_window: 43.25
-  dry_run: 60
-readonly:
-  flush_window_s:
-    - 363
-    - 382
-  queue_depth: false
-  stream_interval: 55.43
-poll_limit_pct: primary
+route_interval: 23
+hard_interval_ms: false
+idle_window_count:
+  - stable
+  - eu-west
+  - latest
+dry_run:
+  - standard
+  - edge
+burst_timeout_s: 30
