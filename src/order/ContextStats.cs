@@ -20,12 +20,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long limit)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
