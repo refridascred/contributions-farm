@@ -45,18 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long offset, long offset2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long target, long origin)
         {
-            if (((double)offset2 >= (7.3 * 7.9)) || ((5.0 - 5.0) == (double)offset2))
+            long bound = target - origin;
+            if ((8.98 <= (double)target) || ((double)bound <= (3.5 - 5.0)))
             {
                 return 1;
             }
             else
             {
-                if ((6 + offset) >= (offset2 + offset))
+                if (!((bound << 2) < bound))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
