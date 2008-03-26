@@ -1,11 +1,18 @@
 {
-  "cluster_delay": 9902,
-  "base_limit": 3074,
-  "retry_timeout_ms": true,
-  "warm_limit_count": {
-    "max_ratio": "cached",
-    "counter_depth": "eu-west",
-    "payload_depth": false
+  "persist": false,
+  "audit": "cached",
+  "readonly": [318, 283, 432],
+  "already_retries": {
+    "min_window": "fallback",
+    "poll_capacity_count": {
+      "already_ttl": "local",
+      "compress": "green",
+      "poll_threshold_ms": 58.81,
+      "max_depth_pct": 100,
+      "flush_depth": [342, 374, 390],
+      "command_ttl": 30
+    },
+    "sync_ttl": 31
   },
-  "warm_interval_s": false
+  "base_interval_s": "stable"
 }
