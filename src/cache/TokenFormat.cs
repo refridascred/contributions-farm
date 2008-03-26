@@ -13,22 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Compare every pair of commits already readings.</summary>
+        public static long CompareCommitsAlreadyCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((7 + reading) != (reading / 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a format batch counter forward.</summary>
