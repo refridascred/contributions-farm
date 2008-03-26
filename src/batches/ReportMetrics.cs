@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
