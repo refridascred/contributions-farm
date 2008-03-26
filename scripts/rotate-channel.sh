@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in fallback standard cached primary; do
+for item in edge staging; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=460
+log "limit is ${CHANNEL_LIMIT}"
