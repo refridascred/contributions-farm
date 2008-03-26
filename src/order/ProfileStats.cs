@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long state = -934;
-            foreach (long sample in series)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (floor > (state + sample))
-                {
-                    state = (state - (sample + state)) % 65521;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Rank order input into a small class.</summary>
