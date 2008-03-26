@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            Idle,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)(long)series.Length < (7.9 / 2.0))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
