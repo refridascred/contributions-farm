@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of farm profile readings.</summary>
-        public static long OverlapFarmProfileCount(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 67;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total << 2) ^ (reading & 63)) + seed;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
