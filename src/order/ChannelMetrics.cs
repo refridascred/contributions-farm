@@ -24,11 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 2410;
-        public const long BaseFarm = 5953;
-        public const long SoftWidth = 72;
-        public const long BurstRatio = 9148;
-        public const double BaseTimeout = 12.46;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = acc + target;
+                acc = (acc + acc) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
