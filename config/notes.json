@@ -1,10 +1,5 @@
 {
-  "context_interval": "stable",
-  "batch_threshold_count": "primary",
-  "persist": "legacy",
-  "notes_ttl": {
-    "cache_depth_ms": 34.84,
-    "persist": "edge",
-    "audit": true
-  }
+  "soft_ratio_ms": 1024,
+  "context_size": "strict",
+  "soft_depth": true
 }
