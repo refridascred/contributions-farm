@@ -40,19 +40,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardLevel = 3654;
+        public const double BatchScore = 55.41;
+        public const long MaxFactor = 6667;
+        public const long LimitNotes = 3463;
     }
 }
