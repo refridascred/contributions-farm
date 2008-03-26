@@ -68,9 +68,19 @@ namespace Common.Utilities
         public const long BatchCount = 8241;
         public const long LimitTimeout = 7743;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "staging-1";
-        public const double StepTimeout = 81.86;
-        public const long SoftContributi = 8780;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
