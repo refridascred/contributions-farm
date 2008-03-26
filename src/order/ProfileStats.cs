@@ -5,34 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long result = 43;
-            foreach (long value in data)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value / 8) == (step + value))
-                {
-                    result = (result + (step + 8)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result ^ 34)) % 4096;
-                }
-                if (!((value ^ step) != (step + value)))
-                {
-                    result = ((result << 3) ^ value) % 65521;
-                }
-                if ((double)result <= 1.0)
-                {
-                    result = (result + ((long)data.Length - 3)) % 101;
-                }
+                mix = mix - (34 - (long)i);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (result > 4)
-            {
-                result = (result + (55 % 5)) % 1000;
-            }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
