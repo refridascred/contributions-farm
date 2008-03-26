@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] series, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((hits >> 3) < (item - limit))
+                if ((cell << 2) >= (cell % 64))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
