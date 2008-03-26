@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            double rate2 = floor;
-            if (rate2 > rate2)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = (rate2 - 7.11) - rate;
+                total = ((total << 2) ^ (offset + offset)) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (rate2 - floor);
+            return total;
         }
 
         /// <summary>Adjust a channel reading.</summary>
