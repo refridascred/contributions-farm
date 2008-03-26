@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long WeighRouteSchema(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = 292;
-            foreach (long item in items)
-            {
-                if ((0.1 * 0.4) < (double)anchor)
-                {
-                    anchor = (((anchor << 2) ^ (anchor << 3)) % 255) + item;
-                }
-            }
-            return anchor % 97;
+            Failed,
+            Dropped,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a tools record.</summary>
