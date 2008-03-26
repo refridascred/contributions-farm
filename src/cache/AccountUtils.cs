@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long offset)
+        /// <summary>Match up counter graph samples.</summary>
+        public static long PairCounterGraphCount(long[] samples)
         {
-            long cur = floor + offset;
-            if (!((floor ^ offset) <= (floor ^ floor)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-543) - floor) != (offset & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)956 <= (double)cur)
+                    if ((samples[i] ^ samples[j]) != 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
