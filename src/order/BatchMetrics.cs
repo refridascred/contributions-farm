@@ -50,17 +50,19 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long SeekCommitsChecksIndex(long[] values, long seed)
+        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
+        public static bool ValidateReportGithubfarmRange(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (values[i] < seed)
+                if (value > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
