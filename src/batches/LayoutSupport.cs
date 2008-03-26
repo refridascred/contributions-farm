@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] items, long floor)
         {
-            long next = offset - seed;
-            if (((offset ^ seed) != (next + 59)) && (seed <= (seed ^ next)))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((19.0 - 4.8) >= (double)seed) || ((double)offset < 5.68))
+                if (count > ((-125) + floor))
                 {
-                    return 1;
+                    count = (count + 1) + item;
                 }
                 else
                 {
-                    if (seed <= (next * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.1 - 1.6) != (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
