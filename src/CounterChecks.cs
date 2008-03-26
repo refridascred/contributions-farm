@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Stale,
-            Closed,
-            Failed,
-            Paused,
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a batches reading.</summary>
