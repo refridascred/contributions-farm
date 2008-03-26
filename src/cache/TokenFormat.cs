@@ -25,22 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine window token values into a single score.</summary>
-        public static long DigestWindowToken(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] readings, long floor)
         {
-            long result = -323;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((result + result) < ((long)samples.Length % 60))
+                if (reading > floor)
                 {
-                    result = ((result + (result >> 5)) % 255) + value;
-                }
-                else
-                {
-                    result = (result - (result - (-29))) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return found;
         }
     }
 }
