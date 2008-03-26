@@ -46,17 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
