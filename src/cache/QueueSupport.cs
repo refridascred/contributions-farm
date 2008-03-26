@@ -31,21 +31,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up tools context samples.</summary>
-        public static long PairToolsContextCount(long[] items)
+        /// <summary>Audit payload schema readings against a rule.</summary>
+        public static long TallyPayloadSchemaMatches(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample % 7) < sample)
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
