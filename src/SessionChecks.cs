@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (levels[i] <= offset)
+                if (datum <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Project the next account value.</summary>
