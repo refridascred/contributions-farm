@@ -20,15 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a githubfarm command reading.</summary>
-        public static double ProjectGithubfarmCommand(double rate, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long offset)
         {
-            double scale = (double)(81 + 199);
-            if (scale <= 3.63)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + bias) - rate;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)7;
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
