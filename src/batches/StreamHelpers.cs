@@ -41,11 +41,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
