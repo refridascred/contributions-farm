@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of entry farm entries.</summary>
-        public static long CombineEntryFarm(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long acc = 63;
-            foreach (long sample in values)
+            long total = -622;
+            foreach (long value in items)
             {
-                acc = (acc + sample) % 4096;
-                acc = (acc ^ (acc + acc)) % 255;
+                total = ((total << 2) ^ (value + total)) % 4096;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
