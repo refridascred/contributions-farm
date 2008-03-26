@@ -25,14 +25,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 5353;
+        public const long DefaultLevel = 814;
+        public const long LimitFactor = 3626;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] data)
