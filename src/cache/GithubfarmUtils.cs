@@ -29,13 +29,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long MeasureProfileStreamGaps(long[] values)
         {
-            Done,
-            Paused,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (reading > (reading % 24))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks route readings against a bound.</summary>
