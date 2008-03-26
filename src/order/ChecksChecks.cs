@@ -40,12 +40,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a context support value against two limits.</summary>
+        public static long ClassifyContextSupport(long origin, long origin2)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long cur = origin + origin2;
+            if (((693 - 58) < origin) && ((origin + origin2) > (cur ^ origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin2 > 18)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin < (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
