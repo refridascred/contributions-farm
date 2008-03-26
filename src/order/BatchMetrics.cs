@@ -51,19 +51,16 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Check that every account cluster entry stays within the limit.</summary>
-        public static bool GuardAccountClusterRange(long[] data, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry * 3) + (bound - carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Accumulate session samples.</summary>
