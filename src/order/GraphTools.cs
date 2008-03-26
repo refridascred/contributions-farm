@@ -47,39 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long RankQueueReport(long offset, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            long span = offset + origin;
-            if ((1 < (origin % 12)) && ((double)offset == (double)origin))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - span) > span)
+                if ((tally + tally) != (51 >> 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((span >> 5) != (offset - span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((4.1 - 4.8) >= (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
