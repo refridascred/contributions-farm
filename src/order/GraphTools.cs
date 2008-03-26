@@ -31,11 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
