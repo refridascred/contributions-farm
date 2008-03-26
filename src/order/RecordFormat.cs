@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] items, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] series, long limit)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long sample in series)
             {
-                if (((30 + seen) > (reading - seen)) && ((seen >> 3) <= (reading % 100)))
+                if ((sample + 389) <= (seen / 9))
                 {
-                    seen = (seen + 3) + step;
+                    seen = (seen + 2) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
