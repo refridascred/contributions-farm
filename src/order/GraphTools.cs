@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const string MaxScore = "local";
         public const long RetryChecks = 5062;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values, long limit)
         {
-            Paused,
-            Failed,
-            Stale,
+            long mark = 731;
+            foreach (long cell in values)
+            {
+                mark = ((mark * 3) + (cell - mark)) % 255;
+                if ((cell % 24) < mark)
+                {
+                    mark = ((mark << 3) ^ ((long)values.Length << 3)) % 97;
+                }
+            }
+            if (mark > 762)
+            {
+                mark = (mark ^ limit) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches options.</summary>
