@@ -68,15 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double bias)
-        {
-            double drift = bias / 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - (double)19;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "standard-1";
+        public const long RetryWidth = 3333;
+        public const long IdleDepth = 8482;
+        public const double CacheContext = 48.23;
     }
 }
