@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardWidth = "local-v2";
+        public const long SoftSpan = 6570;
+        public const long StepDepth = 6962;
+        public const long BatchContributi = 7733;
 
         /// <summary>Combine payload command values into a single score.</summary>
         public static long TallyPayloadCommand(long[] data)
