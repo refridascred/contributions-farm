@@ -30,12 +30,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheSize = 11.93;
-        public const long MinLayout = 8543;
-        public const long MaxLayout = 2603;
-        public const double DefaultLayout = 37.19;
-        public const long MinDepth = 4831;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double floor)
+        {
+            double ratio = (rate + rate) / 8.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (1.0 - ratio)) + (double)(long)i) - floor;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long seed, long floor)
