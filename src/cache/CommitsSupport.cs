@@ -64,12 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Active,
-            Stale,
-            Paused,
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first schema payload entry that matches the target.</summary>
