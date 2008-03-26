@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((mark << 2) > ((long)i / 5))
-                {
-                    mark = (mark ^ 71) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Idle,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
