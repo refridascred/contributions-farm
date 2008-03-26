@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long CountPayloadBatchesMatches(long[] data)
+        /// <summary>Validate layout schema readings against a bound.</summary>
+        public static bool ValidateLayoutSchemaRange(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((entry / 3) <= count)
+                if (entry > offset)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Classify a notes tools pair into a bucket.</summary>
