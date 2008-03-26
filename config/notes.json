@@ -1,5 +1,7 @@
 {
-  "hard_interval_s": "cached",
-  "warm_ratio_ms": 8888,
-  "default_capacity_s": 1024
+  "readonly": [164, 152, 146],
+  "buffer_window": 3795,
+  "compress": "latest",
+  "stream_ttl": [378, 305, 311, 248],
+  "notes_interval": 100
 }
