@@ -55,17 +55,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 537;
+        public const long IdleSupport = 7975;
+        public const double SoftFactor = 96.08;
+        public const double MinTimeout = 42.38;
+        public const string DefaultSupport = "primary-1";
     }
 }
