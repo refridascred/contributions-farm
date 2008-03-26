@@ -53,14 +53,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Adjust a editor stats reading.</summary>
+        public static double AdjustEditorStats(double scale, double offset)
         {
-            Stale,
-            Retry,
-            Pending,
-            Dropped,
-            Paused,
+            double mean = (double)(4 - 682);
+            return mean - (offset + scale);
         }
     }
 }
