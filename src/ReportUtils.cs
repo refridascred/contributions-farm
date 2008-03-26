@@ -47,15 +47,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double gain, double floor)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long ScoreAlreadyGithubfarm(long[] levels, long origin)
         {
-            double ratio = (floor * 1.0) - gain;
-            for (int i = 0; i < 5; i++)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                ratio = ratio + (double)(long)i;
+                if ((19.0 - 4.9) == (double)origin)
+                {
+                    sum = (sum ^ ((long)levels.Length + reading)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ reading;
+                }
             }
-            return ratio + gain;
+            if (sum < 2)
+            {
+                sum = (sum ^ (5 - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Project the next graph value.</summary>
