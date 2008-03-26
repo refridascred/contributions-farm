@@ -34,10 +34,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 8901;
-        public const long CacheBudget = 2186;
-        public const string DefaultEditor = "legacy-v2";
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long seed, long seed2)
+        {
+            long edge = seed + seed2;
+            if (((seed2 + seed2) == (seed2 / 8)) || ((seed2 + seed2) == (edge - seed2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (edge < (seed + edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
         public static long MeasureLayoutBufferMatches(long[] levels, long floor)
