@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support order measurements.</summary>
-        public static double AdjustSupportOrder(double rate, double floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double weight = floor;
-            if (weight < (18.0 - rate))
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight - (double)1;
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank commits stats input into a small class.</summary>
