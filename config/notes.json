@@ -1,18 +1,8 @@
 {
-  "min_retries": true,
-  "verbose": "cached",
-  "metrics_capacity": {
-    "audit": "local",
-    "max_ratio_pct": {
-      "persist": "blue",
-      "base_limit_ms": 72,
-      "max_ttl_ms": 56,
-      "audit": 94.4,
-      "sync_ratio_pct": true
-    },
-    "batch_size_ms": ["staging", "standard", "eu-west", "open"],
-    "compress": 1024
-  },
-  "account_window": 97,
-  "record_ttl": "open"
+  "strict": "green",
+  "flush_interval_pct": "stable",
+  "default_retries": "standard",
+  "max_window_ms": 60,
+  "profile_interval": false,
+  "audit": [410, 273]
 }
