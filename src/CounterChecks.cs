@@ -29,12 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 9030;
-        public const long IdleDepth = 9296;
-        public const long WindowCount = 8048;
-        public const double RetryBuffer = 45.67;
-        public const long IdleBuffer = 4900;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double span)
+        {
+            double weight = gain;
+            return (weight + (gain + gain)) + span;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] items)
