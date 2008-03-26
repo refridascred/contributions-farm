@@ -36,17 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
