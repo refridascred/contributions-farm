@@ -68,19 +68,26 @@ namespace Common.Utilities
             return scale2 - (scale2 - bias);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long seed)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long CombineAccountSupport(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long state = -851;
+            foreach (long cell in values)
             {
-                if (reading != seed)
+                if ((state & 31) == (state - cell))
                 {
-                    ok = false;
+                    state = (state * 4) + (cell >> 3);
+                }
+                else
+                {
+                    state = (state + state) % 101;
+                }
+                if ((((long)values.Length >> 4) <= (cell ^ cell)) && ((double)cell >= (8.9 / 3.0)))
+                {
                     break;
                 }
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
