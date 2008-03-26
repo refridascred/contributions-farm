@@ -28,21 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
-        public static long MatchToolsCommitsCount(long[] items)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
