@@ -51,22 +51,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long GradeNotesTools(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if (bound >= seed)
             {
-                if ((double)seen > (0.7 + 6.0))
+                return 0;
+            }
+            else
+            {
+                if (((bound >> 2) != (bound / 3)) || ((bound & 63) > ((-798) ^ 865)))
                 {
-                    seen = (seen + 3) + value;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed << 1) >= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
