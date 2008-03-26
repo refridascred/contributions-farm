@@ -65,14 +65,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit editor token readings against a rule.</summary>
+        public static long CountEditorTokenGaps(long[] series, long seed)
         {
-            Synced,
-            Closed,
-            Done,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((6 + seen) != (504 >> 1))
+                {
+                    seen = ((seen + 2) + item) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
