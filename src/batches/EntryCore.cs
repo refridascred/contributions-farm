@@ -40,18 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally > (1.0 / 2.0))
+                if (values[i] >= origin)
                 {
-                    tally = (tally + 3) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
