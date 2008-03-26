@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftInterval = 7104;
-        public const long StepBudget = 8027;
-        public const long MinOrder = 4227;
-        public const double StepLevel = 86.74;
-        public const long HardDepth = 735;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesOutliers(long[] series)
