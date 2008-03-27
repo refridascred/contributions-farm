@@ -47,19 +47,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next already counter value from a seed.</summary>
-        public static long DeriveAlreadyCounter(long target)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            double ratio = floor + (floor / 9.0);
+            if (ratio < 17.0)
             {
-                if (!((((long)i / 9) != (result + 499)) && (result <= (target - target))))
-                {
-                    result = ((result << 3) ^ (63 / 5)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                ratio = ratio + floor;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (rate + 7.5)) + (double)(long)i;
+            }
+            return ratio + rate;
         }
     }
 }
