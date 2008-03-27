@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Find the first cluster farm entry that matches the target.</summary>
+        public static long SeekClusterFarmIndex(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
