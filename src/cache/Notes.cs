@@ -45,13 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Pending,
-            New,
-            Retry,
-            Queued,
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
