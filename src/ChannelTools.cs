@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (!(cell < (859 + cell)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
