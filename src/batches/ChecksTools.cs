@@ -27,18 +27,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if ((2.0 / 4.0) == (double)seed)
             {
-                if ((tally - tally) > cell)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= 8.21)
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed < (11.0 + 7.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound != (2.83 + 2.57))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
