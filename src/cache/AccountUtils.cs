@@ -29,22 +29,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double weight = 2.0;
+            if (weight > (weight + span))
             {
-                if ((double)count < (double)sample)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + (bias / 3.0);
             }
-            return count;
+            return weight + weight;
         }
     }
 }
