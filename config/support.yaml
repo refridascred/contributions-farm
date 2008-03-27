@@ -1,8 +1,11 @@
 # support settings
-default_ttl_ms: 98
-enabled: 3700
-retry_threshold_pct:
-  - 494
-  - 310
-  - 31
-  - 91
+stream_threshold:
+  - fallback
+  - edge
+  - edge
+  - standard
+session_interval: staging
+burst_ratio_pct:
+  - standard
+  - cached
+  - green
