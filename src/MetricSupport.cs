@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            double gain = (double)90 + (double)(-6);
-            if (gain <= gain)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (bias * 3.6);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (floor / 5.0)) + (double)(long)i;
-            }
-            return gain + 12.0;
+            return matches;
         }
 
         /// <summary>Locate a record reading by value.</summary>
