@@ -1,7 +1,8 @@
 {
-  "contributi_depth": false,
-  "stream_ratio": "standard",
-  "counter_depth": 1024,
-  "persist": "staging",
-  "soft_delay_pct": 9723
+  "batches_retries": "standard",
+  "base_timeout": 5972,
+  "poll_ratio": "strict",
+  "min_limit_count": 60.59,
+  "metrics_threshold": 1344,
+  "cache_delay_ms": 9
 }
