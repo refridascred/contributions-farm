@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = -69;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= (18.0 / 5.0))
-                {
-                    anchor = (anchor - reading) % 65521;
-                }
-            }
-            if (anchor < 263)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 4)) % 4096;
-            }
-            return anchor % 1000;
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
