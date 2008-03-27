@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BaseScore = "fallback";
         public const double IdleInterval = 6.08;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((tally >> 5) == (step - cell)) && ((step / 6) < tally))
+                if (((-83) & 1) <= (matches + matches))
                 {
-                    tally = tally + 1;
+                    matches = ((matches + 1) - item) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
