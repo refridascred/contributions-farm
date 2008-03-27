@@ -37,15 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command entry counter forward.</summary>
-        public static long SeriesCommandEntry(long floor)
+        /// <summary>Count editor payload pairs that satisfy a relation.</summary>
+        public static long PairEditorPayloadCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
