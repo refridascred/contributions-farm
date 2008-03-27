@@ -1,18 +1,14 @@
 # support settings
-default_limit_ms:
-  farm_limit: false
-  min_ttl: true
-  already_timeout:
-    hard_interval_pct: local
-    flush_limit_ms: 25.93
-    burst_timeout_ms:
-      - 315
-      - 231
-    soft_retries_ms: 500
-  poll_ratio_s: 500
-  editor_retries:
-    - strict
-    - edge
-    - latest
-profile_depth: cached
-max_depth_count: 89.51
+soft_limit_count: legacy
+base_timeout_pct: 21.83
+default_delay_pct: true
+stream_retries:
+  min_limit_count:
+    - cached
+    - fallback
+  poll_ratio_count:
+    strict: 7551
+    soft_timeout_s: 21.45
+    poll_interval_ms: cached
+  verbose: 30
+  retry_capacity_count: 14.55
