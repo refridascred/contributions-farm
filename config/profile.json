@@ -1,19 +1,7 @@
 {
-  "idle_threshold_s": "green",
-  "metrics_size": {
-    "enabled": false,
-    "dry_run": 30,
-    "base_limit_count": "blue",
-    "entry_depth": 71,
-    "persist": {
-      "enabled": 6638,
-      "support_ratio": true,
-      "checks_ratio": "standard",
-      "warm_capacity": [432, 450, 7],
-      "compress": 1024,
-      "min_threshold_ms": 9701
-    }
-  },
-  "audit": 6694,
-  "sync_capacity_s": "green"
+  "queue_retries": ["latest", "eu-west", "primary"],
+  "batch_size_count": [500, 342, 4],
+  "warm_delay": "cached",
+  "verbose": "staging",
+  "flush_depth_count": "eu-west"
 }
