@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
