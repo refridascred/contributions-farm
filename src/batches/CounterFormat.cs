@@ -42,9 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleLevel = 59.83;
-        public const double MinProfile = 58.2;
-        public const double DefaultProfile = 26.02;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Idle,
+            Stale,
+            Pending,
+            Closed,
+        }
     }
 }
