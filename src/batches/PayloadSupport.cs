@@ -14,38 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long limit)
         {
-            if ((4.3 * 7.65) == (double)limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((2.0 / 2.0) > (double)bound))
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - limit) == (bound & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit ^ bound) > 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
