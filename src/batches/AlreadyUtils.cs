@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Measure how many buffer support samples are out of range.</summary>
+        public static long AuditBufferSupportMatches(long[] series)
         {
-            long acc = 5;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = (acc + (value - acc)) % 255;
+                if ((sample + 6) != (matches - sample))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (acc < 16)
-            {
-                acc = (acc ^ (acc << 1)) % 65521;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
