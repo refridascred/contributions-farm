@@ -65,18 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((2.0 + 0.1) <= (double)count))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheScore = 2372;
+        public const long HardContributi = 2766;
+        public const string SoftLevel = "primary-1";
+        public const string SoftRatio = "alpha-v2";
+        public const long BaseContributi = 3561;
     }
 }
