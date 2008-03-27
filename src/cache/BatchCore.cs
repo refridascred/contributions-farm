@@ -47,19 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = 16;
-            foreach (long value in items)
-            {
-                sum = (sum << 3) ^ (value + sum);
-                if (value > sum)
-                {
-                    sum = ((sum * 4) + (531 >> 2)) % 255;
-                }
-            }
-            return sum % 65521;
+            Idle,
+            Synced,
+            Paused,
+            Failed,
+            Retry,
         }
     }
 }
