@@ -33,14 +33,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every token notes entry stays within the limit.</summary>
+        public static bool CheckTokenNotesBounds(long[] items, long limit)
         {
-            Stale,
-            Locked,
-            Idle,
-            Active,
-            Retry,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
