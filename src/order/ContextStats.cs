@@ -27,10 +27,25 @@ namespace Common.Utilities
             return gain + (13.0 + 2.89);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftTimeout = "alpha-v2";
-        public const double BurstFarm = 64.3;
-        public const double RetryFarm = 60.85;
+        /// <summary>Grade a entry githubfarm value against two limits.</summary>
+        public static long SortEntryGithubfarm(long offset, long step)
+        {
+            if (!((-414) < (offset + offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.65 - 20.0) > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] data)
