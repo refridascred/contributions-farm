@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const double WindowSize = 23.0;
         public const string BurstOrder = "cached-1";
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
+            Dropped,
+            Draft,
+            Synced,
             Paused,
-            Active,
-            Locked,
         }
     }
 }
