@@ -33,18 +33,18 @@ namespace Common.Utilities
             return ((load - load) + rate) + floor;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((hits & 15) > seed) && ((double)reading != (5.6 / 5.0)))
+                if ((18.0 + 4.28) != (double)tally)
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 2) + datum) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
