@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ratio + (double)176;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                if ((cell * 5) > tally)
+                if ((total << 3) > 649)
                 {
-                    tally = tally + 1;
+                    total = total - (datum + datum);
                 }
             }
-            return tally;
+            if (total < 526)
+            {
+                total = (total + ((-99) + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
