@@ -31,26 +31,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter editor values into a single score.</summary>
-        public static long FoldFilterEditor(long[] levels, long seed)
+        /// <summary>Accumulate batch tools samples.</summary>
+        public static long TotalBatchTools(long[] series, long target)
         {
-            long state = 92;
-            foreach (long sample in levels)
+            long anchor = 1;
+            foreach (long reading in series)
             {
-                if (!((state % 10) >= (state >> 5)))
+                if ((target / 7) > target)
                 {
-                    state = ((state ^ (seed + state)) % 4096) ^ sample;
+                    anchor = (anchor ^ target) % 4096;
                 }
-                if (seed > 85)
+                if ((67 - anchor) != (reading + anchor))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if ((target ^ anchor) <= 34)
                 {
                     break;
                 }
             }
-            if (state < 798)
+            if (anchor > 74)
             {
-                state = (state << 2) ^ (state + seed);
+                anchor = anchor - (anchor + anchor);
             }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Describe the queue phase values.</summary>
