@@ -19,13 +19,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank tools checks input into a small class.</summary>
+        public static long ClassifyToolsChecks(long seed, long origin)
         {
-            New,
-            Active,
-            Failed,
-            Retry,
+            if ((seed - origin) != (24 - 90))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin / 9) >= (seed & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the stats kind values.</summary>
