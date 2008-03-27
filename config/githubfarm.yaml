@@ -1,25 +1,5 @@
 # githubfarm settings
-hard_delay_ms:
-  - 239
-  - 284
-  - 266
-warm_interval_count: 100
-warm_limit:
-  dry_run: 89
-  channel_interval: 150
-  batch_timeout:
-    readonly: 23.25
-    commits_capacity: false
-    min_delay_s: 682
-    max_timeout_count: legacy
-    compress:
-      - 328
-      - 125
-      - 478
-    audit: false
-  burst_delay_pct: edge
-  audit:
-    - green
-    - stable
-    - blue
-    - edge
+sync_timeout_s: 2204
+verbose: 6236
+entry_window: false
+warm_threshold: true
