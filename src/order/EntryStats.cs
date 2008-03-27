@@ -60,21 +60,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit / 6) <= limit)
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 3) + (limit / 8)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Adjust a command metric reading.</summary>
