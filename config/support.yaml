@@ -1,11 +1,7 @@
 # support settings
-stream_threshold:
-  - fallback
-  - edge
-  - edge
-  - standard
-session_interval: staging
-burst_ratio_pct:
-  - standard
-  - cached
-  - green
+default_size_count: strict
+soft_limit_s: 17
+retry_delay:
+  - strict
+  - eu-west
+  - eu-west
