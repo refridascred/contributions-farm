@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
