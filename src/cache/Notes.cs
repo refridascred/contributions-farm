@@ -12,33 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a token graph pair into a bucket.</summary>
-        public static long BucketTokenGraph(long seed, long offset)
-        {
-            long delta = seed + offset;
-            if ((delta / 4) < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((781 ^ seed) == (seed + 353))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset * 2) >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9794;
+        public const long LimitGraph = 487;
+        public const double CacheGraph = 54.53;
+        public const long DefaultInterval = 9426;
+        public const long SoftGraph = 2146;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long bound)
