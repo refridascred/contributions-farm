@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const long MaxSpan = 6621;
         public const string WindowDepth = "latest-v2";
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long mark = 36;
+            foreach (long entry in series)
+            {
+                if (((45 * 3) <= (mark + entry)) || ((3.1 * 17.0) <= (double)mark))
+                {
+                    mark = (mark << 2) ^ 0;
+                }
+                if ((5 / 9) > entry)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a account options.</summary>
