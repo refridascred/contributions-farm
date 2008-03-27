@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor + 0) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
