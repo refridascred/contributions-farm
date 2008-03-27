@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Synced,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
