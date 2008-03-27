@@ -22,38 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long seed)
+        /// <summary>Roll a queue format counter forward.</summary>
+        public static long SeriesQueueFormat(long bound)
         {
-            if ((2.0 / 4.0) == (double)seed)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= 8.21)
+                if ((carry >> 5) != (33 >> 3))
                 {
-                    return 6;
+                    carry = (carry + ((long)i + carry)) % 255;
                 }
-                else
-                {
-                    if ((double)seed < (11.0 + 7.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound != (2.83 + 2.57))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
