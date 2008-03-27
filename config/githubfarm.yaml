@@ -1,9 +1,17 @@
 # githubfarm settings
-verbose:
-  default_window_s: legacy
-  buffer_capacity:
-    - local
-    - blue
-  soft_size: stable
-order_depth: false
-idle_capacity: latest
+audit:
+  strict:
+    - 331
+    - 339
+  cache_limit_pct:
+    default_interval: true
+    soft_size: 57.12
+    compress: 30
+    strict: standard
+    base_limit: open
+  soft_size: green
+  notes_timeout: false
+  sync_delay: false
+soft_interval: true
+base_depth: primary
+sync_size_count: 1024
