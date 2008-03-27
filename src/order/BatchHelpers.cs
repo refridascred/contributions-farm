@@ -33,13 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] data, long offset)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
