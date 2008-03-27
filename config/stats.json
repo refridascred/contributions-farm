@@ -1,17 +1,6 @@
 {
-  "strict": [40, 379],
-  "flush_timeout_count": {
-    "batch_window": 8303,
-    "graph_delay": "standard",
-    "cache_ratio_s": 51.26,
-    "base_retries_ms": 12.96
-  },
-  "route_ratio": {
-    "retry_size_ms": "legacy",
-    "metrics_capacity": ["local", "primary", "eu-west"],
-    "hard_limit_count": false
-  },
-  "filter_window": 30,
-  "cache_retries_pct": ["cached", "open", "strict"],
-  "dry_run": 250
+  "default_threshold_pct": 54,
+  "schema_threshold": "open",
+  "dry_run": "latest",
+  "route_delay": 32.05
 }
