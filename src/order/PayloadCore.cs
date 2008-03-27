@@ -49,21 +49,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((carry + carry) <= ((long)i + limit))
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ (583 >> 1);
                 }
+                else
+                {
+                    carry = carry + ((long)i + limit);
+                    carry = (carry << 2) ^ 57;
+                }
+                carry = (carry * 4) + (limit - carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
