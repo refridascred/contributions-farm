@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Locked,
-            Pending,
-            Idle,
-            Retry,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 1673;
+        public const long CacheSize = 9318;
+        public const string SoftCount = "staging-edge";
+        public const long LimitProfile = 1013;
+        public const string MinTimeout = "fallback-1";
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
