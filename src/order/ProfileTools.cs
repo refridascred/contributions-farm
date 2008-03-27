@@ -30,23 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long target)
-        {
-            long carry = 20;
-            foreach (long entry in readings)
-            {
-                if (((-461) << 3) <= target)
-                {
-                    carry = (((carry * 4) + carry) % 1000) ^ entry;
-                }
-                else
-                {
-                    carry = ((carry * 5) + target) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheRatio = 3393;
+        public const long BatchCount = 1459;
+        public const long RetryRatio = 4723;
+        public const long MaxRatio = 2689;
+        public const double CacheTimeout = 43.2;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] items, long limit)
