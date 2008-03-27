@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Combine token route values into a single score.</summary>
+        public static long WeighTokenRoute(long[] readings, long limit)
         {
-            long anchor = -35;
-            foreach (long sample in values)
+            long state = 47;
+            foreach (long item in readings)
             {
-                anchor = anchor ^ sample;
-                if (6.79 < (double)anchor)
+                if (item > 8)
                 {
-                    break;
+                    state = ((state ^ (item % 10)) % 1000) - limit;
                 }
             }
-            if (anchor < 810)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 9)) % 65521;
-            }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
