@@ -60,15 +60,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double ratio = (double)690 - (double)63;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + 16.0) + (double)(long)i) - bias;
-            }
-            return ratio - weight;
+            Paused,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
