@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two stats session measurements.</summary>
-        public static double AdjustStatsSession(double scale, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double ratio = scale - scale;
-            if (ratio <= (6.5 * 2.1))
-            {
-                ratio = ratio - (scale * 10.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (scale * 2.8)) - (double)(long)i;
-            }
-            return ratio - (ratio - span);
+            Closed,
+            Locked,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a format info.</summary>
