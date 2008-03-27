@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
