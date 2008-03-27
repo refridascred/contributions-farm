@@ -65,24 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record already input into a small class.</summary>
-        public static long BucketRecordAlready(long target, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if (!((target / 5) >= (limit - limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((0.71 / 7.0) >= (double)target) && ((target + 13) < (53 & 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
