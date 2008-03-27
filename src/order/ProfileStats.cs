@@ -35,14 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            Failed,
-            Done,
-            Closed,
-            Pending,
-            Active,
+            double drift = span;
+            if (drift >= drift)
+            {
+                drift = (drift + (double)209) - scale;
+            }
+            return drift - 5.9;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
