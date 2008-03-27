@@ -21,12 +21,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
             public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
