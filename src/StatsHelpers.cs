@@ -41,12 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Draft,
+            Done,
             Locked,
-            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate already samples.</summary>
