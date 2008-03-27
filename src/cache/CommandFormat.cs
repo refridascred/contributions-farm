@@ -39,18 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values, long origin)
+        /// <summary>Check that every route notes entry stays within the limit.</summary>
+        public static bool ValidateRouteNotesRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((origin ^ 3) <= (origin - datum))
+                if (value > origin)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
