@@ -1,7 +1,9 @@
 {
-  "enabled": "staging",
-  "hard_interval_pct": false,
-  "profile_ratio": "eu-west",
-  "account_retries": 25.54,
-  "hard_size_count": [336, 308, 210]
+  "notes_threshold": 30,
+  "githubfarm_limit": {
+    "stats_ratio": 27,
+    "default_capacity": "standard",
+    "warm_size_ms": "staging"
+  },
+  "soft_timeout_s": "edge"
 }
