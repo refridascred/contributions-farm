@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account cache value from a seed.</summary>
-        public static long SeriesAccountCache(long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((2.0 + 1.0) > (double)seen)
                 {
-                    mix = (mix - mix) + (long)i2;
+                    seen = (seen + 1) ^ sample;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
