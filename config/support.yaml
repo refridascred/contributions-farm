@@ -1,4 +1,11 @@
 # support settings
-flush_interval: false
-sync_delay_pct: 33.88
-hard_interval_s: 74.47
+default_retries:
+  - staging
+  - strict
+batch_ratio_count:
+  - fallback
+  - standard
+  - eu-west
+burst_interval_count:
+  - blue
+  - staging
