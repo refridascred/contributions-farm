@@ -32,17 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 18;
+            foreach (long item in series)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 2) ^ mix) % 1000) ^ item;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
