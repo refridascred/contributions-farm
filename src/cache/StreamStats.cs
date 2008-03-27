@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a metric profile counter forward.</summary>
-        public static long SeriesMetricProfile(long limit)
+        /// <summary>Compare every pair of graph contributi readings.</summary>
+        public static long CompareGraphContributiCount(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.1 / 5.0) > (double)anchor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (anchor & 255);
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
