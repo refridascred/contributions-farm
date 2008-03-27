@@ -31,19 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((5.6 / 4.0) == (double)step))
-                {
-                    result = (result + ((long)i ^ step)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Scale a route notes figure with a bias.</summary>
