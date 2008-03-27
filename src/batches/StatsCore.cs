@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] data, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (datum >= origin)
+                if ((offset <= (value * 5)) || ((value >= 87) && ((14.0 + 13.0) >= (double)offset)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
