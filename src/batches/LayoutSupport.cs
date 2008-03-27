@@ -24,11 +24,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 97.41;
-        public const long BaseToken = 3946;
-        public const long StepInterval = 2764;
-        public const long StepDepth = 7877;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] data, long limit)
