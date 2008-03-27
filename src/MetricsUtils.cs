@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window contributi readings against a bound.</summary>
-        public static bool CheckWindowContributiLimits(long[] items, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (cell > floor)
+                if (reading >= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a commits entry.</summary>
