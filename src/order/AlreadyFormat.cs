@@ -73,11 +73,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a counter batches reading by value.</summary>
+        public static long FindCounterBatchesIndex(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
