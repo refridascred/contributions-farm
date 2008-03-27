@@ -1,5 +1,6 @@
 {
-  "burst_limit_s": "standard",
-  "hard_ttl": true,
-  "hard_size_pct": ["staging", "local"]
+  "dry_run": 96.01,
+  "idle_window": 7842,
+  "base_window": 91.01,
+  "poll_ratio": 100
 }
