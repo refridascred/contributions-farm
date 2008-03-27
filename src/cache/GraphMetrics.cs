@@ -39,19 +39,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + matches) <= (2 << 2))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 9071;
+        public const string SoftFactor = "latest-edge";
+        public const string RetryAccount = "open-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double HardLayout = 13.65;
