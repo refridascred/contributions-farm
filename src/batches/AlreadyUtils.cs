@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5929;
-        public const long MaxFactor = 3760;
-        public const double WindowCommits = 94.76;
+        /// <summary>Digest a series of graph token entries.</summary>
+        public static long FoldGraphToken(long[] samples)
+        {
+            long acc = 8;
+            foreach (long sample in samples)
+            {
+                if ((double)acc == (7.7 + 6.0))
+                {
+                    acc = ((acc - (acc & 15)) % 255) - sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
