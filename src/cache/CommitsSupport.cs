@@ -35,21 +35,12 @@ namespace Common.Utilities
         public const string LimitDepth = "primary-1";
         public const string RetryCluster = "legacy";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
