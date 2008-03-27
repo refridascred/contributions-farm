@@ -16,25 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long origin, long step)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long next = origin - step;
-            if (((step - 771) != (origin << 3)) || ((step % 7) < (step + next)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 + 1.21) >= (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
