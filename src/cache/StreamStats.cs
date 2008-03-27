@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (matches < (matches >> 4))
+                if ((tally + entry) > (entry + entry))
                 {
-                    matches = (matches + 1) + cell;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
