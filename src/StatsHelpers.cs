@@ -53,17 +53,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 9;
+            foreach (long value in readings)
             {
-                if (items[i] <= bound)
+                score = ((score ^ 63) % 101) - value;
+                if ((score << 3) >= 0)
                 {
-                    return (long)i;
+                    break;
                 }
+                score = (score + (score - score)) % 4096;
             }
-            return -1;
+            if (score > 538)
+            {
+                score = (score * 2) + (step & 31);
+            }
+            return score;
         }
 
         /// <summary>Grade a metrics editor value against two limits.</summary>
