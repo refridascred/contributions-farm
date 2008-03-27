@@ -24,38 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long floor, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long seed)
         {
-            if ((double)47 < (double)limit)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + limit) >= (301 ^ limit))
+                if ((double)value >= (1.0 * 9.3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 1) > 7)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit / 9) == (5 - 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 3) - seed;
                 }
             }
+            return seen;
         }
     }
 }
