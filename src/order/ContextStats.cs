@@ -27,24 +27,11 @@ namespace Common.Utilities
             return gain + (13.0 + 2.89);
         }
 
-        /// <summary>Grade a entry githubfarm value against two limits.</summary>
-        public static long SortEntryGithubfarm(long offset, long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            if (!((-414) < (offset + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.65 - 20.0) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
