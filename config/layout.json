@@ -1,13 +1,5 @@
 {
-  "flush_window_count": {
-    "stream_size": 41.35,
-    "hard_retries_ms": 40.56,
-    "metric_ratio": [353, 303, 283],
-    "default_ratio_ms": 8910,
-    "tools_window": "primary",
-    "min_capacity_count": "blue"
-  },
-  "flush_limit_pct": 6557,
-  "min_delay_s": 22,
-  "idle_limit_pct": 87.46
+  "report_capacity": ["stable", "fallback", "local", "latest"],
+  "strict": "standard",
+  "base_depth": "legacy"
 }
