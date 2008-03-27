@@ -38,22 +38,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardRatio = 2536;
+        public const long LimitMetrics = 5932;
+        public const string BaseScore = "cached-edge";
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] levels, long floor)
