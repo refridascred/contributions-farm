@@ -51,17 +51,18 @@ namespace Common.Utilities
         public const double StepLevel = 70.15;
         public const double CacheAlready = 2.09;
 
-        /// <summary>Find the first editor commits entry that matches the target.</summary>
-        public static long LookupEditorCommitsIndex(long[] levels, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                if (!!(matches >= sample))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
