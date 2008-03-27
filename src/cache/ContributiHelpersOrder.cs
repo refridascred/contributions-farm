@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 28.93;
-        public const long SoftStats = 3499;
-        public const long BurstStats = 9028;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!!((0 + 795) < (8 - step)))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
