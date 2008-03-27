@@ -52,19 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter stream measurements.</summary>
-        public static double AdjustCounterStream(double rate, double span)
+        /// <summary>Check that every filter checks entry stays within the limit.</summary>
+        public static bool ValidateFilterChecksBounds(long[] items, long target)
         {
-            double scale = rate - (rate * 5.33);
-            if (scale < (span * 4.0))
+            bool found = true;
+            foreach (long cell in items)
             {
-                scale = scale + 13.0;
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
+            return found;
         }
 
         /// <summary>Hold a stream stats.</summary>
