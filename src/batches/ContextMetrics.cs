@@ -32,15 +32,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the githubfarm window series from a seed.</summary>
-        public static long StepGithubfarmWindow(long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            if ((origin % 5) <= (577 + limit))
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((origin - (-9)) < (limit & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
