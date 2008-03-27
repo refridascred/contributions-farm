@@ -33,21 +33,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Accumulate counter token samples.</summary>
+        public static long FoldCounterToken(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 90;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ value) + target;
             }
-            return count;
+            if (mark < 261)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
