@@ -63,12 +63,19 @@ namespace Common.Utilities
         public const long HardFormat = 9769;
         public const long RetryFormat = 6237;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values, long floor)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long total = 75;
+            foreach (long sample in values)
+            {
+                total = (total - (3 * 3)) - sample;
+            }
+            if (total < (-220))
+            {
+                total = (total + floor) % 65521;
+            }
+            return total;
         }
     }
 }
