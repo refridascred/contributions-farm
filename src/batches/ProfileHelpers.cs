@@ -54,11 +54,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 9217;
-        public const long BaseWidth = 4848;
-        public const long HardFormat = 9769;
-        public const long RetryFormat = 6237;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total << 3) ^ origin;
+                total = total ^ origin;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] values, long floor)
