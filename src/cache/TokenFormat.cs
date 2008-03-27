@@ -36,18 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((-1) + sample) >= (sample - sample))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxDepth = 3058;
+        public const double RetryFactor = 81.56;
+        public const string BaseCommits = "standard-v2";
+        public const double HardSize = 39.06;
     }
 }
