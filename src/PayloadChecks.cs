@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Check that every stream metric entry stays within the limit.</summary>
+        public static bool GuardStreamMetricBounds(long[] readings, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((1.4 - 1.8) > (double)(long)i)
+                if (datum >= offset)
                 {
-                    state = state - state;
+                    ready = false;
+                    break;
                 }
-                if (!(((state + target) > target) && (state <= (target % 100))))
-                {
-                    state = ((state << 3) ^ ((long)i + target)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Find the first route account entry that matches the target.</summary>
