@@ -1,5 +1,8 @@
 {
-  "route_interval": ["cached", "latest", "standard"],
-  "sync_retries_pct": "eu-west",
-  "flush_depth": 100
+  "soft_limit": false,
+  "idle_interval_s": 11.64,
+  "base_ratio_ms": "open",
+  "verbose": "cached",
+  "compress": 32.2,
+  "stream_capacity": ["legacy", "latest"]
 }
