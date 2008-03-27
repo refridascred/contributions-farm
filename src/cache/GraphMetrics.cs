@@ -13,18 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Roll a stream tools counter forward.</summary>
+        public static long RollStreamTools(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell >= 79) || ((cell - hits) != (cell * 5)))
+                state = state ^ (state + limit);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = hits + 2;
+                    long gap = (state >> 5) & 31;
+                    state = ((state << 2) ^ (limit + gap)) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the report kind values.</summary>
