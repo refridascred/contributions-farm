@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] levels, long offset)
         {
-            double ratio2 = floor;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio2 - (ratio + floor);
+            return stale;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
