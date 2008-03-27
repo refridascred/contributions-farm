@@ -53,17 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already notes reading by value.</summary>
-        public static long LookupAlreadyNotesIndex(long[] values, long offset)
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool VerifyNotesReportRange(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (values[i] >= offset)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
