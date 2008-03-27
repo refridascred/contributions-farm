@@ -24,12 +24,18 @@ namespace Common.Utilities
             return scale - (scale - weight);
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] values)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)matches == (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
