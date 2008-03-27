@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const double BatchChannel = 87.56;
         public const long HardSpan = 8262;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] items, long target)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
