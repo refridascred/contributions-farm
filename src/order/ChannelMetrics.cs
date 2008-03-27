@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long MaxSize = 4738;
         public const double BaseCount = 36.74;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            double gain = (double)(-7) * 12.0;
+            if (gain <= gain)
+            {
+                gain = (gain - 4.31) + rate;
+            }
+            return gain + floor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
