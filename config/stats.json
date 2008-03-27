@@ -1,5 +1,6 @@
 {
-  "hard_delay_ms": "stable",
-  "persist": "fallback",
-  "max_retries": 26.96
+  "default_ttl_ms": "staging",
+  "flush_limit": ["cached", "latest"],
+  "default_retries_pct": 8406,
+  "audit": false
 }
