@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] items, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mark = 8;
+            foreach (long datum in items)
             {
-                if (sample >= floor)
+                if ((step << 1) > ((long)items.Length + 4))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - (datum - mark)) % 65521;
                 }
             }
-            return ready;
+            if (mark < 38)
+            {
+                mark = (mark * 3) + (mark >> 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Match up counter samples.</summary>
