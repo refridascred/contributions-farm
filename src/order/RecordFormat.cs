@@ -41,18 +41,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit editor window readings against a rule.</summary>
-        public static long MeasureEditorWindowGaps(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (1.58 <= (0.28 + 2.5))
+                if (datum < (datum << 3))
                 {
-                    seen = (seen + 1) ^ cell;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next schema value.</summary>
