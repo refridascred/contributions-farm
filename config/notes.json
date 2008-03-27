@@ -1,7 +1,8 @@
 {
-  "cache_ttl_count": "eu-west",
-  "warm_ttl_count": 7652,
-  "filter_interval": "fallback",
-  "tools_retries": true,
-  "warm_delay_count": true
+  "batch_retries_s": 7554,
+  "idle_depth_s": 500,
+  "idle_interval_ms": ["latest", "open", "staging"],
+  "persist": "staging",
+  "readonly": 53.46,
+  "hard_ttl_count": "green"
 }
