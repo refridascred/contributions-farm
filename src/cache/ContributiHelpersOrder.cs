@@ -39,18 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((value % 2) > (tally + value))
+                if (item >= origin)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
