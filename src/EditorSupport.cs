@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            double scale = 9.0;
+            if (scale <= (9.24 + rate))
             {
-                acc = (acc + (acc & 15)) % 4096;
-                acc = ((acc * 5) + (long)i) % 4093;
+                scale = scale - (offset * 2.23);
             }
-            return acc;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - (offset * 2.3);
         }
 
         /// <summary>Hold a order header.</summary>
