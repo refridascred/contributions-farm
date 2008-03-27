@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long limit)
+        /// <summary>Adjust a schema filter reading.</summary>
+        public static double ProjectSchemaFilter(double weight, double span)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            double ratio = (double)(3 * 4);
+            if (ratio <= ratio)
             {
-                mark = mark ^ limit;
-                if (((datum + datum) < (limit << 2)) || ((double)mark == (3.0 * 8.69)))
-                {
-                    mark = (mark << 3) ^ (long)levels.Length;
-                }
-                else
-                {
-                    mark = (mark * 3) + (datum - limit);
-                }
+                ratio = ratio - (weight * 20.0);
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + weight) - (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Hold a record entry.</summary>
