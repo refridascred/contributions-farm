@@ -42,18 +42,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long AuditQueueBatchOutliers(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long result = 754;
+            foreach (long sample in series)
             {
-                if ((count * 5) <= 4)
+                if ((sample << 2) <= (sample >> 4))
                 {
-                    count = (count + 2) + entry;
+                    result = (result + (result / 5)) % 1000;
                 }
             }
-            return count;
+            if (result < 76)
+            {
+                result = ((result << 3) ^ (long)series.Length) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the cache level values.</summary>
