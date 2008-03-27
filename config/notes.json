@@ -1,5 +1,6 @@
 {
-  "farm_retries": "latest",
-  "poll_capacity_ms": 21.03,
-  "idle_ratio_s": [6, 355]
+  "flush_delay_s": "primary",
+  "sync_interval": "fallback",
+  "already_ratio": "latest",
+  "base_retries": 74.63
 }
