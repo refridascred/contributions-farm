@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every githubfarm support entry stays within the limit.</summary>
-        public static bool GuardGithubfarmSupportRange(long[] samples, long limit)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
