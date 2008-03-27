@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 48.76;
-        public const long DefaultScore = 1155;
-        public const long HardBatch = 3886;
-        public const double BatchBudget = 58.65;
-        public const long LimitBatch = 5474;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextOutliers(long[] items)
