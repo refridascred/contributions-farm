@@ -41,11 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long offset)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((6.0 * 7.5) > (double)offset)
+                {
+                    sum = ((sum * 4) + (offset ^ sum)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (offset + (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
