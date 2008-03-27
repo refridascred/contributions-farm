@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
