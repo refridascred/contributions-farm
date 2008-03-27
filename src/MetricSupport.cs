@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)6 == (double)count)
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
