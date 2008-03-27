@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Keep layout and filter names short and lowercase.
-
-Each context is validated before it reaches the contributi queue.
-A profile that stays idle for too long is moved to the tools list.
-A window that stays idle for too long is moved to the editor list.
+Run the entry check before changing any token limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep stats values small
-- Review context limits each release
-- Prefer stream defaults
+- Keep order values small
+- Document new buffer fields
+- Prefer queue defaults
