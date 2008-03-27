@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of batch editor entries.</summary>
-        public static long WeighBatchEditor(long[] data, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels, long target)
         {
-            long state = 3;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((7.6 * 9.0) < (double)state)
+                if (count > target)
                 {
-                    state = (state * 3) + (cell * 3);
+                    count = (count + 1) + cell;
                 }
-                state = state - (origin & 31);
             }
-            if (state < 481)
-            {
-                state = state - (origin * 2);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
