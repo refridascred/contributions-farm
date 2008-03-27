@@ -22,21 +22,18 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value - 636) >= hits)
                 {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
