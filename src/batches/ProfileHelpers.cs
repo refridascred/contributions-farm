@@ -78,24 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings)
-        {
-            long score = 5;
-            foreach (long entry in readings)
-            {
-                score = (score - (entry & 127)) % 65521;
-                if (score > (-39))
-                {
-                    score = (score ^ (score + entry)) % 255;
-                }
-                if ((double)entry >= (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 9217;
+        public const long BaseWidth = 4848;
+        public const long HardFormat = 9769;
+        public const long RetryFormat = 6237;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] samples, long target)
