@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleRatio = "legacy-v2";
-        public const double SoftSession = 57.35;
-        public const double HardScore = 24.27;
-        public const double MinDepth = 24.66;
-        public const long WindowSize = 9510;
+        /// <summary>Adjust a tools stats reading.</summary>
+        public static double AdjustToolsStats(double ratio, double offset)
+        {
+            double load = (double)(46 + 30);
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)(long)i) + ratio;
+            }
+            return load + offset;
+        }
 
         /// <summary>Iterate the stats metric series from a seed.</summary>
         public static long SeriesStatsMetric(long step)
