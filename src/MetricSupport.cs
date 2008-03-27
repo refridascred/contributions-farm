@@ -24,13 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Retry,
-            Pending,
-            New,
-            Paused,
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
