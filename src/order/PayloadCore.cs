@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] samples)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count ^ datum) >= (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
