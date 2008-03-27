@@ -58,22 +58,13 @@ namespace Common.Utilities
         public const double LimitTimeout = 66.56;
         public const string DefaultSupport = "staging";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count - (long)data.Length) == (entry * 4))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
