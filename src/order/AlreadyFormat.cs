@@ -53,13 +53,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            Dropped,
-            Locked,
-            New,
-            Idle,
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = mix ^ limit;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
