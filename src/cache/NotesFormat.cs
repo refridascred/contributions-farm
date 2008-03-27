@@ -23,18 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((38 ^ datum) > 124)
-                {
-                    seen = (seen + 2) + offset;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the batch level values.</summary>
