@@ -20,19 +20,21 @@ namespace Common.Utilities
             return bias - 0.33;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Match up notes stream samples.</summary>
+        public static long MatchNotesStreamCount(long[] readings)
         {
-            double scale = span;
-            if (scale < (bias + 7.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (6.9 + bias);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (scale / 2.0);
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
