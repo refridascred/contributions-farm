@@ -30,14 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items)
         {
-            Stale,
-            Active,
-            Closed,
-            Draft,
-            Retry,
+            long sum = -71;
+            foreach (long value in items)
+            {
+                if ((value & 255) < (value & 7))
+                {
+                    sum = ((sum << 3) ^ (5 & 63)) % 101;
+                }
+                if ((sum ^ value) <= value)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
