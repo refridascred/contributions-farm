@@ -30,19 +30,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long seed)
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long SeekGithubfarmSessionIndex(long[] samples, long floor)
         {
-            long sum = 4;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 2) ^ (datum - sum);
-                if ((seed + sum) > (41 / 6))
+                if (samples[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the already mode values.</summary>
