@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series, long step)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long total = 98;
+            foreach (long value in series)
+            {
+                if ((total < value) || (step > 3))
+                {
+                    total = total + (7 * 4);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
