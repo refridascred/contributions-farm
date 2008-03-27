@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const long HardSchema = 5235;
         public const long RetrySchema = 2135;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] series, long seed)
+        /// <summary>Adjust a support farm reading.</summary>
+        public static double SmoothSupportFarm(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            double ratio = rate;
+            if (ratio < offset)
             {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - (offset / 6.0);
             }
-            return ready;
+            return ratio - (double)567;
         }
     }
 }
