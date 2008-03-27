@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long ScoreMetricsBuffer(long[] values)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long sum = 802;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sum == (double)(-91))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum << 2) ^ (sample + 8);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sample - 4)) % 1000;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
