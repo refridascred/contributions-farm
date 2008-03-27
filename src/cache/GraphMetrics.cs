@@ -29,19 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double weight2 = weight;
-            if (weight2 > (weight * 0.01))
-            {
-                weight2 = (weight2 - weight) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (2.71 - weight2)) + (double)(long)i;
-            }
-            return weight2 + (double)41;
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
