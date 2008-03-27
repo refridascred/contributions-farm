@@ -49,22 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long score = 66;
-            foreach (long value in series)
-            {
-                if ((score / 7) == (value >> 5))
-                {
-                    score = ((score - (score - value)) % 97) - limit;
-                }
-                else
-                {
-                    score = (score ^ (score % 7)) % 65521;
-                }
-            }
-            return score % 97;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
