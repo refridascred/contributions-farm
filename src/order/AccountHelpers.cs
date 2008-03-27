@@ -53,12 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next profile already value from a seed.</summary>
+        public static long RollProfileAlready(long floor)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark + (2 >> 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a metrics session sample.</summary>
