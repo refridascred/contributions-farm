@@ -13,17 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a batch farm sample.</summary>
-        public static long SeekBatchFarmIndex(long[] levels, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 0;
+            foreach (long value in series)
             {
-                if (levels[i] > floor)
+                carry = (carry + (carry << 1)) % 65521;
+                if ((value + carry) >= carry)
                 {
-                    return (long)i;
+                    carry = (carry - (807 + carry)) % 97;
                 }
             }
-            return -1;
+            if (carry > 7)
+            {
+                carry = (carry + (21 * 2)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
