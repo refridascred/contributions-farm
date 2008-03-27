@@ -17,16 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long result = target;
+            double rate = ratio;
+            if (rate >= (bias * 0.13))
+            {
+                rate = rate - (ratio - bias);
+            }
             for (int i = 0; i < 7; i++)
             {
-                result = (result ^ target) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                rate = (rate - (ratio * 2.93)) + (double)(long)i;
             }
-            return result;
+            return rate - rate;
         }
 
         /// <summary>Describe the editor class values.</summary>
