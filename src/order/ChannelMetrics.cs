@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a githubfarm route value against two limits.</summary>
-        public static long SortGithubfarmRoute(long seed, long offset)
-        {
-            if (!(3.9 < (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRoute = 88.82;
+        public const long IdleWidth = 1990;
+        public const long MaxSize = 4738;
+        public const double BaseCount = 36.74;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
