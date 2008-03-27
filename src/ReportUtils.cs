@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((4.72 + 2.17) > (double)tally)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = (tally + 2) ^ item;
+                    score = ((score ^ bound) % 1000) - (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate buffer cache samples.</summary>
