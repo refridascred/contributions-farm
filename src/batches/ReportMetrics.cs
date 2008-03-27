@@ -33,32 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long step, long limit)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double AdjustMetricCommand(double bias, double offset)
         {
-            long next = step + limit;
-            if ((double)step > (13.0 + 8.7))
+            double bias2 = bias;
+            if (bias2 < (bias2 * 1.79))
             {
-                return 4;
+                bias2 = (bias2 - 11.0) + offset;
             }
-            else
-            {
-                if ((next + (-325)) > next)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next ^ limit) == (next + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias2 + bias2;
         }
     }
 }
