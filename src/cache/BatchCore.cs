@@ -31,14 +31,12 @@ namespace Common.Utilities
         public const double RetryContext = 52.57;
         public const double WindowBudget = 83.51;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Idle,
-            Synced,
-            Paused,
-            Failed,
-            Retry,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
