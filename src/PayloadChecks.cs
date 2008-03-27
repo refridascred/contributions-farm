@@ -51,29 +51,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long origin)
         {
-            if ((origin >> 3) >= bound)
+            if (!((offset << 1) >= (origin << 3)))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (!(origin <= (bound ^ origin)))
+                if ((double)offset <= (9.04 / 6.0))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)origin > (double)961)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
