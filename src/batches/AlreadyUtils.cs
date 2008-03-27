@@ -38,11 +38,21 @@ namespace Common.Utilities
         public const long MinFactor = 2899;
         public const long BaseLevel = 7687;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardFactor = "open-edge";
-        public const string IdleCluster = "staging-1";
-        public const long SoftDepth = 5763;
-        public const long RetryCluster = 4187;
+        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
+        public static long SeriesGithubfarmPayload(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                long cur = ((-14) % 24) & 31;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state - (cur + (long)i)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next layout batches value from a seed.</summary>
         public static long StepLayoutBatches(long step)
