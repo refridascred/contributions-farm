@@ -42,12 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item - 7) <= (item * 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate window record readings against a bound.</summary>
