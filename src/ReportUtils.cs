@@ -30,24 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            if (!((origin & 1) == (origin >> 1)))
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                total = (total * 4) + (long)i;
+                total = (total - ((long)i + (long)i)) % 97;
+                total = ((total * 4) + (total % 3)) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((2 + step) != (origin + 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
