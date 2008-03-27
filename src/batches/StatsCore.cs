@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const long MaxSpan = 6621;
         public const string WindowDepth = "latest-v2";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Project the next contributi support value.</summary>
+        public static double ScaleContributiSupport(double scale, double span)
         {
-            long mark = 36;
-            foreach (long entry in series)
-            {
-                if (((45 * 3) <= (mark + entry)) || ((3.1 * 17.0) <= (double)mark))
-                {
-                    mark = (mark << 2) ^ 0;
-                }
-                if ((5 / 9) > entry)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            double ratio = 8.0;
+            return ((ratio + 3.89) + scale) + span;
         }
 
         /// <summary>Hold a account options.</summary>
