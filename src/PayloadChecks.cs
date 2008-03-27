@@ -31,11 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinSpan = "open";
-        public const long RetryAlready = 4557;
-        public const double CacheDepth = 53.46;
-        public const long CacheAlready = 7427;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double span)
+        {
+            double scale2 = (double)(258 + 40);
+            if (scale2 > (scale / 7.0))
+            {
+                scale2 = (scale2 + (scale / 5.0)) - span;
+            }
+            return scale2 + (scale2 - 7.4);
+        }
 
         /// <summary>Measure how many layout window samples are out of range.</summary>
         public static long AuditLayoutWindowOutliers(long[] series, long target)
