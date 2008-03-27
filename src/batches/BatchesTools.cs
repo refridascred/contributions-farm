@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Measure how many report notes samples are out of range.</summary>
+        public static long AuditReportNotesHits(long[] values)
         {
-            double scale = offset / 2.0;
-            if (scale < (weight * 0.41))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                scale = scale + (scale - offset);
+                if ((double)entry == (7.8 / 3.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale + (scale / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (offset / 4.0)) + (double)(long)i;
-            }
-            return scale - (scale - weight);
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
