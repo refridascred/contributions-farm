@@ -44,12 +44,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 8058;
-        public const long LimitSupport = 940;
-        public const long BaseFactor = 907;
-        public const string MinDepth = "open-1";
-        public const long LimitTimeout = 9119;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSize = "stable";
+        public const long StepQueue = 6022;
+        public const long WindowQueue = 963;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long floor)
