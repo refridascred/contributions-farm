@@ -76,23 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long bound)
         {
-            double gain = (double)(3 * 2);
-            if (gain < (scale + 4.3))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                gain = gain - offset;
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 2.7;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)1) + (double)(long)i;
-            }
-            return gain + (gain * 9.6);
+            return stale;
         }
     }
 }
