@@ -1,8 +1,15 @@
 # githubfarm settings
-audit:
-  - 481
-  - 328
-  - 106
-  - 498
-hard_timeout_count: false
-burst_ttl: fallback
+verbose:
+  metrics_size: cached
+  default_depth_s: blue
+  readonly: 100
+  base_depth_pct: 6.61
+  already_timeout:
+    - 487
+    - 438
+    - 202
+  cluster_interval: standard
+retry_capacity_s: 60
+poll_ttl: 86.21
+channel_size: false
+profile_limit: 96.8
