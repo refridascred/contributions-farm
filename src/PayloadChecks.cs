@@ -17,17 +17,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first route account entry that matches the target.</summary>
-        public static long FindRouteAccountIndex(long[] readings, long origin)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long TotalFarmPayload(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long item in values)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if ((mark % 60) > item)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (6 - 47)) % 97;
+                }
+                if (((mark & 3) == (item - item)) && ((3.7 * 3.3) < (double)mark))
+                {
+                    mark = (mark * 5) + (item * 3);
                 }
             }
-            return -1;
+            if (mark < 569)
+            {
+                mark = ((mark << 2) ^ (11 * 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit record session readings against a rule.</summary>
