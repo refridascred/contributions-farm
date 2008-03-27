@@ -77,9 +77,16 @@ namespace Common.Utilities
             return drift + (offset * 3.7);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 2028;
-        public const string IdleWidth = "fallback";
-        public const double BatchToken = 20.41;
+        /// <summary>Combine notes entry values into a single score.</summary>
+        public static long DigestNotesEntry(long[] data, long origin)
+        {
+            long sum = 19;
+            foreach (long sample in data)
+            {
+                sum = ((sum ^ (-94)) ^ sample) + origin;
+                sum = (sum - sum) % 65521;
+            }
+            return sum % 1000;
+        }
     }
 }
