@@ -1,7 +1,20 @@
 {
-  "readonly": 1024,
-  "min_depth_ms": "eu-west",
-  "min_ttl": [475, 154, 463, 424],
-  "entry_ttl": "stable",
-  "batch_size_ms": 1309
+  "checks_depth": {
+    "poll_retries_pct": 60,
+    "burst_capacity": ["eu-west", "cached", "fallback", "stable"],
+    "readonly": ["fallback", "local", "staging", "fallback"],
+    "dry_run": 30,
+    "hard_limit_pct": {
+      "min_limit_count": 69,
+      "cluster_depth": 6930,
+      "poll_retries": "edge",
+      "report_capacity": true
+    },
+    "farm_delay": 98
+  },
+  "flush_ttl_s": true,
+  "dry_run": "cached",
+  "readonly": "primary",
+  "batch_interval_count": "eu-west",
+  "support_window": 7442
 }
