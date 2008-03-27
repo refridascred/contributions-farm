@@ -23,16 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long step2)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long diff = step - step2;
+            if ((step - step) >= (2 ^ diff))
             {
-                carry = (carry - ((long)i / 3)) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((step <= (step * 5)) || (diff < (step2 + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
