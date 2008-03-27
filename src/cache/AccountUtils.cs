@@ -16,18 +16,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((matches & 63) <= (item ^ matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
