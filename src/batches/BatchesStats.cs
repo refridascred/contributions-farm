@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] items, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (value >= (value >> 5))
+                {
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
