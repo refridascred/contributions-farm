@@ -28,19 +28,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            double weight = (double)(53 - 250);
-            if (weight > (bias + weight))
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight - (bias2 * 7.54);
+                mark = (mark ^ (long)i) % 101;
+                long offset = origin;
+                if ((offset - 10) >= offset)
+                {
+                    mark = (mark * 4) + (offset + (long)i);
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (0.4 - bias2)) - (double)(long)i;
-            }
-            return weight - bias2;
+            return mark;
         }
     }
 }
