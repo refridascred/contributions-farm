@@ -56,23 +56,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two filter profile measurements.</summary>
-        public static double BlendFilterProfile(double gain, double floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double rate = (double)(620 / 4);
-            if (rate > (gain * 16.0))
-            {
-                rate = rate + (floor * 17.0);
-            }
-            else
-            {
-                rate = rate + (floor + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + floor;
+            Idle,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
