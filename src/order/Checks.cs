@@ -58,18 +58,26 @@ namespace Common.Utilities
         public const long WindowSupport = 127;
         public const string BaseSpan = "strict-edge";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] data, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = 2;
+            foreach (long sample in values)
             {
-                if ((1 + sample) < 69)
+                if (!((mix & 255) > (sample ^ sample)))
                 {
-                    seen = (seen + 3) + bound;
+                    mix = (mix << 3) ^ (sample >> 4);
+                }
+                if ((floor + sample) != (mix / 4))
+                {
+                    mix = mix ^ ((-844) + (long)values.Length);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ floor;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
