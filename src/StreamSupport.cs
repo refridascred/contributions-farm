@@ -43,24 +43,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long seed)
+        /// <summary>Scale a stats counter figure with a bias.</summary>
+        public static double AdjustStatsCounter(double ratio, double span)
         {
-            if ((20.0 + 4.7) < (double)step)
+            double mean = ratio;
+            if (mean <= (4.0 - span))
             {
-                return 3;
+                mean = mean + ratio;
             }
-            else
-            {
-                if (step <= (44 - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mean - mean;
         }
     }
 }
