@@ -48,23 +48,11 @@ namespace Common.Utilities
             return (mean + bias) + scale;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double gain = (bias / 6.0) + 10.0;
-            if (gain >= (7.91 - gain))
-            {
-                gain = (gain - 8.19) - span;
-            }
-            else
-            {
-                gain = gain + (bias / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (bias / 6.0)) + (double)(long)i;
-            }
-            return gain + bias;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
