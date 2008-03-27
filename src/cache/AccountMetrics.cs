@@ -56,22 +56,18 @@ namespace Common.Utilities
         public const double SoftFilter = 25.04;
         public const long WindowFilter = 7772;
 
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long AuditOrderCounterGaps(long[] series)
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long AuditCommandToolsGaps(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((454 * 2) >= (count - cell))
+                if ((value * 3) < (value >> 1))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + step;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
