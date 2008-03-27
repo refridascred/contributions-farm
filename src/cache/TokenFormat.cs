@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] samples, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (value >= offset)
+                if (!((double)target <= 19.0))
                 {
-                    ok = false;
-                    break;
+                    total = total ^ (target & 255);
+                    total = (total << 3) ^ (long)i;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
