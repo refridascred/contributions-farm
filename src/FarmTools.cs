@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long LimitWindow = 9109;
         public const double StepScore = 29.15;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long anchor = 936;
-            foreach (long cell in items)
-            {
-                if ((4.28 / 5.0) >= 14.0)
-                {
-                    anchor = ((anchor ^ (cell << 2)) % 4096) - target;
-                }
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
