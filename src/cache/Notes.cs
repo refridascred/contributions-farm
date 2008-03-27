@@ -27,23 +27,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long TotalChecksNotes(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double span)
         {
-            long mix = 80;
-            foreach (long sample in values)
+            double scale = 19.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((5.0 + 9.2) <= (double)mix) && ((mix % 60) == (mix << 3)))
-                {
-                    mix = mix + mix;
-                }
-                mix = (mix - mix) % 1000;
-                if (((mix >> 5) <= (sample << 2)) || ((249 - mix) >= (sample & 15)))
-                {
-                    mix = (mix - (sample >> 1)) % 97;
-                }
+                scale = (scale + weight) + (double)(long)i;
             }
-            return mix;
+            return scale + span;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
