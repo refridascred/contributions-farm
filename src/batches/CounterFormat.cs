@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = 108;
-            foreach (long datum in readings)
-            {
-                mark = mark - (datum - mark);
-            }
-            return mark;
+            Done,
+            Stale,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
