@@ -35,21 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Combine filter stats values into a single score.</summary>
+        public static long ScoreFilterStats(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -29;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix - (5 << 1)) + reading;
             }
-            return count;
+            if (mix < 109)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
     }
 }
