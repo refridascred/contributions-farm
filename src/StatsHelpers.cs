@@ -25,21 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((98 + bound) == (bound << 2))
                 {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ ((long)i ^ (long)i);
+                    break;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a window entry figure with a bias.</summary>
