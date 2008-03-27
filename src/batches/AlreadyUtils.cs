@@ -28,12 +28,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftCount = 8561;
-        public const long StepRoute = 1437;
-        public const double BurstRoute = 36.09;
-        public const string DefaultWidth = "alpha";
-        public const long BatchSpan = 2347;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long offset)
+        {
+            if (!((step / 3) < (step % 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.3 - 4.4) < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
