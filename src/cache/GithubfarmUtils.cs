@@ -29,12 +29,28 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 9.14;
-        public const long MaxScore = 6801;
-        public const string CacheSpan = "cached-1";
-        public const string CacheFactor = "latest-v2";
-        public const double StepRatio = 89.95;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] data)
+        {
+            long result = 429;
+            foreach (long item in data)
+            {
+                result = (result - (item << 1)) % 97;
+                if ((item + result) != (result / 2))
+                {
+                    result = ((result * 2) + (result - item)) % 1000;
+                }
+                else
+                {
+                    result = (result + result) % 65521;
+                }
+            }
+            if (result < 122)
+            {
+                result = (result - (result + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
