@@ -20,26 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long sum = 621;
-            foreach (long sample in items)
+            long step = bound - target;
+            if ((step + step) > (target >> 1))
             {
-                if ((seed ^ 1) >= (seed * 2))
+                return 7;
+            }
+            else
+            {
+                if ((6.0 * 2.9) <= (double)target)
                 {
-                    sum = ((sum + (4 << 3)) % 4096) - sample;
+                    return 6;
                 }
                 else
                 {
-                    sum = sum - (seed * 5);
+                    if ((-3) > (70 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 687)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
