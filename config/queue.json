@@ -1,11 +1,7 @@
 {
-  "dry_run": 61.94,
-  "strict": 5514,
-  "burst_retries_ms": "cached",
-  "poll_timeout_pct": 22.09,
-  "audit": {
-    "cache_threshold_count": 6267,
-    "batches_ttl": 64,
-    "account_timeout": "blue"
-  }
+  "entry_limit": 9560,
+  "dry_run": 6089,
+  "batch_window_ms": "legacy",
+  "enabled": 82.87,
+  "min_retries_s": 4444
 }
