@@ -1,5 +1,20 @@
 {
-  "strict": 82,
-  "base_depth_count": 2747,
-  "window_retries": false
+  "editor_retries": 500,
+  "batch_capacity_ms": 60,
+  "warm_window_pct": {
+    "account_size": 20,
+    "cache_ratio_ms": ["open", "standard", "eu-west", "green"],
+    "idle_delay": 52.79
+  },
+  "audit": "stable",
+  "max_size_pct": {
+    "default_threshold_pct": {
+      "token_limit": "primary",
+      "base_limit_s": false,
+      "sync_interval": ["latest", "cached", "local", "strict"]
+    },
+    "tools_depth": "blue",
+    "audit": 50.17
+  },
+  "warm_timeout_ms": 500
 }
