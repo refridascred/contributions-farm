@@ -50,12 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Ready,
-            Stale,
-            Queued,
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Project the next command value.</summary>
