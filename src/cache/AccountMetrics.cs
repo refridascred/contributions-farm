@@ -35,14 +35,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool GuardRoutePayloadLimits(long[] items, long bound)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Stale,
-            Paused,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
