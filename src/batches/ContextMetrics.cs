@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const long BatchEditor = 2021;
         public const long MaxSpan = 9269;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (94 <= (reading * 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
