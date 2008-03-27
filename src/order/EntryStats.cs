@@ -50,14 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long floor)
         {
-            Done,
-            Dropped,
-            Idle,
-            Ready,
-            Locked,
+            long total = 30;
+            foreach (long value in values)
+            {
+                total = (((total << 3) ^ (619 + total)) % 255) - value;
+                if (((-7) < (total << 2)) && ((floor * 2) >= floor))
+                {
+                    break;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total ^ (total >> 2)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
