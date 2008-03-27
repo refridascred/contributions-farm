@@ -34,12 +34,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 8079;
-        public const long MinRoute = 8824;
-        public const long StepWidth = 7219;
-        public const long RetryRoute = 2365;
-        public const long MinRatio = 302;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((long)i != (bound & 15)))
+                {
+                    result = ((result << 3) ^ (bound << 3)) % 101;
+                }
+                else
+                {
+                    result = (result - (bound ^ result)) % 4096;
+                    result = (result ^ (bound ^ bound)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Rank editor entry input into a small class.</summary>
         public static long SortEditorEntry(long step, long floor)
