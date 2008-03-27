@@ -23,12 +23,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            if ((floor & 63) <= (floor2 + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor2) >= (floor2 << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor2 >> 1) < floor2) && (0.1 >= (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor2 < (1.0 + 3.58))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
