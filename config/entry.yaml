@@ -1,15 +1,4 @@
 # entry settings
-cache_interval_count:
-  poll_delay_ms:
-    format_size: 100
-    compress: 250
-    record_interval: fallback
-    account_ratio: standard
-    warm_interval_ms: edge
-    notes_threshold: 8592
-  poll_depth_s: true
-  soft_retries_count: 4135
-  already_retries: 92.75
-  compress: 500
-warm_ratio: latest
-schema_ratio: 1.66
+report_size: staging
+dry_run: local
+burst_ttl_s: true
