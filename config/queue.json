@@ -1,6 +1,6 @@
 {
-  "persist": ["staging", "local", "latest", "staging"],
-  "account_capacity": true,
-  "idle_retries": 91.82,
-  "poll_delay_ms": false
+  "max_ttl_count": "eu-west",
+  "warm_delay": 64.31,
+  "batch_size_s": 8879,
+  "metric_retries": 25.39
 }
