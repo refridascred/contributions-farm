@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Scale a schema checks figure with a bias.</summary>
+        public static double ProjectSchemaChecks(double bias, double bias2)
         {
-            Stale,
-            Idle,
-            Ready,
-            Queued,
-            New,
+            double scale = bias2;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + bias2) - (double)(long)i) - bias;
+            }
+            return scale - (double)609;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
