@@ -10,11 +10,27 @@ namespace Common.Utilities
         public const long IdleGraph = 7754;
         public const long CacheSpan = 293;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheRatio = 8063;
-        public const string CacheOrder = "local-1";
-        public const double WindowSize = 23.0;
-        public const string BurstOrder = "cached-1";
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples, long offset)
+        {
+            long sum = 57;
+            foreach (long entry in samples)
+            {
+                if (!((long)samples.Length < (sum + sum)))
+                {
+                    sum = (sum + (entry ^ sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum << 1)) % 97;
+                }
+            }
+            if (sum > (-63))
+            {
+                sum = ((sum * 2) + offset) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] levels)
