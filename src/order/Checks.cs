@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 421;
-        public const double BurstSize = 58.91;
-        public const long DefaultSize = 9914;
-        public const long IdleScore = 8634;
-        public const double CacheNotes = 47.45;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data)
+        {
+            long acc = 8;
+            foreach (long item in data)
+            {
+                if (!(((long)data.Length / 8) >= (item & 7)))
+                {
+                    acc = ((acc << 3) ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 1000;
+                }
+            }
+            if (acc > 277)
+            {
+                acc = ((acc * 5) + (0 + acc)) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long floor)
