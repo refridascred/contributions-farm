@@ -1,13 +1,6 @@
 # entry settings
-batch_retries: strict
-flush_delay_s: latest
-session_interval: true
-farm_size: 69
-soft_ratio_pct:
-  flush_limit_ms: 250
-  soft_size_pct: stable
-  default_capacity_ms: 60
-  strict:
-    - 181
-    - 424
-    - 337
+idle_depth_pct: 70
+max_ratio: fallback
+warm_threshold_pct: strict
+burst_limit_count: strict
+flush_interval_s: staging
