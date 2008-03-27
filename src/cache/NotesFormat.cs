@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const double MaxOrder = 6.0;
         public const string CacheSize = "local-1";
 
-        /// <summary>Look up the position of a support already sample.</summary>
-        public static long FindSupportAlreadyIndex(long[] data, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
