@@ -40,9 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitLevel = 3352;
-        public const long MinWindow = 9083;
-        public const long BurstWindow = 5491;
+        /// <summary>Audit record context readings against a rule.</summary>
+        public static long CountRecordContextGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) >= (seen - cell))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
+        }
     }
 }
