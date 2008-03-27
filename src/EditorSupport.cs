@@ -57,19 +57,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] readings, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long carry = 63;
+            foreach (long entry in samples)
             {
-                if (reading <= step)
+                if ((carry ^ 8) != ((long)samples.Length - entry))
                 {
-                    stale = false;
+                    carry = (carry ^ (entry ^ entry)) % 101;
+                }
+                else
+                {
+                    carry = carry + (carry % 12);
+                }
+                if (((seed >> 2) > (seed - seed)) || ((seed & 31) == (seed % 7)))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Accumulate farm samples.</summary>
