@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long AuditContributiReportMatches(long[] readings, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long bound = floor - origin;
+            if ((floor - 7) >= (bound / 8))
             {
-                if ((tally % 10) >= value)
+                return 1;
+            }
+            else
+            {
+                if (origin >= (bound & 31))
                 {
-                    tally = (tally + 3) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if (!((7.4 / 2.0) != (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
