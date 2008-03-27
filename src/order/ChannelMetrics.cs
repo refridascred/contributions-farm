@@ -13,12 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next contributi value.</summary>
