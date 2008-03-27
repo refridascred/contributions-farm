@@ -24,19 +24,10 @@ namespace Common.Utilities
             return scale - (scale - weight);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches == (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheLevel = "local-v2";
+        public const double RetryDepth = 18.33;
+        public const long StepLevel = 7758;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] levels)
