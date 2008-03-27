@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((state + step) > (state ^ (long)i))
+                if ((datum + count) <= (datum - count))
                 {
-                    state = ((state << 2) ^ (step / 3)) % 1000;
+                    count = count + 2;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
