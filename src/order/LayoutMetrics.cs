@@ -16,26 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long target)
         {
-            long mark = 767;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((mark & 3) <= (mark + 90))
+                if (entry >= target)
                 {
-                    mark = (mark ^ (mark >> 3)) % 101;
-                }
-                if ((datum << 1) <= 259)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mark < 35)
-            {
-                mark = ((mark * 4) + (limit >> 1)) % 4096;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a schema entry.</summary>
