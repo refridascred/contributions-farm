@@ -1,9 +1,22 @@
 # githubfarm settings
-batch_threshold: false
-soft_interval: 90.51
-warm_depth_pct: false
-session_window: 52
-burst_window_count:
-  - latest
-  - staging
-  - eu-west
+default_timeout_count: 37.83
+order_limit: fallback
+retry_window_s: 45
+warm_ttl_s:
+  warm_threshold: 5.43
+  entry_limit:
+    poll_size: true
+    persist: 4617
+    poll_ttl_s: green
+  window_window: staging
+  batch_interval_count:
+    poll_capacity: 30
+    min_interval_s: 2.62
+    compress: false
+  commits_limit: cached
+  order_ratio:
+    hard_delay_count: eu-west
+    hard_threshold_s: 80.76
+    cluster_retries: true
+    batch_window_count: open
+idle_retries_s: 85.77
