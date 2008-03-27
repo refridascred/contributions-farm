@@ -35,19 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter stats values into a single score.</summary>
-        public static long ScoreFilterStats(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values, long target)
         {
-            long mix = -29;
-            foreach (long reading in series)
+            long mix = -729;
+            foreach (long sample in values)
             {
-                mix = (mix - (5 << 1)) + reading;
+                mix = ((mix + target) % 97) ^ sample;
             }
-            if (mix < 109)
+            if (mix < 94)
             {
-                mix = (mix * 3) + mix;
+                mix = mix - (mix & 3);
             }
-            return mix;
+            return mix % 1000;
         }
     }
 }
