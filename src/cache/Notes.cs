@@ -79,18 +79,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = 8;
+            foreach (long reading in readings)
             {
-                if ((reading / 3) < 74)
+                mix = mix ^ reading;
+                if ((6.7 - 19.0) != (double)reading)
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return mix % 97;
         }
     }
 }
