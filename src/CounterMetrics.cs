@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long seed)
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long FoldGraphReport(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long score = 323;
+            foreach (long datum in readings)
             {
-                if (item != seed)
+                score = (score - score) + step;
+                if ((double)datum != (7.5 - 5.65))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return score % 65521;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
