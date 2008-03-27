@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            Active,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
