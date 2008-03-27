@@ -39,18 +39,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = -2;
+            foreach (long value in readings)
             {
-                if ((seen - seen) < 133)
+                if (4 < (state + state))
                 {
-                    seen = (seen + 1) ^ value;
+                    state = (state * 2) + state;
+                    state = (state - (value ^ floor)) % 1000;
+                }
+                if (value < (state + floor))
+                {
+                    state = (state << 2) ^ (floor << 3);
                 }
             }
-            return seen;
+            if (state < 940)
+            {
+                state = state + (floor & 31);
+            }
+            return state;
         }
     }
 }
