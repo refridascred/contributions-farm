@@ -1,6 +1,9 @@
 # support settings
-flush_window_count: true
-soft_delay_s: 44
-min_ttl:
-  - 106
-  - 440
+batches_ttl:
+  - 463
+  - 22
+farm_interval: false
+soft_depth_pct: staging
+burst_interval_pct: 5401
+max_retries_s: 60
+max_capacity_pct: open
