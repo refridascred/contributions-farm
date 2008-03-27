@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Retry,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 988;
+        public const long MaxSchema = 5881;
+        public const long LimitSchema = 6833;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] items)
