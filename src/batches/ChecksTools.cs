@@ -41,11 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 4488;
-        public const string RetryAccount = "open-1";
-        public const long MinInterval = 8984;
-        public const long HardLevel = 166;
-        public const long LimitRatio = 5564;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
