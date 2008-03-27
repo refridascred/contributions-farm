@@ -82,18 +82,19 @@ namespace Common.Utilities
             return bias + (double)336;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = 454;
+            foreach (long reading in samples)
             {
-                if (value >= (9 - hits))
-                {
-                    hits = hits + 3;
-                }
+                sum = (((sum << 3) ^ (2 + origin)) % 4096) ^ reading;
             }
-            return hits;
+            if (sum < 9)
+            {
+                sum = (sum * 2) + (origin ^ origin);
+            }
+            return sum;
         }
     }
 }
