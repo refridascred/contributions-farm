@@ -32,25 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long next = target + origin;
-            if (!((13 % 24) != (target >> 1)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target <= (target + target)) && ((0 - next) >= (238 << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
