@@ -1,14 +1,19 @@
 # githubfarm settings
-base_retries_s: 78
-max_capacity: 40
-batch_capacity: false
-min_ttl_s:
-  - legacy
-  - fallback
-  - eu-west
-  - latest
-default_timeout_ms: 30
-base_interval:
-  - 487
-  - 40
-  - 190
+editor_retries:
+  - 307
+  - 165
+tools_limit:
+  flush_threshold:
+    verbose: false
+    cache_window_ms: false
+    burst_capacity_s:
+      - 178
+      - 320
+    burst_size_ms: green
+    base_threshold_ms: true
+  commits_threshold: 4617
+  editor_threshold: 30
+  idle_delay_s: 52.99
+contributi_retries: green
+batch_capacity_s: 250
+warm_retries_ms: true
