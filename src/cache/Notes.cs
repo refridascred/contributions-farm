@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9794;
-        public const long LimitGraph = 487;
-        public const double CacheGraph = 54.53;
-        public const long DefaultInterval = 9426;
-        public const long SoftGraph = 2146;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 6037;
+        public const long BurstLevel = 4430;
+        public const long WindowRatio = 2830;
+        public const long MaxSpan = 8158;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
