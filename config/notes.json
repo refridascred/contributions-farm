@@ -1,6 +1,7 @@
 {
-  "dry_run": 96.01,
-  "idle_window": 7842,
-  "base_window": 91.01,
-  "poll_ratio": 100
+  "cache_ttl_count": "eu-west",
+  "warm_ttl_count": 7652,
+  "filter_interval": "fallback",
+  "tools_retries": true,
+  "warm_delay_count": true
 }
