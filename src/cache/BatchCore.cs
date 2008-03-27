@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Closed,
-            Synced,
-            Locked,
-            Draft,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowLevel = "fallback-v2";
+        public const long LimitDepth = 5713;
+        public const long BatchBudget = 4994;
+        public const string BatchCache = "fallback-v2";
+        public const string RetryCache = "open-v2";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
