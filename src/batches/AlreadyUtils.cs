@@ -19,13 +19,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long step, long seed)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Stale,
+            if (((6.46 - 10.0) < (double)step) && (8 < (seed << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((((-5) ^ seed) != (step ^ seed)) || ((step - 0) != (step / 6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed != (6.47 * 18.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2 & 31) <= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
