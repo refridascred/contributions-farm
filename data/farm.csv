@@ -1,7 +1,10 @@
-id,ratio,active,label,weight
-1,968,402,66.99,21.74
-2,486,589,staging,968
-3,2.85,50.9,fallback,84.83
-4,green,local,65,180
-5,cached,83.52,primary,558
-6,79.44,6.12,fallback,855
+id,label,active,rank
+1,legacy,cached,eu-west
+2,52.59,strict,91.3
+3,54.08,43.56,239
+4,blue,549,650
+5,334,6.51,legacy
+6,strict,latest,2.65
+7,5.36,latest,36.23
+8,555,30.06,52.46
+9,staging,cached,944
