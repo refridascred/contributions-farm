@@ -45,22 +45,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine support layout values into a single score.</summary>
-        public static long FoldSupportLayout(long[] readings, long offset)
+        /// <summary>Rank payload route input into a small class.</summary>
+        public static long SortPayloadRoute(long offset, long limit)
         {
-            long total = 837;
-            foreach (long value in readings)
+            long span = offset - limit;
+            if (span <= (span << 2))
             {
-                if ((value + total) < (35 / 3))
+                return 5;
+            }
+            else
+            {
+                if (((span / 5) >= limit) && ((99 >> 3) > limit))
                 {
-                    total = (total ^ (value - total)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + offset) < (limit & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total < 6)
-            {
-                total = (total ^ offset) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Rank editor entry input into a small class.</summary>
